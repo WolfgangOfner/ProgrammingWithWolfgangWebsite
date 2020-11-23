@@ -1,19 +1,19 @@
 ---
 title: Get xUnit Code Coverage from Docker
-date: 2020-09-27T13:00:34+02:00
+date: 2020-11-23
 author: Wolfgang Ofner
 categories: [DevOps, Docker]
 tags: [Azure Devops, 'C#', docker, xUnit]
 ---
 Getting code coverage in Azure DevOps is not well documented and the first time I configured it, it took me quite some time to figure out how to do it. It gets even more complicated when you run your tests inside a Docker container during the build.
 
-<a href="/run-tests-inside-docker-during-ci/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to run tests inside a container during the build. Today, I want to show how to get the code coverage of these tests and how to display them in Azure DevOps.
+<a href="/run-xUnit-inside-docker-during-ci-build" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to run tests inside a container during the build. Today, I want to show how to get the code coverage of these tests and how to display them in Azure DevOps.
 
-Code coverage gives you an indication of how much of your code is covered by at least one test. Usually, the higher the better but you shouldn&#8217;t aim for 100%. As always, it depends on the project but I would recommend having around 80%.
+Code coverage gives you an indication of how much of your code is covered by at least one test. Usually, the higher the better but you shouldn't aim for 100%. As always, it depends on the project but I would recommend having around 80%.
 
 ## Setting up xUnit for Code Coverage
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/tree/CodeCoverage" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 
 ### Install Coverlet
 
@@ -23,9 +23,9 @@ I use coverlet to collect the coverage. All you have to do is installing the Nug
 <ItemGroup>
    <PackageReference Include="FakeItEasy" Version="6.2.1" />
    <PackageReference Include="FluentAssertions" Version="5.10.3" />
-   <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.6.1" />
+   <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
    <PackageReference Include="xunit" Version="2.4.1" />
-   <PackageReference Include="xunit.runner.visualstudio" Version="2.4.2">
+   <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
    </PackageReference>
@@ -44,19 +44,20 @@ After installing coverlet, the next step is to collect the coverage results. To 
 
 ```docker 
 FROM build AS test  
-LABEL test=true  
-RUN dotnet test -c Release &#8211;results-directory /testresults &#8211;logger "trx;LogFileName=test_results.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=json%2cCobertura /p:CoverletOutput=/testresults/coverage/ -p:MergeWith=/testresults/coverage/coverage.json Tests/CustomerApi.Test/CustomerApi.Test.csproj  
-RUN dotnet test -c Release &#8211;results-directory /testresults &#8211;logger "trx;LogFileName=test_results2.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=json%2cCobertura /p:CoverletOutput=/testresults/coverage/ -p:MergeWith=/testresults/coverage/coverage.json Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj  
-RUN dotnet test -c Release &#8211;results-directory /testresults &#8211;logger "trx;LogFileName=test_results3.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=json%2cCobertura /p:CoverletOutput=/testresults/coverage/ -p:MergeWith=/testresults/coverage/coverage.json Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj  
+ARG BuildId
+LABEL test=${BuildId}
+RUN dotnet test --no-build -c Release --results-directory /testresults --logger "trx;LogFileName=test_results.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=json%2cCobertura /p:CoverletOutput=/testresults/coverage/ -p:MergeWith=/testresults/coverage/coverage.json  Tests/CustomerApi.Test/CustomerApi.Test.csproj  
+RUN dotnet test --no-build -c Release --results-directory /testresults --logger "trx;LogFileName=test_results2.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=json%2cCobertura /p:CoverletOutput=/testresults/coverage/ -p:MergeWith=/testresults/coverage/coverage.json  Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj  
+RUN dotnet test --no-build -c Release --results-directory /testresults --logger "trx;LogFileName=test_results3.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=json%2cCobertura /p:CoverletOutput=/testresults/coverage/ -p:MergeWith=/testresults/coverage/coverage.json  Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj
 ```
 
-The output format is json and Cobertura because I want to collect the code coverage of all tests and merge them into the summary file. This is all done behind the scenes, all you have to do is using the MergeWith flag where you provide the path to the json file. You could also build the whole solution if you don&#8217;t want to configure this. The disadvantage is that you will always run all tests. This might be not wanted, especially in bigger projects where you want to separate unit tests from integration or UI tests.
+The output format is json and Cobertura because I want to collect the code coverage of all tests and merge them into the summary file. This is all done behind the scenes, all you have to do is using the MergeWith flag where you provide the path to the json file. You could also build the whole solution if you don&'t want to configure this. The disadvantage is that you will always run all tests. This might be not wanted, especially in bigger projects where you want to separate unit tests from integration or UI tests.
 
 This is everything you have to change in your projects to be ready to collect the coverage. The last step is to copy the results out of the container and display them in Azure DevOps.
 
 ## Display the Code Coverage Results in Azure DevOps
 
-In my last post, I explained how to copy the test results out of the container using the label test=true. This means that besides the test results, the coverage results are also copied out of the container already. All I have to do now is to display these coverage results using the PublishCodeCoverageResults tasks from Azure DevOps. The code looks as follows:
+In my last post, I explained how to copy the test results out of the container using the label test=${BuildId}. This means that besides the test results, the coverage results are also copied out of the container already. All I have to do now is to display these coverage results using the PublishCodeCoverageResults tasks from Azure DevOps. The code looks as follows:
 
 ```yaml  
 - task: PublishCodeCoverageResults@1
@@ -71,7 +72,7 @@ The whole code to copy the everything out of the container, display the test res
 
 ```yaml  
 - pwsh: |
-    $id=docker images --filter "label=test=true" -q | Select-Object -First 1
+    $id=docker images --filter "label=test=$(Build.BuildId)" -q | Select-Object -First 1
     docker create --name testcontainer $id
     docker cp testcontainer:/testresults ./testresults
     docker rm testcontainer
@@ -95,7 +96,7 @@ The whole code to copy the everything out of the container, display the test res
 Save the changes and run the CI pipeline. After the build is finished, you will see the Code Coverage tab in the summary overview where you can see the coverage of each of your projects.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/09/Code-Coverage-Results.jpg"><img loading="lazy" src="/assets/img/posts/2020/09/Code-Coverage-Results.jpg" alt="Summary of the Code Coverage Results" /></a>
+  <a href="/assets/img/posts/2020/11/Code-Coverage-Results.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/Code-Coverage-Results.jpg" alt="Summary of the Code Coverage Results" /></a>
   
   <p>
     Summary of the Code Coverage Results
@@ -106,4 +107,4 @@ Save the changes and run the CI pipeline. After the build is finished, you will 
 
 The code coverage shows how much of your code is covered by at least one test. This post showed how easy it can be to display these results in Azure DevOps, even when the build runs inside a Docker container.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/tree/CodeCoverage" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
