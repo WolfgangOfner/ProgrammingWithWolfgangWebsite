@@ -3,7 +3,7 @@ title: Helper Methods in ASP.NET MVC
 date: 2018-02-07T18:57:46+01:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [form, helper, HTML]
+tags: [Form, Helper, HTML]
 ---
 Writing HTML forms can be a tedious task. To help the developers, the ASP.NET MVC framework offers a wide range of helper methods which make creating an HTML form way easier.
 

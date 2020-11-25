@@ -3,7 +3,7 @@ title: Implement Azure Functions and WebJobs
 date: 2018-07-04T20:00:59+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [70-532, Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, Learning]
 ---
 Azure Functions is a serverless compute service that enables you to run code-on-demand without having to explicitly provision or manage infrastructure. Use Azure Function to run a script or piece of code in response to a variety of events from sources such as:
 

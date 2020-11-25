@@ -3,7 +3,7 @@ title: Design and implement DevTest Labs
 date: 2018-04-05T16:45:00+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [70-532, Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, Learning]
 ---
 Azure DevTest Labs is a service designed to help developers and testers quickly spin up virtual machines (VMs) or complete environments in Azure, enabling rapid deployment and testing of applications. This allows you to easily spin up and tear down development and test resources, minimizing waste and providing better cost control. It is also useful to create pre-provisioned environments for demos and training.
 

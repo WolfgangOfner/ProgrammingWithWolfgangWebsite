@@ -3,7 +3,7 @@ title: Chain of Responsibility Pattern
 date: 2017-12-26T16:58:08+01:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
-tags: ['C#', software architecture]
+tags: ['C#', Software Architecture]
 ---
 I think that the chain of responsibility pattern is pretty easy to learn. It is not used too often but it is very useful when sending messages to a receiver where the sender doesn&#8217;t care too much about which receiver handles the message.
 

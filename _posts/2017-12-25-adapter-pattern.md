@@ -3,7 +3,7 @@ title: Adapter Pattern
 date: 2017-12-25T16:31:34+01:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
-tags: ['C#', software architecture]
+tags: ['C#', Software Architecture]
 ---
 The adapter pattern is one of the most useful patterns in my eyes. Therefore I want to explain what the adapter is and present a simple real life example on how it can be used.
 

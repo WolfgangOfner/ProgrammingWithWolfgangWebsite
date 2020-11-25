@@ -3,7 +3,7 @@ title: Design Azure App Service Web App
 date: 2018-05-07T18:47:57+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [70-532, Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, Learning]
 ---
 Azure Web App provides a managed service for hosting your web applications and APIs with infrastructure services such as security, load balancing, and scaling provided as part of the service. Additionally, it has integrated DevOps experience from code repositories and from Docker image repositories. You pay for computing resources according to your App Service Plan and scale settings.
 

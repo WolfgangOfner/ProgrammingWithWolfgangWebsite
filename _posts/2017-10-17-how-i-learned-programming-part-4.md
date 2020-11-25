@@ -3,7 +3,7 @@ title: 'How I learned programming - Part 4'
 date: 2017-10-17T21:37:49+02:00
 author: Wolfgang Ofner
 categories: [Programming]
-tags: [ASP.NET MVC, CSS, HTML, Javascript, learning, PHP]
+tags: [ASP.NET MVC, CSS, HTML, Javascript, Learning, PHP]
 ---
 Welcome to part 4 of how I learned programming. In my last post, I wrote about how I learned Java and C++ in Canada and how the teacher there impressed me. You can find this post <a href="/how-i-learned-programming-part-3/" target="_blank" rel="noopener">here</a>.
 

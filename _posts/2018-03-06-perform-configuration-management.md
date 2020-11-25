@@ -3,7 +3,7 @@ title: Perform Configuration Management
 date: 2018-03-06T12:21:11+01:00
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [70-532, Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, Learning]
 ---
 In this post, I want to show how to use Windows PowerShell Desired State Configuration (DSC) and the VM Agent to perform various configuration management tasks like remote debugging and at the end, I will show how to use variables in a deployment template.
 

@@ -3,7 +3,7 @@ title: Manage ARM VM Availability
 date: 2018-03-18T18:08:10+01:00
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [70-532, Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, Learning]
 ---
 To guarantee high availability, your applications should run on multiple identical virtual machines so that your application is not affected when a small subset of these VMs is not available due to updates or power failures. Using several VMs for your application may require you to set up an Azure Load Balancer. This post will cover the section Manage ARM VM Availability of the 70-532 Developing Microsoft Azure Solutions certification exam.
 

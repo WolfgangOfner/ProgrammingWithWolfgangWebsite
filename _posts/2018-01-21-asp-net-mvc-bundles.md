@@ -3,7 +3,7 @@ title: ASP.NET MVC Bundles
 date: 2018-01-21T00:19:37+01:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [CSS, Javascript, minification, MVC, Optimization]
+tags: [CSS, Javascript, Minification, MVC, Optimization]
 ---
 The Bundles feature is built-in into the MVC framework and helps to organize and optimize CSS and Javascript files. In this post, I will show what bundling is, how to use it and what effects it has on the performance of your application.
 

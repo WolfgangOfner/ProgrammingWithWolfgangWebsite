@@ -3,7 +3,7 @@ title: Manage access and monitor storage
 date: 2018-04-18T09:54:09+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [70-532, Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, Learning]
 ---
 Azure Storage has a built-in analytics feature called Azure Storage Analytics used for collecting metrics and logging storage request activity. Storage Analytics Metrics are used to collect aggregate transaction and capacity. Storage Analytics Logging is used to capture successful and failed request attempts to your storage account. In this post, I will talk about different methods to manage the access and monitor storage accounts.
 

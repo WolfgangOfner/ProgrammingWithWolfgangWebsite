@@ -3,7 +3,7 @@ title: Repository and Unit of Work Pattern
 date: 2018-01-09T19:32:51+01:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
-tags: ['C#',entity framework, software architecture]
+tags: ['C#', Entity Framework, Software Architecture]
 ---
 The Repository pattern and Unit of Work pattern are used together most of the time. Therefore I will combine them in this post and show how to implement them both.
 

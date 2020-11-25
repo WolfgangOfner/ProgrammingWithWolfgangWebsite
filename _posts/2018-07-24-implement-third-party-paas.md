@@ -3,7 +3,7 @@ title: Design and implement third-party PaaS
 date: 2018-07-24T11:47:46+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [70-532, Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, Learning]
 ---
 Azure support many third-party offerings and services through the Azure Marketplace. These can be deployed through the Azure portal, using ARM, or other CLI tools.
 

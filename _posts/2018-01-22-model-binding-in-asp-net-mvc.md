@@ -3,7 +3,7 @@ title: Model Binding in ASP.NET MVC
 date: 2018-01-22T22:53:33+01:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [model binding, MVC]
+tags: [Model Binding, MVC]
 ---
 ASP.NET MVC creates objects using the model binding process with the data which is sent by the browser in an HTTP request. The action method parameters are created through model binding from the data in the request.
 

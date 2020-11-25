@@ -3,7 +3,7 @@ title: Design and implement ARM VM Azure Storage
 date: 2018-03-12T15:59:16+01:00
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [70-532, Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, Learning]
 ---
 Azure Storage provides more functionality than just attaching data disks to your VM. In this post, I will talk about creating a file storage account, how to create and access a file share using PowerShell and C# and how to enable caching for your disks.
 

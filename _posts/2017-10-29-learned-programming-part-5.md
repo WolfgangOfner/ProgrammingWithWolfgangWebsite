@@ -3,7 +3,7 @@ title: 'How I learned programming - Part 5'
 date: 2017-10-29T13:00:49+01:00
 author: Wolfgang Ofner
 categories: [Programming]
-tags: [books, learning, Pluralsight, Youtube]
+tags: [Books, Learning, Pluralsight, Youtube]
 ---
 Welcome to part 5 of how I learned programming. In my last post, I wrote about how I got into web development and what problems I encountered while learning. You can find this post <a href="/how-i-learned-programming-part-4/" target="_blank" rel="noopener">here</a>.
 

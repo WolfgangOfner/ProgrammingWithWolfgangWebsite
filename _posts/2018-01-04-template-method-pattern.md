@@ -3,7 +3,7 @@ title: Template Method Pattern
 date: 2018-01-04T21:01:01+01:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
-tags: ['C#',software architecture]
+tags: ['C#', Software Architecture]
 ---
 The Template Method pattern helps to create the skeleton of an algorithm. This skeleton provides one or many methods which can be altered by subclasses but which don&#8217;t change the algorithm&#8217;s structure.
 

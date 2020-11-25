@@ -3,7 +3,7 @@ title: Implement Azure Cosmos DB DocumentDB
 date: 2018-04-30T00:48:42+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [70-532, Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, Learning]
 ---
 Azure Cosmos DB DocumentDB is a JSON document store NoSQL database, similar to MongoDB. JSON document stores are the fastest growing NoSQL solutions. The reason why it&#8217;s growing so fast is that it doesn&#8217;t require assembling or disassembling object hierarchies into a flat relational design. Since the release of Azure Cosmos DB, it has added support for key-value (Table API) and graph (Gremlin).
 

@@ -3,7 +3,7 @@ title: How I prepared for the 70-532 Exam
 date: 2018-02-23T14:33:48+01:00
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [70-532, Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, Learning]
 ---
 Recently I started to prepare for the Microsoft certification exam 70-532 &#8220;Developing Microsoft Azure Solutions&#8221; using the <a href="http://amzn.to/2EWNWMF" target="_blank" rel="noopener noreferrer">official Exam Ref book</a>. This post contains a comprehensive list of blog posts with summaries of all needed abilities. I used the Exam Ref book, the official documentation and my personal experience to write these posts. I will constantly update the list until all topics are discussed.
 

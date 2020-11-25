@@ -3,7 +3,7 @@ title: IT Books you should read
 date: 2020-07-06T22:51:29+02:00
 author: Wolfgang Ofner
 categories: [Miscellaneous]
-tags: [books, learning]
+tags: [Books, Learning]
 ---
 Nowadays there are a million ways for developers to learn new technologies or principles, like Pluralsight, Youtube, blogs or books. I like to read books when I commute or during cardio in the gym. In this post, I will present all books I have read in the last couple of years and provide some basic information. I will separate them in IT books and non IT books. The books are in no particular order, except The Phoenix Project and The Unicorn Project were the books I enjoyed most.
 

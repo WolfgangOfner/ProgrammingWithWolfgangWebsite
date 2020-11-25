@@ -3,7 +3,7 @@ title: Strategy Pattern
 date: 2018-01-02T15:17:42+01:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
-tags: ['C#', software architecture]
+tags: ['C#', Software Architecture]
 ---
 The Strategy pattern is One of the simpler design patterns and probably a good one to get started with design patterns. Additionally, it is also very practical and can help to clean up the code.
 

@@ -3,7 +3,7 @@ title: Implement Azure Storage Tables, Queues, and Azure Cosmos DB Table API
 date: 2018-04-10T12:40:08+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [70-532, Azure, Certification, Exam, learning]
+tags: [70-532, Azure, Certification, Exam, Learning]
 ---
 Azure Storage Tables can store tabular data at petabyte scale. Azure Queue storage is used to provide messaging between application components, as they can be de-coupled and scaled individually.
 

@@ -3,7 +3,7 @@ title: 'How I learned programming - Part 2'
 date: 2017-10-16T13:40:17+02:00
 author: Wolfgang Ofner
 categories: [Programming]
-tags: ['C#', learning]
+tags: ['C#', Learning]
 ---
 Welcome to part 2 of how I learned programming. In my last post, I wrote about how I started learning C# in university in Austria. You can find this post <a href="/how-i-learned-programming/" target="_blank" rel="noopener">here</a>.
 

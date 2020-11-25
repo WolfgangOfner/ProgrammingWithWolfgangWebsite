@@ -3,7 +3,7 @@ title: Dockerize an ASP .NET Core Microservice and RabbitMQ
 date: 2020-04-21T11:24:50+02:00
 author: Wolfgang Ofner
 categories: [Docker, ASP.NET]
-tags: [NET Core 3.1, 'C#', CQRS, docker, docker-compose, MediatR, microservice, RabbitMQ, Swagger]
+tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, Swagger]
 ---
 <a href="/rabbitmq-in-an-asp-net-core-3-1-microservice/" target="_blank" rel="noopener noreferrer">In my last post</a>, I added RabbitMQ to my two microservices which finished all the functional requirements. Microservices became so popular because they can be easily deployed using Docker. Today I will dockerize my microservices and create Docker container which can be run anywhere as long as Docker is installed. I will explain most of the Docker commands but basic knowledge about starting and stopping containers is recommended.
 

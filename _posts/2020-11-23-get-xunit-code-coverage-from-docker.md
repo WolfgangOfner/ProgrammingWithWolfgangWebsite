@@ -3,7 +3,7 @@ title: Get xUnit Code Coverage from Docker
 date: 2020-11-23
 author: Wolfgang Ofner
 categories: [DevOps, Docker]
-tags: [Azure Devops, 'C#', docker, xUnit]
+tags: [Azure Devops, 'C#', Docker, xUnit]
 ---
 Getting code coverage in Azure DevOps is not well documented and the first time I configured it, it took me quite some time to figure out how to do it. It gets even more complicated when you run your tests inside a Docker container during the build.
 
