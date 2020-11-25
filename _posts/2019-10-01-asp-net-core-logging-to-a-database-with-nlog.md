@@ -5,13 +5,13 @@ author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [ASP.NET Core MVC, Logging, NLog, SQL]
 ---
-ASP.NET core has seen rapid development in the last years. Additionally, there were some breaking changes since version 1, for example, the project.json file got removed. Unfortunately, the documentation is lacking behind this rapid development. I had exactly this problem when I wanted to use NLog to log to my database. There was plenty of documentation but none of it worked because it was for .net core 1.x.
+ASP.NET core has seen rapid development in the last years. Additionally, there were some breaking changes since version 1, for example, the project.json file got removed. Unfortunately, the documentation is lacking behind this rapid development. I had exactly this problem when I wanted to use NLog to log to my database. There was plenty of documentation but none of it worked because it was for .NET Core 1.x.
 
 Today, I want to talk about how I implemented NLog with ASP.NET core 2.2 and how I configured it to log to my database. You can find the source code for the following demo on <a href="https://github.com/WolfgangOfner/MVC-Nlog" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ## Installing Nlog
 
-I created a new web project with .net core and the MVC template and added the NLog.Web.AspNetCore NuGet package. Next, I create a new file NLog.config in the root folder of my solution. This file will contain all the configs for NLog. Now it is time to fill the config file with some content. You can find the source code for this demo on <a href="https://github.com/WolfgangOfner/MVC-Nlog" target="_blank" rel="noopener noreferrer">Github</a>.
+I created a new web project with .NET Core and the MVC template and added the NLog.Web.AspNetCore NuGet package. Next, I create a new file NLog.config in the root folder of my solution. This file will contain all the configs for NLog. Now it is time to fill the config file with some content. You can find the source code for this demo on <a href="https://github.com/WolfgangOfner/MVC-Nlog" target="_blank" rel="noopener noreferrer">Github</a>.
 
 ### Implementing the Nlog config
 

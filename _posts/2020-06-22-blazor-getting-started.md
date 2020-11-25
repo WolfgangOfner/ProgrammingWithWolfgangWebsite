@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [ASP.NET, Frontend]
 tags: [NET Core, Blazor, 'C#', SignalR]
 ---
-Blazor was introduced with .net core 3.0 and is a web UI single page application (SPA) framework. Developers write the code in HTML, CSS, C#, and optionally Javascript. Blazor was developed by Steve Sanderson and presented  in July 2018. The main advantage over Javascript frameworks is that you can run C# directly in the browser which should be appealing for enterprise developers who don&#8217;t want to deal with Javascript
+Blazor was introduced with .NET Core 3.0 and is a web UI single page application (SPA) framework. Developers write the code in HTML, CSS, C#, and optionally Javascript. Blazor was developed by Steve Sanderson and presented  in July 2018. The main advantage over Javascript frameworks is that you can run C# directly in the browser which should be appealing for enterprise developers who don&#8217;t want to deal with Javascript
 
 ## Blazor Features
 
@@ -23,7 +23,7 @@ There are two different versions: Blazor Server and Blazor Webassembly. I will t
 
 ## Create your First Blazor Server App
 
-To follow the demo you need Visual Studio 2019 and at least .net core 3.0. You can find the source of the demo on <a href="https://github.com/WolfgangOfner/Blazor-Server" target="_blank" rel="noopener noreferrer">Github</a>.
+To follow the demo you need Visual Studio 2019 and at least .NET Core 3.0. You can find the source of the demo on <a href="https://github.com/WolfgangOfner/Blazor-Server" target="_blank" rel="noopener noreferrer">Github</a>.
 
 To create a new Blazor App, select the Blazor template in Visual Studio.
 

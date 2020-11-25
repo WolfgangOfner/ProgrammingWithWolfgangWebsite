@@ -57,7 +57,7 @@ A new version of .Net Standard always contains all previous APIs and additional 
   </p>
 </div>
 
-A .Net platform implements a specific .Net Standard version, for example .net core 1.0 implements .Net Standard 1.6. The enforce this backward compatibility, every .Net Standard version is immutable.
+A .Net platform implements a specific .Net Standard version, for example .NET Core 1.0 implements .Net Standard 1.6. The enforce this backward compatibility, every .Net Standard version is immutable.
 
 ### Which Version to choose?
 

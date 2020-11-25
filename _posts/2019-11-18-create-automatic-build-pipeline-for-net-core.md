@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [DevOps]
 tags: [NET Core, ASP.NET Core MVC, ASP.NET MVC, Azure Devops, Continous Integration]
 ---
-Automated build processes should be a no-brainer nowadays but unfortunately, I still come across quite many projects which do their builds manually. In today&#8217;s post, I want to give an introduction to setting up an automated build pipeline for a .net and .net core application with Microsoft&#8217;s Azure DevOps Server. The DevOps Server is the on-premise version of Azure DevOps Services, but they are so similar that its negligible which one you use for this demo. I will use Azure DevOps Services. You can create a free account <a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank" rel="noopener noreferrer">here</a>.
+Automated build processes should be a no-brainer nowadays but unfortunately, I still come across quite many projects which do their builds manually. In today&#8217;s post, I want to give an introduction to setting up an automated build pipeline for a .net and .NET Core application with Microsoft&#8217;s Azure DevOps Server. The DevOps Server is the on-premise version of Azure DevOps Services, but they are so similar that its negligible which one you use for this demo. I will use Azure DevOps Services. You can create a free account <a href="https://azure.microsoft.com/en-us/services/devops/" target="_blank" rel="noopener noreferrer">here</a>.
 
 ## Creating your first Build Pipeline for a .net Framework Application
 
@@ -201,29 +201,29 @@ After a couple of minutes, your build should finish successfully.
 
 ## Creating a Build Pipeline for a .net Core Application
 
-Creating a build pipeline for .net core is the same process as for a .net framework application. The only difference is that I select ASP.NET Core as the template this time.
+Creating a build pipeline for .NET Core is the same process as for a .net framework application. The only difference is that I select ASP.NET Core as the template this time.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/11/Select-.net-core-as-your-build-template.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/Select-.net-core-as-your-build-template.jpg" alt="Select .net core as your build template" /></a>
+  <a href="/assets/img/posts/2019/11/Select-.net-core-as-your-build-template.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/Select-.net-core-as-your-build-template.jpg" alt="Select .NET Core as your build template" /></a>
   
   <p>
-    Select .net core as your build template
+    Select .NET Core as your build template
   </p>
 </div>
 
 You can see a difference in the created build pipeline though.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/11/The-.net-core-build-pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/The-.net-core-build-pipeline.jpg" alt="The .net core pipeline" /></a>
+  <a href="/assets/img/posts/2019/11/The-.net-core-build-pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/The-.net-core-build-pipeline.jpg" alt="The .NET Core pipeline" /></a>
   
   <p>
-    The .net core build pipeline
+    The .NET Core build pipeline
   </p>
 </div>
 
 ## Why I like the .net Core Build Pipeline better
 
-There are several reasons why I like the .net core build pipeline better than the one for a .net framework application.
+There are several reasons why I like the .NET Core build pipeline better than the one for a .net framework application.
 
 The first thing which got my attention is that all tasks look the same. All tasks except the last one use the dotnet CLI. The only difference is the argument (restore, build, publish and test). This means that I know exactly what&#8217;sgoing on and due to the similarity of the tasks, they are easy to configure.
 
@@ -231,4 +231,4 @@ An even better new feature is that it is possible to zip a project during the pu
 
 ## Conclusion
 
-This post showed how you can quickly set up an automated build pipeline for your .net or .net core application in Azure DevOps. This is the first step to increasing the development velocity and reducing the bugs and later on also the deployment time.
+This post showed how you can quickly set up an automated build pipeline for your .net or .NET Core application in Azure DevOps. This is the first step to increasing the development velocity and reducing the bugs and later on also the deployment time.

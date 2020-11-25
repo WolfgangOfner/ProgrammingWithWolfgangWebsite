@@ -5,7 +5,7 @@ author: Wolfgang Ofner
 categories: [ASP.NET, Frontend]
 tags: [Blazor Server, Blazor WebAssembly, 'C#', WASM, Blazor]
 ---
-Blazor Server was release with .net core 3.0 in September 2019 and Blazor WebAssembly (WASM) was released in May 2020. Today, I will talk about the differences, when to use what version, and everything else you need to know about Blazor Server vs. Blazor WebAssembly.
+Blazor Server was release with .NET Core 3.0 in September 2019 and Blazor WebAssembly (WASM) was released in May 2020. Today, I will talk about the differences, when to use what version, and everything else you need to know about Blazor Server vs. Blazor WebAssembly.
 
 ## Blazor Server vs. Blazor WebAssembly Features
 
@@ -29,7 +29,7 @@ Before, I go into the details of each version of Blazor, let&#8217;s have a look
 
 SignalR is an integral part of Blazor and offers these features:
 
-  * It is free, open-source and a first-class citizen of .net core
+  * It is free, open-source and a first-class citizen of .NET Core
   * Sends async messages over persistent connections.
   * Connections are two-way.
   * Every client has its own connection.

@@ -26,7 +26,7 @@ services.AddSwaggerGen(c =>
 });  
 ```
 
-The next step is to tell ASP .net core to use Swagger and its UI. You can add both in the Configure method of the Startup class. Additionally, I configured Swagger to load the the GUI when starting your solution.
+The next step is to tell ASP .NET Core to use Swagger and its UI. You can add both in the Configure method of the Startup class. Additionally, I configured Swagger to load the the GUI when starting your solution.
 
 ```csharp  
 app.UseSwagger();  
