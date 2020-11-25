@@ -67,6 +67,7 @@ _init() {
   cp -r ./* "$CONTAINER"
   cp -r ./.git "$CONTAINER"
   chmod -R 777 "$CONTAINER"    
+  
   if $docker; then
     local _image_user=$(stat -c "%U" "$JEKYLL_DOCKER_HOME"/.)
 
