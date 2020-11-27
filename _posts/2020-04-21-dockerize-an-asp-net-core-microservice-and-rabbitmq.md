@@ -88,7 +88,7 @@ The build image in the first line of the next section is the SDK image which we 
 ```docker 
 FROM base AS final  
 WORKDIR /app  
-COPY &#8211;from=publish /app/publish .  
+COPY --from=publish /app/publish .  
 ENTRYPOINT ["dotnet", "CustomerApi.dll"]  
 ```
 

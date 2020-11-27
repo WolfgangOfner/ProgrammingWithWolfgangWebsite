@@ -37,6 +37,7 @@
 37
 38
 39
+40
 </pre><td class="rouge-code"><pre><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.6"</span>
 <span class="na">services</span><span class="pi">:</span>
     <span class="na">rabbitmq</span><span class="pi">:</span>
@@ -71,12 +72,13 @@
         <span class="na">environment</span><span class="pi">:</span>
             <span class="pi">-</span> <span class="s2">"</span><span class="s">ASPNETCORE_URLS=https://+;http://+"</span>
             <span class="pi">-</span> <span class="s">Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx</span>
-            <span class="pi">-</span> <span class="s">Kestrel__Certificates__Default__Password=SecretPassword</span>       
+            <span class="pi">-</span> <span class="s">Kestrel__Certificates__Default__Password=SecretPassword</span>  
+            <span class="pi">-</span> <span class="s">EnableRabbitMqReceiver=true</span>     
         <span class="na">image</span><span class="pi">:</span> <span class="s">wolfgangofner/orderapi</span>       
         <span class="na">restart</span><span class="pi">:</span> <span class="s">on-failure</span>
         <span class="na">depends_on</span><span class="pi">:</span>
             <span class="pi">-</span> <span class="s">rabbitmq</span>  
-</pre></table></code></div></div><p>This file describes two images, rabbitmq, and customerapi. Let’s have a closer look at the customerapi definition:</p><ul><li>Ports: The container is listening to the ports 8000 and 8001 and redirects the request to the ports 80 and 443 inside the container.<li>Environment: This section provides environment variables and their value to enable Kestrel to process SSL requests<li>Image: This specifies which image should be used. If it is not available locally, it will be downloaded from Dockerhub.<li>Restart: Here you can configure the restart policy. This container is always restarting on failure. Other options are always and until-stopped.<li>Depends on: This section specifies dependencies. It only specifies that the rabbitmq container has to be started before the customerapi container. It doesn’t guarantee that the container is already finished starting up</ul><p>To get started with docker-compose, I highly recommend the website <a href="https://composerize.com/" target="_blank" rel="noopener noreferrer">composerize.com</a>. On this website, you can paste a docker run command and it will give you a compose file with your parameters.</p><h2 id="start-multiple-container-with-docker-compose">Start multiple Container with Docker-Compose</h2><p>You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.</p><p>To execute your compose file, open Powershel, and navigate to the location of your file. In my demo code, I am providing the compose file in the root folder. Once you navigated to your file, use the following command: docker-compose up -d. The -d parameter executes the command detached. This means that the containers run in the background and don’t block your Powershell window.</p><div class="col-12 col-sm-10 aligncenter"> <a href="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg" alt="Start multiple container with docker-compose" /></a><p> Start multiple container with docker-compose</p></div><p>To prove that all three containers are running, use docker ps.</p><div class="col-12 col-sm-10 aligncenter"> <a href="/assets/img/posts/2020/04/Check-all-running-container.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Check-all-running-container.jpg" alt="Check all running container" /></a><p> Check all running container</p></div><p>Another great feature of docker-compose is, that you can stop all your application with a single command: docker-compose down.</p><h2 id="build-and-run-containers">Build and run Containers</h2><p>You don’t have to use images from Docker hub in your compose file, you can also build images and then run them. To build an image, use the build section and set the context to the location of the Dockerfile.</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></table></code></div></div><p>This file describes two images, rabbitmq, and customerapi. Let’s have a closer look at the customerapi definition:</p><ul><li>Ports: The container is listening to the ports 8000 and 8001 and redirects the request to the ports 80 and 443 inside the container.<li>Environment: This section provides environment variables and their value to enable Kestrel to process SSL requests. Additionally, it allows to enable or disable the connection to RabbitMq for the OrderApi.<li>Image: This specifies which image should be used. If it is not available locally, it will be downloaded from Dockerhub.<li>Restart: Here you can configure the restart policy. This container is always restarting on failure. Other options are always and until-stopped.<li>Depends on: This section specifies dependencies. It only specifies that the rabbitmq container has to be started before the customerapi container. It doesn’t guarantee that the container is already finished starting up</ul><p>To get started with docker-compose, I highly recommend the website <a href="https://composerize.com/" target="_blank" rel="noopener noreferrer">composerize.com</a>. On this website, you can paste a docker run command and it will give you a compose file with your parameters.</p><h2 id="start-multiple-container-with-docker-compose">Start multiple Container with Docker-Compose</h2><p>You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.</p><p>To execute your compose file, open Powershel, and navigate to the location of your file. In my demo code, I am providing the compose file in the root folder. Once you navigated to your file, use the following command: docker-compose up -d. The -d parameter executes the command detached. This means that the containers run in the background and don’t block your Powershell window.</p><div class="col-12 col-sm-10 aligncenter"> <a href="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg" alt="Start multiple container with docker-compose" /></a><p> Start multiple container with docker-compose</p></div><p>To prove that all three containers are running, use docker ps.</p><div class="col-12 col-sm-10 aligncenter"> <a href="/assets/img/posts/2020/04/Check-all-running-container.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Check-all-running-container.jpg" alt="Check all running container" /></a><p> Check all running container</p></div><p>Another great feature of docker-compose is, that you can stop all your application with a single command: docker-compose down.</p><h2 id="build-and-run-containers">Build and run Containers</h2><p>You don’t have to use images from Docker hub in your compose file, you can also build images and then run them. To build an image, use the build section and set the context to the location of the Dockerfile. I have created a new Dockerfile, called Dockerfile.Build which looks as the original one except that it doesn’t contain any tests or anything that might slowdown the build.</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
 2
 3
 4
@@ -119,6 +121,7 @@
 41
 42
 43
+44
 </pre><td class="rouge-code"><pre><span class="na">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">3.6"</span>
 <span class="na">services</span><span class="pi">:</span>
     <span class="na">rabbitmq</span><span class="pi">:</span>
@@ -142,7 +145,7 @@
             <span class="pi">-</span> <span class="s">Kestrel__Certificates__Default__Password=SecretPassword</span>        
         <span class="na">build</span><span class="pi">:</span>
             <span class="na">context</span><span class="pi">:</span> <span class="s">./CustomerApi</span>
-            <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">CustomerApi/Dockerfile</span>
+            <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">CustomerApi/Dockerfile.Build</span>
         <span class="na">restart</span><span class="pi">:</span> <span class="s">on-failure</span>        
         <span class="na">depends_on</span><span class="pi">:</span>
             <span class="pi">-</span> <span class="s">rabbitmq</span>
@@ -155,10 +158,11 @@
         <span class="na">environment</span><span class="pi">:</span>
             <span class="pi">-</span> <span class="s2">"</span><span class="s">ASPNETCORE_URLS=https://+;http://+"</span>
             <span class="pi">-</span> <span class="s">Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx</span>
-            <span class="pi">-</span> <span class="s">Kestrel__Certificates__Default__Password=SecretPassword</span>       
+            <span class="pi">-</span> <span class="s">Kestrel__Certificates__Default__Password=SecretPassword</span>  
+            <span class="pi">-</span> <span class="s">EnableRabbitMqReceiver=true</span>      
         <span class="na">build</span><span class="pi">:</span>
             <span class="na">context</span><span class="pi">:</span> <span class="s">./OrderApi</span>      
-            <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">OrderApi/Dockerfile</span>
+            <span class="na">dockerfile</span><span class="pi">:</span> <span class="s">OrderApi/Dockerfile.Build</span>
         <span class="na">restart</span><span class="pi">:</span> <span class="s">on-failure</span>
         <span class="na">depends_on</span><span class="pi">:</span>
             <span class="pi">-</span> <span class="s">rabbitmq</span>             

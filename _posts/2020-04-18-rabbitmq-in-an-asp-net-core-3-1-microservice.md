@@ -50,16 +50,16 @@ RabbitMQ has a lot of features. I will only implement a simple version of it to 
 
 ### Implementation of publishing data
 
-I am a big fan of Separation of Concerns (SoC) and therefore I am creating a new project in the CustomerApi solution called CUstomerApi.Message.Send. Next, I install the RabbitMQ.Client NuGet package and create the class CustomerUpdateSender in the project. I want to publish my Customer object to the queue every time the customer is updated. Therefore, I create the SendCustomer method which takes a Customer object as a parameter.
+I am a big fan of Separation of Concerns (SoC) and therefore I am creating a new project in the CustomerApi solution called CustomerApi.Message.Send. Next, I install the RabbitMQ.Client NuGet package and create the class CustomerUpdateSender in the project. I want to publish my Customer object to the queue every time the customer is updated. Therefore, I create the SendCustomer method which takes a Customer object as a parameter.
 
 #### Publish data to RabbitMQ
 
-Publishing data to the queue is pretty simple. First, you have to create a connection to RabbitMQ using its hostname, a username and a password using the ConnectionFactory. With this connection, you can use QueueDeclare to create a new queue if it doesn&#8217;t exist yet. The QueueDeclare method takes a couple of parameters like a name and whether the queue is durable.
+Publishing data to the queue is pretty simple. First, you have to create a connection to RabbitMQ using its hostname, a username and a password using the ConnectionFactory. With this connection, you can use QueueDeclare to create a new queue if it doesn't exist yet. The QueueDeclare method takes a couple of parameters like a name and whether the queue is durable.
 
 ```csharp  
 public void SendCustomer(Customer customer)  
 {  
-    var factory = new ConnectionFactory() { HostName = \_hostname, UserName = \_username, Password = _password };
+    var factory = new ConnectionFactory() { HostName = _hostname, UserName = _username, Password = _password };
     
     using (var connection = factory.CreateConnection())  
     using (var channel = connection.CreateModel())  
@@ -89,7 +89,7 @@ public void ConfigureServices(IServiceCollection services)
     services.AddTransient<ICustomerUpdateSender, CustomerUpdateSender>();  
 ```
 
-The last step is to call the SendCustomer method when a customer is updated. This call is in the Handle method of the UpdateCustomerCommandHandler. If you commented out the line before to test the application without RabbitMQ, you have to uncomment the call now.
+The last step is to call the SendCustomer method when a customer is updated. This call is in the Handle method of the UpdateCustomerCommandHandler. 
 
 ```csharp  
 public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerCommand, Customer>
@@ -110,6 +110,75 @@ public class UpdateCustomerCommandHandler : IRequestHandler<UpdateCustomerComman
         _customerUpdateSender.SendCustomer(customer);
 
         return customer;
+    }
+}
+```
+
+Note: I updated the implementation on November 27 2020. Instead of creating a connection everytime the method is called, I reuse the connection and only create a new channel. This follows the RabbitMq best practices and helps to improve the performance significantly. I am not reusing the channel since I don't need the highest performance and I want to keep the implementation simple. The new code looks as follows:
+
+```csharp  
+public class CustomerUpdateSender : ICustomerUpdateSender
+{
+    private readonly string _hostname;
+    private readonly string _password;
+    private readonly string _queueName;
+    private readonly string _username;
+    private IConnection _connection;
+
+    public CustomerUpdateSender(IOptions<RabbitMqConfiguration> rabbitMqOptions)
+    {
+        _queueName = rabbitMqOptions.Value.QueueName;
+        _hostname = rabbitMqOptions.Value.Hostname;
+        _username = rabbitMqOptions.Value.UserName;
+        _password = rabbitMqOptions.Value.Password;
+
+        CreateConnection();
+    }
+
+    public void SendCustomer(Customer customer)
+    {
+        if (ConnectionExists())
+        {
+            using (var channel = _connection.CreateModel())
+            {
+                channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+
+                var json = JsonConvert.SerializeObject(customer);
+                var body = Encoding.UTF8.GetBytes(json);
+
+                channel.BasicPublish(exchange: "", routingKey: _queueName, basicProperties: null, body: body);
+            }
+        }
+    }
+
+    private void CreateConnection()
+    {
+        try
+        {
+            var factory = new ConnectionFactory
+            {
+                HostName = _hostname,
+                UserName = _username,
+                Password = _password
+            };
+            _connection = factory.CreateConnection();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Could not create connection: {ex.Message}");
+        }
+    }
+
+    private bool ConnectionExists()
+    {
+        if (_connection != null)
+        {
+            return true;
+        }
+
+        CreateConnection();
+
+        return _connection != null;
     }
 }
 ```
@@ -172,8 +241,24 @@ protected override Task ExecuteAsync(CancellationToken stoppingToken)
 That&#8217;s all you have to do to read data from the queue. The last thing I have to do is to register my CustomerFullNameUpdateReceiver class as a background service in the Startup class.
 
 ```csharp  
-services.AddHostedService<CustomerFullNameUpdateReceiver>();  
+var enableRabbitMqReceiverEnvironmentVariable = Environment.GetEnvironmentVariable("EnableRabbitMqReceiver");
+
+if (enableRabbitMqReceiverEnvironmentVariable != null && bool.Parse(enableRabbitMqReceiverEnvironmentVariable))
+{
+    services.AddHostedService<CustomerFullNameUpdateReceiver>();    
+}
+else
+{
+    bool.TryParse(Configuration["RabbitMq:Enabled"], out var enableRabbitMqReceiverSetting);
+
+    if (enableRabbitMqReceiverSetting)
+    {
+        services.AddHostedService<CustomerFullNameUpdateReceiver>();
+    }
+}
 ```
+
+The code above checks if there is an environment variable "EnableRabbitMqReceiver" and if it is set to true, the background service gets registered. If the environment variable doesn't exist, the code checks the Enabled value in the RabbitMq section of the appsettings file. If this is set to true, the background service also gets registered. 
 
 ## Run RabbitMQ in Docker
 
@@ -259,7 +344,7 @@ After you sent the update request, go back to the RabbitMQ management portal and
 
 ## Shortcomings of my Implementation
 
-I wanted to keep the implementation and therefore it has a couple of shortcomings. The biggest problem is that the OrderApi won&#8217;t start if there is no instance of RabbitMQ running. Also, the CustomerApi will crash when you try to update a customer and there is no instance of RabbitMQ running. There is no exception handling right now. Also if there is an error while processing a message, the message will be deleted from the queue and therefore be lost.
+In the CustomerApi, there is no real exception handling right now. This means that if there is an error while processing a message, the message will be deleted from the queue and therefore be lost. Also if there is no connection to RabbitMq, the message will be discareded and therefore lost. In a production environment, you should save this message somewhere and process it once all systems are back up and running.
 
 Another problem is that after the message is read, it is removed from the queue. This means only one receiver is possible at the moment. There are also no unit tests for the implementation of the RabbitMQ client.
 
@@ -269,6 +354,7 @@ This post explained why you should use queues to decouple your microservices and
 
 <a href="/dockerize-an-asp-net-core-microservice-and-rabbitmq" target="_blank" rel="noopener noreferrer">In my next post</a>, I will dockerize the application which will make it way easier to run and distribute the whole application.
 
-Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
+Update 1: On October 11 2020, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
+Update 2: On November 27 2020, I refactored the registration of the service to make it more resilient and also change the implementation of the sender to reuse the connection instead of creating a new one for every message.
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.

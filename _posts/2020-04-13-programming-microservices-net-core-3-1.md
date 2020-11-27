@@ -39,7 +39,7 @@ I created a solution for each microservice. You can see the structure of the mic
 
 Both microservice have exactly the same structure, except that the order solution has a Messaging.Receive project and the customer solution has a Messaging.Send project. I will use these projects later to send and receive data using RabbitMQ.
 
-An important aspect of an API is that you don&#8217;t know who your consumers are and you should never break existing features. To implement versioning, I place everything like controllers or models in a v1 folder. If I want to extend my feature and it is not breaking the current behavior, I will extend it in the already existing classes. If my changes were to break the functionality, I will create a v2 folder and place the changes there. With this approach, no consumer is affected and they can implement the new features whenever they want or need them.
+An important aspect of an API is that you don't know who your consumers are and you should never break existing features. To implement versioning, I place everything like controllers or models in a v1 folder. If I want to extend my feature and it is not breaking the current behavior, I will extend it in the already existing classes. If my changes were to break the functionality, I will create a v2 folder and place the changes there. With this approach, no consumer is affected and they can implement the new features whenever they want or need them.
 
 ## The API Project
 
@@ -47,7 +47,7 @@ The API project is the heart of the application and contains the controllers, va
 
 ### Controllers in the API Project
 
-I try to keep the controller methods as simple as possible. They only call different services and return a model or status to the client. They don&#8217;t do any business logic.
+I try to keep the controller methods as simple as possible. They only call different services and return a model or status to the client. They don't do any business logic.
 
 ```csharp
 [HttpPost]
@@ -73,7 +73,7 @@ My naming convention is that I use the name of the object, in that case, Custome
 
 ### Validators
 
-To validate the user input, I use the NuGet FluentValidations and a validator per model. Your validator inherits from AbstractValidator<T> where T is the class of the model you want to validate. Then you can add rules in the constructor of your validator. The validator is not really important for me right now and so I try to keep it simple and only validate that the first and last name has at least two characters and that the age and birthday are between zero and 150 years. I don&#8217;t validate if the birthday and the age match. This should be changed in the future.
+To validate the user input, I use the NuGet FluentValidations and a validator per model. Your validator inherits from AbstractValidator<T> where T is the class of the model you want to validate. Then you can add rules in the constructor of your validator. The validator is not really important for me right now and so I try to keep it simple and only validate that the first and last name has at least two characters and that the age and birthday are between zero and 150 years. I don't validate if the birthday and the age match. This should be changed in the future.
 
 ```csharp 
 public class CreateCustomerModelValidator : AbstractValidator<CreateCustomerModel>
@@ -272,19 +272,49 @@ The Messaging.Send project contains everything I need to send Customer objects t
 ```csharp  
 public void SendCustomer(Customer customer)
 {
-    var factory = new ConnectionFactory() { HostName = _hostname, UserName = _username, Password = _password };
-    
-    using (var connection = factory.CreateConnection())
-    using (var channel = connection.CreateModel())
+    if (ConnectionExists())
     {
-        channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
+        using (var channel = _connection.CreateModel())
+        {
+            channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
 
-        var json = JsonConvert.SerializeObject(customer);
-        var body = Encoding.UTF8.GetBytes(json);
+            var json = JsonConvert.SerializeObject(customer);
+            var body = Encoding.UTF8.GetBytes(json);
 
-        channel.BasicPublish(exchange: "", routingKey: _queueName, basicProperties: null, body: body);
+            channel.BasicPublish(exchange: "", routingKey: _queueName, basicProperties: null, body: body);
+        }
     }
-}  
+}
+
+private void CreateConnection()
+{
+    try
+    {
+        var factory = new ConnectionFactory
+        {
+            HostName = _hostname,
+            UserName = _username,
+            Password = _password
+        };
+        _connection = factory.CreateConnection();
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Could not create connection: {ex.Message}");
+    }
+}
+
+private bool ConnectionExists()
+{
+    if (_connection != null)
+    {
+        return true;
+    }
+
+    CreateConnection();
+
+    return _connection != null;
+} 
 ```
 
 ## Service
@@ -318,42 +348,17 @@ For my tests, I like to create a test project for each normal project wheres the
 
 In the previous section I only talked about the Customer service but the Order service has the same structure and should be easy to understand.
 
-Now that the base functionality is set up, it is time to test both microservice. Before you can start them, you have to make two small changes to be actually able to start them. Currently, we have no queue and therefore the microservices will generate an exception. In the future, it would be nice if the microservices could work even without a queue.
+Now that the base functionality is set up, it is time to test both microservice. Before you can start them, you have to make sure that RabbitMq is disabled in the OrderApi project. Go to the OrderApi and open the appsettings. There you have to make sure that Enabled is set to false:
 
-## Edit the Customer Service
-
-Open the CustomerCommandHandler in the Service project and comment out the following line _customerUpdateSender.SendCustomer(customer);
-
-```csharp  
-public async Task<Customer> Handle(UpdateCustomerCommand request, CancellationToken cancellationToken)
-{
-    var customer = await _customerRepository.UpdateAsync(request.Customer);
-
-    // _customerUpdateSender.SendCustomer(customer);
-
-    return customer;
+```json  
+"RabbitMq": {
+  "Hostname": "rabbitmq",
+  "QueueName": "CustomerQueue",
+  "UserName": "user",
+  "Password": "password",
+  "Enabled" : false 
 }  
 ```
-
-This line is responsible for publishing the Customer to the queue
-
-## Edit the Order Service
-
-In the Order API, you have to comment out services.AddHostedService<CustomerFullNameUpdateReceiver>(); in the Startup class of the API project.
-
-```csharp  
-services.AddTransient<IRequestHandler<GetPaidOrderQuery, List<Order>>, GetPaidOrderQueryHandler>();  
-services.AddTransient<IRequestHandler<GetOrderByIdQuery, Order>, GetOrderByIdQueryHandler>();  
-services.AddTransient<IRequestHandler<GetOrderByCustomerGuidQuery, List<Order>>, GetOrderByCustomerGuidQueryHandler>();  
-services.AddTransient<IRequestHandler<CreateOrderCommand, Order>, CreateOrderCommandHandler>();  
-services.AddTransient<IRequestHandler<PayOrderCommand, Order>, PayOrderCommandHandler>();  
-services.AddTransient<IRequestHandler<UpdateOrderCommand>, UpdateOrderCommandHandler>();  
-services.AddTransient<ICustomerNameUpdateService, CustomerNameUpdateService>();
-
-// services.AddHostedService<CustomerFullNameUpdateReceiver>();  
-```
-
-This line would register a background service that listens to change in the queue and would pull these changes.
 
 ## Test the Microservice
 
