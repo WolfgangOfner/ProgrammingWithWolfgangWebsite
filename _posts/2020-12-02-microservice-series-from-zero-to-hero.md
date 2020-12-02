@@ -6,9 +6,9 @@ categories: [Cloud, Docker]
 tags: [AKS, Kubernetes, Docker, YAML, Azure, NET 5, Helm, CI-CD, Pipeline, Azure DevOps, C#]
 ---
 
-I am working as a consultant and software engineer on different projects which focus on microservice, DevOps and process automation. Many of my consulting jobs are about explaining microservice, why they are great and how to use them efficiently. Microservices is a buzzword that's around for a couple of years and almost every developer knows it but not that many know how to implement them. 
+I am working as a consultant and software engineer on different projects which focus on microservice, DevOps, and process automation. Many of my consulting jobs are about explaining microservice, why they are great, and how to use them efficiently. Microservices is a buzzword that's around for a couple of years and almost every developer knows it but not that many know how to implement them. 
 
-Therefore, I decided to create this service where I start with the theory of microservices and in the end you will know how to run your microservices in Kubernetes with automatic deployments, tests and database changes. The following posts contain my experiences and my recommendation for best practices to great the best applications possible.
+Therefore, I decided to create this service where I start with the theory of microservices and in the end, you will know how to run your microservices in Kubernetes with automatic deployments, tests, and database changes. The following posts contain my experiences and my recommendation for best practices to create the best applications possible.
 
 - [Microservices - Getting Started](/https://www.programmingwithwolfgang.com/microservices-getting-started)
 
