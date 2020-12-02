@@ -10,37 +10,37 @@ I am working as a consultant and software engineer on different projects which f
 
 Therefore, I decided to create this service where I start with the theory of microservices and in the end you will know how to run your microservices in Kubernetes with automatic deployments, tests and database changes. The following posts contain my experiences and my recommendation for best practices to great the best applications possible.
 
-[Microservices - Getting Started](/https://www.programmingwithwolfgang.com/microservices-getting-started)
+- [Microservices - Getting Started](/https://www.programmingwithwolfgang.com/microservices-getting-started)
 
-[Programming a Microservice with .NET Core 3.1](/https://www.programmingwithwolfgang.com/programming-microservices-net-core-3-1)
+- [Programming a Microservice with .NET Core 3.1](/https://www.programmingwithwolfgang.com/programming-microservices-net-core-3-1)
 
-[Document your Microservice with Swagger](/https://www.programmingwithwolfgang.com/document-your-microservice-with-swagger)
+- [Document your Microservice with Swagger](/https://www.programmingwithwolfgang.com/document-your-microservice-with-swagger)
 
-[CQRS in ASP .NET Core 3.1](/https://www.programmingwithwolfgang.com/cqrs-in-asp-net-core-3-1)
+- [CQRS in ASP .NET Core 3.1](/https://www.programmingwithwolfgang.com/cqrs-in-asp-net-core-3-1)
 
-[Mediator Pattern in ASP .NET Core 3.1](/https://www.programmingwithwolfgang.com/mediator-pattern-in-asp-net-core-3-1)
+- [Mediator Pattern in ASP .NET Core 3.1](/https://www.programmingwithwolfgang.com/mediator-pattern-in-asp-net-core-3-1)
 
-[RabbitMQ in an ASP .NET Core 3.1 Microservice](/https://www.programmingwithwolfgang.com/rabbitmq-in-an-asp-net-core-3-1-microservice)
+- [RabbitMQ in an ASP .NET Core 3.1 Microservice](/https://www.programmingwithwolfgang.com/rabbitmq-in-an-asp-net-core-3-1-microservice)
 
-[Dockerize an ASP .NET Core Microservice and RabbitMQ](/https://www.programmingwithwolfgang.com/dockerize-an-asp-net-core-microservice-and-rabbitmq)
+- [Dockerize an ASP .NET Core Microservice and RabbitMQ](/https://www.programmingwithwolfgang.com/dockerize-an-asp-net-core-microservice-and-rabbitmq)
 
-[ASP .NET Core with HTTPS in Docker](/https://www.programmingwithwolfgang.com/asp-net-core-with-https-in-docker)
+-  [ASP .NET Core with HTTPS in Docker](/https://www.programmingwithwolfgang.com/asp-net-core-with-https-in-docker)
 
-[Set up Docker-Compose for ASP .NET Core 3.1 Microservices](/https://www.programmingwithwolfgang.com/set-up-docker-compose-for-asp-net-core-3-1-microservices)
+- [Set up Docker-Compose for ASP .NET Core 3.1 Microservices](/https://www.programmingwithwolfgang.com/set-up-docker-compose-for-asp-net-core-3-1-microservices)
 
-[Build .NET Core in a CI Pipeline in Azure DevOps](/https://www.programmingwithwolfgang.com/build-net-core-in-ci-pipeline-in-azure-devops)
+- [Build .NET Core in a CI Pipeline in Azure DevOps](/https://www.programmingwithwolfgang.com/build-net-core-in-ci-pipeline-in-azure-devops)
 
-[Run the CI Pipeline during a Pull Request](/https://www.programmingwithwolfgang.com/run-the-ci-pipeline-during-pull-request)
+- [Run the CI Pipeline during a Pull Request](/https://www.programmingwithwolfgang.com/run-the-ci-pipeline-during-pull-request)
 
-[Build Docker in an Azure DevOps CI Pipeline](/https://www.programmingwithwolfgang.com/build-docker-azure-devops-ci-pipeline)
+- [Build Docker in an Azure DevOps CI Pipeline](/https://www.programmingwithwolfgang.com/build-docker-azure-devops-ci-pipeline)
 
-[Run xUnit Tests inside Docker during an Azure DevOps CI Build](/https://www.programmingwithwolfgang.com/run-xUnit-inside-docker-during-ci-build)
+- [Run xUnit Tests inside Docker during an Azure DevOps CI Build](/https://www.programmingwithwolfgang.com/run-xUnit-inside-docker-during-ci-build)
 
-[Upgrade a Microservice from .NET Core 3.1 to .NET 5.0](/https://www.programmingwithwolfgang.com/upgrade-microservice-net-core-3-1-net-5-0)
+- [Upgrade a Microservice from .NET Core 3.1 to .NET 5.0](/https://www.programmingwithwolfgang.com/upgrade-microservice-net-core-3-1-net-5-0)
 
-[Get xUnit Code Coverage from Docker](/https://www.programmingwithwolfgang.com/get-xunit-code-coverage-from-docker)
+- [Get xUnit Code Coverage from Docker](/https://www.programmingwithwolfgang.com/get-xunit-code-coverage-from-docker)
 
-[Azure Kubernetes Service - Getting Started](/https://www.programmingwithwolfgang.com/azure-kubernetes-service-getting-started)
+- [Azure Kubernetes Service - Getting Started](/https://www.programmingwithwolfgang.com/azure-kubernetes-service-getting-started)
 
 Coming soon:
 - Helm
