@@ -95,5 +95,6 @@ service:
 Take a look at the values.yaml file and you will see that the type of the service is ClusterIP and its port is 80. This approach enables you to configure your application with changes in only one file. The same principle applies to all files inside the templates folder. 
 
 ## Conclusion
-In this post, I gave a very short introduction to Helm. Helm is a package manager for Kubernetes and helps you to deploy your application including all its dependencies to Kubernetes. Helm also serves as a template engine which makes it very easy to change values. 
+In this post, I gave a very short introduction to Helm. Helm is a package manager for Kubernetes and helps you to deploy your application including all its dependencies to Kubernetes. Helm also serves as a template engine which makes it very easy to change values.
+ 
 In my next post, I will show who to deploy our microservice to Kubernetes using Helm. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.

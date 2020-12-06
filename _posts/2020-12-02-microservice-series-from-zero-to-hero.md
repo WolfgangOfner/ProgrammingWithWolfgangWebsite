@@ -42,10 +42,9 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started)
 
-- [Helm - Getting Startedd](/helm-getting-started)
+- [Helm - Getting Started](/helm-getting-started)
 
 Coming soon:
-- Helm
 - Deploying your Microservice to AKS using Helm
 - Local Deployment using Minikube
 - Create Certificates using a Cert Manager in Kubernetes
