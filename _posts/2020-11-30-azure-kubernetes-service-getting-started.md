@@ -2,7 +2,7 @@
 title: Azure Kubernetes Service - Getting Started
 date: 2020-11-30
 author: Wolfgang Ofner
-categories: [Docker, Cloud]
+categories: [Kubernetes, Cloud]
 tags: [AKS, Kubernetes, Docker, YAML, Azure]
 ---
 

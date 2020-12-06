@@ -2,7 +2,7 @@
 title: Microservice Series - From Zero to Hero
 date: 2020-12-02
 author: Wolfgang Ofner
-categories: [Cloud, Docker]
+categories: [Cloud, Kubernetes]
 tags: [AKS, Kubernetes, Docker, YAML, Azure, NET 5, Helm, CI-CD, Pipeline, Azure DevOps, C#]
 ---
 
@@ -41,6 +41,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 - [Get xUnit Code Coverage from Docker](/get-xunit-code-coverage-from-docker)
 
 - [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started)
+
+- [Helm - Getting Startedd](/helm-getting-started)
 
 Coming soon:
 - Helm
