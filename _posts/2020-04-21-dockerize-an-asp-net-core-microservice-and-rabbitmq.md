@@ -155,7 +155,7 @@ To confirm that your image was really created, use docker images.
 To start an image use docker run [-p &#8220;port outside of the container&#8221;:&#8221;port inside the container&#8221;] name of the image to start. In my example:
 
 ```powershell  
-docker run -p 32789:80 -p 32788:443 customerapi .  
+docker run -p 32789:80 -p 32788:443 customerapi
 ```
 
 <div class="col-12 col-sm-10 aligncenter">
