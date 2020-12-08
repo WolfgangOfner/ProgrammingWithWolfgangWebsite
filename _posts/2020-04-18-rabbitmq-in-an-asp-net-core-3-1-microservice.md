@@ -241,24 +241,13 @@ protected override Task ExecuteAsync(CancellationToken stoppingToken)
 That&#8217;s all you have to do to read data from the queue. The last thing I have to do is to register my CustomerFullNameUpdateReceiver class as a background service in the Startup class.
 
 ```csharp  
-var enableRabbitMqReceiverEnvironmentVariable = Environment.GetEnvironmentVariable("EnableRabbitMqReceiver");
-
-if (enableRabbitMqReceiverEnvironmentVariable != null && bool.Parse(enableRabbitMqReceiverEnvironmentVariable))
+if (serviceClientSettings.Enabled)
 {
-    services.AddHostedService<CustomerFullNameUpdateReceiver>();    
-}
-else
-{
-    bool.TryParse(Configuration["RabbitMq:Enabled"], out var enableRabbitMqReceiverSetting);
-
-    if (enableRabbitMqReceiverSetting)
-    {
-        services.AddHostedService<CustomerFullNameUpdateReceiver>();
-    }
+    services.AddHostedService<CustomerFullNameUpdateReceiver>();
 }
 ```
 
-The code above checks if there is an environment variable "EnableRabbitMqReceiver" and if it is set to true, the background service gets registered. If the environment variable doesn't exist, the code checks the Enabled value in the RabbitMq section of the appsettings file. If this is set to true, the background service also gets registered. 
+The code above checks whether the setting RabbitMq:Enables is true. If it is set to true, the background service gets registered. This check is useful because so you can either use the appsettings.json file or provide an environment variable to override it.
 
 ## Run RabbitMQ in Docker
 

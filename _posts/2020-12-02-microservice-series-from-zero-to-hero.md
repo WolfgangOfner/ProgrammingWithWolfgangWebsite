@@ -44,6 +44,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Helm - Getting Started](/helm-getting-started)
 
+- [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm)
+
 Coming soon:
 - Deploying your Microservice to AKS using Helm
 - Local Deployment using Minikube
