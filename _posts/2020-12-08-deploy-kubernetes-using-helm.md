@@ -3,7 +3,7 @@ title: Deploy to Kubernetes using Helm Charts
 date: 2020-12-08
 author: Wolfgang Ofner
 categories: [Kubernetes]
-tags: [Helm, AKS, Microservice]
+tags: [Helm, AKS, Microservice, Kubernetes]
 ---
 In my last post, I explained how Helm works and how to add it to your microservice. This post is going to be more practical. Helm is a package manager that helps you to deploy your application easily to Kubernetes. In this post, I will show you how to deploy an application to Kubernetes using Helm and how to avoid some pitfalls.
 
@@ -31,7 +31,7 @@ helm install customer customerapi
 
 The package gets deployed within seconds. After it is finished, connect to the dashboard of your cluster. If you don't know how to do that, see my post ["Azure Kubernetes Service - Getting Started"](/azure-kubernetes-service-getting-started). There I explain how I use Octant and how to access your Kubernetes cluster with it.
 
-In the dasboard, open the customerapi pod and you will see that there is an error.
+In the dashboard, open the customerapi pod and you will see that there is an error.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/The-pod-can't-start.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/The-pod-can't-start.jpg" alt="The pod can't start" /></a>
@@ -147,6 +147,6 @@ Enter his IP address in your browser and you will see the Swagger UI of the Cust
 ## Conclusion
 Helm is a package manager for Kubernetes and can be used to easily deploy and update your applications. I showed how to quickly update the configuration with the values.yaml file and how to make your application publicly accessible with the Kubernetes Service object. 
 
-In my next post, I will show how to override values in the appsetting.json file with environment variables to allow for more dynamic configurations.
+[In my next post](/override-appsettings-in-kubernetes), I will show how to override values in the appsetting.json file with environment variables to allow for more dynamic configurations.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.

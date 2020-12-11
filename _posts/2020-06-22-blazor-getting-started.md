@@ -117,7 +117,7 @@ Right-click on the Pages folder and add a Blazor Component with the name Display
 }
 ```
 
-This code sets the route to products and displays a headline. In the code block, I overwrite the OnInitialized method and create a class Product. The OnInitialized method is executed during the load of the page. You might know this from Webforms. Next, I add a dropdown menu and add each element of my Products list.
+This code sets the route to products and displays a headline. In the code block, I override the OnInitialized method and create a class Product. The OnInitialized method is executed during the load of the page. You might know this from Webforms. Next, I add a dropdown menu and add each element of my Products list.
 
 ```csharp  
 <select size="1" style="width:10%">  

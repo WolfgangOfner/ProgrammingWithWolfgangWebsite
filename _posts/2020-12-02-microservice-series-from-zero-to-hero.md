@@ -3,7 +3,7 @@ title: Microservice Series - From Zero to Hero
 date: 2020-12-02
 author: Wolfgang Ofner
 categories: [Cloud, Kubernetes]
-tags: [AKS, Kubernetes, Docker, YAML, Azure, NET 5, Helm, CI-CD, Pipeline, Azure DevOps, C#]
+tags: [AKS, Kubernetes, Docker, YAML, Azure, NET 5, Helm, CI-CD, Azure DevOps, C#, Azure]
 ---
 
 I am working as a consultant and software engineer on different projects which focus on microservice, DevOps, and process automation. Many of my consulting jobs are about explaining microservice, why they are great, and how to use them efficiently. Microservices is a buzzword that's around for a couple of years and almost every developer knows it but not that many know how to implement them. 
@@ -46,8 +46,9 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm)
 
-Coming soon:
-- Deploying your Microservice to AKS using Helm
+- [Override Appsettings in Kubernetes](/override-appsettings-in-kubernetes)
+
+Coming soon (in no specific order):
 - Local Deployment using Minikube
 - Create Certificates using a Cert Manager in Kubernetes
 - Deploy every Pull Request to Kubernetes
