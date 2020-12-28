@@ -48,8 +48,10 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Override Appsettings in Kubernetes](/override-appsettings-in-kubernetes)
 
+- [Run a Kubernetes Cluster locally](/run-kubernetes-cluster-locally)
+
 Coming soon (in no specific order):
-- Local Deployment using Minikube
+- Use a CD Pipeline to deploy to AKS
 - Create Certificates using a Cert Manager in Kubernetes
 - Deploy every Pull Request to Kubernetes
 - Use Ngnix as Ingress Controller

@@ -188,3 +188,5 @@ The PR creator can also select auto-complete to complete the pull request automa
 In this post, I explained how to protect the master branch from changes in Azure DevOps. I showed how to add a branch policy to the master branch in Azure DevOps and also how to run a build process to check if the solution compiles and if all tests run successfully.
 
 You can find the code of this demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

@@ -1,6 +1,6 @@
 ---
 title: Helm - Getting Started
-date: 2020-12-06
+date: 2020-12-07
 author: Wolfgang Ofner
 categories: [Kubernetes]
 tags: [Helm, AKS, Microservice, Kubernetes]
@@ -98,3 +98,5 @@ Take a look at the values.yaml file and you will see that the type of the servic
 In this post, I gave a very short introduction to Helm. Helm is a package manager for Kubernetes and helps you to deploy your application including all its dependencies to Kubernetes. Helm also serves as a template engine which makes it very easy to change values.
  
 In my next post, I will show who to deploy our microservice to Kubernetes using Helm. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

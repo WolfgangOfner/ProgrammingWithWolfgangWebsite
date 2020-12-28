@@ -92,3 +92,5 @@ This post showed how to create a certificate and how to provide it to your appli
 <a href="/set-up-docker-compose-for-asp-net-core-3-1-microservices" target="_blank" rel="noopener noreferrer">In my next post</a>, I will create a docker-compose file which will help you to start both microservices and RabbitMQ with a single command.
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

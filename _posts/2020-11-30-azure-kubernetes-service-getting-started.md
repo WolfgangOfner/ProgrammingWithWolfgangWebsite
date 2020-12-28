@@ -247,3 +247,5 @@ When you are finished, don't forget the delete all created resources. AKS create
 ## Conclusion
 
 Today, I gave a high-level overview of Kubernetes using Azure Kubernetes Service. Kubernetes helps you to run your container and manages deployments and load balancing. Keep in mind that this was a very simple demo and hasn't talked about any downsides of Kubernetes and its steep learning curve.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

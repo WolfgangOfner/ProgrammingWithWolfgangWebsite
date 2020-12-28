@@ -347,3 +347,5 @@ Update 1: On October 11 2020, I removed the Solution folder and moved the projec
 Update 2: On November 27 2020, I refactored the registration of the service to make it more resilient and also change the implementation of the sender to reuse the connection instead of creating a new one for every message.
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

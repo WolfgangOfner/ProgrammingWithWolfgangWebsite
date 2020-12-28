@@ -102,3 +102,5 @@ Messages between services are often sent via queue so messages can be handled, e
 Today, I tried to give a short overview of the theory of microservices. Microservices have advantages but also disadvantages compared to monolithic applications. In the end, there is no perfect solution and you should think about the requirements of your project and then decide if microservices are the way to go. I would also recommend starting with a small project and gain some experience in running them.
 
 This post was all about microservices in theory, <a href="/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">in my next posts</a>, I will implement two microservices using ASP .NET Core, CQRS, mediator, RabbitMQ and Docker.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

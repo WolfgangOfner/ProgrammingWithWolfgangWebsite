@@ -144,3 +144,5 @@ Check in your changes and the build in Azure DevOps will run successfully.
 Today, I showed how easy it can be to upgrade .NET Core 3.1 to .NET 5.0. To upgrade was so easy because I kept my solution up to date and because microservices are small solutions that are way easier to upgrade than big monolithic applications. The whole upgrade for both my microservices took around 10 minutes. I know that a real-world microservice will have more code than mine but nevertheless, it is quite easy to update it. If you are coming from .NET Core 2.x or even .NET 4.x, the upgrade might be harder.
 
 You can find the code of this demo on [Github](https://github.com/WolfgangOfner/MicroserviceDemo).
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

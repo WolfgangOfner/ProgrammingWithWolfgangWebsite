@@ -150,3 +150,5 @@ Helm is a package manager for Kubernetes and can be used to easily deploy and up
 [In my next post](/override-appsettings-in-kubernetes), I will show how to override values in the appsetting.json file with environment variables to allow for more dynamic configurations.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
