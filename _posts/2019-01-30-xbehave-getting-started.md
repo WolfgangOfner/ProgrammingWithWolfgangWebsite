@@ -11,7 +11,7 @@ In my last post, I talked about writing unit tests using xUnit. Today, I want to
 
 For writing tests I use the following NuGet packages and extensions:
 
-  * <a href="https://xunit.github.io/" target="_blank" rel="noopener">xUnit </a>for unit testing
+  * <a href="https://github.com/xunit/xunit" target="_blank" rel="noopener">xUnit </a>for unit testing
   * xBehave for acceptance tests
   * <a href="https://fluentassertions.com/" target="_blank" rel="noopener">FluentAssertions</a> for more readable assertions
   * <a href="https://fakeiteasy.github.io/" target="_blank" rel="noopener">FakeItEasy</a> to create fake objects
