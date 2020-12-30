@@ -50,12 +50,13 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Run a Kubernetes Cluster locally](/run-kubernetes-cluster-locally)
 
+- [Automatically Version Docker Containers in Azure DevOps CI](/automatically-version-docker-container)
+
 Coming soon (in no specific order):
 - Use a CD Pipeline to deploy to AKS
 - Create Certificates using a Cert Manager in Kubernetes
 - Deploy every Pull Request to Kubernetes
 - Use Ngnix as Ingress Controller
-- Version your Application in your CI Pipeline
 - Static Code Analysis in your CI Pipeline
 - Create Nuget Packages inside your Docker Container
 - Restore Nuget Packages from multiple Nuget Feeds
@@ -65,4 +66,3 @@ Coming soon (in no specific order):
 - Logging with Graphana Loki Stack
 - Service Mesh - Getting Started
 - Using Istio to manage your Kubernetes Cluster
-

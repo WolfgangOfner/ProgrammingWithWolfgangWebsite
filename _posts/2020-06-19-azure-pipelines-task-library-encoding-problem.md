@@ -3,7 +3,7 @@ title: Azure Pipelines Task Library Encoding Problem
 date: 2020-06-19T09:35:48+02:00
 author: Wolfgang Ofner
 categories: [DevOps]
-tags: [Azure Devops, Azure Key Vault, Azure Pipelines Task Library]
+tags: [Azure DevOps, Azure Key Vault, Azure Pipelines Task Library]
 ---
 For one of our customers, we use an Azure DevOps pipeline to read secrets from the Azure Key Vault and then write them into pipeline variables. During the operation, we encountered an encoding problem with the azure pipeline task library. The library encoded the percentage symbol during the read. Instead of Secret%Value, we got Secret%25Value. After writing the value into our pipeline variable, the value Secret%25Value was saved.
 
@@ -42,4 +42,4 @@ In our Powershell script, we were using &#8220;azure-pipelines-task-lib&#8221;: 
 
 Right now the pipeline is working again but once Microsoft updates the Azure Key Vault task to use a new version of the azure-pipelines-task-lib, the pipeline will break again. When this happens we have to update the azure-pipelines-task-lib inside our Powershell script and it should work again.
 
-If you want to read more about CI/CD pipelines, read my article <a href="/create-automatic-build-pipeline-for-net-core/" target="_blank" rel="noopener noreferrer">Create Automatic Builds for .Net and .Net Core Applications with Azure Devops</a>.
+If you want to read more about CI/CD pipelines, read my article <a href="/create-automatic-build-pipeline-for-net-core/" target="_blank" rel="noopener noreferrer">Create Automatic Builds for .Net and .Net Core Applications with Azure DevOps</a>.

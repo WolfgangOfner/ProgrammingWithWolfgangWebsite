@@ -1,9 +1,9 @@
 ---
-title: Create Policies for your Branches in Azure Devops
+title: Create Policies for your Branches in Azure DevOps
 date: 2019-11-28T23:06:39+01:00
 author: Wolfgang Ofner
 categories: [DevOps]
-tags: [Azure Devops, Azure Devops Services, Git, Pull Request]
+tags: [Azure DevOps, Azure DevOps Services, Git, Pull Request]
 ---
 <a href="/create-automatic-build-pipeline-for-net-core/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to create a build pipeline for your .net and .NET Core project. Today, I want to use one of those pipelines to verify that new pull requests didn&#8217;t break my solution and I also want to show how to improve the code quality with branch policies.
 
@@ -90,7 +90,7 @@ I made some changes and committed them to my local master branch. When I try to 
 In my last commit, I changed some tests. I created a feature branch and pushed it to Azure DevOps Services. When you click on Repos &#8211;> Pull requests, Azure DevOps Services recognizes the new branch and suggests to create a pull request. To do that click on Create a pull request.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/11/Azure-Devops-Services-suggests-to-create-a-pull-request.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/Azure-Devops-Services-suggests-to-create-a-pull-request.jpg" alt="Azure Devops Services suggests to create a pull request" /></a>
+  <a href="/assets/img/posts/2019/11/Azure-DevOps-Services-suggests-to-create-a-pull-request.jpg"><img loading="lazy" src="/assets/img/posts/2019/11/Azure-DevOps-Services-suggests-to-create-a-pull-request.jpg" alt="Azure DevOps Services suggests to create a pull request" /></a>
   
   <p>
     Azure DevOps Services suggests to create a pull request

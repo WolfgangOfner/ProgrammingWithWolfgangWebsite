@@ -48,17 +48,14 @@ This file defines the C# version I am using and sets DefaultTargetFramework to n
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <ImportGroup Condition=" '$(MSBuildProjectExtension)' == '.csproj' ">
-    <Import Project=".\file-version.props" />
-      <Import Project=".\common.props" />
+  <ImportGroup Condition=" '$(MSBuildProjectExtension)' == '.csproj' ">    
+    <Import Project=".\common.props" />
   </ImportGroup>
 
 </Project>
 ```
 
-This file links the common.props file to the .csproj files. The file-version file is not needed now and I will talk about it in a later post.
-
-After setting this up, I can use this variable in my project files and can update with it all my projects with one change in a single file. Update the TargetFramework of all your .csproj files with the following code:
+This file links the common.props file to the .csproj files. After setting this up, I can use this variable in my project files and can update with it all my projects with one change in a single file. Update the TargetFramework of all your .csproj files with the following code:
 
 ```xml  
 <TargetFramework>$(DefaultTargetFramework)</TargetFramework>
