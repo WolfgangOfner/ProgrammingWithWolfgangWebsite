@@ -237,7 +237,7 @@ You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/
 Run the pipeline and after it is finished successfully, you can find the NuGet package as an attachment of the build. In your build click on 2 published.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/12/Find-the-NuGet-package-in-the-build.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Find-the-NuGet-package-in-the-build.jpg" alt="Find the NuGet package in the build" /></a>
+  <a href="/assets/img/posts/2020/12/Find-the-Nuget-package-in-the-build.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Find-the-Nuget-package-in-the-build.jpg" alt="Find the NuGet package in the build" /></a>
   
   <p>
    Find the NuGet package in the build
@@ -247,7 +247,7 @@ Run the pipeline and after it is finished successfully, you can find the NuGet p
 Open the packages-nuget folder and there you can find the created NuGet package.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/12/The-created-NuGet-package.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/The-created-NuGet-package.jpg" alt="The created NuGet package" /></a>
+  <a href="/assets/img/posts/2020/12/The-created-Nuget-package.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/The-created-Nuget-package.jpg" alt="The created NuGet package" /></a>
   
   <p>
    The created NuGet package
