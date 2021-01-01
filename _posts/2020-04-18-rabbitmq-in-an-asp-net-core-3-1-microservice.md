@@ -230,7 +230,7 @@ protected override Task ExecuteAsync(CancellationToken stoppingToken)
     consumer.Shutdown += OnConsumerShutdown;
     consumer.Registered += OnConsumerRegistered;
     consumer.Unregistered += OnConsumerUnregistered;
-    consumer.ConsumerCancelled += OnConsumerConsumerCancelled;
+    consumer.ConsumerCancelled += OnConsumerCancelled;
 
     _channel.BasicConsume(_queueName, false, consumer);
 

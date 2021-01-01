@@ -52,6 +52,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Automatically Version Docker Containers in Azure DevOps CI](/automatically-version-docker-container)
 
+- [Create Nuget Packages in Azure DevOps Pipelines](/create-nuget-azure-devops)
+
 Coming soon (in no specific order):
 - Use a CD Pipeline to deploy to AKS
 - Create Certificates using a Cert Manager in Kubernetes
