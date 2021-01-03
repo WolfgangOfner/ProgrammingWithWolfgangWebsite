@@ -230,7 +230,7 @@ The last two tasks create the NuGet package using dotnet pack and then publish t
       condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
 ```
 
-You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/NuGet/pipelines/NuGet-CI-CD.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Nuget/pipelines/Nuget-CI-CD.yml" target="_blank" rel="noopener noreferrer">Github</a>.
 
 ## Test the NuGet from the Pipeline
 
@@ -254,11 +254,11 @@ Open the packages-nuget folder and there you can find the created NuGet package.
   </p>
 </div>
 
-Download it and install it in your microservice. In my next post, I will show you how to automatically upload it to a NuGet feed in the Azure DevOps pipeline and how to install it from there.
+Download it and install it in your microservice. [In my next post](/publish-internal-nuget-feed), I will show you how to automatically upload it to a NuGet feed in the Azure DevOps pipeline and how to install it from there.
 
 ## Conclusion
 
-Sharing code between microservices can be tricky but with NuGet packages, it is very simple and organized. In this post, I showed you how to automatically create a NuGet package using Azure DevOps pipelines. In my next post, I will show how to upload the NuGet package to a NuGet feed with the same Azure DevOps pipeline and how to use it in your microservices.
+Sharing code between microservices can be tricky but with NuGet packages, it is very simple and organized. In this post, I showed you how to automatically create a NuGet package using Azure DevOps pipelines. [In my next post](/publish-internal-nuget-feed), I will show how to upload the NuGet package to a NuGet feed with the same Azure DevOps pipeline and how to use it in your microservices.
 
 You can find the code of the whole demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 

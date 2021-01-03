@@ -54,6 +54,9 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Create Nuget Packages in Azure DevOps Pipelines](/create-nuget-azure-devops)
 
+- [Publish to an Internal NuGet Feed in Azure DevOps](/publish-internal-nuget-feed)
+
+
 Coming soon (in no specific order):
 - Use a CD Pipeline to deploy to AKS
 - Create Certificates using a Cert Manager in Kubernetes
