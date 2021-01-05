@@ -56,15 +56,17 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Publish to an Internal NuGet Feed in Azure DevOps](/publish-internal-nuget-feed)
 
+- [Restore NuGet Packages from a Private Feed when building Docker Containers](/restore-nuget-inside-docker)
+
 
 Coming soon (in no specific order):
 - Use a CD Pipeline to deploy to AKS
 - Create Certificates using a Cert Manager in Kubernetes
 - Deploy every Pull Request to Kubernetes
 - Use Ngnix as Ingress Controller
+- Automatically deploy Database changes
 - Static Code Analysis in your CI Pipeline
 - Create Nuget Packages inside your Docker Container
-- Restore Nuget Packages from multiple Nuget Feeds
 - Use Templates in your CI/CD Pipeline
 - Access a Database with Managed Identities in AKS
 - Test your Application with different Infrastructure combinations in your CI Pipeline

@@ -38,20 +38,13 @@ That's it. Now let's edit the pipeline to upload the previously created NuGet pa
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 
-I already created a pipeline that creates a NuGet package, [in my last posts](/create-nuget-azure-devops). I will extend this pipeline to upload the created NuGet package to the previously created NuGet feed. Publishing the NuGet package is pretty simple. I will create a new stage that will only run when the build stage was successful and also will only run if the build reason is not a pull request. This ensures that only builds from the master branch (or any feature branch) will be uploaded to the feed. 
+I already created a pipeline that creates a NuGet package, [in my last posts](/create-nuget-azure-devops). I will extend this pipeline to upload the created NuGet package to the previously created NuGet feed. Publishing the NuGet package is pretty simple. I will create a new stage that will only run when the build stage was successful and also will only run if the build is not triggered by a pull request. This ensures that only builds from the master branch (or any feature branch) will be uploaded to the feed. 
 
 ```yaml
-  jobs:
-  - deployment: publishinternal
-    displayName: 'Nuget - Publish packages to internal feed'
-    environment: nuget-publish-internal
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: current
-            artifact: '$(ArtifactNugetName)'
-            displayName: 'Download nuget packages'
+- stage: publishinternal
+  dependsOn: build
+  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
+  displayName: 'Nuget - Publish Internal Packages'
 ```
 
 Next, I create a deployment where I download the previously published artifacts. These artifacts got published by the build and contain the NuGet packages. I have to download it because the stages are independent of each other. If the upload was in the build stage, I could directly reference the NuGet package without the need to download it.
