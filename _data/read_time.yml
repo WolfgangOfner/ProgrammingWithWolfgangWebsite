@@ -1,0 +1,7 @@
+# words per minute
+wpm: 65
+
+# minimum value
+min_time: 1
+
+prompt: min
