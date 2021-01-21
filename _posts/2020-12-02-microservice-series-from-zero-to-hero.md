@@ -60,6 +60,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Publish NuGet Packages to Nuget.org using Azure DevOps Pipelines](/azure-devops-publish-nuget)
 
+- [Approvals for YAML Pipelines in Azure DevOps](/deployment-approvals-yaml-pipeline)
+
 
 Coming soon (in no specific order):
 - Use a CD Pipeline to deploy to AKS
