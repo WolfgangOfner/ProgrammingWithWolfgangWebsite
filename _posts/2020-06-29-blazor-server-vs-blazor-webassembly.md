@@ -136,6 +136,6 @@ Disadvantages
 
 ## Conclusion
 
-Blazor Server and WebAssembly application both have their advantages and disadvantages. If you want to serve a large number of users and don&#8217;t have secret code running, use WASM. It also offers offline support. Use Blazor Server if performance is important or if you have sensitive code that you don&#8217;t want to send to the browser.
+Blazor Server and WebAssembly application both have their advantages and disadvantages. If you want to serve a large number of users and don&#8217;t have secret code running, use WASM. It also offers offline support. Use Blazor Server if you need fast loading of the first page or if you have sensitive code that you don&#8217;t want to send to the browser.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/Blazor-ServervsClient" target="_blank" rel="noopener noreferrer">Github</a>.

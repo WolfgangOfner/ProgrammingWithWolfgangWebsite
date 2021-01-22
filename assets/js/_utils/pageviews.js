@@ -145,7 +145,7 @@ function displayPageviews(data) {
 
   if ($("#post-list").length > 0) { /* the Home page */
     $(".post-preview").each(function() {
-      var path = $(this).children("div").children("h1").children("a").attr("href");
+      var path = $(this).find("a").attr("href");
       tacklePV(rows, path, $(this).find(".pageviews"), hasInit);
     });
 
@@ -173,9 +173,9 @@ function fetchProxyPageviews() {
 
 
 function fetchPageviews(fetchOrigin = true, filterOrigin = false) {
-  /* pvCacheEnabled › see: /assets/js/_pv-config.js */
+  /* pvCacheEnabled, pvCacheData › see: /assets/js/_pv-config.js */
   if (pvCacheEnabled && fetchOrigin) {
-    fetch("/assets/js/data/pageviews.json")
+    fetch(pvCacheData)
       .then((response) => response.json())
       .then((data) => {
         if (filterOrigin) {
