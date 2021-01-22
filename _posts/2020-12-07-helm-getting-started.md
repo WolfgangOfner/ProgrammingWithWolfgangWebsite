@@ -51,6 +51,7 @@ Helm created another subfolder, called templates, and places a couple of files i
 
 Let's have a look at the service.yaml file:
 
+{% raw %}
 ```yaml
 apiVersion: v1
 kind: Service
@@ -72,6 +73,7 @@ spec:
     app: {{ template "customerapi.name" . }}
     release: {{ .Release.Name }}
 ```
+{% endraw %}
 
 This file defines a service, adds labels, and then configures its ports and protocol. Helm replaces all values inside the two braces. What's important to notice is that some start with .Values.*. These values come from the values.yaml file which is outside of the templates folder.
 

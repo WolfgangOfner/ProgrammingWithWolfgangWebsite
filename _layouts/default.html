@@ -9,51 +9,45 @@ layout: compress
 
 <!DOCTYPE html>
 
-{% if site.lang %}
-{% assign lang = site.lang | split: "_" | first %}
-{% else %}
-{% assign lang = 'en' %}
-{% endif %}
-
 {% capture prefer_mode %}
-{% if site.theme_mode != "dual" %}
-mode="{{ site.theme_mode }}"
-{% endif %}
+  {% if site.theme_mode %}
+    mode="{{ site.theme_mode }}"
+  {% endif %}
 {% endcapture %}
 
-<html lang="{{ lang }}" {{ prefer_mode }}>
+<html lang="{{ site.lang | split: "_" | first | default: "en" }}" {{ prefer_mode }}>
 
-{% include head.html %}
+  {% include head.html %}
 
-<body data-spy="scroll" data-target="#toc">
+  <body data-spy="scroll" data-target="#toc">
 
-  <div id="sidebar" class="d-flex flex-column">
     {% include sidebar.html %}
-  </div>
 
-  {% include topbar.html %}
+    <div id="main-wrapper">
+      <div id="main">
 
-  <div id="main-wrapper">
-    <div id="main">
+        {% include refactor-content.html content=content %}
 
-      {% include refactor-content.html content=content %}
+        {% include footer.html %}
 
-      {% include footer.html %}
+      </div>
+
+      {% include search-results.html %}
 
     </div>
 
-    {% include search-results.html %}
+    {% if page.mermaid %}
+      {% include mermaid.html %}
+    {% endif %}
 
-  </div> <!-- #main-wrapper -->
+    <div id="mask"></div>
 
-  <div id="mask"></div>
+    <a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button">
+      <i class="fas fa-angle-up"></i>
+    </a>
 
-  <a id="back-to-top" href="#" class="btn btn-lg btn-box-shadow" role="button">
-    <i class="fas fa-angle-up"></i>
-  </a>
+    {% include search-loader.html %}
 
-  {% include search-loader.html %}
-
-</body>
+  </body>
 
 </html>
