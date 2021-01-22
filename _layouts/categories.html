@@ -1,0 +1,40 @@
+---
+layout: page
+
+# All the Categories of posts
+# v2.0
+# https://github.com/cotes2020/jekyll-theme-chirpy
+# © 2017-2019 Cotes Chung
+# MIT License
+---
+
+{% assign HEAD_PREFIX = "h_" %}
+{% assign group_index = 0 %}
+{% assign sort_categories = site.categories | sort %}
+
+{% for category in sort_categories %}
+  {% assign category_name = category | first %}
+
+  <div class="card categories">
+    <!-- top-category -->
+    <div class="card-header d-flex justify-content-between hide-border-bottom"
+        id="{{ HEAD_PREFIX }}{{ group_index }}">
+      <span>
+        <a href="{{ site.baseurl }}/categories/{{ category_name | slugify | url_encode }}/"
+          class="ml-1 mr-2">
+          {{ category_name }}
+        </a>
+
+        <!-- content count -->
+        {% assign top_posts_size = site.categories[category_name] | size %}
+        <span class="text-muted small font-weight-light">
+            {{ top_posts_size }}
+            post{% if top_posts_size > 1 %}s{% endif %}
+        </span>
+      </span>
+    </div> <!-- .card-header -->
+  </div> <!-- .card -->
+
+    {% assign group_index = group_index | plus: 1 %}
+
+{% endfor %}
