@@ -159,7 +159,6 @@ div {
 }
 
 div[class^='language-']::before {
-  content: attr(lang);
   position: absolute;
   right: 1.8rem;
   margin-top: 3px;

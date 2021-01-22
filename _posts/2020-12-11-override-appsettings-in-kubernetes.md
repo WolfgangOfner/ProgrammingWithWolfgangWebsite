@@ -74,6 +74,7 @@ envvariables:
 ```
 This passes the value as an environment variable into the deployment.ymal file. 
 
+{% raw %}
 ```yaml
 env:
   {{- $root := . }}
@@ -92,6 +93,7 @@ env:
   {{- end }}
   {{- end }}
 ```
+{% endraw %}
 
 This code iterates over the envvariables and secrets section and sets the values as environment variables. This section looks different by default but I find this way of passing variables better.
 
