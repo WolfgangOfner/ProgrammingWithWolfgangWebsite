@@ -62,9 +62,10 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Approvals for YAML Pipelines in Azure DevOps](/deployment-approvals-yaml-pipeline)
 
+- [Deploy to Azure Kubernetes Service using Azure DevOps YAML Pipelines](/deploy-kubernetes-azure-devops)
+
 
 Coming soon (in no specific order):
-- Use a CD Pipeline to deploy to AKS
 - Create Certificates using a Cert Manager in Kubernetes
 - Deploy every Pull Request to Kubernetes
 - Use Ngnix as Ingress Controller
