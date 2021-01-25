@@ -64,6 +64,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Deploy to Azure Kubernetes Service using Azure DevOps YAML Pipelines](/deploy-kubernetes-azure-devops)
 
+<!-- - [Improve Azure DevOps YAML Pipelines with Templates](/improve-azure-devops-pipelines-templates) -->
+
 
 Coming soon (in no specific order):
 - Create Certificates using a Cert Manager in Kubernetes

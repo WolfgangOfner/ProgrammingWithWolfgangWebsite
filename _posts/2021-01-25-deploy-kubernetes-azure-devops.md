@@ -1,6 +1,6 @@
 ---
 title: Deploy to Azure Kubernetes Service using Azure DevOps YAML Pipelines
-date: 2021-01-23
+date: 2021-01-25
 author: Wolfgang Ofner
 categories: [DevOps, Kubernetes]
 tags: [Azure DevOps, CI, YAML, AKS, Azure, Helm]
@@ -319,9 +319,7 @@ stages:
 
 This implementation is more a proof of concept than a best practice. In a real-world project, you should use different stages, for example, build, deploy-test, and deploy-prod. Right now, every build (if it's not a pull request) deploys to test and prod. Usually, you want some tests or checks after the test deployment. 
 
-The pipeline is also getting quite long and the OrderApi and CustomerApi share a lot of code which is currently redundant in both pipelines. Here it would be good to use templates to remove these redundancies. 
-
-Another nice feature would be if the deployment could tell the URL to reach the deployed service. Currently, it's only giving instructions on how to get the URL using PowerShell. 
+The pipeline is also getting quite long and it would be nice to move different parts to different files using templates.
 
 I will implement all these best practices and even more over the next couple of posts.
 
