@@ -1,0 +1,493 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="theme" content="Chirpy v2.7.2"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="Improve Azure DevOps YAML Pipelines with Templates" /><meta name="author" content="Wolfgang Ofner" /><meta property="og:locale" content="en_US" /><meta name="description" content="YAML pipelines can get quite long and unclear over time. In programming, developers use several files to separate logic apart to make the code easier to understand. The same is possible using templates in YAML pipelines. Additionally, these templates can be used in several pipelines reducing duplicate code. YAML Pipelines without Templates In my last post, I worked on a pipeline that built a .NET 5 application, ran tests, pushed a docker image, and deployed it to Kubernetes using Helm. The pipeline hat 143 lines of code in the end. It looked like a wall of text and might be overwhelming at first glance. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 name : CustomerApi-CI trigger: branches: include: - master paths: include: - CustomerApi/* pool: vmImage: &#39;ubuntu-latest&#39; variables: AzureSubscription: &#39;AzureServiceConnection&#39; # Name of the Service Connection ApiName: &#39;customerapi&#39; ClusterResourceGroup: MicroserviceDemo ChartPackage: &#39;$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz&#39; ChartPath: &#39;CustomerApi/CustomerApi/charts/$(ApiName)&#39; HelmVersion: 3.5.0 ImageName: &#39;wolfgangofner/$(ApiName):$(Build.BuildNumber)&#39; K8sNamespace: &#39;$(ApiName)-test&#39; KubernetesCluster: &#39;microservice-aks&#39; stages: - stage: Build displayName: Build image jobs: - job: Build displayName: Build and push Docker image steps: - task: BuildVersioning@0 displayName: &#39;Build Versioning&#39; inputs: versionSource: &#39;gitversion&#39; doInstallGitVersion: true GitVersionInstallerSource: &#39;choco&#39; GitVersionInstallerVersion: &#39;5.0.1&#39; doUseLatestGitVersionInstallerVersion: false paramAssemblyVersion: &#39;7&#39; paramAssemblyFileVersion: &#39;7&#39; paramAssemblyInformationalVersion: &#39;6&#39; paramOverwriteFourthDigitWithBuildCounter: false paramVersionCode: &#39;2&#39; doAssemblyInfoAppendSuffix: false doConvertAssemblyInfoToLowerCase: true buildNumberVersionFormat: &#39;3&#39; buildNumberAction: &#39;replace&#39; doReplaceAssemblyInfo: false doReplaceNuspec: false doReplaceNpm: false doReplaceDotNetCore: true filePatternDotNetCore: | **\*.csproj **\*.props paramDotNetCoreVersionType: &#39;3&#39; doReplaceAndroid: false doReplaceiOS: false doReplaceCustom: false doShowWarningsForUnmatchedRegex: false excludeFilePattern: | !**/bin/** !**/obj/** !**/node_modules/** !**/packages/** - task: Docker@1 inputs: containerregistrytype: &#39;Container Registry&#39; dockerRegistryEndpoint: &#39;Docker Hub&#39; command: &#39;Build an image&#39; dockerFile: &#39;**/CustomerApi/CustomerApi/Dockerfile&#39; arguments: &#39;--build-arg BuildId=$(Build.BuildId) --build-arg PAT=$(PatMicroserviceDemoNugetsFeed)&#39; imageName: &#39;$(ImageName)&#39; useDefaultContext: false buildContext: &#39;CustomerApi&#39; displayName: &#39;Build the Docker image&#39; - pwsh: | $id=docker images --filter &quot;label=test=$(Build.BuildId)&quot; -q | Select-Object -First 1 docker create --name testcontainer $id docker cp testcontainer:/testresults ./testresults docker rm testcontainer displayName: &#39;Copy test results&#39; - task: PublishTestResults@2 inputs: testResultsFormat: &#39;VSTest&#39; testResultsFiles: &#39;**/*.trx&#39; searchFolder: &#39;$(System.DefaultWorkingDirectory)/testresults&#39; displayName: &#39;Publish test results&#39; - task: PublishCodeCoverageResults@1 inputs: codeCoverageTool: &#39;Cobertura&#39; summaryFileLocation: &#39;$(System.DefaultWorkingDirectory)/testresults/coverage/coverage.cobertura.xml&#39; reportDirectory: &#39;$(System.DefaultWorkingDirectory)/testresults/coverage/reports&#39; displayName: &#39;Publish code coverage results&#39; - task: Docker@1 inputs: containerregistrytype: &#39;Container Registry&#39; dockerRegistryEndpoint: &#39;Docker Hub&#39; command: &#39;Push an image&#39; imageName: &#39;$(ImageName)&#39; condition: and(succeeded(), ne(variables[&#39;Build.Reason&#39;], &#39;PullRequest&#39;)) displayName: &#39;Push the Docker image to Dockerhub&#39; - task: HelmInstaller@0 displayName: &#39;Install Helm $(HelmVersion)&#39; inputs: helmVersion: $(HelmVersion) checkLatestHelmVersion: false installKubectl: true condition: and(succeeded(), ne(variables[&#39;Build.Reason&#39;], &#39;PullRequest&#39;)) - task: HelmDeploy@0 displayName: &#39;helm package&#39; inputs: azureSubscriptionEndpoint: $(AzureSubscription) azureResourceGroup: $(ClusterResourceGroup) kubernetesCluster: $(KubernetesCluster) command: &#39;package&#39; chartPath: $(ChartPath) chartVersion: $(Build.BuildNumber) save: false namespace: &#39;$(K8sNamespace)&#39; condition: and(succeeded(), ne(variables[&#39;Build.Reason&#39;], &#39;PullRequest&#39;)) - task: HelmDeploy@0 displayName: &#39;Helm upgrade release&#39; inputs: connectionType: &#39;Azure Resource Manager&#39; azureSubscription: $(AzureSubscription) azureResourceGroup: &#39;$(ClusterResourceGroup)&#39; kubernetesCluster: &#39;$(KubernetesCluster)&#39; useClusterAdmin: true namespace: &#39;$(K8sNamespace)&#39; command: &#39;upgrade&#39; chartType: &#39;FilePath&#39; chartPath: &#39;$(ChartPackage)&#39; releaseName: &#39;$(ApiName)-$(K8sNamespace)&#39; arguments: &#39;--create-namespace&#39; You can find this pipeline on Github. If you go through the history, you will see how it evolved over time. What Pipeline Templates are Templates let you split up your pipeline into several files (templates) and also allow you to reuse these templates either in the same or in multiple pipelines. As a developer, you may know the Separation of Concerns principle. Templates are basically the same for pipelines. You can pass parameters into the template and also set default values for these parameters. Passing parameters is not mandatory because a previously defined variable would still work inside the template. It is best practice to pass parameters to make the usage more clear and make the re-usage easier. Another use case for templates is to have them as a base for pipelines and enforce them to extend the template. This approach is often used to ensure a certain level of security in the pipeline. Create your first Template I like to place my templates in a templates folder inside the pipelines folder. This way they are close to the pipeline and can be easily referenced inside the pipeline. Create Templates without Parameters The first template I create is for the build versioning task. To do that, I create a new file, called BuildVersioning.yml inside the templates folder and copy the BuildVersioning task from the pipeline into the template. The only additionaly step I have to take is use step: at the beginning of the template and intend the whole task. The finished template looks as follows: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 steps: - task: BuildVersioning@0 displayName: &#39;Build Versioning&#39; inputs: versionSource: &#39;gitversion&#39; doInstallGitVersion: true GitVersionInstallerSource: &#39;choco&#39; GitVersionInstallerVersion: &#39;5.0.1&#39; doUseLatestGitVersionInstallerVersion: false paramAssemblyVersion: &#39;7&#39; paramAssemblyFileVersion: &#39;7&#39; paramAssemblyInformationalVersion: &#39;6&#39; paramOverwriteFourthDigitWithBuildCounter: false paramVersionCode: &#39;2&#39; doAssemblyInfoAppendSuffix: false doConvertAssemblyInfoToLowerCase: true buildNumberVersionFormat: &#39;3&#39; buildNumberAction: &#39;replace&#39; doReplaceAssemblyInfo: false doReplaceNuspec: false doReplaceNpm: false doReplaceDotNetCore: true filePatternDotNetCore: | **\*.csproj **\*.props paramDotNetCoreVersionType: &#39;3&#39; doReplaceAndroid: false doReplaceiOS: false doReplaceCustom: false doShowWarningsForUnmatchedRegex: false excludeFilePattern: | !**/bin/** !**/obj/** !**/node_modules/** !**/packages/** Create Templates with Parameters Creating a template with parameters is the same as without parameters except that parameters get places at the beginning of the file. This section starts with the parameters keyword and then lists the parameter name, type, and a default value. If you don’t have a default value, leave it empty. 1 2 3 4 5 6 7 8 9 10 parameters: - name: buildId type: string default: - name: patMicroserviceDemoNugetsFeed type: string default: - name: imageName type: string default: After the parameters, add the steps keyword and add the desired tasks. Use Templates in the Azure DevOps YAML Pipeline I placed all tasks in a couple of templates. To reference these templates use the template keyword and the path to the file: 1 - template: templates/BuildVersioning.yml If a template needs parameters, use the parameters key word and add all needed parameters: 1 2 3 4 5 - template: templates/DockerBuildAndPush.yml parameters: buildId: $(BuildId) patMicroserviceDemoNugetsFeed: $(PatMicroserviceDemoNugetsFeed) imageName: $(ImageName) I put all tasks into templates and tried to group what belongs together. The pipeline looks as follows now: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 name : OrderApi-CI trigger: branches: include: - master paths: include: - OrderApi/* pool: vmImage: &#39;ubuntu-latest&#39; variables: AzureSubscription: &#39;AzureServiceConnection&#39; # Name of the Service Connection ApiName: &#39;orderapi&#39; BuildId: $(Build.BuildId) BuildNumber: $(Build.BuildNumber) ClusterResourceGroup: MicroserviceDemo ChartPackage: &#39;$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz&#39; ChartPath: &#39;OrderApi/OrderApi/charts/$(ApiName)&#39; HelmVersion: 3.5.0 ImageName: &#39;wolfgangofner/$(ApiName):$(Build.BuildNumber)&#39; K8sNamespace: &#39;$(ApiName)-test&#39; KubernetesCluster: &#39;microservice-aks&#39; stages: - stage: Build displayName: Build image jobs: - job: Build displayName: Build and push Docker image steps: - template: templates/BuildVersioning.yml - template: templates/DockerBuildAndPush.yml parameters: buildId: $(BuildId) patMicroserviceDemoNugetsFeed: $(PatMicroserviceDemoNugetsFeed) imageName: $(ImageName) - template: templates/HelmInstall.yml parameters: helmVersion: $(HelmVersion) - template: templates/HelmDeploy.yml parameters: apiName: $(ApiName) azureSubscription: $(AzureSubscription) buildNumber: $(BuildNumber) clusterResourceGroup: $(ClusterResourceGroup) chartPackage: $(ChartPackage) chartPath: $(ChartPath) k8sNamespace: $(K8sNamespace) kubernetesCluster: $(KubernetesCluster) The pipeline has now 51 instead of 143 lines of code and I find it way easier to find certain parts of the code. Running the Pipeline After you added your templates, run the pipeline and you will see that it works the same way as before. The pipeline works with the templates Conclusion Templates are great to simplify Azure DevOps YAML pipelines. Additionally, they are easy to reuse in multiple pipelines and help so to speed up the development time of new pipelines. You can find the code of the demo on Github. This post is part of “Microservice Series - From Zero to Hero”." /><meta property="og:description" content="YAML pipelines can get quite long and unclear over time. In programming, developers use several files to separate logic apart to make the code easier to understand. The same is possible using templates in YAML pipelines. Additionally, these templates can be used in several pipelines reducing duplicate code. YAML Pipelines without Templates In my last post, I worked on a pipeline that built a .NET 5 application, ran tests, pushed a docker image, and deployed it to Kubernetes using Helm. The pipeline hat 143 lines of code in the end. It looked like a wall of text and might be overwhelming at first glance. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 name : CustomerApi-CI trigger: branches: include: - master paths: include: - CustomerApi/* pool: vmImage: &#39;ubuntu-latest&#39; variables: AzureSubscription: &#39;AzureServiceConnection&#39; # Name of the Service Connection ApiName: &#39;customerapi&#39; ClusterResourceGroup: MicroserviceDemo ChartPackage: &#39;$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz&#39; ChartPath: &#39;CustomerApi/CustomerApi/charts/$(ApiName)&#39; HelmVersion: 3.5.0 ImageName: &#39;wolfgangofner/$(ApiName):$(Build.BuildNumber)&#39; K8sNamespace: &#39;$(ApiName)-test&#39; KubernetesCluster: &#39;microservice-aks&#39; stages: - stage: Build displayName: Build image jobs: - job: Build displayName: Build and push Docker image steps: - task: BuildVersioning@0 displayName: &#39;Build Versioning&#39; inputs: versionSource: &#39;gitversion&#39; doInstallGitVersion: true GitVersionInstallerSource: &#39;choco&#39; GitVersionInstallerVersion: &#39;5.0.1&#39; doUseLatestGitVersionInstallerVersion: false paramAssemblyVersion: &#39;7&#39; paramAssemblyFileVersion: &#39;7&#39; paramAssemblyInformationalVersion: &#39;6&#39; paramOverwriteFourthDigitWithBuildCounter: false paramVersionCode: &#39;2&#39; doAssemblyInfoAppendSuffix: false doConvertAssemblyInfoToLowerCase: true buildNumberVersionFormat: &#39;3&#39; buildNumberAction: &#39;replace&#39; doReplaceAssemblyInfo: false doReplaceNuspec: false doReplaceNpm: false doReplaceDotNetCore: true filePatternDotNetCore: | **\*.csproj **\*.props paramDotNetCoreVersionType: &#39;3&#39; doReplaceAndroid: false doReplaceiOS: false doReplaceCustom: false doShowWarningsForUnmatchedRegex: false excludeFilePattern: | !**/bin/** !**/obj/** !**/node_modules/** !**/packages/** - task: Docker@1 inputs: containerregistrytype: &#39;Container Registry&#39; dockerRegistryEndpoint: &#39;Docker Hub&#39; command: &#39;Build an image&#39; dockerFile: &#39;**/CustomerApi/CustomerApi/Dockerfile&#39; arguments: &#39;--build-arg BuildId=$(Build.BuildId) --build-arg PAT=$(PatMicroserviceDemoNugetsFeed)&#39; imageName: &#39;$(ImageName)&#39; useDefaultContext: false buildContext: &#39;CustomerApi&#39; displayName: &#39;Build the Docker image&#39; - pwsh: | $id=docker images --filter &quot;label=test=$(Build.BuildId)&quot; -q | Select-Object -First 1 docker create --name testcontainer $id docker cp testcontainer:/testresults ./testresults docker rm testcontainer displayName: &#39;Copy test results&#39; - task: PublishTestResults@2 inputs: testResultsFormat: &#39;VSTest&#39; testResultsFiles: &#39;**/*.trx&#39; searchFolder: &#39;$(System.DefaultWorkingDirectory)/testresults&#39; displayName: &#39;Publish test results&#39; - task: PublishCodeCoverageResults@1 inputs: codeCoverageTool: &#39;Cobertura&#39; summaryFileLocation: &#39;$(System.DefaultWorkingDirectory)/testresults/coverage/coverage.cobertura.xml&#39; reportDirectory: &#39;$(System.DefaultWorkingDirectory)/testresults/coverage/reports&#39; displayName: &#39;Publish code coverage results&#39; - task: Docker@1 inputs: containerregistrytype: &#39;Container Registry&#39; dockerRegistryEndpoint: &#39;Docker Hub&#39; command: &#39;Push an image&#39; imageName: &#39;$(ImageName)&#39; condition: and(succeeded(), ne(variables[&#39;Build.Reason&#39;], &#39;PullRequest&#39;)) displayName: &#39;Push the Docker image to Dockerhub&#39; - task: HelmInstaller@0 displayName: &#39;Install Helm $(HelmVersion)&#39; inputs: helmVersion: $(HelmVersion) checkLatestHelmVersion: false installKubectl: true condition: and(succeeded(), ne(variables[&#39;Build.Reason&#39;], &#39;PullRequest&#39;)) - task: HelmDeploy@0 displayName: &#39;helm package&#39; inputs: azureSubscriptionEndpoint: $(AzureSubscription) azureResourceGroup: $(ClusterResourceGroup) kubernetesCluster: $(KubernetesCluster) command: &#39;package&#39; chartPath: $(ChartPath) chartVersion: $(Build.BuildNumber) save: false namespace: &#39;$(K8sNamespace)&#39; condition: and(succeeded(), ne(variables[&#39;Build.Reason&#39;], &#39;PullRequest&#39;)) - task: HelmDeploy@0 displayName: &#39;Helm upgrade release&#39; inputs: connectionType: &#39;Azure Resource Manager&#39; azureSubscription: $(AzureSubscription) azureResourceGroup: &#39;$(ClusterResourceGroup)&#39; kubernetesCluster: &#39;$(KubernetesCluster)&#39; useClusterAdmin: true namespace: &#39;$(K8sNamespace)&#39; command: &#39;upgrade&#39; chartType: &#39;FilePath&#39; chartPath: &#39;$(ChartPackage)&#39; releaseName: &#39;$(ApiName)-$(K8sNamespace)&#39; arguments: &#39;--create-namespace&#39; You can find this pipeline on Github. If you go through the history, you will see how it evolved over time. What Pipeline Templates are Templates let you split up your pipeline into several files (templates) and also allow you to reuse these templates either in the same or in multiple pipelines. As a developer, you may know the Separation of Concerns principle. Templates are basically the same for pipelines. You can pass parameters into the template and also set default values for these parameters. Passing parameters is not mandatory because a previously defined variable would still work inside the template. It is best practice to pass parameters to make the usage more clear and make the re-usage easier. Another use case for templates is to have them as a base for pipelines and enforce them to extend the template. This approach is often used to ensure a certain level of security in the pipeline. Create your first Template I like to place my templates in a templates folder inside the pipelines folder. This way they are close to the pipeline and can be easily referenced inside the pipeline. Create Templates without Parameters The first template I create is for the build versioning task. To do that, I create a new file, called BuildVersioning.yml inside the templates folder and copy the BuildVersioning task from the pipeline into the template. The only additionaly step I have to take is use step: at the beginning of the template and intend the whole task. The finished template looks as follows: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 steps: - task: BuildVersioning@0 displayName: &#39;Build Versioning&#39; inputs: versionSource: &#39;gitversion&#39; doInstallGitVersion: true GitVersionInstallerSource: &#39;choco&#39; GitVersionInstallerVersion: &#39;5.0.1&#39; doUseLatestGitVersionInstallerVersion: false paramAssemblyVersion: &#39;7&#39; paramAssemblyFileVersion: &#39;7&#39; paramAssemblyInformationalVersion: &#39;6&#39; paramOverwriteFourthDigitWithBuildCounter: false paramVersionCode: &#39;2&#39; doAssemblyInfoAppendSuffix: false doConvertAssemblyInfoToLowerCase: true buildNumberVersionFormat: &#39;3&#39; buildNumberAction: &#39;replace&#39; doReplaceAssemblyInfo: false doReplaceNuspec: false doReplaceNpm: false doReplaceDotNetCore: true filePatternDotNetCore: | **\*.csproj **\*.props paramDotNetCoreVersionType: &#39;3&#39; doReplaceAndroid: false doReplaceiOS: false doReplaceCustom: false doShowWarningsForUnmatchedRegex: false excludeFilePattern: | !**/bin/** !**/obj/** !**/node_modules/** !**/packages/** Create Templates with Parameters Creating a template with parameters is the same as without parameters except that parameters get places at the beginning of the file. This section starts with the parameters keyword and then lists the parameter name, type, and a default value. If you don’t have a default value, leave it empty. 1 2 3 4 5 6 7 8 9 10 parameters: - name: buildId type: string default: - name: patMicroserviceDemoNugetsFeed type: string default: - name: imageName type: string default: After the parameters, add the steps keyword and add the desired tasks. Use Templates in the Azure DevOps YAML Pipeline I placed all tasks in a couple of templates. To reference these templates use the template keyword and the path to the file: 1 - template: templates/BuildVersioning.yml If a template needs parameters, use the parameters key word and add all needed parameters: 1 2 3 4 5 - template: templates/DockerBuildAndPush.yml parameters: buildId: $(BuildId) patMicroserviceDemoNugetsFeed: $(PatMicroserviceDemoNugetsFeed) imageName: $(ImageName) I put all tasks into templates and tried to group what belongs together. The pipeline looks as follows now: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 name : OrderApi-CI trigger: branches: include: - master paths: include: - OrderApi/* pool: vmImage: &#39;ubuntu-latest&#39; variables: AzureSubscription: &#39;AzureServiceConnection&#39; # Name of the Service Connection ApiName: &#39;orderapi&#39; BuildId: $(Build.BuildId) BuildNumber: $(Build.BuildNumber) ClusterResourceGroup: MicroserviceDemo ChartPackage: &#39;$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz&#39; ChartPath: &#39;OrderApi/OrderApi/charts/$(ApiName)&#39; HelmVersion: 3.5.0 ImageName: &#39;wolfgangofner/$(ApiName):$(Build.BuildNumber)&#39; K8sNamespace: &#39;$(ApiName)-test&#39; KubernetesCluster: &#39;microservice-aks&#39; stages: - stage: Build displayName: Build image jobs: - job: Build displayName: Build and push Docker image steps: - template: templates/BuildVersioning.yml - template: templates/DockerBuildAndPush.yml parameters: buildId: $(BuildId) patMicroserviceDemoNugetsFeed: $(PatMicroserviceDemoNugetsFeed) imageName: $(ImageName) - template: templates/HelmInstall.yml parameters: helmVersion: $(HelmVersion) - template: templates/HelmDeploy.yml parameters: apiName: $(ApiName) azureSubscription: $(AzureSubscription) buildNumber: $(BuildNumber) clusterResourceGroup: $(ClusterResourceGroup) chartPackage: $(ChartPackage) chartPath: $(ChartPath) k8sNamespace: $(K8sNamespace) kubernetesCluster: $(KubernetesCluster) The pipeline has now 51 instead of 143 lines of code and I find it way easier to find certain parts of the code. Running the Pipeline After you added your templates, run the pipeline and you will see that it works the same way as before. The pipeline works with the templates Conclusion Templates are great to simplify Azure DevOps YAML pipelines. Additionally, they are easy to reuse in multiple pipelines and help so to speed up the development time of new pipelines. You can find the code of the demo on Github. This post is part of “Microservice Series - From Zero to Hero”." /><link rel="canonical" href="https://www.programmingwithwolfgang.com/improve-azure-devops-pipelines-templates/" /><meta property="og:url" content="https://www.programmingwithwolfgang.com/improve-azure-devops-pipelines-templates/" /><meta property="og:site_name" content="Programming With Wolfgang" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-01-27T00:00:00+01:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="Improve Azure DevOps YAML Pipelines with Templates" /><meta name="twitter:site" content="@wolfgang_ofner" /><meta name="twitter:creator" content="@Wolfgang Ofner" /><meta name="google-site-verification" content="xxsPm-h6A0B6a0QMgqXO80PU4DbMt4Dq06p-SGzB3TU" /> <script type="application/ld+json"> {"mainEntityOfPage":{"@type":"WebPage","@id":"https://www.programmingwithwolfgang.com/improve-azure-devops-pipelines-templates/"},"author":{"@type":"Person","name":"Wolfgang Ofner"},"url":"https://www.programmingwithwolfgang.com/improve-azure-devops-pipelines-templates/","description":"YAML pipelines can get quite long and unclear over time. In programming, developers use several files to separate logic apart to make the code easier to understand. The same is possible using templates in YAML pipelines. Additionally, these templates can be used in several pipelines reducing duplicate code. YAML Pipelines without Templates In my last post, I worked on a pipeline that built a .NET 5 application, ran tests, pushed a docker image, and deployed it to Kubernetes using Helm. The pipeline hat 143 lines of code in the end. It looked like a wall of text and might be overwhelming at first glance. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 name : CustomerApi-CI trigger: branches: include: - master paths: include: - CustomerApi/* pool: vmImage: &#39;ubuntu-latest&#39; variables: AzureSubscription: &#39;AzureServiceConnection&#39; # Name of the Service Connection ApiName: &#39;customerapi&#39; ClusterResourceGroup: MicroserviceDemo ChartPackage: &#39;$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz&#39; ChartPath: &#39;CustomerApi/CustomerApi/charts/$(ApiName)&#39; HelmVersion: 3.5.0 ImageName: &#39;wolfgangofner/$(ApiName):$(Build.BuildNumber)&#39; K8sNamespace: &#39;$(ApiName)-test&#39; KubernetesCluster: &#39;microservice-aks&#39; stages: - stage: Build displayName: Build image jobs: - job: Build displayName: Build and push Docker image steps: - task: BuildVersioning@0 displayName: &#39;Build Versioning&#39; inputs: versionSource: &#39;gitversion&#39; doInstallGitVersion: true GitVersionInstallerSource: &#39;choco&#39; GitVersionInstallerVersion: &#39;5.0.1&#39; doUseLatestGitVersionInstallerVersion: false paramAssemblyVersion: &#39;7&#39; paramAssemblyFileVersion: &#39;7&#39; paramAssemblyInformationalVersion: &#39;6&#39; paramOverwriteFourthDigitWithBuildCounter: false paramVersionCode: &#39;2&#39; doAssemblyInfoAppendSuffix: false doConvertAssemblyInfoToLowerCase: true buildNumberVersionFormat: &#39;3&#39; buildNumberAction: &#39;replace&#39; doReplaceAssemblyInfo: false doReplaceNuspec: false doReplaceNpm: false doReplaceDotNetCore: true filePatternDotNetCore: | **\\*.csproj **\\*.props paramDotNetCoreVersionType: &#39;3&#39; doReplaceAndroid: false doReplaceiOS: false doReplaceCustom: false doShowWarningsForUnmatchedRegex: false excludeFilePattern: | !**/bin/** !**/obj/** !**/node_modules/** !**/packages/** - task: Docker@1 inputs: containerregistrytype: &#39;Container Registry&#39; dockerRegistryEndpoint: &#39;Docker Hub&#39; command: &#39;Build an image&#39; dockerFile: &#39;**/CustomerApi/CustomerApi/Dockerfile&#39; arguments: &#39;--build-arg BuildId=$(Build.BuildId) --build-arg PAT=$(PatMicroserviceDemoNugetsFeed)&#39; imageName: &#39;$(ImageName)&#39; useDefaultContext: false buildContext: &#39;CustomerApi&#39; displayName: &#39;Build the Docker image&#39; - pwsh: | $id=docker images --filter &quot;label=test=$(Build.BuildId)&quot; -q | Select-Object -First 1 docker create --name testcontainer $id docker cp testcontainer:/testresults ./testresults docker rm testcontainer displayName: &#39;Copy test results&#39; - task: PublishTestResults@2 inputs: testResultsFormat: &#39;VSTest&#39; testResultsFiles: &#39;**/*.trx&#39; searchFolder: &#39;$(System.DefaultWorkingDirectory)/testresults&#39; displayName: &#39;Publish test results&#39; - task: PublishCodeCoverageResults@1 inputs: codeCoverageTool: &#39;Cobertura&#39; summaryFileLocation: &#39;$(System.DefaultWorkingDirectory)/testresults/coverage/coverage.cobertura.xml&#39; reportDirectory: &#39;$(System.DefaultWorkingDirectory)/testresults/coverage/reports&#39; displayName: &#39;Publish code coverage results&#39; - task: Docker@1 inputs: containerregistrytype: &#39;Container Registry&#39; dockerRegistryEndpoint: &#39;Docker Hub&#39; command: &#39;Push an image&#39; imageName: &#39;$(ImageName)&#39; condition: and(succeeded(), ne(variables[&#39;Build.Reason&#39;], &#39;PullRequest&#39;)) displayName: &#39;Push the Docker image to Dockerhub&#39; - task: HelmInstaller@0 displayName: &#39;Install Helm $(HelmVersion)&#39; inputs: helmVersion: $(HelmVersion) checkLatestHelmVersion: false installKubectl: true condition: and(succeeded(), ne(variables[&#39;Build.Reason&#39;], &#39;PullRequest&#39;)) - task: HelmDeploy@0 displayName: &#39;helm package&#39; inputs: azureSubscriptionEndpoint: $(AzureSubscription) azureResourceGroup: $(ClusterResourceGroup) kubernetesCluster: $(KubernetesCluster) command: &#39;package&#39; chartPath: $(ChartPath) chartVersion: $(Build.BuildNumber) save: false namespace: &#39;$(K8sNamespace)&#39; condition: and(succeeded(), ne(variables[&#39;Build.Reason&#39;], &#39;PullRequest&#39;)) - task: HelmDeploy@0 displayName: &#39;Helm upgrade release&#39; inputs: connectionType: &#39;Azure Resource Manager&#39; azureSubscription: $(AzureSubscription) azureResourceGroup: &#39;$(ClusterResourceGroup)&#39; kubernetesCluster: &#39;$(KubernetesCluster)&#39; useClusterAdmin: true namespace: &#39;$(K8sNamespace)&#39; command: &#39;upgrade&#39; chartType: &#39;FilePath&#39; chartPath: &#39;$(ChartPackage)&#39; releaseName: &#39;$(ApiName)-$(K8sNamespace)&#39; arguments: &#39;--create-namespace&#39; You can find this pipeline on Github. If you go through the history, you will see how it evolved over time. What Pipeline Templates are Templates let you split up your pipeline into several files (templates) and also allow you to reuse these templates either in the same or in multiple pipelines. As a developer, you may know the Separation of Concerns principle. Templates are basically the same for pipelines. You can pass parameters into the template and also set default values for these parameters. Passing parameters is not mandatory because a previously defined variable would still work inside the template. It is best practice to pass parameters to make the usage more clear and make the re-usage easier. Another use case for templates is to have them as a base for pipelines and enforce them to extend the template. This approach is often used to ensure a certain level of security in the pipeline. Create your first Template I like to place my templates in a templates folder inside the pipelines folder. This way they are close to the pipeline and can be easily referenced inside the pipeline. Create Templates without Parameters The first template I create is for the build versioning task. To do that, I create a new file, called BuildVersioning.yml inside the templates folder and copy the BuildVersioning task from the pipeline into the template. The only additionaly step I have to take is use step: at the beginning of the template and intend the whole task. The finished template looks as follows: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 steps: - task: BuildVersioning@0 displayName: &#39;Build Versioning&#39; inputs: versionSource: &#39;gitversion&#39; doInstallGitVersion: true GitVersionInstallerSource: &#39;choco&#39; GitVersionInstallerVersion: &#39;5.0.1&#39; doUseLatestGitVersionInstallerVersion: false paramAssemblyVersion: &#39;7&#39; paramAssemblyFileVersion: &#39;7&#39; paramAssemblyInformationalVersion: &#39;6&#39; paramOverwriteFourthDigitWithBuildCounter: false paramVersionCode: &#39;2&#39; doAssemblyInfoAppendSuffix: false doConvertAssemblyInfoToLowerCase: true buildNumberVersionFormat: &#39;3&#39; buildNumberAction: &#39;replace&#39; doReplaceAssemblyInfo: false doReplaceNuspec: false doReplaceNpm: false doReplaceDotNetCore: true filePatternDotNetCore: | **\\*.csproj **\\*.props paramDotNetCoreVersionType: &#39;3&#39; doReplaceAndroid: false doReplaceiOS: false doReplaceCustom: false doShowWarningsForUnmatchedRegex: false excludeFilePattern: | !**/bin/** !**/obj/** !**/node_modules/** !**/packages/** Create Templates with Parameters Creating a template with parameters is the same as without parameters except that parameters get places at the beginning of the file. This section starts with the parameters keyword and then lists the parameter name, type, and a default value. If you don’t have a default value, leave it empty. 1 2 3 4 5 6 7 8 9 10 parameters: - name: buildId type: string default: - name: patMicroserviceDemoNugetsFeed type: string default: - name: imageName type: string default: After the parameters, add the steps keyword and add the desired tasks. Use Templates in the Azure DevOps YAML Pipeline I placed all tasks in a couple of templates. To reference these templates use the template keyword and the path to the file: 1 - template: templates/BuildVersioning.yml If a template needs parameters, use the parameters key word and add all needed parameters: 1 2 3 4 5 - template: templates/DockerBuildAndPush.yml parameters: buildId: $(BuildId) patMicroserviceDemoNugetsFeed: $(PatMicroserviceDemoNugetsFeed) imageName: $(ImageName) I put all tasks into templates and tried to group what belongs together. The pipeline looks as follows now: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 name : OrderApi-CI trigger: branches: include: - master paths: include: - OrderApi/* pool: vmImage: &#39;ubuntu-latest&#39; variables: AzureSubscription: &#39;AzureServiceConnection&#39; # Name of the Service Connection ApiName: &#39;orderapi&#39; BuildId: $(Build.BuildId) BuildNumber: $(Build.BuildNumber) ClusterResourceGroup: MicroserviceDemo ChartPackage: &#39;$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz&#39; ChartPath: &#39;OrderApi/OrderApi/charts/$(ApiName)&#39; HelmVersion: 3.5.0 ImageName: &#39;wolfgangofner/$(ApiName):$(Build.BuildNumber)&#39; K8sNamespace: &#39;$(ApiName)-test&#39; KubernetesCluster: &#39;microservice-aks&#39; stages: - stage: Build displayName: Build image jobs: - job: Build displayName: Build and push Docker image steps: - template: templates/BuildVersioning.yml - template: templates/DockerBuildAndPush.yml parameters: buildId: $(BuildId) patMicroserviceDemoNugetsFeed: $(PatMicroserviceDemoNugetsFeed) imageName: $(ImageName) - template: templates/HelmInstall.yml parameters: helmVersion: $(HelmVersion) - template: templates/HelmDeploy.yml parameters: apiName: $(ApiName) azureSubscription: $(AzureSubscription) buildNumber: $(BuildNumber) clusterResourceGroup: $(ClusterResourceGroup) chartPackage: $(ChartPackage) chartPath: $(ChartPath) k8sNamespace: $(K8sNamespace) kubernetesCluster: $(KubernetesCluster) The pipeline has now 51 instead of 143 lines of code and I find it way easier to find certain parts of the code. Running the Pipeline After you added your templates, run the pipeline and you will see that it works the same way as before. The pipeline works with the templates Conclusion Templates are great to simplify Azure DevOps YAML pipelines. Additionally, they are easy to reuse in multiple pipelines and help so to speed up the development time of new pipelines. You can find the code of the demo on Github. This post is part of “Microservice Series - From Zero to Hero”.","@type":"BlogPosting","headline":"Improve Azure DevOps YAML Pipelines with Templates","dateModified":"2021-01-27T00:00:00+01:00","datePublished":"2021-01-27T00:00:00+01:00","@context":"https://schema.org"}</script><title>Improve Azure DevOps YAML Pipelines with Templates | Programming With Wolfgang</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="preload" href="/assets/css/post.css" as="style"><link rel="stylesheet" href="/assets/css/post.css"><link rel="preload" as="style" href="/assets/css/lib/bootstrap-toc.min.css"><link rel="stylesheet" href="/assets/css/lib/bootstrap-toc.min.css" /> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="/assets/js/post.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id=UA-112077092-1"></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'UA-112077092-1'); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/author/wolfgang-small.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Programming With Wolfgang</a></div><div class="site-subtitle font-italic">Let's talk programming</div></div><div class="w-100 d-flex justify-content-center"> <i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span></div><ul class="w-100" style="margin-top: 1em;"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/tabs/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tabs/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/tabs/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item"> <a href="/tabs/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/wolfgangofner" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/wolfgang_ofner" aria-label="twitter" class="order-4" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href="https://www.linkedin.com/in/wolfgangofner" aria-label="linkedin" class="order-5" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['wolfgang','programmingwithwolfgang.com'].join('@')" aria-label="email" class="order-6" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-7" > <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="d-sm-none row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>Improve Azure DevOps YAML Pipelines with Templates</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Improve Azure DevOps YAML Pipelines with Templates</div><div style="visibility:hidden;"> <i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel">Cancel</span></div></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>Improve Azure DevOps YAML Pipelines with Templates</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Wed, Jan 27, 2021, 12:00 AM +0100" > Jan 27 <i class="unloaded">2021-01-27T00:00:00+01:00</i> </span> by <span class="author"> Wolfgang Ofner </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="1355 words">18 min</span></div></div><div class="post-content"><p>YAML pipelines can get quite long and unclear over time. In programming, developers use several files to separate logic apart to make the code easier to understand. The same is possible using templates in YAML pipelines. Additionally, these templates can be used in several pipelines reducing duplicate code.</p><h2 id="yaml-pipelines-without-templates">YAML Pipelines without Templates</h2><p><a href="/deploy-kubernetes-azure-devops">In my last post</a>, I worked on a pipeline that built a .NET 5 application, ran tests, pushed a docker image, and deployed it to Kubernetes using Helm. The pipeline hat 143 lines of code in the end. It looked like a wall of text and might be overwhelming at first glance.</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+</pre><td class="rouge-code"><pre><span class="na">name </span><span class="pi">:</span> <span class="s">CustomerApi-CI</span>
+<span class="na">trigger</span><span class="pi">:</span>
+  <span class="na">branches</span><span class="pi">:</span>
+    <span class="na">include</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">master</span>
+  <span class="na">paths</span><span class="pi">:</span>
+    <span class="na">include</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">CustomerApi/*</span>
+
+<span class="na">pool</span><span class="pi">:</span>
+  <span class="na">vmImage</span><span class="pi">:</span> <span class="s1">'</span><span class="s">ubuntu-latest'</span>
+
+<span class="na">variables</span><span class="pi">:</span>
+  <span class="na">AzureSubscription</span><span class="pi">:</span> <span class="s1">'</span><span class="s">AzureServiceConnection'</span> <span class="c1"># Name of the Service Connection</span>
+  <span class="na">ApiName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">customerapi'</span>
+  <span class="na">ClusterResourceGroup</span><span class="pi">:</span> <span class="s">MicroserviceDemo</span>  
+  <span class="na">ChartPackage</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'</span>  
+  <span class="na">ChartPath</span><span class="pi">:</span> <span class="s1">'</span><span class="s">CustomerApi/CustomerApi/charts/$(ApiName)'</span>
+  <span class="na">HelmVersion</span><span class="pi">:</span> <span class="s">3.5.0</span>
+  <span class="na">ImageName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">wolfgangofner/$(ApiName):$(Build.BuildNumber)'</span>
+  <span class="na">K8sNamespace</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(ApiName)-test'</span>
+  <span class="na">KubernetesCluster</span><span class="pi">:</span> <span class="s1">'</span><span class="s">microservice-aks'</span>
+
+<span class="na">stages</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">stage</span><span class="pi">:</span> <span class="s">Build</span>
+  <span class="na">displayName</span><span class="pi">:</span> <span class="s">Build image</span>
+  <span class="na">jobs</span><span class="pi">:</span>  
+  <span class="pi">-</span> <span class="na">job</span><span class="pi">:</span> <span class="s">Build</span>
+    <span class="na">displayName</span><span class="pi">:</span> <span class="s">Build and push Docker image</span>
+    <span class="na">steps</span><span class="pi">:</span>
+    
+    <span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">BuildVersioning@0</span>
+      <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Build</span><span class="nv"> </span><span class="s">Versioning'</span>
+      <span class="na">inputs</span><span class="pi">:</span>
+        <span class="na">versionSource</span><span class="pi">:</span> <span class="s1">'</span><span class="s">gitversion'</span>
+        <span class="na">doInstallGitVersion</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">GitVersionInstallerSource</span><span class="pi">:</span> <span class="s1">'</span><span class="s">choco'</span>
+        <span class="na">GitVersionInstallerVersion</span><span class="pi">:</span> <span class="s1">'</span><span class="s">5.0.1'</span>
+        <span class="na">doUseLatestGitVersionInstallerVersion</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">paramAssemblyVersion</span><span class="pi">:</span> <span class="s1">'</span><span class="s">7'</span>
+        <span class="na">paramAssemblyFileVersion</span><span class="pi">:</span> <span class="s1">'</span><span class="s">7'</span>
+        <span class="na">paramAssemblyInformationalVersion</span><span class="pi">:</span> <span class="s1">'</span><span class="s">6'</span>
+        <span class="na">paramOverwriteFourthDigitWithBuildCounter</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">paramVersionCode</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2'</span>
+        <span class="na">doAssemblyInfoAppendSuffix</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">doConvertAssemblyInfoToLowerCase</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">buildNumberVersionFormat</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
+        <span class="na">buildNumberAction</span><span class="pi">:</span> <span class="s1">'</span><span class="s">replace'</span>
+        <span class="na">doReplaceAssemblyInfo</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">doReplaceNuspec</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">doReplaceNpm</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">doReplaceDotNetCore</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">filePatternDotNetCore</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">**\*.csproj</span>
+          <span class="s">**\*.props</span>
+        <span class="na">paramDotNetCoreVersionType</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
+        <span class="na">doReplaceAndroid</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">doReplaceiOS</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">doReplaceCustom</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">doShowWarningsForUnmatchedRegex</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">excludeFilePattern</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">!**/bin/**</span>
+          <span class="s">!**/obj/**</span>
+          <span class="s">!**/node_modules/**</span>
+          <span class="s">!**/packages/**</span>
+
+    <span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">Docker@1</span>      
+      <span class="na">inputs</span><span class="pi">:</span>
+        <span class="na">containerregistrytype</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Container</span><span class="nv"> </span><span class="s">Registry'</span>
+        <span class="na">dockerRegistryEndpoint</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Docker</span><span class="nv"> </span><span class="s">Hub'</span>
+        <span class="na">command</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Build</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">image'</span>
+        <span class="na">dockerFile</span><span class="pi">:</span> <span class="s1">'</span><span class="s">**/CustomerApi/CustomerApi/Dockerfile'</span>
+        <span class="na">arguments</span><span class="pi">:</span> <span class="s1">'</span><span class="s">--build-arg</span><span class="nv"> </span><span class="s">BuildId=$(Build.BuildId)</span><span class="nv"> </span><span class="s">--build-arg</span><span class="nv"> </span><span class="s">PAT=$(PatMicroserviceDemoNugetsFeed)'</span>
+        <span class="na">imageName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(ImageName)'</span>
+        <span class="na">useDefaultContext</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">buildContext</span><span class="pi">:</span> <span class="s1">'</span><span class="s">CustomerApi'</span>
+      <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Build</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Docker</span><span class="nv"> </span><span class="s">image'</span>
+
+    <span class="pi">-</span> <span class="na">pwsh</span><span class="pi">:</span> <span class="pi">|</span>
+       <span class="s">$id=docker images --filter "label=test=$(Build.BuildId)" -q | Select-Object -First 1</span>
+       <span class="s">docker create --name testcontainer $id</span>
+       <span class="s">docker cp testcontainer:/testresults ./testresults</span>
+       <span class="s">docker rm testcontainer</span>
+      <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Copy</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">results'</span> 
+    
+    <span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">PublishTestResults@2</span>
+      <span class="na">inputs</span><span class="pi">:</span>
+        <span class="na">testResultsFormat</span><span class="pi">:</span> <span class="s1">'</span><span class="s">VSTest'</span>
+        <span class="na">testResultsFiles</span><span class="pi">:</span> <span class="s1">'</span><span class="s">**/*.trx'</span>
+        <span class="na">searchFolder</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(System.DefaultWorkingDirectory)/testresults'</span>
+      <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Publish</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">results'</span>
+
+    <span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">PublishCodeCoverageResults@1</span>
+      <span class="na">inputs</span><span class="pi">:</span>
+        <span class="na">codeCoverageTool</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Cobertura'</span>
+        <span class="na">summaryFileLocation</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(System.DefaultWorkingDirectory)/testresults/coverage/coverage.cobertura.xml'</span>
+        <span class="na">reportDirectory</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(System.DefaultWorkingDirectory)/testresults/coverage/reports'</span>
+      <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Publish</span><span class="nv"> </span><span class="s">code</span><span class="nv"> </span><span class="s">coverage</span><span class="nv"> </span><span class="s">results'</span>
+
+    <span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">Docker@1</span>      
+      <span class="na">inputs</span><span class="pi">:</span>
+        <span class="na">containerregistrytype</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Container</span><span class="nv"> </span><span class="s">Registry'</span>
+        <span class="na">dockerRegistryEndpoint</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Docker</span><span class="nv"> </span><span class="s">Hub'</span>
+        <span class="na">command</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Push</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">image'</span>
+        <span class="na">imageName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(ImageName)'</span>
+      <span class="na">condition</span><span class="pi">:</span> <span class="s">and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))</span>
+      <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Push</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Docker</span><span class="nv"> </span><span class="s">image</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">Dockerhub'</span>
+    
+    <span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">HelmInstaller@0</span>
+      <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Install</span><span class="nv"> </span><span class="s">Helm</span><span class="nv"> </span><span class="s">$(HelmVersion)'</span>
+      <span class="na">inputs</span><span class="pi">:</span>
+        <span class="na">helmVersion</span><span class="pi">:</span> <span class="s">$(HelmVersion)</span>
+        <span class="na">checkLatestHelmVersion</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">installKubectl</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">condition</span><span class="pi">:</span> <span class="s">and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))</span>   
+      
+    <span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">HelmDeploy@0</span>
+      <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">helm</span><span class="nv"> </span><span class="s">package'</span>
+      <span class="na">inputs</span><span class="pi">:</span>
+        <span class="na">azureSubscriptionEndpoint</span><span class="pi">:</span> <span class="s">$(AzureSubscription)</span>
+        <span class="na">azureResourceGroup</span><span class="pi">:</span> <span class="s">$(ClusterResourceGroup)</span>
+        <span class="na">kubernetesCluster</span><span class="pi">:</span> <span class="s">$(KubernetesCluster)</span>
+        <span class="na">command</span><span class="pi">:</span> <span class="s1">'</span><span class="s">package'</span>
+        <span class="na">chartPath</span><span class="pi">:</span> <span class="s">$(ChartPath)</span>
+        <span class="na">chartVersion</span><span class="pi">:</span> <span class="s">$(Build.BuildNumber)</span>
+        <span class="na">save</span><span class="pi">:</span> <span class="no">false</span>
+        <span class="na">namespace</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(K8sNamespace)'</span>
+      <span class="na">condition</span><span class="pi">:</span> <span class="s">and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))</span>   
+    
+    <span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">HelmDeploy@0</span>
+      <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Helm</span><span class="nv"> </span><span class="s">upgrade</span><span class="nv"> </span><span class="s">release'</span>
+      <span class="na">inputs</span><span class="pi">:</span>
+        <span class="na">connectionType</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Azure</span><span class="nv"> </span><span class="s">Resource</span><span class="nv"> </span><span class="s">Manager'</span>
+        <span class="na">azureSubscription</span><span class="pi">:</span> <span class="s">$(AzureSubscription)</span>
+        <span class="na">azureResourceGroup</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(ClusterResourceGroup)'</span>
+        <span class="na">kubernetesCluster</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(KubernetesCluster)'</span>
+        <span class="na">useClusterAdmin</span><span class="pi">:</span> <span class="no">true</span>
+        <span class="na">namespace</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(K8sNamespace)'</span>
+        <span class="na">command</span><span class="pi">:</span> <span class="s1">'</span><span class="s">upgrade'</span>
+        <span class="na">chartType</span><span class="pi">:</span> <span class="s1">'</span><span class="s">FilePath'</span>
+        <span class="na">chartPath</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(ChartPackage)'</span>
+        <span class="na">releaseName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(ApiName)-$(K8sNamespace)'</span>
+        <span class="na">arguments</span><span class="pi">:</span> <span class="s1">'</span><span class="s">--create-namespace'</span>
+</pre></table></code></div></div><p>You can find this pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CI.yml" target="_blank" rel="noopener noreferrer">Github</a>. If you go through the history, you will see how it evolved over time.</p><h2 id="what-pipeline-templates-are">What Pipeline Templates are</h2><p>Templates let you split up your pipeline into several files (templates) and also allow you to reuse these templates either in the same or in multiple pipelines. As a developer, you may know the Separation of Concerns principle. Templates are basically the same for pipelines.</p><p>You can pass parameters into the template and also set default values for these parameters. Passing parameters is not mandatory because a previously defined variable would still work inside the template. It is best practice to pass parameters to make the usage more clear and make the re-usage easier.</p><p>Another use case for templates is to have them as a base for pipelines and enforce them to extend the template. This approach is often used to ensure a certain level of security in the pipeline.</p><h2 id="create-your-first-template">Create your first Template</h2><p>I like to place my templates in a templates folder inside the pipelines folder. This way they are close to the pipeline and can be easily referenced inside the pipeline.</p><h3 id="create-templates-without-parameters">Create Templates without Parameters</h3><p>The first template I create is for the build versioning task. To do that, I create a new file, called BuildVersioning.yml inside the templates folder and copy the BuildVersioning task from the pipeline into the template. The only additionaly step I have to take is use step: at the beginning of the template and intend the whole task. The finished template looks as follows:</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+</pre><td class="rouge-code"><pre><span class="na">steps</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">task</span><span class="pi">:</span> <span class="s">BuildVersioning@0</span>
+    <span class="na">displayName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">Build</span><span class="nv"> </span><span class="s">Versioning'</span>
+    <span class="na">inputs</span><span class="pi">:</span>
+      <span class="na">versionSource</span><span class="pi">:</span> <span class="s1">'</span><span class="s">gitversion'</span>
+      <span class="na">doInstallGitVersion</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">GitVersionInstallerSource</span><span class="pi">:</span> <span class="s1">'</span><span class="s">choco'</span>
+      <span class="na">GitVersionInstallerVersion</span><span class="pi">:</span> <span class="s1">'</span><span class="s">5.0.1'</span>
+      <span class="na">doUseLatestGitVersionInstallerVersion</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">paramAssemblyVersion</span><span class="pi">:</span> <span class="s1">'</span><span class="s">7'</span>
+      <span class="na">paramAssemblyFileVersion</span><span class="pi">:</span> <span class="s1">'</span><span class="s">7'</span>
+      <span class="na">paramAssemblyInformationalVersion</span><span class="pi">:</span> <span class="s1">'</span><span class="s">6'</span>
+      <span class="na">paramOverwriteFourthDigitWithBuildCounter</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">paramVersionCode</span><span class="pi">:</span> <span class="s1">'</span><span class="s">2'</span>
+      <span class="na">doAssemblyInfoAppendSuffix</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">doConvertAssemblyInfoToLowerCase</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">buildNumberVersionFormat</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
+      <span class="na">buildNumberAction</span><span class="pi">:</span> <span class="s1">'</span><span class="s">replace'</span>
+      <span class="na">doReplaceAssemblyInfo</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">doReplaceNuspec</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">doReplaceNpm</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">doReplaceDotNetCore</span><span class="pi">:</span> <span class="no">true</span>
+      <span class="na">filePatternDotNetCore</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">**\*.csproj</span>
+        <span class="s">**\*.props</span>
+      <span class="na">paramDotNetCoreVersionType</span><span class="pi">:</span> <span class="s1">'</span><span class="s">3'</span>
+      <span class="na">doReplaceAndroid</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">doReplaceiOS</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">doReplaceCustom</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">doShowWarningsForUnmatchedRegex</span><span class="pi">:</span> <span class="no">false</span>
+      <span class="na">excludeFilePattern</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">!**/bin/**</span>
+        <span class="s">!**/obj/**</span>
+        <span class="s">!**/node_modules/**</span>
+        <span class="s">!**/packages/**</span>
+</pre></table></code></div></div><h3 id="create-templates-with-parameters">Create Templates with Parameters</h3><p>Creating a template with parameters is the same as without parameters except that parameters get places at the beginning of the file. This section starts with the parameters keyword and then lists the parameter name, type, and a default value. If you don’t have a default value, leave it empty.</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="na">parameters</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">buildId</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+    <span class="na">default</span><span class="pi">:</span> 
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">patMicroserviceDemoNugetsFeed</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+    <span class="na">default</span><span class="pi">:</span> 
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">imageName</span>
+    <span class="na">type</span><span class="pi">:</span> <span class="s">string</span>
+    <span class="na">default</span><span class="pi">:</span> 
+</pre></table></code></div></div><p>After the parameters, add the steps keyword and add the desired tasks.</p><h2 id="use-templates-in-the-azure-devops-yaml-pipeline">Use Templates in the Azure DevOps YAML Pipeline</h2><p>I placed all tasks in a couple of templates. To reference these templates use the template keyword and the path to the file:</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="pi">-</span> <span class="na">template</span><span class="pi">:</span> <span class="s">templates/BuildVersioning.yml</span>
+</pre></table></code></div></div><p>If a template needs parameters, use the parameters key word and add all needed parameters:</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="pi">-</span> <span class="na">template</span><span class="pi">:</span> <span class="s">templates/DockerBuildAndPush.yml</span>
+  <span class="na">parameters</span><span class="pi">:</span>
+      <span class="na">buildId</span><span class="pi">:</span> <span class="s">$(BuildId)</span>
+      <span class="na">patMicroserviceDemoNugetsFeed</span><span class="pi">:</span> <span class="s">$(PatMicroserviceDemoNugetsFeed)</span>          
+      <span class="na">imageName</span><span class="pi">:</span> <span class="s">$(ImageName)</span>
+</pre></table></code></div></div><p>I put all tasks into templates and tried to group what belongs together. The pipeline looks as follows now:</p><div class="language-yaml highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+</pre><td class="rouge-code"><pre><span class="na">name </span><span class="pi">:</span> <span class="s">OrderApi-CI</span>
+<span class="na">trigger</span><span class="pi">:</span>
+  <span class="na">branches</span><span class="pi">:</span>
+    <span class="na">include</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">master</span>
+  <span class="na">paths</span><span class="pi">:</span>
+    <span class="na">include</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">OrderApi/*</span>
+
+<span class="na">pool</span><span class="pi">:</span>
+  <span class="na">vmImage</span><span class="pi">:</span> <span class="s1">'</span><span class="s">ubuntu-latest'</span>
+
+<span class="na">variables</span><span class="pi">:</span>
+  <span class="na">AzureSubscription</span><span class="pi">:</span> <span class="s1">'</span><span class="s">AzureServiceConnection'</span> <span class="c1"># Name of the Service Connection</span>
+  <span class="na">ApiName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">orderapi'</span>
+  <span class="na">BuildId</span><span class="pi">:</span> <span class="s">$(Build.BuildId)</span>
+  <span class="na">BuildNumber</span><span class="pi">:</span> <span class="s">$(Build.BuildNumber)</span>
+  <span class="na">ClusterResourceGroup</span><span class="pi">:</span> <span class="s">MicroserviceDemo</span>  
+  <span class="na">ChartPackage</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'</span>  
+  <span class="na">ChartPath</span><span class="pi">:</span> <span class="s1">'</span><span class="s">OrderApi/OrderApi/charts/$(ApiName)'</span>
+  <span class="na">HelmVersion</span><span class="pi">:</span> <span class="s">3.5.0</span>
+  <span class="na">ImageName</span><span class="pi">:</span> <span class="s1">'</span><span class="s">wolfgangofner/$(ApiName):$(Build.BuildNumber)'</span>
+  <span class="na">K8sNamespace</span><span class="pi">:</span> <span class="s1">'</span><span class="s">$(ApiName)-test'</span>
+  <span class="na">KubernetesCluster</span><span class="pi">:</span> <span class="s1">'</span><span class="s">microservice-aks'</span>
+
+<span class="na">stages</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="na">stage</span><span class="pi">:</span> <span class="s">Build</span>
+  <span class="na">displayName</span><span class="pi">:</span> <span class="s">Build image</span>
+  <span class="na">jobs</span><span class="pi">:</span>  
+  <span class="pi">-</span> <span class="na">job</span><span class="pi">:</span> <span class="s">Build</span>
+    <span class="na">displayName</span><span class="pi">:</span> <span class="s">Build and push Docker image</span>
+    <span class="na">steps</span><span class="pi">:</span>
+ 
+    <span class="pi">-</span> <span class="na">template</span><span class="pi">:</span> <span class="s">templates/BuildVersioning.yml</span>
+    <span class="pi">-</span> <span class="na">template</span><span class="pi">:</span> <span class="s">templates/DockerBuildAndPush.yml</span>
+      <span class="na">parameters</span><span class="pi">:</span>
+          <span class="na">buildId</span><span class="pi">:</span> <span class="s">$(BuildId)</span>
+          <span class="na">patMicroserviceDemoNugetsFeed</span><span class="pi">:</span> <span class="s">$(PatMicroserviceDemoNugetsFeed)</span>          
+          <span class="na">imageName</span><span class="pi">:</span> <span class="s">$(ImageName)</span>
+    <span class="pi">-</span> <span class="na">template</span><span class="pi">:</span> <span class="s">templates/HelmInstall.yml</span>
+      <span class="na">parameters</span><span class="pi">:</span> 
+          <span class="na">helmVersion</span><span class="pi">:</span> <span class="s">$(HelmVersion)</span>
+    <span class="pi">-</span> <span class="na">template</span><span class="pi">:</span> <span class="s">templates/HelmDeploy.yml</span>
+      <span class="na">parameters</span><span class="pi">:</span>          
+          <span class="na">apiName</span><span class="pi">:</span> <span class="s">$(ApiName)</span>
+          <span class="na">azureSubscription</span><span class="pi">:</span> <span class="s">$(AzureSubscription)</span>
+          <span class="na">buildNumber</span><span class="pi">:</span> <span class="s">$(BuildNumber)</span>
+          <span class="na">clusterResourceGroup</span><span class="pi">:</span> <span class="s">$(ClusterResourceGroup)</span>          
+          <span class="na">chartPackage</span><span class="pi">:</span> <span class="s">$(ChartPackage)</span>
+          <span class="na">chartPath</span><span class="pi">:</span> <span class="s">$(ChartPath)</span>          
+          <span class="na">k8sNamespace</span><span class="pi">:</span> <span class="s">$(K8sNamespace)</span>
+          <span class="na">kubernetesCluster</span><span class="pi">:</span> <span class="s">$(KubernetesCluster)</span>
+</pre></table></code></div></div><p>The pipeline has now 51 instead of 143 lines of code and I find it way easier to find certain parts of the code.</p><h2 id="running-the-pipeline">Running the Pipeline</h2><p>After you added your templates, run the pipeline and you will see that it works the same way as before.</p><div class="col-12 col-sm-10 aligncenter"> <a href="/assets/img/posts/2021/01/The-pipeline-works-with-the-templates.jpg"><img loading="lazy" src="/assets/img/posts/2021/01/The-pipeline-works-with-the-templates.jpg" alt="The pipeline works with the templates" /></a><p> The pipeline works with the templates</p></div><h2 id="conclusion">Conclusion</h2><p>Templates are great to simplify Azure DevOps YAML pipelines. Additionally, they are easy to reuse in multiple pipelines and help so to speed up the development time of new pipelines.</p><p>You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.</p><p>This post is part of <a href="/microservice-series-from-zero-to-hero">“Microservice Series - From Zero to Hero”</a>.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/devops/'>DevOps</a>, <a href='/categories/kubernetes/'>Kubernetes</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/azure-devops/" class="post-tag no-text-decoration" >Azure DevOps</a> <a href="/tags/ci/" class="post-tag no-text-decoration" >CI</a> <a href="/tags/yaml/" class="post-tag no-text-decoration" >YAML</a> <a href="/tags/aks/" class="post-tag no-text-decoration" >AKS</a> <a href="/tags/azure/" class="post-tag no-text-decoration" >Azure</a> <a href="/tags/helm/" class="post-tag no-text-decoration" >Helm</a> <a href="/tags/docker/" class="post-tag no-text-decoration" >Docker</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=Improve Azure DevOps YAML Pipelines with Templates - Programming With Wolfgang&url=https://www.programmingwithwolfgang.com/improve-azure-devops-pipelines-templates/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=Improve Azure DevOps YAML Pipelines with Templates - Programming With Wolfgang&u=https://www.programmingwithwolfgang.com/improve-azure-devops-pipelines-templates/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=Improve Azure DevOps YAML Pipelines with Templates - Programming With Wolfgang&url=https://www.programmingwithwolfgang.com/improve-azure-devops-pipelines-templates/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://www.programmingwithwolfgang.com/improve-azure-devops-pipelines-templates/" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/microservice-series-from-zero-to-hero/">Microservice Series - From Zero to Hero</a><li><a href="/override-appsettings-in-kubernetes/">Override Appsettings in Kubernetes</a><li><a href="/mediator-pattern-in-asp-net-core-3-1/">Mediator Pattern in ASP .NET Core 3.1</a><li><a href="/helm-getting-started/">Helm - Getting Started</a><li><a href="/blazor-server-vs-blazor-webassembly/">Blazor Server vs. Blazor WebAssembly</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/c/">C#</a> <a class="post-tag" href="/tags/azure/">Azure</a> <a class="post-tag" href="/tags/learning/">Learning</a> <a class="post-tag" href="/tags/70-532/">70-532</a> <a class="post-tag" href="/tags/certification/">Certification</a> <a class="post-tag" href="/tags/docker/">Docker</a> <a class="post-tag" href="/tags/exam/">Exam</a> <a class="post-tag" href="/tags/azure-devops/">Azure DevOps</a> <a class="post-tag" href="/tags/net-core/">NET Core</a> <a class="post-tag" href="/tags/ci/">CI</a></div></div></div><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/microservice-series-from-zero-to-hero/"><div class="card-body"> <span class="timeago small" > Dec 2, 2020 <i class="unloaded">2020-12-02T00:00:00+01:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Microservice Series - From Zero to Hero</h3><div class="text-muted small"><p> I am working as a consultant and software engineer on different projects which focus on microservice, DevOps, and process automation. Many of my consulting jobs are about explaining microservice, w...</p></div></div></a></div><div class="card"> <a href="/deploy-kubernetes-azure-devops/"><div class="card-body"> <span class="timeago small" > Jan 25 <i class="unloaded">2021-01-25T00:00:00+01:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Deploy to Azure Kubernetes Service using Azure DevOps YAML Pipelines</h3><div class="text-muted small"><p> Microservices are becoming more and more popular these days. These microservices run most of the time in Kubernetes. A goal we want to achieve with microservices is a quick and reliable deployment....</p></div></div></a></div><div class="card"> <a href="/azure-kubernetes-service-getting-started/"><div class="card-body"> <span class="timeago small" > Nov 30, 2020 <i class="unloaded">2020-11-30T00:00:00+01:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Azure Kubernetes Service - Getting Started</h3><div class="text-muted small"><p> In my eyes, the two biggest inventions in the last years are the cloud and Kubernetes (K8s). Today, I want to combine both and give you a high-level over of Kubernetes using Microsoft’s Azure Kuber...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/deploy-kubernetes-azure-devops/" class="btn btn-outline-primary"><p>Deploy to Azure Kubernetes Service using Azure DevOps YAML Pipelines</p></a> <span class="btn btn-outline-primary disabled"><p>-</p></span></div><div id="disqus" class="pt-2 pb-2"><p class="font-italic text-center text-muted small"> Comments powered by <a href="https://disqus.com/">Disqus</a>.</p></div><script src="/assets/js/lib/jquery.disqusloader.min.js"></script> <script> var options = { scriptUrl: '//programmingwithwolfgang.disqus.com/embed.js', disqusConfig: function() { this.page.url = 'https://www.programmingwithwolfgang.com/improve-azure-devops-pipelines-templates/'; this.page.identifier = '/improve-azure-devops-pipelines-templates/'; } }; $.disqusLoader('#disqus', options); </script></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://twitter.com/wolfgang_ofner">Wolfgang Ofner</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy/" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-xl-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/c/">C#</a> <a class="post-tag" href="/tags/azure/">Azure</a> <a class="post-tag" href="/tags/learning/">Learning</a> <a class="post-tag" href="/tags/70-532/">70 532</a> <a class="post-tag" href="/tags/certification/">Certification</a> <a class="post-tag" href="/tags/docker/">Docker</a> <a class="post-tag" href="/tags/exam/">Exam</a> <a class="post-tag" href="/tags/azure-devops/">Azure DevOps</a> <a class="post-tag" href="/tags/net-core/">NET Core</a> <a class="post-tag" href="/tags/ci/">CI</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://www.programmingwithwolfgang.com{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"><div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>{categories}</div><div><i class="fa fa-tag fa-fw"></i>{tags}</div></div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>' }); </script>
