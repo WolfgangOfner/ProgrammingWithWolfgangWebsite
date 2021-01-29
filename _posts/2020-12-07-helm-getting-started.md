@@ -96,6 +96,16 @@ service:
 
 Take a look at the values.yaml file and you will see that the type of the service is ClusterIP and its port is 80. This approach enables you to configure your application with changes in only one file. The same principle applies to all files inside the templates folder. 
 
+The fullnameOverride parameter is used to replace the variable customerapi.fullname which serves, for example, as name of the deployment and service.
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/12/Usage-of-the-fullnameOverride-variable.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Usage-of-the-fullnameOverride-variable.jpg" alt="Usage of the fullnameOverride variable" /></a>
+  
+  <p>
+    Usage of the fullnameOverride variable
+  </p>
+</div>
+
 ## Conclusion
 In this post, I gave a very short introduction to Helm. Helm is a package manager for Kubernetes and helps you to deploy your application including all its dependencies to Kubernetes. Helm also serves as a template engine which makes it very easy to change values.
  
