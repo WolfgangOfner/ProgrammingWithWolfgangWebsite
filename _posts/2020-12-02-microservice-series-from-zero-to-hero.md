@@ -66,7 +66,7 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Improve Azure DevOps YAML Pipelines with Templates](/improve-azure-devops-pipelines-templates)
 
-- [Manage Resources in Kubernetes](/manage-resources-kubernete)
+- [Manage Resources in Kubernetes](/manage-resources-kubernetes)
 
 
 Coming soon (in no specific order):

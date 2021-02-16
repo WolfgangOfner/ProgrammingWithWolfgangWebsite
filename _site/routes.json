@@ -1,0 +1,9 @@
+{
+    "routes": [],
+    "platformErrorOverrides": [
+      {
+        "errorType": "NotFound",
+        "serve": "/404.html"
+      }
+    ]
+  }
