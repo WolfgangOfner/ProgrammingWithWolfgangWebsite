@@ -66,6 +66,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Improve Azure DevOps YAML Pipelines with Templates](/improve-azure-devops-pipelines-templates)
 
+- [Manage Resources in Kubernetes](/manage-resources-kubernete)
+
 
 Coming soon (in no specific order):
 - Create Certificates using a Cert Manager in Kubernetes
@@ -73,7 +75,6 @@ Coming soon (in no specific order):
 - Use Ngnix as Ingress Controller
 - Automatically deploy Database changes
 - Static Code Analysis in your CI Pipeline
-- Use Templates in your CI/CD Pipeline
 - Access a Database with Managed Identities in AKS
 - Test your Application with different Infrastructure combinations in your CI Pipeline
 - Logging with Graphana Loki Stack
