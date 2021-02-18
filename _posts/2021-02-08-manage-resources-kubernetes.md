@@ -12,7 +12,7 @@ Kubernetes is a great tool but it also has a steep learning curve. Today, I want
 
 Resource requests describe how many resources, for example, CPU or RAM a node has to have. If a node doesn't satisfy the requests of the container, the container (more precisely the pod) won't be scheduled on it. If no node satisfies the request in your cluster, the container won't be scheduled at all.
 
-Resource limits describe how many resources, for example, CPU or RAM, a container can use. For example, if the resource limit is set to 512MB RAM, the pod can only use 512 MB of RAM, even if it needs more, it won't get more. This is important to prevent a pod go haywire and use all the resources of your node. Additionally, without a resource limit set, Kubernetes can't perform auto-scaling of your pods. I will describe how auto-scaling using the horizontal pod autoscaler works in my next post.
+Resource limits describe how many resources, for example, CPU or RAM, a container can use. For example, if the resource limit is set to 512MB RAM, the pod can only use 512 MB of RAM, even if it needs more, it won't get more. This is important to prevent a pod go haywire and use all the resources of your node. Additionally, without a resource limit set, Kubernetes can't perform auto-scaling of your pods. I will describe how auto-scaling using the horizontal pod autoscaler works in my next post, [Auto-scale in Kubernetes using the Horizontal Pod Autoscaler](/auto-scale-kubernetes-hpa).
 
 Pods are the smallest unit that can be created in Kubernetes. If a pod contains multiple containers, the resource requests of all containers are added up for the pod. Then Kubernetes checks where and whether it can schedule the pod. The resource limit can never be lower than the resource request. If you do so, Kubernetes won't be able to start the pod.
 
@@ -96,7 +96,7 @@ You can use kubectl or a dashboard to check if the resource values are set corre
 
 ## Conclusion
 
-Resource limits should always be set to make sure that a pod can't eat up all the resources of your Kubernetes node. Without resource limits set, Kubernetes won't be able to automatically scale your pods using the horizontal pod autoscaler. I will show in my next post, how to use it to make your application more resilient and perform better under heavy load.
+Resource limits should always be set to make sure that a pod can't eat up all the resources of your Kubernetes node. Without resource limits set, Kubernetes won't be able to automatically scale your pods using the horizontal pod autoscaler. I will show in my next post, [Auto-scale in Kubernetes using the Horizontal Pod Autoscaler](/auto-scale-kubernetes-hpa), how to use it to make your application more resilient and perform better under heavy load.
 
 Resource requests allow you to configure how many resources like CPU and RAM a node has to have available. Always make sure that you don't configure too much RAM or CPU, otherwise, your pod will never be scheduled.
 
