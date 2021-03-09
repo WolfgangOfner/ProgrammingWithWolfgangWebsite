@@ -139,41 +139,13 @@ stages:
   - job: CI_Build
     displayName: 'NuGet - Build, Pack and Test'    
     steps:
-
-    - task: BuildVersioning@0
-      displayName: 'Build Versioning'
+    - task: gitversion/setup@0
+      displayName: Install GitVersion
       inputs:
-        versionSource: 'gitversion'
-        doInstallGitVersion: true
-        GitVersionInstallerSource: 'choco'
-        GitVersionInstallerVersion: '5.0.1'
-        doUseLatestGitVersionInstallerVersion: false
-        paramAssemblyVersion: '7'
-        paramAssemblyFileVersion: '7'
-        paramAssemblyInformationalVersion: '6'
-        paramOverwriteFourthDigitWithBuildCounter: false
-        paramVersionCode: '2'
-        doAssemblyInfoAppendSuffix: false
-        doConvertAssemblyInfoToLowerCase: true
-        buildNumberVersionFormat: '3'
-        buildNumberAction: 'replace'
-        doReplaceAssemblyInfo: false
-        doReplaceNuspec: false
-        doReplaceNpm: false
-        doReplaceDotNetCore: true
-        filePatternDotNetCore: |
-          **\*.csproj
-          **\*.props
-        paramDotNetCoreVersionType: '3'
-        doReplaceAndroid: false
-        doReplaceiOS: false
-        doReplaceCustom: false
-        doShowWarningsForUnmatchedRegex: false
-        excludeFilePattern: |
-          !**/bin/**
-          !**/obj/**
-          !**/node_modules/**
-          !**/packages/**
+        versionSpec: '5.5.0'
+        
+    - task: gitversion/execute@0
+      displayName: Determine Version
 ```
 
 After the version number is calculated, I execute dotnet restore and then dotnet build on all csproj files inside the NuGet folder.

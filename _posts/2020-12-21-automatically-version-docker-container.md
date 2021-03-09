@@ -24,9 +24,125 @@ There are ways around these problems but the version number is also there to inf
 
 Semantic versioning is the most used versioning method and consists of three numbers divided by a period, for example, 1.4.35. The first number (1) indicates the major version, the second number (4) the minor version, and the last number (35) the patch version. Major version changes contain breaking changes whereas minor or patch changes are backward compatible.
 
+**As of March 2021, the originally used BuildVersioning extension stopped working. I don't know why and since the last update was years ago, I decided to use GitTools instead. This extension is constantly updated, has simpler usage and more downloads. I will leave the original post for reference at the bottom of this post.**
+
+### Install GitTools in Azure DevOps
+
+You can download the GitTools extension for free from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=gittools.gittools). To download the extension, open the page of the extension in the marketplace and click on Get it free.
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/12/Get-the-GitTools-extension.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Get-the-GitTools-extension.jpg" alt="Get the GitTools extension" /></a>
+  
+  <p>
+   Get the GitTools extension
+  </p>
+</div>
+
+This opens a new page where you can either select your Azure DevOps Services organization to install it or download the extension if you want to install it on an Azure DevOps server.
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/12/Download-the-GitTools-extension.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Download-the-GitTools-extension.jpg" alt="Download the GitTools extension" /></a>
+  
+  <p>
+   Download the GitTools extension
+  </p>
+</div>
+
+This extension automatically installs Git and then calculates the semantic version. The calculated version gets set in many different variations in different variables. On the following screenshot, you can see all available variables and how their values look like:
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/12/Available-variables-with-GitTools.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Available-variables-with-GitTools.jpg" alt="Available variables with GitTools" /></a>
+  
+  <p>
+   Available variables with GitTools
+  </p>
+</div>
+
+### Add the Build Versioning Task to the Pipeline
+
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines" target="_blank" rel="noopener noreferrer">Github</a>.
+
+Add the following two tasks as the first tasks of your job in your CI pipeline.
+
+```yaml
+- task: gitversion/setup@0
+  displayName: Install GitVersion
+  inputs:
+    versionSpec: '5.5.0'
+    
+- task: gitversion/execute@0
+  displayName: Determine Version
+```
+
+These tasks install the GitVersion tool and calculate the build number variables.
+
+Additionally, you have to add a new file called GitVersion.yml to the root folder of your repository with the following content:
+
+```yaml
+mode: Mainline
+```
+
+### Use the Semantic Version
+
+All you have to do to use the semantic version is to add the desired variable as the tag to your image name. I already have a variable for the image name and add $(GitVersion.NuGetVersionV2) as the tag:
+
+```yaml
+ImageName: 'wolfgangofner/customerapi:$(GitVersion.NuGetVersionV2)'
+```
+
+### Testing the Semantic Version
+
+Setting up the semantic version is pretty simple. Run the CI pipeline with the master branch and you will see the Build Versioning task creating a new build number. On the following screenshot, you can see that version 0.1.130 was created.
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/12/Determine-the-build-version.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Determine-the-build-version.jpg" alt="Determine the build version" /></a>
+  
+  <p>
+   Determine the build version
+  </p>
+</div>
+
+If you commit changes to the master branch and run the pipeline again, it will create version 0.1.129. If you don't have any changes, it will create 0.1.128 again. After the CI/CD pipeline is finished, the new image gets pushed to Docker Hub. There you can see the new version and the old one. 
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/12/new-vs-old-version.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/new-vs-old-version.jpg" alt="new vs old version" /></a>
+  
+  <p>
+   New vs old version
+  </p>
+</div>
+
+Having a semantic version like 0.1.128 is way more meaningful than 358 and helps users of the image identify changes easily.
+
+### Create a Version Number for Feature Branches
+
+Usually, only the master branch is used to create new versions of an application. Sometimes a developer wants to create an image to test new changes before merging the feature to the master branch. When you run the pipeline with a feature branch (every branch != master), the Build Versioning task will create a preview version. This means that you still get a semantic version but the task adds the branch name and a counter to the end of the version, for example, 0.1.131-myFeature0000.
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/12/Feature-branch-versioning.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Feature-branch-versioning.jpg" alt="Feature branch versioning" /></a>
+  
+  <p>
+   Feature branch versioning
+  </p>
+</div>
+
+This version number means that it was run for the branch named versionnumber and it was run the first time. If you commit changes and run the branch again, it will create the version 0.1.131-myFeature0001.
+
+## Conclusion
+
+DevOps is all about automating tasks and processes. A part of this automation is the versioning of your application. Today, I showed how easy it is to use the Build Versioning extension in Azure DevOps to automatically create semantic version numbers and how to add them to a Docker image.
+
+You can find the code of the whole demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero)
+
+
+**The following text is the original article about BuildVersioning**
+
+
 ### Install Build Versioning in Azure DevOps
 
-My company created a free Azure DevOps extension which you can download from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=4tecture.BuildVersioning). To download the extension, open the page of the extension in the marketplace and click on Get it free.
+My company created a free Azure DevOps extension which you can download from the [Marketplace](https://marketplace.visualstudio.com/items?itemName=gittools.gittools). To download the extension, open the page of the extension in the marketplace and click on Get it free.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/Get-the-build-versioning-extension.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Get-the-build-versioning-extension.jpg" alt="Get the build versioning extension" /></a>
