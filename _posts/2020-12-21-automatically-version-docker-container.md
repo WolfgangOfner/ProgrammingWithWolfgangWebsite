@@ -48,7 +48,7 @@ This opens a new page where you can either select your Azure DevOps Services org
   </p>
 </div>
 
-This extension automatically installs Git and then calculates the semantic version. The calculated version gets set in many different variations in different variables. On the following screenshot, you can see all available variables and how their values look like:
+This extension calculates the version sets it in many different variations in different variables. On the following screenshot, you can see all available variables and how their values look like:
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/Available-variables-with-GitTools.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Available-variables-with-GitTools.jpg" alt="Available variables with GitTools" /></a>

@@ -70,6 +70,9 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Auto-scale in Kubernetes using the Horizontal Pod Autoscaler](/auto-scale-kubernetes-hpa)
 
+- [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer)
+
+
 Coming soon (in no specific order):
 - Create Certificates using a Cert Manager in Kubernetes
 - Deploy every Pull Request to Kubernetes
