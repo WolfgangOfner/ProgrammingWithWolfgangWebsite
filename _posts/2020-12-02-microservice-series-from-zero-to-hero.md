@@ -72,12 +72,13 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer)
 
+- [Automate Database Deployments](/automate-database-deployments)
+
 
 Coming soon (in no specific order):
 - Create Certificates using a Cert Manager in Kubernetes
 - Deploy every Pull Request to Kubernetes
 - Use Ngnix as Ingress Controller
-- Automatically deploy Database changes
 - Static Code Analysis in your CI Pipeline
 - Access a Database with Managed Identities in AKS
 - Test your Application with different Infrastructure combinations in your CI Pipeline
