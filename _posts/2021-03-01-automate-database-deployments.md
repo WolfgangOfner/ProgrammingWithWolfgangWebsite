@@ -80,6 +80,6 @@ Since the database changes are deployed, it is very easy to integrate this deplo
 
 There are many ways to automatically apply database changes but you should strive for a solution that gives you full control over the execution of the changes. Entity Framework and NuGet packages like the FluentMigrator don't give you these options and therefore shouldn't be used. I recommend using SQS Server Data Tools (SSDT) to easily apply your schema changes or even execute SQL scripts.
 
-In my next post, I will show you how to apply changes using SSDT locally.
+["In my next post"](/automatically-deploy-database-changes), I will show you how to apply changes using SSDT locally.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

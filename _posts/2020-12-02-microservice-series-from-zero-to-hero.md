@@ -74,6 +74,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Automate Database Deployments](/automate-database-deployments)
 
+- [Automatically deploy Database Changes with SSDT](/automatically-deploy-database-changes)
+
 
 Coming soon (in no specific order):
 - Create Certificates using a Cert Manager in Kubernetes
