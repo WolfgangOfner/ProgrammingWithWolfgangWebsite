@@ -36,6 +36,16 @@ This opens a new window where you can select Helm or Docker-compose. Select Kube
   </p>
 </div>
 
+If you don't have Kubernetes/Helm as an option, make sure that you have the Visual Studio Tools for Kubernetes installed.
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/12/Add-the-Visual-Studio-Tools-for-Kubernetes.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Add-the-Visual-Studio-Tools-for-Kubernetes.jpg" alt="Add the Visual Studio Tools for Kubernetes" /></a>
+  
+  <p>
+    Add the Visual Studio Tools for Kubernetes
+  </p>
+</div>
+
 Visual Studio creates a new folder called charts and places a folder inside this charts folder with the name of your project. It's important to only use lowercase because Kubernetes can process only lowercase names.
 
 <div class="col-12 col-sm-10 aligncenter">
