@@ -3,7 +3,7 @@ title: About
 icon: fas fa-info
 order: 4
 ---
-I studied Software architecture and design in Austria and Canada. While studying I was working for the Austrian Federal Computing Center as .Net Software Engineer. After finishing my Masters, I moved to  Switzerland and work there as Solution Architect. In various projects, I learned the advantages of clean code and TDD and focused on ASP.NET MVC, Azure and software architecture. Today, I am working for 4tecture as a Senior Consultant for Azure, DevOps and .NET solutions at 4tecture GmbH. I am mostly passionate about software architecture, cloud technologies and DevOps.
+I studied Software architecture and design in Austria and Canada. While studying I was working for the Austrian Federal Computing Center as .Net Software Engineer. After finishing my Masters, I moved to  Switzerland and work there as Solution Architect. In various projects, I learned the advantages of clean code and TDD and focused on ASP.NET MVC, Azure and software architecture. Today, I am working  as a Senior Consultant for Azure, DevOps and .NET solutions in Switzerland. I am mostly passionate about software architecture, cloud technologies and DevOps.
 
 ## My goals
 

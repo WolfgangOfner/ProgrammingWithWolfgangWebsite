@@ -1,19 +1,19 @@
 ---
-title: Repository Pattern in .Net Core
+title: Repository Pattern in .NET Core
 date: 2020-06-04T23:08:45+02:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
 tags: [NET Core, 'C#', Entity Framework Core]
 ---
-A couple of years ago, I wrote about the <a href="/repository-and-unit-of-work-pattern/" target="_blank" rel="noopener noreferrer">Repository and Unit of Work pattern</a>. Although this post is quite old and not even .NET Core, I get many questions about it. Since the writing of the post, .Net core matured and I learned a lot about software development. Therefore, I wouldn&#8217;t implement the code as I did back then. Today, I will write about implementing .the repository pattern in .Net core
+A couple of years ago, I wrote about the <a href="/repository-and-unit-of-work-pattern/" target="_blank" rel="noopener noreferrer">Repository and Unit of Work pattern</a>. Although this post is quite old and not even .NET Core, I get many questions about it. Since the writing of the post, .NET core matured and I learned a lot about software development. Therefore, I wouldn&#8217;t implement the code as I did back then. Today, I will write about implementing .the repository pattern in .NET core
 
-## Why I am changing the Repository Pattern in .Net Core
+## Why I am changing the Repository Pattern in .NET Core
 
 Entity Framework Core already serves as unit of work. Therefore you don&#8217;t have to implement it yourself. This makes your code a lot simpler and easier to understand.
 
-## The Repository Pattern in .Net Core
+## The Repository Pattern in .NET Core
 
-For the demo, I am creating a simple 3-tier application consisting of controller, services, and repositories. The repositories will be injected into the services using the built-in dependency injection. You can find the code for the demo on <a href="https://github.com/WolfgangOfner/.NetCoreRepositoryAndUnitOfWorkPattern" target="_blank" rel="noopener noreferrer">Github</a>.
+For the demo, I am creating a simple 3-tier application consisting of controller, services, and repositories. The repositories will be injected into the services using the built-in dependency injection. You can find the code for the demo on <a href="https://github.com/WolfgangOfner/.netCoreRepositoryAndUnitOfWorkPattern" target="_blank" rel="noopener noreferrer">Github</a>.
 
 In the data project, I have my models and repositories. I create a generic repository that takes a class and offers methods like get, add, or update.
 
@@ -123,30 +123,25 @@ The first line registers the generic attributes. This means if you want to use i
 I implement two services, the CustomerService and the ProductService. Each service gets injected a repository. The ProductServices uses the IProductRepository and the CustomerService uses the ICustomerRepository;. Inside the services, you can implement whatever business logic your application needs. I implemented only simple calls to the repository but you could also have complex calculations and several repository calls in a single method.
 
 ```csharp  
-public class CustomerService : ICustomerService  
-{  
-private readonly ICustomerRepository _customerRepository;
+public class ProductService : IProductService
+{
+    private readonly IProductRepository _productRepository;
 
-public CustomerService(ICustomerRepository customerRepository)  
-{  
-_customerRepository = customerRepository;  
-}
+    public ProductService(IProductRepository productRepository)
+    {
+        _productRepository = productRepository;
+    }
 
-public async Task<List<Customer>> GetAllCustomersAsync()  
-{  
-return await _customerRepository.GetAllCustomersAsync();  
-}
+    public async Task<Product> GetProductByIdAsync(int id)
+    {
+        return await _productRepository.GetProductByIdAsync(id);
+    }
 
-public async Task<Customer> GetCustomerByIdAsync(int id)  
-{  
-return await _customerRepository.GetCustomerByIdAsync(id);  
-}
-
-public async Task<Customer> AddCustomerAsync(Customer newCustomer)  
-{  
-return await _customerRepository.AddAsync(newCustomer);  
-}  
-}  
+    public async Task<Product> AddProductAsync(Product product)
+    {
+        return await _productRepository.AddAsync(product);
+    }
+} 
 ```
 
 ```csharp  
@@ -246,7 +241,7 @@ public class ProductController : Controller
 When you call the create customer action, a customer object in JSON should be returned.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/06/Test-the-creation-of-a-customer.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Test-the-creation-of-a-customer.jpg" alt="Test the creation of a customer Repository Pattern in .Net Core " /></a>
+  <a href="/assets/img/posts/2020/06/Test-the-creation-of-a-customer.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/Test-the-creation-of-a-customer.jpg" alt="Test the creation of a customer Repository Pattern in .NET Core " /></a>
   
   <p>
     Test the creation of a customer
