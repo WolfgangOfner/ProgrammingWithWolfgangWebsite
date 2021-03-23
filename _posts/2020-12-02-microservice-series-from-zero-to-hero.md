@@ -76,6 +76,9 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Automatically deploy Database Changes with SSDT](/automatically-deploy-database-changes)
 
+- [Automatically Deploy your Database with Dacpac Packages using Linux and Azure DevOps](/deploy-dacpac-linux-azure-devops)
+
+
 
 Coming soon (in no specific order):
 - Create Certificates using a Cert Manager in Kubernetes

@@ -6,11 +6,11 @@ categories: [DevOps]
 tags: [DevOps, SSDT, SQL]
 ---
 
-In my last post, I talked about deploying database changes automatically. Today, I will show how to use SSDT (SQS Server Data Tools) to generate a Dacpac package and how to deploy it to your SQL server.
+[In my last post](/automate-database-deployments), I talked about deploying database changes automatically. Today, I will show how to use SSDT (SQS Server Data Tools) to generate a Dacpac package and how to deploy it to your SQL server.
 
 ## Prepare your Environment
 
-Before you can get started, you have to download the custom SSDT Tools from [Github](https://github.com/4tecture/SSDTDataMigration/releases). These custom tools are necessary to be able to open the SSDT project file (*.sqlproj) with Visual Studio.
+Before you can get started, you have to download the custom SSDT Tools from [Github](https://github.com/4tecture/SSDTDataMigration/releases). These custom tools are an extension of the [MSBuild.Sdk.SqlProj](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/) project and are necessary to be able to open the SSDT project file (*.sqlproj) with Visual Studio.
 
 ## Getting to know the SSDT Project Structure
 
@@ -181,7 +181,7 @@ If you don't use an SQL Server 2019 then you have to configure your target platf
 
 SSDT offers a simple solution to automating your database deployments. It automatically checks the schema on the deployed database and compares it with the schema in your SSDT project. If there is a change, these changes are applied. This allows for fast changes and even allows for setting up environments for new developers fast and easily. The demo was very simple but should give you enough knowledge to get started.
 
-In my next post, I will show how to build the SSDT project in your CI/CD pipeline and how to deploy it to an Azure SQL Database.
+[In my next post](/deploy-dacpac-linux-azure-devops), I will show how to build the SSDT project in your CI/CD pipeline and how to deploy it to an Azure SQL Database.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ssdt-demo" target="_blank" rel="noopener noreferrer">Github</a>.
 
