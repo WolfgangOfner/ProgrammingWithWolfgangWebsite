@@ -296,7 +296,7 @@ There are a couple of important principles in software development. My favorite 
 
 ### Complexity of methods
 
-In the previous section, I analyzed that the controllers are way too complicated. In this section, I will look into a method and try to find the service and repository layer (if they exist) and analyze their complexity. An online store needs products and without knowing anything about online shops, I would guess that this is a simple operation and therefore the method should be simple. Unfortunately, that's not the case in NopCommerce. NDepend analyzed a cyclomatic complexity of 53 which is way higher than the maximum recommended 7. The method has almost 200 lines of code and looks as follows:
+In the previous section, I analyzed that the controllers are way too complicated. In this section, I will look into a method and try to find the service and repository layer (if they exist) and analyze their complexity. An online store needs customers and without knowing anything about online shops, I would guess that the creation of one is a simple operation and therefore the method should be simple. Unfortunately, that's not the case in NopCommerce. NDepend analyzed a cyclomatic complexity of 53 which is way higher than the maximum recommended 7. The method has almost 200 lines of code and looks as follows:
 
 ```csharp
 [HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
