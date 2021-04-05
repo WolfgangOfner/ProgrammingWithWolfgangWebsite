@@ -6,7 +6,7 @@ categories: [Kubernetes, Cloud]
 tags: [AKS, Kubernetes, Docker, YAML, Azure]
 ---
 
-In my eyes, the two biggest inventions in the last years are the cloud and Kubernetes (K8s). Today, I want to combine both and give you a high-level over of Kubernetes using Microsoft's Azure Kubernetes Service (AKS). At the end of this post, you will know why Kubernetes is awesome and how to deploy your first application and even load balance it.
+In my eyes, the two biggest inventions in the last years are the cloud and Kubernetes (K8s). Today, I want to combine both and give you a high-level overview of Kubernetes using Microsoft's Azure Kubernetes Service (AKS). At the end of this post, you will know why Kubernetes is awesome and how to deploy your first application and even load balance it.
 
 ## Introduction to Kubernetes
 
@@ -22,7 +22,7 @@ Kubernetes can be configured with yaml files, which means that you can store all
 
 ### Service Discovery and Load Balancing
 
-Load balancing and especially service discovery has always been complicated and required some skills to set up. Both can be achieved in Kubernetes with a Service. This service takes all requests for an application (often a microservice) and load balances this request to all available pods. Further down, I will show how to deploy an application to three pods and use the Service to load balance between these pods.
+Load balancing and especially service discovery has always been complicated and required some skills to set up. Both can be achieved in Kubernetes with a Service. This service takes all requests for an application (often a microservice) and load balances this request to an available pods. Further down, I will show how to deploy an application with three pods and use the Service to load balance between those pods.
 
 ### Self-healing
 
@@ -52,8 +52,6 @@ Azure Kubernetes Service is a managed service for Kubernetes. In a simplified wa
 Microsoft did a lot of work on AKS in the last year and greatly improved the deployment of a new Azure Kubernetes Cluster. 
 
 In the Azure Portal, search for aks and select Kubernetes service.
-
-Save the changes and run the CI pipeline. After the build is finished, you will see the Code Coverage tab in the summary overview where you can see the coverage of each of your projects.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/11/Search-for-aks.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/Search-for-aks.jpg" alt="Search for aks" /></a>
@@ -101,7 +99,7 @@ az aks get-credentials --resource-group MicroserviceDemo --name microservice-aks
 ```
 Perhaps, you have to change the resource group or name of your aks cluster, depending on what you entered during the deployment.
 
-Azure is not deploying the Kubernetes dashboard anymore. As an alternative, I am using [Octant](https://github.com/vmware-tanzu/octant) which is an open-source tool from VMWare. If you are on windows, you can install it using Chocolatey.
+Azure is not deploying the Kubernetes dashboard anymore. As an alternative, I am using [Octant](https://github.com/vmware-tanzu/octant) which is an open-source tool from VMware. If you are on windows, you can install it using Chocolatey.
 
 ```powershell  
 choco install octant --confirm
@@ -171,7 +169,7 @@ Save this yaml file, for example, as demo.yml and run the following command:
 kubectl apply -f demo.yml
 ```
 
-If you don't have kubectl installed, installed it with the following Powershell command:
+If you don't have kubectl installed, install it with the following Powershell command:
 
 ```powershell  
 Install-Script -Name 'install-kubectl' -Scope CurrentUser -Force
@@ -198,7 +196,7 @@ You can also see the external IP of your Service there. Remember this IP for lat
   </p>
 </div>
 
-Lastly, see the three pods running.
+Lastly, click on the deployment and you can see the three pods running.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/11/All-pods-are-running.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/All-pods-are-running.jpg" alt="All pods are running" /></a>
@@ -222,7 +220,7 @@ Open the URL from the Service and you will see a Swagger UI. This application is
   </p>
 </div>
 
-If you refresh the page a couple of times, you will see different names in the headline. 
+If you refresh the page a couple of times, you will see different names in the headline due to the load balancing hitting different pods. 
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/11/Different-names-due-to-the-load-balancing.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/Different-names-due-to-the-load-balancing.jpg" alt="Different names due to the load balancing" /></a>
