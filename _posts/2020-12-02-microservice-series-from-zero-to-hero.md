@@ -78,6 +78,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Automatically Deploy your Database with Dacpac Packages using Linux and Azure DevOps](/deploy-dacpac-linux-azure-devops)
 
+- [Use a Database with a Microservice running in Kubernetes](/microservice-with-database-kubernetes)
+
 
 
 Coming soon (in no specific order):
