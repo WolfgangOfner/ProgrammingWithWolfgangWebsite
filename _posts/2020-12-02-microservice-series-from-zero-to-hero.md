@@ -80,6 +80,7 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Use a Database with a Microservice running in Kubernetes](/microservice-with-database-kubernetes)
 
+- [Readiness and Liveness Probes in Kubernetes](/readiness-health-probes-kubernetes)
 
 
 Coming soon (in no specific order):
