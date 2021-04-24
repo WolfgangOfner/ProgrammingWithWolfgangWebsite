@@ -82,6 +82,9 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Readiness and Liveness Probes in Kubernetes](/readiness-health-probes-kubernetes)
 
+- [Use Azure Container Registry in Kubernetes](/azure-container-registry-kubernetes)
+
+
 
 Coming soon (in no specific order):
 - Create Certificates using a Cert Manager in Kubernetes
