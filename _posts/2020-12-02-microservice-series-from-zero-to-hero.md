@@ -84,9 +84,13 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Use Azure Container Registry in Kubernetes](/azure-container-registry-kubernetes)
 
+- [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue)
+
+
 
 
 Coming soon (in no specific order):
+- Use Azure Function to process messages on a queue
 - Create Certificates using a Cert Manager in Kubernetes
 - Deploy every Pull Request to Kubernetes
 - Use Ngnix as Ingress Controller
