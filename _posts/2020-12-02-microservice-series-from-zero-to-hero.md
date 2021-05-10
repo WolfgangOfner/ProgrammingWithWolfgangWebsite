@@ -88,6 +88,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Use Azure Functions to Process Queue Messages](/azure-functions-process-queue-messages)
 
+- [Deploy Azure Functions with Azure DevOps YAML Pipelines](/deploy-azure-functions-azure-devops-pipelines)
+
 
 Coming soon (in no specific order):
 - Create Certificates using a Cert Manager in Kubernetes
