@@ -166,7 +166,7 @@ Next, update a customer name, for example, from Wolfgang Ofner to Name Changed. 
 
 ## Conclusion
 
-Deploying Azure Functions with Azure DevOps only takes a couple of lines of code and should never be done manually. Additionally, it is very easy to update the existing settings wihtout exposing any sensitve data. In my next post, I will show you how to deploy an Azure Function inside a Docker container.
+Deploying Azure Functions with Azure DevOps only takes a couple of lines of code and should never be done manually. Additionally, it is very easy to update the existing settings wihtout exposing any sensitve data. In my next post, [Deploy a Docker Container to Azure Functions using an Azure DevOps YAML Pipeline](/deploy-docker-container-azure-functions), I will show you how to deploy an Azure Function inside a Docker container.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 

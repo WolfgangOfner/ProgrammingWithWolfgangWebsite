@@ -691,11 +691,34 @@ This open source system has gained popularity over the past few years for good r
   * Use Prometheus with Kubernetes and examine exporters you can use with containers
   * Convert data from other monitoring systems into the Prometheus format
 
-### Design Patterns
+### <a href="https://www.amazon.com/Effective-DevOps-Building-Collaboration-Affinity/dp/1491926309/ref=sr_1_2?dchild=1&keywords=effective+devops&qid=1621273992&sr=8-2" target="_blank" rel="noopener noreferrer">Effective DevOps: Building a Culture of Collaboration, Affinity, and Tooling at Scale></a>
+
+Some companies think that adopting devops means bringing in specialists or a host of new tools. With this practical guide, you’ll learn why devops is a professional and cultural movement that calls for change from inside your organization. Authors Ryn Daniels and Jennifer Davis provide several approaches for improving collaboration within teams, creating affinity among teams, promoting efficient tool usage in your company, and scaling up what works throughout your organization’s inflection points.
+
+Devops stresses iterative efforts to break down information silos, monitor relationships, and repair misunderstandings that arise between and within teams in your organization. By applying the actionable strategies in this book, you can make sustainable changes in your environment regardless of your level within your organization.
+
+- Explore the foundations of devops and learn the four pillars of effective devops
+- Encourage collaboration to help individuals work together and build durable and long-lasting relationships
+- Create affinity among teams while balancing differing goals or metrics
+- Accelerate cultural direction by selecting tools and workflows that complement your organization
+- Troubleshoot common problems and misunderstandings that can arise throughout the organizational lifecycle
+- Learn from case studies from organizations and individuals to help inform your own devops journey
+
+### <a href="https://www.amazon.com/Software-Architect-Elevator-Redefining-Architects/dp/1492077542/ref=sr_1_1?crid=32OA2FXTGZGNT&dchild=1&keywords=the+software+architect+elevator&qid=1621274067&sprefix=the+software+arc%2Caps%2C265&sr=8-1" target="_blank" rel="noopener noreferrer">The Software Architect Elevator: Redefining the Architect's Role in the Digital Enterprise></a>
+
+As the digital economy changes the rules of the game for enterprises, the role of software and IT architects is also transforming. Rather than focus on technical decisions alone, architects and senior technologists need to combine organizational and technical knowledge to effect change in their company’s structure and processes. To accomplish that, they need to connect the IT engine room to the penthouse, where the business strategy is defined.
+
+In this guide, author Gregor Hohpe shares real-world advice and hard-learned lessons from actual IT transformations. His anecdotes help architects, senior developers, and other IT professionals prepare for a more complex but rewarding role in the enterprise.
+
+This book is ideal for:
+
+- Software architects and senior developers looking to shape the company’s technology direction or assist in an organizational transformation
+- Enterprise architects and senior technologists searching for practical advice on how to navigate technical and organizational topics
+- CTOs and senior technical architects who are devising an IT strategy that impacts the way the organization works
+- IT managers who want to learn what’s worked and what hasn’t in large-scale transformation
+
 
 &nbsp;
-
-### 
 
 &nbsp;
 

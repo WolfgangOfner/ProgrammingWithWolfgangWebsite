@@ -24,7 +24,7 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Dockerize an ASP .NET Core Microservice and RabbitMQ](/dockerize-an-asp-net-core-microservice-and-rabbitmq)
 
--  [ASP .NET Core with HTTPS in Docker](/asp-net-core-with-https-in-docker)
+- [ASP .NET Core with HTTPS in Docker](/asp-net-core-with-https-in-docker)
 
 - [Set up Docker-Compose for ASP .NET Core 3.1 Microservices](/set-up-docker-compose-for-asp-net-core-3-1-microservices)
 
@@ -89,6 +89,9 @@ Therefore, I decided to create this service where I start with the theory of mic
 - [Use Azure Functions to Process Queue Messages](/azure-functions-process-queue-messages)
 
 - [Deploy Azure Functions with Azure DevOps YAML Pipelines](/deploy-azure-functions-azure-devops-pipelines)
+
+- [Deploy a Docker Container to Azure Functions using an Azure DevOps YAML Pipeline](/deploy-docker-container-azure-functions)
+
 
 
 Coming soon (in no specific order):
