@@ -8,7 +8,7 @@
 # jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
 # --------------------------
 
-title: Programming With Wolfgang                      
+title: Programming With Wolfgang, focusing on Azure K8s and DevOps                      
 
 tagline: Let's talk programming 
 
@@ -19,7 +19,7 @@ url: 'https://www.programmingwithwolfgang.com'
 
 author: Wolfgang Ofner
 
-avatar: /assets/img/author/wolfgang-small.jpg   
+avatar: /assets/img/author/author-wolfgang-ofner.jpg   
 
 github:
   username: wolfgangofner             
