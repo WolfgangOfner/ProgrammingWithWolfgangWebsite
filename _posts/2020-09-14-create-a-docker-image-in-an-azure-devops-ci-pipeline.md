@@ -5,6 +5,8 @@ author: Wolfgang Ofner
 layout: post
 categories: [DevOps, Docker]
 tags: [Azure DevOps, CI, DevOps, Docker, Docker Hub]
+description: This post shows how to build a Docker image in an Azure DevOps CI pipeline and how to push the created image to DockerHub.
+
 ---
 <a href="/add-docker-to-a-asp-net-core-microservice/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to build a .NET Core Microservice inside a Docker container. Today, I want to build this microservice in an Azure DevOps CI pipeline and push the image to Docker Hub.
 

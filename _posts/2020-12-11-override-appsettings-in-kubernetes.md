@@ -4,6 +4,7 @@ date: 2020-12-11
 author: Wolfgang Ofner
 categories: [Kubernetes, Docker]
 tags: [Helm, AKS, Microservice, Kubernetes]
+description: Nowadays, especially with microservices, we have many different environments and often create them dynamically though. Today, I will show you you can dynamically override appsettings using Helm.
 ---
 
 Changing configs was difficult in the past. In .NET we had to do a web.config transformation and we also had to have a web.config file for each environment. It was ok since there were usually only a couple of environments. This got improved a lot with .NET Core and its appsettings.json file which could override files depending on the environment. 

@@ -4,6 +4,7 @@ date: 2018-11-18T16:28:12+01:00
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [TFS, Witadmin, Workflow]
+description: Changing the workflow of a work item in TFS is pretty simple, though for me it was hard to get started due to the complicated documentation.
 ---
 Changing the workflow of a work item in TFS is pretty simple, though for me it was hard to get started due to the complicated documentation. In this post, I will talk about adding new states to a work item, editing the transitions of the states and lastly about editing the process config template.
 

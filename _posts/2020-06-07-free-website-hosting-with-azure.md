@@ -4,6 +4,7 @@ date: 2020-06-07T22:53:43+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Azure Functions, Azure Static Web Apps, 'C#', Cosmos DB, React]
+description: Azure Static Web Apps is a great tool to host your application for free around the globe. It integrates with GitHub actions and builds your website automatically for you.
 ---
 <a href="/azure-static-web-apps/" target="_blank" rel="noopener noreferrer">Last week, I talked about hosting your static website with Azure Static Web Apps.</a> Today, I will extend this example using a free Cosmos DB for the website data and Azure Functions to retrieve them. This approach will give you free website hosting and global distribution of your website.  
 You can find the demo code of the Azure Static Web App <a href="https://github.com/WolfgangOfner/React-Azure-Static-Web-App" target="_blank" rel="noopener noreferrer">here</a> and the code for the Azure Functions <a href="https://github.com/WolfgangOfner/AzureFunctions-CosmosDb" target="_blank" rel="noopener noreferrer">here</a>.

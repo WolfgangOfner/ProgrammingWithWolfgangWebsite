@@ -4,6 +4,7 @@ date: 2017-10-31T12:31:00+01:00
 author: Wolfgang Ofner
 categories: [Miscellaneous]
 tags: [Continous Deployment, IIS, PowerShell]
+description: My PowerShell script threw an error while stopping the WebAppPool. In this post I will show you how to solve this Problem.
 ---
 Today I was working on a new Continuous Development task for one of my Projects. I was testing if it works and got an error message. After Fixing the error I rerun the deployment and got an error in an earlier step where I use a PowerShell script to stop the Default WebAppPool. It was strange because the script worked fine before. I found out that the problem was that the World Wide Web Publishing Service wasn&#8217;t running. In this post, I will tell you how to fix this problem.
 

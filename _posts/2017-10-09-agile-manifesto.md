@@ -4,6 +4,7 @@ date: 2017-10-09T16:06:20+02:00
 author: Wolfgang Ofner
 categories: [Miscellaneous]
 tags: [Agile, Scrum]
+description: The Agile Manifesto is a guideline how to collaborate in agile projects. The goal is to achieve better results by working together...
 ---
 The Agile Manifesto is a guideline how to collaborate in agile projects. The goal is to achieve better results by working together.
 

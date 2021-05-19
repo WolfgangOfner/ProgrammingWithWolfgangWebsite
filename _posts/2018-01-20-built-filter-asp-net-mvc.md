@@ -4,6 +4,7 @@ date: 2018-01-20T16:53:11+01:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [Action, Attribute, Controller, filter, MVC]
+description: Filters provide a simple and elegant way to implement cross-cutting concerns in your ASP.NET MVC application. Filter achieve this by injecting code into the request processing. Examples of cross-cutting concerns are logging and authorization.
 ---
 Filters provide a simple and elegant way to implement cross-cutting concerns in your ASP.NET MVC application. Filter achieve this by injecting code into the request processing. Examples of cross-cutting concerns are logging and authorization.
 

@@ -4,6 +4,7 @@ date: 2021-01-21
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [Azure DevOps, CI]
+description: DevOps is all about automation and making the process faster and more reliable. Adding approvals in the classic (old) editor in Azure DevOps is pretty simple but it's not as straightforward with the new YAML pipelines.
 ---
 
 DevOps is all about automation and making the process faster and more reliable. Sometimes a human must check a change or feature before it is deployed. This could be someone from QA or even marketing checking if the new design is as they wanted. Adding approvals in the classic (old) editor in Azure DevOps is pretty simple but it's not as straightforward with the new YAML pipelines.

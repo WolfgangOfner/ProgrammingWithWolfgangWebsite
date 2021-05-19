@@ -4,6 +4,7 @@ date: 2021-01-04
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [Azure DevOps, NuGet, CI]
+description: In this post, I will show how to create a private NuGet feed in Azure DevOps and how to automatically publish your NuGet packages there using an Azure DevOps pipeline.
 ---
 
 [In my last posts](/create-nuget-azure-devops), I showed how to create NuGet packages in Azure DevOps pipelines. To easily distribute them, you have to publish these NuGet packages to a NuGet feed. This can be done by using nuget.org  which is publicly accessible or you can use a private one in Azure DevOps.

@@ -4,6 +4,7 @@ date: 2017-10-12T21:26:50+02:00
 author: Wolfgang Ofner
 categories: [Miscellaneous]
 tags: [Agile, Scrum]
+description: Scrum knows only three different roles the Product Owner, the Scrum Master and the development team. In this post I will explain this rolls.
 ---
 Scrum knows only three different roles: the Product Owner, the Scrum Master and the development team.
 

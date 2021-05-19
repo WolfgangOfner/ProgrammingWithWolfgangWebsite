@@ -4,6 +4,7 @@ date: 2020-12-21
 author: Wolfgang Ofner
 categories: [DevOps, Docker]
 tags: [Azure DevOps, Docker, CI]
+description: This post will show you how to add semantic versioning to your CI/CD pipeline in Azure DevOps to automatically create a meaningful version for your Docker images.
 ---
 
 Most examples of building Docker containers just use the latest tag to deploy or Docker images. This is simple but shouldn't be done in a production environment. 

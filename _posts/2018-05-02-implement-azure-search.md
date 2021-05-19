@@ -4,6 +4,7 @@ date: 2018-05-02T17:05:35+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [70-532, Azure, Certification, Exam, Learning]
+description: Azure Search is a Platform as a Service offering that gives developers APIs needed to add search functionality to their applications. Primarily this means full-text search. The typical example is how Google and Bing search works. They don't care what tense you use, it spell checks for you, and finds similar topics.
 ---
 Azure Search is a Platform as a Service offering that gives developers APIs needed to add search functionality to their applications. Primarily this means full-text search. The typical example is how Google and Bing search works. They don&#8217;t care what tense you use, it spell checks for you, and finds similar topics based on the search term. It also offers term highlighting and can ignore noise words, as well as many other search-related features. Applying these features inside your application can give your users a rich and comforting search experience.
 

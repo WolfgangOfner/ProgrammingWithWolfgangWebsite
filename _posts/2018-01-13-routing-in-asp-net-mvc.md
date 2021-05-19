@@ -4,6 +4,7 @@ date: 2018-01-13T15:34:13+01:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [MVC, Routing]
+description: Routing in ASP.NET MVC can be a really complex topic. In this post, I want to present the most used URL Patterns and explain how they work.
 ---
 Routing in ASP.NET MVC can be a really complex topic. In this post, I want to present the most used URL Patterns and explain how they work.
 

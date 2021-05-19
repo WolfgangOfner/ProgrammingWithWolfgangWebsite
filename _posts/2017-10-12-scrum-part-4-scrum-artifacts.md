@@ -4,6 +4,7 @@ date: 2017-10-12T21:43:36+02:00
 author: Wolfgang Ofner
 categories: [Miscellaneous]
 tags: [Agile, Scrum]
+description: Scrum has a set of predefined scrum artifacts. In this post I will give you an overview of the and talk about my own experience.
 ---
 Scrum has a set of predefined Scrum artifacts. In this post, I will give you an overview of the different roles and talk about my own experience.
 

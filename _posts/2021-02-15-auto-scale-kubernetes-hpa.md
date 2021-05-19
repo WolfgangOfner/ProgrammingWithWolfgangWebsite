@@ -4,6 +4,7 @@ date: 2021-02-15
 author: Wolfgang Ofner
 categories: [Kubernetes, DevOps]
 tags: [AKS, Helm, Kubernetes, YAML, Azure]
+description: The Horizontal Pod Autoscaler (hpa) can automatically scale your application out and in which helps you to offer a performant application and minimize your costs at the same time.
 ---
 
 Running a performant, resilient application in the pre-cloud era was hard. Especially with unpredictable user traffic, it was often necessary to use more hardware than needed, just to make sure the application can handle an increased load. Kubernetes makes our life a lot easier and can automatically scale your application out and in, depending on the usage of your application. 

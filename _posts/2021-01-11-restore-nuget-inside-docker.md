@@ -4,6 +4,7 @@ date: 2021-01-11
 author: Wolfgang Ofner
 categories: [Docker, DevOps]
 tags: [Azure DevOps, Docker, NuGet, CI]
+description: This post will show you how to create an access token for your private Azure DevOps NuGet feed and how to pass it to your Dockerfile to build Docker images.
 ---
 
 [In my last posts](/publish-internal-nuget-feed), I created a private NuGet feed and automatically uploaded a NuGet package with my Azure DevOps pipeline. Using Visual Studio to restore the NuGet package from the private feed works fine because my user has access to the feed. When I try to restore the package when building a Docker image, it will crash with a 401 Unauthorized error.

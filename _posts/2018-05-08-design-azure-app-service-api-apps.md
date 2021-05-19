@@ -4,6 +4,7 @@ date: 2018-05-08T22:07:41+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [70-532, Azure, Certification, Exam, Learning]
+description: Azure API Apps provide a quick and easy way to create and consume scalable RESTful APIs, using the language of your choice. The Azure portal helps you to enable CORS to support access to your API from any client and Swagger support makes generating client code to use your API simple.
 ---
 Azure API Apps provide a quick and easy way to create and consume scalable RESTful APIs, using the language of your choice. The Azure portal helps you to enable CORS to support access to your API from any client and Swagger support makes generating client code to use your API simple.
 

@@ -4,6 +4,8 @@ date: 2017-10-12T21:15:13+02:00
 author: Wolfgang Ofner
 categories: [Miscellaneous]
 tags: [Agile, Scrum]
+description: Scrum is a framework on for how to manage work. It might be incomplete neither does it solve the problems for you nor does it tell you how to write your...
+
 ---
 As already mentioned, Scrum is a framework for how to manage work. It might be incomplete and neither does it solve the problems for you nor does it tell you how to write your code. Scrum only gives guidance on how to solve problems.
 

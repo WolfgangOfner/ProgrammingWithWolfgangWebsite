@@ -4,6 +4,7 @@ date: 2021-01-18
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [Azure DevOps, NuGet, CI]
+description: If you want to share your NuGet packages, you should automatically upload them using an Azure DevOps pipeline.
 ---
 
 [In my last posts](/publish-internal-nuget-feed), I published my NuGet package to a private NuGet feed. This is a good solution if you want to use your NuGet packages only internally. If you want to share them, you need a public NuGet feed. The by far biggest one (also the default feed) is nuget.org. 

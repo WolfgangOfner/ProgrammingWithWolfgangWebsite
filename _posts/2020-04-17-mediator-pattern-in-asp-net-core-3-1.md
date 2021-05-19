@@ -4,6 +4,7 @@ date: 2020-04-17T14:05:38+02:00
 author: Wolfgang Ofner
 categories: [Design Pattern, ASP.NET]  
 tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, Mediator, MediatR, Microservice, RabbitMQ, Swagger]
+description: The mediator pattern is a behavioral design pattern that helps to reduce chaotic dependencies between objects by coordinating the communication.
 ---
 The mediator pattern is a behavioral design pattern that helps to reduce chaotic dependencies between objects. The main goal is to disallow direct communication between the objects and instead force them to communicate only via the mediator.
 

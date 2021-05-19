@@ -4,6 +4,7 @@ date: 2020-06-29T09:20:00+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET, Frontend]
 tags: [Blazor Server, Blazor WebAssembly, 'C#', WASM, Blazor]
+description: Today, I will talk about the differences, when to use what version, and everything else you need to know about Blazor Server vs. Blazor WebAssembly.
 ---
 Blazor Server was release with .NET Core 3.0 in September 2019 and Blazor WebAssembly (WASM) was released in May 2020. Today, I will talk about the differences, when to use what version, and everything else you need to know about Blazor Server vs. Blazor WebAssembly.
 

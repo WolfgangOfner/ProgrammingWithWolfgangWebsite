@@ -4,6 +4,7 @@ date: 2018-06-28T22:20:26+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [70-532, Azure, Certification, Exam, Learning]
+description: An Azure Logic App is a fully managed iPaaS (integration Platform as Service) that helps you simplify and implement scalable integrations and workflows.
 ---
 Azure Logic Apps is a fully managed iPaaS (integration Platform as Service) that helps you simplify and implement scalable integrations and workflows from the cloud. When you create a Logic App, you start out with a trigger, for example, &#8220;When a tweet contains a certain hashtag&#8221;, and then you act on that trigger with many combinations of actions, condition logic, and conversions.
 

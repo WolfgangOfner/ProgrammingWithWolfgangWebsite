@@ -4,6 +4,7 @@ date: 2018-07-15T21:03:41+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [70-532, Azure, Certification, Exam, Learning]
+description: Azure Service Fabric is a platform that makes it easy to package, deploy, and manage distributed solutions at scale. It provides an easy programming model.
 ---
 Azure Service Fabric is a platform that makes it easy to package, deploy, and manage distributed solutions at scale. It provides an easy programming model for building microservice solutions with a simple, familiar, and easy to understand development experience that supports stateless and stateful services and actor patterns. In addition, to providing a packaging and deployment solution for these native components, Service Fabric also supports the deployment of guest executable and containers as part of the same managed and distributes system.
 

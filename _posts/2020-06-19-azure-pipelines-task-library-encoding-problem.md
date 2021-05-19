@@ -4,6 +4,7 @@ date: 2020-06-19T09:35:48+02:00
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [Azure DevOps, Azure Key Vault, Azure Pipelines Task Library]
+description: For one of our customers, we use an Azure DevOps pipeline in which we encountered an Azure Pipelines Task Library Encoding Problem with the % sign.
 ---
 For one of our customers, we use an Azure DevOps pipeline to read secrets from the Azure Key Vault and then write them into pipeline variables. During the operation, we encountered an encoding problem with the azure pipeline task library. The library encoded the percentage symbol during the read. Instead of Secret%Value, we got Secret%25Value. After writing the value into our pipeline variable, the value Secret%25Value was saved.
 

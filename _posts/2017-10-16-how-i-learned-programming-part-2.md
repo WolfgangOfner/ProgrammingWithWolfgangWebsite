@@ -4,6 +4,7 @@ date: 2017-10-16T13:40:17+02:00
 author: Wolfgang Ofner
 categories: [Programming]
 tags: ['C#', Learning]
+description: In this post I will continue my story about how I learned programming C# in university. I will present my assignment and talk about learning more about OOP.
 ---
 Welcome to part 2 of how I learned programming. In my last post, I wrote about how I started learning C# in university in Austria. You can find this post <a href="/how-i-learned-programming/" target="_blank" rel="noopener">here</a>.
 

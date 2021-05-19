@@ -4,6 +4,7 @@ date: 2021-05-17
 author: Wolfgang Ofner
 categories: [DevOps, Cloud]
 tags: [DevOps, Azure DevOps, Azure, Azure Functions, YAML, CI-CD, Docker]
+description: Build and Deploy an Azure Function inside a Docker container and deploy it using an Azure DevOps YAML pipeline.
 ---
 
 [In my last post](/deploy-azure-functions-azure-devops-pipelines), I created a YAML pipeline to build and deploy an Azure Function to Azure. Today, I will build the same Azure Function inside a Docker container and deploy the container to Azure.

@@ -4,6 +4,7 @@ date: 2021-01-25
 author: Wolfgang Ofner
 categories: [DevOps, Kubernetes]
 tags: [Azure DevOps, CI, YAML, AKS, Azure, Helm]
+description: Microservices are becoming more and more popular these days. I will show how to deploy to Kubernetes (more precisely Azure Kubernetes Service (AKS)) using Helm and Azure DevOps pipelines.
 ---
 
 Microservices are becoming more and more popular these days. These microservices run most of the time in Kubernetes. A goal we want to achieve with microservices is a quick and reliable deployment. 

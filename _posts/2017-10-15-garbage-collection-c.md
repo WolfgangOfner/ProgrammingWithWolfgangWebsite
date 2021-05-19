@@ -4,6 +4,7 @@ date: 2017-10-15T17:03:22+02:00
 author: Wolfgang Ofner
 categories: [Programming]
 tags: ['C#']
+description: The garbage collection is a great feature which makes the life of a programmer was easier. It releases unused variables and doing so frees memory on the heap.
 ---
 The garbage collection is a great feature which makes the life of a programmer was easier. It releases unused variables and doing so frees memory on the heap.  If you know C++ or C, you know what a pain it can be to release all unused object and variables and how easily you can forget one which will lead to a memory leak. A memory leak is caused by a variable which has a value but no reference. This means that the variable can&#8217;t be deleted and remains in the memory until the computer is restarted.
 

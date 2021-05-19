@@ -4,6 +4,7 @@ date: 2021-05-03
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Azure Service Bus, Azure Functions]
+description: Azure Functions is a serverless compute offering and lets developers execute code without thinking about the infrastructure it is running on.
 ---
 
 Azure Functions is a serverless compute offering and lets developers execute code without thinking about the infrastructure it is running on. This helps to efficiently develop event-driven solutions.

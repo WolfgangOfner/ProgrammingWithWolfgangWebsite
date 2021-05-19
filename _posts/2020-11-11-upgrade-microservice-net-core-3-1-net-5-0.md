@@ -4,6 +4,7 @@ date: 2020-11-11
 author: Wolfgang Ofner
 categories: [ASP.NET, Docker]
 tags: [Azure DevOps, CI, Docker, xUnit, NET 5.0]
+description: Upgrading from .NET Core 3.1 to .NET 5.0 is very fast and when using microservices can be easily done within a single day.
 ---
 
 Microsoft released the next major release, called .NET 5.0 which succeeds .NET Core 3.1. .NET 5.0 comes with a lot of improvements and also with C# 9. It also is the first step of a unified .NET platform and is the first version of Microsofts new release cycle. From now on, Microsoft will release a new version of .NET every November. .NET 6.0 will be released in November 2021, .NET 7.0 in November 2022, and so on.

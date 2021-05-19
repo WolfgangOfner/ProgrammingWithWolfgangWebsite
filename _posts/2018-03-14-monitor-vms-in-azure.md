@@ -4,6 +4,7 @@ date: 2018-03-14T15:45:17+01:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [70-532, Azure, Certification, Exam, Learning]
+description: To monitor VMs in Azure means collecting and analyzing different metrics as well as collection log data from system log files and from applications running within the VMs. It is possible to configure an email alert to an administrator which is triggered when certain criteria regarding these metrics.
 ---
 To monitor VMs in Azure means collecting and analyzing different metrics as well as collection log data from system log files and from applications running within the VMs. It is possible to configure an email alert to an administrator which is triggered when certain criteria regarding these metrics are met. Monitoring helps you to gain insight into the status of the VMs.
 

@@ -4,6 +4,7 @@ date: 2021-03-08
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [DevOps, SSDT, SQL]
+description: Use SSDT (SQS Server Data Tools) to generate Dacpac packages and deploy them automatically to an SQL Server.
 ---
 
 [In my last post](/automate-database-deployments), I talked about deploying database changes automatically. Today, I will show how to use SSDT (SQS Server Data Tools) to generate a Dacpac package and how to deploy it to your SQL server.

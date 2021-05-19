@@ -4,6 +4,7 @@ date: 2018-03-05T14:18:57+01:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [70-532, Azure, Certification, Exam, Learning]
+description: Azure ARM virtual machines can run a lot of different operating systems. In this posts, I will give an overview of these different types and I will also show how to create them in the Azure Portal. This post is part of the Microsoft 70-532 certification exam and contains the information for Deploy workload...
 ---
 Azure ARM virtual machines can run a lot of different operating systems. In this posts, I will give an overview of these different types and I will also show how to create them in the Azure Portal. This post is part of the Microsoft 70-532 certification exam and contains the information necessary for the Deploy workload on Azure ARM virtual machines part of the exam.
 

@@ -4,6 +4,7 @@ date: 2018-06-29T22:21:13+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [70-532, Azure, Certification, Exam, Learning]
+description: A Mobile App in Azure App Service provides a platform for the development of mobile applications, providing a combination of backend Azure hosted services
 ---
 A Mobile App in Azure App Service provides a platform for the development of mobile applications, providing a combination of backend Azure hosted services with device side development frameworks that streamline the integration of the backend services.
 

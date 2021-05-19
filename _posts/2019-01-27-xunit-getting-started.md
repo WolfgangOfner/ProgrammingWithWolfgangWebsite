@@ -4,6 +4,7 @@ date: 2019-01-27T21:57:57+01:00
 author: Wolfgang Ofner
 categories: [Programming, DevOps]
 tags: ['C#', TDD, xUnit]
+description: In this post, I will explain the basics of xUnit and how to write unit tests with it. xUnit is an open source testing framework for the .NET framework.
 ---
 In this post, I will explain the basics of xUnit and how to write unit tests with it. xUnit is an open source testing framework for the .Net framework and was written by the inventor of NUnit v2. More details can be found on <a href="https://github.com/xunit/xunit" target="_blank" rel="noopener">xUnit&#8217;s Github page</a>. xUnit is used by .Net core as the default testing framework and its major advantage over NUnit is that every test runs in isolation, which makes it impossible that test influence each other.
 

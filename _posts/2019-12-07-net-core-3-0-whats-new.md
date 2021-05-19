@@ -4,6 +4,7 @@ date: 2019-12-07T11:14:37+01:00
 author: Wolfgang Ofner
 categories: [Programming]
 tags: [NET Core, NET Core 3.0, 'C#']
+description: Microsoft released with .net core 3.0 the next major version of .net core which brings improvements to the deployment and .net core desktop applications.
 ---
 Microsoft released with .NET Core 3.0 the next major version of .NET Core which brings improvements to the deployment, .NET Core WPF and WinForms applications and much more. Today, I want to showcase some of these new features.
 

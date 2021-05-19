@@ -4,6 +4,7 @@ date: 2020-12-07
 author: Wolfgang Ofner
 categories: [Kubernetes]
 tags: [Helm, AKS, Microservice, Kubernetes]
+description: Helm is a package manager for Kubernetes which helps developers to quickly deploy their application to bare metal Kubernetes or a cloud managed version like AKS.
 ---
 
 Helm is a package manager for Kubernetes which helps developers to quickly deploy their application. In my last post, [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started), I showed how to deploy an application to AKS using the dashboard.

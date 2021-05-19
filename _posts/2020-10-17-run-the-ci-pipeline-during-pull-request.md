@@ -4,6 +4,7 @@ date: 2020-10-17T16:34:44+02:00
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [Azure DevOps, CI, Continuous Integration, DevOps Pull request policy]
+description: I will show in this post how to protect the master branch with a policy that enforces a pull request, reviews and run a CI pipeline.
 ---
 In the modern DevOps culture, the goal is to get features as fast as possible into production. Additionally, we have to guarantee that these new features don&#8217;t break anything. To do that, I will show in this post how to protect the master branch with a policy that enforces a pull request (PR) and reviews. To further enhance the quality, I will show <a href="/run-the-ci-pipeline-during-pull-request" target="_blank" rel="noopener noreferrer">how to run the CI pipeline from my last post</a>, which builds the solutions and runs all unit tests.
 

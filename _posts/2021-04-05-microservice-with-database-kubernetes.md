@@ -4,6 +4,7 @@ date: 2021-04-05
 author: Wolfgang Ofner
 categories: [DevOps, Kubernetes]
 tags: [DevOps, SQL, CI-CD, Azure DevOps, Azure, Docker, Kubernetes, AKS]
+description: Configure microservices in Azure DevOps to use securely share connection strings and use different databases, depending on your environment.
 ---
 
 I showed [in my last post](/deploy-dacpac-linux-azure-devops) how to automatically deploy database changes to your database. In this post, I will extend my microservice to use this database and also extend the deployment to provide a valid connection string.

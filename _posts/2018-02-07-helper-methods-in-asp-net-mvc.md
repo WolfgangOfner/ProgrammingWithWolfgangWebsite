@@ -4,6 +4,7 @@ date: 2018-02-07T18:57:46+01:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [Form, Helper, HTML]
+description: Writing HTML forms can be a tedious task. To help the developers, the ASP.NET MVC framework offers a wide range of helper methods which make creating an HTML form way easier. In this post, I will only talk about the built-in helper methods and not about custom helper methods.
 ---
 Writing HTML forms can be a tedious task. To help the developers, the ASP.NET MVC framework offers a wide range of helper methods which make creating an HTML form way easier.
 

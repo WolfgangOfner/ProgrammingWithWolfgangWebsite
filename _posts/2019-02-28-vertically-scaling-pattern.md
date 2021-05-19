@@ -4,6 +4,7 @@ date: 2019-02-28T19:40:33+01:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Architecture Pattern, Cloud, Scaling]
+description: Scalability of a system is a measure of the number of users it can handle at the same time. Today, I will talk about vertically scaling your application.
 ---
 Scalability of a system is a measure of the number of users it can handle at the same time. For a web server, for example, would this mean how many concurrent users it can serve. Serving more users can be achieved by vertically scaling up or horizontally scaling out. In this post, I will explain how vertically scaling up work. If you want to learn more about horizontally scaling out, you can read about it [here](https://www.programmingwithwolfgang.com/horizontally-scaling-pattern/).
 

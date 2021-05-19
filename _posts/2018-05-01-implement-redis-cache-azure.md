@@ -4,6 +4,7 @@ date: 2018-05-01T20:10:55+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [70-532, Azure, Certification, Exam, Learning]
+description: Redis Cache is a key-value store NoSQL database. Its implementation is very similar to Azure Table Storage. The main difference is Redis is very high performing by keeping the data in memory most of the time. By default, Redis also doesn't persist the data between reboots.
 ---
 Redis Cache is a key-value store NoSQL database. Its implementation is very similar to Azure Table Storage. The main difference is Redis is very high performing by keeping the data in memory most of the time. By default, Redis also doesn&#8217;t persist the data between reboots. The main purpose of keeping Redis Cache in memory is for fast data retrieval and aggregations. Redis is typically used to augment the data store you have already selected. It will make lookups much faster and also helps to reduce the cost of your storage since it reduces the number of queries.
 

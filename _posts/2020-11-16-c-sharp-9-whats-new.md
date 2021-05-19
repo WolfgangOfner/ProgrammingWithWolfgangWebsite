@@ -4,6 +4,7 @@ date: 2020-11-16
 author: Wolfgang Ofner
 categories: [Programming]
 tags: [NET 5.0, 'C#', 'C# 9.0']
+description: Microsoft release .NET 5 and C# 9.0. Let's take a look at some cool new features of the new language version.
 ---
 
 Microsoft released with .NET 5 also C# 9.0. This version of C# focuses mainly on productivity improvements and tries to help developers to reduce their time typing.

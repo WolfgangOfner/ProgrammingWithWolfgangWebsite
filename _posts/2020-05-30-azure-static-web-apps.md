@@ -4,6 +4,7 @@ date: 2020-05-30T17:46:33+02:00
 author: Wolfgang Ofner
 categories: [Cloud, Programming]
 tags: [Azure Function, 'C#', Github Action, React, Static Web Apps]
+description: Azure Static Web Apps allow you to host your static websites for free. You can use HTML, plain Javascript of front-end frameworks like Angular or React.
 ---
 Azure Static Web Apps were announced at the Build conference this year and they allow you to host your static websites for free. You can use HTML, plain Javascript of front-end frameworks like Angular or React. The website retrieves data, if needed, from Azure Functions. A great feature of Azure Static Web Apps is that you don&#8217;t have to configure your CI/CD pipeline. This is done for you by Azure and Github using Git Actions.
 

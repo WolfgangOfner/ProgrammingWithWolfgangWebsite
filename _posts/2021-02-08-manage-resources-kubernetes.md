@@ -4,6 +4,7 @@ date: 2021-02-08
 author: Wolfgang Ofner
 categories: [Kubernetes, DevOps]
 tags: [AKS, Helm, Kubernetes, YAML, Azure]
+description: Kubernetes is a great tool but it also has a steep learning curve. You should manage the cluster resources with request and resource limits in your pods.
 ---
 
 Kubernetes is a great tool but it also has a steep learning curve. Today, I want to talk about how to limit the resources a container can use and how containers can request a minimum of resources on a node in the Kubernetes cluster.

@@ -4,6 +4,7 @@ date: 2020-08-17T18:31:42+02:00
 author: Wolfgang Ofner
 categories: [Docker]
 tags: [NET Core 3.1, Docker, Microservice]
+description: Microservices need to be deployed often and fast. Docker container help to achieve these tasks and run them wherever needed.
 ---
 Microservices need to be deployed often and fast. To achieve this, they often run inside a Docker container. In this post, I will show how easy it is to add Docker support to a project using Visual Studio.
 

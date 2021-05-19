@@ -4,6 +4,7 @@ date: 2018-10-16T12:00:50+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Bot, 'C#', Microsoft Bot Framework]
+description: The Azure chat bot supports different answer types like videos, images or links. In this post, I will show you how to return different types of answers.
 ---
 The Azure chat bot supports different answer types like videos, images or links. In my last post, I showed you how to make your bot smarter and understand the user&#8217;s input. In this post, I will show you how to return different types of answers.
 

@@ -4,6 +4,7 @@ date: 2020-12-14
 author: Wolfgang Ofner
 categories: [Kubernetes, Docker]
 tags: [Helm, Microservice, Kubernetes, Docker]
+description: During the development or when debugging, developers often need to run their application quickly in Kubernetes. The solution to this problem is to run Kubernetes locally on your development machine using Docker Desktop.
 ---
 
 Running microservices in Kubernetes usually requires a cluster running in the cloud or on-premise. During the development or when debugging, developers often need to run their application quickly in Kubernetes. Spinning up a new cluster or configuring the deployment to an existing one might take longer than what they try to achieve.

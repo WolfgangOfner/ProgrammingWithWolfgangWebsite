@@ -4,6 +4,7 @@ date: 2018-01-15T16:52:28+01:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [Action, ActionResult, Controller, MVC, Redirect]
+description: In this post, I want to talk about how controllers and actions interact with each other and present several built-in functions. The MVC Framework is endlessly customizable and extensible. As a result, it is possible to implement your own controller which I will shortly talk about and show how to do that.
 ---
 <span class="fontstyle0">In this post, I want to talk about how controllers and actions interact with each other and present several built-in functions.  The MVC Framework is endlessly customizable and extensible. As a result, it is possible to implement your own controller which I will shortly talk about and show how to do that.</span>
 

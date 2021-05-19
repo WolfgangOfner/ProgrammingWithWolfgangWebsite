@@ -4,6 +4,7 @@ date: 2021-02-01
 author: Wolfgang Ofner
 categories: [Miscellaneous]
 tags: [Software Architecture, Tools, NDepend, NET Core 3.1, C#, ASP.NET Core MVC, Visual Studio]
+description: Analyze the software architecture of a project with NDpened and find code smells fast.
 ---
 
 A part of my job as a software consultant is to analyze existing software to find room for improvement to make the software better or to avoid these mistakes if the software is rewritten soon. The focus areas of your analysis vary depending on the requirements and there are also many good tools out there to help you.

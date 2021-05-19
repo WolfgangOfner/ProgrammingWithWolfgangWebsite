@@ -4,6 +4,7 @@ date: 2017-10-12T22:16:42+02:00
 author: Wolfgang Ofner
 categories: [Miscellaneous]
 tags: [Agile, Scrum]
+description: Every Scrum meeting is time boxed. But what does times boxed mean? I will explain this term and afterwards I will present all Scrum meetings.
 ---
 Every Scrum meeting is time-boxed. But what does time-boxed mean? I will explain this term and afterwards, I will present all Scrum meetings.
 

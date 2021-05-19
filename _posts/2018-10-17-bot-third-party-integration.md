@@ -4,6 +4,7 @@ date: 2018-10-17T12:12:52+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Bot, Microsoft Bot Framework, Slack]
+description: It is really easy to integrate your bot, hosted on Azure to third-party tools I will show how to integrate your bot with Slack, Facebook and your website.
 ---
 It is really easy to integrate your bot, hosted on Azure to third-party tools like Slack or Skype. Today, I will show how to integrate your bot with Slack, Facebook, and your website. For this demo, I will use the code from my <a href="/extending-answers-chat-bot/" target="_blank" rel="noopener">last post</a>, in which I showed how to return different types of answers to enhance the experience of the users. You can find the code on <a href="https://github.com/WolfgangOfner/Azure-ChatBot-Return-Demo" target="_blank" rel="noopener">GitHub</a>.
 

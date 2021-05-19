@@ -4,6 +4,7 @@ date: 2020-12-02
 author: Wolfgang Ofner
 categories: [Cloud, Kubernetes]
 tags: [AKS, Kubernetes, Docker, YAML, Azure, NET 5, Helm, CI-CD, Azure DevOps, C#, Azure]
+description: This series teaches you everything you have to know about microservices, Kubernetes, DevOps, Docker, Helm and much more.
 ---
 
 I am working as a consultant and software engineer on different projects which focus on microservice, DevOps, and process automation. Many of my consulting jobs are about explaining microservice, why they are great, and how to use them efficiently. Microservices is a buzzword that's around for a couple of years and almost every developer knows it but not that many know how to implement them. 

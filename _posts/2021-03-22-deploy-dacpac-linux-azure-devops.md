@@ -4,6 +4,7 @@ date: 2021-03-22
 author: Wolfgang Ofner
 categories: [DevOps, Cloud]
 tags: [DevOps, SSDT, SQL, Dacpac, CI-CD, Azure DevOps, Azure, Docker]
+description: Use a custom Docker container to deploy Dacpac packages to an SQL Server using a Linux build environment in Azure DevOps.
 ---
 
 I showed [in my last post](/automatically-deploy-database-changes) how to use SSDT to create a dacpac package and how to deploy it locally. The SSDT project uses .NET Framework 4.8 which means that it runs only on Windows. Azure DevOps has a task to deploy dacpac packages, but it also only supports Windows. To be able to use a Linux environment, I will create a .NET Core project to build the dacpac package and build my own Docker container with the sqlpackage installed to deploy the dacpac to an SQL Server.

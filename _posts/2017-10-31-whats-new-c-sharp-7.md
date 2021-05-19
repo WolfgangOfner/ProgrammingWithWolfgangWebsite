@@ -4,6 +4,7 @@ date: 2017-10-31T16:11:26+01:00
 author: Wolfgang Ofner
 categories: [Programming]
 tags: [NET, 'C#']
+description: In this post I will present whats new in C# 7.0. I will show a selected overview of the new features with the downloadable source code.
 ---
 Recently I made a post, about the new features in C# 6.0 and in this post I will show you whats new in C# 7.0.
 

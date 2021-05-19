@@ -4,6 +4,7 @@ date: 2021-04-26
 author: Wolfgang Ofner
 categories: [Cloud, DevOps]
 tags: [DevOps, CI-CD, Azure DevOps, Azure, Kubernetes, AKS, Helm, Azure Service Bus, RabbitMq]
+description: Replace RabbitMQ with Azure Service Bus Queues to take advantage of the managed and scalable queue on Azure.
 ---
 
 RabbitMQ is a great tool to connect microservices asynchronously but it also comes with a couple of downsides. The biggest downside is that you have to take care of running, monitoring, and updating it. Running a RabbitMQ Docker image in Kubernetes is quite easy but still requires some management. One of the best features of cloud provides are the platform as a service (PaaS) offerings. This means that the cloud provider, for example, Azure runs the platform for you and you don't have to take care of updating or patching the software.

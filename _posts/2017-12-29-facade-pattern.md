@@ -4,6 +4,7 @@ date: 2017-12-29T11:41:38+01:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
 tags: ['C#', Software Architecture]
+description: The Facade pattern is often used without the programmer knowing that he uses it. In this post I want to give the thing a developer often does automatically a name.
 ---
 The Facade pattern is often used without the programmer knowing that he uses it. In this post, I want to give the thing a developer often does automatically a name.
 

@@ -4,6 +4,7 @@ date: 2017-10-15T23:07:59+02:00
 author: Wolfgang Ofner
 categories: [Programming]
 tags: [NET, 'C#', Learning]
+description: I learned programming in university. In this blog post I will tell you how I learned programming and will also share my assignments with you.
 ---
 I learned programming in university in Austria. Before going to university, I only knew that there is the for loop and the if condition. This was all I knew. Unsurprisingly you have many theoretical classes like requirements engineering, software design and introduction to computer systems in your first semesters. This classes also helped to understand the bigger picture of programming but in this post, I will focus on the practical parts.
 

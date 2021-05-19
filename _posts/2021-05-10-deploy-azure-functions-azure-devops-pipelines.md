@@ -4,6 +4,7 @@ date: 2021-05-10
 author: Wolfgang Ofner
 categories: [DevOps, Cloud]
 tags: [DevOps, Azure DevOps, Azure, Azure Service Bus, Azure Functions, YAML, CI-CD]
+description: Deploy an Azure Function using Azure DevOps YAML pipelines and automatically update its settings safely inside the pipeline.
 ---
 
 [In my last post](/azure-functions-process-queue-messages), I created an Azure Function that reads messages from an Azure Service Bus Queue and then updates a database. The deployment of the Azure Function was manual using Visual Studio. 

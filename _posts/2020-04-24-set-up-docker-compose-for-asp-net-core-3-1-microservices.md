@@ -4,6 +4,7 @@ date: 2020-04-24T11:04:16+02:00
 author: Wolfgang Ofner
 categories: [Docker]
 tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, Swagger]
+description: Today, I will explain how docker-compose works and how it can be used to easily run multi-container applications with a single command.
 ---
 <a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my last post</a>, I described how to dockerize my microservices. To start the whole application, you have to start both microservices and RabbitMq. Today, I will add a docker-compose file which is a tool to easily run multi-container applications.
 

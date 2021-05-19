@@ -4,6 +4,7 @@ date: 2021-03-01
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [DevOps, SSDT, CI-CD]
+description: Automate database deployments to deploy reliable applications fast and repeatable into different environments without any manual configuration.
 ---
 
 DevOps has been around for some years now and most developers know what it means. In simple terms, it stands for a culture where you automate all your steps from code merges to tests and deployment. Doing this for an application is often quite simple. It gets way harder when database changes are involved though. 

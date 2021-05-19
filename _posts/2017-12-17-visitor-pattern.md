@@ -4,6 +4,7 @@ date: 2017-12-17T18:55:46+01:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
 tags:  ['C#', Software Architecture]
+description: Today I want to talk about the visitor pattern. It is a powerful pattern and I think it is used too little.
 ---
 Today I want to talk about the visitor pattern. It is a powerful pattern and I think it is used too little. Maybe because it looks complex but once you got how it works, it is pretty easy and powerful. The visitor pattern belongs to the behavioral patterns.
 

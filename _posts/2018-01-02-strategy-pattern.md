@@ -4,8 +4,9 @@ date: 2018-01-02T15:17:42+01:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
 tags: ['C#', Software Architecture]
+description: The Strategy pattern is one of the simpler design patterns and probably a good one to get started with design patterns. Additionally, it is also very practical and can help to clean up the code.
 ---
-The Strategy pattern is One of the simpler design patterns and probably a good one to get started with design patterns. Additionally, it is also very practical and can help to clean up the code.
+The Strategy pattern is one of the simpler design patterns and probably a good one to get started with design patterns. Additionally, it is also very practical and can help to clean up the code.
 
 ## Goals
 

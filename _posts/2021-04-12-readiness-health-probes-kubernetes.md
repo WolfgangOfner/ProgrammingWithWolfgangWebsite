@@ -4,6 +4,7 @@ date: 2021-04-12
 author: Wolfgang Ofner
 categories: [Kubernetes, DevOps]
 tags: [DevOps, CI-CD, Azure DevOps, Azure, Kubernetes, AKS, Helm]
+description: Kubernetes automatically checks if a pod is healthy and also when it is ready to accept traffic using readiness and liveness probes.
 ---
 
 Kubernetes automatically checks if a pod is healthy and also when it is ready to accept traffic. These checks are done using a readiness probe and liveness probe respectively. This post shows how to configure these probes in a .NET 5 microservice and how to configure them in Kubernetes using Helm charts.

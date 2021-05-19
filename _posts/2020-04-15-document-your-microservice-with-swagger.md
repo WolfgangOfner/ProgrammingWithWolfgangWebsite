@@ -4,6 +4,7 @@ date: 2020-04-15T17:37:49+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, Swagger]
+description: Swagger is an open-source toolset that can be easily integrated into your solution and which helps you to document and test your APIs.
 ---
 Swagger is an open-source toolset that can be easily integrated into your solution and which helps you to document and test your APIs. It is so simple that even none technical people can use it. <a href="/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">In my last post</a>, I created two Microservices and today I will explain how I integrated Swagger.
 

@@ -5,6 +5,7 @@ author: Wolfgang Ofner
 layout: post
 categories: [DevOps, Docker]
 tags: [Azure DevOps, CI, DevOps, Docker, Docker Hub]
+description: Building Docker images in an Azure DevOps CI Pipeline enables you to easily take your build pipeline into any other system and run it there.
 ---
 <a href="/run-the-ci-pipeline-during-pull-request/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to build a .NET Core Microservice with an Azure DevOps CI pipeline. Today, I want to build these microservices in an other Azure DevOps CI pipeline and push the images to Docker Hub.
 

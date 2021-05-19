@@ -4,6 +4,7 @@ date: 2018-10-14T16:02:01+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Bot, 'C#', Microsoft Bot Framework]
+description: I've been curious about how a bot application work and this week I finally took the time to sit down and look into it. Here is what I have learned.
 ---
 I&#8217;ve been curious about how chat bots work and this week I finally took the time to sit down and look into it. In this and the following post, I will talk about what I learned and I how solved some problems. Before I could start, I had to decide which platform I want to use. Therefore I looked at solutions in AWS and Azure. Since I am a fan of Azure and AWS only supports English as the user language, I decided to go with Azure for my chat bot application.
 

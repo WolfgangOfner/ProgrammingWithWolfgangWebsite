@@ -4,6 +4,7 @@ date: 2018-02-03T18:33:31+01:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [Ajax, Attributes, Javascript, Model Validation]
+description: Model validation is the process of checking whether the user input is suitable for model binding and if not it should provide useful error messages to the user. The first part is to ensure that only valid entries are made. This should filter inputs which don't make any sense.
 ---
 Model validation is the process of checking whether the user input is suitable for <a href="/model-binding-in-asp-net-mvc/" target="_blank" rel="noopener noreferrer">model binding</a> and if not it should provide useful error messages to the user. The first part is to ensure that only valid entries are made. This should filter inputs which don&#8217;t make any sense. This could be a birth date in the future or an appointment date in the past. As important as checking for valid data is to inform the user about the wrong input and help him to enter the information in the expected form. Without any help, it can be frustrating and annoying for the user which might end up in losing a potential customer.
 

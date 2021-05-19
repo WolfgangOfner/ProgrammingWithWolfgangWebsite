@@ -4,6 +4,7 @@ date: 2021-02-22
 author: Wolfgang Ofner
 categories: [DevOps, Kubernetes]
 tags: [AKS, Helm, Kubernetes, YAML, Azure]
+description: Tokenizer which is a simple Azure DevOps extension with which you can replace variables in Helm charts inside an Azure DevOps CI/CD pipeline.
 ---
 
 Helm is a great tool to deploy your application into Kubernetes. In my post, [Helm - Getting Started](/helm-getting-started), I also mentioned the values.yaml file which can be used to replace variables in the Helm chart. The problem with this approach is that the values.yaml file is hard-coded.

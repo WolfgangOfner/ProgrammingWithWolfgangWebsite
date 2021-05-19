@@ -4,6 +4,7 @@ date: 2018-04-08T11:17:44+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [70-532, Azure, Certification, Exam, Learning]
+description: Azure provides several methods of storing files, including Azure Storage blobs and Azure Files. In this post, I want to talk about the differences between them and how to use them.
 ---
 Azure provides several methods of storing files, including Azure Storage blobs and Azure Files. In this post, I want to talk about the differences between them and how to use them.
 

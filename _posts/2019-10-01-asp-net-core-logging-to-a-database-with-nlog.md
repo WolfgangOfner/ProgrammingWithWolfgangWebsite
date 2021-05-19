@@ -4,6 +4,8 @@ date: 2019-10-01T11:18:13+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [ASP.NET Core MVC, Logging, NLog, SQL]
+description: Today, I want to talk about how I implemented NLog with ASP.NET Core 2.2 and how I configured it to log to my database. The source code will be on GitHub.
+
 ---
 ASP.NET core has seen rapid development in the last years. Additionally, there were some breaking changes since version 1, for example, the project.json file got removed. Unfortunately, the documentation is lacking behind this rapid development. I had exactly this problem when I wanted to use NLog to log to my database. There was plenty of documentation but none of it worked because it was for .NET Core 1.x.
 

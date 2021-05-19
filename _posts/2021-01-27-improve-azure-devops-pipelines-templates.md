@@ -4,6 +4,7 @@ date: 2021-01-27
 author: Wolfgang Ofner
 categories: [DevOps, Kubernetes]
 tags: [Azure DevOps, CI, YAML, AKS, Azure, Helm, Docker]
+description: YAML pipelines can get quite long and unclear over time. Templates can be used in several pipelines reducing duplicate code.
 ---
 
 YAML pipelines can get quite long and unclear over time. In programming, developers use several files to separate logic apart to make the code easier to understand. The same is possible using templates in YAML pipelines. Additionally, these templates can be used in several pipelines reducing duplicate code.

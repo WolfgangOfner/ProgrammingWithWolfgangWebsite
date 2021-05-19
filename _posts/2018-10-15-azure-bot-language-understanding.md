@@ -4,6 +4,7 @@ date: 2018-10-15T12:00:04+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Bot, 'C#', Luis, Microsoft Bot Framework]
+description: With the Azure bot framework and luis, Microsoft offers two great features to implement language understanding in your chat bot. %
 ---
 With the Azure bot framework and luis, Microsoft offers two great features to implement language understanding in your chat bot. This is the second part of my chat bot series and in this post, I will show you how to add a language understanding to your chat bot using luis. You can find the first part <a href="/bot-application-azure/" target="_blank" rel="noopener">here</a>.
 

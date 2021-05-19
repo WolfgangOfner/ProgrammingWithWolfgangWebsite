@@ -4,6 +4,7 @@ date: 2020-12-28
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [Azure DevOps, NuGet, CI]
+description: In this post, I will show how to share code using NuGet packages and how to automatically create them in an Azure DevOps pipeline.
 ---
 
 I think the most important rule of a microservice is that it has to be deployed independently. When your project or company grows, it is very likely that you want to share code between projects or microservices. This leads to the question of how to share the code? Should you copy it into your microservice, reference dlls, or should every team develop its own code independently?

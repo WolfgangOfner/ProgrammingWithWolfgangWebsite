@@ -4,6 +4,7 @@ date: 2020-12-08
 author: Wolfgang Ofner
 categories: [Kubernetes]
 tags: [Helm, AKS, Microservice, Kubernetes]
+description: Helm is a package manager that helps you to deploy your application easily to Kubernetes. In this post, I will show you how to deploy an application to Kubernetes using Helm and how to avoid some pitfalls.
 ---
 In my last post, I explained how Helm works and how to add it to your microservice. This post is going to be more practical. Helm is a package manager that helps you to deploy your application easily to Kubernetes. In this post, I will show you how to deploy an application to Kubernetes using Helm and how to avoid some pitfalls.
 

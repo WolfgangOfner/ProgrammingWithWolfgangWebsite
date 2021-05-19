@@ -4,6 +4,7 @@ date: 2017-10-09T14:48:13+02:00
 author: Wolfgang Ofner
 categories: [Miscellaneous]
 tags: ['C#', ID3, Machine Learning]
+description: The decision tree is a supervised classification algorithm used to predict the outcome of an event with given attributes.
 ---
 A decision tree is a classification algorithm used to predict the outcome of an event with given attributes. For example can I play ball when the outlook is sunny, the temperature hot, the humidity high and the wind weak. This post will give an overview on how the algorithm works. For more detailed information please see the later named source. I will focus on the C# implementation.
 

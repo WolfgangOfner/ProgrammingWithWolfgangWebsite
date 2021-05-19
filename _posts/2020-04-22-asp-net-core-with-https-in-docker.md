@@ -4,6 +4,7 @@ date: 2020-04-22T11:30:30+02:00
 author: Wolfgang Ofner
 categories: [Docker, ASP.NET]  
 tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, SSL, Swagger]
+description: Today, I will show you how to create a development certificate and how to provide it to your container so you can use ASP .Net Core with HTTPS in Docker.
 ---
 <a href="/dockerize-an-asp-net-core-microservice-and-rabbitmq/" target="_blank" rel="noopener noreferrer">In my last post</a>, I dockerized my ASP .NET Core 3.1 microservices but the HTTPS connection didn&#8217;t work. Kestrel needs a certificate to process HTTPS requests. Today, I will show you how to create a development certificate and how to provide it to your Docker container so you can use ASP .NET Core with HTTPS in Docker.
 

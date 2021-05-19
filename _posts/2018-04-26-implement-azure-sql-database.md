@@ -4,6 +4,7 @@ date: 2018-04-26T21:52:05+02:00
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [70-532, Azure, Certification, Exam, Learning]
+description: Microsoft Azure offers with Azure SQL database a great alternative to an on-premise SQL database. In this post, I will talk about the advantages of having the database in the cloud, how to get data into the cloud and how to use Elastic pools to share resources between several databases.
 ---
 Microsoft Azure offers with Azure SQL database a great alternative to an on-premise SQL database. In this post, I will talk about the advantages of having the database in the cloud, how to get data into the cloud and how to use Elastic pools to share resources between several databases. The last section will be about implementing graph functionality in an Azure SQL database.
 

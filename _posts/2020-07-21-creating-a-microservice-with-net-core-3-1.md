@@ -4,6 +4,7 @@ date: 2020-07-21T18:53:20+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [NET Core 3.1, 'C#', CQRS, MediatR, Microservice, Swagger, xUnit]
+description: Using a microservice architecture is a topic that is present at every conference for quite some time already but it is still unfamiliar to many.
 ---
 Using a microservice architecture is a topic that is present at every conference for quite some time already. In my work as a consultant, I often have to train development teams about the basics of microservices, why to use them, do&#8217;s and don&#8217;ts, and best practices. Therefore, I want to start a new series where I will create a microservice and the following parts deploy it to Kubernetes using AKS, implementing CI/CD pipelines using Azure DevOps, using Helm charts and automated unit tests including code coverage.
 
