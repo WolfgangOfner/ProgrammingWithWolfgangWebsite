@@ -93,12 +93,12 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Deploy a Docker Container to Azure Functions using an Azure DevOps YAML Pipeline](/deploy-docker-container-azure-functions)
 
+- [Set up Nginx as Ingress Controller in Kubernetes](/setup-nginx-ingress-controller-kubernetes)
 
 
 Coming soon (in no specific order):
 - Create Certificates using a Cert Manager in Kubernetes
 - Deploy every Pull Request to Kubernetes
-- Use Ngnix as Ingress Controller
 - Static Code Analysis in your CI Pipeline
 - Access a Database with Managed Identities in AKS
 - Test your Application with different Infrastructure combinations in your CI Pipeline
