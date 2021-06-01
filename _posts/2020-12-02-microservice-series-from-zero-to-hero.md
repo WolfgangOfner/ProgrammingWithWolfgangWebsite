@@ -95,6 +95,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Set up Nginx as Ingress Controller in Kubernetes](/setup-nginx-ingress-controller-kubernetes)
 
+- [Configure custom URLs to access Microservices running in Kubernetes](/configure-custom-urls-to-access-microservices-running-in-kubernetes)
+
 
 Coming soon (in no specific order):
 - Create Certificates using a Cert Manager in Kubernetes

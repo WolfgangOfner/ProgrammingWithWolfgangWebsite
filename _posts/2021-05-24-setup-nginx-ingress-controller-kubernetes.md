@@ -2,8 +2,8 @@
 title: Set up Nginx as Ingress Controller in Kubernetes
 date: 2021-05-24
 author: Wolfgang Ofner
-categories: [DevOps, Cloud]
-tags: [DevOps, Azure DevOps, Azure, Azure Functions, YAML, CI-CD, Docker]
+categories: [Kubernetes, Cloud]
+tags: [DevOps, Azure DevOps, Azure, Nginx, YAML, CI-CD, Docker]
 description: Nginx can be used as an Ingress controller for Kubernetes clusters and offers a wide range of features like routing, SSL termination, and preventing direct access to the microservices.
 ---
 
