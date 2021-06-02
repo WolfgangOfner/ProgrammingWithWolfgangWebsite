@@ -1,6 +1,6 @@
 ---
 title: Deploy Azure Functions with Azure DevOps YAML Pipelines
-date: 2021-05-10
+date: 2021-05-03
 author: Wolfgang Ofner
 categories: [DevOps, Cloud]
 tags: [DevOps, Azure DevOps, Azure, Azure Service Bus, Azure Functions, YAML, CI-CD]

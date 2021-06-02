@@ -1,6 +1,6 @@
 ---
 title: Use a Database with a Microservice running in Kubernetes
-date: 2021-04-05
+date: 2021-03-29
 author: Wolfgang Ofner
 categories: [DevOps, Kubernetes]
 tags: [DevOps, SQL, CI-CD, Azure DevOps, Azure, Docker, Kubernetes, AKS]
@@ -32,7 +32,7 @@ If you want to run the microservice locally with a normal database, set this val
 It is a best practice to use User Scripts when you are dealing with sensitive data in your local environment. To add User Secrets, right-click on your project and select Manage User Scripts.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/04/Add-User-Secrets.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Add-User-Secrets.jpg" alt="Add User Secrets" /></a>
+  <a href="/assets/img/posts/2021/03/Add-User-Secrets.jpg"><img loading="lazy" src="/assets/img/posts/2021/03/Add-User-Secrets.jpg" alt="Add User Secrets" /></a>
   
   <p>
    Add User Secrets
@@ -60,7 +60,7 @@ else
 To use an SQL Server, you have to install the Microsoft.EntityFrameworkCore.SqlServer NuGet package. 
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/04/Install-the-SQL-Server-NuGet-package.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Install-the-SQL-Server-NuGet-package.jpg" alt="Install the SQL Server NuGet package" /></a>
+  <a href="/assets/img/posts/2021/03/Install-the-SQL-Server-NuGet-package.jpg"><img loading="lazy" src="/assets/img/posts/2021/03/Install-the-SQL-Server-NuGet-package.jpg" alt="Install the SQL Server NuGet package" /></a>
   
   <p>
    Install the SQL Server NuGet package
@@ -123,7 +123,7 @@ This code sets the connection string as secret in Kubernetes. Since the hierarch
 Deploy the microservice and then open the Swagger UI. Execute the POST operation and create a new customer.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/04/Add-a-new-customer-to-the-database.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Add-a-new-customer-to-the-database.jpg" alt="Add a new customer to the database" /></a>
+  <a href="/assets/img/posts/2021/03/Add-a-new-customer-to-the-database.jpg"><img loading="lazy" src="/assets/img/posts/2021/03/Add-a-new-customer-to-the-database.jpg" alt="Add a new customer to the database" /></a>
   
   <p>
    Add a new customer to the database
@@ -133,7 +133,7 @@ Deploy the microservice and then open the Swagger UI. Execute the POST operation
 Connect to the database, for example, using the SQL Management Studio and you should see the new customer there.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/04/The-new-customer-was-added-to-the-database.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/The-new-customer-was-added-to-the-database.jpg" alt="The new customer was added to the database" /></a>
+  <a href="/assets/img/posts/2021/03/The-new-customer-was-added-to-the-database.jpg"><img loading="lazy" src="/assets/img/posts/2021/03/The-new-customer-was-added-to-the-database.jpg" alt="The new customer was added to the database" /></a>
   
   <p>
    The new customer was added to the database

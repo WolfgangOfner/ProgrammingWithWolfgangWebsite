@@ -1,6 +1,6 @@
 ---
 title: Use Azure Functions to Process Queue Messages
-date: 2021-05-03
+date: 2021-04-26
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Azure Service Bus, Azure Functions]
@@ -36,7 +36,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 To create a new Azure Function, start Visual Studio, search for Azure Functions and click Next.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/Create-a-new-Azure-Function.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/Create-a-new-Azure-Function.jpg" alt="Create a new Azure Function" /></a>
+  <a href="/assets/img/posts/2021/04/Create-a-new-Azure-Function.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Create-a-new-Azure-Function.jpg" alt="Create a new Azure Function" /></a>
   
   <p>
    Create a new Azure Function
@@ -46,7 +46,7 @@ To create a new Azure Function, start Visual Studio, search for Azure Functions 
 Enter a name and then select a trigger. As you can see, The template offers a wide variety of triggers such as HTTP, RabbitMQ, or SignalR. Select Service Bus Queue trigger and on the right side enter a name for the connection string and the queue name. 
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/Configure-the-Function-Trigger.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/Configure-the-Function-Trigger.jpg" alt="Configure the Function Trigger" /></a>
+  <a href="/assets/img/posts/2021/04/Configure-the-Function-Trigger.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Configure-the-Function-Trigger.jpg" alt="Configure the Function Trigger" /></a>
   
   <p>
    Configure the Function Trigger
@@ -69,7 +69,7 @@ public static class OrderNameUpdateFunction
 In the Azure Portal, go to your Service Bus Namespace and select your CustomerQueue. There select the Shared access policies pane and create a new policy with Listen. After you saved the policy, click on it and you can see the Primary Connection String. If you want to learn how to create an Azure Service Bus Queues and more details about Shared access policies, see my post [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue).
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/Copy-the-Connection-String-to-your-Azure-Service-Bus-Queue.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/Copy-the-Connection-String-to-your-Azure-Service-Bus-Queue.jpg" alt="Copy the Connection String to your Azure Service Bus Queue" /></a>
+  <a href="/assets/img/posts/2021/04/Copy-the-Connection-String-to-your-Azure-Service-Bus-Queue.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Copy-the-Connection-String-to-your-Azure-Service-Bus-Queue.jpg" alt="Copy the Connection String to your Azure Service Bus Queue" /></a>
   
   <p>
    Copy the Connection String to your Azure Service Bus Queue
@@ -209,7 +209,7 @@ The function deserializes the message into an UpdateCustomerFullNameModel object
 To publish your code, right-click the project and select Publish. This opens a new window where you select Azure and click Next.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/Publish-the-Azure-Function-to-Azure.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/Publish-the-Azure-Function-to-Azure.jpg" alt="Publish the Azure Function to Azure" /></a>
+  <a href="/assets/img/posts/2021/04/Publish-the-Azure-Function-to-Azure.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Publish-the-Azure-Function-to-Azure.jpg" alt="Publish the Azure Function to Azure" /></a>
   
   <p>
    Publish the Azure Function to Azure
@@ -219,7 +219,7 @@ To publish your code, right-click the project and select Publish. This opens a n
 On the next window, select the environment you want to use. Note that Windows has more options for editing the function in the Azure Portal but for this demo it doesn't matter if you use Windows or Linux.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/Deploy-the-Function-to-Linux.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/Deploy-the-Function-to-Linux.jpg" alt="Deploy the Function to Linux" /></a>
+  <a href="/assets/img/posts/2021/04/Deploy-the-Function-to-Linux.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Deploy-the-Function-to-Linux.jpg" alt="Deploy the Function to Linux" /></a>
   
   <p>
    Deploy the Function to Linux
@@ -229,7 +229,7 @@ On the next window, select the environment you want to use. Note that Windows ha
 Next, provide a name, subscription, resource group, plan, and location for the new Azure Function.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/Provide-basic-settings.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/Provide-basic-settings.jpg" alt="Provide basic settings" /></a>
+  <a href="/assets/img/posts/2021/04/Provide-basic-settings.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Provide-basic-settings.jpg" alt="Provide basic settings" /></a>
   
   <p>
    Provide basic settings
@@ -239,7 +239,7 @@ Next, provide a name, subscription, resource group, plan, and location for the n
 After providing the settings, click on Finish and the publish profile will be created. Before you publish the function, you have to provide the connection string to the database and Service Bus Queue. On the right side, click on the three dots and then select Manage Azure App Service settings. This opens a new window with all Application settings. You can either copy the local values for the connection strings or paste the desired values in the text boxes. 
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/Configure-the-remote-Connection-Strings.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/Configure-the-remote-Connection-Strings.jpg" alt="Configure the remote Connection Strings" /></a>
+  <a href="/assets/img/posts/2021/04/Configure-the-remote-Connection-Strings.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Configure-the-remote-Connection-Strings.jpg" alt="Configure the remote Connection Strings" /></a>
   
   <p>
    Configure the remote Connection Strings
@@ -255,7 +255,7 @@ After inserting the connection strings, publish the Azure Function.
 Open the CustomerAPI solution, add your database and queue connection strings in the appsettings file and start the application. In the Swagger UI update an existing user with the PUT operation.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/Update-an-existing-Customer.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/Update-an-existing-Customer.jpg" alt="Update an existing Customer" /></a>
+  <a href="/assets/img/posts/2021/04/Update-an-existing-Customer.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Update-an-existing-Customer.jpg" alt="Update an existing Customer" /></a>
   
   <p>
    Update an existing Customer
@@ -265,7 +265,7 @@ Open the CustomerAPI solution, add your database and queue connection strings in
 Updating the customer will also create a message on the Azure Service Bus Queue. For more information about the Azure Service Bus Queue, see my post [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue).
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/The-Customer-was-added-to-the-Service-Bus-Queue.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-Customer-was-added-to-the-Service-Bus-Queue.jpg" alt="The Customer was added to the Service Bus Queue" /></a>
+  <a href="/assets/img/posts/2021/04/The-Customer-was-added-to-the-Service-Bus-Queue.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/The-Customer-was-added-to-the-Service-Bus-Queue.jpg" alt="The Customer was added to the Service Bus Queue" /></a>
   
   <p>
    The Customer was added to the Service Bus Queue
@@ -275,7 +275,7 @@ Updating the customer will also create a message on the Azure Service Bus Queue.
 Note you might not see the message if your Azure Function is already running because the message might be already processed. Open your Azure Function in the Azure Portal and on the Overview page, you can see that the function was executed once.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/The-Azure-Function-was-executed-once.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-Azure-Function-was-executed-once.jpg" alt="The Azure Function was executed once" /></a>
+  <a href="/assets/img/posts/2021/04/The-Azure-Function-was-executed-once.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/The-Azure-Function-was-executed-once.jpg" alt="The Azure Function was executed once" /></a>
   
   <p>
    The Azure Function was executed once
@@ -285,7 +285,7 @@ Note you might not see the message if your Azure Function is already running bec
 To make sure everything worked you can either check the Service Bus Queue to see that there is no message left or in the DeadLetter Queue or you can check the changed value in the database.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/No-message-in-the-DeadLetter-Queue.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/No-message-in-the-DeadLetter-Queue.jpg" alt="No message in the DeadLetter Queue" /></a>
+  <a href="/assets/img/posts/2021/04/No-message-in-the-DeadLetter-Queue.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/No-message-in-the-DeadLetter-Queue.jpg" alt="No message in the DeadLetter Queue" /></a>
   
   <p>
    No message in the DeadLetter Queue
@@ -293,7 +293,7 @@ To make sure everything worked you can either check the Service Bus Queue to see
 </div>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/The-Customer-Name-got-updated.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-Customer-Name-got-updated.jpg" alt="The Customer Name got updated" /></a>
+  <a href="/assets/img/posts/2021/04/The-Customer-Name-got-updated.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/The-Customer-Name-got-updated.jpg" alt="The Customer Name got updated" /></a>
   
   <p>
    The Customer Name got updated

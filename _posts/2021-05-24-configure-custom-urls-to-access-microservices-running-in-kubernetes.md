@@ -1,6 +1,6 @@
 ---
 title: Configure custom URLs to access Microservices running in Kubernetes
-date: 2021-05-31
+date: 2021-05-24
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
 tags: [DevOps, Azure DevOps, Azure, Nginx, YAML, CI-CD, Docker, Helm]
@@ -13,7 +13,7 @@ Today, I will add URLs to my microservices to make them easily accessible for my
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
 
-## Add a DNS Entry for your Domain.
+## Add a DNS Entry for your Domain
 
 Before you can use your own URL, you have to create an Azure DNS zone. In the Azure portal, search for DNS zone and click create. Provide a subscription, resource group, and the name of your domain.
 
