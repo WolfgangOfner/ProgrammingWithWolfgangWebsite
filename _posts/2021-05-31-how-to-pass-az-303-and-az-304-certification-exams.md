@@ -3,7 +3,7 @@ title: How to pass the AZ-303 and AZ-304 Certification Exams
 date: 2021-05-31
 author: Wolfgang Ofner
 categories: [Cloud, Miscellaneous]
-tags: [DevOps, Azure DevOps, Azure, Azure Functions, YAML, Azure App Services, Cosmos DB, Azure CLI, Azure SQL, Azure VM, Learning]
+tags: [DevOps, Azure DevOps, Azure, Azure Functions, YAML, Azure App Services, Cosmos DB, Azure CLI, Azure SQL, Azure VM, Learning, Certification, Exam]
 description: Tips to prepare for the AZ-303 and AZ-304 exam and earn your Azure Solutions Architect Expert Certification.
 ---
 
@@ -37,17 +37,17 @@ I took the first practice test and felt not too bad but was surprised to see tha
 
 Despite how cheap Whizlabs is, I can not recommend using it due to all the wrong answers and confusion that they are causing.
 
-### Measureup
+### MeasureUp
 
-<a href="https://www.measureup.com" target="_blank" rel="noopener noreferrer">Measureup</a> is the test platform officially recommended by Microsoft. The AZ-304 exam has 162 test questions and the AZ-303 one has 166 questions. The questions are in the same format as the actual certification, meaning that there are case studies, single-choice, multiple-choice and drag-and-drop questions.
+<a href="https://www.measureup.com" target="_blank" rel="noopener noreferrer">MeasureUp</a> is the test platform officially recommended by Microsoft. The AZ-304 exam has 162 test questions and the AZ-303 one has 166 questions. The questions are in the same format as the actual certification, meaning that there are case studies, single-choice, multiple-choice and drag-and-drop questions.
 
-The practice tests are expensive ranging from 91€ for the 30-day access to 110€ for the one-year or download version. If you pass the test on Measureup, they give you a passing guarantee and if you fail your exam twice, you are refunded the full amount of the practice tests. They also often have deals where you can get 20% or 30% off.
+The practice tests are expensive ranging from 91€ for the 30-day access to 110€ for the one-year or download version. If you pass the test on MeasureUp, they give you a passing guarantee and if you fail your exam twice, you are refunded the full amount of the practice tests. They also often have deals where you can get 20% or 30% off.
 
 The website can be awful, for example, Chrome didn't work most of the time for me and there are a couple of buttons that are only clickable if you hit the right pixel. However, once you started the practice test, everything is great. You can even configure the test exam to either have random questions, or questions that you got wrong the last time, or questions that you have not seen in a while.
 
 The first time I took the AZ-304 test exam I achieved 74% and for the AZ-303, I only received 64%. But it showed me what was expected from me during the exam and helped me to dig even deeper into the technologies covered by the exams.
 
-Measureup is expensive but totally worth the price and I highly recommend getting it before taking the exam.
+MeasureUp is expensive but totally worth the price and I highly recommend getting it before taking the exam.
 
 ### How to study
 
@@ -57,7 +57,7 @@ My recommendation is to try everything and see what works best for you. For me, 
 
 You should also get enough hands-on experience. I had this experience before I studied the documentation and it helped me greatly in understanding the topic. I would recommend that you create most of the services which are covered in the exam and play around a bit and look at all the panes of the service in the Azure portal. 
 
-The last recommendation I can give you is to purchase the Measureup practice exams. They are worth it but also give you an insight into the way the questions will be and may furthermore boost your confidence when you can achieve a high score in the practice tests.
+The last recommendation I can give you is to purchase the MeasureUp practice exams. They are worth it but also give you an insight into the way the questions will be and may furthermore boost your confidence when you can achieve a high score in the practice tests.
 
 ## AZ-303 vs AZ-304
 
