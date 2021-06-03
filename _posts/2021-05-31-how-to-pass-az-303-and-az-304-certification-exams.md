@@ -15,7 +15,7 @@ This post will give you an overview of the exams what methods I used to study an
 
 The first step of your exam journey should be figuring out what topics are covered in the exam. Download the skills measured for the <a href="https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4psD6" target="_blank" rel="noopener noreferrer">AZ-303: Microsoft Azure Architect Technologies</a> or for the <a href="https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4pCWz" target="_blank" rel="noopener noreferrer">AZ-304: Microsoft Azure Architect Design</a> exam. 
 
-These documents give you an overview of the needed skills and outline any changes or updates to the exam. Do not be fooled by the simple document though. During the exam, you are expected to have in-depth knowledge of the needed technologies. You can find more details about the questions in the [Difficulty of the Exam](/#difficulty-of-the-exam) section further down.
+These documents give you an overview of the needed skills and outline any changes or updates to the exam. Do not be fooled by the simple document though. During the exam, you are expected to have in-depth knowledge of the needed technologies. You can find more details about the questions in the [Difficulty of the Exam](/how-to-pass-az-303-and-az-304-certification-exams/#difficulty-of-the-exam) section further down.
 
 ### Pluralsight
 
