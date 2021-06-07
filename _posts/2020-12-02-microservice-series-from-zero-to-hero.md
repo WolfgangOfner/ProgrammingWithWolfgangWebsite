@@ -97,9 +97,10 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Configure custom URLs to access Microservices running in Kubernetes](/configure-custom-urls-to-access-microservices-running-in-kubernetes)
 
+- [Automatically issue SSL Certificates and use SSL Termination in Kubernetes](/automatically-issue-ssl-certificates-and-use-ssl-termination-in-kubernetes)
+
 
 Coming soon (in no specific order):
-- Create Certificates using a Cert Manager in Kubernetes
 - Deploy every Pull Request to Kubernetes
 - Static Code Analysis in your CI Pipeline
 - Access a Database with Managed Identities in AKS

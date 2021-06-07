@@ -3,7 +3,7 @@ title: Configure custom URLs to access Microservices running in Kubernetes
 date: 2021-05-24
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
-tags: [DevOps, Azure DevOps, Azure, Nginx, YAML, CI-CD, Docker, Helm]
+tags: [DevOps, Azure DevOps, Azure, Nginx, YAML, CI-CD, Docker, Helm, AKS, Kubernetes]
 description: Setting up custom URLs is fast and gives your users or testers a better experience than using an IP address.
 ---
 
@@ -143,7 +143,7 @@ The order microservice is working as well with its custom URL.
 
 ## Conclusion
 
-Using custom URLs or subdomains is surprisingly easy with Nginx and Kubernetes. Setting up the URLs is fast and gives your users or testers a better experience than the IP address I used before. Additionally, the Swagger UI problems were also fixed. Using a custom URL is a better solution than using an IP address but it is still not optimal. In my next post, I will automatically create certificates enabling the use of HTTPS and also will implement SSL termination in the Nginx ingress controller.
+Using custom URLs or subdomains is surprisingly easy with Nginx and Kubernetes. Setting up the URLs is fast and gives your users or testers a better experience than the IP address I used before. Additionally, the Swagger UI problems were also fixed. Using a custom URL is a better solution than using an IP address but it is still not optimal. [In my next post](/automatically-issue-ssl-certificates-and-use-ssl-termination-in-kubernetes), I will automatically create certificates enabling the use of HTTPS and also will implement SSL termination in the Nginx ingress controller.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 
