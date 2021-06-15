@@ -1,6 +1,6 @@
 ---
 title: How to pass the AZ-303 and AZ-304 Certification Exams
-date: 2021-05-31
+date: 2021-05-24
 author: Wolfgang Ofner
 categories: [Cloud, Miscellaneous]
 tags: [DevOps, Azure DevOps, Azure, Azure Functions, YAML, Azure App Services, Cosmos DB, Azure CLI, Azure SQL, Azure VM, Learning, Certification, Exam]

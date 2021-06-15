@@ -1,6 +1,6 @@
 ---
 title: Automatically issue SSL Certificates and use SSL Termination in Kubernetes 
-date: 2021-06-07
+date: 2021-05-31
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
 tags: [DevOps, Azure DevOps, Azure, Nginx, YAML, CI-CD, Docker, Helm, AKS, Kubernetes, TLS, SSL]
@@ -150,7 +150,7 @@ This is all you have to configure to automatically use HTTPS and also use SSL te
 Deploy the Microservice and then call their URL, in my case, customer.programmingwithwolfgang.com. You should see that HTTPS is used and that a valid certificate is used.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/06/A-valid-SSL-Certificate-got-created.jpg"><img loading="lazy" src="/assets/img/posts/2021/06/A-valid-SSL-Certificate-got-created.jpg" alt="A valid SSL Certificate got created" /></a>
+  <a href="/assets/img/posts/2021/05/A-valid-SSL-Certificate-got-created.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/A-valid-SSL-Certificate-got-created.jpg" alt="A valid SSL Certificate got created" /></a>
   
   <p>
    A valid SSL Certificate got created
@@ -162,7 +162,7 @@ Deploy the Microservice and then call their URL, in my case, customer.programmin
 If something did go wrong, you might see a warning when you try to access the microservice using HTTPS.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/06/The-SSL-Certificate-is-not-valid.jpg"><img loading="lazy" src="/assets/img/posts/2021/06/The-SSL-Certificate-is-not-valid.jpg" alt="The SSL Certificate is not valid" /></a>
+  <a href="/assets/img/posts/2021/05/The-SSL-Certificate-is-not-valid.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-SSL-Certificate-is-not-valid.jpg" alt="The SSL Certificate is not valid" /></a>
   
   <p>
    The SSL Certificate is not valid
@@ -178,7 +178,7 @@ get certificate --namespace customerapi-test
 This should display your certificate.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/06/The-SSL-Certificate-got-added-to-the-Namespace.jpg"><img loading="lazy" src="/assets/img/posts/2021/06/The-SSL-Certificate-got-added-to-the-Namespace.jpg" alt="The SSL Certificate got added to the Namespace" /></a>
+  <a href="/assets/img/posts/2021/05/The-SSL-Certificate-got-added-to-the-Namespace.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-SSL-Certificate-got-added-to-the-Namespace.jpg" alt="The SSL Certificate got added to the Namespace" /></a>
   
   <p>
    The SSL Certificate got added to the Namespace
@@ -187,7 +187,9 @@ This should display your certificate.
 
 ## Conclusion
 
-A cert-manager creates SSL certificates automatically in your Kubernetes cluster and helps you to reduce the time to fully configure your application. This is especially useful for test environments and in my next post, I will show you how to deploy every pull request to its own environment and automatically create an URL and SSL certificate for it.
+A cert-manager creates SSL certificates automatically in your Kubernetes cluster and helps you to reduce the time to fully configure your application. This is especially useful when you use multiple test environments.
+
+[In my next post](/split-up-the-ci-cd-pipeline-into-two-pipelines), I will show you how to separate the CI/CD pipeline into two pipelines which will enable you to make changes faster and with less errors.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 

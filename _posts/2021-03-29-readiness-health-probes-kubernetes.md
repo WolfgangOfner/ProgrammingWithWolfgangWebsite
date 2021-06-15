@@ -1,6 +1,6 @@
 ---
 title: Readiness and Liveness Probes in Kubernetes
-date: 2021-04-05
+date: 2021-03-29
 author: Wolfgang Ofner
 categories: [Kubernetes, DevOps]
 tags: [DevOps, CI-CD, Azure DevOps, Azure, Kubernetes, AKS, Helm]
@@ -82,7 +82,7 @@ probes:
 Deploy the microservice using the CI/CD pipeline and you will see that it fails during the Helm upgrade release task. This task times out after five minutes because the pod was not able to start (more precisely it started but the readiness probe failed).
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/04/The-deployment-failed.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/The-deployment-failed.jpg" alt="The deployment failed" /></a>
+  <a href="/assets/img/posts/2021/03/The-deployment-failed.jpg"><img loading="lazy" src="/assets/img/posts/2021/03/The-deployment-failed.jpg" alt="The deployment failed" /></a>
   
   <p>
    The deployment failed
@@ -92,7 +92,7 @@ Deploy the microservice using the CI/CD pipeline and you will see that it fails 
 When you connect to the dashboard and open the details of the pod, you can see that the readiness probe failed. For more information about accessing the dashboard, see my previous post [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started/#access-aks-cluster).
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/04/The-readiness-probe-failed.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/The-readiness-probe-failed.jpg" alt="The readiness probe failed" /></a>
+  <a href="/assets/img/posts/2021/03/The-readiness-probe-failed.jpg"><img loading="lazy" src="/assets/img/posts/2021/03/The-readiness-probe-failed.jpg" alt="The readiness probe failed" /></a>
   
   <p>
    The readiness probe failed
@@ -123,7 +123,7 @@ readinessProbe:
 Run the CI/CD again and this time the deployment will succeed and the pod will start successfully.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/04/The-pod-started-successfully.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/The-pod-started-successfully.jpg" alt="The pod started successfully" /></a>
+  <a href="/assets/img/posts/2021/03/The-pod-started-successfully.jpg"><img loading="lazy" src="/assets/img/posts/2021/03/The-pod-started-successfully.jpg" alt="The pod started successfully" /></a>
   
   <p>
    The pod started successfully

@@ -1,6 +1,6 @@
 ---
 title: Use Azure Functions to Process Queue Messages
-date: 2021-04-26
+date: 2021-04-19
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Azure Service Bus, Azure Functions]

@@ -1,6 +1,6 @@
 ---
 title: Use Azure Container Registry in Kubernetes
-date: 2021-04-12
+date: 2021-04-05
 author: Wolfgang Ofner
 categories: [Kubernetes, DevOps]
 tags: [DevOps, CI-CD, Azure DevOps, Azure, Kubernetes, AKS, Helm, ACR, Azure Container Registry]

@@ -1,6 +1,6 @@
 ---
 title: Use a Database with a Microservice running in Kubernetes
-date: 2021-03-29
+date: 2021-03-22
 author: Wolfgang Ofner
 categories: [DevOps, Kubernetes]
 tags: [DevOps, SQL, CI-CD, Azure DevOps, Azure, Docker, Kubernetes, AKS]

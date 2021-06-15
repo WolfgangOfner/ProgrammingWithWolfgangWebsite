@@ -1,6 +1,6 @@
 ---
 title: Configure custom URLs to access Microservices running in Kubernetes
-date: 2021-05-24
+date: 2021-05-17
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
 tags: [DevOps, Azure DevOps, Azure, Nginx, YAML, CI-CD, Docker, Helm, AKS, Kubernetes]

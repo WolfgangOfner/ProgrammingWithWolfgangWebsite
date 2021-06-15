@@ -1,6 +1,6 @@
 ---
 title: Deploy a Docker Container to Azure Functions using an Azure DevOps YAML Pipeline
-date: 2021-05-10
+date: 2021-05-03
 author: Wolfgang Ofner
 categories: [DevOps, Cloud]
 tags: [DevOps, Azure DevOps, Azure, Azure Functions, YAML, CI-CD, Docker]

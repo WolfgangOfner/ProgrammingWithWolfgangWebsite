@@ -1,6 +1,6 @@
 ---
 title: Deploy Azure Functions with Azure DevOps YAML Pipelines
-date: 2021-05-03
+date: 2021-04-26
 author: Wolfgang Ofner
 categories: [DevOps, Cloud]
 tags: [DevOps, Azure DevOps, Azure, Azure Service Bus, Azure Functions, YAML, CI-CD]
@@ -96,7 +96,7 @@ This task takes the previously created .zip file (during the publish) and deploy
 The Azure Function can be deployed but it won't work because it has no access to the Azure Service Bus Queue or database. To provide access, you have to update the service settings. First add secrets to your Azure Pipeline by using the Variables button on the right side.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/Add-secret-variables-to-the-pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/Add-secret-variables-to-the-pipeline.jpg" alt="Add secret variables to the pipeline" /></a>
+  <a href="/assets/img/posts/2021/04/Add-secret-variables-to-the-pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Add-secret-variables-to-the-pipeline.jpg" alt="Add secret variables to the pipeline" /></a>
   
   <p>
    Add secret variables to the pipeline
@@ -148,7 +148,7 @@ If you followed this series (["Microservice Series - From Zero to Hero"](/micros
 To test that the Azure Function works, first check the orders, especially the names in the Order database.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/The-orders-before-the-update.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-orders-before-the-update.jpg" alt="The orders before the update" /></a>
+  <a href="/assets/img/posts/2021/04/The-orders-before-the-update.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/The-orders-before-the-update.jpg" alt="The orders before the update" /></a>
   
   <p>
    The orders before the update
@@ -158,7 +158,7 @@ To test that the Azure Function works, first check the orders, especially the na
 Next, update a customer name, for example, from Wolfgang Ofner to Name Changed. The Customer microservice write this update in the queue (or you add the message manually into the queue). The Azure Function sees the new messages, reads it and then updates the orders in the database. After the Azure Function ran, check the orders in the database and you will see the changed name.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/The-name-was-updated.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-name-was-updated.jpg" alt="The name was updated" /></a>
+  <a href="/assets/img/posts/2021/04/The-name-was-updated.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/The-name-was-updated.jpg" alt="The name was updated" /></a>
   
   <p>
    The name was updated
