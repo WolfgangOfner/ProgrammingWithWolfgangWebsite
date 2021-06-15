@@ -5,6 +5,7 @@ author: Wolfgang Ofner
 categories: [Cloud, Kubernetes]
 tags: [AKS, Kubernetes, Docker, YAML, Azure, NET 5, Helm, CI-CD, Azure DevOps, C#, Azure]
 description: This series teaches you everything you have to know about microservices, Kubernetes, DevOps, Docker, Helm and much more.
+pin: true
 ---
 
 I am working as a consultant and software engineer on different projects which focus on microservice, DevOps, and process automation. Many of my consulting jobs are about explaining microservice, why they are great, and how to use them efficiently. Microservices is a buzzword that's around for a couple of years and almost every developer knows it but not that many know how to implement them. 
@@ -99,12 +100,11 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Automatically issue SSL Certificates and use SSL Termination in Kubernetes](/automatically-issue-ssl-certificates-and-use-ssl-termination-in-kubernetes)
 
+- [Split up the CI/CD Pipeline into two Pipelines](/split-up-the-ci-cd-pipeline-into-two-pipelines)
 
 Coming soon (in no specific order):
 - Deploy every Pull Request to Kubernetes
 - Static Code Analysis in your CI Pipeline
-- Access a Database with Managed Identities in AKS
-- Test your Application with different Infrastructure combinations in your CI Pipeline
 - Logging with Graphana Loki Stack
 - Service Mesh - Getting Started
 - Using Istio to manage your Kubernetes Cluster
