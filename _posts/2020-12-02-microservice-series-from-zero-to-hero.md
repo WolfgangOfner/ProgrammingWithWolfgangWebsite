@@ -104,9 +104,10 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Deploy Microservices to multiple Environments using Azure DevOps](/deploy-microservices-to-multiple-environments-azure-devops)
 
+- [Deploy every Pull Request into a dedicated Namespace in Kubernetes](/deploy-every-pull-request-into-dedicated-namespace-in-kubernetes)
+
 Coming soon (in no specific order):
-- Deploy every Pull Request to Kubernetes
 - Static Code Analysis in your CI Pipeline
-- Logging with Graphana Loki Stack
+- Logging with Grafana Loki Stack
 - Service Mesh - Getting Started
 - Using Istio to manage your Kubernetes Cluster

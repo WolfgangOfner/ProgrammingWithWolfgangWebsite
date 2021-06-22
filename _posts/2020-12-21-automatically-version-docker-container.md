@@ -85,10 +85,10 @@ mode: Mainline
 
 ### Use the Semantic Version
 
-All you have to do to use the semantic version is to add the desired variable as the tag to your image name. I already have a variable for the image name and add $(GitVersion.NuGetVersionV2) as the tag:
+All you have to do to use the semantic version is to add the desired variable as the tag to your image name. I already have a variable for the image name and add $(GitVersion.FullSemVer) as the tag:
 
 ```yaml
-ImageName: 'wolfgangofner/customerapi:$(GitVersion.NuGetVersionV2)'
+ImageName: 'wolfgangofner/customerapi:$(GitVersion.FullSemVer)'
 ```
 
 ### Testing the Semantic Version

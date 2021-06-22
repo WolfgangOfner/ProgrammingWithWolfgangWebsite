@@ -260,7 +260,7 @@ For more information on how to deploy databases in a CD pipeline, see [Automatic
 
 Having a CD pipeline in place enables you to easily add new environments to your deployment. A typical CD pipeline consists of test and production deployments but you can easily add QA or other environments.
 
-In my next post, I will show you how to deploy every pull request into a new environment and automatically create a unique URL.
+[In my next post](/deploy-every-pull-request-into-dedicated-namespace-in-kubernetes), I will show you how to deploy every pull request into a new environment and automatically create a unique URL.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 
