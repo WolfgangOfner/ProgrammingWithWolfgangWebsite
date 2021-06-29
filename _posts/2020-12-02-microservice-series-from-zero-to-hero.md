@@ -106,6 +106,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Deploy every Pull Request into a dedicated Namespace in Kubernetes](/deploy-every-pull-request-into-dedicated-namespace-in-kubernetes)
 
+- [Use Infrastructure as Code to deploy your Infrastructure with Azure DevOps](/use-infrastructure-as-code-to-deploy-infrastructure)
+
 Coming soon (in no specific order):
 - Static Code Analysis in your CI Pipeline
 - Logging with Grafana Loki Stack
