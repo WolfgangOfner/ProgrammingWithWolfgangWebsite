@@ -255,7 +255,7 @@ After inserting the connection strings, publish the Azure Function.
 Open the CustomerAPI solution, add your database and queue connection strings in the appsettings file and start the application. In the Swagger UI update an existing user with the PUT operation.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/04/Update-an-existing-Customer.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Update-an-existing-Customer.jpg" alt="Update an existing Customer" /></a>
+  <a href="/assets/img/posts/2021/04/Update-an-existing-customer.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Update-an-existing-customer.jpg" alt="Update an existing Customer" /></a>
   
   <p>
    Update an existing Customer
