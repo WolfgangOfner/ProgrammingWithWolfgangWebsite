@@ -172,7 +172,7 @@ If something did go wrong, you might see a warning when you try to access the mi
 If you see this message, check if you added the letsencrypt annotation. I forget this one almost always. If this didn't fix the problem check if there is a certificate in your namespace with the following command:
 
 ```shell
-get certificate --namespace customerapi-test
+kubectl get certificate --namespace customerapi-test
 ```
 
 This should display your certificate.

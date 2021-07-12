@@ -108,8 +108,9 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Use Infrastructure as Code to deploy your Infrastructure with Azure DevOps](/use-infrastructure-as-code-to-deploy-infrastructure)
 
+- [Debug Microservices running inside a Kubernetes Cluster with Bridge to Kubernetes](/debug-microservices-bridge-kubernetes)
+
 Coming soon (in no specific order):
-- Static Code Analysis in your CI Pipeline
 - Logging with Grafana Loki Stack
 - Service Mesh - Getting Started
 - Using Istio to manage your Kubernetes Cluster
