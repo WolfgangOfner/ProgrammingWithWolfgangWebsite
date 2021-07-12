@@ -164,18 +164,40 @@ The Cert-Manager adds SSL certificates to your services running inside AKS to al
 
 #### Add the Certifcate Cluster Issuer
 
-The SSL certificates need to be issued using the Cluster Issuer object. I am using the same YAML file as in [Automatically issue SSL Certificates and use SSL Termination in Kubernetes](/automatically-issue-ssl-certificates-and-use-ssl-termination-in-kubernetes) except that this time it is uploaded to my Github repository
+The SSL certificates need to be issued using the Cluster Issuer object. I am using the same YAML file as in [Automatically issue SSL Certificates and use SSL Termination in Kubernetes](/automatically-issue-ssl-certificates-and-use-ssl-termination-in-kubernetes) except that this time it is applied as inline code and with the variable for the email address.
 
 ```yaml
-- task: Kubernetes@1       
+- task: Kubernetes@1
   inputs:
-    connectionType: '$(AzureConnectionType)'
+    connectionType: 'Azure Resource Manager'
     azureSubscriptionEndpoint: 'AzureServiceConnection'
-    azureResourceGroup: $(ResourceGroupName)
-    kubernetesCluster: $(AksClusterName)
+    azureResourceGroup: 'MicroserviceDemo'
+    kubernetesCluster: 'microservice-aks'
     useClusterAdmin: true
     command: 'apply'
-    arguments: '-f https://raw.githubusercontent.com/WolfgangOfner/MicroserviceDemo/master/Infrastructure/AzureResources/scripts/cluster-issuer.yaml'
+    useConfigurationFile: true
+    configurationType: 'inline'
+    inline: |
+      apiVersion: cert-manager.io/v1
+      kind: ClusterIssuer
+      metadata:
+        name: letsencrypt
+      spec:
+        acme:
+          server: https://acme-v02.api.letsencrypt.org/directory
+          email: $(CertIssuerEmail)
+          privateKeySecretRef:
+            name: letsencrypt
+          solvers:
+          - http01:
+              ingress:
+                class: nginx
+                podTemplate:
+                  spec:
+                    nodeSelector:
+                      "kubernetes.io/os": linux
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Azure Container Registry'
   displayName: 'Install Cluster Issuer'
 ```
 
