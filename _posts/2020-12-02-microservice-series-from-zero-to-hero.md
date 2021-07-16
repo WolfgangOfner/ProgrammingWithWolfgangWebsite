@@ -110,6 +110,9 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Debug Microservices running inside a Kubernetes Cluster with Bridge to Kubernetes](/debug-microservices-bridge-kubernetes)
 
+- [Collect and Query your Kubernetes Cluster Logs with Grafana Loki](/collect-and-query-kubernetes-logs-with-grafana-loki)
+
+
 Coming soon (in no specific order):
 - Logging with Grafana Loki Stack
 - Service Mesh - Getting Started
