@@ -61,7 +61,7 @@ In one of my past posts, I have created an Infrastructure as Code (IaC) Pipeline
 
 ```yaml
 variables:  
-  LokiVersion: '2.5.2'
+  LokiVersion: '2.0.3'
   LokiNamespace: loki-grafana
 
 - task: HelmDeploy@0
@@ -221,7 +221,7 @@ All the queries above use LogQL. The examples above are just scratching the surf
 
 Analyzing logs is essential for every project running in a production environment. Grafana Loki offers a lot of functionality out of the box like automatically collecting logs from each object in Kubernetes and sending it to Loki where you can query and filter these logs. The examples in this post are very simple but should be enough to get you started. 
 
-In my next post, I will show you how to extend the existing microservices of my demo to send their logs also to Loki.
+In my next post, I will show you how to use Prometheus, which was also installed by Loki, to scrap metrics from the microservices.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 
