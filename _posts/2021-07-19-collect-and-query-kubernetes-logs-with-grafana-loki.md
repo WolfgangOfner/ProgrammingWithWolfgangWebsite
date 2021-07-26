@@ -206,7 +206,7 @@ This query is more useful than displaying all logs but often you also want to se
 This query displays all error logs with Invalid Username or Password in the log message.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/07/Query-only-error-logs.jpg"><img loading="lazy" src="/assets/img/posts/2021/07/Query-only-error-logs.jpg" alt="Query only error logs" /></a>
+  <a href="/assets/img/posts/2021/07/Query-only-error-logs.jpg"><img loading="lazy" src="/assets/img/posts/2021/07/Query-only-xcerror-logs.jpg" alt="Query only error logs" /></a>
   
   <p>
    Query only error logs
@@ -221,7 +221,7 @@ All the queries above use LogQL. The examples above are just scratching the surf
 
 Analyzing logs is essential for every project running in a production environment. Grafana Loki offers a lot of functionality out of the box like automatically collecting logs from each object in Kubernetes and sending it to Loki where you can query and filter these logs. The examples in this post are very simple but should be enough to get you started. 
 
-In my next post, I will show you how to use Prometheus, which was also installed by Loki, to scrap metrics from the microservices.
+[In my next post](/monitor-net-microservices-with-prometheus), I will show you how to use Prometheus, which was also installed by Loki, to scrap metrics from the microservices.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 

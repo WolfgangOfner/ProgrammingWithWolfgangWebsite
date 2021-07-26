@@ -112,8 +112,10 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Collect and Query your Kubernetes Cluster Logs with Grafana Loki](/collect-and-query-kubernetes-logs-with-grafana-loki)
 
+- [Monitor .NET Microservices in Kubernetes with Prometheus](/monitor-net-microservices-with-prometheus)
+
+- [Create Grafana Dashboards with Prometheus Metrics](/create-grafana-dashboards-with-prometheus-metrics)
 
 Coming soon (in no specific order):
-- Logging with Grafana Loki Stack
 - Service Mesh - Getting Started
 - Using Istio to manage your Kubernetes Cluster

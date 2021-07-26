@@ -83,7 +83,7 @@ On the next tabs, leave everything as it is and click Create on the last tab to 
 </div>
 
 The deployment should be finished in a couple of minutes.
-## Access AKS Cluster
+## Access the AKS Cluster
 
 You can access your new AKS cluster using PowerShell and the [Azure CLI module](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli). 
 

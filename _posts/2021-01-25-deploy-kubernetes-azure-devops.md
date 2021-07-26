@@ -146,7 +146,7 @@ For practice, try to add the deployment to another namespace, for example, prod.
 
 ### Test the deployed Microservice
 
-Use the dashboard of Kubernetes ([see here how to use Octant](/azure-kubernetes-service-getting-started/#access-aks-cluster)) or use the Azure portal to find the URL of the previously created microservice.
+Use the dashboard of Kubernetes ([see here how to use Octant](/azure-kubernetes-service-getting-started/#access-the-aks-cluster)) or use the Azure portal to find the URL of the previously created microservice.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/01/Find-the-external-URL-of-the-microservice.jpg"><img loading="lazy" src="/assets/img/posts/2021/01/Find-the-external-URL-of-the-microservice.jpg" alt="Find the external URL of the microservice" /></a>
