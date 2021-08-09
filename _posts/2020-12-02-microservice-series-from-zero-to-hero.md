@@ -116,6 +116,7 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Create Grafana Dashboards with Prometheus Metrics](/create-grafana-dashboards-with-prometheus-metrics)
 
+- [Service Mesh in Kubernetes - Getting Started](/service-mesh-kubernetes-getting-started)
+
 Coming soon (in no specific order):
-- Service Mesh - Getting Started
 - Using Istio to manage your Kubernetes Cluster
