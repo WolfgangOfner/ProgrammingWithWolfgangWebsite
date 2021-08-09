@@ -50,7 +50,7 @@ Tuples give you the possibility to return two values at a time. These two values
 
 To get access the returned values use variable.returnName. The returnName is the name you defined in the signature of the method.
 
-To use Tuples you need to target the .Net Framework 4.7. If you target a lower .Net Framework, you have to install the System.ValueTuple NuGet package which can be found [here](https://www.nuget.org/packages/System.ValueTuple/).
+To use Tuples you need to target the .NET Framework 4.7. If you target a lower .NET Framework, you have to install the System.ValueTuple NuGet package which can be found [here](https://www.nuget.org/packages/System.ValueTuple/).
 
 ### Pattern matching
 

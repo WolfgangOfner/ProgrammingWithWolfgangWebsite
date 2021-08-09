@@ -172,7 +172,7 @@ Organized around concepts and use cases, C# 8.0 in a Nutshell provides intermedi
   * Work with .NET features, including regular expressions, networking, serialization, spans, reflection, and cryptography
   * Delve into Roslyn, the modular C# compiler as a service
 
-### <a href="https://amzn.to/3f6Rjza" target="_blank" rel="noopener noreferrer">Pro ASP.Net Core MVC 2</a>
+### <a href="https://amzn.to/3f6Rjza" target="_blank" rel="noopener noreferrer">Pro ASP.NET Core MVC 2</a>
 
 Now in its 7th edition, the best selling book on MVC is updated for ASP.NET Core MVC 2. It contains detailed explanations of the Core MVC functionality which enables developers to produce leaner, cloud optimized and mobile-ready applications for the .NET platform. This book puts ASP.NET Core MVC into context and dives deep into the tools and techniques required to build modern, cloud optimized extensible web applications. All the new MVC features are described in detail and the author explains how best to apply them to both new and existing projects.
 
@@ -200,7 +200,7 @@ Best-selling author **Adam Freeman** has thoroughly revised this market-leadin
 
 This book is for web developers with a basic knowledge of ASP.NET and C# who want to incorporate the latest improvements and functionality in the ASP.NET Core MVC 2 Framework.
 
-### <a href="https://amzn.to/38wpH45" target="_blank" rel="noopener noreferrer">Pro ASP.Net MVC 5</a>
+### <a href="https://amzn.to/38wpH45" target="_blank" rel="noopener noreferrer">Pro ASP.NET MVC 5</a>
 
 The ASP.NET MVC 5 Framework is the latest evolution of Microsoft’s ASP.NET web platform. It provides a high-productivity programming model that promotes cleaner code architecture, test-driven development, and powerful extensibility, combined with all the benefits of ASP.NET.
 
@@ -208,7 +208,7 @@ ASP.NET MVC 5 contains a number of advances over previous versions, including th
 
 The popular Bootstrap JavaScript library has also now been included natively within MVC 5 providing you, the developer, with a wider range of multi-platform CSS and HT
 
-### <a href="https://amzn.to/2VPC5al" target="_blank" rel="noopener noreferrer">Pro ASP.Net MVC Platform</a>
+### <a href="https://amzn.to/2VPC5al" target="_blank" rel="noopener noreferrer">Pro ASP.NET MVC Platform</a>
 
 The power of ASP.NET MVC 5 stems from the underlying ASP.NET platform. To make your ASP.NET MVC applications the best they can be, you need to fully understand the platform features and know how they can be used to build effective and elegant MVC framework applications.
 
@@ -465,7 +465,7 @@ The book finishes with guidance on getting started with Docker in your own proje
 
 If you want to modernize an old monolithic application without rewriting it, smooth the deployment to production, or move to DevOps or the cloud, then Docker is the enabler for you. This book gives you a solid grounding in Docker so you can confidently approach all of these scenarios.
 
-### <a href="https://amzn.to/2VQR5Vi" target="_blank" rel="noopener noreferrer">Modern API Design with ASP.Net Core 2</a>
+### <a href="https://amzn.to/2VQR5Vi" target="_blank" rel="noopener noreferrer">Modern API Design with ASP.NET Core 2</a>
 
 Use ASP.NET Core 2 to create durable and cross-platform web APIs through a series of applied, practical scenarios. Examples in this book help you build APIs that are fast and scalable. You’ll progress from the basics of the framework through to solving the complex problems encountered in implementing secure RESTful services. The book is packed full of examples showing how Microsoft’s ground-up rewrite of ASP.NET Core 2 enables native cross-platform applications that are fast and modular, allowing your cloud-ready server applications to scale as your business grows.  
 Major topics covered in the book include the fundamentals and core concepts of ASP.NET Core 2. You&#8217;ll learn about building RESTful APIs with the MVC pattern using proven best practices and following the six principles of REST. Examples in the book help in learning to develop world-class web APIs and applications that can run on any platform, including Windows, Linux, and MacOS. You can even deploy to Microsoft Azure and automate your delivery by implementing Continuous Integration and Continuous Deployment pipelines.
@@ -550,7 +550,7 @@ The examples in the book use C#, but will benefit anyone using a statically type
   * Simple dependency injection techniques
   * Refactoring legacy code
 
-### <a href="https://amzn.to/3iAeLHh" target="_blank" rel="noopener noreferrer">.Net DevOps for Azure<span id="productTitle" class="a-size-extra-large">: A Developer&#8217;s Guide to DevOps Architecture the Right Way</span></a>
+### <a href="https://amzn.to/3iAeLHh" target="_blank" rel="noopener noreferrer">.NET DevOps for Azure<span id="productTitle" class="a-size-extra-large">: A Developer&#8217;s Guide to DevOps Architecture the Right Way</span></a>
 
 Use this book as your one-stop shop for architecting a world-class DevOps environment with Microsoft technologies.
 

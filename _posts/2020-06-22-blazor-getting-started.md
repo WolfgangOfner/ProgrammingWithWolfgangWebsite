@@ -195,6 +195,6 @@ Run the application, navigate to /products and you will see the dropdown menu. S
 
 ## Conclusion
 
-Blazor is a new frontend framework that enables developers to run C# in the browser. This might be a great asset for enterprises that already use .Net but don&#8217;t want to deal with Javascript frameworks.
+Blazor is a new frontend framework that enables developers to run C# in the browser. This might be a great asset for enterprises that already use .NET but don&#8217;t want to deal with Javascript frameworks.
 
 You can find the source of the demo on <a href="https://github.com/WolfgangOfner/Blazor-Server" target="_blank" rel="noopener noreferrer">Github</a>.

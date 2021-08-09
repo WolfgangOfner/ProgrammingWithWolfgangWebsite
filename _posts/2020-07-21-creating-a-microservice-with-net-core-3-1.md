@@ -18,7 +18,7 @@ For more details on microservices, I recommend my post &#8220;<a href="/microser
 
 ## Creating your first Microservice
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/tree/createMicroservice" target="_blank" rel="noopener noreferrer">Github</a> on the createMicroservice branch.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/createMicroservice" target="_blank" rel="noopener noreferrer">Github</a> on the createMicroservice branch.
 
 A microservice is an application that offers operations for a specific context. In my example, the application offers operations to read, create, and update customers. To keep it simple, I use an in-memory database. A bit special is that I am using CQRS and MediatR to read and write data. You can find a detailed description of the application in my post &#8220;<a href="/programming-microservices-net-core-3-1" target="_blank" rel="noopener noreferrer">Programming Microservices with .NET Core 3.1</a>&#8220;.
 
@@ -36,4 +36,4 @@ When you start the application, you will see the Swagger UI and can also try all
 
 This post was a short introduction into the microservice that I will use in the following posts to create automatic builds, deployments to Kubernetes, DevOps workflows, and much more. Check out the <a href="/create-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">next post of this series</a> where I create a CI pipeline in Azure DevOps to build the .NET Core solution and run all unit tests.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/tree/createMicroservice" target="_blank" rel="noopener noreferrer">Github</a> on the createMicroservice branch.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/createMicroservice" target="_blank" rel="noopener noreferrer">Github</a> on the createMicroservice branch.

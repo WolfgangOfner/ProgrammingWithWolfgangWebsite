@@ -1,5 +1,5 @@
 ---
-title: Create Automatic Builds for .Net and .Net Core Applications with Azure DevOps
+title: Create Automatic Builds for .NET and .NET Core Applications with Azure DevOps
 date: 2019-11-18T16:15:30+01:00
 author: Wolfgang Ofner
 categories: [DevOps]
@@ -138,7 +138,7 @@ Now that all the settings are as wished, let&#8217;s look at the steps of the de
 
 #### Pipeline
 
-Here you can configure the agent pool, agent and artifact name for your build. The agent pool groups agents together. An agent builds (and later deploys) your application. Since I am using Azure DevOps Services, I leave the agent pool at Azure Pipelines because I want to use the agents which are hosted by Microsoft. For the agent, I also leave it as it is. If you are running a .Net core build, you could switch to Ubuntu.
+Here you can configure the agent pool, agent and artifact name for your build. The agent pool groups agents together. An agent builds (and later deploys) your application. Since I am using Azure DevOps Services, I leave the agent pool at Azure Pipelines because I want to use the agents which are hosted by Microsoft. For the agent, I also leave it as it is. If you are running a .NET core build, you could switch to Ubuntu.
 
 #### Get sources
 

@@ -6,7 +6,7 @@ categories: [Programming, Miscellaneous]
 tags: [NET Core 3.1, 'C#', Docker, Visual Studio]
 description: All my microservice projects have the same structure, and therefore I created a Visual Studio template that sets up everything for me.
 ---
-Over the last couple of weeks, I created several microservices with the same project structure. Setting up a new solution was quite repetitive, time-consuming, and no to be honest no fun. Since my solutions have the same structure, I created a Visual Studio template that sets up everything for me. Today, I want to show you how to create your Visual Studio template with ASP .Net MVC with .NET Core 3.1 and Docker.
+Over the last couple of weeks, I created several microservices with the same project structure. Setting up a new solution was quite repetitive, time-consuming, and no to be honest no fun. Since my solutions have the same structure, I created a Visual Studio template that sets up everything for me. Today, I want to show you how to create your Visual Studio template with ASP .NET MVC with .NET Core 3.1 and Docker.
 
 ## Creating a Visual Studio Template
 

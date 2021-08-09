@@ -86,7 +86,7 @@ To manage your Web App settings, follow these steps:
 
   1. In the Azure portal, open the Webb App, you want to configure and select Application settings under the Settings menu.
   2. On the Application settings, you can choose the following settings: 
-      * Select language support for .Net, PHP, Python, or Java and set the desired version of the language.
+      * Select language support for .NET, PHP, Python, or Java and set the desired version of the language.
       * Choose between a 32 or 64 bit runtime environment.
       * Enable or disable web sockets.
       * Enable Always On. This configures that the web application will be kept in the memory all the time. Therefore the load time for the next request is reduced.

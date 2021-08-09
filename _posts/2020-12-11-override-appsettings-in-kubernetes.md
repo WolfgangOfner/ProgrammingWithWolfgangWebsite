@@ -9,7 +9,7 @@ description: Nowadays, especially with microservices, we have many different env
 
 Changing configs was difficult in the past. In .NET we had to do a web.config transformation and we also had to have a web.config file for each environment. It was ok since there were usually only a couple of environments. This got improved a lot with .NET Core and its appsettings.json file which could override files depending on the environment. 
 
-Nowadays, especially with microservices, we have many different environments and often create them dynamically though. It is quite common to create a new Kubernetes namespace and deploy a pull request there, including its own database. We can't have unlimited config files though. Especially when everything is so dynamic. This is where another neat .Net Core (now .NET 5) feature comes in. It is possible to override.
+Nowadays, especially with microservices, we have many different environments and often create them dynamically though. It is quite common to create a new Kubernetes namespace and deploy a pull request there, including its own database. We can't have unlimited config files though. Especially when everything is so dynamic. This is where another neat .NET Core (now .NET 5) feature comes in. It is possible to override.
 
 [In my last posts](/deploy-kubernetes-using-helm), I talked about Helm and showed how it can be used to easily deploy applications to Kubernetes. Today, I will show you you can dynamically configure your application using environment variables in Helm.
 
@@ -139,7 +139,7 @@ Open your browser and navigate either to the shown localhost URL or to the exter
 </div>
 
 ## Conclusion
-.Net Core and .NET 5 are great to override setting values with environment variables. This allows you to dynamically change the configuration during the deployment of your application. Today, I showed how to use Helm to add an environment variable to override a value of the appsettings.json file.
+.NET Core and .NET 5 are great to override setting values with environment variables. This allows you to dynamically change the configuration during the deployment of your application. Today, I showed how to use Helm to add an environment variable to override a value of the appsettings.json file.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 

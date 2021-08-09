@@ -83,7 +83,7 @@ In Visual Studio create a new project and select Blazor App and then Blazor WebA
   </p>
 </div>
 
-Creating a WASM App creates three projects: client, server, and shared whereas shared is a .Net Standard project. Start the application, open the Network tab of the developer tools and you will see that 6.6 MB got downloaded. If you start the application in Release mode, only 2.3 MB are downloaded. Switching to Release turns on the linker and therefore only necessary files are sent.
+Creating a WASM App creates three projects: client, server, and shared whereas shared is a .NET Standard project. Start the application, open the Network tab of the developer tools and you will see that 6.6 MB got downloaded. If you start the application in Release mode, only 2.3 MB are downloaded. Switching to Release turns on the linker and therefore only necessary files are sent.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/06/All-the-files-which-are-sent-to-the-client.jpg"><img loading="lazy" src="/assets/img/posts/2020/06/All-the-files-which-are-sent-to-the-client.jpg" alt="All the files which are sent to the client" /></a>
@@ -128,7 +128,7 @@ Advantages
   * When performance matters use WASM
   * Offline support
   * Can be distributed via CDN, no server required (except for API)
-  * Any .Net standard 2.0 C# can be run
+  * Any .NET standard 2.0 C# can be run
 
 Disadvantages
 

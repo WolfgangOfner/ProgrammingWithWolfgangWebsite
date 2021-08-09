@@ -8,7 +8,7 @@ description: Running xUnit tests inside a container and especially getting the t
 ---
 Running your build inside a Docker container has many advantages like platform independence and better testability for developers. These containers also bring more complexity though. <a href="/build-docker-azure-devops-ci-pipeline/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to set up the build inside a Docker container. Unfortunately, I didn't get any test results or code coverage after the build succeeded. Today, I want to show how to get the test results when you run tests inside Docker and how to display them in Azure DevOps.
 
-You can find the code of this demo on [Github](https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/tree/UnitTestInCiPipeline).
+You can find the code of this demo on [Github](https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/UnitTestInCiPipeline).
 
 ## Run Tests inside Docker
 

@@ -11,7 +11,7 @@ A crucial feature of DevOps is to give the developer fast feedback if their code
 
 ## Create a .NET Core CI Pipeline in Azure DevOps
 
-In my <a href="/creating-a-microservice-with-net-core-3-1/" target="_blank" rel="noopener noreferrer">last post, Creating a Microservice with .NET Core 3.1</a>, I created a new ASP .NET Core microservice. I will use the CI pipeline to build all projects and run all unit tests in the repository. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/tree/NetCoreCiPipeline" target="_blank" rel="noopener noreferrer">Github</a>.
+In my <a href="/creating-a-microservice-with-net-core-3-1/" target="_blank" rel="noopener noreferrer">last post, Creating a Microservice with .NET Core 3.1</a>, I created a new ASP .NET Core microservice. I will use the CI pipeline to build all projects and run all unit tests in the repository. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/NetCoreCiPipeline" target="_blank" rel="noopener noreferrer">Github</a>.
 
 In your Azure DevOps project, go to Pipelines and click Create Pipeline.
 
@@ -45,7 +45,7 @@ Since the code is on GitHub, I have to authorize Azure Pipelines to access my re
   </p>
 </div>
 
-After authorizing Azure Pipelines for GitHub, all your repositories will be displayed. Search and select for the repository, you want to make the CI pipeline for. In my case, I select the .NetCoreMicroserviceCiCdAks repository.
+After authorizing Azure Pipelines for GitHub, all your repositories will be displayed. Search and select for the repository, you want to make the CI pipeline for. In my case, I select the .NETCoreMicroserviceCiCdAks repository.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/10/Select-your-repository.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Select-your-repository.jpg" alt="Select your repository" /></a>
@@ -85,7 +85,7 @@ Before we add more steps to the CI pipeline, let&#8217;s have a look at what the
 
 ### Analyze the CI Pipeline from the Template
 
-Above the .yml editor, you can see the path to the pipeline yml file in your source control. In my case it is WolfgangOfner/.NetCoreMicroserviceCiCdAks/dotnetcoreCIPipeline.yml. I renamed the file because I want to add more later.
+Above the .yml editor, you can see the path to the pipeline yml file in your source control. In my case it is WolfgangOfner/.NETCoreMicroserviceCiCdAks/dotnetcoreCIPipeline.yml. I renamed the file because I want to add more later.
 
 Line 1 through 8 configures the pipeline. The trigger section defines that the pipeline is automatically triggered when something changes on the master branch. The pool section defines that the pipeline is executed on an ubuntu agent and the variables section lets you define variables for the pipeline. By default, only the buildConfiguration is set to Release.
 
@@ -204,4 +204,4 @@ Save the pipeline and run it with any branch but the master branch. You will see
 
 CI pipelines help developers to get fast feedback about their code changes. These pipelines can build code and run tests every time something changed. In my next post, I will show how to add code coverage to the results to get even more information about the code changes, and then I will show how to run your code with every pull request. Later, I will extend the pipeline to build and create Docker images and also to deploy them to Kubernetes.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/tree/NetCoreCiPipeline" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/NetCoreCiPipeline" target="_blank" rel="noopener noreferrer">Github</a>.

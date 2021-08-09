@@ -1,5 +1,5 @@
 ---
-title: Getting to know the Startup Class of ASP.Net Core MVC
+title: Getting to know the Startup Class of ASP.NET Core MVC
 date: 2019-04-29T11:15:53+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
@@ -8,7 +8,7 @@ description: Every .NET Core web application has a Program class with a static M
 ---
 Every .NET Core web application has a Program class with a static Main method.
 
-The Startup class of .Net core is the new version of the Global.asax file. This class is responsible for starting the application. The most important part of it is .UseStartup<Startup>(). This delegate calls the Startup class in which all the configuration for the web application is handled. The UseStartup method relies on a type parameter to identify the class that will configure the .NET Core application. This means if you don&#8217;t want to use the default Startup class, you can edit the call, for example with .UseStartup<MyStartup>().
+The Startup class of .NET core is the new version of the Global.asax file. This class is responsible for starting the application. The most important part of it is .UseStartup<Startup>(). This delegate calls the Startup class in which all the configuration for the web application is handled. The UseStartup method relies on a type parameter to identify the class that will configure the .NET Core application. This means if you don&#8217;t want to use the default Startup class, you can edit the call, for example with .UseStartup<MyStartup>().
 
 The Startup class has two methods, ConfigureServices and Configure, that tell ASP.NET Core which features are available and how they should be used.
 
@@ -221,7 +221,7 @@ In production, none of these middlewares would be added.
 
 ## Configuring Exception Handling in the Startup class
 
-In a classic ASP.Net MVC application, you had to configure the exception handling in the web.config. The custom error section there often was configured to show detailed error pages and was changed to hide an exception and redirect on an error page on the production environment.
+In a classic ASP.NET MVC application, you had to configure the exception handling in the web.config. The custom error section there often was configured to show detailed error pages and was changed to hide an exception and redirect on an error page on the production environment.
 
 With ASP.NET Core, you can easily configure this using the IHostingEnvironment and a built-in exception handler middleware.
 

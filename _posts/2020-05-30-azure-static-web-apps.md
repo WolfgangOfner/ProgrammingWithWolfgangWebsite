@@ -12,7 +12,7 @@ Today, I want to show how to create a React front-end and how to retrieve data f
 
 ## Azure Functions
 
-Azure Function is an event-driven serverless feature which can be used to automate workloads or connect different parts of an application. They can be flexible scaled and they offer different triggers, for example, run some code when a message is written to a queue when a web API call was made or many more. You can use different programming languages like Javascript, Node.js, or .Net Core.
+Azure Function is an event-driven serverless feature which can be used to automate workloads or connect different parts of an application. They can be flexible scaled and they offer different triggers, for example, run some code when a message is written to a queue when a web API call was made or many more. You can use different programming languages like Javascript, Node.js, or .NET Core.
 
 Azure Functions offer a consumption plan, where you pay what you used, a premium plan, or an App Service plan. I like the consumption plan because it gives you 400,000 GB/s for free every month. This should be more than enough for small projects.
 

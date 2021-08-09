@@ -28,7 +28,7 @@ To create a new API app, follow these steps:
   </p>
 </div>
 
-After the API App is deployed, you can download a sample project in ASP.Net, NodeJs or Java by clicking on Quickstart under the Deployment menu.
+After the API App is deployed, you can download a sample project in ASP.NET, NodeJs or Java by clicking on Quickstart under the Deployment menu.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2018/05/Download-a-sample-project.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Download-a-sample-project.jpg" alt="Download a sample project" /></a>
@@ -43,10 +43,10 @@ After the API App is deployed, you can download a sample project in ASP.Net, Nod
 To create a new API App open Visual Studio 2017 and create a new ASP.NET project with the Azure API App template.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Create-a-new-ASP.Net-application-with-the-Azure-API-App-template.jpg" alt="Create a new ASP.Net application with the Azure API App template" /></a>
+  <a href="/assets/img/posts/2018/05/Create-a-new-ASP.NET-application-with-the-Azure-API-App-template.jpg"><img loading="lazy" src="/assets/img/posts/2018/05/Create-a-new-ASP.NET-application-with-the-Azure-API-App-template.jpg" alt="Create a new ASP.NET application with the Azure API App template" /></a>
   
   <p>
-    Create a new ASP.Net application with the Azure API App template
+    Create a new ASP.NET application with the Azure API App template
   </p>
 </div>
 

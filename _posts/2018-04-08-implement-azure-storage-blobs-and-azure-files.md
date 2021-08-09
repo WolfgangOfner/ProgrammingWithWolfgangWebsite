@@ -32,7 +32,7 @@ Your data is always replicated three times within the same data center to ensure
 
 ### Read and change data
 
-The code of the following demo can be downloaded from <a href="https://github.com/WolfgangOfner/Azure-StorageAccount" target="_blank" rel="noopener">GitHub</a> You can read and change data by using the Azure SDK for .Net, following these steps:
+The code of the following demo can be downloaded from <a href="https://github.com/WolfgangOfner/Azure-StorageAccount" target="_blank" rel="noopener">GitHub</a> You can read and change data by using the Azure SDK for .NET, following these steps:
 
 <li style="list-style-type: none;">
   <ol>

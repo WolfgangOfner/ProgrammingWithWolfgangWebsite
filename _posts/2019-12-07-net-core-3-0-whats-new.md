@@ -1,5 +1,5 @@
 ---
-title: '.Net Core 3.0 - What''s new'
+title: '.NET Core 3.0 - What''s new'
 date: 2019-12-07T11:14:37+01:00
 author: Wolfgang Ofner
 categories: [Programming]
@@ -72,29 +72,29 @@ To configure ready to run, you only have to add the PublishReadyToRun tag to you
   </p>
 </div>
 
-## .Net Core 3.0 removes JSON.Net
+## .NET Core 3.0 removes JSON.NET
 
-.Net Core 3.0 introduces the new Namespace System.Text.Json. Until now JSON.Net was the standard JSON library for .net applications and also .NET Core depends on it. With .NET Core 3.0, the namespace System.Text.Json was introduced to remove this dependency. The classes in this namespace are super fast and need only a low amount of ram. The downside is that they are not feature-rich yet. This should change in future versions. You don&#8217;t have to use them but you can.
+.NET Core 3.0 introduces the new Namespace System.Text.Json. Until now JSON.NET was the standard JSON library for .net applications and also .NET Core depends on it. With .NET Core 3.0, the namespace System.Text.Json was introduced to remove this dependency. The classes in this namespace are super fast and need only a low amount of ram. The downside is that they are not feature-rich yet. This should change in future versions. You don&#8217;t have to use them but you can.
 
-## .Net Core 3.0 goes Desktop
+## .NET Core 3.0 goes Desktop
 
 With .NET Core 3.0, you can now create WPF and WinForms applications. Currently, they are Windows only and the tooling needs a bit more work but new desktop applications can and should use .NET Core. Visual Studio provides a template for the .NET Core WPF application.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/12/Create-a-WPF-.Net-Core-Application.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/Create-a-WPF-.Net-Core-Application.jpg" alt="Create a WPF .Net Core 3.0 Application" /></a>
+  <a href="/assets/img/posts/2019/12/Create-a-WPF-.NET-Core-Application.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/Create-a-WPF-.NET-Core-Application.jpg" alt="Create a WPF .NET Core 3.0 Application" /></a>
   
   <p>
-    Create a WPF .Net Core Application
+    Create a WPF .NET Core Application
   </p>
 </div>
 
 After the application is created, you can see in the csproj file that it is a WPF application and used .NET Core 3.0
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/12/csproj-file-of-the-.Net-Core-WPF-project.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/csproj-file-of-the-.Net-Core-WPF-project.jpg" alt="csproj file of the .Net Core 3.0 WPF project" /></a>
+  <a href="/assets/img/posts/2019/12/csproj-file-of-the-.NET-Core-WPF-project.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/csproj-file-of-the-.NET-Core-WPF-project.jpg" alt="csproj file of the .NET Core 3.0 WPF project" /></a>
   
   <p>
-    csproj file of the .Net Core WPF project
+    csproj file of the .NET Core WPF project
   </p>
 </div>
 
@@ -102,7 +102,7 @@ The tooling is not perfect yet but if you need additional UI controls you can us
 
 The .NET Core application can be built as an MSIX package which will contain most of the needed references and can be distributed via the Microsoft Store. You can find the demo .NET Core WPF application on <a href="https://github.com/WolfgangOfner/WPFDotNetCore" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-## Additional Features in .Net Core 3.0
+## Additional Features in .NET Core 3.0
 
 There are many more new features in .NET Core 3.0 like:
 

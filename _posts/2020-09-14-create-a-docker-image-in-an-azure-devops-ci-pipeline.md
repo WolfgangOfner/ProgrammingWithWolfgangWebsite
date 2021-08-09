@@ -44,7 +44,7 @@ On the next page, select Docker Hub as your Registry type, enter your Docker ID,
 
 ## Create a new Azure DevOps CI Pipeline
 
-After setting up the service connection, create a new CI Pipeline. Select the source code location and then any template. After the yml file is created, delete its content. For more details on creating a Pipeline, see my post "<a href="/create-net-core-in-ci-pipeline-in-azure-devops/" target="_blank" rel="noopener noreferrer">Build .Net Core in a CI Pipeline in Azure DevOps</a>".
+After setting up the service connection, create a new CI Pipeline. Select the source code location and then any template. After the yml file is created, delete its content. For more details on creating a Pipeline, see my post "<a href="/create-net-core-in-ci-pipeline-in-azure-devops/" target="_blank" rel="noopener noreferrer">Build .NET Core in a CI Pipeline in Azure DevOps</a>".
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/09/Create-an-empty-Pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2020/09/Create-an-empty-Pipeline.jpg" alt="Create an empty DevOps CI pipeline" /></a>
@@ -182,7 +182,7 @@ stages:
       condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
 ```
 
-You can also find the code of the CI pipeline on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/blob/DockerCiPipeline/Docker-CI.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can also find the code of the CI pipeline on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/blob/DockerCiPipeline/Docker-CI.yml" target="_blank" rel="noopener noreferrer">Github</a>.
 
 ## Testing the Azure DevOps CI Pipeline
 
@@ -210,4 +210,4 @@ The pipeline ran successfully and if I go to <a href="https://hub.docker.com/r/w
 
 An automated CI pipeline to build and push new images is an integral point of every DevOps process. This post showed that it is quite simple to automate everything and create a new image every time changes are pushed to the master branch.
 
-You can find the source code of this demo on <a href="https://github.com/WolfgangOfner/.NetCoreMicroserviceCiCdAks/tree/DockerCiPipeline" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the source code of this demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/DockerCiPipeline" target="_blank" rel="noopener noreferrer">Github</a>.

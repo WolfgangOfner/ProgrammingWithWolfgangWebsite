@@ -36,7 +36,7 @@ The last configuration is the centralized configuration. Here you have your conf
 
 ## Manually implementing Feature Toggles
 
-In this simple example, I will write the configuration in the appsettings.json file of my .Net core web application and configure the Startup class to read the value. Afterward, I will change the title of my page, depending on the value of the toggle. I am calling my toggle in the appsettings.json FeatureToggle and set the IsEnabled property to true.
+In this simple example, I will write the configuration in the appsettings.json file of my .NET core web application and configure the Startup class to read the value. Afterward, I will change the title of my page, depending on the value of the toggle. I am calling my toggle in the appsettings.json FeatureToggle and set the IsEnabled property to true.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2019/02/Enable-the-toggle-in-the-appsettings.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/Enable-the-toggle-in-the-appsettings.jpg" alt="Enable the toggle in the appsettings" /></a>

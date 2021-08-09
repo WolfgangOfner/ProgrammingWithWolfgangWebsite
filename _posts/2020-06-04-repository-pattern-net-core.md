@@ -4,7 +4,7 @@ date: 2020-06-04T23:08:45+02:00
 author: Wolfgang Ofner
 categories: [Design Pattern]
 tags: [NET Core, 'C#', Entity Framework Core]
-description: Today, I will write about implementing .the Repository Pattern in .Net core using Entity Framework Core as the unit of work.
+description: Today, I will write about implementing .the Repository Pattern in .NET core using Entity Framework Core as the unit of work.
 ---
 A couple of years ago, I wrote about the <a href="/repository-and-unit-of-work-pattern/" target="_blank" rel="noopener noreferrer">Repository and Unit of Work pattern</a>. Although this post is quite old and not even .NET Core, I get many questions about it. Since the writing of the post, .NET core matured and I learned a lot about software development. Therefore, I wouldn&#8217;t implement the code as I did back then. Today, I will write about implementing .the repository pattern in .NET core
 
@@ -264,10 +264,10 @@ By default, I am using an in-memory database. This means that you don&#8217;t ha
 services.AddDbContext<RepositoryPatternDemoContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));  
 ```
 
-I also added an SQL script to create the database, tables and test data. You can find the script <a href="https://github.com/WolfgangOfner/.NetCoreRepositoryAndUnitOfWorkPattern/blob/master/NetCoreRepositoryAndUnitOfWorkPattern.Data/DatabaseScript/database.sql" target="_blank" rel="noopener noreferrer">here</a>.
+I also added an SQL script to create the database, tables and test data. You can find the script <a href="https://github.com/WolfgangOfner/.NETCoreRepositoryAndUnitOfWorkPattern/blob/master/NetCoreRepositoryAndUnitOfWorkPattern.Data/DatabaseScript/database.sql" target="_blank" rel="noopener noreferrer">here</a>.
 
 ## Conclusion
 
 In today&#8217;s post, I gave my updated opinion on the repository pattern and simplified the solution compared to my post a couple of years ago. This solution uses entity framework core as unit of work and implements a generic repository that can be used for most of the operations. I also showed how to implement a specific repository, in case the generic repository can&#8217;t full fill your requirements. Implement your own unit of work object only if you need to control over your objects.
 
-You can find the code for the demo on <a href="https://github.com/WolfgangOfner/.NetCoreRepositoryAndUnitOfWorkPattern" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code for the demo on <a href="https://github.com/WolfgangOfner/.NETCoreRepositoryAndUnitOfWorkPattern" target="_blank" rel="noopener noreferrer">Github</a>.
