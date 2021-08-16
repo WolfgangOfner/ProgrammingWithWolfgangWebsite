@@ -1,6 +1,6 @@
 ---
 title: Istio in Kubernetes - Getting Started
-date: 2021-08-10
+date: 2021-08-16
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
 tags: [DevOps, Azure, YAML, Docker, Helm, AKS, Kubernetes, Monitoring, Prometheus, Grafana, Istio, Kiali]
