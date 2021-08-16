@@ -39,7 +39,7 @@ There are three big service mesh competitors in the Kubernetes world at the mome
 
 Istio was originally developed by Lyft and has been adopted by many major technology companies like Google or Microsoft. Istio is the most popular service mesh solution and has an active community. As of this writing, the project has almost 28 thousand stars and more than 5 thousand forks on Github. Istio can be easily installed using Helm charts and also installs many useful tools to operate your Kubernetes cluster, like [Prometheus](/monitor-net-microservices-with-prometheus), Jaeger, [Grafana](/create-grafana-dashboards-with-prometheus-metrics), and Zipkin. 
 
-In my next post, I will show you how to install Istio using its Helm charts and how to configure the traffic management. For more information see <a href="https://istio.io/" target="_blank" rel="noopener noreferrer">istio.io</a>. 
+[In my next post](/istio-getting-started), I will show you how to install Istio using its Helm charts and how to configure the traffic management. For more information see <a href="https://istio.io/" target="_blank" rel="noopener noreferrer">istio.io</a>. 
 
 ### Consul
 
@@ -61,6 +61,6 @@ Another disadvantage of a service mesh is that it adds some overhead and especia
 
 ## Conclusion
 
-A service mesh can help operators to manage their Kubernetes cluster managing traffic, security, and monitoring. A big advantage is that these features are separate from the business logic and can be independently managed and implemented. This post gave a very short introduction to services meshes and in my next post, I will show you how to install Istio and how to take advantage of the features it provides.
+A service mesh can help operators to manage their Kubernetes cluster managing traffic, security, and monitoring. A big advantage is that these features are separate from the business logic and can be independently managed and implemented. This post gave a very short introduction to services meshes and [in my next post](/istio-getting-started), I will show you how to install Istio and how to take advantage of the features it provides.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

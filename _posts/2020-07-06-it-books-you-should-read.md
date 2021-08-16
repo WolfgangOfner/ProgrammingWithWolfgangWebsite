@@ -718,6 +718,43 @@ This book is ideal for:
 - CTOs and senior technical architects who are devising an IT strategy that impacts the way the organization works
 - IT managers who want to learn what’s worked and what hasn’t in large-scale transformation
 
+### <a href="https://www.amazon.de/-/en/gp/product/1492072427/ref=ppx_yo_dt_b_asin_title_o05_s00?ie=UTF8&psc=1" target="_blank" rel="noopener noreferrer">Learning Dapr: Building Distributed Cloud Native Applications></a>
+
+Get the authoritative guide to Dapr, the distributed application runtime that works with new and existing programming languages alike. Written by the model&;s creators, this introduction shows you how Dapr not only unifies stateless, stateful, and actor programming models but also runs everywhere&;in the cloud or on the edge.
+
+Authors Haishi Bai and Yaron Schneider with Microsoft&;s Azure CTO team explain that, with Dapr, you don&;t need to include any SDKs or libraries in your user code. Instead, you automatically get flexible binding, state management, the actor pattern, pub-sub, reliable messaging, and many more features. This book shows developers, architects, CIOs, students, and computing enthusiasts how to get started with Dapr.
+
+- Learn the new programming model for cloud native applications
+- Write high-performance distributed applications without drilling into technical details
+- Use Dapr with any language or framework to write microservices easily
+- Learn how Dapr provides consistency and portability through open APIs and extensible, community-driven components
+- Explore how Dapr handles state, resource bindings, and pub-sub messaging to enable resilient event-driven architectures that scale
+- Integrate cloud applications with various SaaS offerings, such as machine learning
+
+### <a href="https://www.amazon.de/-/en/gp/product/1680506455/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1" target="_blank" rel="noopener noreferrer">Practical Microservices: Build Event-Driven Architectures with Event Sourcing and CQRS></a>
+
+MVC and CRUD make software easier to write, but harder to change. Microservice-based architectures can help even the smallest of projects remain agile in the long term, but most tutorials meander in theory or completely miss the point of what it means to be microservice-based. Roll up your sleeves with real projects and learn the most important concepts of evented architectures. You'll have your own deployable, testable project and a direction for where to go next.
+
+Much ink has been spilled on the topic of microservices, but all of this writing fails to accurately identity what makes a system a monolith, define what microservices are, or give complete, practical examples, so you're probably left thinking they have nothing to offer you. You don't have to be at Google or Facebook scale to benefit from a microservice-based architecture. Microservices will keep even small and medium teams productive by keeping the pieces of your system focused and decoupled.
+
+Discover the basics of message-based architectures, render the same state in different shapes to fit the task at hand, and learn what it is that makes something a monolith (it has nothing to do with how many machines you deploy to). Conserve resources by performing background jobs with microservices. Deploy specialized microservices for registration, authentication, payment processing, e-mail, and more. Tune your services by defining appropriate service boundaries. Deploy your services effectively for continuous integration. Master debugging techniques that work across different services. You'll finish with a deployable system and skills you can apply to your current project.
+
+Add the responsiveness and flexibility of microservices to your project, no matter what the size or complexity.
+
+### <a href="https://www.amazon.de/-/en/gp/product/1492043451/ref=ppx_yo_dt_b_asin_title_o04_s00?ie=UTF8&psc=1" target="_blank" rel="noopener noreferrer">Fundamentals of Software Architecture: An Engineering Approach. A Comprehensive Guide to Patterns, Characteristics, and Best Practices></a>
+
+Salary surveys worldwide regularly place software architect in the top 10 best jobs, yet no real guide exists to help developers become architects. Until now. This book provides the first comprehensive overview of software architecture&;s many aspects. Aspiring and existing architects alike will examine architectural characteristics, architectural patterns, component determination, diagramming and presenting architecture, evolutionary architecture, and many other topics.
+
+Mark Richards and Neal Ford&;hands-on practitioners who have taught software architecture classes professionally for years&;focus on architecture principles that apply across all technology stacks. You&;ll explore software architecture in a modern light, taking into account all the innovations of the past decade.
+
+This book examines:
+
+- Architecture patterns: The technical basis for many architectural decisions
+- Components: Identification, coupling, cohesion, partitioning, and granularity
+- Soft skills: Effective team management, meetings, negotiation, presentations, and more
+- Modernity: Engineering practices and operational approaches that have changed radically in the past few years
+- Architecture as an engineering discipline: Repeatable results, metrics, and concrete valuations that add rigor to software architecture
+
 
 &nbsp;
 

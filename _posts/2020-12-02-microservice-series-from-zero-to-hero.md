@@ -118,5 +118,10 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Service Mesh in Kubernetes - Getting Started](/service-mesh-kubernetes-getting-started)
 
+- [Istio in Kubernetes - Getting Started](/istio-getting-started)
+
 Coming soon (in no specific order):
 - Using Istio to manage your Kubernetes Cluster
+- Apply Istio to your existing Microservices
+- Dapr
+- IaC with Biceps
