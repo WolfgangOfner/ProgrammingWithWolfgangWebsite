@@ -4,7 +4,7 @@ date: 2021-08-30
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
 tags: [DevOps, Azure, YAML, Docker, Helm, AKS, Kubernetes, Monitoring, Prometheus, Grafana, Istio, Kiali]
-description: 
+description: If you already have an application running in Kubernetes, all you have to do is add a label to the namespace to enable Istio.
 ---
 
 [My last post](/use-istio-to-manage-your-microservices) highlighted some of Istio's features and showed how to apply them to your microservices. 
