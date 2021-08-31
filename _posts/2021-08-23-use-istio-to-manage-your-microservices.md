@@ -117,6 +117,6 @@ When you are done with your testing, delete the virtual service with the followi
 
 Istio brings some cool features like fault injection and request routing which help developers to build more robust and resilient applications which will lead to a better user experience. The sample code provides a great starting point with many examples and will help you to get started.
 
-In my next post, I will show you how easy it is to add Istio to an existing application.
+[In my next post](/add-Istio-to-existing-microservice-in-kubernetes), I will show you how easy it is to add Istio to an existing application.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

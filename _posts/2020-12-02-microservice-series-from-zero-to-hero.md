@@ -122,7 +122,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Use Istio to manage your Microservices](/use-istio-to-manage-your-microservices)
 
+- [Add Istio to an existing Microservice in Kubernetes](/add-Istio-to-existing-microservice-in-kubernetes)
+
 Coming soon (in no specific order):
-- Apply Istio to your existing Microservices
 - Dapr
 - IaC with Biceps
