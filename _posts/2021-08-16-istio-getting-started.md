@@ -101,7 +101,6 @@ After the sample application is installed, make sure that all services are up an
 kubectl get services -n istio-demo
 ```
 
-
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Check-the-installed-Services.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Check-the-installed-Services.jpg" alt="Check the installed Services" /></a>
   
@@ -240,6 +239,6 @@ If you followed this demo and don't add a namespace (-n istio-demo), the analysi
 
 Istio is an easy to install service mesh that comes with many useful applications like Grafana, Prometheus, and Jaeger. This demo used the Istio demo application and showed how to visualize your microservice dependencies and the request flow using Kiali.
 
-In my next post, I will show you more features of Istio like fault injection, request routing and traffic shifting between microservices. 
+[In my next post](/use-istio-to-manage-your-microservices), I will show you more features of Istio like fault injection, request routing and traffic shifting between microservices. 
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
