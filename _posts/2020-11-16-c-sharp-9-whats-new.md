@@ -3,7 +3,7 @@ title: C# 9.0 - What's new
 date: 2020-11-16
 author: Wolfgang Ofner
 categories: [Programming]
-tags: [NET 5.0, 'C#', 'C# 9.0']
+tags: [NET 5, 'C#', 'C# 9.0']
 description: Microsoft release .NET 5 and C# 9.0. Let's take a look at some cool new features of the new language version.
 ---
 

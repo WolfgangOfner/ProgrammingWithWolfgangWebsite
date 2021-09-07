@@ -19,9 +19,7 @@ This demo assumes that you already have a Kubernetes cluster set up. If you don'
 
 To get started, download the newest version of Istio.
 
-```bash
-curl -L https://istio.io/downloadIstio | sh -
-```
+<script src="https://gist.github.com/WolfgangOfner/0f38e918e4925b9735a5145866cdb280.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Download-the-newest-Version-of-Istio.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Download-the-newest-Version-of-Istio.jpg" alt="Download the newest Version of Istio" /></a>
@@ -35,10 +33,7 @@ Alternatively, go to <a href="https://github.com/istio/istio/releases" target="_
 
 After the download is finished, navigate into the downloaded Istio folder and set the path to the /bin folder as the Path variable.
 
-```bash
-cd istio-1.10.3
-export PATH=$PWD/bin:$PATH
-```
+<script src="https://gist.github.com/WolfgangOfner/833549730e61eaf1bd23de7ee49bae71.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Set-the-Istio-Path.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Set-the-Istio-Path.jpg" alt="Set the Istio Path" /></a>
@@ -50,9 +45,7 @@ export PATH=$PWD/bin:$PATH
 
 Next, install Istio with the demo profile in your Kubernetes cluster. Istio comes with several profiles which have different configurations for the core components. The demo profile installs all components. You can find more information about the profiles in the <a href="https://istio.io/latest/docs/setup/additional-setup/config-profiles/" target="_blank" rel="noopener noreferrer">Istio docs</a>.
 
-```bash
-istioctl install --set profile=demo -y
-```
+<script src="https://gist.github.com/WolfgangOfner/bc77adb038c4142edafc08845c5a9226.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Install-Istio-in-Kubernetes.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Install-Istio-in-Kubernetes.jpg" alt="Install Istio in Kubernetes" /></a>
@@ -68,10 +61,7 @@ The installation should only take a couple of seconds.
 
 Istio offers a nice demo application which I will use in this demo. Before you install it, I would recommend creating a new namespace in your K8s cluster. Additionally, set the istio-injection=enabled label on the namespace. This label configures the automatic injection of the Envoy sidecar.
 
-```bash
-kubectl create namespace istio-demo
-kubectl label namespace istio-demo istio-injection=enabled
-```
+<script src="https://gist.github.com/WolfgangOfner/76501b96d6290048638c60f8f176dc14.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Create-and-tag-the-Namespace.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Create-and-tag-the-Namespace.jpg" alt="Create and tag the Namespace" /></a>
@@ -83,9 +73,7 @@ kubectl label namespace istio-demo istio-injection=enabled
 
 Next, install the sample app in the previously created namespace.
 
-```bash
-kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml -n istio-demo
-```
+<script src="https://gist.github.com/WolfgangOfner/f659e5daee35a1653cc0451f57d749cc.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Install-the-Sample-Application.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Install-the-Sample-Application.jpg" alt="Install the Sample Application" /></a>
@@ -97,9 +85,7 @@ kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml -n istio-demo
 
 After the sample application is installed, make sure that all services are up and running.
 
-```bash
-kubectl get services -n istio-demo
-```
+<script src="https://gist.github.com/WolfgangOfner/97e3052c540dc6243a3b77b22fb0ea28.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Check-the-installed-Services.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Check-the-installed-Services.jpg" alt="Check the installed Services" /></a>
@@ -111,9 +97,7 @@ kubectl get services -n istio-demo
 
 Also, check that all pods are started and running correctly.
 
-```bash
-kubectl get pods -n istio-demo
-```
+<script src="https://gist.github.com/WolfgangOfner/38027298f5697f593c1ad158383822bf.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Check-the-installed-Pods.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Check-the-installed-Pods.jpg" alt="Check the installed Pods" /></a>
@@ -125,9 +109,7 @@ kubectl get pods -n istio-demo
 
 The demo application is only accessible through the internal network. To make it accessible from the outside, install the Istio in the same namespace.
 
-```bash
-kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml -n istio-demo
-```
+<script src="https://gist.github.com/WolfgangOfner/187ae759bb4cf86c09406b8f4001140f.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Install-the-Gateway.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Install-the-Gateway.jpg" alt="Install the Gateway" /></a>
@@ -140,9 +122,7 @@ kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml -n istio-demo
 The gateway acts as a load balancer and only provides an external URL. Use the following command to get the application's URL and its ports.
 
 
-```bash
-kubectl get svc istio-ingressgateway -n istio-system
-```
+<script src="https://gist.github.com/WolfgangOfner/494821b162503978062afc0a8c7f9a81.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Get-the-IP-Adresse-of-the-Sample-Application.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Get-the-IP-Adresse-of-the-Sample-Application.jpg" alt="Get the IP Adresse of the Sample Application" /></a>
@@ -154,12 +134,7 @@ kubectl get svc istio-ingressgateway -n istio-system
 
 Alternatively, use the following commands to read the URL and port and combine them in the GATEWAY_URL variable.
 
-```bash
-export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
-export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].port}')
-export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
-```
+<script src="https://gist.github.com/WolfgangOfner/800d6a15cecd3fcd2a20e82d2bd4dd10.js"></script>
 
 #### Test the Sample Application
 
@@ -177,9 +152,7 @@ Enter URL:Port/productpage in your browser and you should see the sample applica
 
 Istio comes with a wide range of additional software which can be easily installed with the following command.
 
-```bash
-kubectl apply -f samples/addons
-```
+<script src="https://gist.github.com/WolfgangOfner/6587a4e53cfa71983ed1332e1cc615bb.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Install-Istio-Addons.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Install-Istio-Addons.jpg" alt="Install Istio Addons" /></a>
@@ -191,21 +164,15 @@ kubectl apply -f samples/addons
 
 This installs every available addon. If you only want to install certain products, use their specific YAML files. For example, install only [Prometheus](/monitor-net-microservices-with-prometheus) with the following command.
 
-```bash
-kubectl apply -f samples/addons/prometheus.yaml
-```
+<script src="https://gist.github.com/WolfgangOfner/1991090b17843e7c4ce3cacff4f57685.js"></script>
 
 The above code installed many useful tools like Grafana, Jaeger, or Zipkin. I will talk more about these tools in my next post. For now, let's take a look at Kiali which is a pretty cool tool to visualize the flow and useful information of requests in distributed applications. Kiali is already installed. All you have to do is to activate the port forwarding with the following command.
 
-```bash
-istioctl dashboard kiali
-```
+<script src="https://gist.github.com/WolfgangOfner/82425747b15f00b92565466b2c572a23.js"></script>
 
 Open your browser, enter localhost:20001 and you should see the Kiali dashboard. On the left side select Graph, then select the istio-demo namespace from the drop-down and you should see the services of the demo application. Execute the following command to produce 100 requests which then will be visualized in the graph.
 
-```bash
-for i in $(seq 1 100); do curl -s -o /dev/null "http://$GATEWAY_URL/productpage"; done
-```
+<script src="https://gist.github.com/WolfgangOfner/b06c09dfde69e74d9c999365faf7287b.js"></script>
 
 Play a bit around with the settings. You can, for example, enable the traffic animation and the response time of the requests. The graph also shows that most of the traffic is routed from the productpage to the details microservice. 
 
@@ -221,9 +188,7 @@ Play a bit around with the settings. You can, for example, enable the traffic an
 
 Istio is very robust but sometimes things go wrong. You can analyze a namespace with the following command.
 
-```bash
-istioctl analyze -n istio-demo
-```
+<script src="https://gist.github.com/WolfgangOfner/a08e0f19747d109151c26b82cfa64c30.js"></script>
 
 If you followed this demo and don't add a namespace (-n istio-demo), the analysis process will run in your current namespace (usually the default namespace) and will return an error that Istio is not enabled.
 
