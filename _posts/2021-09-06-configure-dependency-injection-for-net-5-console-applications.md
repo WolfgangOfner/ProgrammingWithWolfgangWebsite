@@ -3,7 +3,7 @@ title: Configure Dependency Injection for .NET 5 Console Applications
 date: 2021-09-06
 author: Wolfgang Ofner
 categories: [Programming]
-tags: [C#, .NET 5 Dependency Injection]
+tags: [C#, .NET 5, Dependency Injection]
 description: Dependency Injection helps to write more testable and overal better applications and can be easily configured for .NET 5 console applications.
 ---
 
@@ -72,6 +72,8 @@ When you replace the ConsoleGreeter with the ApiGreeter in the dependency inject
 ## Conclusion
 
 Dependency injection helps developers to write more testable and overall better applications. .NET 5 and .NET Core do not come with DI pre-configured but as you have seen in this post, it is very easy to configure it. All you have to do is to install the Microsoft.Extensions.Hosting NuGet package and add a couple lines of code.
+
+[In my next post](/unit-testing-net-5-console-applications), I will add unit tests and how you how to configure the dependency injection in the test project.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ConsoleDependencyInjection" target="_blank" rel="noopener noreferrer">Github</a>.
 

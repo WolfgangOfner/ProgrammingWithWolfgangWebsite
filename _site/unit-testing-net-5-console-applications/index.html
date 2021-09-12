@@ -13,25 +13,27 @@
 
   <!-- Begin Jekyll SEO tag v2.7.1 -->
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content=".NET 5 Dependency Injection" />
+<meta property="og:title" content="Unit Testing .NET 5 Console Applications with Dependency Injection" />
 <meta name="author" content="Wolfgang Ofner" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="A tech blog focusing on DevOps, Cloud, Azure, Kubernetes and Software Architecture." />
-<meta property="og:description" content="A tech blog focusing on DevOps, Cloud, Azure, Kubernetes and Software Architecture." />
-<link rel="canonical" href="http://0.0.0.0:4000/tags/net-5-dependency-injection/" />
-<meta property="og:url" content="http://0.0.0.0:4000/tags/net-5-dependency-injection/" />
+<meta name="description" content="Creating unit tests for a .NET 5 console application that uses dependency injection only takes a couple of lines of code to configure the service provider." />
+<meta property="og:description" content="Creating unit tests for a .NET 5 console application that uses dependency injection only takes a couple of lines of code to configure the service provider." />
+<link rel="canonical" href="http://0.0.0.0:4000/unit-testing-net-5-console-applications/" />
+<meta property="og:url" content="http://0.0.0.0:4000/unit-testing-net-5-console-applications/" />
 <meta property="og:site_name" content="Programming With Wolfgang" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-09-12T00:00:00+02:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content=".NET 5 Dependency Injection" />
+<meta property="twitter:title" content="Unit Testing .NET 5 Console Applications with Dependency Injection" />
 <meta name="twitter:site" content="@wolfgang_ofner" />
 <meta name="twitter:creator" content="@Wolfgang Ofner" />
 <meta name="google-site-verification" content="xxsPm-h6A0B6a0QMgqXO80PU4DbMt4Dq06p-SGzB3TU" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"Wolfgang Ofner"},"@type":"WebPage","headline":".NET 5 Dependency Injection","description":"A tech blog focusing on DevOps, Cloud, Azure, Kubernetes and Software Architecture.","url":"http://0.0.0.0:4000/tags/net-5-dependency-injection/","@context":"https://schema.org"}</script>
+{"datePublished":"2021-09-12T00:00:00+02:00","dateModified":"2021-09-12T00:00:00+02:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/unit-testing-net-5-console-applications/"},"@type":"BlogPosting","description":"Creating unit tests for a .NET 5 console application that uses dependency injection only takes a couple of lines of code to configure the service provider.","author":{"@type":"Person","name":"Wolfgang Ofner"},"url":"http://0.0.0.0:4000/unit-testing-net-5-console-applications/","headline":"Unit Testing .NET 5 Console Applications with Dependency Injection","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-  <title>.NET 5 Dependency Injection | Programming With Wolfgang
+  <title>Unit Testing .NET 5 Console Applications with Dependency Injection | Programming With Wolfgang
   </title>
 
   <!--
@@ -107,9 +109,14 @@
 
 
 
-<link rel="preload" href="/assets/css/category-tag.css" as="style">
-<link rel="stylesheet" href="/assets/css/category-tag.css">
+<link rel="preload" href="/assets/css/post.css" as="style">
+<link rel="stylesheet" href="/assets/css/post.css">
 
+
+  
+    <link rel="preload" as="style" href="/assets/css/lib/bootstrap-toc.min.css">
+    <link rel="stylesheet" href="/assets/css/lib/bootstrap-toc.min.css" />
+  
 
 
 
@@ -132,7 +139,7 @@
 
 
 
-<script async src="/assets/js/page.min.js"></script>
+<script async src="/assets/js/post.min.js"></script>
 
 
 
@@ -443,22 +450,14 @@
       
       <span>
         <a href="/">
-          Home
-        </a>
-      </span>
-      
-      
-      
-      <span>
-        <a href="/tabs/tags/">
-          Tags
+          Posts
         </a>
       </span>
       
       
 
       
-      <span>.NET 5 Dependency Injection</span>
+      <span>Unit Testing .NET 5 Console Applications with Dependency Injection</span>
       
 
     </span><!-- endof #breadcrumb -->
@@ -466,7 +465,7 @@
     <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i>
 
     <div id="topbar-title">
-      .NET 5 Dependency Injection
+      Unit Testing .NET 5 Console Applications with Dependency Injection
     </div>
     <div style="visibility:hidden;">
       <i id="search-trigger" class="fas fa-search fa-fw"></i>
@@ -509,29 +508,234 @@
 
 <!-- return -->
 <div class="row">
-  <div class="col-12 col-lg-11 col-xl-8">
-    <div id="page" class="post pb-5 pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4 mb-md-4">
-    
-      <div id="page-tag">
-  <h1 class="pl-lg-2">
-    <i class="fa fa-tag fa-fw text-muted"></i>
-    .NET 5 Dependency Injection
-    <span class="lead text-muted pl-2">1</span>
-  </h1>
-  <ul class="post-content pl-0">
-    
-    <li class="d-flex justify-content-between pl-md-3 pr-md-3">
-      <a href="/configure-dependency-injection-for-net-5-console-applications/">Configure Dependency Injection for .NET 5 Console Applications</a>
-      <span class="dash flex-grow-1"></span>
-      <span class="text-muted small">Sep  6, 2021</span>
-    </li>
-    
-  </ul>
+
+  <div id="post-wrapper" class="col-12 col-lg-11 col-xl-8">
+
+    <div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+
+      <h1 data-toc-skip>Unit Testing .NET 5 Console Applications with Dependency Injection</h1>
+
+      <div class="post-meta text-muted d-flex flex-column">
+        <!-- Published date and author -->
+        <div>
+          <!--
+  Date format snippet
+
+  v2.4.1
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2020 Cotes Chung
+  MIT License
+-->
+<span class="timeago "
+  
+    data-toggle="tooltip"
+    data-placement="bottom"
+    title="Sun, Sep 12, 2021, 12:00 AM +0200"
+  >
+
+  
+  
+
+  
+    Sep 12
+  
+
+  <i class="unloaded">2021-09-12T00:00:00+02:00</i>
+
+</span>
+          by
+          <span class="author">
+            Wolfgang Ofner
+          </span>
+        </div>
+
+        <div>
+          <!-- lastmod -->
+          
+
+          <!-- read time -->
+          <!--
+  Calculate the post's reading time, and display the word count in tooltip
+ -->
+
+
+
+
+
+
+<!-- return element -->
+<span class="readtime" data-toggle="tooltip" data-placement="bottom" title="404 words">4 min</span>
+
+
+          <!-- page views -->
+          
+
+        </div>
+
+      </div> <!-- .post-meta -->
+
+      <div class="post-content">
+
+        
+
+        <p><a href="/configure-dependency-injection-for-net-5-console-applications">In my last post</a>, I created a .NET 5 console application and configured dependency injection. This was pretty straight-forward and only needed a couple of lines of code.</p>
+
+<p>Today, I will show you how to create unit tests when using dependency injection in a .NET 5 (or .NET Core) console application.</p>
+
+<h2 id="create-unit-tests-using-xunit">Create Unit Tests using xUnit</h2>
+
+<p>You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ConsoleDependencyInjection" target="_blank" rel="noopener noreferrer">Github</a>.</p>
+
+<p>Create a new .NET 5 test project using xUnit and create a reference to the main project. You can use any unit testing and faking framework you like. For this demo, I am using xUnit and Moq. Additionally, I am using FluentAssertions to make the assertions more readable.</p>
+
+<p>Implementing unit tests for a .NET 5 console application with dependency injection is the same as for any other project. The only minor difficulty is how to test the following method which creates an instance of IGreeter and then calls the Greet() method on it.</p>
+
+<script src="https://gist.github.com/WolfgangOfner/b8e6b599f0c2eb55f9eef6106c415068.js"></script>
+
+<p>The difficulty when testing this method is the IServiceProvider which has to be configured to be able to create an instance of the IGreeter interface.</p>
+
+<h3 id="create-a-fake-service-provider">Create a fake Service Provider</h3>
+
+<p>The solution to the problem is to create a fake IServiceProvider and IServiceScope object. The IServiceProvider fake then can be configured to return a fake IServiceScopeFactory object. This fake object can be used as the IServiceProvider parameter of the GreetWithDependencyInjection() method. The full code looks as follows:</p>
+
+<script src="https://gist.github.com/WolfgangOfner/c6d4b6871b8ab9420ff9ef70761734a7.js"></script>
+
+<p>The code in the constructor might look complicated but if you start a new project, all you have to do is to copy it into the new project and you are good to go.</p>
+
+<h3 id="test-classes-without-the-iserviceprovider-interface">Test Classes without the IServiceProvider Interface</h3>
+
+<p>As previously mentioned, every other class besides the Program.cs can be tested as you are used to. For example, testing the ConsoleGreeter is straight-forward. Create a new object of the ConsoleGreeter, add a fake interface in the constructor  and then call the method you want to test. The method should return the value you expect.</p>
+
+<script src="https://gist.github.com/WolfgangOfner/cb8445e0c5406d2a3c4a0983430b2ced.js"></script>
+
+<h2 id="testing-the-unit-tests">Testing the Unit Tests</h2>
+
+<p>Run all the unit tests and you should see both running successfully.</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2021/09/The-Tests-ran-successfully.jpg"><img loading="lazy" src="/assets/img/posts/2021/09/The-Tests-ran-successfully.jpg" alt="The Tests ran successfully" /></a>
+  
+  <p>
+   The Tests ran successfully
+  </p>
 </div>
 
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Creating unit tests for a .NET 5 console application that uses dependency injection only takes a couple of lines of code to configure the service provider. This code can be copied to any new project, making it even easier to set up.</p>
+
+<p>You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ConsoleDependencyInjection" target="_blank" rel="noopener noreferrer">Github</a>.</p>
+
+
+      </div>
+
+      <div class="post-tail-wrapper text-muted">
+
+        <!-- categories -->
+        
+        <div class="post-meta mb-3">
+          <i class="far fa-folder-open fa-fw mr-1"></i>
+          
+            <a href='/categories/programming/'>Programming</a>
+        </div>
+        
+
+        <!-- tags -->
+        
+        <div class="post-tags">
+          <i class="fa fa-tags fa-fw mr-1"></i>
+          
+          <a href="/tags/c/"
+            class="post-tag no-text-decoration" >C#</a>
+          
+          <a href="/tags/net-5/"
+            class="post-tag no-text-decoration" >.NET 5</a>
+          
+          <a href="/tags/dependency-injection/"
+            class="post-tag no-text-decoration" >Dependency Injection</a>
+          
+          <a href="/tags/xunit/"
+            class="post-tag no-text-decoration" >xUnit</a>
+          
+          <a href="/tags/moq/"
+            class="post-tag no-text-decoration" >Moq</a>
+          
+          <a href="/tags/fluentassertions/"
+            class="post-tag no-text-decoration" >FluentAssertions</a>
+          
+          </div>
+        
+
+        <div class="post-tail-bottom
+          d-flex justify-content-between align-items-center mt-3 pt-5 pb-2">
+          
+          <div class="license-wrapper">
+            This post is licensed under
+            <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>
+            by the author.
+          </div>
+          
+
+          <!--
+ Post sharing snippet
+
+ v2.1
+ https://github.com/cotes2020/jekyll-theme-chirpy
+ © 2019 Cotes Chung
+ Published under the MIT License
+-->
+
+<div class="share-wrapper">
+  <span class="share-label text-muted mr-1">Share</span>
+  <span class="share-icons">
     
-    </div> <!-- #page -->
-  </div><!-- .col-12 -->
+    
+
+    
+      
+        <a href="https://twitter.com/intent/tweet?text=Unit Testing .NET 5 Console Applications with Dependency Injection - Programming With Wolfgang&url=http://0.0.0.0:4000/unit-testing-net-5-console-applications/" data-toggle="tooltip" data-placement="top"
+          title="Twitter" target="_blank" rel="noopener" aria-label="Twitter">
+          <i class="fa-fw fab fa-twitter"></i>
+        </a>
+    
+      
+        <a href="https://www.facebook.com/sharer/sharer.php?title=Unit Testing .NET 5 Console Applications with Dependency Injection - Programming With Wolfgang&u=http://0.0.0.0:4000/unit-testing-net-5-console-applications/" data-toggle="tooltip" data-placement="top"
+          title="Facebook" target="_blank" rel="noopener" aria-label="Facebook">
+          <i class="fa-fw fab fa-facebook-square"></i>
+        </a>
+    
+      
+        <a href="https://telegram.me/share?text=Unit Testing .NET 5 Console Applications with Dependency Injection - Programming With Wolfgang&url=http://0.0.0.0:4000/unit-testing-net-5-console-applications/" data-toggle="tooltip" data-placement="top"
+          title="Telegram" target="_blank" rel="noopener" aria-label="Telegram">
+          <i class="fa-fw fab fa-telegram"></i>
+        </a>
+    
+      
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://0.0.0.0:4000/unit-testing-net-5-console-applications/" data-toggle="tooltip" data-placement="top"
+          title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin">
+          <i class="fa-fw fab fa-linkedin"></i>
+        </a>
+    
+
+    <i class="fa-fw fas fa-link small" onclick="copyLink()"
+        data-toggle="tooltip" data-placement="top" title="Copy link"></i>
+
+  </span>
+</div>
+
+
+        </div><!-- .post-tail-bottom -->
+
+      </div><!-- div.post-tail -->
+
+    </div> <!-- .post -->
+
+
+  </div> <!-- #post-wrapper -->
+
+  
+
+  
 
   <!--
   The Pannel on right side (Desktop views)
@@ -570,11 +774,6 @@
         
         
         
-        <li><a href="/nuget-targets-local-source-does-not-exist/">Fixing NuGet.targets(131,5) error The local source doesn't exist.</a></li>
-      
-        
-        
-        
         <li><a href="/debug-microservices-bridge-kubernetes/">Debug Microservices running inside a Kubernetes Cluster with Bridge to Kubernetes</a></li>
       
         
@@ -591,6 +790,11 @@
         
         
         <li><a href="/create-grafana-dashboards-with-prometheus-metrics/">Create Grafana Dashboards with Prometheus Metrics</a></li>
+      
+        
+        
+        
+        <li><a href="/get-xunit-code-coverage-from-docker/">Get xUnit Code Coverage from Docker</a></li>
       
 
       </ul>
@@ -3080,13 +3284,2404 @@
   </div> <!-- .access -->
 
   
+    <div id="toc-wrapper" class="pl-0 pr-4 mb-5">
+      <span class="pl-3 pt-2 mb-2">Contents</span>
+      <nav id="toc" data-toggle="toc"></nav>
+    </div>
+  
 
 </div> <!-- #panel-wrapper -->
 
 
+</div> <!-- .row -->
+
+<div class="row">
+  <div class="col-12 col-lg-11 col-xl-8">
+    <div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4">
+
+    <!--
+ Recommend the other 3 posts according to the tags and categories of the current post,
+ if the number is not enough, use the other latest posts to supplement.
+
+ v2.0
+ https://github.com/cotes2020/jekyll-theme-chirpy
+ © 2019 Cotes Chung
+ Published under the MIT License
+-->
+
+<!-- The total size of related posts  -->
+
+
+<!-- An random integer that bigger than 0  -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy}  -->
+
+
+
+
+
+
+
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+<!-- Fill with the other newlest posts  -->
+
+
+
+
+
+
+  <div id="related-posts" class="mt-5 mb-2 mb-sm-4">
+    <h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3>
+    <div class="card-deck mb-4">
+    
+      
+      
+      <div class="card">
+        <a href="/configure-dependency-injection-for-net-5-console-applications/">
+          <div class="card-body">
+            <!--
+  Date format snippet
+
+  v2.4.1
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2020 Cotes Chung
+  MIT License
+-->
+<span class="timeago small"
+  >
+
+  
+  
+
+  
+    Sep  6
+  
+
+  <i class="unloaded">2021-09-06T00:00:00+02:00</i>
+
+</span>
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Configure Dependency Injection for .NET 5 Console Applications</h3>
+            <div class="text-muted small">
+              <p>
+                
+
+
+
+
+
+                Back in the .NET framework days dependency injection was not the easiest task. Fortunately, Microsoft made it a first class citizen with the introduction of .NET Core. This is especially true for A...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    
+      
+      
+      <div class="card">
+        <a href="/dependency-injection-in-asp-net-core-mvc/">
+          <div class="card-body">
+            <!--
+  Date format snippet
+
+  v2.4.1
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2020 Cotes Chung
+  MIT License
+-->
+<span class="timeago small"
+  >
+
+  
+  
+
+  
+    May  7, 2019
+  
+
+  <i class="unloaded">2019-05-07T11:32:49+02:00</i>
+
+</span>
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Dependency Injection in ASP.NET Core MVC</h3>
+            <div class="text-muted small">
+              <p>
+                
+
+
+
+
+
+                Dependency Injection is a technique that helps to create flexible applications and simplifies unit testing. .NET Core brings dependency injection out of the box, therefore you don’t have to use any...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    
+      
+      
+      <div class="card">
+        <a href="/creating-a-microservice-with-net-core-3-1/">
+          <div class="card-body">
+            <!--
+  Date format snippet
+
+  v2.4.1
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2020 Cotes Chung
+  MIT License
+-->
+<span class="timeago small"
+  >
+
+  
+  
+
+  
+    Jul 21, 2020
+  
+
+  <i class="unloaded">2020-07-21T18:53:20+02:00</i>
+
+</span>
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Creating a Microservice with .NET Core 3.1</h3>
+            <div class="text-muted small">
+              <p>
+                
+
+
+
+
+
+                Using a microservice architecture is a topic that is present at every conference for quite some time already. In my work as a consultant, I often have to train development teams about the basics of...
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+    
+    </div> <!-- .card-deck -->
+  </div> <!-- #related-posts -->
+
+
+
+    <!--
+  Navigation buttons at the bottom of the post.
+
+  v2.1
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2020 Cotes Chung
+  MIT License
+-->
+
+<div class="post-navigation d-flex justify-content-between">
+  
+  <a href="/configure-dependency-injection-for-net-5-console-applications/" class="btn btn-outline-primary">
+    <p>Configure Dependency Injection for .NET 5 Console Applications</p>
+  </a>
+  
+
+  
+  <span class="btn btn-outline-primary disabled">
+    <p>-</p>
+  </span>
+  
+
 </div>
 
+    
+      <!--
+  The Disqus lazy loading.
+  Powered by: https://osvaldas.info/lazy-loading-disqus-comments
+  v2.0
+  https://github.com/cotes2020/jekyll-theme-chirpy
+  © 2019 Cotes Chung
+  MIT License
+-->
 
+<div id="disqus" class="pt-2 pb-2">
+  <p class="font-italic text-center text-muted small">
+    Comments powered by <a href="https://disqus.com/">Disqus</a>.
+  </p>
+</div>
+
+<script src="/assets/js/lib/jquery.disqusloader.min.js"></script>
+<script>
+  var options = {
+    scriptUrl: '//programmingwithwolfgang.disqus.com/embed.js',
+
+    disqusConfig: function() {
+      this.page.url = 'http://0.0.0.0:4000/unit-testing-net-5-console-applications/';
+      this.page.identifier = '/unit-testing-net-5-console-applications/';
+    }
+  };
+
+  $.disqusLoader('#disqus', options);
+</script>
+
+    
+
+    </div> <!-- #post-extend-wrapper -->
+
+  </div> <!-- .col-* -->
+
+</div> <!-- .row -->
 
 
 

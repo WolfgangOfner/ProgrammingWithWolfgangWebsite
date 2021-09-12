@@ -47,9 +47,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
  To deploy the microservice, open the demo application and navigate to the Helm chart of the CustomerApi. You can find it under CustomerApi/CustomerApi/charts. The chart is a folder called customerapi. Deploy this chart with Helm:
 
-```powershell
-helm install customer customerapi
-```
+<script src="https://gist.github.com/WolfgangOfner/fd2c611b2b018bceaf69304f4afdd9ca.js"></script>
 
 The package gets deployed within seconds. After it is finished, connect to the dashboard of your cluster. If you don't know how to do that, see my post [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started). There I explain how I use Octant and how to access your Kubernetes cluster with it.
 
@@ -79,17 +77,11 @@ This means that you can open your browser, enter localhost and the Swagger UI of
 
 If you want to change the port your microservice is running on, open the values.yaml file inside the customerapi folder. Change the port in the service section from 80 to your desired port, for example, 22334.
 
-```yaml
-service:
-  type: LoadBalancer
-  port: 22334
-```
+<script src="https://gist.github.com/WolfgangOfner/9f46f3b1c24a37616c9024d95d907a9a.js"></script>
 
 If you already have the microservice deployed, use helm upgrade to re-deploy it with the changes, otherwise use helm install.
 
-```powershell
-helm upgrade customer customerapi
-```
+<script src="https://gist.github.com/WolfgangOfner/ff39d5805455c58626b73920865e78a1.js"></script>
 
 After the package is installed, open your browser and navigate to localhost:22334 and the Swagger UI will be displayed.
 

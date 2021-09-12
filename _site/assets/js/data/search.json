@@ -1,10 +1,25 @@
 [
   
   {
+    "title": "Unit Testing .NET 5 Console Applications with Dependency Injection",
+    "url": "/unit-testing-net-5-console-applications/",
+    "categories": "Programming",
+    "tags": "C#, .NET 5, Dependency Injection, xUnit, Moq, FluentAssertions",
+    "date": "2021-09-12 00:00:00 +0200",
+    
+
+
+
+
+
+    "snippet": "In my last post, I created a .NET 5 console application and configured dependency injection. This was pretty straight-forward and only needed a couple of lines of code.Today, I will show you how to create unit tests when using dependency injection in a .NET 5 (or .NET Core) console application.Cr..."
+  },
+  
+  {
     "title": "Configure Dependency Injection for .NET 5 Console Applications",
     "url": "/configure-dependency-injection-for-net-5-console-applications/",
     "categories": "Programming",
-    "tags": "C#, .NET 5 Dependency Injection",
+    "tags": "C#, .NET 5, Dependency Injection",
     "date": "2021-09-06 00:00:00 +0200",
     
 

@@ -4,7 +4,7 @@
   <id>http://0.0.0.0:4000/</id>
   <title>Programming With Wolfgang</title>
   <subtitle>A tech blog focusing on DevOps, Cloud, Azure, Kubernetes and Software Architecture.</subtitle>
-  <updated>2021-09-12T18:21:23+02:00</updated>
+  <updated>2021-09-12T20:58:13+02:00</updated>
   <author>
     <name>Wolfgang Ofner</name>
     <uri>http://0.0.0.0:4000/</uri>
@@ -17,6 +17,48 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
+
+  
+  <entry>
+    <title>Unit Testing .NET 5 Console Applications with Dependency Injection</title>
+    <link href="http://0.0.0.0:4000/unit-testing-net-5-console-applications/" rel="alternate" type="text/html" title="Unit Testing .NET 5 Console Applications with Dependency Injection" />
+    <published>2021-09-12T00:00:00+02:00</published>
+  
+    <updated>2021-09-12T00:00:00+02:00</updated>
+  
+    <id>http://0.0.0.0:4000/unit-testing-net-5-console-applications/</id>
+    <content src="http://0.0.0.0:4000/unit-testing-net-5-console-applications/" />
+    <author>
+      <name>Wolfgang Ofner</name>
+    </author>
+
+  
+    
+    <category term="Programming" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      In my last post, I created a .NET 5 console application and configured dependency injection. This was pretty straight-forward and only needed a couple of lines of code.
+
+Today, I will show you how to create unit tests when using dependency injection in a .NET 5 (or .NET Core) console application.
+
+Create Unit Tests using xUnit
+
+You can find the code of the demo on Github.
+
+Create a new .NET 5 t...
+    </summary>
+  
+
+  </entry>
 
   
   <entry>
@@ -177,44 +219,6 @@ If you haven’t installed Istio or want more i...
 Therefore, I want to show you how to install Istio and a sample application on your Kubernetes cluster in this post.
 
 This p...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>Service Mesh in Kubernetes - Getting Started</title>
-    <link href="http://0.0.0.0:4000/service-mesh-kubernetes-getting-started/" rel="alternate" type="text/html" title="Service Mesh in Kubernetes - Getting Started" />
-    <published>2021-08-09T00:00:00+02:00</published>
-  
-    <updated>2021-08-16T17:36:26+02:00</updated>
-  
-    <id>http://0.0.0.0:4000/service-mesh-kubernetes-getting-started/</id>
-    <content src="http://0.0.0.0:4000/service-mesh-kubernetes-getting-started/" />
-    <author>
-      <name>Wolfgang Ofner</name>
-    </author>
-
-  
-    
-    <category term="Kubernetes" />
-    
-    <category term="Cloud" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      If you have followed this series then you have learned what microservices are, how to program and deploy them, and how to monitor your Kubernetes cluster and applications. The last missing puzzle piece in your microservice journey is how to manage applications with hundreds or thousands of pods and microservices.
-
-This is where a service mesh comes into play. This post will talk about the pro a...
     </summary>
   
 
