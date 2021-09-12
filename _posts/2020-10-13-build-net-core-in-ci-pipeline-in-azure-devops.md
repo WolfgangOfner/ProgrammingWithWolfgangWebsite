@@ -114,54 +114,9 @@ I remove the build script and select the .NET Core task on the right side. I sel
   </p>
 </div>
 
-I repeat the process of adding new .NET Core tasks but I use build to build all projects, test to run all projects that have Test at the end of the project name, and then publish the CustomerApi project. Since I already built and restored the test projects, you can see that I use the &#8211;no-restore and &#8211;no-build arguments for them. The whole pipeline looks as follows:
+I repeat the process of adding new .NET Core tasks but I use build to build all projects, test to run all projects that have Test at the end of the project name, and then publish the CustomerApi project. Since I already built and restored the test projects, you can see that I use the --no-restore and --no-build arguments for them. The whole pipeline looks as follows:
 
-```yaml  
-name : NetCore-CustomerApi-CI
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - CustomerApi/*
- 
-pool:
-  vmImage: 'ubuntu-latest'
- 
-variables:
-  buildConfiguration: 'Release'
- 
-steps:
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'restore'
-    projects: '**/CustomerApi*.csproj'
-  displayName: 'Restore Nuget Packages'
- 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '**/CustomerApi*.csproj'
-    arguments: '--no-restore'
-  displayName: 'Build projects'
- 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '**/*Test.csproj'
-    arguments: '--no-restore --no-build'
-  displayName: 'Run Tests'
- 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '**/CustomerApi.csproj'
-    arguments: '--configuration $(buildConfiguration) --no-restore'
-    modifyOutputPath: false
-  displayName: 'Publish CustomerApi'
-```
+<script src="https://gist.github.com/WolfgangOfner/377d889add4e372dd6788a05b42ce43b.js"></script>
 
 Click Save and Run the pipeline will be added to your source control and then executed.
 
@@ -183,23 +138,13 @@ After the build is finished, you see a summary and that all 38 tests passed.
   </p>
 </div>
 
-You don&#8217;t see anything under Code Coverage. I will cover this in a later post.
+You don't see anything under Code Coverage. I will cover this in a later post.
 
 ### Run Tasks only when the Master Branch triggered the build
 
-Currently, the publish task runs always, even if I don&#8217;t want to create a release. It would be more efficient to run this task only when the build was triggered by the master branch. To do that, I add a custom condition to the publish task. I want to run the publish only when the previous steps succeeded and when the build was not triggered by a pull request. I do this with the following code:
+Currently, the publish task runs always, even if I don't want to create a release. It would be more efficient to run this task only when the build was triggered by the master branch. To do that, I add a custom condition to the publish task. I want to run the publish only when the previous steps succeeded and when the build was not triggered by a pull request. I do this with the following code:
 
-```yaml  
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '**/CustomerApi.csproj'
-    arguments: '--configuration $(buildConfiguration) --no-restore'
-    modifyOutputPath: false    
-  displayName: 'Publish CustomerApi'
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))  
-```
+<script src="https://gist.github.com/WolfgangOfner/8b496ee7102d9e24433b91425d6308aa.js"></script>
 
 Adding a second pipeline for the OrderApi works exactly the same except that instead of CustomerApi, you use OrderApi.
 

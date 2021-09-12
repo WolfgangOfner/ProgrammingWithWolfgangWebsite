@@ -1,6 +1,6 @@
 ---
 title: Azure Pipelines Task Library Encoding Problem
-date: 2020-06-19T09:35:48+02:00
+date: 2020-06-19
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [Azure DevOps, Azure Key Vault, Azure Pipelines Task Library]
@@ -12,22 +12,7 @@ For one of our customers, we use an Azure DevOps pipeline to read secrets from t
 
 Our Azure DevOps CD pipeline reads all the secrets from an Azure Key Vault using the Azure Key Vault Task. Then we pass these secrets into a Powershell script and copy the values into new variables. You can see the tasks in question in the following code sample.
 
-```yaml  
-- task: AzureKeyVault@1
-  inputs:
-    azureSubscription: "$(KeyVaultSubscription)"
-    KeyVaultName: $(KeyVaultName)
-    SecretsFilter: "*"
-  displayName: "Read secret values from key vault"
- 
-- task: RenameVariables@0
-  inputs:
-    variablesRenamingDefinition: |
-      base-infra-sas1:sas1
-      base-infra-sas2:sas2
-      base-infra-sas3:sas3
-  displayName: "Prepare stage secret variables from key vault" 
-```
+<script src="https://gist.github.com/WolfgangOfner/91c4856a56ed4206b4176af6432f3cff.js"></script>
 
 We do this because our customer has several configurations for each environment. For example, there are secrets for test1WebServer, test1ImageServer, test1DbServer, test2Webserver and, so on in the key vault. We take these variables and write them into generic variables like WebServer, DbServer and, so on. This enables us to have one pipeline and the customer can use as many configurations as they want.
 

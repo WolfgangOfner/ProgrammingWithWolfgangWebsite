@@ -16,7 +16,7 @@ Today, some of my colleagues had a discussion about .NET Standard. Is it a new f
   <a href="/assets/img/posts/2019/02/What-is-Net-Standard..jpg"><img loading="lazy" src="/assets/img/posts/2019/02/What-is-Net-Standard..jpg" alt="What is .NET Standard" /></a>
   
   <p>
-    What is .NET Standard (<a href="https://app.pluralsight.com/library/courses/dotnet-standard-getting-started/table-of-contents" target="_blank" rel="noopener">Source</a>)
+    What is .NET Standard (<a href="https://www.pluralsight.com/courses/dotnet-standard-getting-starteds" target="_blank" rel="noopener">Source</a>)
   </p>
 </div>
 
@@ -26,7 +26,7 @@ The following screenshot shows that it defines a set all APIs that all .NET fram
   <a href="/assets/img/posts/2019/02/Implementation-of-.NET-Standard.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/Implementation-of-.NET-Standard.jpg" alt="Implementation of .NET Standard" /></a>
   
   <p>
-    Implementation of .NET Standard (<a href="https://app.pluralsight.com/library/courses/dotnet-standard-getting-started/table-of-contents" target="_blank" rel="noopener">Source</a>)
+    Implementation of .NET Standard (<a href="https://www.pluralsight.com/courses/dotnet-standard-getting-started" target="_blank" rel="noopener">Source</a>)
   </p>
 </div>
 
@@ -40,7 +40,7 @@ Some of you might remember portable class libraries, which sound like .NET Stand
   <a href="/assets/img/posts/2019/02/Portable-Class-Library-vs-Net-Standard.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/Portable-Class-Library-vs-Net-Standard.jpg" alt="Portable Class Library vs .NET Standard" /></a>
   
   <p>
-    Portable Class Library vs .NET Standard (<a href="https://app.pluralsight.com/library/courses/dotnet-standard-getting-started/table-of-contents" target="_blank" rel="noopener">Source</a>)
+    Portable Class Library vs .NET Standard (<a href="https://www.pluralsight.com/courses/dotnet-standard-getting-started" target="_blank" rel="noopener">Source</a>)
   </p>
 </div>
 
@@ -54,7 +54,7 @@ A new version of .NET Standard always contains all previous APIs and additional 
   <a href="/assets/img/posts/2019/02/Net-Standard-Versions.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/Net-Standard-Versions.jpg" alt=".NET Standard Versions" /></a>
   
   <p>
-    Every version is built on the previous one (<a href="https://app.pluralsight.com/library/courses/dotnet-standard-getting-started/table-of-contents" target="_blank" rel="noopener">Source</a>)
+    Every version is built on the previous one (<a href="https://www.pluralsight.com/courses/dotnet-standard-getting-started" target="_blank" rel="noopener">Source</a>)
   </p>
 </div>
 
@@ -194,7 +194,7 @@ Version 1.6 has around 13,000 APIs whereas version 2.0 has already around 32,000
   <a href="/assets/img/posts/2019/02/APIs-of-.NET-Standard-2.0.jpg"><img loading="lazy" src="/assets/img/posts/2019/02/APIs-of-.NET-Standard-2.0.jpg" alt="APIs of .NET Standard 2.0" /></a>
   
   <p>
-    Some APIs of 2.0 (<a href="https://app.pluralsight.com/library/courses/dotnet-standard-getting-started/table-of-contents" target="_blank" rel="noopener">Source</a>)
+    Some APIs of 2.0 (<a href="https://www.pluralsight.com/courses/dotnet-standard-getting-started" target="_blank" rel="noopener">Source</a>)
   </p>
 </div>
 
@@ -242,4 +242,4 @@ If you use multiple target platforms, you can use if statements to use different
 
 ## Conclusion
 
-In this short post, I explained the basics of .NET Standard and pointed out why it is better than the deprecated portable class library. Additionally, I showed how to migrate your existing project and how to target multiple platforms. For more information, I can highly recommend the Pluralsight course &#8220;<a href="https://app.pluralsight.com/library/courses/dotnet-standard-getting-started/table-of-contents" target="_blank" rel="noopener">.NET Standard: Getting Started</a>&#8221; by Thomas Claudius Huber.
+In this short post, I explained the basics of .NET Standard and pointed out why it is better than the deprecated portable class library. Additionally, I showed how to migrate your existing project and how to target multiple platforms. For more information, I can highly recommend the Pluralsight course &#8220;<a href="https://www.pluralsight.com/courses/dotnet-standard-getting-started" target="_blank" rel="noopener">.NET Standard: Getting Started</a>&#8221; by Thomas Claudius Huber.

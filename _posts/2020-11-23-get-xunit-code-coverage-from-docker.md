@@ -20,22 +20,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 I use coverlet to collect the coverage. All you have to do is installing the Nuget package. The full Nuget configuration of the test projects looks as following:
 
-```xml  
-<ItemGroup>
-   <PackageReference Include="FakeItEasy" Version="6.2.1" />
-   <PackageReference Include="FluentAssertions" Version="5.10.3" />
-   <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.8.0" />
-   <PackageReference Include="xunit" Version="2.4.1" />
-   <PackageReference Include="xunit.runner.visualstudio" Version="2.4.3">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-   </PackageReference>
-   <PackageReference Include="coverlet.msbuild" Version="2.9.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-   </PackageReference>
-</ItemGroup>  
-```
+<script src="https://gist.github.com/WolfgangOfner/b49b62eb04ab3f5fb5900f6ced47107d.js"></script>
 
 I am using FakeItEasy to mock objects, FluentAssertions for a more readable assertion and xUnit to run the tests.
 
@@ -43,14 +28,7 @@ I am using FakeItEasy to mock objects, FluentAssertions for a more readable asse
 
 After installing coverlet, the next step is to collect the coverage results. To do that, I edit the Dockerfile to enable collecting the coverage results, setting the output format, and the output directory. The code of the tests looks as follows:
 
-```docker 
-FROM build AS test  
-ARG BuildId
-LABEL test=${BuildId}
-RUN dotnet test --no-build -c Release --results-directory /testresults --logger "trx;LogFileName=test_results.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=json%2cCobertura /p:CoverletOutput=/testresults/coverage/ -p:MergeWith=/testresults/coverage/coverage.json  Tests/CustomerApi.Test/CustomerApi.Test.csproj  
-RUN dotnet test --no-build -c Release --results-directory /testresults --logger "trx;LogFileName=test_results2.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=json%2cCobertura /p:CoverletOutput=/testresults/coverage/ -p:MergeWith=/testresults/coverage/coverage.json  Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj  
-RUN dotnet test --no-build -c Release --results-directory /testresults --logger "trx;LogFileName=test_results3.trx" /p:CollectCoverage=true /p:CoverletOutputFormat=json%2cCobertura /p:CoverletOutput=/testresults/coverage/ -p:MergeWith=/testresults/coverage/coverage.json  Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj
-```
+<script src="https://gist.github.com/WolfgangOfner/5dffd45690e062117514ecf3d7eb1971.js"></script>
 
 The output format is json and Cobertura because I want to collect the code coverage of all tests and merge them into the summary file. This is all done behind the scenes, all you have to do is using the MergeWith flag where you provide the path to the json file. You could also build the whole solution if you don&'t want to configure this. The disadvantage is that you will always run all tests. This might be not wanted, especially in bigger projects where you want to separate unit tests from integration or UI tests.
 
@@ -60,39 +38,11 @@ This is everything you have to change in your projects to be ready to collect th
 
 In my last post, I explained how to copy the test results out of the container using the label test=${BuildId}. This means that besides the test results, the coverage results are also copied out of the container already. All I have to do now is to display these coverage results using the PublishCodeCoverageResults tasks from Azure DevOps. The code looks as follows:
 
-```yaml  
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/testresults/coverage/coverage.cobertura.xml'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/testresults/coverage/reports'
-  displayName: 'Publish code coverage results' 
-```
+<script src="https://gist.github.com/WolfgangOfner/05f17f1e125c251329ba717a5ccff191.js"></script>
 
 The whole code to copy everything out of the container, display the test results and the code coverage looks as this:
 
-```yaml  
-- pwsh: |
-    $id=docker images --filter "label=test=$(Build.BuildId)" -q | Select-Object -First 1
-    docker create --name testcontainer $id
-    docker cp testcontainer:/testresults ./testresults
-    docker rm testcontainer
-  displayName: 'Copy test results'
- 
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'VSTest'
-    testResultsFiles: '**/*.trx'
-    searchFolder: '$(System.DefaultWorkingDirectory)/testresults'
-  displayName: 'Publish test results'
- 
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '$(System.DefaultWorkingDirectory)/testresults/coverage/coverage.cobertura.xml'
-    reportDirectory: '$(System.DefaultWorkingDirectory)/testresults/coverage/reports'
-  displayName: 'Publish code coverage results'
-```
+<script src="https://gist.github.com/WolfgangOfner/857ea9eaa78d7db223e492f625ea2f52.js"></script>
 
 Save the changes and run the CI pipeline. After the build is finished, you will see the Code Coverage tab in the summary overview where you can see the coverage of each of your projects.
 

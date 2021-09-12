@@ -1,12 +1,12 @@
 ---
 title: Repository Pattern in .NET Core
-date: 2020-06-04T23:08:45+02:00
+date: 2020-06-04
 author: Wolfgang Ofner
 categories: [Design Pattern]
 tags: [NET Core, 'C#', Entity Framework Core]
 description: Today, I will write about implementing .the Repository Pattern in .NET core using Entity Framework Core as the unit of work.
 ---
-A couple of years ago, I wrote about the <a href="/repository-and-unit-of-work-pattern/" target="_blank" rel="noopener noreferrer">Repository and Unit of Work pattern</a>. Although this post is quite old and not even .NET Core, I get many questions about it. Since the writing of the post, .NET core matured and I learned a lot about software development. Therefore, I wouldn&#8217;t implement the code as I did back then. Today, I will write about implementing .the repository pattern in .NET core
+A couple of years ago, I wrote about the <a href="/repository-and-unit-of-work-pattern/" target="_blank" rel="noopener noreferrer">Repository and Unit of Work pattern</a>. Although this post is quite old and not even .NET Core, I get many questions about it. Since the writing of the post, .NET core matured and I learned a lot about software development. Therefore, I wouldn't implement the code as I did back then. Today, I will write about implementing .the repository pattern in .NET core
 
 ## Why I am changing the Repository Pattern in .NET Core
 
@@ -20,224 +20,37 @@ In the data project, I have my models and repositories. I create a generic repos
 
 ### Implementing the Repositories
 
-```csharp  
-public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()
-{
-    protected readonly RepositoryPatternDemoContext RepositoryPatternDemoContext;
-
-    public Repository(RepositoryPatternDemoContext repositoryPatternDemoContext)
-    {
-        RepositoryPatternDemoContext = repositoryPatternDemoContext;
-    }
-
-    public IQueryable<TEntity> GetAll()
-    {
-        try
-        {
-            return RepositoryPatternDemoContext.Set<TEntity>();
-        }
-        catch (Exception ex)
-        {
-            throw new Exception($"Couldn't retrieve entities: {ex.Message}");
-        }
-    }
-
-    public async Task<TEntity> AddAsync(TEntity entity)
-    {
-        if (entity == null)
-        {
-            throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");
-        }
-
-        try
-        {
-            await RepositoryPatternDemoContext.AddAsync(entity);
-            await RepositoryPatternDemoContext.SaveChangesAsync();
-
-            return entity;
-        }
-        catch (Exception ex)
-        {
-            throw new Exception($"{nameof(entity)} could not be saved: {ex.Message}");
-        }
-    }
-
-    public async Task<TEntity> UpdateAsync(TEntity entity)
-    {
-        if (entity == null)
-        {
-            throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");
-        }
-
-        try
-        {
-            RepositoryPatternDemoContext.Update(entity);
-            await RepositoryPatternDemoContext.SaveChangesAsync();
-
-            return entity;
-        }
-        catch (Exception ex)
-        {
-            throw new Exception($"{nameof(entity)} could not be updated: {ex.Message}");
-        }
-    }
-} 
-```
+<script src="https://gist.github.com/WolfgangOfner/f200c7eafdc3b340728f6ddc9e964df0.js"></script>
 
 This repository can be used for most entities. In case one of your models needs more functionality, you can create a concrete repository that inherits from Repository. I created a ProductRepository which offers product-specific methods:
 
-```csharp  
-public class ProductRepository : Repository<Product>, IProductRepository
-{
-    public ProductRepository(RepositoryPatternDemoContext repositoryPatternDemoContext) : base(repositoryPatternDemoContext)
-    {
-    }
-
-    public Task<Product> GetProductByIdAsync(int id)
-    {
-        return GetAll().FirstOrDefaultAsync(x => x.Id == id);
-    }
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/72d7270f94a932885d562d65115cae63.js"></script>
 
 The ProductRepository also offers all generic methods because its interface IProductRepository inherits from IRepository:
 
-```csharp  
-public interface IProductRepository : IRepository<Product>  
-{  
-    Task<Product> GetProductByIdAsync(int id);  
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/34f1315814dd9991abbdea2f99364106.js"></script>
 
 The last step is to register the generic and concrete repositories in the Startup class.
 
-```csharp  
-services.AddTransient(typeof(IRepository<>), typeof(Repository<>;));  
-services.AddTransient<IProductRepository, ProductRepository>();  
-services.AddTransient<ICustomerRepository, CustomerRepository>();  
-```
+<script src="https://gist.github.com/WolfgangOfner/29887ad62294946cafe3ce802a7d9859.js"></script>
 
-The first line registers the generic attributes. This means if you want to use it in the future with a new model, you don&#8217;t have to register anything else. The second and third line register the concrete implementation of the ProductRepository and CustomerRepository.
+The first line registers the generic attributes. This means if you want to use it in the future with a new model, you don't have to register anything else. The second and third line register the concrete implementation of the ProductRepository and CustomerRepository.
 
 ### Implementing Services which use the Repositories
 
 I implement two services, the CustomerService and the ProductService. Each service gets injected a repository. The ProductServices uses the IProductRepository and the CustomerService uses the ICustomerRepository;. Inside the services, you can implement whatever business logic your application needs. I implemented only simple calls to the repository but you could also have complex calculations and several repository calls in a single method.
 
-```csharp  
-public class ProductService : IProductService
-{
-    private readonly IProductRepository _productRepository;
+<script src="https://gist.github.com/WolfgangOfner/497898c728239f13eabb410c2c152a79.js"></script>
 
-    public ProductService(IProductRepository productRepository)
-    {
-        _productRepository = productRepository;
-    }
-
-    public async Task<Product> GetProductByIdAsync(int id)
-    {
-        return await _productRepository.GetProductByIdAsync(id);
-    }
-
-    public async Task<Product> AddProductAsync(Product product)
-    {
-        return await _productRepository.AddAsync(product);
-    }
-} 
-```
-
-```csharp  
-public class CustomerService : ICustomerService
-{
-    private readonly ICustomerRepository _customerRepository;
-
-    public CustomerService(ICustomerRepository customerRepository)
-    {
-        _customerRepository = customerRepository;
-    }
-
-    public async Task<List<Customer>> GetAllCustomersAsync()
-    {
-        return await _customerRepository.GetAllCustomersAsync();
-    }
-
-    public async Task<Customer> GetCustomerByIdAsync(int id)
-    {
-        return await _customerRepository.GetCustomerByIdAsync(id);
-    }
-
-    public async Task<Customer> AddCustomerAsync(Customer newCustomer)
-    {
-        return await _customerRepository.AddAsync(newCustomer);
-    }
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/de2360c746c0a00a0fd4817a53937d80.js"></script>
 
 ## Implementing the Controller to test the Application
 
 To test the application, I implemented a really simple controller. The controllers offer for each service method a parameter-less get method and return whatever the service returned. Each controller gets the respective service injected.
 
-```csharp  
-public class CustomerController : Controller
-{
-    private readonly ICustomerService _customerService;
+<script src="https://gist.github.com/WolfgangOfner/449d07c44862ebaa5d82a00a9729d032.js"></script>
 
-    public CustomerController(ICustomerService customerService)
-    {
-        _customerService = customerService;
-    }
-
-    public async Task<ActionResult<Customer>> CreateCustomer()
-    {
-        var customer = new Customer
-        {
-            Age = 30,
-            FirstName = "Wolfgang",
-            LastName = "Ofner"
-        };
-
-        return await _customerService.AddCustomerAsync(customer);
-    }
-
-    public async Task<ActionResult<List<Customer>>> GetAllCustomers()
-    {
-        return await _customerService.GetAllCustomersAsync();
-    }
-
-    public async Task<ActionResult<Customer>> GetCustomerById()
-    {
-        return await _customerService.GetCustomerByIdAsync(1);
-    }
-}  
-```
-
-```csharp  
-public class ProductController : Controller
-{
-    private readonly IProductService _productService;
-
-    public ProductController(IProductService productService)
-    {
-        _productService = productService;
-    }
-
-    public async Task<ActionResult<Product>> GetProductById()
-    {
-        return await _productService.GetProductByIdAsync(1);
-    }
-
-    public async Task<ActionResult<Product>> CreateProduct()
-    {
-        var product = new Product
-        {
-            Name = "Name",
-            Description = "Desc",
-            Price = 99.99m
-        };
-
-        return await _productService.AddProductAsync(product);
-    }
-} 
-```
+<script src="https://gist.github.com/WolfgangOfner/db2924ffb7b82933281ecb89eb3f6daa.js"></script>
 
 When you call the create customer action, a customer object in JSON should be returned.
 
@@ -253,21 +66,16 @@ When you call the create customer action, a customer object in JSON should be re
 
 If you want to use the a database, you have to add your connection string in the appsettings.json file. My connection string looks like this:
 
-```json  
-"ConnectionString": "Server=localhost;Database=RepositoryPatternDemo;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=<;YourNewStrong@Passw0rd>;"  
-```
+<script src="https://gist.github.com/WolfgangOfner/3362322935c831739349f1689c3b4161.js"></script>
 
 By default, I am using an in-memory database. This means that you don&#8217;t have to configure anything to test the application
 
-```csharp  
-//services.AddDbContext<RepositoryPatternDemoContext>(options => options.UseSqlServer(Configuration["Database:ConnectionString"]));  
-services.AddDbContext<RepositoryPatternDemoContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));  
-```
+<script src="https://gist.github.com/WolfgangOfner/d652e6f7bb560f153d786a986999dba3.js"></script>
 
 I also added an SQL script to create the database, tables and test data. You can find the script <a href="https://github.com/WolfgangOfner/.NETCoreRepositoryAndUnitOfWorkPattern/blob/master/NetCoreRepositoryAndUnitOfWorkPattern.Data/DatabaseScript/database.sql" target="_blank" rel="noopener noreferrer">here</a>.
 
 ## Conclusion
 
-In today&#8217;s post, I gave my updated opinion on the repository pattern and simplified the solution compared to my post a couple of years ago. This solution uses entity framework core as unit of work and implements a generic repository that can be used for most of the operations. I also showed how to implement a specific repository, in case the generic repository can&#8217;t full fill your requirements. Implement your own unit of work object only if you need to control over your objects.
+In today's post, I gave my updated opinion on the repository pattern and simplified the solution compared to my post a couple of years ago. This solution uses entity framework core as unit of work and implements a generic repository that can be used for most of the operations. I also showed how to implement a specific repository, in case the generic repository can&#8217;t full fill your requirements. Implement your own unit of work object only if you need to control over your objects.
 
 You can find the code for the demo on <a href="https://github.com/WolfgangOfner/.NETCoreRepositoryAndUnitOfWorkPattern" target="_blank" rel="noopener noreferrer">Github</a>.

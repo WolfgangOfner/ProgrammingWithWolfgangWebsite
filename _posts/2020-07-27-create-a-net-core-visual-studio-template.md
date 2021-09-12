@@ -1,6 +1,6 @@
 ---
 title: Create a .NET Core Visual Studio Template
-date: 2020-07-27T19:18:58+02:00
+date: 2020-07-27
 author: Wolfgang Ofner
 categories: [Programming, Miscellaneous]
 tags: [NET Core 3.1, 'C#', Docker, Visual Studio]
@@ -90,22 +90,7 @@ Repeat this export for all other projects in your solution. After you are finish
 
 Unzip every zip file into a separate folder and delete the zip files. I get quite often a warning that the file header is corrupt during the unzip. You can ignore this message though. Next, create a file with a vstemplate ending, for example, Template.vstemplate in the folder where you unzipped your templates. This file contains links to all projects in the template in the XML format. Copy the following code into the file:
 
-```xml  
-<VSTemplate xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Version="2.0.0" Type="ProjectGroup">
-   <TemplateData>
-      <Name>My Template</Name>
-      <Description>A template with a three tier architecture.</Description>
-      <ProjectType>CSharp</ProjectType>
-   </TemplateData>
-   <TemplateContent>
-      <ProjectCollection>
-         <ProjectTemplateLink ProjectName=" Template.Api" CopyParameters="true">Template.Api\MyTemplate.vstemplate</ProjectTemplateLink>
-         <ProjectTemplateLink ProjectName=" Template.Service" CopyParameters="true">Template.Service\MyTemplate.vstemplate</ProjectTemplateLink>
-         <ProjectTemplateLink ProjectName="Template.Data" CopyParameters="true">Template.Data\MyTemplate.vstemplate</ProjectTemplateLink>
-      </ProjectCollection>
-   </TemplateContent>
-</VSTemplate>
-```
+<script src="https://gist.github.com/WolfgangOfner/229af764866ecff2f292b4aa8cfadcfb.js"></script>
 
 Save the file and create a zip of the three folder and the template file. You can easily do this by highlighting everything and the right-click and then select Send to &#8211;> Compressed (zipped) folder. Your folder should contain the following files and directories now:
 
@@ -143,28 +128,7 @@ Having a template is nice but it would be even nicer if the projects weren&#8217
 
 I am replacing in all files Template with $ext_safeprojectname$, for example, the TemplateService class:
 
-```csharp  
-using System.Collections.Generic;
-using $ext_safeprojectname$.Data;
-
-namespace $ext_safeprojectname$.Service
-{
-    public class $ext_safeprojectname$Service : I$ext_safeprojectname$Service
-    {
-        private readonly I$ext_safeprojectname$Repository _repository;
-
-        public $ext_safeprojectname$Service(I$ext_safeprojectname$Repository repository)
-        {
-            _repository = repository;
-        }
-
-        public List<string> GetAll()
-        {
-            return _repository.GetAll();
-        }
-    }
-} 
-```
+<script src="https://gist.github.com/WolfgangOfner/1629d3667f6b174b89809c2cd80bc5f1.js"></script>
 
 Adding the variable also adds a lot of errors in your solution. You can ignore them though.
 
@@ -192,22 +156,7 @@ Not only class names and namespaces should have the provided name, but also the 
 
 Repeat the export from before by clicking on Project &#8211;> Export Template and export all your projects. Delete your previously created folders and unzipp the exported zip files. In the vstemplate file, replace Template with $safeprojectname$. This will rename the project files. Also make sure that CopyParameters=&#8221;true&#8221; is set for every project. Otherwise, the user input won&#8217;t be copied and the variables will be empty.
 
-```xml  
-<VSTemplate xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Version="2.0.0" Type="ProjectGroup">
-   <TemplateData>
-      <Name>My Template</Name>
-      <Description>A template with a three tier architecture.</Description>
-      <ProjectType>CSharp</ProjectType>
-   </TemplateData>
-   <TemplateContent>
-      <ProjectCollection>
-         <ProjectTemplateLink ProjectName="$safeprojectname$.Api" CopyParameters="true">Template.Api\MyTemplate.vstemplate</ProjectTemplateLink>
-         <ProjectTemplateLink ProjectName="$safeprojectname$.Service" CopyParameters="true">Template.Service\MyTemplate.vstemplate</ProjectTemplateLink>
-         <ProjectTemplateLink ProjectName="$safeprojectname$.Data" CopyParameters="true">Template.Data\MyTemplate.vstemplate</ProjectTemplateLink>
-      </ProjectCollection>
-   </TemplateContent>
-</VSTemplate>
-```
+<script src="https://gist.github.com/WolfgangOfner/ec0775b23b1439aea19eb772a6354dca.js"></script>
 
 Zip all files and copy the zip over the previously created zip in the Visual C# folder. Create a new project and select your template and enter Customer as project name. If you did everything right, all files and projects should be named correctly and the project should build without an error. It is very easy to have errors on the first try since you don&#8217;t have any help to find errors in the template and every typo will result in a build error.
 
@@ -219,7 +168,7 @@ Zip all files and copy the zip over the previously created zip in the Visual C# 
   </p>
 </div>
 
-When you don&#8217;t have any error, run the project and you should see Customer in the headline, description and Controller.
+When you don't have any error, run the project and you should see Customer in the headline, description and Controller.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/07/Testing-the-created-solution.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Testing-the-created-solution.jpg" alt="Testing the created solution from the Visual Studio Template" /></a>
@@ -233,29 +182,7 @@ When you don&#8217;t have any error, run the project and you should see Customer
 
 Adding Docker support to your Visual Studio Template is very simple. Right-click on your Template.Api project and select Add &#8211;> Docker Support. Select an operating system and click OK. This adds a Dockerfile and that&#8217;s it already.
 
-```docker
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base  
-WORKDIR /app  
-EXPOSE 80
-
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build  
-WORKDIR /src  
-COPY ["Template.Api/Template.Api.csproj", "Template.Api/"]  
-COPY ["Template.Service/Template.Service.csproj", "Template.Service/"]  
-COPY ["Template.Data/Template.Data.csproj", "Template.Data/"]  
-RUN dotnet restore "Template.Api/Template.Api.csproj"  
-COPY . .  
-WORKDIR "/src/Template.Api"  
-RUN dotnet build "Template.Api.csproj" -c Release -o /app/build
-
-FROM build AS publish  
-RUN dotnet publish "Template.Api.csproj" -c Release -o /app/publish
-
-FROM base AS final  
-WORKDIR /app  
-COPY --from=publish /app/publish .  
-ENTRYPOINT ["dotnet", "Template.Api.dll"]  
-```
+<script src="https://gist.github.com/WolfgangOfner/edbe0cf32976011fc649b4049ed437b9.js"></script>
 
 ### Use Variables in the Dockerfile
 

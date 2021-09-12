@@ -81,7 +81,7 @@ To configure ready to run, you only have to add the PublishReadyToRun tag to you
 With .NET Core 3.0, you can now create WPF and WinForms applications. Currently, they are Windows only and the tooling needs a bit more work but new desktop applications can and should use .NET Core. Visual Studio provides a template for the .NET Core WPF application.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/12/Create-a-WPF-.NET-Core-Application.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/Create-a-WPF-.NET-Core-Application.jpg" alt="Create a WPF .NET Core 3.0 Application" /></a>
+  <a href="/assets/img/posts/2019/12/Create-a-WPF-NET-Core-Application.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/Create-a-WPF-NET-Core-Application.jpg" alt="Create a WPF .NET Core 3.0 Application" /></a>
   
   <p>
     Create a WPF .NET Core Application
@@ -91,7 +91,7 @@ With .NET Core 3.0, you can now create WPF and WinForms applications. Currently,
 After the application is created, you can see in the csproj file that it is a WPF application and used .NET Core 3.0
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/12/csproj-file-of-the-.NET-Core-WPF-project.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/csproj-file-of-the-.NET-Core-WPF-project.jpg" alt="csproj file of the .NET Core 3.0 WPF project" /></a>
+  <a href="/assets/img/posts/2019/12/csproj-file-of-the-NET-Core-WPF-project.jpg"><img loading="lazy" src="/assets/img/posts/2019/12/csproj-file-of-the-NET-Core-WPF-project.jpg" alt="csproj file of the .NET Core 3.0 WPF project" /></a>
   
   <p>
     csproj file of the .NET Core WPF project

@@ -1,6 +1,6 @@
 ---
 title: Azure Static Web Apps
-date: 2020-05-30T17:46:33+02:00
+date: 2020-05-30
 author: Wolfgang Ofner
 categories: [Cloud, Programming]
 tags: [Azure Function, 'C#', Github Action, React, Static Web Apps]
@@ -64,54 +64,11 @@ In the next window select HTTP trigger and set the Authorization level to Anonym
 
 After the Azure Function is created, I change the code so it returns a JSON list of products:
 
-```csharp  
-public static class Function1
-{
-    [FunctionName("Function1")]
-    public static async Task<IActionResult> Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
-        HttpRequest req,
-        ILogger log)
-    {
-        var products = new List<Product>
-        {
-            new Product
-            {
-                Name = "Phone",
-                Price = 999.90m,
-                Description = "This is the description of the phone"
-            },
-            new Product
-            {
-                Name = "Book",
-                Price = 99.90m,
-                Description = "The best book you will ever read"
-            },
-            new Product
-            {
-                Name = "TV",
-                Price = 15.49m,
-                Description = "Here you can see an awesome TV"
-            }
-        };
-
-        return new OkObjectResult(JsonConvert.SerializeObject(products));
-    }
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/63c9b72c9a7ad295daad78277301ec36.js"></script>
 
 The Product class has the following properties:
 
-```csharp  
-public class Product  
-{  
-    public string Name { get; set; }
-    
-    public decimal Price { get; set; }
-    
-    public string Description { get; set; }  
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/30a9272b04a95cb23c32756a437df30a.js"></script>
 
 Start the application and a console window will appear telling you the URL of your function. Enter this URL into your browser and you should see the JSON list displayed.
 
@@ -207,9 +164,7 @@ You should have basic knowledge of React. If you are new to React, take a look a
 
 Open a new Powershell window and create a new react app with the following command:
 
-```powershell  
-npx create-react-app react-static-web-app  
-```
+<script src="https://gist.github.com/WolfgangOfner/08c8213c18bdf6afd87a9537c3549c69.js"></script>
 
 This will create a react project, named react-static-web-app. Go inside the project folder in Powershell and open Visual Studio Code with the following code:
 
@@ -219,57 +174,11 @@ code .
 
 I will change the application to call my Azure Function and then display the returned list with Bootstrap cards. First, I create a new folder, called components, and create a new file inside this folder called products.js. Then I add the following code to the new file:
 
-```javascript  
-import React from 'react'
-
-const Products = ({ products }) => {
-    return (
-        <div>
-            {products.map((product) => (
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{product.Name}</h5>
-                        <h6 class="card-subtitle mb-2 text-muted">{product.Price}</h6>
-                        <p class="card-text">{product.Description}</p>
-                    </div>
-                </div>
-            ))}
-        </div>
-    )
-};
-
-export default Products 
-```
+<script src="https://gist.github.com/WolfgangOfner/a02b885c148ad79122d9f6d9693410dd.js"></script>
 
 This method takes a list of products and displays every item. The next step is to implement the Azure Function call in the App.js file.
 
-```javascript  
-import React, { Component } from 'react';
-import Products from './components/products';
-
-class App extends Component {
-  render() {
-    return (
-      <Products products={this.state.products} />
-    )
-  }
-
-  state = {
-    products: []
-  };
-
-  componentDidMount() {
-    fetch('https://staticwebappwolfgang.azurewebsites.net/api/Function1')
-      .then(res => res.json())
-      .then((data) => {
-        this.setState({ products: data })
-      })
-      .catch(console.log)
-  }
-}
-
-export default App;  
-```
+<script src="https://gist.github.com/WolfgangOfner/ab8d28eff46cac4b5649cead73a1d52f.js"></script>
 
 Lastly, I add the Bootstrap css file in the index.html file which is located in the Public folder.
 

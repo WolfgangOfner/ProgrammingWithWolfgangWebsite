@@ -81,7 +81,7 @@ To access the microservice using the URL, you have to configure the DNS accordin
 
 ## Conclusion
 
-Using two pipelines, one for CI, one for CD can be achieved quite easily and helps you to keep the complexity inside the pipelines at a minimum. This allows you to add new features, for example, new environments fast and with a smaller chance of making any mistakes. [In my next post](/deploy-to-multiple-environments-azure-devops), I will use the newly created CD pipeline and add a production stage with its own URL and database deployment.
+Using two pipelines, one for CI, one for CD can be achieved quite easily and helps you to keep the complexity inside the pipelines at a minimum. This allows you to add new features, for example, new environments fast and with a smaller chance of making any mistakes. [In my next post](/deploy-microservices-to-multiple-environments-azure-devops), I will use the newly created CD pipeline and add a production stage with its own URL and database deployment.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 

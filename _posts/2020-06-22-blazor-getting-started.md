@@ -1,12 +1,12 @@
 ---
 title: 'Blazor - Getting Started'
-date: 2020-06-22T22:41:29+02:00
+date: 2020-06-22
 author: Wolfgang Ofner
 categories: [ASP.NET, Frontend]
 tags: [NET Core, Blazor, 'C#', SignalR]
 description: Blazor was introduced with .NET Core 3.0 and is a web UI single page application (SPA) framework. Developers write the code in HTML, CSS and C#.
 ---
-Blazor was introduced with .NET Core 3.0 and is a web UI single page application (SPA) framework. Developers write the code in HTML, CSS, C#, and optionally Javascript. Blazor was developed by Steve Sanderson and presented  in July 2018. The main advantage over Javascript frameworks is that you can run C# directly in the browser which should be appealing for enterprise developers who don&#8217;t want to deal with Javascript
+Blazor was introduced with .NET Core 3.0 and is a web UI single page application (SPA) framework. Developers write the code in HTML, CSS, C#, and optionally Javascript. Blazor was developed by Steve Sanderson and presented  in July 2018. The main advantage over Javascript frameworks is that you can run C# directly in the browser which should be appealing for enterprise developers who don't want to deal with Javascript
 
 ## Blazor Features
 
@@ -62,24 +62,7 @@ All these features are implemented with HTML, CSS, and C# only. No need for Java
 
 Open the Counter.razor file in the Pages folder and you can see the whole code for the implementation of the Counter feature.
 
-```csharp  
-@page "/counter"
-
-<h1>Counter</h1>
-
-<p>Current count: @currentCount</p>
-
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
-
-@code {
-    private int currentCount = 0;
-
-    private void IncrementCount()
-    {
-        currentCount++;
-    }
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/ed5e1aaa61641daf8335c4ecd362ac8a.js"></script>
 
 On the top, you have the page attribute which indicates the route. In this example, when you enter /counter, this page will be rendered. The logic of the functionality is in the code block and the button has an onclick event. This event calls the IncrementCount method which then increases the count of the currentCode variable.
 
@@ -89,99 +72,15 @@ In this section, I will add a new Blazor component with a dropdown menu, event h
 
 Right-click on the Pages folder and add a Blazor Component with the name DisplayProducts. Then add the following code:
 
-```csharp  
-@page "/products"
-
-<h3>Product:</h3>
-
-@code {  
-    private List<Product> Products; 
-    
-    protected override void OnInitialized()
-    {
-        Products = new List<Product>
-        {
-            new Product{Id = 1, Name = "Phone", Price = 999.99m},
-            new Product{Id = 2, Name = "Book", Price = 5.99m},
-            new Product{Id = 3, Name = "Car", Price = 19999.99m}
-        };
-    }
-    
-    public class Product
-    {
-        public int Id { get; set; }
-    
-        public string Name { get; set; }
-    
-        public decimal Price { get; set; }
-    }  
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/92fed086c53691a3a66805142b774986.js"></script>
 
 This code sets the route to products and displays a headline. In the code block, I override the OnInitialized method and create a class Product. The OnInitialized method is executed during the load of the page. You might know this from Webforms. Next, I add a dropdown menu and add each element of my Products list.
 
-```csharp  
-<select size="1" style="width:10%">  
-@foreach (var product in Products)  
-{  
-    <option value="@product.Id.ToString()">@product.Name &#8211; $@product.Price</option>  
-}  
-</select>  
-```
+<script src="https://gist.github.com/WolfgangOfner/1dbb95e15b8fe01e885814ae8a7dd25b.js"></script>
 
-As the last step, I add an onchange event to the dropdown menu and the code of the executed method in the code block. The selected value will be displayed below the dropdown menu. If you haven&#8217;t selected anything, the whole div tag won&#8217;t be displayed. My whole component looks like the following:
+As the last step, I add an onchange event to the dropdown menu and the code of the executed method in the code block. The selected value will be displayed below the dropdown menu. If you haven't selected anything, the whole div tag won't be displayed. My whole component looks like the following:
 
-```csharp  
-@page "/products"
-
-@if (Products != null)
-{
-    <h3>Product:</h3>
-    <select @onchange="ProductSelected" size="1" style="width:10%">
-        @foreach (var product in Products)
-        {
-            <option value="@product.Id.ToString()">@product.Name - $@product.Price</option>
-        }
-    </select>
-
-    if (SelectedProduct != null)
-    {
-        <br />
-        <div>Selected Product: @SelectedProduct.Name</div>
-    }
-}
-
-@code {
-    private List<Product> Products;
-
-    Product SelectedProduct;
-
-    void ProductSelected(ChangeEventArgs args)
-    {
-        SelectedProduct = (from p in Products where p.Id == Convert.ToInt32(args.Value.ToString()) select p).FirstOrDefault();
-    }
-
-
-    protected override void OnInitialized()
-    {
-        Products = new List<Product>
-        {
-            new Product{Id = 1, Name = "Phone", Price = 999.99m},
-            new Product{Id = 2, Name = "Book", Price = 5.99m},
-            new Product{Id = 3, Name = "Car", Price = 19999.99m}
-        };
-    }
-
-    public class Product
-    {
-        public int Id { get; set; }
-
-        public string Name { get; set; }
-
-        public decimal Price { get; set; }
-    }
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/fa46865da518b050a16be5a326bf100f.js"></script>
 
 Run the application, navigate to /products and you will see the dropdown menu. Select a product and it will be displayed below the dropdown.
 

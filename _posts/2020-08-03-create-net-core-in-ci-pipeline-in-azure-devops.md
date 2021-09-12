@@ -1,6 +1,6 @@
 ---
 title: Create a .NET Core CI Pipeline in Azure DevOps
-date: 2020-08-03T19:24:06+02:00
+date: 2020-08-03
 author: Wolfgang Ofner
 layout: post
 categories: [DevOps]
@@ -111,46 +111,7 @@ I remove the build script and select the .NET Core task on the right side. I sel
 
 I repeat the process of adding new .NET Core tasks but I use build to build all projects, test to run all projects that have Test at the end of the project name, and then publish the CustomerApi project. The whole pipeline looks as follows:
 
-```yaml  
-trigger:
-- master
- 
-pool:
-  vmImage: 'ubuntu-latest'
- 
-variables:
-  buildConfiguration: 'Release'
- 
-steps:
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
-  displayName: 'Restore Nuget Packages'
- 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'build'
-    projects: '**/*.csproj'
-    arguments: '--no-restore'
-  displayName: 'Build projects'
- 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'test'
-    projects: '**/*Test.csproj'
-    arguments: '--no-restore'
-  displayName: 'Run Tests'
- 
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '**/CustomerApi.csproj'
-    arguments: '--configuration $(buildConfiguration) --no-restore'
-    modifyOutputPath: false
-  displayName: 'Publish CustomerApi'
-```
+<script src="https://gist.github.com/WolfgangOfner/1144a2ef6274d8f57916b61fd07c2282.js"></script>
 
 Click Save and Run and and the pipeline will be added to your source control and then executed.I created a new branch to test if everything is fine.
 
@@ -178,17 +139,7 @@ You don&#8217;t see anything under Code Coverage. I will cover this in a later p
 
 Currently, the publish task runs always, even if I don&#8217;t want to create a release. It would be more efficient to run this task only when the build was triggered by the master branch. To do that, I add a custom condition to the publish task. I want to run the publish only when the previous steps succeeded and when the branch name is master. I do this with the following code:
 
-```yaml  
-- task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    publishWebProjects: false
-    projects: '**/CustomerApi.csproj'
-    arguments: '--configuration $(buildConfiguration) --no-restore'
-    modifyOutputPath: false    
-  displayName: 'Publish CustomerApi'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master')) 
-```
+<script src="https://gist.github.com/WolfgangOfner/78e31357f6534040e750764fd1a99064.js"></script>
 
 Save the pipeline and run it with any branch but the master branch. You will see that the publish task is skipped.
 

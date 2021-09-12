@@ -1,6 +1,6 @@
 ---
 title: ASP .NET Core with HTTPS in Docker
-date: 2020-04-22T11:30:30+02:00
+date: 2020-04-22
 author: Wolfgang Ofner
 categories: [Docker, ASP.NET]  
 tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, SSL, Swagger]
@@ -12,9 +12,7 @@ description: Today, I will show you how to create a development certificate and 
 
 Before I start, I want to show you what happens when you try to start a .NET Core application without a valid certificate. I use the following command to start the container:
 
-```powershell  
-docker run -p 32789:80 -p 32788:443 -e "ASPNETCORE_URLS=https://+;http://+" wolfgangofner/customerapi  
-```
+<script src="https://gist.github.com/WolfgangOfner/91c669b9f187b26c10f80ed2fb41eb63.js"></script>
 
 This command sets a port mapping, adds an environment variable and starts the image customerapi from my Dockerhub repository. Executing this command will result in the following exception:
 
@@ -48,9 +46,7 @@ Note that you must set a password. Otherwise, Kestrel won&#8217;t be able to use
 
 After creating the certificate, you only have to share it with your container and the .NET Core application should start. I use the following command:
 
-```powershell  
-docker run -p 32789:80 -p 32788:443 -e Kestrel\_\_Certificates\_\_Default\_\_Path=/app/Infrastructure/Certificate/certificate.pfx -e Kestrel\_\_Certificates\_\_Default\_\_Password=Password -e "ASPNETCORE_URLS=https://+;http://+"-v D:\temp\:/app/Infrastructure/Certificate wolfgangofner/customerapi  
-```
+<script src="https://gist.github.com/WolfgangOfner/78c7e0c40b8c8b4ce170606cd9f6e3d9.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Start-a-.net-core-application-and-provide-a-certificate.jpg" alt="Start a .NET Core application and provide a certificate" /></a>
@@ -82,9 +78,7 @@ In this section, I will shortly explain the used parameter from the example abov
 
 I created a certificate and copied it into the container during the build. To do that you have to remove .pfx from the .gitignore file. Note that you should never share your certificate or put it inside a container. I only did it to simplify this demo. To use the certificate inside the container, use the following command:
 
-```powershell  
-docker run -p 32789:80 -p 32788:443 -e Kestrel\_\_Certificates\_\_Default\_\_Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx -e Kestrel\_\_Certificates\_\_Default\_\_Password=SecretPassword -e "ASPNETCORE_URLS=https://+;http://+" wolfgangofner/customerapi  
-```
+<script src="https://gist.github.com/WolfgangOfner/12f28d1c6f7f58190dc9c7ff2018f3f4.js"></script>
 
 ## Conclusion
 

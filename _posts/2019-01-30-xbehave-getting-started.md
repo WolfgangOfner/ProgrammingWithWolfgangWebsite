@@ -6,7 +6,7 @@ categories: [Programming, DevOps]
 tags: [ATDD, 'C#', TDD, xBehave, xUnit]
 description: Today, I want to go one step further and will talk about writing acceptance tests (ATDD) using xBehave. xBehave is an extension of xUnit.
 ---
-In my last post, I talked about writing unit tests using xUnit. Today, I want to go one step further and will talk about writing acceptance tests (ATDD) using xBehave. xBehave is an extension of xUnit for describing tests using natural language. The advantage of the natural language description is that non-technical stakeholder like a manager can read the test report and understand what was tested. You can find <a href="http://xbehave.github.io/" target="_blank" rel="noopener">xBehave on Github</a>.
+In my last post, I talked about writing unit tests using xUnit. Today, I want to go one step further and will talk about writing acceptance tests (ATDD) using xBehave. xBehave is an extension of xUnit for describing tests using natural language. The advantage of the natural language description is that non-technical stakeholder like a manager can read the test report and understand what was tested.
 
 ## My Setup
 

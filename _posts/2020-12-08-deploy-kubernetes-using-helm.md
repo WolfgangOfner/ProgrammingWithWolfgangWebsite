@@ -17,18 +17,14 @@ To follow along with this demo, you have to have a Kubernetes cluster running. T
 
 Before you can deploy your application with Helm, you have to install Helm. You can use chocolatey on Windows to install it:
 
-```powershell
-choco install kubernetes-helm
-```
+<script src="https://gist.github.com/WolfgangOfner/faad97940ad7a42fbf5eb6ce991ccc10.js"></script>
 
 For all other operating systems, see the <a href="https://helm.sh/docs/intro/install" target="_blank" rel="noopener noreferrer">Helm download page</a> to download the right version for your system.
 
 ### Deploy your Microservice with Helm
 After you have installed Helm, open to charts folder of your application. In the demo application, the path is CustomerApi/CustomerApi/charts. There you can see a folder named customerapi. This folder contains the Helm package. To install this package use helm install [Name] [ChartName]. For the demo application this can be done with the following code:
 
-```powershell
-helm install customer customerapi
-```
+<script src="https://gist.github.com/WolfgangOfner/d266e4d2d9e7fb1af81bb26b53e5b20e.js"></script>
 
 The package gets deployed within seconds. After it is finished, connect to the dashboard of your cluster. If you don't know how to do that, see my post ["Azure Kubernetes Service - Getting Started"](/azure-kubernetes-service-getting-started). There I explain how I use Octant and how to access your Kubernetes cluster with it.
 
@@ -47,19 +43,14 @@ The error message reads: "Failed to pull image customerapi:stable". The image ca
 ### Change the Configuration of the Helm Chart
 You can find the values.yaml file inside the customerapi Helm chart. This file provides a way to override values of the configuration. Under the image section, edit the repository and the tag to use the correct ones:
 
-```yaml
-image:
-  repository: wolfgangofner/customerapi
-  tag: latest
-```
+<script src="https://gist.github.com/WolfgangOfner/fd2c611b2b018bceaf69304f4afdd9ca.js"></script>
+
 It is a best practice to always use a version number as the tag and not latest. Using the latest tag might end up in problems with the container cache but more important you can't exactly know what version of the application you are running. For example, you are running latest but tomorrow I update latest to a new version. The next time your container gets restarted, it loads the new image and this might break your application.
 
 ## Update a Helm Deployment
 The configuration is updated and we can re-deploy the Helm chart. To update an existing deployment use helm upgrade [Name] [ChartName]:
 
-```powershell
-helm upgrade customer customerapi
-```
+<script src="https://gist.github.com/WolfgangOfner/ff39d5805455c58626b73920865e78a1.js"></script>
 
 ### Test the deployed Application
 After the Helm upgrade is completed, connect to the dashboard and open the pod again. There you can see that the pod is running now.
@@ -107,23 +98,15 @@ The Service has no external IP. This is because the type of the service is Clust
 ## Expose the Application to the Outside
 To update the Service type, open the values.yaml file again and find the service section. Update the type from ClusterIP to LoadBalancer and save the file.
 
-```yaml
-service:
-  type: LoadBalancer
-  port: 80
-```
+<script src="https://gist.github.com/WolfgangOfner/33a834340d888f7427dc15c0bc4be162.js"></script>
 
 Update the deployment with Helm upgrade again.
 
-```powershell
-helm upgrade customer customerapi
-```
+<script src="https://gist.github.com/WolfgangOfner/ff39d5805455c58626b73920865e78a1.js"></script>
 
 After the upgrade is finished, you can use either use kubectl to get the service IP or look it up in the dashboard. To use kubectl use the following command in Powershell:
 
-```powershell
-kubectl get svc -w customerapi
-```
+<script src="https://gist.github.com/WolfgangOfner/56ffdfbc8827130242528f41ef81dddf.js"></script>
 
 Alternatively, open the Service in the dashboard again, and there you can see the external IP.
 

@@ -14,30 +14,15 @@ You can find the code of this demo on [Github](https://github.com/WolfgangOfner/
 
 Running unit tests inside a Docker container is more or less the same as building a project. First, I copy all my test projects inside the container using the COPY command:
 
-```docker 
-COPY ["Tests/CustomerApi.Test/CustomerApi.Test.csproj", "Tests/CustomerApi.Test/"]  
-COPY ["Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj", "Tests/CustomerApi.Service.Test/"]  
-COPY ["Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj", "Tests/CustomerApi.Data.Test/"]  
-```
+<script src="https://gist.github.com/WolfgangOfner/a81d316f62a0d25e70224aa5e7431b75.js"></script>
 
 After copying, I execute dotnet restore on all test projects.
 
-```docker 
-RUN dotnet restore "Tests/CustomerApi.Test/CustomerApi.Test.csproj"
-RUN dotnet restore "Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj"
-RUN dotnet restore "Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj" 
-```
+<script src="https://gist.github.com/WolfgangOfner/fec8173fd23f78e352e09d5b1075b327.js"></script>
 
 Next, I set the label test to the build id. I will need this label later to identify the right layer of the container to copy the test results out of it. Then, I use dotnet test to run the tests in my three test projects. Additionally, I write the test result into the testresults folder and give them different names, e.g. test_results.trx.
 
-```docker 
-FROM build AS test  
-ARG BuildId
-LABEL test=${BuildId} 
-RUN dotnet test --no-build -c Release --results-directory /testresults --logger "trx;LogFileName=test_results.trx"  Tests/CustomerApi.Test/CustomerApi.Test.csproj  
-RUN dotnet test --no-build -c Release --results-directory /testresults --logger "trx;LogFileName=test_results2.trx" Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj  
-RUN dotnet test --no-build -c Release --results-directory /testresults --logger "trx;LogFileName=test_results3.trx" Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj 
-```
+<script src="https://gist.github.com/WolfgangOfner/70935c1427430d6eb178feb4529337b1.js"></script>
 
 That's already everything I have to change to run the tests inside the container and generate test results. You don't have to split up every command as I did but I would recommend doing so. This helps you finding problems and also is better for the caching which will increase the build time of your container. You could also use a hard-coded value for the label but if you have multiple builds running at the same time, the pipeline may publish the wrong test results since all builds have the same label name.
 
@@ -67,20 +52,11 @@ The Tests tab is not displayed because Azure DevOps has no test results to displ
 
 To copy the test results out of the container, first I have to pass the build id to the dockerfile. To do that, add the following line to the Docker build task:
 
-```yaml  
-arguments: '--build-arg BuildId=$(Build.BuildId)'
-```
+<script src="https://gist.github.com/WolfgangOfner/cf23b89c4cbc5f1ae9d93dd9eb0f5725.js"></script>
 
 Next, I use the following PowerShell task in the CI pipeline to create an intermediate container which contains the test results.
 
-```yaml  
-- pwsh: |
-   $id=docker images --filter "label=test=$(Build.BuildId)" -q | Select-Object -First 1
-   docker create --name testcontainer $id
-   docker cp testcontainer:/testresults ./testresults
-   docker rm testcontainer
-  displayName: 'Copy test results' 
-```
+<script src="https://gist.github.com/WolfgangOfner/dfdf93b4fe6540c59ed4a1c037fdf5fb.js"></script>
 
 Docker creates a new layer for every command in the Dockerfile. I can access the layer (also called intermediate container) through the label I set during the build. The script selects the first intermediate container with the label test=true and then copies the content of the testresults folder to the testresults folder of the WorkingDirectory of the build agent. Then the container is removed. Next, I can take this testresults folder and publish the test results inside it.
 
@@ -88,14 +64,7 @@ Docker creates a new layer for every command in the Dockerfile. I can access the
 
 To publish the test results, I use the PublishTestResult task of Azure DevOps. I only have to provide the format of the results, what files contain results and, the path to the files. The YAML code looks as follows:
 
-```yaml  
-- task: PublishTestResults@2
-  inputs:
-    testResultsFormat: 'VSTest'
-    testResultsFiles: '**/*.trx'
-    searchFolder: '$(System.DefaultWorkingDirectory)/testresults'
-  displayName: 'Publish test results' 
-```
+<script src="https://gist.github.com/WolfgangOfner/fd4cd2c2b3a962b1341385de37bdc157.js"></script>
 
 Run the CI pipeline again and after it is finished, you will see the Tests tab on the summary page. Click on it and you will see that all tests ran successfully. Azure DevOps even gives you a trophy for that.
 

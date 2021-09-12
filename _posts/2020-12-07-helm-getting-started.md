@@ -62,29 +62,7 @@ Helm created another subfolder, called templates, and places a couple of files i
 
 Let's have a look at the service.yaml file:
 
-{% raw %}
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ template "customerapi.fullname" . }}
-  labels:
-    app: {{ template "customerapi.name" . }}
-    chart: {{ template "customerapi.chart" . }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-spec:
-  type: {{ .Values.service.type }}
-  ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
-  selector:
-    app: {{ template "customerapi.name" . }}
-    release: {{ .Release.Name }}
-```
-{% endraw %}
+<script src="https://gist.github.com/WolfgangOfner/2bba2c1972a01292ae46ffdfd03b5491.js"></script>
 
 This file defines a service, adds labels, and then configures its ports and protocol. Helm replaces all values inside the two braces. What's important to notice is that some start with .Values.*. These values come from the values.yaml file which is outside of the templates folder.
 
@@ -92,18 +70,7 @@ This file defines a service, adds labels, and then configures its ports and prot
 
 In the previous section, I showed the service.yaml file. This file reads two values from the values.yaml file: .Values.service.type and .Values.service.port. You can find the respective files in the values.yaml file in the service section:
 
-```yaml
-fullnameOverride: customerapi
-replicaCount: 1
-image:
-  repository: customerapi
-  tag: stable
-  pullPolicy: IfNotPresent
-imagePullSecrets: []
-service:
-  type: ClusterIP
-  port: 80
-```
+<script src="https://gist.github.com/WolfgangOfner/d5e8cd1756a5167ca724bcefec185a2a.js"></script>
 
 Take a look at the values.yaml file and you will see that the type of the service is ClusterIP and its port is 80. This approach enables you to configure your application with changes in only one file. The same principle applies to all files inside the templates folder. 
 

@@ -1,6 +1,6 @@
 ---
 title: Dockerize an ASP .NET Core Microservice and RabbitMQ
-date: 2020-04-21T11:24:50+02:00
+date: 2020-04-21
 author: Wolfgang Ofner
 categories: [Docker, ASP.NET]
 tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, Swagger]
@@ -54,44 +54,19 @@ The Dockerfile is a set of instructions to build and run an image. Visual Studio
 
 ### Understanding the multi-stage Dockerfile
 
-```docker
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base  
-WORKDIR /app  
-EXPOSE 80  
-EXPOSE 443  
-```
+<script src="https://gist.github.com/WolfgangOfner/9496cc3a7c647119d048374545deb839.js"></script>
 
 The first part downloads the .NET Core runtime 3.1 image from Docker hub and gives it the name base which will be used later on. Then it sets the working directory to /app which will also be later used. Lastly, the ports 80 and 443 are exposed which tells Docker to listen to these two ports when the container is running.
 
-```docker 
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build  
-WORKDIR /src  
-COPY ["CustomerApi/CustomerApi.csproj", "CustomerApi/"]  
-COPY ["CustomerApi.Domain/CustomerApi.Domain.csproj", "CustomerApi.Domain/"]  
-COPY ["CustomerApi.Messaging.Send/CustomerApi.Messaging.Send.csproj", "CustomerApi.Messaging.Send/"]  
-COPY ["CustomerApi.Service/CustomerApi.Service.csproj", "CustomerApi.Service/"]  
-COPY ["CustomerApi.Data/CustomerApi.Data.csproj", "CustomerApi.Data/"]  
-RUN dotnet restore "CustomerApi/CustomerApi.csproj"  
-COPY . .  
-WORKDIR "/src/CustomerApi"  
-RUN dotnet build "CustomerApi.csproj" -c Release -o /app/build  
-```
+<script src="https://gist.github.com/WolfgangOfner/218e844a913736dd20c7941b5dcf70e6.js"></script>
 
 The next section downloads the .NET Core 3.1 SDK from Dockerhub and names it build. Then the working directory is set to /src and all project files (except test projects) of the solution are copied inside the container. Then dotnet restore is executed to restore all NuGet packages and the working directory is changed to the directory of the API project. Note that the path starts with /src, the working directory path I set before I copied the files inside the container. Lastly, dotnet build is executed which builds the project with the Release configuration into the path /app/build.
 
-```docker
-FROM build AS publish  
-RUN dotnet publish "CustomerApi.csproj" -c Release -o /app/publish  
-```
+<script src="https://gist.github.com/WolfgangOfner/f486f3b405c7eac47a285da499ebac01.js"></script>
 
 The build image in the first line of the next section is the SDK image which we downloaded before and named build. We use it to run dotnet publish which publishes the CustomerApi project.
 
-```docker 
-FROM base AS final  
-WORKDIR /app  
-COPY --from=publish /app/publish .  
-ENTRYPOINT ["dotnet", "CustomerApi.dll"]  
-```
+<script src="https://gist.github.com/WolfgangOfner/db18786982b7fe7032fd5849961a7088.js"></script>
 
 The last section uses the runtime image and sets the working directory to /app. Then the published files from the last step are copied into the working directory. The dot means that it is copied to your current location, therefore /app. The Entrypoint command tells Docker to configure the container as an executable and to run the CustomerApi.dll when the container starts.
 
@@ -109,7 +84,7 @@ After adding the Docker support to your application, you should be able to selec
   </p>
 </div>
 
-Click F5 or on the Docker button and your application should start as you are used to. If you don&#8217;t believe me that it is running inside a Docker container, you can check the running containers in PowerShell with the command docker ps.
+Click F5 or on the Docker button and your application should start as you are used to. If you don't believe me that it is running inside a Docker container, you can check the running containers in PowerShell with the command docker ps.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/Check-the-running-containers.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Check-the-running-containers.jpg" alt="Check the running containers" /></a>
@@ -119,19 +94,17 @@ Click F5 or on the Docker button and your application should start as you are us
   </p>
 </div>
 
-The screenshot above shows that the customerapi image was started two minutes ago, that it is running for two minutes and that it maps the port 32789 to port 80 and 32788 to 433. To stop a running container, you can use docker stop [id]. In my case. this would be docker stop f25727f43d6b. You don&#8217;t have to use the full id, like in git. Docker only needs to clearly identify the image you want to stop. So you could use docker stop f25.
+The screenshot above shows that the customerapi image was started two minutes ago, that it is running for two minutes and that it maps the port 32789 to port 80 and 32788 to 433. To stop a running container, you can use docker stop [id]. In my case. this would be docker stop f25727f43d6b. You don't have to use the full id, like in git. Docker only needs to clearly identify the image you want to stop. So you could use docker stop f25.
 
 ## Build the Dockerfile without Visual Studio
 
-You don&#8217;t need Visual Studio to create a Docker image. This is useful when you want to create the image and then push it to a container registry like Docker hub. You should always do this in a build pipeline but its useful to know how to do it by hand and sometimes you need it to quickly test something.
+You don't need Visual Studio to create a Docker image. This is useful when you want to create the image and then push it to a container registry like Docker hub. You should always do this in a build pipeline but its useful to know how to do it by hand and sometimes you need it to quickly test something.
 
 Open Powershell and navigate to the folder containing the CustomerApi.sln file. To build an image, you can use docker build \[build context\] \[location of Dockerfile\]. Optionally, you can add a tag by using -t Tagname. Use
 
-```powershell  
-docker build -t customerapi . -f CustomerApi/Dockerfile  
-```
+<script src="https://gist.github.com/WolfgangOfner/c1bb534d2455c50f33dfbdac4270798c.js"></script>
 
-to build the Dockerfile which is in your current file with the tag name customerapi. This will download the needed images (or use them from the cache) and start to build your image. Step 7 fails because a directory can&#8217;t be found though.
+to build the Dockerfile which is in your current file with the tag name customerapi. This will download the needed images (or use them from the cache) and start to build your image. Step 7 fails because a directory cant be found though.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/Build-the-docker-image.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Build-the-docker-image.jpg" alt="Build the docker image" /></a>
@@ -155,9 +128,7 @@ To confirm that your image was really created, use docker images.
 
 To start an image use docker run [-p &#8220;port outside of the container&#8221;:&#8221;port inside the container&#8221;] name of the image to start. In my example:
 
-```powershell  
-docker run -p 32789:80 -p 32788:443 customerapi
-```
+<script src="https://gist.github.com/WolfgangOfner/eccf91714dcf13760abe7c198b96e7ab.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/Run-the-previously-created-image.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Run-the-previously-created-image.jpg" alt="Run the previously created image dockerize" /></a>
@@ -183,15 +154,11 @@ We confirmed that the image is running, and now it is time to share it and there
 
 Next, I have to tag the image I want to upload with the name of my Dockerhub account and the name of the repository I want to use. I do this with docker tag Image DockerhubAccount/repository.
 
-```powershell  
-docker tag customerapi wolfgangofner/customerapi  
-```
+<script src="https://gist.github.com/WolfgangOfner/ea53cca0239ef5c42b779fdde388adc2.js"></script>
 
 The last step is to push the image to Dockerhub using docker push tagname.
 
-```powershell  
-docker push wolfgangofner/customerapi  
-```
+<script src="https://gist.github.com/WolfgangOfner/a6e08633d5a9869d6a739b88aebc8c4d.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/Push-the-image-to-Dockerhub.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Push-the-image-to-Dockerhub.jpg" alt="Push the image to Dockerhub dockerize" /></a>
@@ -215,9 +182,7 @@ To confirm that the image was pushed to Dockerhub, I open my repositories and se
 
 To confirm that everything worked fine, I will download the image and run it on any machine. The only requirement is that Docker is installed. When you click on the repository, you can see the command to download the image. In my example, this is docker pull wolfgangofner/customerapi. I will use docker run because this runs the image and if it is not available automatically pull it too.
 
-```powershell  
-docker run -p 32789:80 -p 32788:443 wolfgangofner/customerapi  
-```
+<script src="https://gist.github.com/WolfgangOfner/94220d65eec67d727600356f8178c60f.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/Run-the-previously-uploaded-image.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Run-the-previously-uploaded-image.jpg" alt="Run the previously uploaded image dockerize" /></a>
@@ -233,7 +198,7 @@ For practice purposes, you can dockerize the OrderApi. The steps are identical t
 
 ## Conclusion
 
-Today, I showed how to dockerize the microservices to create immutable Docker images which I can easily share using Dockerhub and run everywhere the same way. Currently, only the HTTP port of the application works because we haven&#8217;t provided an SSL certificate to process HTTPS requests. <a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my next post</a>, I will create a development certificate and start the image with it.
+Today, I showed how to dockerize the microservices to create immutable Docker images which I can easily share using Dockerhub and run everywhere the same way. Currently, only the HTTP port of the application works because we havent provided an SSL certificate to process HTTPS requests. <a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my next post</a>, I will create a development certificate and start the image with it.
 
 Note: On October 11, I removed the Solution folder and moved the projects to the root level. I also edited this post to reflect the changes. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
 

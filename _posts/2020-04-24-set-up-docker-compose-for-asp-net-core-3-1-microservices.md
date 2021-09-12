@@ -1,6 +1,6 @@
 ---
 title: Set up Docker-Compose for ASP .NET Core 3.1 Microservices
-date: 2020-04-24T11:04:16+02:00
+date: 2020-04-24
 author: Wolfgang Ofner
 categories: [Docker]
 tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, Swagger]
@@ -10,49 +10,9 @@ description: Today, I will explain how docker-compose works and how it can be us
 
 ## What is the Docker-Compose File?
 
-Docker-compose is a yml file in which you can set up all the containers your application needs to run. Simplified, it executes several docker run commands after each other. If you are used to docker run commands, the content of the compose file will look familiar. Let&#8217;s have a look at the content of the file:
+Docker-compose is a yml file in which you can set up all the containers your application needs to run. Simplified, it executes several docker run commands after each other. If you are used to docker run commands, the content of the compose file will look familiar. Let's have a look at the content of the file:
 
-```yaml  
-version: "3.6"
-services:
-    rabbitmq:
-        container_name: rabbitmq
-        ports:
-            - 5672:5672
-            - 15672:15672
-        environment:
-            - RABBITMQ_DEFAULT_USER=user
-            - RABBITMQ_DEFAULT_PASS=password        
-        image: rabbitmq:3-management
-                
-    customerapi:
-        container_name: customerapi
-        ports:
-            - 8000:80
-            - 8001:443
-        environment:
-            - "ASPNETCORE_URLS=https://+;http://+"
-            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
-            - Kestrel__Certificates__Default__Password=SecretPassword        
-        image: wolfgangofner/customerapi   
-        restart: on-failure        
-        depends_on:
-            - rabbitmq
-        
-    orderapi:
-        container_name: order
-        ports:
-            - 9000:80
-            - 9001:443
-        environment:
-            - "ASPNETCORE_URLS=https://+;http://+"
-            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
-            - Kestrel__Certificates__Default__Password=SecretPassword      
-        image: wolfgangofner/orderapi       
-        restart: on-failure
-        depends_on:
-            - rabbitmq  
-```
+<script src="https://gist.github.com/WolfgangOfner/45469386cf4c89284cc38a58f4c8b12b.js"></script>
 
 This file describes two images, rabbitmq, and customerapi. Let&#8217;s have a closer look at the customerapi definition:
 
@@ -92,53 +52,9 @@ Another great feature of docker-compose is, that you can stop all your applicati
 
 ## Build and run Containers
 
-You don&#8217;t have to use images from Docker hub in your compose file, you can also build images and then run them. To build an image, use the build section and set the context to the location of the Dockerfile. I have created a new Dockerfile, called Dockerfile.Build which looks as the original one except that it doesn't contain any tests or anything that might slowdown the build.
+You dont have to use images from Docker hub in your compose file, you can also build images and then run them. To build an image, use the build section and set the context to the location of the Dockerfile. I have created a new Dockerfile, called Dockerfile.Build which looks as the original one except that it doesn't contain any tests or anything that might slowdown the build.
 
-```yaml  
-version: "3.6"
-services:
-    rabbitmq:
-        container_name: rabbitmq
-        ports:
-            - 5672:5672
-            - 15672:15672
-        environment:
-            - RABBITMQ_DEFAULT_USER=user
-            - RABBITMQ_DEFAULT_PASS=password        
-        image: rabbitmq:3-management
-                
-    customerapi:
-        container_name: customerapi
-        ports:
-            - 8000:80
-            - 8001:443
-        environment:
-            - "ASPNETCORE_URLS=https://+;http://+"
-            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
-            - Kestrel__Certificates__Default__Password=SecretPassword        
-        build:
-            context: ./CustomerApi
-            dockerfile: CustomerApi/Dockerfile.Build
-        restart: on-failure        
-        depends_on:
-            - rabbitmq
-        
-    orderapi:
-        container_name: order
-        ports:
-            - 9000:80
-            - 9001:443
-        environment:
-            - "ASPNETCORE_URLS=https://+;http://+"
-            - Kestrel__Certificates__Default__Path=/app/Infrastructure/Certificate/cert-aspnetcore.pfx
-            - Kestrel__Certificates__Default__Password=SecretPassword      
-        build:
-            context: ./OrderApi      
-            dockerfile: OrderApi/Dockerfile.Build
-        restart: on-failure
-        depends_on:
-            - rabbitmq             
-```
+<script src="https://gist.github.com/WolfgangOfner/a253392bf146f6d437c322e492057924.js"></script>
 
 I named this file docker-compose.Build. You can use the -f parameter to specify the file in your docker-compose command: docker-compose -f docker-compose.Build.yml up -d.
 
@@ -156,7 +72,7 @@ When starting multiple containers with a compose file, a default network is crea
 
 ## Conclusion
 
-In today&#8217;s post, I talked about docker-compose and how it can be used to easily set up applications with multiple containers.With this post, most of the features of the two microservices are implemented. <a href="/build-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">With my next post</a>, I will start to focus more on the DevOps process. This means that I will create CI pipelines, run tests automatically during pull requests and later on will automatically deploy the microservices.
+In today's post, I talked about docker-compose and how it can be used to easily set up applications with multiple containers.With this post, most of the features of the two microservices are implemented. <a href="/build-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">With my next post</a>, I will start to focus more on the DevOps process. This means that I will create CI pipelines, run tests automatically during pull requests and later on will automatically deploy the microservices.
 
 Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
 

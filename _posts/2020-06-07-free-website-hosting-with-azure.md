@@ -1,6 +1,6 @@
 ---
 title: Free Website Hosting with Azure
-date: 2020-06-07T22:53:43+02:00
+date: 2020-06-07
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Azure Functions, Azure Static Web Apps, 'C#', Cosmos DB, React]
@@ -59,27 +59,17 @@ Open the newly created database and the Products container and click on New Item
   </p>
 </div>
 
-Again, Azure Cosmos DB is too big to go into any details in this post. For the free hosting of your website, it is only important to know that I added the data for the website into the database. The next step is to edit the Azure Function so it doesn&#8217;t return a static list but uses the Azure Cosmos DB instead.
+Again, Azure Cosmos DB is too big to go into any details in this post. For the free hosting of your website, it is only important to know that I added the data for the website into the database. The next step is to edit the Azure Function so it doesn't return a static list but uses the Azure Cosmos DB instead.
 
 ## Using an Azure Function to read Data from Cosmos DB
 
 I am re-using the Azure Function from my last post. If you don&#8217;t have any yet, create a new Azure Function with an HTTP trigger. To connect to the Cosmos DB, I am installing the Microsoft.Azure.Cosmos NuGet package and create a private variable with which I will access the data.
 
-```csharp  
-private static Container _container;  
-```
+<script src="https://gist.github.com/WolfgangOfner/922db02f8459c52f5825e670fb3ef93f.js"></script>
 
 Next, I create a method that will create a connection to the container in the database.
 
-```csharp  
-private static async Task SetUpDatabaseConnection()  
-{  
-    var cosmosClient = new CosmosClient("https://staticwebappdemocosmosdb.documents.azure.com:443",  
-    "qCEzM0xsroClwt54p7aICi3yBa0bWn4rAaiQNiIPp74LHcA7Wbm9D1iHszfaJ0icRcTwiW74KbMbn4WrMqnyfg==", new CosmosClientOptions());  
-    Database database = await cosmosClient.CreateDatabaseIfNotExistsAsync("StaticWebAppDatabase");  
-    _container = await database.CreateContainerIfNotExistsAsync("Products", "/Name", 400);  
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/c010540435c90e9133b11cb443ff2847.js"></script>
 
 To connect to the Azure Cosmos DB container, you have to enter your URI and primary key. You can find them in the Keys tab of your Cosmos DB account.
 
@@ -93,51 +83,15 @@ To connect to the Azure Cosmos DB container, you have to enter your URI and prim
 
 In the next method, I am creating an iterator that will return all my products. I add these products to a list and return the list. You can filter the query by providing a filter statement in the GetItemQueryIterator method.
 
-```csharp  
-private static async Task<List<Product>> GetAllProducts()
-{
-    var feedIterator = _container.GetItemQueryIterator<Product>();
-    var products = new List<Product>();
-
-    while (feedIterator.HasMoreResults)
-    {
-        foreach (var item in await feedIterator.ReadNextAsync())
-        {
-            {
-                products.Add(item);
-            }
-        }
-    }
-
-    return products;
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/0ca774b18e68337656d43c8e969406c4.js"></script>
 
 In the Run method of the Azure Function, I am calling both methods and convert the list to a JSON object before returning it.
 
-```csharp  
-[FunctionName("Function1")]  
-public static async Task<IActionResult> Run(  
-[HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)  
-{  
-    await SetUpDatabaseConnection();
-    
-    return new OkObjectResult(JsonConvert.SerializeObject(await GetAllProducts()));  
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/0c0200452fe8144da7c7d6696f5192b7.js"></script>
 
 I keep the Product class as it is.
 
-```csharp  
-public class Product  
-{  
-    public string Name { get; set; }
-    
-    public decimal Price { get; set; }
-    
-    public string Description { get; set; }  
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/716ee39715864f194b9400377ec8bdfd.js"></script>
 
 Start the Azure Function, enter the URL displayed in the command line and you will see your previously entered data.
 

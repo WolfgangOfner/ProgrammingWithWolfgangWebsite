@@ -17,50 +17,23 @@ To use .NET 5.0 you have to install the .NET 5.0 SDK from the [dotnet download p
 ## Uprgrade from .NET Core 3.1 to .NET 5.0
 To upgrade your solution to .NET 5.0, you have to update the TargetFramework in every .csproj file of your solution. Replace 
 
-```xml  
-<TargetFramework>netcoreapp3.1</TargetFramework>
-```
+<script src="https://gist.github.com/WolfgangOfner/cdfd7fdc3d33834b5ab9e94fb86bcd07.js"></script>
+
 with
-```xml  
-<TargetFramework>net5.0</TargetFramework>
-```
+
+<script src="https://gist.github.com/WolfgangOfner/fe7e83a1e8ef8151406b4fbf002516cc.js"></script>
 
 Instead of updating all project files and next year updating them again, I created a new file called common.props in the root folder of the solution. This file contains the following code:
 
-```xml  
-<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
-  <PropertyGroup>
-    <DefaultTargetFramework>net5.0</DefaultTargetFramework>
-  </PropertyGroup>
-
-  <PropertyGroup Label="C#">
-    <LangVersion>latest</LangVersion>
-    <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
-  </PropertyGroup>
-
-</Project>
-```
+<script src="https://gist.github.com/WolfgangOfner/4eefad732a9e54713340e5364896f507.js"></script>
 
 This file defines the C# version I am using and sets DefaultTargetFramework to net5.0. Additionally, I have a Directory.Build.props file with the following content:
 
-```xml  
-<?xml version="1.0" encoding="utf-8"?>
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
-  <ImportGroup Condition=" '$(MSBuildProjectExtension)' == '.csproj' ">    
-    <Import Project=".\common.props" />
-  </ImportGroup>
-
-</Project>
-```
+<script src="https://gist.github.com/WolfgangOfner/23995e5a73196b0b92cec8cbeb22df9a.js"></script>
 
 This file links the common.props file to the .csproj files. After setting this up, I can use this variable in my project files and can update with it all my projects with one change in a single file. Update the TargetFramework of all your .csproj files with the following code:
 
-```xml  
-<TargetFramework>$(DefaultTargetFramework)</TargetFramework>
-```
+<script src="https://gist.github.com/WolfgangOfner/e69b3da0ae0a8496f2a056e2a97ba7a8.js"></script>
 
 After updating all project files, update all Nuget packages of your solution. You can do this by right-clicking your solution --> Manage Nuget Packages for Solution...
 
@@ -94,39 +67,21 @@ Additionally, run all your tests to make sure your code still works.
 
 Lastly, I update the path to the XML comments in the CustomerApi.csproj file with the following code:
 
-```xml  
-<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-  <DocumentationFile>obj\Release\net5.0\CustomerApi.xml</DocumentationFile>
-  <NoWarn>1701;1702;1591</NoWarn>
-</PropertyGroup>
-
-<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-  <DocumentationFile>obj\Release\net5.0\CustomerApi.xml</DocumentationFile>
-  <NoWarn>1701;1702;1591</NoWarn>
-</PropertyGroup>
-```
+<script src="https://gist.github.com/WolfgangOfner/90b782649bee40a0fe2861c50526e824.js"></script>
 
 ## Update CI pipeline
 
 There are no changes required in the CI pipeline because the solution is built-in Docker. Therefore, I have to update the Dockerfile. Replace the following two lines:
 
-```docker
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim AS base
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
-```
+<script src="https://gist.github.com/WolfgangOfner/3d8fe7ec7dd8b6c1c82c4e99418c200b.js"></script>
 
 with 
 
-```docker
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-```
+<script src="https://gist.github.com/WolfgangOfner/ddc336ebc6a693235ab2510e1b7fa726.js"></script>
 
 This tells Docker to use the new .NET 5.0 images to build and run the application. Additionally, I have to copy the .props files into my Docker image with the following code inside the Dockerfile:
 
-```docker
-COPY ["*.props", "./"]
-```
+<script src="https://gist.github.com/WolfgangOfner/87de6c2717ea4c1c1d6c24a9fb1551fe.js"></script>
 
 Check in your changes and the build in Azure DevOps will run successfully.
 

@@ -12,15 +12,7 @@ The Startup class of .NET core is the new version of the Global.asax file. This 
 
 The Startup class has two methods, ConfigureServices and Configure, that tell ASP.NET Core which features are available and how they should be used.
 
-You can find the source code for this demo on <a href="https://github.com/WolfgangOfner/MVC-Core-Startup" target="_blank" rel="noopener noreferrer">GitHub</a>. On the following screenshot, you can see the default Startup class of a .NET Core:
-
-<div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2019/04/The-default-Startup-class-of-ASP.NET-Core-MVC-2.jpg"><img loading="lazy" src="/assets/img/posts/2019/04/The-default-Startup-class-of-ASP.NET-Core-MVC-2.jpg" alt="The default Startup class of ASP.NET Core MVC 2" /></a>
-  
-  <p>
-    The default Startup class of ASP.NET Core MVC 2
-  </p>
-</div>
+You can find the source code for this demo on <a href="https://github.com/WolfgangOfner/MVC-Core-Startup" target="_blank" rel="noopener noreferrer">GitHub</a>. 
 
 When the ASP.NET Core starts, the application creates a new instance of the Startup class and calls the ConfigureServices method to create its services. After the services are created, the application calls the Configure method. This method sets up middlewares (the request pipeline) which are used to handle incoming HTTP requests. Examples for middlewares are logging and authentication.
 

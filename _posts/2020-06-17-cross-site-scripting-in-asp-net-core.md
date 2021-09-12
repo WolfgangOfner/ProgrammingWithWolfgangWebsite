@@ -1,6 +1,6 @@
 ---
 title: Cross Site Scripting (XSS) in ASP .NET Core
-date: 2020-06-17T09:42:15+02:00
+date: 2020-06-17
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [NET Core 3.1, ASP.NET Core MVC, 'C#', Javascript, OWASP Top 10, Security]
@@ -43,39 +43,13 @@ XSS can occur when you display text which a user entered. ASP .NET Core automati
 
 The following code creates a form where the user can enter his user name. The input is displayed once in a safe way and once in an unsafe way.
 
-```csharp  
-@model Customer
-
-<div asp-validation-summary="All"></div>
-
-<form asp-action="Index">
-    <div class="form-group">
-        <label asp-for="UserName">Please enter your user name</label>
-        <input type="text" class="form-control" asp-for="UserName" value="User">
-    </div>
-    <button type="submit" class="mt-md-1 btn btn-primary">Submit</button>
-</form>
-
-<br />
-
-@if (!string.IsNullOrEmpty(Model.UserName))
-{
-    <div class="row">
-        <p>Safe output: @(Model.UserName)</p>
-    </div>
-    <div class="row">
-        <p>Unsafe output: @Html.Raw(Model.UserName)</p>
-    </div>
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/d2514af5d378090253a61e9ad4e0d8f2.js"></script>
 
 When a user enters his user name everything is fine. But when an attacker enters Javascript, the Javascript will be executed when the text is rendered inside the unsafe output
 
 tag. When you enter the following code as your name:
 
-```javascript  
-<script>alert(&#8216;attacked&#8217;)</script>  
-```
+<script src="https://gist.github.com/WolfgangOfner/80127fb2310a34bcf45e9dad758b99fb.js"></script>
 
 and click submit, an alert windows will be displayed.
 
@@ -101,38 +75,11 @@ When you click on OK, the text will be rendered into the safe output line and no
 
 Another way to inject code is through query parameters. If your application ready query parameters but doesn&#8217;t sanitize them, Javascript in it will be executed. The following code contains two forms. When you click on the button a query parameter will be read and printed to an alert box.
 
-```csharp  
-@using System.Text.Encodings.Web
-
-@model Customer
-@inject JavaScriptEncoder JavaScriptEncoder
-
-<h2>Unsafe Javascript</h2>
-<form asp-action="JavascriptAttack">
-    @Html.HiddenFor(m => m.UserId)
-    <div class="form-group">
-        <label for="userName">Please enter your user id</label>
-        <input type="text" class="form-control" id="userName" name="userName" value="User">
-    </div>
-    <button type="submit" class="mt-md-1 btn btn-primary" onclick="alert('Saving user name for account with id: @Context.Request.Query["userId"]');">Submit</button>
-</form>
-<br />
-<h2>Safe Javascript</h2>
-<form asp-action="JavascriptAttack">
-    @Html.HiddenFor(m => m.UserId)
-    <div class="form-group">
-        <label for="userName2">Please enter your user id</label>
-        <input type="text" class="form-control" id="userName2" name="userName2" value="User">
-    </div>
-    <button type="submit" class="mt-md-1 btn btn-primary" onclick="alert('Saving user name for account with id: @JavaScriptEncoder.Encode(Context.Request.Query["UserId"])');">Submit</button>
-</form>
-```
+<script src="https://gist.github.com/WolfgangOfner/c4a9259eba12d4c178f19112a13dd549.js"></script>
 
 The first submit button will execute Javascript whereas the second one uses the JavaScriptEncode to encode the text first. To simulate an attack replace the value of the UserId with the following code and click enter:
 
-```javascript  
-%27);alert(&#8216;You got attacked&#8217;);//  
-```
+<script src="https://gist.github.com/WolfgangOfner/bbe6a8a4e42bf2bae47b4a98ad3188d3.js"></script>
 
 Click the submit button of the unsafe form and you will see two Javascript alerts. The first one saying &#8220;Saving user name for account with id: &#8221; and then a second one saying &#8220;You got attacked&#8221;.
 
@@ -154,7 +101,7 @@ When you click the submit button of the safe form, you will see the Javascript a
   </p>
 </div>
 
-In reality, an attacker wouldn&#8217;t display an alert box but try to access your cookies or redirect you to a malicious website.
+In reality, an attacker wouldn't display an alert box but try to access your cookies or redirect you to a malicious website.
 
 ## Conclusion
 

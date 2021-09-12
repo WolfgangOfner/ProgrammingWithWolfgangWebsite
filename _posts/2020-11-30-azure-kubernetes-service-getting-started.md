@@ -89,22 +89,17 @@ You can access your new AKS cluster using PowerShell and the [Azure CLI module](
 
 After you installed the az module, you can log into your Azure subscription:
 
-```powershell  
-az login
-```
+<script src="https://gist.github.com/WolfgangOfner/5a374d23f330f9a382c01168d8d1bd85.js"></script>
 
 This opens a browser window where you can enter your username and password. After you are successfully logged in, connect to your AKS cluster. If you are following my example, you can use the following command.
 
-```powershell  
-az aks get-credentials --resource-group MicroserviceDemo --name microservice-aks
-```
+<script src="https://gist.github.com/WolfgangOfner/0721d96c63f9dd6963dd7ad8f747830f.js"></script>
+
 Perhaps, you have to change the resource group or name of your aks cluster, depending on what you entered during the deployment.
 
 Azure is not deploying the Kubernetes dashboard anymore. As an alternative, I am using [Octant](https://github.com/vmware-tanzu/octant) which is an open-source tool from VMware. If you are on windows, you can install it using Chocolatey.
 
-```powershell  
-choco install octant --confirm
-```
+<script src="https://gist.github.com/WolfgangOfner/59c373b2b60cd0c0e0b67e22e4e3bd18.js"></script>
 
 Once you installed Octant, open it and it will automatically forward your request and open the dashboard.
 
@@ -122,60 +117,23 @@ To deploy your first application to Kubernetes, you have to define a Service and
 
 You can define both objects inside a single yaml file. First, let's create the service:
 
-```yaml
-apiVersion: v1
-kind: Service
-metadata:
-  name: kubernetesdeploymentdemo
-spec:
-  type: LoadBalancer
-  ports:
-  - port: 80
-    targetPort: 80
-  selector:
-    app: kubernetesdeploymentdemo
-```
+<script src="https://gist.github.com/WolfgangOfner/4c2fb72476096ea6c256df8297d8e95a.js"></script>
 
 This service defines itself as load balancer and redirects to port 80 on pods with the label kubernetesdeploymentdemo. Labels are used as a selector, therefore the Service knows to which pod it should forward a request.
 
 Next, create the Deployment object.
 
-```yaml
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: kubernetesdeploymentdemo
-spec:
-  replicas: 3
-  selector:
-    matchLabels:
-      app: kubernetesdeploymentdemo
-  template:
-    metadata:
-      labels:
-        app: kubernetesdeploymentdemo
-    spec:
-      containers:
-      - name: kubernetesdeploymentdemo
-        image: wolfgangofner/kubernetesdeploymentdemo
-        ports:
-        - containerPort: 80
-```
+<script src="https://gist.github.com/WolfgangOfner/127f9df6a0cb4e13d11c896f0c615149.js"></script>
 
 This object might look a bit complicated in the beginning but it's quite simple. It defines a Deployment with the name kubernetesdeploymentdemo and sets the label kubernetesdeploymentdemo. Next, it configures three replicas, which means that three pods will be created and in the container section, it defines what container it should download and on what port it should be run.
 
 Save this yaml file, for example, as demo.yml and run the following command:
 
-```powershell  
-kubectl apply -f demo.yml
-```
+<script src="https://gist.github.com/WolfgangOfner/b7d52b9b370e7aa62ccec144a043073d.js"></script>
 
 If you don't have kubectl installed, install it with the following Powershell command:
 
-```powershell  
-Install-Script -Name 'install-kubectl' -Scope CurrentUser -Force
-install-kubectl.ps1 [-DownloadLocation <path>]
-```
+<script src="https://gist.github.com/WolfgangOfner/41a08dd8b1d68dcb7ff6c586ebc469b4.js"></script>
 
 After you applied the demo.yml file, you will see a new Service, kubernetesdeploymentdemo, in the Kubernetes dashboard.
 

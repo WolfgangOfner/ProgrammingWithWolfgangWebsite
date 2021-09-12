@@ -1,6 +1,6 @@
 ---
 title: Cross Site Request Forgery (CSRF) in ASP .NET Core
-date: 2020-06-15T08:42:05+02:00
+date: 2020-06-15
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [NET Core 3.1, ASP.NET Core MVC, 'C#', CSRF, OWASP Top 10, Security]
@@ -33,18 +33,13 @@ There are some simple tricks you can use to prevent CSRF attacks:
   * Use antiforgery tokens
   * Always use HTTP Post with forms
 
-HttpOnly is good practice if you don&#8217;t need to access the cookie using Javascript. Be aware that encrypting the cookie does not help against CSRF attacks.
+HttpOnly is good practice if you don't need to access the cookie using Javascript. Be aware that encrypting the cookie does not help against CSRF attacks.
 
 ### Using the SameSite Setting
 
 In ASP .NET Core 2.1 and higher, you can use CookieOptions to set the SameSite attribute. Use at least lax but use strict wherever possible. To set the setting use the following code:
 
-```csharp  
-Response.Cookies.Append("UserId", "1234", new CookieOptions  
-{  
-    SameSite = SameSiteMode.Lax  
-});  
-```
+<script src="https://gist.github.com/WolfgangOfner/205e2d5721c3a5786826799cdf8ed4c3.js"></script>
 
 ### Using Antiforgery Tokens
 
@@ -52,15 +47,7 @@ The ASP .NET Core server uses two randomly generated antiforgery tokens. The fir
 
 The ASP .NET Core tag helper automatically includes the antiforgery token into a form field. You can create a form for a name using this code:
 
-```html  
-<form asp-action="SaveProfile">
-   <div class="form-group">  
-      <label for="name">Enter your name</label>  
-      <input type="text" class="form-control" asp-for="Name" id="name" />  
-   </div>
-   <button type="submit" class="btn btn-primary">Submit</button>  
-</form>
-```
+<script src="https://gist.github.com/WolfgangOfner/cc6b17f243c17a727a043762c42d43b8.js"></script>
 
 When you look at the HTML code of the form, you can see the generated field for the token.
 
@@ -84,16 +71,7 @@ You can also see two cookies in your browser. In Chrome you can see the cookies 
 
 The last step is to tell the server to check the antiforgery token. You can do this by using the ValidateAntiForgeryToken attribute on an action.
 
-```csharp  
-[HttpPost]  
-[ValidateAntiForgeryToken]  
-public IActionResult SaveProfile(Customer model)  
-{  
-    // do something with the model
-    
-    return View();  
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/52103b34da9a9cf7658acb11f585392e.js"></script>
 
 ## Conclusion
 

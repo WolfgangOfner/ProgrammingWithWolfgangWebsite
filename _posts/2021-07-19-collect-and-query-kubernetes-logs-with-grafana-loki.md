@@ -144,7 +144,7 @@ This query is more useful than displaying all logs but often you also want to se
 This query displays all error logs with Invalid Username or Password in the log message.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/07/Query-only-error-logs.jpg"><img loading="lazy" src="/assets/img/posts/2021/07/Query-only-xcerror-logs.jpg" alt="Query only error logs" /></a>
+  <a href="/assets/img/posts/2021/07/Query-only-error-logs.jpg"><img loading="lazy" src="/assets/img/posts/2021/07/Query-only-error-logs.jpg" alt="Query only error logs" /></a>
   
   <p>
    Query only error logs
