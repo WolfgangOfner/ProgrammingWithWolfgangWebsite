@@ -47,10 +47,7 @@ To upload an image to the new ACR, you have two options: importing the image fro
 
 Importing an image is a good way to get started fast but I would recommend using the CI/CD pipeline approach in the next section. To import the image, use the following Azure CLI command:
 
-```PowerShell
-az login
-az acr import --name microservicedemo --source docker.io/wolfgangofner/orderapi:latest  --image orderapi:latest
-```
+<script src="https://gist.github.com/WolfgangOfner/5a374d23f330f9a382c01168d8d1bd85.js"></script>
 
 The first line logs you into your Azure subscription and the second one takes the name of your ACR, the source image from Dockerhub, and the image name which will be created in ACR.
 
@@ -96,112 +93,25 @@ On the next tab, select Azure Container Registry, your subscription, and your AC
 
 You can find the Docker tasks in the <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/templates/DockerBuildAndPush.yml" target="_blank" rel="noopener noreferrer">DockerBuildAndPush.yml template</a>. The original Docker build task looks as follow:
 
-```yaml
-parameters:
-  - name: buildId
-    type: string
-    default: 
-  - name: patMicroserviceDemoNugetsFeed
-    type: string
-    default: 
-  - name: imageName
-    type: string
-    default: 
-
-steps:
-  - task: Docker@1      
-    inputs:
-      containerregistrytype: 'Container Registry'
-      dockerRegistryEndpoint: 'Docker Hub'
-      command: 'Build an image'
-      dockerFile: '**/CustomerApi/CustomerApi/Dockerfile'
-      arguments: '--build-arg BuildId=${{ parameters.buildId }} --build-arg PAT=${{ parameters.patMicroserviceDemoNugetsFeed }}'
-      imageName: ${{ parameters.imageName }}
-      useDefaultContext: false
-      buildContext: 'CustomerApi'
-    displayName: 'Build the Docker image'
-```
+<script src="https://gist.github.com/WolfgangOfner/73a2360e4f33241570abf26ad490ab2a.js"></script>
 
 I replaced the parameters and the Docker v1 task with the following code:
 
-```yaml
-parameters:
-  - name: buildId
-    type: string
-    default: 
-  - name: patMicroserviceDemoNugetsFeed
-    type: string
-    default: 
-  - name: containerRegistry
-    type: string
-    default: 
-  - name: repository
-    type: string
-    default: 
-  - name: tag
-    type: string
-    default: 
-  - name: artifactName
-    type: string
-    default:
-
-steps:
-  - task: Docker@2
-    displayName: 'Build Docker Container'
-    inputs:
-      containerRegistry: ${{ parameters.containerRegistry }}
-      repository: ${{ parameters.repository }}
-      command: 'build'
-      Dockerfile: '**/${{ parameters.artifactName }}/${{ parameters.artifactName }}/Dockerfile'
-      buildContext: ${{ parameters.artifactName }}
-      tags: |      
-        ${{ parameters.tag }}
-        latest
-      arguments: '--build-arg BuildId=${{ parameters.buildId }} --build-arg PAT=${{ parameters.patMicroserviceDemoNugetsFeed }}'
-```
+<script src="https://gist.github.com/WolfgangOfner/906dea3e64581e886e90d61eb6fe0ad2.js"></script>
 
 As you can see, I added a couple of new parameters and updated the Docker task to v2. The v2 task takes a containerRegistry instead of dockerRegistryEndpoint and also a repository. Additionally, it supports multiple tags so you can build the same image as before and additionally always update the latest tag. 
 
 The Docker publish looked originally as follows:
 
-```yaml
-  - task: Docker@1      
-    inputs:
-      containerregistrytype: 'Container Registry'
-      dockerRegistryEndpoint: 'Docker Hub'
-      command: 'Push an image'
-      imageName: '${{ parameters.imageName }}'
-    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-    displayName: 'Push the Docker image to Dockerhub'
-```
+<script src="https://gist.github.com/WolfgangOfner/1f07051e63ef39fa574a9db82014c73c.js"></script>
 
 I updated this task also to version 2 and added the new parameters.
 
-```yaml
-  - task: Docker@2
-    displayName: 'Push Docker Container'
-    inputs:
-      containerRegistry: ${{ parameters.containerRegistry }}
-      repository: ${{ parameters.repository }}
-      command: 'push'
-      tags: |      
-        ${{ parameters.tag }}
-        latest
-    condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-```
+<script src="https://gist.github.com/WolfgangOfner/a4a4f1740df64f40b518a87136a5ee18.js"></script>
 
 Lastly, I have to update my pipeline to pass values for the new parameters:
 
-```yaml
-- template: templates/DockerBuildAndPush.yml
-  parameters:
-      buildId: $(BuildId)
-      patMicroserviceDemoNugetsFeed: $(PatMicroserviceDemoNugetsFeed)
-      containerRegistry: 'MicroserviceDemoRegistry' 
-      repository: microservicedemo.azurecr.io/customerapi
-      tag: $(BuildNumber)
-      artifactName: $(ArtifactName)
-```
+<script src="https://gist.github.com/WolfgangOfner/fb513f4c0839006a3b14676f9b958874.js"></script>
 
 Additionally, I renamed the ImageName variable to Repository. If you want to deploy to Dockerhub instead, use 'Docker Hub' for the containerRegistry and wolfgangofner/customerapi for the repository (you have to replace wolfgangofner with your Dockerhub repository name). For more information about pushing images to Dockerhub, see my post [Build Docker in an Azure DevOps CI Pipeline](/build-docker-azure-devops-ci-pipeline).
 
@@ -211,19 +121,11 @@ The microservice uses Helm for the configuration. For more information about Hel
 
 The values.release.yaml file contains the configuration for the image and tag Kubernetes should use. Currently, this is:
 
-```yaml
-image:
-  repository: __ImageName__
-  tag: __BuildNumber__
-```
+<script src="https://gist.github.com/WolfgangOfner/11e48d64374ccc942ef64780caf19621.js"></script>
 
 Since I renamed ImageName to Repository, you also have to rename it here:
 
-```yaml
-image:
-  repository: __Repository__
-  tag: __BuildNumber__
-```
+<script src="https://gist.github.com/WolfgangOfner/69adcc3369d649cc5a8310e5ccbb0408.js"></script>
 
 That's it. The pipeline is configured to push the image to your new ACR and Kubernetes should then pull the new image from ACR and run. Let's see if everything works.
 
@@ -255,18 +157,7 @@ As you can see on the screenshot above, the pull failed because Kubernetes is no
 
 To allow Kubernetes to pull images from ACR, you first have to create a service principal and give it the acrpull role. Use the following bash script to create the service principal and assign it the acrpull role.
 
-```bash
-ACR_NAME=microservicedemo.azurecr.io
-SERVICE_PRINCIPAL_NAME=acr-service-principal
-
-ACR_REGISTRY_ID=$(az acr show --name $ACR_NAME --query id --output tsv)
-
-SP_PASSWD=$(az ad sp create-for-rbac --name http://$SERVICE_PRINCIPAL_NAME --scopes $ACR_REGISTRY_ID --role acrpull --query password --output tsv)
-SP_APP_ID=$(az ad sp show --id http://$SERVICE_PRINCIPAL_NAME --query appId --output tsv)
-
-echo "Service principal ID: $SP_APP_ID"
-echo "Service principal password: $SP_PASSWD"
-```
+<script src="https://gist.github.com/WolfgangOfner/085612d16ac9ed9c47dd5b6e9d091f80.js"></script>
 
 Don't worry if the creation of the role assignment needs a couple of retries.
 
@@ -280,9 +171,7 @@ Don't worry if the creation of the role assignment needs a couple of retries.
 
 Next, create an image pull secret with the following command:
 
-```PowerShell
-kubectl create secret docker-registry acr-secret --namespace customerapi-test --docker-server=microservicedemo.azurecr.io --docker-username=355fc372-e76a-4036-94a8-85a693c93bde  --docker-password=0-O1GFhOrp96GF0ynJDLYyK7WrEj_fduV-
-```
+<script src="https://gist.github.com/WolfgangOfner/7c0b1cc0071aa050dfdfe7a79b4fc543.js"></script>
 
 Note that you have to use the username and password from the previously created service principal. The namespace is the Kubernetes namespace in which your microservice is running. If you also want to deploy the OrderApi microservice from the demo reposiotry, you have to repeat the command for the orderapi-test namespace.
 
@@ -290,10 +179,8 @@ Note that you have to use the username and password from the previously created 
 
 After the image pull secret was created, you have to tell your microservice to use it. The image pull secret is part of the deployment but it is empty. In my last posts, I used the values.release.yaml file for values that are not provided by me and are not default. Therefore, I add the name of the secret there:
 
-```yaml
-imagePullSecrets:
-  - name: acr-secret
-```
+<script src="https://gist.github.com/WolfgangOfner/25026b07f81d371a74abf64efb11db8b.js"></script>
+
 If you used a different name for your secret in the kubectl create secret docker-registry, then you have to use your name instead of acr-secret.
 
 ### Deploy the Image from ACR to Kubernetes

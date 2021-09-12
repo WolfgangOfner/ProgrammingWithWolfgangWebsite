@@ -19,20 +19,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 Cert-Manager is a Kubernetes add-on that issues automatically TLS certificates for your applications. You can find it on <a href="https://github.com/jetstack/cert-manager" target="_blank" rel="noopener noreferrer">Github</a>. To install the cert-manager using Helm charts, execute the following commands:
 
-```shell
-kubectl label namespace ingress-basic cert-manager.io/disable-validation=true
-
-helm repo add jetstack https://charts.jetstack.io
-
-helm repo update
-
-helm install cert-manager jetstack/cert-manager \
-  --namespace ingress-basic \
-  --set installCRDs=true \
-  --set nodeSelector."kubernetes\.io/os"=linux \
-  --set webhook.nodeSelector."kubernetes\.io/os"=linux \
-  --set cainjector.nodeSelector."kubernetes\.io/os"=linux
-```
+<script src="https://gist.github.com/WolfgangOfner/a4c2a59165adf2ffc1cfe2766a9f4009.js"></script>
 
 I use the ingress-basic namespace also for Nginx. If you want, use a different one for the cert-manager.
 
@@ -40,32 +27,11 @@ I use the ingress-basic namespace also for Nginx. If you want, use a different o
 
 After installing the cert-manager, install a certificate issuer to generate the tls certificates for your applications.
 
-```yaml
-apiVersion: cert-manager.io/v1
-kind: ClusterIssuer
-metadata:
-  name: letsencrypt
-spec:
-  acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: <Your Email>
-    privateKeySecretRef:
-      name: letsencrypt
-    solvers:
-    - http01:
-        ingress:
-          class: nginx
-          podTemplate:
-            spec:
-              nodeSelector:
-                "kubernetes.io/os": linux
-```
+<script src="https://gist.github.com/WolfgangOfner/c552cc5d37f16daaa24be03541553259.js"></script>
 
 Save the code in a file and then apply the file to your Kubernetes cluster, 
 
-```bash
-kubectl apply -f cluster-issuer.yaml
-```
+<script src="https://gist.github.com/WolfgangOfner/f9d9011582570bca27f1329d79d71852.js"></script>
 
 This example uses Let's Encrypt as issuer but you can use any CA issuer you want. Before you deploy the code, add your email so you can get emails about the certificates. At the beginning of the code, you can see the kind of object is ClusterIssuer. A ClusterIssuer can create certificates for all applications, no matter in what namespace they are. The second option is Issuer which works only in a single namespace. An issuer might be useful if you want to use a different CA issuer.
 
@@ -75,74 +41,22 @@ There is not much to update in the configuration of the microservice to use the 
 
 The ingress.yaml file looks as follows:
 
-{% raw %}
-```yaml
-{{- if .Values.ingress.enabled -}}
-{{- $ingressPath := .Values.ingress.path -}}
-{{- $pathType := .Values.ingress.pathType -}}
-{{- $fullName := include "customerapi.fullname" . -}}
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: {{ .Values.ingress.namespace }}
-  namespace: {{ .Values.ingress.namespace }}
-{{- with .Values.ingress.annotations }}
-  annotations:
-{{ toYaml . | indent 4 }}
-{{- end }}
-spec:
-{{- if .Values.ingress.tls }}
-  tls:
-  {{- range .Values.ingress.tls }}
-    - hosts:
-      {{- range .hosts }}
-        - {{ . }}
-      {{- end }}
-      secretName: {{ .secretName }}
-  {{- end }}
-{{- end }}
-  rules: 
-  {{- range .Values.ingress.hosts }}
-  - host: {{ . }}
-    http:
-      paths:
-      - path: {{ $ingressPath }}
-        pathType: {{ $pathType }}
-        backend:
-          service:
-            name: {{ $fullName }}
-            port: 
-              number: 80
-  {{- end }}
-{{- end }}
-```
-{% endraw %}
+<script src="https://gist.github.com/WolfgangOfner/f194f24e623fdd639750e99118cf9ab5.js"></script>
 
 The OrderApi ingress file looks the same, except that the name is orderapi instead of customerapi.
 
 Next, add the TLS secret name and the host to the values.release.yaml or values.yaml file.
 
-```yaml
-hosts:
-  - __URL__
-tls:
-  - secretName: __TlsSecretName__
-    hosts:
-      - __URL__
-```
+<script src="https://gist.github.com/WolfgangOfner/f2c08d18403841182fa68a81a1081e73.js"></script>
 The variables, for example, \_\_TlsSecretName\_\_ are defined in the CI/CD pipeline and will be replaced by the tokenizer. For more information about the tokenizer, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
 
-```yaml
-TlsSecretName: customerapi-tls
-```
+<script src="https://gist.github.com/WolfgangOfner/c9a4be612c66df20df3f16acd0100a01.js"></script>
 
 You can use whatever name you want for the TLS secret.
 
 The last step is to add an additional annotation to the ingress of the microservice. Add the following line to the annotations section of the values.yaml or values.release.yaml file:
 
-```yaml
-cert-manager.io/cluster-issuer: letsencrypt
-```
+<script src="https://gist.github.com/WolfgangOfner/929525c2a9b9829f1dba508f80cf935a.js"></script>
 This is all you have to configure to automatically use HTTPS and also use SSL termination in the Nginx ingress controller. This means that the traffic inside the cluster uses only HTTP and therefore doesn't use any compute power to decrypt the connection.
 
 ## Using HTTPS to access the Microservice
@@ -171,9 +85,7 @@ If something did go wrong, you might see a warning when you try to access the mi
 
 If you see this message, check if you added the letsencrypt annotation. I forget this one almost always. If this didn't fix the problem check if there is a certificate in your namespace with the following command:
 
-```shell
-kubectl get certificate --namespace customerapi-test
-```
+<script src="https://gist.github.com/WolfgangOfner/7ae55a839d9544c5d4cba020d02553a5.js"></script>
 
 This should display your certificate.
 

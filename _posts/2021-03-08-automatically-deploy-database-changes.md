@@ -47,13 +47,7 @@ The Tables folder contains the definition of your tables.
 
 The MigrationScriptsHistory table is needed to store all executed migrations. All other tables are customer-defined and you can add whatever tables you need, for example, the Product table:
 
-```sql
-CREATE TABLE [dbo].[Product]
-(
-	[Id] INT NOT NULL PRIMARY KEY, 
-    [Name] NVARCHAR(50) NOT NULL 
-)
-```
+<script src="https://gist.github.com/WolfgangOfner/1ebe90dbd186d742597959aebeef6c91.js"></script>
 
 If you double-click on the SQL file in Visual Studio, you can see the script file and the designer to edit the file.
 
@@ -69,9 +63,7 @@ If you double-click on the SQL file in Visual Studio, you can see the script fil
 
 I have added two tables, Customer and Product, and want to deploy this new database to my database server. Since Docker is awesome, I use a Docker container for my SQL Server. You can start an SQL Server 2019 with the following command:
 
-```PowerShell
-docker run -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=yourStrong(!)Password' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest
-```
+<script src="https://gist.github.com/WolfgangOfner/94b1712cd9a33918334147ca500c171d.js"></script>
 
 If you connect to your server, using tools like the SQL Server Management Tool, you will see that there is no database yet.
 
@@ -147,14 +139,7 @@ That's already it. Refresh your SQL server and you will see the new database wit
 
 If you already have an existing database and want to apply changes, for example, adding a new column, you can simply add it to the existing table. Open the Product table and add a price column as a decimal. The code looks as follows:
 
-```sql
-CREATE TABLE [dbo].[Product]
-(
-	[Id] INT NOT NULL PRIMARY KEY, 
-    [Name] NVARCHAR(50) NOT NULL,
-    [Price] DECIMAL(8,2) NOT NULL    
-)
-```
+<script src="https://gist.github.com/WolfgangOfner/22bfb9217f632e31d567ad931fee5cfe.js"></script>
 
 That's already all you have to do. Publish the project again and update your SQL server to see the new column in the Product table.
 

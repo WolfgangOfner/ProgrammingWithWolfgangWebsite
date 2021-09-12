@@ -49,60 +49,13 @@ The Grafana Loki stack can be easily installed with Helm charts. If you are new 
 
 Use the following code to add the Grafana Helm charts, update it and then install Loki:
 
-```bash
-helm repo add grafana https://grafana.github.io/helm-charts
-helm repo update
-helm upgrade --install loki --namespace=grafana-loki grafana/loki-stack --set grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=true,prometheus.server.persistentVolume.enabled=true
-```
+<script src="https://gist.github.com/WolfgangOfner/07bfab1dd2005f8974bbfb6c3229036e.js"></script>
 
 ### Installing Grafana Loki using an Infrastructure as Code Pipeline
 
 In one of my past posts, I have created an Infrastructure as Code (IaC) Pipeline using Azure CLI. If you want to automatically deploy Loki, add the following code after the Kubernetes deployment in your pipeline:
 
-```yaml
-variables:  
-  LokiVersion: '2.0.3'
-  LokiNamespace: loki-grafana
-
-- task: HelmDeploy@0
-  displayName: "Install Loki Grafana (Helm repo add)"
-  inputs:
-    connectionType: '$(AzureConnectionType)'
-    azureSubscription: '$(AzureSubscription)'
-    azureResourceGroup: '$(ResourceGroupName)'
-    kubernetesCluster: '$(AksClusterName)'
-    useClusterAdmin: true
-    command: 'repo'
-    arguments: 'add loki https://grafana.github.io/loki/charts'
-
-- task: HelmDeploy@0
-  displayName: "Install Loki Grafana (Helm repo update)"
-  inputs:
-    connectionType: '$(AzureConnectionType)'
-    azureSubscription: '$(AzureSubscription)'
-    azureResourceGroup: '$(ResourceGroupName)'
-    kubernetesCluster: '$(AksClusterName)'
-    useClusterAdmin: true
-    command: 'repo'
-    arguments: 'update'
-
-- task: HelmDeploy@0
-  displayName: "Install Loki Grafana"
-  inputs:
-    connectionType: '$(AzureConnectionType)'
-    azureSubscription: '$(AzureSubscription)'
-    azureResourceGroup: '$(ResourceGroupName)'
-    kubernetesCluster: '$(AksClusterName)'
-    useClusterAdmin: true
-    namespace: '$(LokiNamespace)'
-    command: 'upgrade'
-    chartType: 'Name'
-    chartName: 'loki/loki-stack'
-    chartVersion: '$(LokiVersion)'
-    releaseName: 'loki'
-    overrideValues: 'grafana.enabled=true,prometheus.enabled=true,prometheus.alertmanager.persistentVolume.enabled=true,prometheus.server.persistentVolume.enabled=true,loki.persistence.enabled=true,loki.persistence.size=10Gi'
-    arguments: '--create-namespace'
-```
+<script src="https://gist.github.com/WolfgangOfner/2ef1d3a14d28857ace28aaee7e327215.js"></script>
 
 The above code adds two variables, for the version of Loki and the namespace where it gets deployed and the does basically the same as the Helm deployment in the section above.
 
@@ -110,16 +63,11 @@ The above code adds two variables, for the version of Loki and the namespace whe
 
 After installing Grafana Loki, you have to read the admin password from the secrets. You can do this in PowerShell with the following code:
 
-```PowerShell
-$encodedPassword = kubectl get secret -n loki-grafana loki-grafana -o jsonpath="{.data.admin-password}"
-[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedPassword))
-```
+<script src="https://gist.github.com/WolfgangOfner/7dea1e79d687b63e316f63e9108a9c21.js"></script>
 
 Use the following code when you are on Linux:
 
-```bash
-kubectl get secret -n loki-grafana loki-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
-```
+<script src="https://gist.github.com/WolfgangOfner/5151b8b96532a0557f38a77ac0abec0e.js"></script>
 
 These commands get the secret for the admin password, decode it from base 64, and then print it to the console.
 
@@ -127,11 +75,7 @@ These commands get the secret for the admin password, decode it from base 64, an
 
 Before you can access Grafana, you have to create a port forwarding to access the Grafana service. You can do this with the following code:
 
-```bash
-kubectl get pod -n loki-grafana
-
-kubectl port-forward -n loki-grafana <loki-grafana pod name> 3000
-```
+<script src="https://gist.github.com/WolfgangOfner/1fab1cdfaf15e436d1bdf526402aeb59.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/07/Configure-the-port-forwarding-to-access-Grafana.jpg"><img loading="lazy" src="/assets/img/posts/2021/07/Configure-the-port-forwarding-to-access-Grafana.jpg" alt="Configure the port forwarding to access Grafana" /></a>
@@ -167,9 +111,7 @@ After the successful login, click on the round icon on the left and select Explo
 
 On the top of the page, select Loki as your data source and then you can create a simple query by clicking on Log labels. For example, select pod and then select the loki-grafana pod to query all logs from this specific pod. The query looks as follows:
 
-```bash
-{pod="loki-grafana-7d4d587544-npc6n"} 
-```
+<script src="https://gist.github.com/WolfgangOfner/600e68f46638ff0190579ec53e727740.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/07/Create-your-first-Loki-query.jpg"><img loading="lazy" src="/assets/img/posts/2021/07/Create-your-first-Loki-query.jpg" alt="Create your first Loki query" /></a>
@@ -193,15 +135,11 @@ The query will display all logs from the grafana-loki pod. For more details abou
 
 Displaying all the logs is nice but not really useful. Usually, you want to filter your logs and only display problematic entries like errors. You can use the following query to display only log entries with the error level:
 
-```bash
-{pod="loki-grafana-7d4d587544-npc6n"} |= "error"
-```
+<script src="https://gist.github.com/WolfgangOfner/2d5235bfeaa93ed5af16507caa398fa2.js"></script>
 
 This query is more useful than displaying all logs but often you also want to search for a specific log message. You can do this easily by extending the query:
 
-```bash
-{pod="loki-grafana-7d4d587544-npc6n"} |= "error" != "Invalid Username or Password"
-```
+<script src="https://gist.github.com/WolfgangOfner/eaa4a122729322fdccebac6a78b3825f.js"></script>
 
 This query displays all error logs with Invalid Username or Password in the log message.
 

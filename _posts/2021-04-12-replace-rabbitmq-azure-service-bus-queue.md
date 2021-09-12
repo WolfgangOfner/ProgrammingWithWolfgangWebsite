@@ -89,80 +89,25 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 The Azure Service Bus Queue is created and configured and now we can configure the microservice to send messages to the new queue. First, we add the following settings to the appsettings.json file:
 
-```yaml
-  "BaseServiceSettings": {
-    "UseInMemoryDatabase": false,
-    "UserabbitMq": false
-  },
-  "AzureServiceBus": {
-    "ConnectionString": "", // -> use 'User Secrets' for local debugging
-    "QueueName": "CustomerQueue"
-  }
-```
+<script src="https://gist.github.com/WolfgangOfner/92945838d4751c6c601c0fd15b2954cf.js"></script>
 
 These settings container the Azure Service Bus queue name, the connection string, and also a switch to use RabbitMQ or Azure Service Bus Queue. I used the in-memory switch already in a previous post, [Use a Database with a Microservice running in Kubernetes](/microservice-with-database-kubernetes). The queue switch will work the same way and either register the RabbitMQ service or the Azure Service Bus Queue service. In the appsettings.Development.json file, add the UserabbitMq attribute and set it to true.
 
 Next, create a new class that will contain the Azure Service Bus options:
 
-```CSharp
-public class AzureServiceBusConfiguration
-{
-    public string ConnectionString { get; set; }
-
-    public string QueueName { get; set; }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/f34227e6753663e041590fcdb8ec497c.js"></script>
 
 In the ConfigureServices method of the Startup.cs class, read the AzureServiceBus section into the previously created AzureServiceBusConfiguration classs:
 
-```CSharp
-serviceClientSettingsConfig = Configuration.GetSection("AzureServiceBus");
-services.Configure<AzureServiceBusConfiguration>(serviceClientSettingsConfig);
-```
+<script src="https://gist.github.com/WolfgangOfner/7006891626f0dcc9dbcdc82475be87e5.js"></script>
 
 Additionally, read the UserabbitMq variable and either register the already existing RabbitMQ service or th Azure Service Bus service:
 
-```CSharp
-bool.TryParse(Configuration["BaseServiceSettings:UserabbitMq"], out var useRabbitMq);
-
-if (useRabbitMq)
-{
-    services.AddSingleton<ICustomerUpdateSender, CustomerUpdateSender>();
-}
-else
-{
-    services.AddSingleton<ICustomerUpdateSender, CustomerUpdateSenderServiceBus>();
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/78a0e1fd77f112a88f4b1c7d949aaed7.js"></script>
 
 That is all the configuration needed. Lastly, go to the CustomerApi.Messaging.Send project and install the Azure.Messaging.ServiceBus NuGet package and then create a new class called CustomerUpdateSenderServiceBus. This class inherits from the ICustomerUpdateSender interface and takes a customer and sends it to the Azure Service Bus Queue. The full class looks as follows:
 
-```CSharp
-public class CustomerUpdateSenderServiceBus : ICustomerUpdateSender
-{
-    private readonly string _connectionString;
-    private readonly string _queueName;
-
-    public CustomerUpdateSenderServiceBus(IOptions<AzureServiceBusConfiguration> serviceBusOptions)
-    {
-        _connectionString = serviceBusOptions.Value.ConnectionString;
-        _queueName = serviceBusOptions.Value.QueueName;
-    }
-
-    public async void SendCustomer(Customer customer)
-    {
-        await using (var client = new ServiceBusClient(_connectionString))
-        {
-            var sender = client.CreateSender(_queueName);
-
-            var json = JsonConvert.SerializeObject(customer);
-            var message = new ServiceBusMessage(json);
-
-            await sender.SendMessageAsync(message);
-        }
-    }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/a1c2f579bd1c4663d5f130cc3f17d52a.js"></script>
 
 This code is very simple but will throw an exception if the queue does not exist. 
 
@@ -214,13 +159,7 @@ First, click on Variables and add a new variable inside your Azure DevOps pipeli
 
 After adding the variable, add the following code to the values.release.yaml file.
 
-```yaml
-secrets:
-  connectionstrings:
-    ConnectionStrings__CustomerDatabase: __ConnectionString__
-    AzureServiceBus__ConnectionString: __AzureServiceBusConnectionString__
-  }
-```
+<script src="https://gist.github.com/WolfgangOfner/e3e9c3c43c06a2480d9a6cd8897cebb5.js"></script>
 
 This code creates a secret in Kubernetes with the value of the previously created variable. This secret will overwrite the appsettings of the microservice and therefore allow it to access the Azure Service Bus Queue and no sensitive information was exposed in the pipeline.
 

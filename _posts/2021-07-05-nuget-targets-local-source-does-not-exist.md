@@ -21,9 +21,7 @@ I was quite annoyed by the error message because and I couldn't find out what wa
 
 Open a PowerShell window and enter the following code:
 
-```PowerShell
-dotnet new nugetconfig
-```
+<script src="https://gist.github.com/WolfgangOfner/d4870971c8e8b0c91ec4f287890eebd3.js"></script>
 
 This creates a new nuget.config file and fixed the problem for me.
 

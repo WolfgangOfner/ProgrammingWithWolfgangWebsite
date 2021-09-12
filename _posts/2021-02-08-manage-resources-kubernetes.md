@@ -37,49 +37,17 @@ In my previous posts, I created two microservices and used Helm charts to deploy
 
 By default, Helm adds an empty resources section to the values.yaml file. This means that no resource request or limit is set.
 
-```yaml
-resources: {}
-  # We usually recommend not to specify default resources and to leave this as a conscious
-  # choice for the user. This also increases chances charts run on environments with little
-  # resources, such as Minikube. If you do want to specify resources, uncomment the following
-  # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-  # limits:
-  #  cpu: 100m
-  #  memory: 128Mi
-  # requests:
-  #  cpu: 100m
-  #  memory: 128Mi
-```
+<script src="https://gist.github.com/WolfgangOfner/0c4f513bacb506626a7710555e17aa2c.js"></script>
 
 Uncomment the code and remove the empty braces. Then set values for the limits and requests, for example:
 
-```yaml
-resources:
-   limits:
-    cpu: 0.3
-    memory: 128Mi
-   requests:
-    cpu: 100m
-    memory: 64Mi
-```
+<script src="https://gist.github.com/WolfgangOfner/25cad22c6462cf397edf3d43cf3d3f0f.js"></script>
 
 This code configures that a container requests 100 millicores (0.1 CPU core) and 64 MB of RAM. It also limits the resources to a maximum of 128 MB RAM and 0.3 CPU cores. You will later see that Kubernetes converts these 0.3 CPU cores to 300m.
 
 That's all you have to configure because Helm adds the reference to the values file automatically to the container section in the deployment.yaml file.
 
-{% raw %}
-```yaml
-containers:
-  - name: {{ .Chart.Name }}
-    image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-
-    # deleted some code for readability
-
-    resources:
-{{ toYaml .Values.resources | indent 12 }}
-    {{- with .Values.imagePullSecrets }}
-```
-{% endraw %}
+<script src="https://gist.github.com/WolfgangOfner/bf51b166485efb483c11c393349f6939.js"></script>
 
 Now you can deploy your application and check if the resource values are set correctly. If you want to learn how to deploy the Helm charts to Kubernetes, check out my post [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm). 
 

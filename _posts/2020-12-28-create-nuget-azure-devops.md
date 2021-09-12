@@ -39,66 +39,11 @@ For this Demo, I will create a simple NuGet package that offers one method which
 
 I created a new folder in the root of my repository and called it NuGet. Inside this folder, I created a new folder called Prime Number which contains a new .NET 5 class library project. The class library consists only of one class with one method to calculate the prime number.
 
-```csharp
-public static class PrimeNumber
-{
-    /// <summary>
-    /// Provide a parameter nThPrimeNumber and find the nThPrimeNumber-th prime number.
-    /// </summary>
-    /// <param name="nThPrimeNumber">The nThPrimeNumber-th prime number to find.</param>
-    /// <returns></returns>
-    public static long FindNthPrimeNumber(int nThPrimeNumber)
-    {
-        var count = 0;
-        long a = 2;
-
-        while (count < nThPrimeNumber)
-        {
-            long b = 2;
-            var prime = 1; 
-
-            while (b * b <= a)
-            {
-                if (a % b == 0)
-                {
-                    prime = 0;
-
-                    break;
-                }
-
-                b++;
-            }
-
-            if (prime > 0)
-            {
-                count++;
-            }
-
-            a++;
-        }
-
-        return --a;
-    }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/4b7439c21446bd7be3a89b616eb04d5f.js"></script>
 
 To make sure that the code does what I expect it to do, I created a test project to test it.
 
-```csharp
-public class PrimeNumberTests
-{
-    [Theory]
-    [InlineData(3, 5)]
-    [InlineData(5, 11)]
-    [InlineData(50, 229)]
-    public void FindNthPrimeNumber(int nThPrimeNumber, int expectedResult)
-    {
-        var result = PrimeNumber.FindNthPrimeNumber(nThPrimeNumber)
-        
-        result.Should().Be(expectedResult);
-    }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/28c4a68faa20855da75388d11753402a.js"></script>
 
 That's already all the code you need for the NuGet package. You could create the NuGet package manually by executing nuget pack in the root folder of the project but in the next section, I will show you how to create it automatically in an Azure DevOps pipeline.
 
@@ -110,98 +55,23 @@ The pipeline is going to be very simple but let's have a look step-by-step.
 
 The first part is configuring when the pipeline should run, what agent it uses, and two variables. I run the pipeline every time something is changed inside the NuGet folder, except if it's inside a Test folder. 
 
-```yaml
-name : NuGet-CI-CD
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-    - NuGet/*
-    exclude:
-    - NuGet/**/*.Test
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-variables:
-  BuildConfiguration: Release
-  ArtifactNuGetName: 'packages-nuget'
-```
+<script src="https://gist.github.com/WolfgangOfner/555f20a07c66f5281dcfa1a37611a7c3.js"></script>
 
 The next section defines a stage called build and creates a version number. If you want to learn more about the build versioning see [Automatically Version Docker Containers in Azure DevOps CI](/automatically-version-docker-container).
 
-```yaml
-stages:
-- stage: build
-  displayName: 'Build NuGet Package'
-  jobs:
-  - job: CI_Build
-    displayName: 'NuGet - Build, Pack and Test'    
-    steps:
-    - task: gitversion/setup@0
-      displayName: Install GitVersion
-      inputs:
-        versionSpec: '5.5.0'
-        
-    - task: gitversion/execute@0
-      displayName: Determine Version
-```
+<script src="https://gist.github.com/WolfgangOfner/2fe799c64526b949eb886b34e798f8e2.js"></script>
 
 After the version number is calculated, I execute dotnet restore and then dotnet build on all csproj files inside the NuGet folder.
 
-```yaml
-    - task: DotNetCoreCLI@2
-      displayName: 'Restore packages'
-      inputs:
-        command: 'restore'
-        projects: 'NuGet/**/*.csproj'
-        feedsToUse: 'select'
-
-    - task: DotNetCoreCLI@2
-      displayName: 'Build solution'
-      inputs:
-        command: 'build'
-        projects: 'NuGet/**/*.csproj'
-        arguments: '-c $(BuildConfiguration) --no-restore'
-```
+<script src="https://gist.github.com/WolfgangOfner/45604237453fc3dc02a738dda71b6827.js"></script>
 
 The next step is to run the unit tests and publish the code coverage results. If a test fails, I will stop the pipeline and don't create the NuGet package.
 
-```yaml
-    - task: DotNetCoreCLI@2
-      displayName: Run tests
-      inputs:
-        command: 'test'        
-        projects: 'NuGet/**/*.Test.csproj'
-        arguments: '-c $(BuildConfiguration) --no-build /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/'
-        publishTestResults: true
-
-    - task: PublishCodeCoverageResults@1
-      displayName: 'Publish code coverage report'
-      inputs:
-        codeCoverageTool: 'Cobertura'
-        summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
-```
+<script src="https://gist.github.com/WolfgangOfner/968d8bbadc48e72f7cfa2e080c3223fa.js"></script>
 
 The last two tasks create the NuGet package using dotnet pack and then publish the generate artifacts. Dotnet pack is executed on all project files inside the NuGet folder which don't end with Test.csproj. This means that the test project doesn't get packed into a NuGet package. The publish of the artifacts will be used in the next stage to publish the artifact to a private NuGet feed and in another stage to publish it to nuget.org. You can read about publishing in my next post. 
 
-```yaml
-    - task: DotNetCoreCLI@2
-      displayName: 'Create nuget packages'
-      inputs:
-        command: 'pack'
-        packagesToPack: 'NuGet/**/*.csproj;!**/*.Test.csproj'
-        packDirectory: '$(Build.ArtifactStagingDirectory)/packages/nuget'
-        nobuild: true
-        versioningScheme: 'byBuildNumber'
-
-    - publish: '$(Build.ArtifactStagingDirectory)/packages/nuget'
-      displayName: 'Publish Artifact: $(ArtifactNuGetName)'
-      artifact: 'packages-nuget'
-      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-```
+<script src="https://gist.github.com/WolfgangOfner/27a9d993f2ada81e84863cbc42a0f354.js"></script>
 
 You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Nuget/pipelines/Nuget-CI-CD.yml" target="_blank" rel="noopener noreferrer">Github</a>.
 

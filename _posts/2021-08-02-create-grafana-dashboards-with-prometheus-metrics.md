@@ -33,25 +33,8 @@ Open the dashboard and then select the namespace where you have installed Promet
 
 Select the YAML tab and add the following code under scrape_configs:
 
-```yaml
-scrape_configs:
-- job_name: prometheus
-  static_configs:
-  - targets:
-    - localhost:9090
-- bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
-  job_name: 'customerapi-test'
-  scrape_interval: 10s
-  metrics_path: '/metrics'
-  kubernetes_sd_configs:
-  - role: pod
-    namespaces:
-      names:
-      - customerapi-test
-    selectors:
-    - role: "pod"
-      label: "app=customerapi"
-```
+<script src="https://gist.github.com/WolfgangOfner/0d2582d969110b9ec36ccec1fd0f7da3.js"></script>
+
 This tells Prometheus to scrape data from a pod in the customer-api namespace. The pod has the label app=customerapi and the Prometheus data is available under /metrics. Save the config and then let's check if customerapi is available in Prometheus.
 
 ### Inspect the Prometheus Scrap Targets
@@ -174,9 +157,7 @@ To create your own Grafana dashboard, click on the + button on the left side of 
 
 Select Prometheus as your data source on the next screen and enter a query. My query creates a histogram for the 99% quantile for the request duration in seconds over the last 10 minutes.
 
-```bash
-histogram_quantile(0.99, sum by (le) ( rate(http_request_duration_seconds_bucket[10m])))
-```
+<script src="https://gist.github.com/WolfgangOfner/a51a039dcae9d95fd50037c0cace0fe6.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Create-a-Histogram-Query.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Create-a-Histogram-Query.jpg" alt="Create a Histogram Query" /></a>

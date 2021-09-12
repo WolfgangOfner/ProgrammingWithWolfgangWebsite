@@ -43,28 +43,8 @@ If you don't have much experience with migrations and look at tools like FluentM
 
 These helper methods are, for example, .Table("") or .PrimaryKey().
 
-```csharp
-using FluentMigrator;
+<script src="https://gist.github.com/WolfgangOfner/84601c805254db9777184d02a9b4296d.js"></script>
 
-namespace test
-{
-    [Migration(20180430121800)]
-    public class AddLogTable : Migration
-    {
-        public override void Up()
-        {
-            Create.Table("Log")
-                .WithColumn("Id").AsInt64().PrimaryKey().Identity()
-                .WithColumn("Text").AsString();
-        }
-
-        public override void Down()
-        {
-            Delete.Table("Log");
-        }
-    }
-}
-```
 Using the FluentMigrator makes it easy to see all migrations and also makes it fairly easy to write SQL code with C#. Though, it has the same downsides as the Entity Framework migrations and therefore shouldn't be used in modern applications.
 
 ## SQS Server Data Tools (SSDT)

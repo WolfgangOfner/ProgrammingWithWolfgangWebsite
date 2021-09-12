@@ -69,7 +69,7 @@ In my last post, I explained how to copy the test results out of the container u
   displayName: 'Publish code coverage results' 
 ```
 
-The whole code to copy the everything out of the container, display the test results and the code coverage looks as this:
+The whole code to copy everything out of the container, display the test results and the code coverage looks as this:
 
 ```yaml  
 - pwsh: |

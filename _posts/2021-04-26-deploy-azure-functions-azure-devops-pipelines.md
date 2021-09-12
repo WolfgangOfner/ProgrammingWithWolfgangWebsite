@@ -19,56 +19,7 @@ Create a basic YAML pipeline in Azure DevOps where you restore the NuGet package
 
 Your basic pipeline should look something like this:
 
-```yaml
-name : NetCore-CI-azure-pipeline.yml
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - AzureFunctions/OrderApi.Messaging.Receive/*
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-variables:
-  buildConfiguration: 'Release'
-  SolutionPath: 'AzureFunctions/OrderApi.Messaging.Receive/*.sln'
-  
-stages:
-- stage: Build
-  displayName: Build solution
-  jobs:  
-  - job: Build
-    displayName: Build and publish solution
-    steps:
-    - task: UseDotNet@2      
-      inputs:
-        packageType: 'sdk'
-        version: '3.x'
-      displayName: 'Use .NET Core SDK 3.x'
-
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: 'restore'
-        projects: '$(SolutionPath)'
-      displayName: 'Restore NuGet packages'
- 
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: 'build'
-        projects: '$(SolutionPath)'
-      displayName: 'Build solution'
-        
-    - task: DotNetCoreCLI@2
-      inputs:
-        command: 'publish'
-        publishWebProjects: false
-        projects: '$(SolutionPath)'
-        arguments: '--configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)/$(buildConfiguration)'
-      displayName: 'Publish solution'
-```
+<script src="https://gist.github.com/WolfgangOfner/9f19386d061df55ec253af595ba5d73e.js"></script>
 
 The pipeline above runs automatically when changes are detected on the master branch inside the AzureFunctions/OrderApi.Messaging.Receive/ folder and uses the newest Ubuntu VM to run the build. Next, I configure a couple of variables and then run the restore, build and publish of the solution.
 
@@ -78,16 +29,7 @@ Before you can deploy to Azure, you need a service connection. If you don't have
 
 With the service connection in place, add the following task to the pipeline:
 
-```yaml
-- task: AzureFunctionApp@1
-  inputs:
-    azureSubscription: 'AzureServiceConnection'
-    appType: 'functionAppLinux'
-    appName: 'microservicedemoOrderApiMessagingReceive' # replace with the name of your Azure Function
-    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
-  displayName: Deploy Azure Function
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-```
+<script src="https://gist.github.com/WolfgangOfner/adef83b53f9f4861017e230dac7070df.js"></script>
 
 This task takes the previously created .zip file (during the publish) and deploys it to an existing Azure Function. All you have to do is replace the appName with your Azure Function name. Note that the Azure Function has to exist, otherwise the task will fail. If you Azure Function runs on Windows, use functionApp as appType.
 
@@ -105,39 +47,11 @@ The Azure Function can be deployed but it won't work because it has no access to
 
 Next, add the following variables to your pipeline:
 
-```yaml
-variables:
-  buildConfiguration: 'Release'
-  ConnectionString: "Server=tcp:$(SQLServerName),1433;Initial Catalog=$(DatabaseName);Persist Security Info=False;User ID=$(DbUser);Password=$(DbPassword);MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-  DatabaseName: Order
-  SolutionPath: 'AzureFunctions/OrderApi.Messaging.Receive/*.sln'
-  SQLServerName: wolfgangmicroservicedemosql.database.windows.net # replace with your server url
-```
+<script src="https://gist.github.com/WolfgangOfner/a555eae3b8afaa7e5c957c7abfe1987b.js"></script>
 
 Lastly, add the Azure App Service Settings task to update the service settings:
 
-```yaml
-- task: AzureAppServiceSettings@1
-  inputs:
-    azureSubscription: 'AzureServiceConnection'
-    appName: 'microservicedemoOrderApiMessagingReceive'
-    resourceGroupName: 'MicroserviceDemo'
-    appSettings: |
-      [
-        {
-          "name": "QueueConnectionString",
-          "value": "$(QueueConnectionString)",
-          "slotSetting": false
-        },
-        {
-          "name": "DatabaseConnectionString",
-          "value": "$(ConnectionString)", 
-          "slotSetting": false
-        }
-      ]
-  displayName: Update App Settings
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-```
+<script src="https://gist.github.com/WolfgangOfner/1ac65017380c1d617da80b6eaeda62ac.js"></script>
 
 For more information about the Azure Service Bus Queue, see my post [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue). The pipeline is finsihed. Deploy the Azure Function and test it.
 

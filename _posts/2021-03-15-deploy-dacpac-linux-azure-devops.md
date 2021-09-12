@@ -15,15 +15,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 I have created a new folder in my solution, Database, which contains the SQL project. To build this project in a Linux environment, I add a new .NET Core 3.1 Class Library called CustomerApi.Database.Build. Next, I replace the SDK type with MSBuild.Sdk.SqlProj/1.11.4 and set the SQLServerVersion SqlAzure because I want to deploy it to an Azure SQL database.
 
-```xml
-<Project Sdk="MSBuild.Sdk.SqlProj/1.11.4">
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <SqlServerVersion>SqlAzure</SqlServerVersion>
-  </PropertyGroup>
-
-</Project>
-```
+<script src="https://gist.github.com/WolfgangOfner/6542cc3ebf7450b5b1a443275d2940ca.js"></script>
 
 This references the MSBuild.Sdk.SqlProj project which can be found on <a href="https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/" target="_blank" rel="noopener noreferrer">Github</a>. Unfortunately, this project doesn't support .NET 5 yet, that's why I use .NET Core 3.1.
 
@@ -41,82 +33,23 @@ The created Dacpac package should execute SQL scripts before and after the deplo
 
 These scripts contain all SQL scripts which should be executed. The PostScripts folder contains the 00_AddCustomers script and therefore, I have added it to the Script.PostDeployment file.
 
-```text
-:r ./00_AddCustomers.sql
-```
+<script src="https://gist.github.com/WolfgangOfner/5bae39a3dda05d3b64cf37d1c1666f54.js"></script>
 
 Additionally, I have to add the following code to the .csproj file:
 
-```xml
-  <ItemGroup>
-    <Content Remove="Scripts\**\*.sql" />
-    <None Include="Scripts\**\*.sql" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PostDeploy Include=".\Scripts\PostScripts\Script.PostDeployment.sql" />
-    <PreDeploy Include=".\Scripts\PreScripts\Script.PreDeployment.sql" />
-  </ItemGroup>
-```
+<script src="https://gist.github.com/WolfgangOfner/78361732ab6fa93b0b7c5f1ed2f239dd.js"></script>
 
 This code configures the execution of the scripts before and after the deployment.
 
 Be aware that the scripts are executed every deployment. If your script inserts data, you have to make sure that it checks the data before it inserts it. I am using a merge statement to update existing data or create it if it doesn't exist. This script looks complicated but is quite simple. 
 
-```sql
-SET NOCOUNT ON
-
-MERGE INTO [dbo].[Customer] AS Target
-USING (VALUES
-('9f35b48d-cb87-4783-bfdb-21e36012930a', 'Wolfgang','Ofner', '1989-11-23', 31),
-('654b7573-9501-436a-ad36-94c5696ac28f', 'Darth','Vader', '1977-05-25', 43),
-('971316e1-4966-4426-b1ea-a36c9dde1066', 'Son','Goku', '1937-04-16', 84)
-) AS Source (Id, FirstName, LastName, Birthday, Age)
-ON (Target.Id = Source.Id)
-WHEN MATCHED AND (
-	NULLIF(Source.Id, Target.Id) IS NOT NULL OR 
-	NULLIF(Target.Id, Source.Id) IS NOT NULL OR 
-	NULLIF(Source.FirstName, Target.FirstName) IS NOT NULL OR 
-	NULLIF(Target.FirstName, Source.FirstName) IS NOT NULL OR 
-	NULLIF(Source.LastName, Target.LastName) IS NOT NULL OR 
-	NULLIF(Target.LastName, Source.LastName) IS NOT NULL OR
-	NULLIF(Source.Birthday, Target.Birthday) IS NOT NULL OR 
-	NULLIF(Target.Birthday, Source.Birthday) IS NOT NULL)THEN
- UPDATE SET
-  Id = Source.Id,
-  FirstName = Source.FirstName,
-  LastName = Source.LastName,
-  Birthday = Source.Birthday,
-  Age = Source.Age
-  
-WHEN NOT MATCHED BY TARGET THEN
- INSERT(Id, FirstName, LastName, Birthday, Age)
- VALUES(Source.Id, Source.FirstName, Source.LastName, Source.Birthday, Source.Age)
-WHEN NOT MATCHED BY SOURCE  THEN
- DELETE;
-
-DECLARE @mergeError int
- , @mergeCount int
-SELECT @mergeError = @@ERROR, @mergeCount = @@ROWCOUNT
-IF @mergeError != 0
- BEGIN
- PRINT 'ERROR OCCURRED IN MERGE FOR [dbo].[Customer]. Rows affected: ' + CAST(@mergeCount AS VARCHAR(100)); -- SQL should always return zero rows affected
- END
-ELSE
- BEGIN
- PRINT '[dbo].[Customer] rows affected by MERGE: ' + CAST(@mergeCount AS VARCHAR(100));
- END
-```
+<script src="https://gist.github.com/WolfgangOfner/82d136cf782983e4ff3fe89942215db3.js"></script>
 
 ### Add Tables to the Deployment Project
 
 Lastly, I have to add the tables for my database. You can either add the SQL script in the root folder, or you can reference the SSDT project. Since I am lazy, I reference the SSDT project with the following code in the .csproj file
 
-```xml
-  <ItemGroup>
-    <Content Include="..\CustomerApi.Database\dbo\**\*.sql" />
-  </ItemGroup>
-```
+<script src="https://gist.github.com/WolfgangOfner/76d07af0443ee1a2b65c3d64c0036b67.js"></script>
 
 This adds the Tables folder with the Customer table to the solution.
 
@@ -132,40 +65,11 @@ This adds the Tables folder with the Customer table to the solution.
 
 The finished .csproj file looks as following:
 
-```xml
-<Project Sdk="MSBuild.Sdk.SqlProj/1.11.4">
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <SqlServerVersion>SqlAzure</SqlServerVersion>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Content Include="..\CustomerApi.Database\dbo\**\*.sql" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="Scripts\**\*.sql" />
-    <None Include="Scripts\**\*.sql" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PostDeploy Include=".\Scripts\PostScripts\Script.PostDeployment.sql" />
-    <PreDeploy Include=".\Scripts\PreScripts\Script.PreDeployment.sql" />
-  </ItemGroup>
-
-</Project>
-```
+<script src="https://gist.github.com/WolfgangOfner/1f4e2d3c1311e4e8205097ea622247aa.js"></script>
 
 If you get an error building the project, add the following code to the MSBuild.exe.config:
 
-```xml
-<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
-  <dependentAssembly>
-    <assemblyIdentity name="System.Numerics.Vectors" publicKeyToken="b03f5f7f11d50a3a" culture="neutral" />
-    <bindingRedirect oldVersion="0.0.0.0-4.1.3.0" newVersion="4.1.4.0" />
-  </dependentAssembly>
-</assemblyBinding>
-```
+<script src="https://gist.github.com/WolfgangOfner/3abbd59e01a9c421443d24883e7bc92d.js"></script>
 
 You can find the file under C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin (The path will vary, depending on your version, e.g. Professional, Enterprise, etc.). This is a known MSBuild bug which exists for around a year already.
 
@@ -173,19 +77,11 @@ You can find the file under C:\Program Files (x86)\Microsoft Visual Studio\2019\
 
 After finished the database build project, it is time to include it in Dockerfile so it gets built in the CI/CD pipeline. The Dockerfile is located in the CustomerApi folder and contains already all statements to build the projects and run the tests. First, add a copy statement to copy the project inside the container: 
 
-```docker
-COPY ["CustomerApi.Database.Build/CustomerApi.Database.Build.csproj", "CustomerApi.Database.Build/"]
-```
+<script src="https://gist.github.com/WolfgangOfner/48f13256ded11bffe6bc55f6e6f4b031.js"></script>
 
 Next, add the following section:
 
-```docker
-FROM build AS dacpac
-ARG BuildId=localhost
-LABEL dacpac=${BuildId}
-WORKDIR /src
-RUN dotnet build "CustomerApi.Database.Build/CustomerApi.Database.Build.csproj" -c Release -o /dacpacs --no-restore
-```
+<script src="https://gist.github.com/WolfgangOfner/7b15b4b589c0c3954bef77726406adfe.js"></script>
 
 This code creates an intermediate container and labels it so you can access it later. Additionally, it builds the project and generates the dacpac package this way. If you were following this series, then you have seen the same method to collect the test results and code coverage.
 
@@ -193,21 +89,7 @@ This code creates an intermediate container and labels it so you can access it l
 
 After building the Dacpac package, you have to extract it from the Docker container and upload it as build artifact. This is done in the DockerBuildAndPush template which is located under pipelines/templates. Add the following code after the PublishCodeCoverage task:
 
-```powershell
-- pwsh: |
-    $id=docker images --filter "label=dacpac=${{ parameters.buildId }}" -q | Select-Object -First 1
-    docker create --name dacpaccontainer $id
-    docker cp dacpaccontainer:/dacpacs $(Build.ArtifactStagingDirectory)/dacpacs
-    docker rm dacpaccontainer
-  displayName: 'Copy DACPACs'
-
-- task: PublishBuildArtifacts@1    
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/dacpacs'
-    ArtifactName: 'dacpacs'
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-  displayName: 'Publish DACPAC'
-```
+<script src="https://gist.github.com/WolfgangOfner/a80c880850593315d7717750d3ff0e38.js"></script>
 
 This code takes a container with the dacpac label and extracts the dacpac file (This is the same as the extraction of the code coverage and test results). Then it uploads (publishes) it for the Azure DevOps agent.
 
@@ -215,21 +97,7 @@ This code takes a container with the dacpac label and extracts the dacpac file (
 
 The Azure DevOps team has an open <a href="https://github.com/microsoft/azure-pipelines-tasks/issues/8408" target="_blank" rel="noopener noreferrer">Github</a> issue from 2018 about deploying dacpac on Linux. Unfortunately, we haven't gotten any news if and when they will implement it. Therefore, I will use a Linux Docker container with sqlpackage installed to deploy the database. The Dockerfile was originally created by a colleague of mine. I have created a new folder, Infrastructure, in the root folder and added the Dockerfile there. 
 
-```docker
-FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends unzip && \
-    rm -rf /var/lib/apt/lists/* && \
-    wget -q -O /opt/sqlpackage.zip https://go.microsoft.com/fwlink/?linkid=2134311 && unzip -qq /opt/sqlpackage.zip -d /opt/sqlpackage && chmod +x /opt/sqlpackage/sqlpackage && rm -f /opt/sqlpackage.zip
-
-RUN apt-get update && \
-    apt-get install -y curl gnupg apt-transport-https && \
-    curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
-    sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-stretch-prod stretch main" > /etc/apt/sources.list.d/microsoft.list' && \
-    apt-get update && \
-    apt-get install -y powershell
-```
+<script src="https://gist.github.com/WolfgangOfner/17a98cfbff832d96660e6c0e7e077546.js"></script>
 
 I also have uploaded the container to <a href="https://hub.docker.com/repository/docker/wolfgangofner/linuxsqlpackage" target="_blank" rel="noopener noreferrer">Dockerhub</a> and will use it in the CI/CD pipeline.
 
@@ -237,48 +105,11 @@ I also have uploaded the container to <a href="https://hub.docker.com/repository
 
 To deploy the dacpac package to the database, you should use a deployment task in your CI/CD pipeline. This task runs as a container job using the previously mentioned linux container with the sqlpackage installed. This deployment also runs only after the build succeeded and only if the build reason is not a pull request The code for that looks as follows:
 
-```yaml
-- deployment: DeployDatabase
-  dependsOn: Build
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-  displayName: 'Deploy Database'   
-  environment: Database 
-  container: linuxsqlpackage
-  strategy:
-    runOnce:
-      deploy:
-        steps:
-        - template: templates/DatabaseDeploy.yml
-          parameters:          
-              connectionString: $(ConnectionString)
-              dacpacPath: "$(Agent.BuildDirectory)/dacpacs/$(ArtifactName).Database.Build.dacpac"
-```
+<script src="https://gist.github.com/WolfgangOfner/976ffd84e1f47ef8c5f1d78b1001a779.js"></script>
 
 This deployment executes the DatabaseDeploy template which takes two parameters, connectionString and dacpacPath. The template looks as follows:
 
-```yaml
-parameters:
-  - name: blockOnPossibleDataLoss
-    type: string
-    default: false 
-  - name: generateSmartDefaults
-    type: string
-    default: true
-  - name: connectionString
-    type: string
-    default:
-  - name: dacpacPath
-    type: string
-    default:
-
-steps:
-  - download: current
-    artifact: 'dacpacs'
-    displayName: 'Download DACPAC'
-  - pwsh: |
-      /opt/sqlpackage/sqlpackage /a:Publish /p:BlockOnPossibleDataLoss=${{ parameters.blockOnPossibleDataLoss }} /p:GenerateSmartDefaults=${{ parameters.generateSmartDefaults }} /tcs:"${{ parameters.connectionString }}" /sf:"${{ parameters.dacpacPath }}"    
-    displayName: 'Deploy DACPAC'
-```
+<script src="https://gist.github.com/WolfgangOfner/0c1a084c4f2f984b5c4c50c1c945f5f0.js"></script>
 
 The deployment downloads the previously published dacpac artifact and the executes a sqlpackage publish with the connection string to the database and the path of the dacpac package.
 
@@ -288,9 +119,7 @@ I added the database deployment also to the OrderApi. You can find the code of t
 
 Before you can run the pipelines, you have to replace the SQLServerName variable with your server URL:
 
-```yaml
-SQLServerName: wolfgangmicroservicedemoserver.database.windows.net # replace with your server url
-```
+<script src="https://gist.github.com/WolfgangOfner/cd9de86a4a381dc4971e2b7e3f1d3f13.js"></script>
 
 Additionally, you have to add the DbUser and DbPassword variables in the pipeline. You can add the DbUser variable as a normal variable if you want. The DbPassword variable must be added as a secret variable though, otherwise, everyone can see the password.
 

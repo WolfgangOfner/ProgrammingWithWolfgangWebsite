@@ -48,9 +48,7 @@ Installing the C# Prometheus client libraries is very simple. All you have to do
 
 Next, add the metric server to expose the metrics which can be scrapped by Prometheus. Use the following code and make sure you add it before app.UseEndpoints... in the Startup.cs class:
 
-```CSharp
-app.UseMetricServer();
-```
+<script src="https://gist.github.com/WolfgangOfner/b51793ea1e3a2eb9df7fb3bbbd7fef58.js"></script>
 
 Start your application, navigate to the /metrics endpoints and you will see the default metrics which are exposed from the client library.
 
@@ -68,89 +66,19 @@ The metrics might look confusing at first but they will be way more readable onc
 
 The Prometheus client libraries allow you to easily create your own metrics. First, you have to collect the metrics. You can use the following code to create a counter and histogram:
 
-```CSharp
-public class MetricCollecter
-{
-    private readonly Counter _requestCounter;
-    private readonly Histogram _responseTimeHistogram;
-
-    public MetricCollecter()
-    {
-        _requestCounter = Metrics.CreateCounter("total_requests", "The total number of requests serviced by this API.");
-
-        _responseTimeHistogram = Metrics.CreateHistogram("request_duration_seconds", "The duration in seconds between the response to a request.", new HistogramConfiguration
-        {
-            Buckets = Histogram.ExponentialBuckets(0.01, 2, 10),
-            LabelNames = new[]
-            {
-                "status_code", "method"
-            }
-        });
-    }
-
-    public void RegisterRequest()
-    {
-        _requestCounter.Inc();
-    }
-
-    public void RegisterResponseTime(int statusCode, string method, TimeSpan elapsed)
-    {
-        _responseTimeHistogram.Labels(statusCode.ToString(), method).Observe(elapsed.TotalSeconds);
-    }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/e6b1adde23faf6866a28a67dcc701e37.js"></script>
 
 The code above will expose the response time for each HTTP code, for example, how long was the response for an HTTP 200 code. Additionally, it counts the total number of requests. To use the code above, create a new middleware that uses the MetricCollector.
 
-```CSharp
-public class ResponseMetricMiddleware
-{
-    private readonly RequestDelegate _request
-
-    public ResponseMetricMiddleware(RequestDelegate request)
-    {
-        _request = request ?? throw new ArgumentNullException(nameof(request));
-    }
-
-    public async Task Invoke(HttpContext httpContext, MetricCollecter collecter)
-    {
-        var path = httpContext.Request.Path.Value
-
-        if (path == "/metrics")
-        {
-            await _request.Invoke(httpContext)
-            
-            return;
-        }
-
-        var sw = Stopwatch.StartNew()
-
-        try
-        {
-            await _request.Invoke(httpContext);
-        }
-        finally
-        {
-            sw.Stop();
-            
-            collecter.RegisterRequest();
-            collecter.RegisterResponseTime(httpContext.Response.StatusCode, httpContext.Request.Method, sw.Elapsed);
-        }
-    }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/6468df19a76b1265d323fda9e6ec34b7.js"></script>
 
 The last step is to register the new middleware in the Startup.cs class. Add the following code to the ConfigureServices method:
 
-```CSharp
-services.AddSingleton<MetricCollecter>();
-```
+<script src="https://gist.github.com/WolfgangOfner/effbfb55a0c8b3491d832a95e89d7c13.js"></script>
 
 After registering the collector, add the middleware to the Configure method:
 
-```CSharp
-app.UseMiddleware<ResponseMetricMiddleware>();
-```
+<script src="https://gist.github.com/WolfgangOfner/5706feae7033bde0355b77da1690633a.js"></script>
 
 When you start your microservice and navigate to /metrics, you will see the number of different requests and the response time.
 

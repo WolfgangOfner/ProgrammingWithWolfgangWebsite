@@ -69,18 +69,7 @@ Since I already have a Docker image on Docker hub, I only have to add Helm chart
 
 First, I add the following variables at the beginning of the pipeline:
 
-```yaml
-variables:
-  AzureSubscription: 'AzureServiceConnection' # Name of the Service Connection
-  ApiName: 'customerapi'
-  ClusterResourceGroup: MicroserviceDemo  
-  ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'  
-  ChartPath: 'CustomerApi/CustomerApi/charts/$(ApiName)'
-  HelmVersion: 3.5.0
-  ImageName: 'wolfgangofner/$(ApiName):$(Build.BuildNumber)'
-  K8sNamespace: '$(ApiName)-test'
-  KubernetesCluster: 'microservice-aks'
-```
+<script src="https://gist.github.com/WolfgangOfner/7cd8706661dd83f9e369fbcdb8d65a2b.js"></script>
 
 The variables should be self-explaining. They configure the previously created service connection, set some information about the AKS cluster like its name, resource group, and what namespace I want to use, and some information for Helm. For more information about Helm see my post ["Helm - Getting Started"](/helm-getting-started).
 
@@ -88,50 +77,15 @@ The variables should be self-explaining. They configure the previously created s
 
 Since I am using Helm for the deployment, I only need three tasks for the whole deployment. First I have to install Helm in my Kubernetes cluster. I use the HelmInstaller task and provide the Helm version which I previously configured in a variable.
 
-```yaml
-- task: HelmInstaller@0
-  displayName: 'Install Helm $(HelmVersion)'
-  inputs:
-    helmVersion: $(HelmVersion)
-    checkLatestHelmVersion: false
-    installKubectl: true
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))   
-```
+<script src="https://gist.github.com/WolfgangOfner/e8c638c8ee611922e334d1c464c4213d.js"></script>
 
 Next, I have to create a Helm package from my Helm chart. To do that, I use the HelmDeploy task and the package command. For this task, I have to provide the service connection, the information about my Kubernetes cluster, the path to the Helm chart, and a version. I calculate the version at the beginning of the pipeline and set it in the Build.BuildNumber variable. Therefore, I provide this variable as the version.
 
-```yaml
-- task: HelmDeploy@0
-  displayName: 'helm package'
-  inputs:
-    azureSubscriptionEndpoint: $(AzureSubscription)
-    azureResourceGroup: $(ClusterResourceGroup)
-    kubernetesCluster: $(KubernetesCluster)
-    command: 'package'
-    chartPath: $(ChartPath)
-    chartVersion: $(Build.BuildNumber)
-    save: false
-    namespace: '$(K8sNamespace)'
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))   
-```
+<script src="https://gist.github.com/WolfgangOfner/7fc806a55819d5aa518163645595a7de.js"></script>
 The last step is to install the Helm package.  Therefore, I use HelmDeploy again but this time I use the upgrade command. Upgrade installs the package if no corresponding deployment exists and updates it if a deployment already exists. Additionally, I prove the --create-namespace argument to create the Kubernetes namespace if it doesn't exist. 
 
-```yaml
-- task: HelmDeploy@0
-  displayName: 'Helm upgrade release'
-  inputs:
-    connectionType: 'Azure Resource Manager'
-    azureSubscription: $(AzureSubscription)
-    azureResourceGroup: '$(ClusterResourceGroup)'
-    kubernetesCluster: '$(KubernetesCluster)'
-    useClusterAdmin: true
-    namespace: '$(K8sNamespace)'
-    command: 'upgrade'
-    chartType: 'FilePath'
-    chartPath: '$(ChartPackage)'
-    releaseName: '$(ApiName)-$(K8sNamespace)'  
-    arguments: '--create-namespace'
-```
+<script src="https://gist.github.com/WolfgangOfner/6ddc1ad2a9a885aa04ac034c0a4745ba.js"></script>
+
 That's already everything you need to deploy to Kubernetes. Run the pipeline to test that everything works as expected.
 
 <div class="col-12 col-sm-10 aligncenter">
@@ -170,157 +124,11 @@ Open the external URL in your browser and you will see the Swagger UI of the mic
 
 The full YAML pipeline looks as follows:
 
-```yaml
-name : CustomerApi-CI
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - CustomerApi/*
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-variables:
-  AzureSubscription: 'AzureServiceConnection' # Name of the Service Connection
-  ApiName: 'customerapi'
-  ClusterResourceGroup: MicroserviceDemo  
-  ChartPackage: '$(Build.ArtifactStagingDirectory)/$(ApiName)-$(Build.BuildNumber).tgz'  
-  ChartPath: 'CustomerApi/CustomerApi/charts/$(ApiName)'
-  HelmVersion: 3.5.0
-  ImageName: 'wolfgangofner/$(ApiName):$(Build.BuildNumber)'
-  K8sNamespace: '$(ApiName)-test'
-  KubernetesCluster: 'microservice-aks'
-
-stages:
-- stage: Build
-  displayName: Build image
-  jobs:  
-  - job: Build
-    displayName: Build and push Docker image
-    steps:
-    
-    - task: BuildVersioning@0
-      displayName: 'Build Versioning'
-      inputs:
-        versionSource: 'gitversion'
-        doInstallGitVersion: true
-        GitVersionInstallerSource: 'choco'
-        GitVersionInstallerVersion: '5.0.1'
-        doUseLatestGitVersionInstallerVersion: false
-        paramAssemblyVersion: '7'
-        paramAssemblyFileVersion: '7'
-        paramAssemblyInformationalVersion: '6'
-        paramOverwriteFourthDigitWithBuildCounter: false
-        paramVersionCode: '2'
-        doAssemblyInfoAppendSuffix: false
-        doConvertAssemblyInfoToLowerCase: true
-        buildNumberVersionFormat: '3'
-        buildNumberAction: 'replace'
-        doReplaceAssemblyInfo: false
-        doReplaceNuspec: false
-        doReplaceNpm: false
-        doReplaceDotNetCore: true
-        filePatternDotNetCore: |
-          **\*.csproj
-          **\*.props
-        paramDotNetCoreVersionType: '3'
-        doReplaceAndroid: false
-        doReplaceiOS: false
-        doReplaceCustom: false
-        doShowWarningsForUnmatchedRegex: false
-        excludeFilePattern: |
-          !**/bin/**
-          !**/obj/**
-          !**/node_modules/**
-          !**/packages/**
-
-    - task: Docker@1      
-      inputs:
-        containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub'
-        command: 'Build an image'
-        dockerFile: '**/CustomerApi/CustomerApi/Dockerfile'
-        arguments: '--build-arg BuildId=$(Build.BuildId) --build-arg PAT=$(PatMicroserviceDemoNugetsFeed)'
-        imageName: '$(ImageName)'
-        useDefaultContext: false
-        buildContext: 'CustomerApi'
-      displayName: 'Build the Docker image'
-
-    - pwsh: |
-       $id=docker images --filter "label=test=$(Build.BuildId)" -q | Select-Object -First 1
-       docker create --name testcontainer $id
-       docker cp testcontainer:/testresults ./testresults
-       docker rm testcontainer
-      displayName: 'Copy test results' 
-    
-    - task: PublishTestResults@2
-      inputs:
-        testResultsFormat: 'VSTest'
-        testResultsFiles: '**/*.trx'
-        searchFolder: '$(System.DefaultWorkingDirectory)/testresults'
-      displayName: 'Publish test results'
-
-    - task: PublishCodeCoverageResults@1
-      inputs:
-        codeCoverageTool: 'Cobertura'
-        summaryFileLocation: '$(System.DefaultWorkingDirectory)/testresults/coverage/coverage.cobertura.xml'
-        reportDirectory: '$(System.DefaultWorkingDirectory)/testresults/coverage/reports'
-      displayName: 'Publish code coverage results'
-
-    - task: Docker@1      
-      inputs:
-        containerregistrytype: 'Container Registry'
-        dockerRegistryEndpoint: 'Docker Hub'
-        command: 'Push an image'
-        imageName: '$(ImageName)'
-      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-      displayName: 'Push the Docker image to Dockerhub'
-    
-    - task: HelmInstaller@0
-      displayName: 'Install Helm $(HelmVersion)'
-      inputs:
-        helmVersion: $(HelmVersion)
-        checkLatestHelmVersion: false
-        installKubectl: true
-      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))   
-      
-    - task: HelmDeploy@0
-      displayName: 'helm package'
-      inputs:
-        azureSubscriptionEndpoint: $(AzureSubscription)
-        azureResourceGroup: $(ClusterResourceGroup)
-        kubernetesCluster: $(KubernetesCluster)
-        command: 'package'
-        chartPath: $(ChartPath)
-        chartVersion: $(Build.BuildNumber)
-        save: false
-        namespace: '$(K8sNamespace)'
-      condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))   
-    
-    - task: HelmDeploy@0
-      displayName: 'Helm upgrade release'
-      inputs:
-        connectionType: 'Azure Resource Manager'
-        azureSubscription: $(AzureSubscription)
-        azureResourceGroup: '$(ClusterResourceGroup)'
-        kubernetesCluster: '$(KubernetesCluster)'
-        useClusterAdmin: true
-        namespace: '$(K8sNamespace)'
-        command: 'upgrade'
-        chartType: 'FilePath'
-        chartPath: '$(ChartPackage)'
-        releaseName: '$(ApiName)-$(K8sNamespace)'
-        arguments: '--create-namespace'
-```
+<script src="https://gist.github.com/WolfgangOfner/0e0aface6080032999c0e74dbdf96a8c.js"></script>
 
 ## Shortcommings of my Implementation
 
-This implementation is more a proof of concept than a best practice. In a real-world project, you should use different stages, for example, build, deploy-test, and deploy-prod. Right now, every build (if it's not a pull request) deploys to test and prod. Usually, you want some tests or checks after the test deployment. 
-
-The pipeline is also getting quite long and it would be nice to move different parts to different files using templates.
+This implementation is more a proof of concept than a best practice. In a real-world project, you should use different stages, for example, build, deploy-test, and deploy-prod. Right now, every build (if it's not a pull request) deploys to test and prod. Usually, you want some tests or checks after the test deployment. The pipeline is also getting quite long and it would be nice to move different parts to different files using templates. 
 
 I will implement all these best practices and even more over the next couple of posts.
 

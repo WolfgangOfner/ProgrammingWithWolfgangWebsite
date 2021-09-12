@@ -102,19 +102,7 @@ You can learn a lot about the solution with the Dependency Graph even before you
 
 The cyclomatic complexity is a metric that is used to indicate the complexity of code. It measures every available path through a method or class. For example, the following method has a cyclomatic complexity of 2 because there are two available paths.
 
-```csharp
-public string SoSomething(int i = 0)
-{
-    if (i == 0)
-    {
-        return "zero";
-    }
-    else
-    {
-        return "not zero";
-    }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/18592137aba779a4a2b20fd9ebb383b8.js"></script>
 
 A rule of thumb is that a method should not have a cyclomatic complexity of more than 7. More than 7 means that the code is too complicated to efficiently understand and change.
 
@@ -180,19 +168,7 @@ So far, I used NDepend to get an overview of all the problems and get an indicat
 
 Code coverage only tells you a part of the story, 7.56% like in NopCommerce is way too low though. Even if you have a high code coverage, you could have bad tests or are missing the edge cases of methods. Let's have a look at the following method and its test.
 
-```csharp
-public int Divide(int firstNumber, int secondNumber)
-{
-    return firstNumber / secondNumber;
-}
-
-[Fact]
-public void Divide_DividesTwoInts_ShouldReturnResult()
-{
-    var result= _testee.Divide(10, 
-    result.Should().Be(2);
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/fbdaaadc3c57354e5e9ab4d1d08df9da.js"></script>
 
 This results in 100% code coverage. But if you think about the code, you will quickly see some flaws. If the second parameter is 0, you try to divide by 0 which is not allowed, and end in an exception. This means even with your 100% code coverage, your code produces an exception. Another problem you might see is that the result of the division is an integer. This means that the result is rounded and might lead to unexpected results, besides that it is very inaccurate.
 
@@ -200,17 +176,7 @@ This results in 100% code coverage. But if you think about the code, you will qu
 
 As you have seen in the section above, the code coverage gives you the first indication but you always should look at the tests themselves to classify their quality. NopCommerce has a code coverage of merely 7.56% but let's have a look at the quality of the existing tests. Since we have an ASP.NET Core MVC project, let's check the tests of the controllers first. Unfortunately, there is only one test and as you can see on the following code sample, even this test is useless and doesn't help at all.
 
-
-```csharp
-[TestFixture]
-public class CategoryControllerTests : Nop.Tests.TestsBase
-{
-    public override void SetUp()
-    {
-        base.SetUp();
-    }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/036f52c9b2dd783d85b7c9ba63748c7e.js"></script>
 
 If you look through the tests, you will find a couple of tests for validators, automapper config, and models. Most of the tests are useless, for example, creating an object and then checking if the properties you set are still the same value. These tests only help you to get your code coverage percentage up but it doesn't help the business running good software. 
 
@@ -224,74 +190,7 @@ Since NopCommerce is an e-commerce shop, I guess that products, customers, and o
 
 The constructor of the ProductController looks as follows:
 
-```csharp
-public ProductController(IAclService aclService,
-    IBackInStockSubscriptionService backInStockSubscriptionService,
-    ICategoryService categoryService,
-    ICopyProductService copyProductService,
-    ICustomerActivityService customerActivityService,
-    ICustomerService customerService,
-    IDiscountService discountService,
-    IDownloadService downloadService,
-    IExportManager exportManager,
-    IImportManager importManager,
-    ILanguageService languageService,
-    ILocalizationService localizationService,
-    ILocalizedEntityService localizedEntityService,
-    IManufacturerService manufacturerService,
-    INopFileProvider fileProvider,
-    INotificationService notificationService,
-    IPdfService pdfService,
-    IPermissionService permissionService,
-    IPictureService pictureService,
-    IProductAttributeParser productAttributeParser,
-    IProductAttributeService productAttributeService,
-    IProductModelFactory productModelFactory,
-    IProductService productService,
-    IProductTagService productTagService,
-    ISettingService settingService,
-    IShippingService shippingService,
-    IShoppingCartService shoppingCartService,
-    ISpecificationAttributeService specificationAttributeService,
-    IStoreContext storeContext,
-    IUrlRecordService urlRecordService,
-    IWorkContext workContext,
-    VendorSettings vendorSettings)
-{
-    _aclService = aclService;
-    _backInStockSubscriptionService = backInStockSubscriptionService;
-    _categoryService = categoryService;
-    _copyProductService = copyProductService;
-    _customerActivityService = customerActivityService;
-    _customerService = customerService;
-    _discountService = discountService;
-    _downloadService = downloadService;
-    _exportManager = exportManager;
-    _importManager = importManager;
-    _languageService = languageService;
-    _localizationService = localizationService;
-    _localizedEntityService = localizedEntityService;
-    _manufacturerService = manufacturerService;
-    _fileProvider = fileProvider;
-    _notificationService = notificationService;
-    _pdfService = pdfService;
-    _permissionService = permissionService;
-    _pictureService = pictureService;
-    _productAttributeParser = productAttributeParser;
-    _productAttributeService = productAttributeService;
-    _productModelFactory = productModelFactory;
-    _productService = productService;
-    _productTagService = productTagService;
-    _settingService = settingService;
-    _shippingService = shippingService;
-    _shoppingCartService = shoppingCartService;
-    _specificationAttributeService = specificationAttributeService;
-    _storeContext = storeContext;
-    _urlRecordService = urlRecordService;
-    _workContext = workContext;
-    _vendorSettings = vendorSettings;
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/a3263badf3ad992dbe6079bd315645c3.js"></script>
 
 There are a couple of important principles in software development. My favorite is the Single Responsible Principle (SRP) and Keep it simple stupid (KISS). If you see a constructor like this you already know that this class does more than one thing and is not simple at all. A massive constructor like this makes it also almost impossible to test because you have to fake every parameter before you can even start writing your first test.
 
@@ -299,175 +198,7 @@ There are a couple of important principles in software development. My favorite 
 
 In the previous section, I analyzed that the controllers are way too complicated. In this section, I will look into a method and try to find the service and repository layer (if they exist) and analyze their complexity. An online store needs customers and without knowing anything about online shops, I would guess that the creation of one is a simple operation and therefore the method should be simple. Unfortunately, that's not the case in NopCommerce. NDepend analyzed a cyclomatic complexity of 53 which is way higher than the maximum recommended 7. The method has almost 200 lines of code and looks as follows:
 
-```csharp
-[HttpPost, ParameterBasedOnFormName("save-continue", "continueEditing")]
-[FormValueRequired("save", "save-continue")]
-public virtual IActionResult Create(CustomerModel model, bool continueEditing, IFormCollection form)
-{
-    if (!_permissionService.Authorize(StandardPermissionProvider.ManageCustomers))
-        return AccessDeniedView
-    if (!string.IsNullOrWhiteSpace(model.Email) && _customerService.GetCustomerByEmail(model.Email) != null)
-        ModelState.AddModelError(string.Empty, "Email is already registered");
-    if (!string.IsNullOrWhiteSpace(model.Username) && _customerSettings.UsernamesEnabled &&
-        _customerService.GetCustomerByUsername(model.Username) != null)
-    {
-        ModelState.AddModelError(string.Empty, "Username is already registered");
-
-    //validate customer roles
-    var allCustomerRoles = _customerService.GetAllCustomerRoles(true);
-    var newCustomerRoles = new List<CustomerRole>();
-    foreach (var customerRole in allCustomerRoles)
-        if (model.SelectedCustomerRoleIds.Contains(customerRole.Id))
-            newCustomerRoles.Add(customerRole);
-    var customerRolesError = ValidateCustomerRoles(newCustomerRoles, new List<CustomerRole>());
-    if (!string.IsNullOrEmpty(customerRolesError))
-    {
-        ModelState.AddModelError(string.Empty, customerRolesError);
-        _notificationService.ErrorNotification(customerRolesError);
-
-    // Ensure that valid email address is entered if Registered role is checked to avoid registered customers with empty email address
-    if (newCustomerRoles.Any() && newCustomerRoles.FirstOrDefault(c => c.SystemName == NopCustomerDefaults.RegisteredRoleName) != null &&
-        !CommonHelper.IsValidEmail(model.Email))
-    {
-        ModelState.AddModelError(string.Empty, _localizationService.GetResource("Admin.Customers.Customers.ValidEmailRequiredRegisteredRole"
-        _notificationService.ErrorNotification(_localizationService.GetResource("Admin.Customers.Customers.ValidEmailRequiredRegisteredRole"));
-
-    //custom customer attributes
-    var customerAttributesXml = ParseCustomCustomerAttributes(form);
-    if (newCustomerRoles.Any() && newCustomerRoles.FirstOrDefault(c => c.SystemName == NopCustomerDefaults.RegisteredRoleName) != null)
-    {
-        var customerAttributeWarnings = _customerAttributeParser.GetAttributeWarnings(customerAttributesXml);
-        foreach (var error in customerAttributeWarnings)
-        {
-            ModelState.AddModelError(string.Empty, error);
-        }
-
-    if (ModelState.IsValid)
-    {
-        //fill entity from model
-        var customer = model.ToEntity<Customer>
-        customer.CustomerGuid = Guid.NewGuid();
-        customer.CreatedOnUtc = DateTime.UtcNow;
-        customer.LastActivityDateUtc = DateTime.UtcNow;
-        customer.RegisteredInStoreId = _storeContext.CurrentStore.
-        _customerService.InsertCustomer(custome
-        //form fields
-        if (_dateTimeSettings.AllowCustomersToSetTimeZone)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.TimeZoneIdAttribute, model.TimeZoneId);
-        if (_customerSettings.GenderEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.GenderAttribute, model.Gender);
-        if (_customerSettings.FirstNameEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.FirstNameAttribute, model.FirstName);
-        if (_customerSettings.LastNameEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.LastNameAttribute, model.LastName);
-        if (_customerSettings.DateOfBirthEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.DateOfBirthAttribute, model.DateOfBirth);
-        if (_customerSettings.CompanyEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.CompanyAttribute, model.Company);
-        if (_customerSettings.StreetAddressEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.StreetAddressAttribute, model.StreetAddress);
-        if (_customerSettings.StreetAddress2Enabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.StreetAddress2Attribute, model.StreetAddress2);
-        if (_customerSettings.ZipPostalCodeEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.ZipPostalCodeAttribute, model.ZipPostalCode);
-        if (_customerSettings.CityEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.CityAttribute, model.City);
-        if (_customerSettings.CountyEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.CountyAttribute, model.County);
-        if (_customerSettings.CountryEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.CountryIdAttribute, model.CountryId);
-        if (_customerSettings.CountryEnabled && _customerSettings.StateProvinceEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.StateProvinceIdAttribute, model.StateProvinceId);
-        if (_customerSettings.PhoneEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.PhoneAttribute, model.Phone);
-        if (_customerSettings.FaxEnabled)
-            _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.FaxAttribute, model.Fa
-        //custom customer attributes
-        _genericAttributeService.SaveAttribute(customer, NopCustomerDefaults.CustomCustomerAttributes, customerAttributesXm
-        //newsletter subscriptions
-        if (!string.IsNullOrEmpty(customer.Email))
-        {
-            var allStores = _storeService.GetAllStores();
-            foreach (var store in allStores)
-            {
-                var newsletterSubscription = _newsLetterSubscriptionService
-                    .GetNewsLetterSubscriptionByEmailAndStoreId(customer.Email, store.Id);
-                if (model.SelectedNewsletterSubscriptionStoreIds != null &&
-                    model.SelectedNewsletterSubscriptionStoreIds.Contains(store.Id))
-                {
-                    //subscribed
-                    if (newsletterSubscription == null)
-                    {
-                        _newsLetterSubscriptionService.InsertNewsLetterSubscription(new NewsLetterSubscription
-                        {
-                            NewsLetterSubscriptionGuid = Guid.NewGuid(),
-                            Email = customer.Email,
-                            Active = true,
-                            StoreId = store.Id,
-                            CreatedOnUtc = DateTime.UtcNow
-                        });
-                    }
-                }
-                else
-                {
-                    //not subscribed
-                    if (newsletterSubscription != null)
-                    {
-                        _newsLetterSubscriptionService.DeleteNewsLetterSubscription(newsletterSubscription);
-                    }
-                }
-            }
-    
-        //password
-        if (!string.IsNullOrWhiteSpace(model.Password))
-        {
-            var changePassRequest = new ChangePasswordRequest(model.Email, false, _customerSettings.DefaultPasswordFormat, model.Password);
-            var changePassResult = _customerRegistrationService.ChangePassword(changePassRequest);
-            if (!changePassResult.Success)
-            {
-                foreach (var changePassError in changePassResult.Errors)
-                    _notificationService.ErrorNotification(changePassError);
-            }
-    
-        //customer roles
-        foreach (var customerRole in newCustomerRoles)
-        {
-            //ensure that the current customer cannot add to "Administrators" system role if he's not an admin himself
-            if (customerRole.SystemName == NopCustomerDefaults.AdministratorsRoleName && !_customerService.IsAdmin(_workContext.CurrentCustomer))
-                contin
-            _customerService.AddCustomerRoleMapping(new CustomerCustomerRoleMapping { CustomerId = customer.Id, CustomerRoleId = customerRole.Id });
-    
-        _customerService.UpdateCustomer(custome
-        //ensure that a customer with a vendor associated is not in "Administrators" role
-        //otherwise, he won't have access to other functionality in admin area
-        if (_customerService.IsAdmin(customer) && customer.VendorId > 0)
-        {
-            customer.VendorId = 0;
-            _customerService.UpdateCustomer(custome
-            _notificationService.ErrorNotification(_localizationService.GetResource("Admin.Customers.Customers.AdminCouldNotbeVendor"));
-    
-        //ensure that a customer in the Vendors role has a vendor account associated.
-        //otherwise, he will have access to ALL products
-        if (_customerService.IsVendor(customer) && customer.VendorId == 0)
-        {
-            var vendorRole = _customerService.GetCustomerRoleBySystemName(NopCustomerDefaults.VendorsRoleName);
-            _customerService.RemoveCustomerRoleMapping(customer, vendorRol
-            _notificationService.ErrorNotification(_localizationService.GetResource("Admin.Customers.Customers.CannotBeInVendoRoleWithoutVendorAssociated"));
-    
-        //activity log
-        _customerActivityService.InsertActivity("AddNewCustomer",
-            string.Format(_localizationService.GetResource("ActivityLog.AddNewCustomer"), customer.Id), customer);
-        _notificationService.SuccessNotification(_localizationService.GetResource("Admin.Customers.Customers.Added"
-        if (!continueEditing)
-            return RedirectToAction("List");
-        return RedirectToAction("Edit", new { id = customer.Id });
-
-    //prepare model
-    model = _customerModelFactory.PrepareCustomerModel(model, null, tru
-    //if we got this far, something failed, redisplay form
-    return View(model);
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/8e8194f29c1840aed0012583c4379c67.js"></script>
 
 A controller should only take the request and then call services that handle the business logic. From a first glimpse, it looks like the controller does all the business logic already. This would also mean that you can't reuse the code to create a product because it is in the controller and not in a service class. Additionally, the controller does way more than creating a product that violates the Single Responsible Principle. Due to its insanely high complexity, it is also almost impossible to write adequate tests for the code. 
 

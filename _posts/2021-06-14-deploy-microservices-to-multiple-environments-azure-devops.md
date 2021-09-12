@@ -21,15 +21,7 @@ So far, I have used the CD pipeline to deploy to a stage called test. I plan to 
 
 First, add a new subdomain to the URL of the test environment. You don't have to use a subdomain but this makes the configuration of the DNS settings easier. For the test environment, I will use test as a subdomain which means the URL will be teast.customer.programmingwithwolfgang.com 
 
-```yaml
-- stage: Test  
-  condition: ne(variables['Build.Reason'], 'PullRequest')
-  variables:
-    DeploymentEnvironment: 'test'
-    K8sNamespace: '$(ApiName)-$(DeploymentEnvironment)'
-    ConnectionString: "Server=tcp:$(SQLServerName),1433;Initial Catalog=$(DatabaseName)-$(DeploymentEnvironment);Persist Security Info=False;User ID=$(DbUser);Password=$(DbPassword);MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-    URL: $(DeploymentEnvironment).customer.programmingwithwolfgang.com # replace with your service url
-```
+<script src="https://gist.github.com/WolfgangOfner/43279ab1ff6b294aa91f5ae92370e014.js"></script>
 
 Additionally, add the environment name also to the database so you can distinguish the test and production databases. That is everything you have to update for the test environment. 
 
@@ -37,23 +29,15 @@ Additionally, add the environment name also to the database so you can distingui
 
 Adding a new environment is quite easy. Copy the deployment of the test environment and copy it beneath it. Next up replace test with prod, for example, the DeploymentEnvironment variable is now prod.
 
-```yaml
-DeploymentEnvironment: 'prod'
-```
+<script src="https://gist.github.com/WolfgangOfner/12c9996da5cac89a7ce494aedf377977.js"></script>
 
 Since I don't want to use a subdomain for my production URL, remove it which means the URL will be customer.programmingwithwolfgang.com
 
-```yaml
-URL: customer.programmingwithwolfgang.com # replace with your service url
-```
+<script src="https://gist.github.com/WolfgangOfner/32c75d11024297cadbf942434d79b911.js"></script>
 
 Lastly, we only want to deploy to production when the deployment to the test environment is finished and was successful. To achieve that, add the dependsOn keyword and the following condition.
 
-```yaml
-- stage: Prod
-  dependsOn: Test
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-```
+<script src="https://gist.github.com/WolfgangOfner/6e9d057320cf3e171f7af0ff7914ccd9.js"></script>
 
 In the future, you could add an approval before the production gateway. This means that the production deployment is only executed when a human approves the deployment.
 
@@ -61,130 +45,7 @@ In the future, you could add an approval before the production gateway. This mea
 
 The finished CD pipeline looks as follows:
 
-```yaml
-name : CustomerApi-CD
-trigger: none
-resources:
-  containers:
-  - container: linuxsqlpackage
-    image: wolfgangofner/linuxsqlpackage:1.0
-  pipelines:
-   - pipeline: CustomerApiBuild
-     source: CustomerApi-CI
-     trigger:
-      branches:
-       include:
-         - master         
-         - pull/*
-         - refs/pull/*
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-variables:  
-  AzureSubscription: 'AzureServiceConnection' # Name of the Service Connection
-  ApiName: 'customerapi'
-  ArtifactName: 'CustomerApi'      
-  ClusterResourceGroup: MicroserviceDemo  
-  ChartPackage: '$(Pipeline.Workspace)/CustomerApiBuild/CustomerApi/customerapi-$(RESOURCES.PIPELINE.CustomerApiBuild.RUNNAME).tgz'  
-  DatabaseName: Customer
-  HelmVersion: 3.5.0    
-  KubernetesCluster: 'microservice-aks'
-  ReleaseValuesFile: '$(Pipeline.Workspace)/CustomerApiBuild/CustomerApi/values.release.yaml'
-  SQLServerName: wolfgangmicroservicedemosql.database.windows.net # replace with your server url  
-  IngressEnabled: true
-  TlsSecretName: customerapi-tls  
-
-stages:
-- stage: Test  
-  condition: ne(variables['Build.Reason'], 'PullRequest')
-  variables:
-    DeploymentEnvironment: 'test'
-    K8sNamespace: '$(ApiName)-$(DeploymentEnvironment)'
-    ConnectionString: "Server=tcp:$(SQLServerName),1433;Initial Catalog=$(DatabaseName)-$(DeploymentEnvironment);Persist Security Info=False;User ID=$(DbUser);Password=$(DbPassword);MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-    URL: $(DeploymentEnvironment).customer.programmingwithwolfgang.com # replace with your service url
-  jobs:
-  - deployment: Web_Test
-    displayName: 'Deploy CustomerApi to the customerapi-test environment'
-    environment: customerapi-test
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: CustomerApiBuild
-            artifact: $(ArtifactName)
-          - template: templates/DeployHelmPackage.yml
-            parameters:
-              apiName: $(ApiName)
-              azureSubscription: '$(AzureSubscription)'
-              clusterResourceGroup: '$(ClusterResourceGroup)'
-              chartPackage: '$(ChartPackage)'              
-              helmVersion: $(HelmVersion)
-              k8sNamespace: $(K8sNamespace)
-              kubernetesCluster: $(KubernetesCluster)
-              releaseValuesFile: '$(ReleaseValuesFile)' 
- 
-  - deployment: Database_Test
-    dependsOn: Web_Test    
-    displayName: 'Deploy the test database'   
-    environment: database-test
-    container: linuxsqlpackage
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: CustomerApiBuild
-            artifact: dacpacs
-          - template: templates/DatabaseDeploy.yml
-            parameters:          
-                connectionString: $(ConnectionString)
-                dacpacPath: "$(Pipeline.Workspace)/CustomerApiBuild/dacpacs/$(ArtifactName).Database.Build.dacpac"
-
-- stage: Prod
-  dependsOn: Test
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-  variables:
-    DeploymentEnvironment: 'prod'
-    K8sNamespace: '$(ApiName)-$(DeploymentEnvironment)'
-    ConnectionString: "Server=tcp:$(SQLServerName),1433;Initial Catalog=$(DatabaseName)-$(DeploymentEnvironment);Persist Security Info=False;User ID=$(DbUser);Password=$(DbPassword);MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-    URL: customer.programmingwithwolfgang.com # replace with your service url
-  jobs:
-  - deployment: Web_Prod
-    displayName: 'Deploy CustomerApi to the customerapi-prod environment'
-    environment: customerapi-prod
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: CustomerApiBuild
-            artifact: $(ArtifactName)
-          - template: templates/DeployHelmPackage.yml
-            parameters:
-              apiName: $(ApiName)
-              azureSubscription: '$(AzureSubscription)'
-              clusterResourceGroup: '$(ClusterResourceGroup)'
-              chartPackage: '$(ChartPackage)'              
-              helmVersion: $(HelmVersion)
-              k8sNamespace: $(K8sNamespace)
-              kubernetesCluster: $(KubernetesCluster)
-              releaseValuesFile: '$(ReleaseValuesFile)' 
- 
-  - deployment: Database_Prod
-    dependsOn: Web_Prod    
-    displayName: 'Deploy the prod database'   
-    environment: database-prod
-    container: linuxsqlpackage
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: CustomerApiBuild
-            artifact: dacpacs
-          - template: templates/DatabaseDeploy.yml
-            parameters:          
-                connectionString: $(ConnectionString)
-                dacpacPath: "$(Pipeline.Workspace)/CustomerApiBuild/dacpacs/$(ArtifactName).Database.Build.dacpac"
-```
+<script src="https://gist.github.com/WolfgangOfner/e0d0f69e1be264c68b43cee876b9536e.js"></script>
 
 ## Configure the DNS for the Test Environment
 

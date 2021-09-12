@@ -19,28 +19,15 @@ The idea is to have an Nginx controller as the only entry point to my Kubernetes
 
 To install Nginx, I will use a Helm chart. If you don't know Helm, see my posts [Helm - Getting Started](/helm-getting-started) and [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm). First, create a new namespace that will contain the Nginx controller. This will help with future maintenance.
 
-```shell
-kubectl create namespace ingress-basic
-```
+<script src="https://gist.github.com/WolfgangOfner/85f57ff7a317cdd55b202b39a12bf01d.js"></script>
 
 Next, add the Nginx Ingress Helm chart to your AKS cluster and then install it with the following code:
 
-```shell
-helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx
-
-helm install nginx-ingress ingress-nginx/ingress-nginx \
-    --namespace ingress-basic \
-    --set controller.replicaCount=2 \
-    --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux \
-    --set controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux
-```
+<script src="https://gist.github.com/WolfgangOfner/66a0a306056f66b83e45aa58be1a6cc6.js"></script>
 
 For this demo, it is enough to have two replicas but for your production environment, you might want to use three or more. You can configure it with the --set controller.replicaCount=2 flag. The installation of the Nginx ingress might take a couple of minutes. Especially the assignment of a public IP might take a bit. You can check the status with the following code:
 
-```shell
-kubectl --namespace ingress-basic get services -o wide -w nginx-ingress-ingress-nginx-controller
-```
+<script src="https://gist.github.com/WolfgangOfner/11da3db693c0d86eb6cb26d004e12eb5.js"></script>
 
 This command also gives you the public (External) IP address of the controller:
 
@@ -68,53 +55,17 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 I have two existing microservices in my demo repo which both use a Service of the type LoadBalancer. Before you can use the Nginx Ingress controller, you have to change the Service type to ClusterIP. Since the microservices use Helm, you can easily override values using the values.yaml file. I prefer to have my overrides in the values.release.yaml file and therefore, I added the following code there:
 
-```yaml
-service:
-  type: ClusterIP
-```
+<script src="https://gist.github.com/WolfgangOfner/9d246277f534181e3d08bee41076a224.js"></script>
 
 That is all that is needed for the Service. Next, you have to create an Ingress object for each microservice to tell Nginx where the traffic should be routed. You can find the Ingress object definition inside the Helm chart:
 
-{% raw %}
-```yaml
-{{- if .Values.ingress.enabled -}}
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: {{ .Values.ingress.namespace }}
-  namespace: {{ .Values.ingress.namespace }}
-{{- with .Values.ingress.annotations }}
-  annotations:
-{{ toYaml . | indent 4 }}
-{{- end }}
-spec:
-  rules:      
-  - http:
-      paths:
-      - path: {{ .Values.ingress.path }}
-        pathType: {{ .Values.ingress.pathtype }}
-        backend:
-          service:
-            name: {{ template "customerapi.fullname" . }}
-            port: 
-              number: 80
-{{- end }}
-```
-{% endraw %}
+<script src="https://gist.github.com/WolfgangOfner/51af9647020af28339067ee0d9a1c9a5.js"></script>
 
 This might look complicated at first glance but it is a simple Nginx rule. It starts with an if condition which lets you control whether the Ingress object should be created. Then it sets some metadata like name and namespace and inside the rules, it defines the path and the port of the application. If you use Kubernetes 1.14 to 1.18, you have to use apiVersion: networking.k8s.io/v1beta1. I am using Kubernetes 1.19.9 and therefore can use the GA version of the API.
 
 Lastly, add the values for the Ingress object to the values.release.yaml file:
 
-```yaml
-ingress:
-  enabled: true
-  annotations: 
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/use-regex: "true" 
-  namespace: __K8sNamespace__
-  path: /
-```
+<script src="https://gist.github.com/WolfgangOfner/8c3a22c61dcbee7250a38e20f2feceb5.js"></script>
  
 The K8sNamespace variable is defined in the Azure DevOps pipeline and will be replaced when the Tokenizer task is executed. You can read more about it in [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
 
@@ -134,24 +85,11 @@ This works fine but when you try to deploy the second microservice, you will get
 
 The solution for this problem is to add different paths for each microservice. For example, for the CustomerApi, I use /customerapi-test/?(.*) and for the OrderApi /orderapi-test/?(.*). Additionally, you have to configure this path in the Startup class of each microservice with the following code inside the Configure method:
 
-```CSharp
-app.UsePathBase("/customerapi-test");
-```
+<script src="https://gist.github.com/WolfgangOfner/68f71a6bd286cdff9c4ac1e2cb9e82c1.js"></script>
 
 The values.release.yaml file will contain the following code at the end:
 
-```yaml
-service:
-  type: ClusterIP
-  
-ingress:
-  enabled: true
-  annotations: 
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/use-regex: "true"     
-  namespace: __K8sNamespace__
-  path: /customerapi-test/?(.*)
-```
+<script src="https://gist.github.com/WolfgangOfner/2da2eca839fc2824125511dc934a8dea.js"></script>
 
 Note: by default, ingress is disabled to make it easier for readers to use the microservices. If you want to use the Ingress object, update the enabled value of the ingress section in the values.release.yaml file to true.
 

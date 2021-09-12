@@ -31,16 +31,7 @@ You can find my YAML pipeline on <a href="https://github.com/WolfgangOfner/Micro
 
 Adding approvals when using YAML pipelines is a bit more work but not complicated. In your Azure DevOps project open Pipelines --> Environments. If you ran my full pipeline, you will already have two environments, nuget-publish-internal and nuget-publish-public. The environments are created (or referenced if they already exist) with the environment property in the pipeline as shown in the following code:
 
-```yaml
-- stage: publishinternal
-  dependsOn: build
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-  displayName: 'Nuget - Publish Internal Packages'
-  jobs:
-  - deployment: publishinternal
-    displayName: 'Nuget - Publish packages to internal feed'
-    environment: nuget-publish-internal
-```
+<script src="https://gist.github.com/WolfgangOfner/1d25db75360db6d916939f213340677e.js"></script>
 
 If you don't have an environment yet, create one by clicking on New environment.
 

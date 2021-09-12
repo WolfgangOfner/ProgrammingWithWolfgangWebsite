@@ -49,9 +49,7 @@ If you are hosting your domain outside of Azure, add the Azure DNS zone namespac
 
 It might take a bit until the DNS servers are updated. You can check the DNS entries with nslookup:
 
-```shell
-nslookup -type=SOA customer.programmingwithwolfgang.net
-```
+<script src="https://gist.github.com/WolfgangOfner/77f7f3e2ab19aa97cf26924a37a6a5e3.js"></script>
 
 Once the DNS entries are updated, open your URL in your browser and you should see the Nginx 404 page.
 
@@ -63,46 +61,11 @@ The DNS settings are configured and now you want to tell Nginx to route customer
 
 All you have to do is to add the - host: parameter above the http section and provide your URL:
 
-{% raw %}
-```yaml
-{{- if .Values.ingress.enabled -}}
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: {{ .Values.ingress.namespace }}
-  namespace: {{ .Values.ingress.namespace }}
-{{- with .Values.ingress.annotations }}
-  annotations:
-{{ toYaml . | indent 4 }}
-{{- end }}
-spec:
-  rules: 
-  - host: {{ .Values.ingress.host }}
-    http:
-      paths:
-      - path: {{ .Values.ingress.path }}
-        pathType: {{ .Values.ingress.pathtype }}
-        backend:
-          service:
-            name: {{ template "customerapi.fullname" . }}
-            port: 
-              number: 80
-{{- end }}
-```
-{% endraw %}
+<script src="https://gist.github.com/WolfgangOfner/aa6ea19ec86b0aa738329c3373cfff35.js"></script>
 
 After adding the host line in the ingress.yaml file, add your URL to the values.yaml or values.release.yaml file. Additionally, change the path from /customerapi-test/?(.*) to /. Since the microservices are using different URLs, you don't need different paths anymore. The values.release.yaml file should now look as follows:
 
-```yaml
-ingress:
-  enabled: __IngressEnabled__
-  annotations: 
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/use-regex: "true"     
-  namespace: __K8sNamespace__
-  path: /
-  host: __URL__
-```
+<script src="https://gist.github.com/WolfgangOfner/f0f67999b590a327d3e615505cb53794.js"></script>
 
 The URL is defined as a variable in the CI/CD pipeline and will be added by the tokenizer. For more information about the tokenizer, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
 
@@ -113,9 +76,7 @@ IngressEnabled: true
 
 [In my last post](/setup-nginx-ingress-controller-kubernetes), I had a small workaround in the Startup.cs class to get Swagger working. This workaround is not needed anymore due to the usage of the URL and therefore can be removed:
 
-```CSharp
-app.UsePathBase("/customerapi-test");
-```
+<script src="https://gist.github.com/WolfgangOfner/68f71a6bd286cdff9c4ac1e2cb9e82c1.js"></script>
 
 That's it. Deploy both microservices and let's test them.
 

@@ -55,16 +55,7 @@ Enter a name and then select a trigger. As you can see, The template offers a wi
 
 Click on Create and your first Azure Function gets created.
 
-```CSharp
-public static class OrderNameUpdateFunction
-{
-    [FunctionName("OrderNameUpdateFunction")]
-    public static void Run([ServiceBusTrigger("CustomerQueue", Connection = "YourConnectionString")]string myQueueItem, ILogger log)
-    {
-        log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");
-    }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/a541911370cf494542822806b00f553b.js"></script>
 
 In the Azure Portal, go to your Service Bus Namespace and select your CustomerQueue. There select the Shared access policies pane and create a new policy with Listen. After you saved the policy, click on it and you can see the Primary Connection String. If you want to learn how to create an Azure Service Bus Queues and more details about Shared access policies, see my post [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue).
 
@@ -78,9 +69,7 @@ In the Azure Portal, go to your Service Bus Namespace and select your CustomerQu
 
 Copy the Primary Connection String and add the following line inside the Values to the local.settings.json file of your Azure Function:
 
-```yaml
-"QueueConnectionString": "Your Primary Connection String"
-```
+<script src="https://gist.github.com/WolfgangOfner/01ab63523afd6d3702c75691543fa6cf.js"></script>
 
 Note that there is a problem with the Service Bus SDK and therefore you have to remove the Entity Path at the end of the connection string. In my case the is "EntityPath=customerqueue". After you removed the EntityPath, set a breakpoint in the function, start the solution and then add something to your queue. As soon as you added a message to the queue, you will hit the breakpoint because the Azure Function was triggered. This confirms that your connection string and trigger are working.
 
@@ -88,49 +77,21 @@ Note that there is a problem with the Service Bus SDK and therefore you have to 
 
 Install Entity Framework Core 3.1.14 via NuGet or add the following line to your project file:
 
-```XML
-<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.14" />
-```
+<script src="https://gist.github.com/WolfgangOfner/d3722b8027dfbc61786973e380d1e19c.js"></script>
 
 Note that Entity Framework Core 5 currently has a dependency that is incompatible with Azure Functions. Azure Functions should be updated to .NET 5 soon. Next, create a new file and add the database context:
 
-```CSharp
-public class OrderContext : DbContext
-{
-    public OrderContext(DbContextOptions<OrderContext> options) : base(options)
-    {
-    }
-
-    public DbSet<Order> Order { get; set; }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/d5554ea9b2fccacae3dc90d5f9774f85.js"></script>
 
 Then create the Order and UpdateCustomerFullNameModel which you will need to load and update the orders.
 
-```CSharp
-public class Order
-{
-    public Guid Id { get; set; }
-    public int OrderState { get; set; }
-    public Guid CustomerGuid { get; set; }
-    public string CustomerFullName { get; set; }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/c63e26964ff56d1f6d59a37399d0dc32.js"></script>
 
-```CSharp
-public class UpdateCustomerFullNameModel
-{
-    public Guid Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/0f608c6bb6e09c55583657285ff95150.js"></script>
 
 Lastly, add the following line inside the Values section of the local.settings.json file to configure the connection string:
 
-```yaml
-"DatabaseConnectionString": "<YourDatabaseConnectionString>"
-```
+<script src="https://gist.github.com/WolfgangOfner/e855da7e97f77746513d5e7918f89f3f.js"></script>
 
 Replace <YourDatabaseConnectionString> with your connection string and you are good to go. Now let's set up dependency injection and inject the database context into the function.
 
@@ -138,69 +99,11 @@ Replace <YourDatabaseConnectionString> with your connection string and you are g
 
 To add dependency injection to an Azure Function, install the Microsoft.Azure.Functions.Extensions NuGet package. Then create a new class, called Startup with the following code:
 
-```CSharp
-[assembly: FunctionsStartup(typeof(Startup))]
-
-namespace OrderApi.Messaging.Receive
-{
-    class Startup : FunctionsStartup
-    {
-        public override void Configure(IFunctionsHostBuilder builder)
-        {
-            var connectionString = Environment.GetEnvironmentVariable("DatabaseConnectionString");
-            builder.Services.AddDbContext<OrderContext>(options => options.UseSqlServer(connectionString));
-        }
-    }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/99c13eb095002dfb49be15548690c187.js"></script>
 
 This code reads the connection string from the settings file and adds it to the database context. Now you can use constructor injection to inject the database context into your function. The whole code for the function looks as follows:
 
-```CSharp
-namespace OrderApi.Messaging.Receive
-{
-    public class OrderNameUpdateFunction
-    {
-        private readonly OrderContext _orderContext;
-
-        public OrderNameUpdateFunction(OrderContext orderContext)
-        {
-            _orderContext = orderContext;
-        }
-
-        [FunctionName("OrderNameUpdateFunction")]
-        public void Run([ServiceBusTrigger("CustomerQueue", Connection = "QueueConnectionString")] string queueItem, MessageReceiver messageReceiver, string locktoken)
-        {
-            try
-            {
-                var updateCustomerFullNameModel = JsonConvert.DeserializeObject<UpdateCustomerFullNameModel>(queueItem);
-
-                var ordersToUpdate = _orderContext.Order.Where(x => x.CustomerGuid == updateCustomerFullNameModel.Id).ToList();
-
-                if (ordersToUpdate.Any())
-                {
-                    foreach (var order in ordersToUpdate)
-                    {
-                        order.CustomerFullName = $"{updateCustomerFullNameModel.FirstName} {updateCustomerFullNameModel.LastName}";
-                    }
-
-                    _orderContext.Order.UpdateRange(ordersToUpdate);
-                    _orderContext.SaveChanges();
-                }
-                else
-                {
-                    messageReceiver.DeadLetterAsync(locktoken);
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                messageReceiver.DeadLetterAsync(locktoken);
-            }
-        }
-    }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/938898adea2804c5c30137ec372faef5.js"></script>
 
 The function deserializes the message into an UpdateCustomerFullNameModel object, then searches for all orders with the customer id from the deserialized object and updates all names. If something goes wrong, messageReceiver.DeadLetterAsync(locktoken) places the message in a dead letter queue. To use DeadLetterAsync() you have to install the Microsoft.Azure.WebJobs.Extensions.ServiceBus NuGet package.
 

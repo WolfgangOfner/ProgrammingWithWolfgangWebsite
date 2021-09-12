@@ -27,260 +27,31 @@ Continuous Integration or CI means that you want to integrate new features alway
 
 The changes are made in the CreateHelmPackage template. The whole template looks as follows:
 
-```yaml
-parameters:
-  - name: artifactName
-    type: string
-    default: 
-  - name: artifactStagingDirectory
-    type: string
-    default: 
-  - name: azureSubscription
-    type: string
-    default:
-  - name: buildNumber
-    type: string
-    default:
-  - name: clusterResourceGroup
-    type: string
-    default:
-  - name: chartPath
-    type: string
-    default:
-  - name: helmVersion
-    type: string
-    default: 
-  - name: kubernetesCluster
-    type: string
-    default:
-  - name: releaseValuesFile
-    type: string
-    default: 
-  - name: sourceFolder
-    type: string
-    default:
-
-steps:
-  - task: Tokenizer@0
-    displayName: 'Run Tokenizer'
-    inputs:
-      sourceFilesPattern: ${{ parameters.releaseValuesFile }}
-
-  - task: CopyFiles@2
-    displayName: 'Copy Files to:${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
-    inputs:
-      SourceFolder: ${{ parameters.sourceFolder }}
-      Contents: values.release.yaml
-      TargetFolder: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
-
-  - task: HelmInstaller@0
-    displayName: 'Install Helm ${{ parameters.helmVersion }}'
-    inputs:
-      helmVersion: '${{ parameters.helmVersion }}'
-      checkLatestHelmVersion: false
-      installKubectl: true
-
-  - task: HelmDeploy@0
-    displayName: 'helm package'
-    inputs:
-      azureSubscriptionEndpoint: ${{ parameters.azureSubscription }}
-      azureResourceGroup: ${{ parameters.clusterResourceGroup }}
-      kubernetesCluster: ${{ parameters.kubernetesCluster }}
-      command: 'package'
-      chartPath: ${{ parameters.chartPath }}
-      chartVersion: ${{ parameters.buildNumber }}
-      destination: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
-      save: false      
-
-  - publish: '${{ parameters.artifactStagingDirectory }}/${{ parameters.artifactName }}'
-    artifact: '${{ parameters.artifactName }}'
-    displayName: 'Publish Artifact: ${{ parameters.artifactName }}'
-```
+<script src="https://gist.github.com/WolfgangOfner/9f11df940210e6719c7b93d19ad4d2c1.js"></script>
 
 Splitting up the CI and CD part also helps to make the pipeline smaller. For example, only around half of the variables are needed for the CI pipeline. The whole CI pipeline looks as follows:
 
-```yaml
-name : CustomerApi-CI
-trigger:
-  branches:
-    include:
-      - master
-  paths:
-    include:
-      - CustomerApi/*
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-variables:  
-  AzureSubscription: 'AzureServiceConnection' # Name of the Service Connection
-  ApiName: 'customerapi'
-  ArtifactName: 'CustomerApi'
-  ArtifactSourceFolder: $(ArtifactName)/$(ArtifactName)
-  BuildId: $(Build.BuildId)
-  BuildNumber: $(GitVersion.NuGetVersionV2)
-  ClusterResourceGroup: MicroserviceDemo    
-  ChartPath: '$(ArtifactName)/$(ArtifactName)/charts/$(ApiName)'
-  HelmVersion: 3.5.0  
-  Repository: 'wolfgangofner/$(ApiName)' # '<YourACRName>.azurecr.io/<YourRepositoryName>' # replace with your repository  
-  KubernetesCluster: 'microservice-aks'
-  ReleaseValuesFile: '$(ArtifactSourceFolder)/values.release.yaml'    
-
-stages:
-- stage: Build  
-  jobs:  
-  - job: Build
-    displayName: Build and push Docker image and create Helm package
-    steps: 
-    - template: templates/BuildVersioning.yml
-    - template: templates/DockerBuildAndPush.yml
-      parameters:
-          buildId: $(BuildId)
-          patMicroserviceDemoNugetsFeed: $(PatMicroserviceDemoNugetsFeed)
-          containerRegistry: 'Docker Hub' # MicroserviceDemoRegistry # replace with your Service Connection name
-          repository: $(Repository) 
-          tag: $(BuildNumber)
-          artifactName: $(ArtifactName)
-    - template: templates/CreateHelmPackage.yml
-      parameters:          
-          azureSubscription: $(AzureSubscription)
-          buildNumber: $(BuildNumber)
-          clusterResourceGroup: $(ClusterResourceGroup)          
-          chartPath: $(ChartPath)          
-          kubernetesCluster: $(KubernetesCluster)        
-          releaseValuesFile: $(ReleaseValuesFile)
-          artifactStagingDirectory: $(Build.ArtifactStagingDirectory)
-          artifactName: $(ArtifactName)
-          helmVersion: $(HelmVersion)
-          sourceFolder: $(ArtifactSourceFolder)
-```
+<script src="https://gist.github.com/WolfgangOfner/e1e5331a44da4171643d3fd87269774e.js"></script>
 
 ## Creating the Continous Deployment Pipeline
 
 The Continous Deployment (CD) pipeline might look a bit complicated at first, but it is almost the same as it was before. The first step is to create a new file, called CustomerApi-CD in the pipelines folder and then configure a trigger to run the pipeline after the CI pipeline. This can be achieved with the pipelines section at the top of the pipeline.
 
-```yaml
-name : CustomerApi-CD
-trigger: none
-resources:
-  containers:
-  - container: linuxsqlpackage
-    image: wolfgangofner/linuxsqlpackage:1.0
-  pipelines:
-   - pipeline: CustomerApiBuild
-     source: CustomerApi-CI
-     trigger:
-      branches:
-       include:
-         - master         
-         - pull/*
-         - refs/pull/*
-```
+<script src="https://gist.github.com/WolfgangOfner/371c5f8e07f08093e75cb170849bdf0f.js"></script>
 
 This code references the CustomerApi-CI which is the name of the CI pipeline and runs when there are changes on the master branch or if a pull request triggered the CI pipeline. Next, change the path to the Helm chart package and the values.release.yaml file. These files were uploaded by the CI pipeline and can be found in the Pipeline.Workspace now. This is a built-in variable of Azure DevOps and allows you to access files uploaded by the CI pipeline. The path to the files looks as follows:
 
-```yaml
-ChartPackage: '$(Pipeline.Workspace)/CustomerApiBuild/CustomerApi/customerapi-$(RESOURCES.PIPELINE.CustomerApiBuild.RUNNAME).tgz'  
-ReleaseValuesFile: '$(Pipeline.Workspace)/CustomerApiBuild/CustomerApi/values.release.yaml'
-```
+<script src="https://gist.github.com/WolfgangOfner/104a3260dd09248fd4aee23d7728fa46.js"></script>
 
 The next step is to download the Helm package and the database. This section stays almost the same, except that you have to download the Helm package from the CI pipeline. This is done with the following code.
 
-```yaml
-  jobs:
-  - deployment: Web_Test
-    displayName: 'Deploy CustomerApi to the customerapi-test environment'
-    environment: customerapi-test
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: CustomerApiBuild
-            artifact: $(ArtifactName)
-```
+<script src="https://gist.github.com/WolfgangOfner/9f3d2ecb5c2ea147237dbf57a113fc35.js"></script>
 
 ## The finished CD Pipeline
 
 The finished CD pipeline looks as follows.
 
-```yaml
-name : CustomerApi-CD
-trigger: none
-resources:
-  containers:
-  - container: linuxsqlpackage
-    image: wolfgangofner/linuxsqlpackage:1.0
-  pipelines:
-   - pipeline: CustomerApiBuild
-     source: CustomerApi-CI
-     trigger:
-      branches:
-       include:
-         - master         
-         - pull/*
-         - refs/pull/*
-
-pool:
-  vmImage: 'ubuntu-latest'
-
-variables:  
-  AzureSubscription: 'AzureServiceConnection' # Name of the Service Connection
-  ApiName: 'customerapi'
-  ArtifactName: 'CustomerApi'      
-  ClusterResourceGroup: MicroserviceDemo  
-  ChartPackage: '$(Pipeline.Workspace)/CustomerApiBuild/CustomerApi/customerapi-$(RESOURCES.PIPELINE.CustomerApiBuild.RUNNAME).tgz'  
-  DatabaseName: Customer
-  HelmVersion: 3.5.0    
-  KubernetesCluster: 'microservice-aks'
-  ReleaseValuesFile: '$(Pipeline.Workspace)/CustomerApiBuild/CustomerApi/values.release.yaml'
-  SQLServerName: wolfgangmicroservicedemosql.database.windows.net # replace with your server url  
-  IngressEnabled: true
-  TlsSecretName: customerapi-tls  
-
-stages:
-- stage: Test  
-  condition: ne(variables['Build.Reason'], 'PullRequest')
-  variables:
-    K8sNamespace: '$(ApiName)-$(DeploymentEnvironment)'
-    ConnectionString: "Server=tcp:$(SQLServerName),1433;Initial Catalog=$(DatabaseName);Persist Security Info=False;User ID=$(DbUser);Password=$(DbPassword);MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-    URL: customer.programmingwithwolfgang.com # replace with your service url
-  jobs:
-  - deployment: Web_Test
-    displayName: 'Deploy CustomerApi to the customerapi-test environment'
-    environment: customerapi-test
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: CustomerApiBuild
-            artifact: $(ArtifactName)
-          - template: templates/DeployHelmPackage.yml
-            parameters:
-              apiName: $(ApiName)
-              azureSubscription: '$(AzureSubscription)'
-              clusterResourceGroup: '$(ClusterResourceGroup)'
-              chartPackage: '$(ChartPackage)'              
-              helmVersion: $(HelmVersion)
-              k8sNamespace: $(K8sNamespace)
-              kubernetesCluster: $(KubernetesCluster)
-              releaseValuesFile: '$(ReleaseValuesFile)' 
- 
-  - deployment: Database_Test
-    dependsOn: Web_Test    
-    displayName: 'Deploy the test database'   
-    environment: database-test
-    container: linuxsqlpackage
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: CustomerApiBuild
-            artifact: dacpacs
-          - template: templates/DatabaseDeploy.yml
-            parameters:          
-                connectionString: $(ConnectionString)
-                dacpacPath: "$(Pipeline.Workspace)/CustomerApiBuild/dacpacs/$(ArtifactName).Database.Build.dacpac"
-```
+<script src="https://gist.github.com/WolfgangOfner/ed53a8b09130ffd25b759c3369d7b93a.js"></script>
 
 ## Test the new CI and CD Pipelines
 

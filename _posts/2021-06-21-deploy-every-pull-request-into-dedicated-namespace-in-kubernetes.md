@@ -21,51 +21,15 @@ If you have not enabled CI builds during pull requests, see [Run the CI Pipeline
 
 Deploying the Helm package during the pull request is almost the same as the deployment to the test environment:
 
-```yaml
-- stage: PR_Deploy
-  condition: startsWith(variables['resources.pipeline.CustomerApiBuild.sourcebranch'], 'refs/pull/') 
-  variables:      
-    DeploymentEnvironment: 'pr-$(prId)'
-    K8sNamespace: '$(ApiName)-$(DeploymentEnvironment)'
-    ConnectionString: "Server=tcp:$(SQLServerName),1433;Initial Catalog=$(DatabaseName)-$(DeploymentEnvironment);Persist Security Info=False;User ID=$(DbUser);Password=$(DbPassword);MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;"
-    URL: $(DeploymentEnvironment).customer.programmingwithwolfgang.com # replace with your service url     
-  jobs:
-  - deployment: Web_PR
-    environment: "customerapi-PR-Deploy"
-    displayName: 'Deploy CustomerApi to the PR environment'
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: CustomerApiBuild
-            artifact: $(ArtifactName)
-          - template: templates/GetPrId.yml
-          - template: templates/DeployHelmPackage.yml
-            parameters:
-              apiName: $(ApiName)
-              azureSubscription: '$(AzureSubscription)'
-              clusterResourceGroup: '$(ClusterResourceGroup)'
-              chartPackage: '$(ChartPackage)'
-              helmVersion: $(HelmVersion)
-              k8sNamespace: $(K8sNamespace)
-              kubernetesCluster: $(KubernetesCluster)
-              releaseValuesFile: '$(ReleaseValuesFile)'
-```
+<script src="https://gist.github.com/WolfgangOfner/8429d8a38c011946519a8d23f8d3653f.js"></script>
 
 The most notable change is the condition that checks the source branch of the build. Since the CI and CD pipeline are separated and the CD pipeline is triggered by the CI pipeline, you can not access the source branch directly. Therefore you have to reference the source branch of the CI build. A pull request branch always starts with refs/pull. You can check this with the following condition:
 
-```yaml
-condition: startsWith(variables['resources.pipeline.CustomerApiBuild.sourcebranch'], 'refs/pull/') 
-```
+<script src="https://gist.github.com/WolfgangOfner/b98ad3a5d1a972122c0ffc9fc43c717f.js"></script>
 
 The next change to the regular deployment is obtaining the pull request id. The pull request id is great to distinguish between pull requests and therefore will be used as part of the URL and namespace. Since the CD pipeline is triggered by the CI pipeline and not the pull request directly, it is not possible to access the pull request id through the built-in variable System.PullRequest.PullRequestId. Instead, I use the following PowerShell command which is placed inside the GetPrId.yaml template:
 
-```yaml
-- pwsh: |
-    $prId = [regex]::match('$(resources.pipeline.OrderApiBuild.sourcebranch)','(refs/pull/)(\d*)(/merge)').Groups[2].Value
-    Write-Host "##vso[task.setvariable variable=prId;]$prId"    
-  displayName: 'Get PR Id'
-```
+<script src="https://gist.github.com/WolfgangOfner/8db776cd1ca9187f87b9076ec0ab3656.js"></script>
 
 For the Kubernetes namespace, use a meaningful name and add the pull request id, for example, customerapi-pr-123. The URL almost works the same way, for example, pr-123.customerapi.programmingwithwolfgang.com. If you followed this series and have the DNS already configured for subdomains, then you do not have to change anything in the DNS settings. If you haven't made the DNS configuration, see [Configure custom URLs to access Microservices running in Kubernetes](/configure-custom-urls-to-access-microservices-running-in-kubernetes) for more information.
 
@@ -75,33 +39,7 @@ As you have seen, deploying pull requests is quite easy. It is also important to
 
 Deleting the previously created namespace inside the Azure DevOps YAML pipeline is quite simple:
 
-```yaml
-- stage: PR_Delete
-  dependsOn: PR_Deploy  
-  condition: succeeded('PR_Deploy')
-  variables:
-    K8sNamespace: '$(ApiName)-pr-$(prId)'
-  jobs:  
-  - deployment: Delete_PR_Namespace
-    environment: "customerapi-PR-Delete" 
-    displayName: Build and push Docker image and create Helm package
-    strategy:
-      runOnce:
-        deploy:
-         steps:
-         - download: none
-         - template: templates/GetPrId.yml
-         - task: Kubernetes@1       
-           inputs:
-             connectionType: 'Azure Resource Manager'
-             azureSubscriptionEndpoint: 'AzureServiceConnection'
-             azureResourceGroup: $(ClusterResourceGroup)
-             kubernetesCluster: $(KubernetesCluster)
-             useClusterAdmin: true
-             command: 'delete'
-             arguments: 'namespaces $(k8sNamespace)'
-           displayName: 'Delete PR namespace'
-```
+<script src="https://gist.github.com/WolfgangOfner/4baac64aa588117648a2beb7a451c8f9.js"></script>
 
 This code reads the pull request id to find the correct namespace name and then uses kubectl to delete the Kubernetes namespace. The more interesting question is how you can control when the namespace gets deleted. The code above runs immediately after the deployment is finished. This means that you create a new namespace and in the next step delete it again.
 

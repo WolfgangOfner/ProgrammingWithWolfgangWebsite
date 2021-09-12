@@ -35,59 +35,13 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 Create a new pipeline and define the following variables:
 
-```yaml
-variables:  
-  AksClusterName: microservice-aks
-  AzureSubscription: AzureServiceConnection # replace with your subscription connection name
-  AzureConnectionType: Azure Resource Manager 
-  CertIssuerEmail: <your email>  # replace with your email
-  CertManagerNamespace: cert-manager  
-  FunctionName: OrderApiMessagingReceive # replace with unique name
-  FunctionOs: Linux
-  FunctionPlanName: MicroservicedemoFunctionPlan
-  FunctionSku: B1  
-  FunctionVersion: 3    
-  HelmVersion: '3.5.0'
-  Kubernetesversion: '1.19.9'
-  KubectlVersion: '1.19.9'
-  NetworkPlugin: kubenet
-  NodeCount: 1  
-  NginxNamespace: ingress-basic
-  ResourceGroupLocation: westeurope
-  ResourceGroupName: MicroserviceDemo  
-  ServiceBusNamespaceName: microservicedemo # replace with unique name
-  ServiceBusNamespaceSku: Basic
-  ServiceBusQueueName: CustomerQueue
-  ServiceBusQueueSasListenName: ReceiveKey
-  ServiceBusQueueSasSendName: SendKey  
-  SqlServerName: wolfgangmicroservicedemosql # replace with unique name
-  StorageAccountName: orderreceivestorage # replace with unique name
-```
+<script src="https://gist.github.com/WolfgangOfner/4c008011147ad58560e38d151091f025.js"></script>
 
 The variables should be self-explanatory when you look at their usage later on. Also if you followed this series, you should have seen all names and services before already. You need an existing Azure Service Connection configured in Azure DevOps. If you don't have one yet, I explain in [Deploy to Azure Kubernetes Service using Azure DevOps YAML Pipelines](/deploy-kubernetes-azure-devops/#create-a-service-connection-in-azure-devops) how to create one.
 
 Next, install Helm to use it later and create a resource group using the Azure CLI. This resource group will host all new services. 
 
-```yaml
-steps:
-  - task: HelmInstaller@0
-    displayName: Install Helm
-    inputs:
-      helmVersion: '$(HelmVersion)'
-      checkLatestHelmVersion: false
-      installKubectl: true
-      kubectlVersion: '$(KubectlVersion)'
-      checkLatestKubectl: false
-
-  - task: AzureCLI@2
-    displayName: "Create resource group"
-    inputs:
-      azureSubscription: '$(AzureSubscription)'
-      scriptType: 'pscore'
-      scriptLocation: 'inlineScript'
-      inlineScript: |                
-        az group create -g "$(ResourceGroupName)" -l "$(ResourceGroupLocation)"
-```
+<script src="https://gist.github.com/WolfgangOfner/d04b083e667c4471ae665e05a0427091.js"></script>
 
 If you are unfamiliar with Helm, see [Helm - Getting Started](/helm-getting-started) and [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm) for more information.
 
@@ -95,175 +49,31 @@ If you are unfamiliar with Helm, see [Helm - Getting Started](/helm-getting-star
 
 Creating an AKS cluster is quite simple due to the names of the parameters. For example, you can configure the VM size, what Kubernetes version you want to install or the node count of your cluster. The full command looks as follows:
 
-```yaml
-- task: AzureCLI@2
-  displayName: "Create AKS cluster"
-  inputs:
-    azureSubscription: '$(AzureSubscription)'
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: |        
-      az aks create `
-          --resource-group "$(ResourceGroupName)" `
-          --location "$(ResourceGroupLocation)"  `
-          --name "$(AksClusterName)" `
-          --network-plugin $(NetworkPlugin) `
-          --kubernetes-version $(KubernetesVersion) `
-          --node-vm-size Standard_B2s `
-          --node-osdisk-size 0 `
-          --node-count $(NodeCount)`
-          --load-balancer-sku standard `
-          --max-pods 110 `
-          --dns-name-prefix microservice-aks-dns `
-          --generate-ssh-keys
-```
+<script src="https://gist.github.com/WolfgangOfner/404ffb1a00477da4dea5c062d57e3586.js"></script>
 
 #### Install the Cert-Manager Addon
 
 The Cert-Manager adds SSL certificates to your services running inside AKS to allow the usage of HTTPS. If you read [Automatically issue SSL Certificates and use SSL Termination in Kubernetes](/automatically-issue-ssl-certificates-and-use-ssl-termination-in-kubernetes), then you will be familiar with the following code since it is identical.
 
-```yaml
-- task: HelmDeploy@0
-  displayName: "Install cert manager"
-  inputs:
-    connectionType: '$(AzureConnectionType)'
-    azureSubscription: '$(AzureSubscription)'
-    azureResourceGroup: '$(ResourceGroupName)'
-    kubernetesCluster: '$(AksClusterName)'
-    useClusterAdmin: true
-    command: 'repo'
-    arguments: 'add jetstack https://charts.jetstack.io'
-
-- task: HelmDeploy@0
-  displayName: "Install cert manager"
-  inputs:
-    connectionType: '$(AzureConnectionType)'
-    azureSubscription: '$(AzureSubscription)'
-    azureResourceGroup: '$(ResourceGroupName)'
-    kubernetesCluster: '$(AksClusterName)'
-    useClusterAdmin: true
-    command: 'repo'
-    arguments: 'update'
-
-- task: HelmDeploy@0
-  displayName: "Install cert manager"
-  inputs:
-    connectionType: '$(AzureConnectionType)'
-    azureSubscription: '$(AzureSubscription)'
-    azureResourceGroup: '$(ResourceGroupName)'
-    kubernetesCluster: '$(AksClusterName)'
-    useClusterAdmin: true
-    namespace: '$(CertManagerNamespace)'
-    command: 'upgrade'
-    chartType: 'Name'
-    chartName: 'jetstack/cert-manager'      
-    releaseName: 'cert-manager'
-    overrideValues: 'installCRDs=true,inodeSelector.kubernetes\.io/os=linux,webhook.nodeSelector.kubernetes\.io/os"=linux,cainjector.nodeSelector."kubernetes\.io/os"=linux'
-    arguments: '--create-namespace'
-```
+<script src="https://gist.github.com/WolfgangOfner/7176f6e951717697d165f272f1ae5e00.js"></script>
 
 #### Add the Certifcate Cluster Issuer
 
 The SSL certificates need to be issued using the Cluster Issuer object. I am using the same YAML file as in [Automatically issue SSL Certificates and use SSL Termination in Kubernetes](/automatically-issue-ssl-certificates-and-use-ssl-termination-in-kubernetes) except that this time it is applied as inline code and with the variable for the email address.
 
-```yaml
-- task: Kubernetes@1
-  inputs:
-    connectionType: 'Azure Resource Manager'
-    azureSubscriptionEndpoint: 'AzureServiceConnection'
-    azureResourceGroup: 'MicroserviceDemo'
-    kubernetesCluster: 'microservice-aks'
-    useClusterAdmin: true
-    command: 'apply'
-    useConfigurationFile: true
-    configurationType: 'inline'
-    inline: |
-      apiVersion: cert-manager.io/v1
-      kind: ClusterIssuer
-      metadata:
-        name: letsencrypt
-      spec:
-        acme:
-          server: https://acme-v02.api.letsencrypt.org/directory
-          email: $(CertIssuerEmail)
-          privateKeySecretRef:
-            name: letsencrypt
-          solvers:
-          - http01:
-              ingress:
-                class: nginx
-                podTemplate:
-                  spec:
-                    nodeSelector:
-                      "kubernetes.io/os": linux
-    secretType: 'dockerRegistry'
-    containerRegistryType: 'Azure Container Registry'
-  displayName: 'Install Cluster Issuer'
-```
+<script src="https://gist.github.com/WolfgangOfner/08f4aa0160702ea68bd4932b7068b895.js"></script>
 
 #### Install Nginx and configure it as Ingress Controller
 
 In [Set up Nginx as Ingress Controller in Kubernetes](/setup-nginx-ingress-controller-kubernetes), I added Nginx and configured it as Ingress Controller of my AKS cluster. To install Nginx in the IaC pipeline, add its Helm repository, update it and then install it with the following commands using Azure CLI:
 
-```yaml
-- task: HelmDeploy@0
-  displayName: "Install ingress-nginx (Helm repo add)"    
-  inputs:
-    connectionType: '$(AzureConnectionType)'
-    azureSubscription: '$(AzureSubscription)'
-    azureResourceGroup: '$(ResourceGroupName)'
-    kubernetesCluster: '$(AksClusterName)'
-    useClusterAdmin: true
-    command: 'repo'
-    arguments: 'add ingress-nginx https://kubernetes.github.io/ingress-nginx'
-
-- task: HelmDeploy@0
-  displayName: "Install ingress-nginx (Helm repo update)"    
-  inputs:
-    connectionType: '$(AzureConnectionType)'
-    azureSubscription: '$(AzureSubscription)'
-    azureResourceGroup: '$(ResourceGroupName)'
-    kubernetesCluster: '$(AksClusterName)'
-    useClusterAdmin: true
-    command: 'repo'
-    arguments: 'update'
-
-- task: HelmDeploy@0
-  displayName: "Install ingress-nginx"    
-  inputs:
-    connectionType: '$(AzureConnectionType)'
-    azureSubscription: '$(AzureSubscription)'
-    azureResourceGroup: '$(ResourceGroupName)'
-    kubernetesCluster: '$(AksClusterName)'
-    useClusterAdmin: true
-    command: 'upgrade'
-    chartType: 'Name'
-    chartName: 'ingress-nginx/ingress-nginx'      
-    releaseName: 'ingress-nginx'
-    overrideValues: 'controller.replicaCount=2,controller.nodeSelector."beta\.kubernetes\.io/os"=linux,defaultBackend.nodeSelector."beta\.kubernetes\.io/os"=linux,controller.admissionWebhooks.patch.nodeSelector."beta\.kubernetes\.io/os"=linux'
-    namespace: $(NginxNamespace)
-    arguments: '--create-namespace'
-```
+<script src="https://gist.github.com/WolfgangOfner/fad23a93de550bc27e13cd49558793a8.js"></script>
 
 ### Create a new Azure SQL Server
 
 After the deployment of the AKS cluster is finished, let's add a new Azure SQL Server witht he following command:
 
-```yaml
-- task: AzureCLI@2
-  displayName: "Create SQL Server"
-  inputs:
-    azureSubscription: '$(AzureSubscription)'
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az sql server create `
-      --location $(ResourceGroupLocation) `
-      --resource-group $(ResourceGroupName) `
-      --name $(SqlServerName) `
-      --admin-user $(SqlServerAdminUser) `
-      --admin-password "$(SqlServerAdminPassword)"
-```
+<script src="https://gist.github.com/WolfgangOfner/77eff33e4b0ef026697b3175bd62e0d9.js"></script>
 
 You might miss the variables SqlServerAdminUser and SqlServerAdminPassword. Since these values are confidential, add them as secret variables to your Azure DevOps pipeline by clicking on Variables on the top-right corner of your pipeline window. 
 
@@ -277,21 +87,7 @@ You might miss the variables SqlServerAdminUser and SqlServerAdminPassword. Sinc
 
 By default, the Azure SQL Server does not allow any connections. Therefore you have to add firewall rules to allow the access to the SQL Service. The following code enables Azure resources like Azure DevOps to access the SQL Server. 
 
-```yaml
-- task: AzureCLI@2
-  displayName: "Create SQL Server Firewall rule"
-  inputs:
-    azureSubscription: '$(AzureSubscription)'
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: |     
-      az sql server firewall-rule create `
-      --resource-group $(ResourceGroupName) `
-      --server $(SqlServerName) `
-      --name AllowAzureServices `
-      --start-ip-address 0.0.0.0 `
-      --end-ip-address 0.0.0.0
-```
+<script src="https://gist.github.com/WolfgangOfner/0561b8ae25e02484d2c53aa1e7ff9581.js"></script>
 
 Feel free to add as many firewall rules as you need. All you have to do is to edit the start and end ip address parameters.
 
@@ -299,115 +95,21 @@ Feel free to add as many firewall rules as you need. All you have to do is to ed
 
 To create an Azure Service Bus Queue, you also have to create an Azure Service Bus Namespace first. I talked about these details in [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue).
 
-```yaml
-- task: AzureCLI@2
-  displayName: "Create Azure Service Bus Namespace"
-  inputs:
-    azureSubscription: '$(AzureSubscription)'
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az servicebus namespace create `
-      --name $(ServiceBusNamespaceName) `
-      --sku $(ServiceBusNamespaceSku) `
-      --resource-group $(ResourceGroupName) `
-      --location $(ResourceGroupLocation)
-
-- task: AzureCLI@2
-  displayName: "Create Azure Service Bus Queue"
-  inputs:
-    azureSubscription: '$(AzureSubscription)'
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az servicebus queue create `
-      --name $(ServiceBusQueueName) `
-      --namespace-name $(ServiceBusNamespaceName) `
-      --resource-group $(ResourceGroupName)
-```
+<script src="https://gist.github.com/WolfgangOfner/df73e1d50da81bd4c77d5c741d8b7146.js"></script>
 
 To allow applications to read or write to the queue, you have to create shared access signatures (SAS). The following commands create both a SAS for listening and sending messages.
 
-```yaml
-- task: AzureCLI@2
-  displayName: "Create Azure Service Bus Queue Send SAS"
-  inputs:
-    azureSubscription: '$(AzureSubscription)'
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az servicebus queue authorization-rule create `
-      --name $(ServiceBusQueueSasSendName) `
-      --namespace-name $(ServiceBusNamespaceName) `
-      --queue-name $(ServiceBusQueueName) `
-      --resource-group $(ResourceGroupName) `
-      --rights Send
-
-- task: AzureCLI@2
-  displayName: "Create Azure Service Bus Queue Listen SAS"
-  inputs:
-    azureSubscription: '$(AzureSubscription)'
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az servicebus queue authorization-rule create `
-      --name $(ServiceBusQueueSasListenName) `
-      --namespace-name $(ServiceBusNamespaceName) `
-      --queue-name $(ServiceBusQueueName) `
-      --resource-group $(ResourceGroupName) `
-      --rights Listen
-```
+<script src="https://gist.github.com/WolfgangOfner/71c0a1139bc53ecc5eb5b30a340391d6.js"></script>
 
 ### Create an Azure Function
 
 The last service I have been using in my microservice series (["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero)) is an Azure Function. Before you can create an Azure Function using Azure CLI, you have to create a Storage Account and an App Service Plan.
 
-```yaml
-- task: AzureCLI@2
-  displayName: "Create Azure Storage Account"
-  inputs:
-    azureSubscription: '$(AzureSubscription)'
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az storage account create `
-      --name $(StorageAccountName) `
-      --resource-group $(ResourceGroupName)
-
-- task: AzureCLI@2
-  displayName: "Create Azure App Service Plan"
-  inputs:
-    azureSubscription: '$(AzureSubscription)'
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az functionapp plan create `
-      --name $(FunctionPlanName) `
-      --resource-group $(ResourceGroupName) `
-      --sku $(FunctionSku) `
-      --is-linux true
-```
+<script src="https://gist.github.com/WolfgangOfner/62243241c2a3bef5d41b6ce31f14b6cc.js"></script>
 
 With the Azure Storage Account and App Service Plan set up, create the Azure Function.
 
-```yaml
-- task: AzureCLI@2
-  displayName: "Create Azure Function"
-  inputs:
-    azureSubscription: '$(AzureSubscription)'
-    scriptType: 'pscore'
-    scriptLocation: 'inlineScript'
-    inlineScript: |
-      az functionapp create `
-      --resource-group $(ResourceGroupName) `
-      --plan $(FunctionPlanName) `
-      --name $(FunctionName) `
-      --storage-account $(StorageAccountName) `
-      --functions-version $(FunctionVersion) `
-      --os-type $(FunctionOs) `
-      --runtime dotnet `
-      --disable-app-insights true
-```
+<script src="https://gist.github.com/WolfgangOfner/0a73b0e93a0b5503e98e15056cb8a694.js"></script>
 
 ## Create all your Infrastrucute using the IaC Pipeline
 

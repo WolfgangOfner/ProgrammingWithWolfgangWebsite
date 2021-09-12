@@ -27,60 +27,19 @@ In my demo, I am using Helm to deploy my application to Kubernetes. You don't ha
 
 To create the Horizontal Pod Autoscaler, create a new yaml file named hpa inside the tempolates folder inside the Helm charts folder and past the following code into the file:
 
-{% raw %}
-```yaml
-{{- if .Values.hpa.enabled -}}
-apiVersion: autoscaling/v1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: {{ template "customerapi.fullname" . }}
-spec:
-  maxReplicas: {{ .Values.hpa.maxReplicas }}
-  minReplicas: {{ .Values.hpa.minReplicas }}
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: {{ template "customerapi.fullname" . }}
-  targetCPUUtilizationPercentage: {{ .Values.hpa.averageCpuUtilization }}
-{{- end }}
-```
-{% endraw %}
+<script src="https://gist.github.com/WolfgangOfner/eb31ccfd72efe22793996cd04f3c81b0.js"></script>
 
 This config creates a Horizontal Pod Autoscaler if the hpa.enabled flag is set to true. Then it configures the specification with the maximum and minimum amount of replicas and at the end the target metric. In this example, the target metric is CPU utilization. All values starting with .Values are provided by the values.yaml file. Using the values.yaml file allows you have one file where you can override the configuration of your Helm charts. In my next post, I will show how to use a Tokenizer to apply dynamic values during your deployment.
 
 If you use the values.yaml file, add the following section:
 
-```yaml
-hpa:
-  enabled: true
-  minReplicas: 1
-  maxReplicas: 10
-  averageCpuUtilization: 50
-```
+<script src="https://gist.github.com/WolfgangOfner/8030b76f16e33e369abfa0912fee47f3.js"></script>
 
 If you don't use the values file, you can replace the placeholders in the hpa with actual values:
 
-
+<script src="https://gist.github.com/WolfgangOfner/23c42cc3898ccc4039c5941290130b4e.js"></script>
 
 This value can be configured using the --horizontal-pod-autoscaler-downscale-stabilization flag, which defaults to 5 minutes. This means that scaledowns will occur gradually, smoothing out the impact of rapidly fluctuating metric values.
-
-{% raw %}
-```yaml
-apiVersion: autoscaling/v1
-kind: HorizontalPodAutoscaler
-metadata:
-  name: {{ template "customerapi.fullname" . }}
-spec:
-  maxReplicas: 10
-  minReplicas: 1
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: {{ template "customerapi.fullname" . }}
-  targetCPUUtilizationPercentage: 50
-{{- end }}
-```
-{% endraw %}
 
 Note that you should never run only one pod for production applications. I would recommend running at least 3 pods to ensure high-availability.
 
@@ -100,45 +59,8 @@ Deploy the hpa to your Kubernetes cluster. If you want to learn how to deploy th
 
 There are many load testing tools out there. I wrote a super simple one myself and added it to the root of the Github repository inside the AutoscalingDemo folder. The code looks as follows:
 
-```csharp
-public class Program
-{
-    private static readonly HttpClient Client = new();
-    private static readonly ConcurrentBag<int> MillisecondsElapsed = new()
-    
-    public static async void SendRequest()
-    {
-        var stopwatch = new Stopwatch();
-        stopwatch.Start()
+<script src="https://gist.github.com/WolfgangOfner/9ea245746af4f6ec12ccc249a9f64386.js"></script>
 
-        // replace URL with your URL
-        var stringTask = Client.GetStringAsync("http://20.73.220.220/v1/PrimeNumber?nThPrimeNumber=50000");
-        var message = await stringTask
-
-        stopwatch.Stop();
-        Console.ForegroundColor = ConsoleColor.Cyan;
-        Console.WriteLine($"Milliseconds elapsed: {stopwatch.Elapsed.Milliseconds} to calculate result: {message}")
-
-        Console.ForegroundColor = ConsoleColor.Green;
-        MillisecondsElapsed.Add(stopwatch.Elapsed.Milliseconds);
-        Console.WriteLine($"Average request time: {MillisecondsElapsed.Sum() / MillisecondsElapsed.Count} milliseconds over {MillisecondsElapsed.Count} requests");
-        Console.ResetColor();
-    }
-    
-    public static void Main()
-    {
-        for (var i = 0; i < 500; i++)
-        {
-            var thread = new Thread(SendRequest);
-            thread.Start()
-
-            Thread.Sleep(100);
-        }
-
-        Console.ReadKey();
-    }
-}
-```
 The test application creates 500 threads and calls my microservice to calculate a prime number. This is quite CPU heavy and will trigger the hpa to scale out my microservice. If you run this code, replace the string for the GetStringAsync method with your URL.
 
 ### Load test the Microservice without auto-scaling
@@ -213,19 +135,7 @@ Some workloads are highly variable which would lead to a constant scaling (in or
 
 Scaling policies allow you to configure for how long a certain value has to be reached until scaling happens. This could be for example, only scale-out if the CPU utilization is higher than 70% for more than 30 seconds and only scale in if the CPU utilization is below 30% for 30 seconds. The code for this looks as follows:
 
-```yaml
-behavior:
-  scaleDown:
-    policies:
-    - type: Percent
-      value: 30
-      periodSeconds: 30
-  scaleUp:    
-    policies:
-    - type: Percent
-      value: 70
-      periodSeconds: 30
-```
+<script src="https://gist.github.com/WolfgangOfner/0d643a16a7d9e81ea8d15ca134315a7c.js"></script>
 
 Policies can also be used to limit the rate of downscale, for example, only remove 3 pods per minute when scaling down.
 
@@ -233,15 +143,7 @@ Policies can also be used to limit the rate of downscale, for example, only remo
 
 The stabilization window restricts the hpa from scaling out or in too frequently. For example, if you set the stabilization window to 3 minutes (180 seconds) the timespan between scaling operations is at least 180 minutes. You can configure the stabilization window for scaling out and in independently. The following code shows a stabilization window for scaling down:
 
-```yaml
-behavior:
-  stabilizationWindowSeconds: 180
-  scaleDown:
-    policies:
-    - type: Percent
-      value: 30
-      periodSeconds: 30  
-```
+<script src="https://gist.github.com/WolfgangOfner/55956c890f715766c5020182f7b928d8.js"></script>
 
 ## Conclusion
 

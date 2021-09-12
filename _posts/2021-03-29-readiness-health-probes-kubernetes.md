@@ -13,12 +13,7 @@ Kubernetes automatically checks if a pod is healthy and also when it is ready to
 
 Kubernetes regularly checks whether a pod is still alive or not. To check that, Kubernetes sends a request to the URL and port configured in the liveness section of the deployment. If the request returns an HTTP code greater or equal to 200 but less than 400, the pod is considered healthy. In every other case, the pod is considered dead and will be restarted. A liveness probe looks as follows:
 
-```yaml
-livenessProbe:
-  httpGet:
-    path: /health
-    port: http
-```
+<script src="https://gist.github.com/WolfgangOfner/bf39ad0ab5f0f24096cc55f4be253780.js"></script>
 
 The code above tells Kubernetes to perform the liveness probe on the URL /health on port 80 (port 80 is HTTP). By default, K8s checks every 10 seconds but you can change this value using the periodSeconds parameter.
 
@@ -26,12 +21,7 @@ The code above tells Kubernetes to perform the liveness probe on the URL /health
 
 The readiness probe works the same way as the liveness probe except that it is only executed to determine whether a pod is ready to receive traffic after startup. A readiness probe looks as follows:
 
-```yaml
-readinessProbe:
-  httpGet:
-    path: /health
-    port: http
-```
+<script src="https://gist.github.com/WolfgangOfner/4053bf6bf6978911c2f654f570333bca.js"></script>
 
 This is a very simple probe and also checks the /health endpoint. Your application might execute some logic like warming up the cache which takes a couple of minutes. Then Kubernetes will wait until this is done and only then start routing traffic to the pod.
 
@@ -42,12 +32,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 Health checks were introduced in .NET Core 2.2 and can be configured in the Configure method of the Startup class. To create a simple health check, you can use the MapHealthCheck extension and provide the name of the endpoint.
 
-```CSharp
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapHealthChecks("/health");
-});
-```
+<script src="https://gist.github.com/WolfgangOfner/03ff21b72754ff504d2310b733517b42.js"></script>
 
 .NET Core and .NET 5 provide a wide variety of options to configure the health checks. For example, you can customize the return codes or even check if the database is accessible. For more details, take a look at the great <a href="https://docs.microsoft.com/en-us/aspnet/core/host-and-deploy/health-checks?view=aspnetcore-5.0" target="_blank" rel="noopener noreferrer">documentation</a>.
 
@@ -57,25 +42,11 @@ For more information about Helm and its configuration, see my previous post [Hel
 
 Open the deployment in the Helm charts folder. There you can see the liveness and readiness probe already. 
 
-```yaml
-{{- if .Values.probes.enabled }}
-livenessProbe:
-  httpGet:
-    path: /health
-    port: http  
-readinessProbe:
-  httpGet:
-    path: /ready
-    port: http  
-{{- end }}
-```
+<script src="https://gist.github.com/WolfgangOfner/8234b61ef59f66f80d8ae81080de4991.js"></script>
 
 As you can see, the liveness probe checks the /health endpoint and the readiness probe the /ready endpoint. Since the /ready endpoint doesn't exist, the pod won't be able to start. The probes are only added when the probes.enabled value is set to true. by default, this value is false. To set it to true, you can either go to the values.yaml file and change it to true or you go to the values.release.yaml file and add it there. I prefer the second option since this allows me to see all my changes in one single file.
 
-```yaml
-probes:
-  enabled: true
-```
+<script src="https://gist.github.com/WolfgangOfner/8ea4529047326e1bd98bc6dfa25ca5fb.js"></script>
 
 ### Testing the Health and Readiness Probes
 
@@ -105,20 +76,7 @@ You also might see a warning that the liveness probe failed. This might be cause
 
 Change the path in the readiness probe from /ready to /health. Additionally, I added the initialDelaySeconds parameter and set it to 15 seconds. This tells Kubernetes to wait 15 seconds before it executes its first check. The finished liveness and rediness probe looks as follows:
 
-```yaml
-{{- if .Values.probes.enabled }}
-livenessProbe:
-  httpGet:
-    path: /health
-    port: http
-  initialDelaySeconds: 15
-readinessProbe:
-  httpGet:
-    path: /health
-    port: http
-  initialDelaySeconds: 15
-{{- end }}
-```
+<script src="https://gist.github.com/WolfgangOfner/295c91d741a49c686d144b8412df3b39.js"></script>
 
 Run the CI/CD again and this time the deployment will succeed and the pod will start successfully.
 

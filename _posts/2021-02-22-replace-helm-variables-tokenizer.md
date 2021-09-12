@@ -15,14 +15,7 @@ In this post, I want to introduce Tokenizer which is a simple Azure DevOps exten
 
 Currently the values.yaml file looks as following:
 
-```yaml
-fullnameOverride: customerapi
-replicaCount: 1
-image:
-  repository: wolfgangofner/customerapi
-  tag: latest
-  pullPolicy: IfNotPresent
-```
+<script src="https://gist.github.com/WolfgangOfner/f75c7798c44d6a381019223031720350.js"></script>
 
 As you can see, the replica count or the tag is hard-coded as 1 and latest respectively. One replica might be fine for my test environment but definitely not for my production environment. In my post [Automatically Version Docker Containers in Azure DevOps CI](/automatically-version-docker-container), I talked about the disadvantages of using the latest tag and that it would be better to use a specific version number. Though, this version number is changing with every build and therefore needs to be inserted automatically.
 
@@ -58,21 +51,11 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 Add the following task before the Helm install to your pipeline:
 
-```yaml
-- task: Tokenizer@0
-  displayName: 'Run Tokenizer'
-  inputs:
-    sourceFilesPattern: 'CustomerApi/CustomerApi/values.release.yaml'
-```
+<script src="https://gist.github.com/WolfgangOfner/f2b5fafd6444c4b0d77d3325e1a60270.js"></script>
 
 Note that I am using templates in my pipeline and added the task to the HelmInstall.yaml file. You can find more information about templates in [Improve Azure DevOps YAML Pipelines with Templates](/improve-azure-devops-pipelines-templates). These templates also use parameters. The task looks as follows:
 
-```yaml
-- task: Tokenizer@0
-  displayName: 'Run Tokenizer'
-  inputs:
-    sourceFilesPattern: ${{ parameters.releaseValuesFile }}
-```
+<script src="https://gist.github.com/WolfgangOfner/febd71355c2c6ca52068901be0bffbbc.js"></script>
 
 It is the same code as above except that the source file pattern is passed as a parameter.
 
@@ -80,31 +63,19 @@ All files matching the sourceFilesPattern will be searched for tokens to be repl
 
 Additionally, the values.release.yaml file contains only tokens I want to replace and therefore is very simple and small. My file looks as follows:
 
-```yaml
-image:
-  repository: __ImageName__
-  tag: __BuildNumber__
-```
+<script src="https://gist.github.com/WolfgangOfner/7fe51f6151ab5d6c8f1bb91ed9be697d.js"></script>
 
 Here I want to replace the repository with the ImageName variable and the tag with the BuildNumber variable. 
 
 The values.yaml file stays untouched:
 
-```yaml
-image:
-  repository: wolfgangofner/customerapi
-  tag: latest
-```
+<script src="https://gist.github.com/WolfgangOfner/e1176581d1c4c0216fe7aeb80129cf8c.js"></script>
 
 ## Testing the Tokenizer
 
 I have the following variables in my pipeline:
 
-```yaml
-ApiName: 'customerapi'
-BuildNumber: $(GitVersion.NuGetVersionV2)
-ImageName: 'wolfgangofner/$(ApiName)'
-```
+<script src="https://gist.github.com/WolfgangOfner/c007f3aa5240f26914cf476f879c25f3.js"></script>
 
 The GitVersion variable sets the version number. You can read more in my post [Automatically Version Docker Containers in Azure DevOps CI](/automatically-version-docker-container). Run the pipeline and then check what image got deployed. You can use kubectl or a dashboard to check if the right image got loaded. For more information about using a dashboard, see my post [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started). 
 

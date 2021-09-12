@@ -65,31 +65,19 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 Add the following two tasks as the first tasks of your job in your CI pipeline.
 
-```yaml
-- task: gitversion/setup@0
-  displayName: Install GitVersion
-  inputs:
-    versionSpec: '5.5.0'
-    
-- task: gitversion/execute@0
-  displayName: Determine Version
-```
+<script src="https://gist.github.com/WolfgangOfner/ed5a31c129a830ffe3c1f9f894f51b24.js"></script>
 
 These tasks install the GitVersion tool and calculate the build number variables.
 
 Additionally, you have to add a new file called GitVersion.yml to the root folder of your repository with the following content:
 
-```yaml
-mode: Mainline
-```
+<script src="https://gist.github.com/WolfgangOfner/4fb82a38079eb973556c9e24aefa7f97.js"></script>
 
 ### Use the Semantic Version
 
 All you have to do to use the semantic version is to add the desired variable as the tag to your image name. I already have a variable for the image name and add $(GitVersion.FullSemVer) as the tag:
 
-```yaml
-ImageName: 'wolfgangofner/customerapi:$(GitVersion.FullSemVer)'
-```
+<script src="https://gist.github.com/WolfgangOfner/c1c8b743d01225cb7c4cc676931cfe87.js"></script>
 
 ### Testing the Semantic Version
 
@@ -171,58 +159,19 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 Add the following BuildVersioning task as the first task of your job in your CI pipeline.
 
-```yaml
-- task: BuildVersioning@0
-  displayName: 'Build Versioning'
-  inputs:
-    versionSource: 'gitversion'
-    doInstallGitVersion: true
-    GitVersionInstallerSource: 'choco'
-    GitVersionInstallerVersion: '5.0.1'
-    doUseLatestGitVersionInstallerVersion: false
-    paramAssemblyVersion: '7'
-    paramAssemblyFileVersion: '7'
-    paramAssemblyInformationalVersion: '6'
-    paramOverwriteFourthDigitWithBuildCounter: false
-    paramVersionCode: '2'
-    doAssemblyInfoAppendSuffix: false
-    doConvertAssemblyInfoToLowerCase: true
-    buildNumberVersionFormat: '3'
-    buildNumberAction: 'replace'
-    doReplaceAssemblyInfo: false
-    doReplaceNuspec: false
-    doReplaceNpm: false
-    doReplaceDotNetCore: true
-    filePatternDotNetCore: |
-      **\*.csproj
-      **\*.props
-    paramDotNetCoreVersionType: '3'
-    doReplaceAndroid: false
-    doReplaceiOS: false
-    doReplaceCustom: false
-    doShowWarningsForUnmatchedRegex: false
-    excludeFilePattern: |
-      !**/bin/**
-      !**/obj/**
-      !**/node_modules/**
-      !**/packages/**
-```
+<script src="https://gist.github.com/WolfgangOfner/12fcececd48eb4b8ed58c2de5ab8c52f.js"></script>
 
 This configures the versioning task to use chocolatey to install Git if it's not available, and then replace the Build.BuildNumber variable with the calculated semantic version number.
 
 Additionally, you have to add a new file called GitVersion.yml to the root folder of your repository with the following content:
 
-```yaml
-mode: Mainline
-```
+<script src="https://gist.github.com/WolfgangOfner/4fb82a38079eb973556c9e24aefa7f97.js"></script>
 
 ### Use the Semantic Version
 
 All you have to do to use the semantic version is to add the Build.BuildNumber variable as the tag to your image name. I already have a variable for the image name and add the BuildNumber there:
 
-```yaml
-ImageName: 'wolfgangofner/customerapi:$(Build.BuildNumber)'
-```
+<script src="https://gist.github.com/WolfgangOfner/c1c8b743d01225cb7c4cc676931cfe87.js"></script>
 
 ### Testing the Semantic Version
 

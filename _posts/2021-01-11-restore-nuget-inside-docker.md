@@ -59,43 +59,21 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 The first step to restore the NuGet package from the private feed is to add a nuget.config file to the root folder of the CustomerApi project. This file contains the URLs for the nuget.org and the private feed. Since this file gets committed to source control, I don't add the PAT there because I want to keep it private. The file looks as follows:
 
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<configuration>
-  <packageSources>
-    <clear />
-    <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
-    <add key="MicroserviceDemoNugets" value="https://wolfgangofner.pkgs.visualstudio.com/_packaging/MicroserviceDemoNugets/nuget/v3/index.json" /> 
-  </packageSources>
-  <activePackageSource>
-    <add key="All" value="(Aggregate source)" />
-  </activePackageSource>
-</configuration>
-```
+<script src="https://gist.github.com/WolfgangOfner/28375d0e75ca00efe8032e4da0a6a334.js"></script>
 
 ### Use the PAT in the Dockerfile
 
 Docker supports build arguments which I will use to pass the PAT inside the Dockerfile in the CI pipeline. Locally, I don't pass a PAT but I can set a default value. Additionally, I have to add the PAT and a username to the nuget.config to be able to access the private NuGet feed. the code looks as follows:
 
-```docker
-ARG PAT=localhost
-RUN sed -i "s|</configuration>|<packageSourceCredentials><MicroserviceDemoNugets><add key=\"Username\" value=\"PAT\" /><add key=\"ClearTextPassword\" value=\"${PAT}\" /></MicroserviceDemoNugets></packageSourceCredentials></configuration>|" nuget.config
-```
+<script src="https://gist.github.com/WolfgangOfner/90904cd7210a118375ec568ca9c14219.js"></script>
 
 Instead of localhost, use the previously created PAT. Make sure to not commit it to your source control though. Additionally, you have to copy the previously nuget.config file inside the Docker image. You can do this with the following code:
 
-```docker
-COPY ["CustomerApi/nuget.config", ""]
-```
+<script src="https://gist.github.com/WolfgangOfner/2f10984ed3a70d27a523d5e13aa05d43.js"></script>
 
 To use the nuget.config file during the restore, use the --configfile flag and provide the path to the nuget.config file.
 
-```docker
-RUN dotnet restore "CustomerApi/CustomerApi.csproj" --configfile "./nuget.config"
-RUN dotnet restore "Tests/CustomerApi.Test/CustomerApi.Test.csproj" --configfile "./nuget.config"
-RUN dotnet restore "Tests/CustomerApi.Service.Test/CustomerApi.Service.Test.csproj" --configfile "./nuget.config"
-RUN dotnet restore "Tests/CustomerApi.Data.Test/CustomerApi.Data.Test.csproj" --configfile "./nuget.config"
-```
+<script src="https://gist.github.com/WolfgangOfner/878b19f724adb6c12843393ce4ac4cdb.js"></script>
 
 You can find the finished Dockerfile on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/CustomerApi/Dockerfile" target="_blank" rel="noopener noreferrer">Github</a>.
 
@@ -115,19 +93,7 @@ In the Azure DevOps pipeline, create a new secret variable for the PAT. To do th
 
 Next, add build-arg as argument to the docker build task and provide the previously created variable as PAT. The whole task looks as follows:
 
-```yaml
-- task: Docker@1      
-  inputs:
-    containerregistrytype: 'Container Registry'
-    dockerRegistryEndpoint: 'Docker Hub'
-    command: 'Build an image'
-    dockerFile: '**/CustomerApi/CustomerApi/Dockerfile'
-    arguments: '--build-arg BuildId=$(Build.BuildId) --build-arg PAT=$(PatMicroserviceDemoNugetsFeed)'
-    imageName: '$(ImageName)'
-    useDefaultContext: false
-    buildContext: 'CustomerApi'
-  displayName: 'Build the Docker image'
-```
+<script src="https://gist.github.com/WolfgangOfner/dc83eb924ad195c33e4d8283b6f18b87.js"></script>
 
 That's already all to restore the NuGet package from a private feed. Run the pipeline it will finish successfully.
 

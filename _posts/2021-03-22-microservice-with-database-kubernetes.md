@@ -15,19 +15,11 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 So far, the microservice used an in-memory database. I want to keep the option to use the in-memory database for local debugging. Therefore, I add the following value to the appsettings.Development.json file:
 
-```json
-"BaseServiceSettings": {
-  "UseInMemoryDatabase": true
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/671b5cded4aa419a5a1fb22f9dc17ef4.js"></script>
 
 If you want to run the microservice locally with a normal database, set this value to false. Next, I add the connection string to the database to the appsettings.json file:
 
-```json
-"ConnectionStrings": {
-  "CustomerDatabase": "" // -> use 'User Secrets' for local debugging
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/c873b6db10bfa3c578f123e07596ae0e.js"></script>
 
 It is a best practice to use User Scripts when you are dealing with sensitive data in your local environment. To add User Secrets, right-click on your project and select Manage User Scripts.
 
@@ -41,21 +33,7 @@ It is a best practice to use User Scripts when you are dealing with sensitive da
 
 After adding the settings, we only need one more change in the Startup.cs class. Here we change the configuration of the in-memory database to either configure a real database connection or the in-memory one, depending on the settings:
 
-```CSharp
-bool.TryParse(Configuration["BaseServiceSettings:UseInMemoryDatabase"], out var useInMem
-
-if (!useInMemory)
-{
-    services.AddDbContext<CustomerContext>(options =>
-    {
-        options.UseSqlServer(Configuration.GetConnectionString("CustomerDatabase"));
-    });
-}
-else
-{
-    services.AddDbContext<CustomerContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/92f35d72b8503ec1aa4660ff8ab6dee6.js"></script>
 
 To use an SQL Server, you have to install the Microsoft.EntityFrameworkCore.SqlServer NuGet package. 
 
@@ -69,40 +47,7 @@ To use an SQL Server, you have to install the Microsoft.EntityFrameworkCore.SqlS
 
 Additionally, comment out the code in the constructor of the CustomerContext. The data was used as initial values for the in-memory database.
 
-```CSharp
-public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
-{
-    //var customers = new[]
-    //{
-    //    new Customer
-    //    {
-    //        Id = Guid.Parse("9f35b48d-cb87-4783-bfdb-21e36012930a"),
-    //        FirstName = "Wolfgang",
-    //        LastName = "Ofner",
-    //        Birthday = new DateTime(1989, 11, 23),
-    //        Age = 30
-    //    },
-    //    new Customer
-    //    {
-    //        Id = Guid.Parse("654b7573-9501-436a-ad36-94c5696ac28f"),
-    //        FirstName = "Darth",
-    //        LastName = "Vader",
-    //        Birthday = new DateTime(1977, 05, 25),
-    //        Age = 43
-    //    },
-    //    new Customer
-    //    {
-    //        Id = Guid.Parse("971316e1-4966-4426-b1ea-a36c9dde1066"),
-    //        FirstName = "Son",
-    //        LastName = "Goku",
-    //        Birthday = new DateTime(1937, 04, 16),
-    //        Age = 83
-    //    }
-    /
-    //Customer.AddRange(customers);
-    //SaveChanges();
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/2b18897031047bbc06d19b8491f9e135.js"></script>
 
 If you want, run the application locally and test the database connection.
 
@@ -110,11 +55,7 @@ If you want, run the application locally and test the database connection.
 
 Providing the connection string in the CI/CD pipeline is simpler than you might think. All you have to do is add the following code to the values.release.yaml file inside the API solution. 
 
-```yaml
-secrets:
-  connectionstrings:
-    ConnectionStrings__CustomerDatabase: __ConnectionString__
-```
+<script src="https://gist.github.com/WolfgangOfner/c7da35ecd3be2d89c38ccc7facb43fff.js"></script>
 
 This code sets the connection string as secret in Kubernetes. Since the hierarchy is the same as in the appsettings.json file, Kubernetes can pass it to the microservice. The only difference is that the json file uses braces for hierarchy whereas secrets use double underscores (\_\_). The value for \_\_ConnectionString\_\_ will be provided by the ConnectionString variable during the tokenizer step in the pipeline.
 

@@ -81,16 +81,7 @@ This opens the configuration assist for the connection into the Kubernetes clust
 
 Next, enter the port on which your microservice is running on your local machine. You can either start your application and check the port, or you can open the launchSettings.json file in the Properties folder and check there. 
 
-```yaml
-"CustomerApi": {
-  "commandName": "Project",
-  "launchBrowser": true,
-  "environmentVariables": {
-    "ASPNETCORE_ENVIRONMENT": "Development"
-  },
-  "applicationUrl": "https://localhost:5001;http://localhost:5000"
-},
-```
+<script src="https://gist.github.com/WolfgangOfner/ba6568f6ab123933078ef960906fde99.js"></script>
 
 The port is 5001 in my case.
 

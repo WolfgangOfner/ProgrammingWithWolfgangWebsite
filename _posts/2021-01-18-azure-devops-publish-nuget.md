@@ -63,35 +63,11 @@ The last step is to use the previously created service connection to extend the 
 
 First, I create a name stage in which I download the previously created NuGet package.
 
-```yaml
-- stage: publishpublic
-  dependsOn: publishinternal
-  condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
-  displayName: 'Nuget - Publish Public Packages'
-  jobs:
-  - deployment: publishpublic
-    displayName: 'Nuget - Publish packages to public feed'
-    environment: nuget-publish-public
-    strategy:
-      runOnce:
-        deploy:
-          steps:
-          - download: current
-            artifact: '$(ArtifactNugetName)'
-            displayName: 'Download nuget packages'
-```
+<script src="https://gist.github.com/WolfgangOfner/dba1efbc1a4995115fe0ed981941dc75.js"></script>
 
 Next, I push the NuGet package to nuget.org using the dotnet core nuget push command. The only difference to push to the internal feed is that I use as feed type external and as publishFeedCredentials the previously created service connection.
 
-```yaml
-- task: DotNetCoreCLI@2
-  displayName: "Publish nuget packages to public feed"
-  inputs:
-    command: 'push'
-    packagesToPush: '$(Agent.BuildDirectory)/$(ArtifactNugetName)/*.nupkg'
-    nuGetFeedType: 'external'
-    publishFeedCredentials: 'PrimeNumber'
-```
+<script src="https://gist.github.com/WolfgangOfner/c836a95a5b8bc3a4fda45490447af23f.js"></script>
 
 For more details about the steps see my post [Publish to an Internal NuGet Feed in Azure DevOps](/publish-internal-nuget-feed). 
 
@@ -115,17 +91,7 @@ Everything is set up correctly but there is a bug (or missing feature) in Dotnet
 
 Luckily there is a workaround until (if ever) Microsoft fixes the problem. You can use a dotnetcore custom command and provide the appropriate arguments to push to nuget.org.
 
-```yaml
-- task: DotNetCoreCLI@2
-  displayName: Push Nuget Package
-  inputs:
-    command: custom
-    custom: nuget
-    arguments: >
-      push $(Agent.BuildDirectory)/$(ArtifactNugetName)/*.nupkg
-      -s https://api.nuget.org/v3/index.json
-      -k $(NuGetApiKey) 
-```
+<script src="https://gist.github.com/WolfgangOfner/d19c40fc568a6f638c26acb5b2b3694c.js"></script>
 
 You tell the command which packages it should push, -s declares the destination, and -k provides the nuget.org API key. The best practice for secret variables is to create a new variable inside the pipeline by clicking on Variables on the top right corner and then click + on the pop-out. Provide a name and previously copied API key. Additionally, check "Keep this value secret" so no user can read the value. Click on OK and run the pipeline again.
 
