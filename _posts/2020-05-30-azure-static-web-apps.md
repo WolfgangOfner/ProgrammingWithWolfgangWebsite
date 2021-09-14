@@ -168,9 +168,7 @@ Open a new Powershell window and create a new react app with the following comma
 
 This will create a react project, named react-static-web-app. Go inside the project folder in Powershell and open Visual Studio Code with the following code:
 
-```powershell  
-code .  
-```
+<script src="https://gist.github.com/WolfgangOfner/401cb261f2452570e79b236503a8183d.js"></script>
 
 I will change the application to call my Azure Function and then display the returned list with Bootstrap cards. First, I create a new folder, called components, and create a new file inside this folder called products.js. Then I add the following code to the new file:
 
@@ -182,15 +180,11 @@ This method takes a list of products and displays every item. The next step is t
 
 Lastly, I add the Bootstrap css file in the index.html file which is located in the Public folder.
 
-```html  
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  
-```
+<script src="https://gist.github.com/WolfgangOfner/adea037d52d96f93b037bea9d30062c7.js"></script>
 
 Open a new terminal in VS Code and start the application with:
 
-```powershell  
-npm start  
-```
+<script src="https://gist.github.com/WolfgangOfner/5fd7eb8eebbdce5e8f47205f66eda99a.js"></script>
 
 This automatically opens your browser and should display your product list.
 

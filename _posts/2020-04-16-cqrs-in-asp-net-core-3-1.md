@@ -1,6 +1,6 @@
 ---
 title: CQRS in ASP .NET Core 3.1
-date: 2020-04-16T13:03:24+02:00
+date: 2020-04-16
 author: Wolfgang Ofner
 categories: [Design Pattern, ASP.NET]  
 tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, Mediator, MediatR, Microservice, RabbitMQ, Swagger]
@@ -28,43 +28,13 @@ In the following examples, you will see that CQRS is simpler than it sounds. Sim
 
 In the CustomerApi solution, you can find the GetCustomerByIdQueryHandler inside the service project. Since this class is a query, it is used to read data. Inside the class is a Handle method, which calls the repository to get the the first customer where the id matches the passed id.
 
-```csharp  
-public class GetCustomerByIdQueryHandler : IRequestHandler<GetCustomerByIdQuery, Customer>
-{
-    private readonly ICustomerRepository _customerRepository;
-
-    public GetCustomerByIdQueryHandler(ICustomerRepository customerRepository)
-    {
-        _customerRepository = customerRepository;
-    }
-
-    public async Task<Customer> Handle(GetCustomerByIdQuery request, CancellationToken cancellationToken)
-    {
-        return await _customerRepository.GetCustomerByIdAsync(request.Id, cancellationToken);
-    }
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/b6b961f3774cfdb4711ee43a247f2e32.js"></script>
 
 ### Taking a look at a Command
 
 In the CustomerApi solution, you can find the CreateCustomerCommandHandler inside the service project. This class also has a Handle method but this time it executes a write operation.
 
-```csharp  
-public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Customer>
-{
-    private readonly ICustomerRepository _customerRepository;
-
-    public CreateCustomerCommandHandler(ICustomerRepository customerRepository)
-    {
-        _customerRepository = customerRepository;
-    }
-
-    public async Task<Customer> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
-    {
-        return await _customerRepository.AddAsync(request.Customer);
-    }
-} 
-```
+<script src="https://gist.github.com/WolfgangOfner/009df6b39f3aa128cf9dabafd80f5466.js"></script>
 
 ### Advantages of CQRS
 

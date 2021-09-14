@@ -1,6 +1,6 @@
 ---
 title: '.NET Core 3.0 - What''s new'
-date: 2019-12-07T11:14:37+01:00
+date: 2019-12-07
 author: Wolfgang Ofner
 categories: [Programming]
 tags: [NET Core, NET Core 3.0, 'C#']

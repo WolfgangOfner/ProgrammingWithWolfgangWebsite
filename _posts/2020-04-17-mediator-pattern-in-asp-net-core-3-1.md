@@ -1,6 +1,6 @@
 ---
 title: Mediator Pattern in ASP .NET Core 3.1
-date: 2020-04-17T14:05:38+02:00
+date: 2020-04-17
 author: Wolfgang Ofner
 categories: [Design Pattern, ASP.NET]  
 tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, Mediator, MediatR, Microservice, RabbitMQ, Swagger]
@@ -18,9 +18,9 @@ You can see the mediator pattern also in real life. Think about a big airport li
 
 The mediator pattern brings a couple of advantages:
 
-  * Less coupling: Since the classes don&#8217;t have dependencies on each other, they are less coupled.
+  * Less coupling: Since the classes don't have dependencies on each other, they are less coupled.
   * Easier reuse: Fewer dependencies also helps to reuse classes.
-  * Single Responsibility Principle: The services don&#8217;t have any logic to call other services, therefore they only do one thing.
+  * Single Responsibility Principle: The services don't have any logic to call other services, therefore they only do one thing.
   * Open/closed principle: Adding new mediators can be done without changing the existing code.
 
 There is also one big disadvantage of the mediator pattern:
@@ -37,30 +37,15 @@ In my microservices, the controllers call all needed services and therefore work
 
 I am installing the MediatR and the MediatR.Extensions.Microsoft.DependencyInjection in my Api project. In the Startup class, I registered my mediators using:
 
-```csharp  
-services.AddMediatR(Assembly.GetExecutingAssembly());  
-```
+<script src="https://gist.github.com/WolfgangOfner/8d6ba951346772d06bd0ad802543bbd5.js"></script>
 
 I can do this because the controllers are in the same project. In the OrderApi, I am also using the ICustomerNameUpdateService interface as mediator. Therefore, I also have to register it.
 
-```csharp  
-services.AddMediatR(Assembly.GetExecutingAssembly(), typeof(ICustomerNameUpdateService).Assembly);  
-```
+<script src="https://gist.github.com/WolfgangOfner/461824eef3e66559c9af25350fa6bdb0.js"></script>
 
 Now, I can use the IMediator object with dependency injection in my controllers.
 
-```csharp  
-public class OrderController : ControllerBase
-{
-    private readonly IMapper _mapper;
-    private readonly IMediator _mediator;
-
-    public OrderController(IMapper mapper, IMediator mediator)
-    {
-        _mapper = mapper;
-        _mediator = mediator;
-    }  
-```
+<script src="https://gist.github.com/WolfgangOfner/68bfac54e68dc33c96aeee7fd8165c2f.js"></script>
 
 ### Using the Mediator pattern
 
@@ -68,53 +53,17 @@ Every call consists of a request and a handler. The request is sent to the handl
 
 In the OrderController, I have the Order method which will create a new Order object. To create the Order, I create a CreateOrderCommand and map the Order from the post request to the Order of the CreateOrderCommandObject. Then I use the Send method of the mediator.
 
-```csharp  
-[HttpPost]
-public async Task<ActionResult<Order>> Order(OrderModel orderModel)
-{
-    try
-    {
-        return await _mediator.Send(new CreateOrderCommand
-        {
-            Order = _mapper.Map<Order>(orderModel)
-        });
-    }
-    catch (Exception ex)
-    {
-        return BadRequest(ex.Message);
-    }
-} 
-```
+<script src="https://gist.github.com/WolfgangOfner/f722b90f97845a00f668a276117cb75f.js"></script>
 
-The request (or query and command in my case) inherit from IRequest<T> interface which where T indicates the return value. If you don&#8217;t have a return value, then inherit from IRequest.
+The request (or query and command in my case) inherit from IRequest<T> interface which where T indicates the return value. If you don't have a return value, then inherit from IRequest.
 
-```csharp  
-public class CreateOrderCommand : IRequest<Order>  
-{  
-    public Order Order { get; set; }  
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/e9b5763c22ef59e5dfe7917613671323.js"></script>
 
 The send method sends the object to the CreateOrderCommmandHandler. The handler inherits from IRequestHandler<TRequest, TResponse> and implements a Handle method. This Handle method processes the CreateOrderCommand. In this case, it calls the AddAsync method of the repository and passes the Order.
 
-```csharp  
-public class CreateOrderCommandHandler : IRequestHandler<CreateOrderCommand, Order>
-{
-    private readonly IOrderRepository _orderRepository;
+<script src="https://gist.github.com/WolfgangOfner/e2eadd115d3645951cd3affaa1883758.js"></script>
 
-    public CreateOrderCommandHandler(IOrderRepository orderRepository)
-    {
-        _orderRepository = orderRepository;
-    }
-
-    public async Task<Order> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
-    {
-        return await _orderRepository.AddAsync(request.Order);
-    }
-} 
-```
-
-If you don&#8217;t have a return value, the handler inherits from IRequestHandler<TRequest>.
+If you don't have a return value, the handler inherits from IRequestHandler<TRequest>.
 
 ## Conclusion
 

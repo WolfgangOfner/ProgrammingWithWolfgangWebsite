@@ -18,9 +18,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 Open the demo application and navigate to the Helm chart of the OrderApi. You can find it under OrderApi/OrderApi/charts. The chart is a folder called orderapi. Deploy this chart with Helm:
 
-```powershell
-helm install order orderapi
-```
+<script src="https://gist.github.com/WolfgangOfner/70f9102d45721e96b59298e38f9ba860.js"></script>
 
 The package gets deployed within seconds. After it is finished, connect to the dashboard of your cluster. If you don't know how to do that, see my post ["Azure Kubernetes Service - Getting Started"](/azure-kubernetes-service-getting-started). There I explain how I use Octant and how to access your Kubernetes cluster with it.
 
@@ -39,71 +37,31 @@ The application wants to open a connection to RabbitMq. Currently, there is no R
 ## Override Appsettings with Environment Variables
 The settings for RabbitMq are in the appsettings.json file. There is also a flag to enable and disable the connection. By default, this flag is enabled.
 
-```yaml
-{
-  "RabbitMq": {
-    "Hostname": "rabbitmq",
-    "QueueName": "CustomerQueue",
-    "UserName": "user",
-    "Password": "password",
-    "Enabled": true
-  }
-}
-```
+<script src="https://gist.github.com/WolfgangOfner/4eb27dfc961f6f495e231cc73672d6ef.js"></script>
+
 Currently, I don't want to use RabbitMq, therefore I want to disable it. Microsoft introduced the DefaultBuilder method which automatically reads environment variables, command-line arguments, and all variations of the appsettings.json files. This allows developers to use environment variables to override settings without changing the code.
 
 I am reading the RabbitMq configs in the Startup.cs class and then register the service depending on the value of the enabled flag:
 
-```csharp
-var serviceClientSettingsConfig = Configuration.GetSection("RabbitMq");
-var serviceClientSettings = serviceClientSettingsConfig.Get<RabbitMqConfiguration>();
-services.Configure<RabbitMqConfiguration>(serviceClientSettingsConfig);
+<script src="https://gist.github.com/WolfgangOfner/57c8634c35d3c44969c601b7dbff6edf.js"></script>
 
-if (serviceClientSettings.Enabled)
-{
-    services.AddHostedService<CustomerFullNameUpdateReceiver>();
-}
-```
 The enabled flag is in the RabbitMq section of the appsettings.json file. To override it with an environment variable, I have to pass one with the same structure. Instead of braces, I use double underscores (__). This means that the name of the environment variable is rabbitmq__enabled and its value is false.
 
 ### Pass the Environment Variable using Helm
 Helm allows us to add environment variables easily. Add in the values.yaml file the following code:
 
-```yaml
-envvariables:
-  rabbitmq__enabled: false
-```
+<script src="https://gist.github.com/WolfgangOfner/ea099ab9a29e58dbc6c8e96673a3d610.js"></script>
+
 This passes the value as an environment variable into the deployment.ymal file. 
 
-{% raw %}
-```yaml
-env:
-  {{- $root := . }}
-  {{- range $key, $value := .Values.envvariables }}
-  - name: {{ $key }}
-    value: {{ $value | quote }}
-  {{- end }}
-  {{- $root := . }}
-  {{- range $ref, $values := .Values.secrets }}
-  {{- range $key, $value := $values }}
-  - name: {{ $key }}
-    valueFrom:
-      secretKeyRef:
-        name: {{ template "orderapi.fullname" $root }}-{{ $ref | lower }}
-        key: {{ $key }}
-  {{- end }}
-  {{- end }}
-```
-{% endraw %}
+<script src="https://gist.github.com/WolfgangOfner/ae024adfa8325edd239ea0dd5f49d042.js"></script>
 
 This code iterates over the envvariables and secrets section and sets the values as environment variables. This section looks different by default but I find this way of passing variables better.
 
 ### Update the Microservice
 Use Helm upgrade to update the deployment with the changes in your Helm package:
 
-```powershell
-helm upgrade order orderapi
-```
+<script src="https://gist.github.com/WolfgangOfner/4c879caa731f4165a9bd41e30859333e.js"></script>
 
 After the changes are applied, open the dashboard and navigate to the orderapi pod.
 
@@ -139,6 +97,7 @@ Open your browser and navigate either to the shown localhost URL or to the exter
 </div>
 
 ## Conclusion
+
 .NET Core and .NET 5 are great to override setting values with environment variables. This allows you to dynamically change the configuration during the deployment of your application. Today, I showed how to use Helm to add an environment variable to override a value of the appsettings.json file.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.

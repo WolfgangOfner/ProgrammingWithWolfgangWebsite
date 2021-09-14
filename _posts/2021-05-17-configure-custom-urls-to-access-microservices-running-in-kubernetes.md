@@ -69,10 +69,7 @@ After adding the host line in the ingress.yaml file, add your URL to the values.
 
 The URL is defined as a variable in the CI/CD pipeline and will be added by the tokenizer. For more information about the tokenizer, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
 
-```yaml
-URL: customer.programmingwithwolfgang.com # replace with your service URL
-IngressEnabled: true
-```
+<script src="https://gist.github.com/WolfgangOfner/5633fdf01392138a86a21e7104c21e5f.js"></script>
 
 [In my last post](/setup-nginx-ingress-controller-kubernetes), I had a small workaround in the Startup.cs class to get Swagger working. This workaround is not needed anymore due to the usage of the URL and therefore can be removed:
 

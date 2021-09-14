@@ -1,22 +1,22 @@
 ---
 title: 'Microservices - Getting Started'
-date: 2020-04-08T16:49:59+02:00
+date: 2020-04-08
 author: Wolfgang Ofner
 categories: [Design Pattern]
 tags: [Docker, High Availability, Kubernetes, Microservice]
 description: Many developers have heard about microservices and that it's the next great thing. But for many developers, microservices is just another buzzword.
 ---
-Many developers have heard about microservices and that it&#8217;s the next great thing. But for many developers I have talked to, microservices is just another buzzword like DevOps. I have been working on different projects using microservices for a bit more than a year and in this post, I want to talk about the theory and the ideas behind the concept. <a href="/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">In my next posts</a>, I will show how to implement a microservice using ASP .NET Core 3.1.
+Many developers have heard about microservices and that it's the next great thing. But for many developers I have talked to, microservices is just another buzzword like DevOps. I have been working on different projects using microservices for a bit more than a year and in this post, I want to talk about the theory and the ideas behind the concept. <a href="/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">In my next posts</a>, I will show how to implement a microservice using ASP .NET Core 3.1.
 
 ## What is a Microservice?
 
-As the name already suggests, a microservice is very small. The opinions on how small vary. Some say not more than a hundred lines, some say that it should do one thing. My opinion is that a microservice should offer one or more methods in the same context. Take a customer service for example. This service could offer methods to do the registration, login and changing the user&#8217;s password.
+As the name already suggests, a microservice is very small. The opinions on how small vary. Some say not more than a hundred lines, some say that it should do one thing. My opinion is that a microservice should offer one or more methods in the same context. Take a customer service for example. This service could offer methods to do the registration, login and changing the user's password.
 
 For your application, take the microservices you need to compose the wanted functionality. For example, if you have an online shop, you could have microservices for products, search, wishlist, customers, and orders.
 
 ### Why are Microservices so popular?
 
-The most important aspect of a microservice is that it works completely independently. This means that a microservice has its own database (or other storage). This is very important because this guarantees that changes in other services won&#8217;t break the microservice. It might sound strange in the beginning that a microservice is a small application itself, especially with its own database but this makes it way easier to change or deploy new features. This is the same principle as KISS (Keep it simple stupid) and SRP (Single Responsibility Principle) in programming. Both principles strive to keep things small and simple.
+The most important aspect of a microservice is that it works completely independently. This means that a microservice has its own database (or other storage). This is very important because this guarantees that changes in other services won't break the microservice. It might sound strange in the beginning that a microservice is a small application itself, especially with its own database but this makes it way easier to change or deploy new features. This is the same principle as KISS (Keep it simple stupid) and SRP (Single Responsibility Principle) in programming. Both principles strive to keep things small and simple.
 
 A big reason why microservices became so popular is the fact that it helps to achieve high availability for your application. To achieve this high availability you must not couple services together and keep the connections loose. This loose connection can be achieved by using message systems like RabbitMQ, Azure Queue or Azure Service Bus. A service sends a message to the queue and the other services can process this message. If a service is offline, the message will stay in the queue and the service can process all messages once it is back online. The downside of this approach is that it leads to a lot more complexity and problems like latency, consistency and debugging. I will talk more about that in the Disadvantages of Microservices section further down.
 
@@ -49,15 +49,15 @@ Another big advantage, especially in bigger projects is that you can use differe
 
 ### Teams can focus and specialize on one domain
 
-Microservices also help teams to focus on their domain since they don&#8217;t have to care about unrelated services. For example, the team which provides the search service for an online shop only has to focus on features for the search. They don&#8217;t have to care how the shop shows products or processes orders. This also helps the team to specialize in advanced search techniques which can lead to an even better product.
+Microservices also help teams to focus on their domain since they don't have to care about unrelated services. For example, the team which provides the search service for an online shop only has to focus on features for the search. They don't have to care how the shop shows products or processes orders. This also helps the team to specialize in advanced search techniques which can lead to an even better product.
 
 ### Better scalability and resource usage
 
-Microservices are small and often run in a Docker container in a Kubernetes cluster. If you have a monolithic online shop and it&#8217;s Black Friday, you have to scale your whole application, no matter if a feature is highly used or not used at all. With a microservice architecture, you can scale the services which are in high demand. For example, if a lot of people are placing orders, you can scale the order service but you don&#8217;t have to scale the customer service. This helps to save resources and therefore decreases the costs of running your application. Another advantage of the small services is that you can place them better on a server which increases the utilization which also helps to reduce the costs.
+Microservices are small and often run in a Docker container in a Kubernetes cluster. If you have a monolithic online shop and it's Black Friday, you have to scale your whole application, no matter if a feature is highly used or not used at all. With a microservice architecture, you can scale the services which are in high demand. For example, if a lot of people are placing orders, you can scale the order service but you don't have to scale the customer service. This helps to save resources and therefore decreases the costs of running your application. Another advantage of the small services is that you can place them better on a server which increases the utilization which also helps to reduce the costs.
 
 ## Disadvantages of Microservices
 
-It&#8217;s not all great when using a microservice architecture and there are some downsides to it:
+It's not all great when using a microservice architecture and there are some downsides to it:
 
   * Increased complexity
   * Latency
@@ -84,7 +84,7 @@ Every call to another service adds some latency and the user has to wait longer 
 
 ### Data consistency
 
-Microservices often exchange data asynchronously and also have their own data storage. This can lead to data inconsistency, for example, the customer services updates a customer but the order service hasn&#8217;t updated the customer yet. The data will be synchronized eventually but you can&#8217;t say exactly when.
+Microservices often exchange data asynchronously and also have their own data storage. This can lead to data inconsistency, for example, the customer services updates a customer but the order service hasn't updated the customer yet. The data will be synchronized eventually but you can't say exactly when.
 
 ### Debugging is harder
 
@@ -96,7 +96,7 @@ A failing service can bring down a lot of other services. For example, if the pr
 
 ### Handling of the messages in the queue
 
-Messages between services are often sent via queue so messages can be handled, even if a service is offline at the time of publishing. The messages in the queue can get problematic if they can&#8217;t be processed. A service takes it, can&#8217;t process it and puts it back on the queue. This costs resources and time. You could set a time to live and remove the message from the queue when the time is reached.
+Messages between services are often sent via queue so messages can be handled, even if a service is offline at the time of publishing. The messages in the queue can get problematic if they can't be processed. A service takes it, can't process it and puts it back on the queue. This costs resources and time. You could set a time to live and remove the message from the queue when the time is reached.
 
 ## Conclusion
 

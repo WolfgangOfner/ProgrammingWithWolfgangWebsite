@@ -1,6 +1,6 @@
 ---
 title: Document your Microservice with Swagger
-date: 2020-04-15T17:37:49+02:00
+date: 2020-04-15
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, Swagger]
@@ -18,25 +18,11 @@ You can find the code of  the finished demo on <a href="https://github.com/Wolf
 
 To implement Swagger, I installed the Swashbuckle.AspNetCore NuGet package in the API project. Next, I added the path to the XML file which contains all the XML comments of the actions and models in the ConfigureServices method in the Startup class.
 
-```csharp
-services.AddSwaggerGen(c =>  
-{  
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";  
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);  
-    c.IncludeXmlComments(xmlPath);  
-});  
-```
+<script src="https://gist.github.com/WolfgangOfner/a8eba3654b90aeb03b72b330ea38bcad.js"></script>
 
 The next step is to tell ASP .NET Core to use Swagger and its UI. You can add both in the Configure method of the Startup class. Additionally, I configured Swagger to load the the GUI when starting your solution.
 
-```csharp  
-app.UseSwagger();  
-app.UseSwaggerUI(c =>  
-{  
-    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Customer API V1");  
-    c.RoutePrefix = string.Empty;  
-});  
-```
+<script src="https://gist.github.com/WolfgangOfner/ea0618793b946713fc32f6b7c7512c81.js"></script>
 
 That&#8217;s all you have to configure in Swagger. Now I only have to make two adjustments to the starting project. First, I tell the project to create the XML file by opening the properties of the project. Go to the Build tab and check XML documentation file. It is important that you use All Configurations as Configuration in the dropdown on top All Configurations.
 
@@ -60,67 +46,20 @@ The XML comment on an action describes what the action does, what the parameters
 
 Additionally, I add the response codes and the ProducesResponseType attribute which will help users of the GUI to understand what return codes can be expected from the API.
 
-```csharp  
-/// <summary>  
-/// Action to create a new customer in the database.  
-/// </summary>  
-/// <param name="createCustomerModel">Model to create a new customer</param>  
-/// <returns>Returns the created customer</returns>  
-/// <response code="200">Returned if the customer was created</response>  
-/// <response code="400">Returned if the model couldn&#8217;t be parsed or the customer couldn&#8217;t be saved</response>  
-/// <response code="422">Returned when the validation failed</response>  
-[ProducesResponseType(StatusCodes.Status200OK)]  
-[ProducesResponseType(StatusCodes.Status400BadRequest)]  
-[ProducesResponseType(StatusCodes.Status422UnprocessableEntity)]  
-[HttpPost]  
-public async Task<ActionResult<Customer>> Customer(CreateCustomerModel createCustomerModel)  
-{  
-```
+<script src="https://gist.github.com/WolfgangOfner/186047efc7ef2252db9e3db6fd0590d9.js"></script> 
+
 
 ### Adding Attributes to the Model
 
 The Swagger UI for .NET Core also includes the models of your application. The UI shows which models are available, what properties they have including their data type and their attributes, e.g. if the property is required. To use this feature, you only have to add the attribute to the property of your models. Swagger creates everything out of the box by itself.
 
-```csharp  
-public class CreateCustomerModel  
-{  
-    [Required]  
-    public string FirstName { get; set; }
-    
-    [Required]  
-    public string LastName { get; set; }
-    
-    public DateTime? Birthday { get; set; }
-    
-    public int? Age { get; set; }  
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/e206ac8f6fe59e44aa3b13ee9a40a8bf.js"></script>
 
 ### Personalize the Swagger UI
 
 Swagger is also easily extensible. You can load your own CSS, or change the headline or information displayed on top of the page. For now, I will add my contact information so developers or customers can contact me if they have a problem. To add your contact information use the SwaggerDoc extension and pass an OpenApiInfo object inside the AddSwaggerGen extension in the Startup class.
 
-```csharp  
-services.AddSwaggerGen(c =>  
-{  
-    c.SwaggerDoc("v1", new OpenApiInfo  
-    {  
-        Version = "v1",  
-        Title = "Customer Api",  
-        Description = "A simple API to create or update customers",  
-        Contact = new OpenApiContact  
-    {  
-        Name = "Wolfgang Ofner",  
-        Email = "Wolfgang@programmingwithwolfgang.com",  
-        Url = new Uri("https://www.programmingwithwolfgang.com/")  
-    }  
-    });
-    
-    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";  
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);  
-    c.IncludeXmlComments(xmlPath);  
-});  
-```
+<script src="https://gist.github.com/WolfgangOfner/36353c2ddaac3773ba005b7f7d42b033.js"></script>
 
 ## Testing Swagger
 

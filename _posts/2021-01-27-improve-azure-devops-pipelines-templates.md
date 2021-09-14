@@ -47,9 +47,7 @@ After the parameters, add the steps keyword and add the desired tasks.
 
 I placed all tasks in a couple of templates. To reference these templates use the template keyword and the path to the file:
 
-```yaml
 <script src="https://gist.github.com/WolfgangOfner/754474f9c3bce6355281e5b9064a98e6.js"></script>
-```
 
 If a template needs parameters, use the parameters key word and add all needed parameters:
 

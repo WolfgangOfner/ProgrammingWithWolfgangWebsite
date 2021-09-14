@@ -1,6 +1,6 @@
 ---
 title: Programming a Microservice with .NET Core 3.1
-date: 2020-04-13T17:53:40+02:00
+date: 2020-04-13
 author: Wolfgang Ofner
 categories: [ASP.NET]
 tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, Swagger]
@@ -50,23 +50,7 @@ The API project is the heart of the application and contains the controllers, va
 
 I try to keep the controller methods as simple as possible. They only call different services and return a model or status to the client. They don't do any business logic.
 
-```csharp
-[HttpPost]
-public async Task<ActionResult<Customer>> Customer(CreateCustomerModel createCustomerModel)
-{
-    try
-    {
-        return await _mediator.Send(new CreateCustomerCommand
-        {
-            Customer = _mapper.Map<Customer>(createCustomerModel)
-        });
-    }
-    catch (Exception ex)
-    {
-        return BadRequest(ex.Message);
-    }
-} 
-```
+<script src="https://gist.github.com/WolfgangOfner/f619fa8437fba754134df3961ddd0f11.js"></script>
 
 The _mediator.Send is used to call a service using CQRS and the Mediator pattern. I will explain that in a later post. For now, it is important to understand that a service is called and that a Customer is returned. In case of an exception, a bad request and an error message are returned.
 
@@ -76,35 +60,7 @@ My naming convention is that I use the name of the object, in that case, Custome
 
 To validate the user input, I use the NuGet FluentValidations and a validator per model. Your validator inherits from AbstractValidator<T> where T is the class of the model you want to validate. Then you can add rules in the constructor of your validator. The validator is not really important for me right now and so I try to keep it simple and only validate that the first and last name has at least two characters and that the age and birthday are between zero and 150 years. I don't validate if the birthday and the age match. This should be changed in the future.
 
-```csharp 
-public class CreateCustomerModelValidator : AbstractValidator<CreateCustomerModel>
-{
-    public CreateCustomerModelValidator()
-    {
-        RuleFor(x => x.FirstName)
-            .NotNull()
-            .WithMessage("The first name must be at least 2 character long");
-        RuleFor(x => x.FirstName)
-            .MinimumLength(2).
-            WithMessage("The first name must be at least 2 character long");
-        
-        RuleFor(x => x.LastName)
-            .NotNull()
-            .WithMessage("The last name must be at least 2 character long");
-        RuleFor(x => x.LastName)
-            .MinimumLength(2)
-            .WithMessage("The last name must be at least 2 character long");
-
-        RuleFor(x => x.Birthday)
-            .InclusiveBetween(DateTime.Now.AddYears(-150).Date, DateTime.Now)
-            .WithMessage("The birthday must not be longer ago than 150 years and can not be in the future");
-            
-        RuleFor(x => x.Age)
-            .InclusiveBetween(0, 150)
-            .WithMessage("The minimum age is 0 and the maximum age is 150 years");
-    }
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/6f9af3e2dd0472f320d807a5d9359f00.js"></script>
 
 ### Startup
 
@@ -126,139 +82,25 @@ The Data project contains everything needed to access the database. I use Entity
 
 In the database context, I add a list of customers that I will use to update an existing customer. The database context is created for every request, therefore updated or created customers will be lost after the request. This behavior is fine for the sake of this demo.
 
-```csharp
-public CustomerContext(DbContextOptions<CustomerContext> options) : base(options)
-{
-    var customers = new[]
-    {
-        new Customer
-        {
-            Id = Guid.Parse("9f35b48d-cb87-4783-bfdb-21e36012930a"),
-            FirstName = "Wolfgang",
-            LastName = "Ofner",
-            Birthday = new DateTime(1989, 11, 23),
-            Age = 30
-        },
-        new Customer
-        {
-            Id = Guid.Parse("654b7573-9501-436a-ad36-94c5696ac28f"),
-            FirstName = "Darth",
-            LastName = "Vader",
-            Birthday = new DateTime(1977, 05, 25),
-            Age = 43
-        },
-        new Customer
-        {
-            Id = Guid.Parse("971316e1-4966-4426-b1ea-a36c9dde1066"),
-            FirstName = "Son",
-            LastName = "Goku",
-            Birthday = new DateTime(1937, 04, 16),
-            Age = 83
-        }
-    };
-
-    Customer.AddRange(customers);
-    SaveChanges();
-}
-
-public DbSet<Customer> Customer { get; set; } 
-```
+<script src="https://gist.github.com/WolfgangOfner/df4825b5890006fa4f673960c922bc20.js"></script>
 
 If you want to use a normal database, all you have to do is delete the adding of customers in the constructor and change the following line in the Startup class to take your connection string instead of using an in-memory database.
 
-```csharp  
-services.AddDbContext<CustomerContext>(options => options.UseInMemoryDatabase(Guid.NewGuid().ToString()));  
-```
+<script src="https://gist.github.com/WolfgangOfner/38fd404e812d8f61c0eb92a304cdf521.js"></script>
 
 You can either hard-code your connection string in the Startup class or better, read it from the appsettings.json file.
 
-```csharp  
-services.AddDbContext<CustomerContext>(options => options.UseSqlServer(Configuration["Database:ConnectionString"]));  
-```
+<script src="https://gist.github.com/WolfgangOfner/229073e3f3495d9c79cb80da6e1a21d9.js"></script>
 
 ### Repository
 
 I have a generic repository for CRUD operations which can be used for every entity. This repository has methods like AddAsync and UpdateAsync.
 
-```csharp  
-public class Repository<TEntity> : IRepository<TEntity> where TEntity : class, new()
-{
-    protected readonly CustomerContext CustomerContext;
-
-    public Repository(CustomerContext customerContext)
-    {
-        CustomerContext = customerContext;
-    }
-
-    public IEnumerable<TEntity> GetAll()
-    {
-        try
-        {
-            return CustomerContext.Set<TEntity>();
-        }
-        catch (Exception ex)
-        {
-            throw new Exception($"Couldn't retrieve entities: {ex.Message}");
-        }
-    }
-
-    public async Task<TEntity> AddAsync(TEntity entity)
-    {
-        if (entity == null)
-        {
-            throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");
-        }
-
-        try
-        {
-            await CustomerContext.AddAsync(entity);
-            await CustomerContext.SaveChangesAsync();
-
-            return entity;
-        }
-        catch (Exception ex)
-        {
-            throw new Exception($"{nameof(entity)} could not be saved: {ex.Message}");
-        }
-    }
-
-    public async Task<TEntity> UpdateAsync(TEntity entity)
-    {
-        if (entity == null)
-        {
-            throw new ArgumentNullException($"{nameof(AddAsync)} entity must not be null");
-        }
-
-        try
-        {
-            CustomerContext.Update(entity);
-            await CustomerContext.SaveChangesAsync();
-
-            return entity;
-        }
-        catch (Exception ex)
-        {
-            throw new Exception($"{nameof(entity)} could not be updated {ex.Message}");
-        }
-    }
-} 
-```
+<script src="https://gist.github.com/WolfgangOfner/c990f4c8c695b072a7c2ec543b81233b.js"></script>
 
 Additionally to the generic repository, I have a CustomerRepository that implements a Customer specific method, GetCustomerByIdAsync.
 
-```csharp  
-public class CustomerRepository : Repository<Customer>, ICustomerRepository
-{
-    public CustomerRepository(CustomerContext customerContext) : base(customerContext)
-    {
-    }
-
-    public async Task<Customer> GetCustomerByIdAsync(Guid id, CancellationToken cancellationToken)
-    {
-        return await CustomerContext.Customer.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
-    }
-} 
-```
+<script src="https://gist.github.com/WolfgangOfner/218df7028cfa63fdeb75538f9ff4cd72.js"></script>
 
 The OrderRepository has more Order specific methods. The CustomerRepository inherits from the generic repository and its interface inherits from the repository interface. Since the CustomerContext has the protected access modified in the generic repository, I can reuse it in my CustomerRepository.
 
@@ -270,74 +112,13 @@ The Domain project contains all entities and no business logic. In my microservi
 
 The Messaging.Send project contains everything I need to send Customer objects to a RabbitMQ queue. I will talk about the specifics of the implementation in a later post.
 
-```csharp  
-public void SendCustomer(Customer customer)
-{
-    if (ConnectionExists())
-    {
-        using (var channel = _connection.CreateModel())
-        {
-            channel.QueueDeclare(queue: _queueName, durable: false, exclusive: false, autoDelete: false, arguments: null);
-
-            var json = JsonConvert.SerializeObject(customer);
-            var body = Encoding.UTF8.GetBytes(json);
-
-            channel.BasicPublish(exchange: "", routingKey: _queueName, basicProperties: null, body: body);
-        }
-    }
-}
-
-private void CreateConnection()
-{
-    try
-    {
-        var factory = new ConnectionFactory
-        {
-            HostName = _hostname,
-            UserName = _username,
-            Password = _password
-        };
-        _connection = factory.CreateConnection();
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Could not create connection: {ex.Message}");
-    }
-}
-
-private bool ConnectionExists()
-{
-    if (_connection != null)
-    {
-        return true;
-    }
-
-    CreateConnection();
-
-    return _connection != null;
-} 
-```
+<script src="https://gist.github.com/WolfgangOfner/805849b1ce32e719fc21e2bf872197d3.js"></script>
 
 ## Service
 
 The Service project is split into Command and Query. This is how CQRS separates the concerns of reading and writing data. I will go into the details in a later post. For now, all you have to know is that commands write data and queries read data. A query consists of a query and a handler. The query indicates what action should be executed and the handler implements this action. The command works with the same principle.
 
-```csharp  
-public class CreateCustomerCommandHandler : IRequestHandler<CreateCustomerCommand, Customer>
-{
-    private readonly ICustomerRepository _customerRepository;
-
-    public CreateCustomerCommandHandler(ICustomerRepository customerRepository)
-    {
-        _customerRepository = customerRepository;
-    }
-
-    public async Task<Customer> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
-    {
-        return await _customerRepository.AddAsync(request.Customer);
-    }
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/c93dd0c9d66a6de06a5a06b1e6c79635.js"></script>
 
 The handler often calls the repository to retrieve or change data.
 
@@ -351,15 +132,7 @@ In the previous section I only talked about the Customer service but the Order s
 
 Now that the base functionality is set up, it is time to test both microservice. Before you can start them, you have to make sure that RabbitMq is disabled in the OrderApi project. Go to the OrderApi and open the appsettings. There you have to make sure that Enabled is set to false:
 
-```json  
-"RabbitMq": {
-  "Hostname": "rabbitmq",
-  "QueueName": "CustomerQueue",
-  "UserName": "user",
-  "Password": "password",
-  "Enabled" : false 
-}  
-```
+<script src="https://gist.github.com/WolfgangOfner/69ea9d62a13e979bc8b2cf944bad888a.js"></script>
 
 ## Test the Microservice
 
