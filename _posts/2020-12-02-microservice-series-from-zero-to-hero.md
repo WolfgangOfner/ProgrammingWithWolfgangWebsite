@@ -124,10 +124,11 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Add Istio to an existing Microservice in Kubernetes](/add-Istio-to-existing-microservice-in-kubernetes)
 
+- [KEDA - Kubernetes Event-driven Autoscaling](/keda-kubernetes-event-driven-autoscalling)
+
 Coming soon (in no specific order):
 - Dapr
 - IaC with Biceps
-- KEDA (Kubernetes Event-driven Autoscaling)
 - Node/Cluster scaling
 - Managed Identity
 - Update DNS in IaC Pipeline
