@@ -109,7 +109,7 @@ The publish and receive functionalities are implemented. The last step before te
 
 <script src="https://gist.github.com/WolfgangOfner/1e58b4944c20243a359ca1691d4a4ac1.js"></script>
 
-Don't worry if you don't understand them. Simplified these two lines download the RabbitMQ Docker image, start is as a container and configure the ports, the name, and the credentials.
+Don't worry if you don't understand them. Simplified these two lines download the RabbitMQ Docker image, start it as a container and configure the ports, the name, and the credentials.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/Run-RabbitMQ-in-a-Docker-container.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Run-RabbitMQ-in-a-Docker-container.jpg" alt="Run RabbitMQ in a Docker container" /></a>
@@ -139,7 +139,7 @@ Navigate to the Queues tab and you will see that there is no queue yet.
   </p>
 </div>
 
-Now you can start the OrderApi and the CustomerApi project. The order how you start them doesn't matter. After you started the CustomerApi, the CustomerQueue will be created and you can see it in the management portal.
+Now you can start the OrderApi and the CustomerApi project. The order how you start them doesn't matter. After you started the OrderApi project, the CustomerQueue will be created and you can see it in the management portal.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/The-CustomerQueue-was-created-from-the-CustomerApi-solution.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/The-CustomerQueue-was-created-from-the-CustomerApi-solution.jpg" alt="No queues are created yet" /></a>
