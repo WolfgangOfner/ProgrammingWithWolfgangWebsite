@@ -3,7 +3,7 @@ title: KEDA - Kubernetes Event-driven Autoscaling
 date: 2021-09-20
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
-tags: [DevOps, Azure, YAML, Docker, Helm, AKS, Kubernetes, Monitoring, Prometheus, Grafana, Istio, Kiali]
+tags: [DevOps, Azure, YAML, Docker, Helm, AKS, Kubernetes, Monitoring, Prometheus, Grafana, Istio, Kiali, KEDA]
 description: Creating unit tests for a .NET 5 console application that uses dependency injection only takes a couple of lines of code to configure the service provider.
 ---
 
