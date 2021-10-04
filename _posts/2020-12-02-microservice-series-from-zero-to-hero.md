@@ -128,6 +128,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Deploy KEDA and an Autoscaler using Azure DevOps Pipelines](/deploy-keda-and-autoscaler-using-azure-devops-pipelines)
 
+- [Create Custom Roles for Azure DevOps in Azure](/create-custom-roles-for-azure-devops-in-azure)
+
 Coming soon (in no specific order):
 - Dapr
 - IaC with Biceps

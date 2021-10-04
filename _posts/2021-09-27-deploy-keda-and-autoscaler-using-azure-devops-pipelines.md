@@ -49,7 +49,7 @@ Next, create a second file, called kedatriggerauthentication.yaml, which will co
 
 <script src="https://gist.github.com/WolfgangOfner/590f3da5fded3d00fcbe9c7d5c69a6b2.js"></script>
 
-Helm is a template engine that replaces the placeholder in the double braces with the corresponding values in the values.yaml file. For example, {{ .Values.kedascaler.minReplicaCount }} will be replaced with the value of the variable minReplicaCount in the kedascaler section of the values.yaml file. 
+Helm is a template engine that replaces the placeholder in the double braces with the corresponding values in the values.yaml file. For example, {% raw %} {{ .Values.kedascaler.minReplicaCount }}{% endraw %} will be replaced with the value of the variable minReplicaCount in the kedascaler section of the values.yaml file. 
 
 Add the following values at the bottom of the values.yaml file:
 
