@@ -130,10 +130,11 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Create Custom Roles for Azure DevOps in Azure](/create-custom-roles-for-azure-devops-in-azure)
 
+- [Update DNS Records in an Azure DevOps Pipeline](/update-dns-records-in-an-azure-devops-pipeline)
+
 Coming soon (in no specific order):
 - Dapr
 - IaC with Biceps
 - Node/Cluster scaling
 - Managed Identity
-- Update DNS in IaC Pipeline
 - .NET 6 Upgrade

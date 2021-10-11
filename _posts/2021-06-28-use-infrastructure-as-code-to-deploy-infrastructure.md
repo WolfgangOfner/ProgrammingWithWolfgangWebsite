@@ -2,7 +2,7 @@
 title: Use Infrastructure as Code to deploy your Infrastructure with Azure DevOps
 date: 2021-06-28
 author: Wolfgang Ofner
-categories: [Cloud]
+categories: [DevOps, Cloud]
 tags: [DevOps, Azure DevOps, Azure, Nginx, YAML, CI-CD, Docker, Helm, AKS, Kubernetes, IaC]
 description: Infrastructure as Code (IaC) enables you to deploy your infrastructure fast and reliable and helps to increase the quality of the deployments.
 ---
