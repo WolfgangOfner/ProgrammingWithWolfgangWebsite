@@ -24,7 +24,7 @@ For all other operating systems, see the <a href="https://helm.sh/docs/intro/ins
 ### Deploy your Microservice with Helm
 After you have installed Helm, open to charts folder of your application. In the demo application, the path is CustomerApi/CustomerApi/charts. There you can see a folder named customerapi. This folder contains the Helm package. To install this package use helm install [Name] [ChartName]. For the demo application this can be done with the following code:
 
-<script src="https://gist.github.com/WolfgangOfner/d266e4d2d9e7fb1af81bb26b53e5b20e.js"></script>
+<script src="https://gist.github.com/WolfgangOfner/fd2c611b2b018bceaf69304f4afdd9ca.js"></script>
 
 The package gets deployed within seconds. After it is finished, connect to the dashboard of your cluster. If you don't know how to do that, see my post ["Azure Kubernetes Service - Getting Started"](/azure-kubernetes-service-getting-started). There I explain how I use Octant and how to access your Kubernetes cluster with it.
 
@@ -43,7 +43,7 @@ The error message reads: "Failed to pull image customerapi:stable". The image ca
 ### Change the Configuration of the Helm Chart
 You can find the values.yaml file inside the customerapi Helm chart. This file provides a way to override values of the configuration. Under the image section, edit the repository and the tag to use the correct ones:
 
-<script src="https://gist.github.com/WolfgangOfner/fd2c611b2b018bceaf69304f4afdd9ca.js"></script>
+<script src="https://gist.github.com/WolfgangOfner/8c6c8eed8110392085bccdab137777e2.js"></script>
 
 It is a best practice to always use a version number as the tag and not latest. Using the latest tag might end up in problems with the container cache but more important you can't exactly know what version of the application you are running. For example, you are running latest but tomorrow I update latest to a new version. The next time your container gets restarted, it loads the new image and this might break your application.
 
