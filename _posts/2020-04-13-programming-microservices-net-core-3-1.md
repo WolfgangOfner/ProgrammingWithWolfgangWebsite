@@ -130,7 +130,7 @@ For my tests, I like to create a test project for each normal project wheres the
 
 In the previous section I only talked about the Customer service but the Order service has the same structure and should be easy to understand.
 
-Now that the base functionality is set up, it is time to test both microservice. Before you can start them, you have to make sure that RabbitMq is disabled in the OrderApi project. Go to the OrderApi and open the appsettings. There you have to make sure that Enabled is set to false:
+Now that the base functionality is set up, it is time to test both microservice. Before you can start them, you have to make sure that RabbitMQ is disabled in the OrderApi project. Go to the OrderApi and open the appsettings. There you have to make sure that Enabled is set to false:
 
 <script src="https://gist.github.com/WolfgangOfner/69ea9d62a13e979bc8b2cf944bad888a.js"></script>
 

@@ -25,27 +25,27 @@ The package gets deployed within seconds. After it is finished, connect to the d
 In the dashboard, open the orderapi pod and you will see that there is an error.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/12/RabbitMq-causes-an-Exception.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/RabbitMq-causes-an-Exception.jpg" alt="RabbitMq causes an Exception" /></a>
+  <a href="/assets/img/posts/2020/12/RabbitMq-causes-an-Exception.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/RabbitMq-causes-an-Exception.jpg" alt="RabbitMQ causes an Exception" /></a>
   
   <p>
-   RabbitMq causes an Exception
+   RabbitMQ causes an Exception
   </p>
 </div>
 
-The application wants to open a connection to RabbitMq. Currently, there is no RabbitMq running in my Kubernetes cluster. Therefore, the exception occurs. 
+The application wants to open a connection to RabbitMQ. Currently, there is no RabbitMQ running in my Kubernetes cluster. Therefore, the exception occurs. 
 
 ## Override Appsettings with Environment Variables
-The settings for RabbitMq are in the appsettings.json file. There is also a flag to enable and disable the connection. By default, this flag is enabled.
+The settings for RabbitMQ are in the appsettings.json file. There is also a flag to enable and disable the connection. By default, this flag is enabled.
 
 <script src="https://gist.github.com/WolfgangOfner/4eb27dfc961f6f495e231cc73672d6ef.js"></script>
 
-Currently, I don't want to use RabbitMq, therefore I want to disable it. Microsoft introduced the DefaultBuilder method which automatically reads environment variables, command-line arguments, and all variations of the appsettings.json files. This allows developers to use environment variables to override settings without changing the code.
+Currently, I don't want to use RabbitMQ, therefore I want to disable it. Microsoft introduced the DefaultBuilder method which automatically reads environment variables, command-line arguments, and all variations of the appsettings.json files. This allows developers to use environment variables to override settings without changing the code.
 
-I am reading the RabbitMq configs in the Startup.cs class and then register the service depending on the value of the enabled flag:
+I am reading the RabbitMQ configs in the Startup.cs class and then register the service depending on the value of the enabled flag:
 
 <script src="https://gist.github.com/WolfgangOfner/57c8634c35d3c44969c601b7dbff6edf.js"></script>
 
-The enabled flag is in the RabbitMq section of the appsettings.json file. To override it with an environment variable, I have to pass one with the same structure. Instead of braces, I use double underscores (__). This means that the name of the environment variable is rabbitmq__enabled and its value is false.
+The enabled flag is in the RabbitMQ section of the appsettings.json file. To override it with an environment variable, I have to pass one with the same structure. Instead of braces, I use double underscores (__). This means that the name of the environment variable is rabbitmq__enabled and its value is false.
 
 ### Pass the Environment Variable using Helm
 Helm allows us to add environment variables easily. Add in the values.yaml file the following code:

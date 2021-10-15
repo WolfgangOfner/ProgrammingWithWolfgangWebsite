@@ -75,7 +75,7 @@ The last step is to call the SendCustomer method when a customer is updated. Thi
 
 <script src="https://gist.github.com/WolfgangOfner/835ba90f46b4142121a1fd05184aa091.js"></script>
 
-Note: I updated the implementation on November 27 2020. Instead of creating a connection everytime the method is called, I reuse the connection and only create a new channel. This follows the RabbitMq best practices and helps to improve the performance significantly. I am not reusing the channel since I don't need the highest performance and I want to keep the implementation simple. The new code looks as follows:
+Note: I updated the implementation on November 27 2020. Instead of creating a connection everytime the method is called, I reuse the connection and only create a new channel. This follows the RabbitMQ best practices and helps to improve the performance significantly. I am not reusing the channel since I don't need the highest performance and I want to keep the implementation simple. The new code looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/27598498de3abb4f06c14dd8e34ed6e1.js"></script>
 
@@ -181,7 +181,7 @@ After you sent the update request, go back to the RabbitMQ management portal and
 
 ## Shortcomings of my Implementation
 
-In the CustomerApi, there is no real exception handling right now. This means that if there is an error while processing a message, the message will be deleted from the queue and therefore be lost. Also if there is no connection to RabbitMq, the message will be discareded and therefore lost. In a production environment, you should save this message somewhere and process it once all systems are back up and running.
+In the CustomerApi, there is no real exception handling right now. This means that if there is an error while processing a message, the message will be deleted from the queue and therefore be lost. Also if there is no connection to RabbitMQ, the message will be discareded and therefore lost. In a production environment, you should save this message somewhere and process it once all systems are back up and running.
 
 Another problem is that after the message is read, it is removed from the queue. This means only one receiver is possible at the moment. There are also no unit tests for the implementation of the RabbitMQ client.
 
