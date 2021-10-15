@@ -3,7 +3,7 @@ title: Replace RabbitMQ with Azure Service Bus Queues
 date: 2021-04-12
 author: Wolfgang Ofner
 categories: [Cloud, DevOps]
-tags: [DevOps, CI-CD, Azure DevOps, Azure, Kubernetes, AKS, Helm, Azure Service Bus, RabbitMq]
+tags: [DevOps, CI-CD, Azure DevOps, Azure, Kubernetes, AKS, Helm, Azure Service Bus, RabbitMQ]
 description: Replace RabbitMQ with Azure Service Bus Queues to take advantage of the managed and scalable queue on Azure.
 ---
 
