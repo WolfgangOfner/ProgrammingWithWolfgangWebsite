@@ -75,10 +75,10 @@ After the pipeline is finished, check if your DNS records were updated. First, g
 Go to your Azure DNS Zone and you should see that the URLs of your records are the same as the Nginx controller external IP.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/10/The-DNS-records-were-updated.jpg"><img loading="lazy" src="/assets/img/posts/2021/10/The-DNS-records-were-updated.jpg" alt="The-DNS-records-were-updated" /></a>
+  <a href="/assets/img/posts/2021/10/The-DNS-records-were-updated.jpg"><img loading="lazy" src="/assets/img/posts/2021/10/The DNS records were updated.jpg" alt="The-DNS-records-were-updated" /></a>
   
   <p>
-   The-DNS-records-were-updated
+   The DNS records were updated
   </p>
 </div>
 

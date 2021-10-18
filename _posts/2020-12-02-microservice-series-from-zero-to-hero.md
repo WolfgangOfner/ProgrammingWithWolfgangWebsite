@@ -132,9 +132,9 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Update DNS Records in an Azure DevOps Pipeline](/update-dns-records-in-an-azure-devops-pipeline)
 
+- [Automatically scale your AKS Cluster](/automatically-scale-your-aks-cluster)
+
 Coming soon (in no specific order):
 - Dapr
-- IaC with Biceps
-- Node/Cluster scaling
 - Managed Identity
 - .NET 6 Upgrade
