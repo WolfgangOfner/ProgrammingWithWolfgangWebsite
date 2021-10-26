@@ -134,6 +134,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Automatically scale your AKS Cluster](/automatically-scale-your-aks-cluster)
 
+- [Use AAD Authentication for Pods running in AKS](/use-aad-authentication-for-pods-running-in-aks)
+
 Coming soon (in no specific order):
 - Dapr
 - Managed Identity
