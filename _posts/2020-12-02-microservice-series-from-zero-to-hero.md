@@ -136,6 +136,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Use AAD Authentication for Pods running in AKS](/use-aad-authentication-for-pods-running-in-aks)
 
+- [Implement AAD Authentication to access Azure SQL Databases](/implement-aad-authentication-to-access-azure-sql-databases)
+
 Coming soon (in no specific order):
 - Dapr
 - Managed Identity

@@ -187,6 +187,6 @@ The iptables that got modified by the NMI pods should be cleaned up automaticall
 
 Using AAD authentication in Azure Kubernetes Service is unfortunately not straightforward, especially since the documentation is missing some crucial information. Nevertheless, going passwordless is definitely worth the hassle and will make it easier to manage your applications in the future.
 
-In my next post, I will show you how to use this AAD authentication to access your database without a password.
+[In my next post](/implement-aad-authentication-to-access-azure-sql-databases), I will show you how to use this AAD authentication to access your database without a password.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
