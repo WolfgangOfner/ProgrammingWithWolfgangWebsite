@@ -97,7 +97,7 @@ This configuration enables you to access the Grafana dashboard using http://loca
 
 The user name is admin and the password is what you decoded in the previous step.
 
-## create your first Query in Loki
+## Create your first Query in Loki
 
 After the successful login, click on the round icon on the left and select Explore to open the query editor.
 
