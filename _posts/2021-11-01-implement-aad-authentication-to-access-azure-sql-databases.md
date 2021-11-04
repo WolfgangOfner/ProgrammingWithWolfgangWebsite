@@ -186,6 +186,14 @@ Lastly, read the value of the tenant Id from the appsettings.json file and pass 
 
 Run your application again to make sure that everything still works.
 
+## Pass the Tenant Id during the Deployment
+
+You want to pass the tenant id during the deployment to keep it secret. If you commit it to your version control, everyone would be able to read it. You have to take the following steps to pass the tenant id during the deployment:
+
+Add a variable for the tenant id to your values.yaml or values.release.yaml file in your Helm chart. This variable has to start and finish with two underscores (\_\_) so the tokenizer task in the Azure DevOps pipeline can replace the value. Next, add your tenant id as a secret variable in your pipeline.
+
+The Tokenizer task will replace the tenant id in the Helm chart with your actual tenant id and therefore will override the empty TenantId value in your appsettings.json file. For a detailed explanation on how and why this works, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
+
 ## Conclusion
 
 Azure Active Directory authentication to access your databases is a great feature to get rid of passwords. This should also streamline the development process since you don't have to share passwords with new developers. All you have to do is to add the developer to the desired database so they can log in. 
