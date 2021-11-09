@@ -169,8 +169,9 @@ This code is using Helm to create the secret and Tokenizer to replace \_\_AzureS
 
 Cloud providers, especially Azure, offer a wide range of services. This allows developers to use different PaaS solutions which help them to focus on their implementation, rather than running and maintaining the infrastructure. Azure Service Bus is an enterprise queueing solution and can replace RabbitMQ if you want to take advantage of the PaaS offering instead of running RabbitMQ yourself. I added a switch to the microservice, so you can easily switch between RabbitMQ and Azure Service Bus Queue.
 
-In my next post, I will show you how to replace the background service in the OrderApi with Azure Functions to use a serverless solution to process the messages on the queue.
+In [Automatically set Azure Service Bus Queue Connection Strings during the Deployment](/automatically-set-service-bus-queue-connection-string-during-deployment), I have replaced the variable with some automation to automatically read the connection string. This allows for a more flexible and robust deployment process.
 
+In my next post, I will show you how to replace the background service in the OrderApi with Azure Functions to use a serverless solution to process the messages on the queue.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
 

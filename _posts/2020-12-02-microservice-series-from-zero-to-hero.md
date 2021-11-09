@@ -138,6 +138,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Implement AAD Authentication to access Azure SQL Databases](/implement-aad-authentication-to-access-azure-sql-databases)
 
+- [Automatically set Azure Service Bus Queue Connection Strings during the Deployment](/automatically-set-service-bus-queue-connection-string-during-deployment)
+
 Coming soon (in no specific order):
 - Dapr
 - Managed Identity
