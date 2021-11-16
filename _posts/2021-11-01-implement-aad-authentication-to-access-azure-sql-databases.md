@@ -54,8 +54,6 @@ With the user set to the variable, use the following command to set the Active D
 
 ## Configure the Test Application to use AAD Authentication 
 
-XXX Check ob AAD log in mit pw funktioniert wenn admin nicht in master db eingetragen ist. XXX
-
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">Github</a>.
 
 Open the SQL management tool of your choice, for me, it's Microsoft SQL Server Management Studio (SSMS), and log in with the user you previously set as the Active Directory admin.
