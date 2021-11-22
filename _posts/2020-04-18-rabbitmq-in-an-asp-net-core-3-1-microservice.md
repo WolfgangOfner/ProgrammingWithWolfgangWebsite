@@ -3,7 +3,7 @@ title: RabbitMQ in an ASP .NET Core 3.1 Microservice
 date: 2020-04-18
 author: Wolfgang Ofner
 categories: [Docker, ASP.NET]
-tags: [NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, Swagger]
+tags: [.NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, Swagger]
 description: Today, I will implement RabbitMQ, so the microservices can exchange data while staying independent, highly available and high-performant.
 ---
 [In my last posts](https://www.programmingwithwolfgang.com/document-your-microservice-with-swagger), I created two microservices using ASP .NET Core 3.1. Today, I will implement RabbitMQ, so the microservices can exchange data while staying independent. RabbitMQ can also be used to publish data even without knowing the subscribers. This means that you can publish an update and whoever is interested can get the new information.

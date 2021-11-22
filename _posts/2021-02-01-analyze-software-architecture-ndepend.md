@@ -3,7 +3,7 @@ title: Analyze Software Architecture with NDepend
 date: 2021-02-01
 author: Wolfgang Ofner
 categories: [Miscellaneous]
-tags: [Software Architecture, Tools, NDepend, NET Core 3.1, C#, ASP.NET Core MVC, Visual Studio]
+tags: [Software Architecture, Tools, NDepend, .NET Core 3.1, C#, ASP.NET Core MVC, Visual Studio]
 description: Analyze the software architecture of a project with NDpened and find code smells fast.
 ---
 
