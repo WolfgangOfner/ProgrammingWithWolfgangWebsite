@@ -3,7 +3,7 @@ title: Getting to know the Startup Class of ASP.NET Core MVC
 date: 2019-04-29T11:15:53+02:00
 author: Wolfgang Ofner
 categories: [ASP.NET]
-tags: [NET Core, ASP.NET Core MVC, 'C#']
+tags: [.NET Core, ASP.NET Core MVC, 'C#']
 description: Every .NET Core web application has a Program class with a static Main method.The Startup class of .NET core is the new version of the Global.asax file.
 ---
 Every .NET Core web application has a Program class with a static Main method.

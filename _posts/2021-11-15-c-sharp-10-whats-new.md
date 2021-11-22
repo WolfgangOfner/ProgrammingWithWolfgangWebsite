@@ -3,7 +3,7 @@ title: C# 10.0 - What's new
 date: 2021-11-15
 author: Wolfgang Ofner
 categories: [Programming]
-tags: [NET 6, 'C#']
+tags: [.NET 6, 'C#']
 description: .NET 6 and C# 10 is released. Let's have a look at the new features and how they can make the life of developers easier.
 ---
 

@@ -3,7 +3,7 @@ title: Microservice Series - From Zero to Hero
 date: 2020-12-02
 author: Wolfgang Ofner
 categories: [Cloud, Kubernetes]
-tags: [AKS, Kubernetes, Docker, YAML, Azure, NET 5, Helm, CI-CD, Azure DevOps, C#, Azure]
+tags: [AKS, Kubernetes, Docker, YAML, Azure, .NET 5, Helm, CI-CD, Azure DevOps, C#, Azure, .NET 6]
 description: This series teaches you everything you have to know about microservices, Kubernetes, DevOps, Docker, Helm and much more.
 pin: true
 ---

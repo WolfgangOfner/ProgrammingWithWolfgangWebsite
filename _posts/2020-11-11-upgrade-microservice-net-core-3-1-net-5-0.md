@@ -3,7 +3,7 @@ title: Upgrade a Microservice from .NET Core 3.1 to .NET 5.0
 date: 2020-11-11
 author: Wolfgang Ofner
 categories: [ASP.NET, Docker]
-tags: [Azure DevOps, CI, Docker, xUnit, NET 5]
+tags: [Azure DevOps, CI, Docker, xUnit, .NET 5]
 description: Upgrading from .NET Core 3.1 to .NET 5.0 is very fast and when using microservices can be easily done within a single day.
 ---
 

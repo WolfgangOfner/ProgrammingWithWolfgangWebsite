@@ -3,7 +3,7 @@ title: Repository Pattern in .NET Core
 date: 2020-06-04
 author: Wolfgang Ofner
 categories: [Design Pattern]
-tags: [NET Core, 'C#', Entity Framework Core]
+tags: [.NET Core, 'C#', Entity Framework Core]
 description: Today, I will write about implementing .the Repository Pattern in .NET core using Entity Framework Core as the unit of work.
 ---
 A couple of years ago, I wrote about the <a href="/repository-and-unit-of-work-pattern/" target="_blank" rel="noopener noreferrer">Repository and Unit of Work pattern</a>. Although this post is quite old and not even .NET Core, I get many questions about it. Since the writing of the post, .NET core matured and I learned a lot about software development. Therefore, I wouldn't implement the code as I did back then. Today, I will write about implementing .the repository pattern in .NET core

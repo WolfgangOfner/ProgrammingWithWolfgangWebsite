@@ -3,7 +3,7 @@ title: 'Blazor - Getting Started'
 date: 2020-06-22
 author: Wolfgang Ofner
 categories: [ASP.NET, Frontend]
-tags: [NET Core, Blazor, 'C#', SignalR]
+tags: [.NET Core, Blazor, 'C#', SignalR]
 description: Blazor was introduced with .NET Core 3.0 and is a web UI single page application (SPA) framework. Developers write the code in HTML, CSS and C#.
 ---
 Blazor was introduced with .NET Core 3.0 and is a web UI single page application (SPA) framework. Developers write the code in HTML, CSS, C#, and optionally Javascript. Blazor was developed by Steve Sanderson and presented  in July 2018. The main advantage over Javascript frameworks is that you can run C# directly in the browser which should be appealing for enterprise developers who don't want to deal with Javascript

@@ -3,7 +3,7 @@ title: .NET 6 Minimal APIs - Getting Started
 date: 2021-11-22
 author: Wolfgang Ofner
 categories: [ASP.NET, Programming]
-tags: [NET 6, 'C#', REST, API, Swagger]
+tags: [.NET 6, 'C#', REST, API, Swagger]
 description: To speed up development, Minimal APIs in .NET 6 allow developers to configure APIs with only a couple of lines of code.
 ---
 
