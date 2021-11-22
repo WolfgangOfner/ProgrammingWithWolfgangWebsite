@@ -1,6 +1,6 @@
 ---
 title: .NET 6 Minimal APIs - Getting Started
-date: 2021-11-15
+date: 2021-11-22
 author: Wolfgang Ofner
 categories: [ASP.NET, Programming]
 tags: [NET 6, 'C#', REST, API, Swagger]
@@ -92,7 +92,7 @@ This endpoint takes in int and if the value is greater than zero, it returns Acc
 When you use Postman to test the Post method and send a number greater than zero, you will the a HTTP 202 status code.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/11/The-valid-request-returns-accepted.jpg"><img loading="lazy" src="/assets/img/posts/2021/11/The-valid-request-returns-accepted.jpg" alt="The valid request returns accepted /></a>
+  <a href="/assets/img/posts/2021/11/The-valid-request-returns-accepted.jpg"><img loading="lazy" src="/assets/img/posts/2021/11/The-valid-request-returns-accepted.jpg" alt="The valid request returns accepted" /></a>
   
   <p>
    The valid request returns accepted
