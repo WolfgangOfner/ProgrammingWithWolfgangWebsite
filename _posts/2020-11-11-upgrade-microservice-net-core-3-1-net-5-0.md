@@ -83,7 +83,7 @@ This tells Docker to use the new .NET 5.0 images to build and run the applicatio
 
 <script src="https://gist.github.com/WolfgangOfner/87de6c2717ea4c1c1d6c24a9fb1551fe.js"></script>
 
-Check in your changes and the build in Azure DevOps will run successfully.
+Check in your changes and the build pipeline in Azure DevOps will run successfully.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/11/The-Net-5-build-was-successful.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/The-Net-5-build-was-successful.jpg" alt="The .NET 5.0 build was successful" /></a>
