@@ -140,7 +140,8 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Automatically set Azure Service Bus Queue Connection Strings during the Deployment](/automatically-set-service-bus-queue-connection-string-during-deployment)
 
+- [Upgrade a Microservice from .NET 5.0 to .NET 6.0](/upgrade-microservice-from-net-5-to-net-6)
+
 Coming soon (in no specific order):
 - Dapr
 - Managed Identity
-- .NET 6 Upgrade
