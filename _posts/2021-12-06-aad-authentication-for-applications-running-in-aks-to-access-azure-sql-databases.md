@@ -7,7 +7,7 @@ tags: [Azure, SQL, AAD, Azure CLI, Azure SQL, AKS, Kubernetes, Managed Identity]
 description: Removing passwords and using identities to access resources is the way to go for new applications. This post shows you how to configure your application running in AKS to access an Azure SQL database.
 ---
 
-Removing passwords and using identities to access resources is the way to go for new applications. In my last posts [Use AAD Authentication for Pods running in AKS](/use-aad-authentication-for-pods-running-in-aks) and [Implement AAD Authentication to access Azure SQL Databases](/implement-aad-authentication-to-access-azure-sql-database), I showed you how to enable AAD for Azure Kubernetes Service and how to use AAD authentication to access an Azure SQL database. 
+Removing passwords and using identities to access resources is the way to go for new applications. In my last posts [Use AAD Authentication for Pods running in AKS](/use-aad-authentication-for-pods-running-in-aks) and [Implement AAD Authentication to access Azure SQL Databases](/implement-aad-authentication-to-access-azure-sql-databases), I showed you how to enable AAD for Azure Kubernetes Service and how to use AAD authentication to access an Azure SQL database. 
 
 In this post, I want to show you how to use your own managed identitiy to configure an application running in AKS to access an Azure SQL database. 
 
