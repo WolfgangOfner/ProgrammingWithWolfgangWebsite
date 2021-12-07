@@ -198,6 +198,8 @@ Azure Active Directory authentication to access your databases is a great featur
 
 There may be some roadblocks on the way and Microsoft's documentation only showcases the happy path of the integration. This post should help you with the most common pitfalls and shows how to avoid them.
 
+[In my next post](/aad-authentication-for-applications-running-in-aks-to-access-azure-sql-databases), I will show you how to use AAD authentication with your application running in AKS.
+
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">Github</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

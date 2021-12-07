@@ -142,6 +142,7 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Upgrade a Microservice from .NET 5.0 to .NET 6.0](/upgrade-microservice-from-net-5-to-net-6)
 
+- [Use AAD Authentication for Applications running in AKS to access Azure SQL Databases](/aad-authentication-for-applications-running-in-aks-to-access-azure-sql-databases)
+
 Coming soon (in no specific order):
-- Dapr
 - Managed Identity
