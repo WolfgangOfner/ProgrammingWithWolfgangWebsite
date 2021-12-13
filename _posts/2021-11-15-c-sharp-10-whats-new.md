@@ -81,6 +81,8 @@ Every developer knows that we should check all parameters for null but it is a t
 
 This post gave a short introduction to the new features of C# 10 and .NET 6. C# is a quite mature language therefore the changes are not that massive anymore. Maybe I am a bit slow to adapt to the new changes but so far I am not too excited about them. Allowing us to use global usings is a nice feature and also the automatic null checks of parameters will boost productivity. The other features have to prove themselves when I start using them in a real-world project. 
 
+Update 13.12.21: Approximately one month into .NET 6 and I have to say that I use the new Namespace feature and Global Usings all the time. I still haven't used records structs or minimal APIs.
+
 [In my next post](/net-6-minimal-apis-getting-started), I will take a look at minimal APIs which is probably Microsoft's most talked about feature of .NET 6. 
 
 You can find the code of this demo on <a href="https://github.com/WolfgangOfner/CSharp-10.0" target="_blank" rel="noopener noreferrer">Github</a>.
