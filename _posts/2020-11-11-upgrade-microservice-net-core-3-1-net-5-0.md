@@ -9,7 +9,7 @@ description: Upgrading from .NET Core 3.1 to .NET 5.0 is very fast and when usin
 
 Microsoft released the next major release, called .NET 5.0 which succeeds .NET Core 3.1. .NET 5.0 comes with a lot of improvements and also with C# 9. It also is the first step of a unified .NET platform and is the first version of Microsofts new release cycle. From now on, Microsoft will release a new version of .NET every November. .NET 6.0 will be released in November 2021, .NET 7.0 in November 2022, and so on.
 
-Today, I want to show how to upgrade a microservice and its build pipeline from .NET Core 3.1 to .NET 5.0. You can find the code of this demo on [Github](https://github.com/WolfgangOfner/MicroserviceDemo).
+Today, I want to show how to upgrade a microservice and its build pipeline from .NET Core 3.1 to .NET 5.0. You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/MicroserviceDemo).
 
 ## System Requirements for .NET 5.0
 To use .NET 5.0 you have to install the .NET 5.0 SDK from the [dotnet download page](https://dotnet.microsoft.com/download/dotnet/5.0) and [Visual Studio 16.8 or later](https://visualstudio.microsoft.com/downloads).
@@ -35,13 +35,13 @@ This file links the common.props file to the .csproj files. After setting this u
 
 <script src="https://gist.github.com/WolfgangOfner/e69b3da0ae0a8496f2a056e2a97ba7a8.js"></script>
 
-After updating all project files, update all Nuget packages of your solution. You can do this by right-clicking your solution --> Manage Nuget Packages for Solution...
+After updating all project files, update all NuGet packages of your solution. You can do this by right-clicking your solution --> Manage NuGet Packages for Solution...
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/11/Update-Nuget-packages.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/Update-Nuget-packages.jpg" alt="Update Nuget packages" /></a>
+  <a href="/assets/img/posts/2020/11/Update-Nuget-packages.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/Update-Nuget-packages.jpg" alt="Update NuGet packages" /></a>
   
   <p>
-    Update your Nuget packages
+    Update your NuGet packages
   </p>
 </div>
 
@@ -96,6 +96,6 @@ Check in your changes and the build pipeline in Azure DevOps will run successful
 ## Conclusion
 Today, I showed how easy it can be to upgrade .NET Core 3.1 to .NET 5.0. To upgrade was so easy because I kept my solution up to date and because microservices are small solutions that are way easier to upgrade than big monolithic applications. The whole upgrade for both my microservices took around 10 minutes. I know that a real-world microservice will have more code than mine but nevertheless, it is quite easy to update it. If you are coming from .NET Core 2.x or even .NET 4.x, the upgrade might be harder.
 
-You can find the code of this demo on [Github](https://github.com/WolfgangOfner/MicroserviceDemo).
+You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/MicroserviceDemo).
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

@@ -116,4 +116,4 @@ There are many more new features in .NET Core 3.0 like:
 
 .NET Core is great and with the new version, it got even better. My favorite new features are the features around the improved deployment. Also, the new namespace for JSON is nice, although not production-ready yet if you have complex requirements. I am not a desktop developer but I guess that .NET Core 3.0 is a major game-changer for desktop developers.
 
-You can find the code of today&#8217;s demo on <a href="https://github.com/WolfgangOfner/CSharp-8.0" target="_blank" rel="noopener noreferrer">Github.</a>
+You can find the code of today&#8217;s demo on <a href="https://github.com/WolfgangOfner/CSharp-8.0" target="_blank" rel="noopener noreferrer">GitHub.</a>

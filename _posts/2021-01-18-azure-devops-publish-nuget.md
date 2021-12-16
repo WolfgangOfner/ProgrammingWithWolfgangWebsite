@@ -57,7 +57,7 @@ The next step is to use the previously created API key to connect Azure DevOps w
 
 ## Publish to Nuget.org using an Azure DevOps Pipeline
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 The last step is to use the previously created service connection to extend the Azure DevOps pipeline and push the NuGet package to nuget.org. Publishing to nuget.org is almost the same as publishing to a private NuGet feed.
 
@@ -71,7 +71,7 @@ Next, I push the NuGet package to nuget.org using the dotnet core nuget push com
 
 For more details about the steps see my post [Publish to an Internal NuGet Feed in Azure DevOps](/publish-internal-nuget-feed). 
 
-That's all you have to do. Save the pipeline and run it. You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Nuget/pipelines/Nuget-CI-CD.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+That's all you have to do. Save the pipeline and run it. You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Nuget/pipelines/Nuget-CI-CD.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ## DotNetCore currently does not support using an encrypted Api Key
 
@@ -85,7 +85,7 @@ When you run the pipeline, you will get an error while publishing the NuGet pack
   </p>
 </div>
 
-Everything is set up correctly but there is a bug (or missing feature) in Dotnet Core and therefore you can't use an API key to push packages. There is an open <a href="https://github.com/microsoft/azure-pipelines-tasks/issues/7160" target="_blank" rel="noopener noreferrer">Github</a> issue which was created in 2018 but Microsoft has ignored the problem so far.
+Everything is set up correctly but there is a bug (or missing feature) in Dotnet Core and therefore you can't use an API key to push packages. There is an open <a href="https://github.com/microsoft/azure-pipelines-tasks/issues/7160" target="_blank" rel="noopener noreferrer">GitHub</a> issue which was created in 2018 but Microsoft has ignored the problem so far.
 
 ### Bug Workaround
 
@@ -109,6 +109,6 @@ This time the publish worked.
 
 Publishing a NuGet package to nuget.org works almost as the publish to a private Azure DevOps feed. Unfortunately, Microsoft has a bug in their dotnetcore task and therefore it is not working as expected. This post showed how you still can use an Azure DevOps pipeline to push a NuGet package to nuget.org using a small workaround.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

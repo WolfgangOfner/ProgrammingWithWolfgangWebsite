@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Deploy the Helm package during a Pull Request Build
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 If you have not enabled CI builds during pull requests, see [Run the CI Pipeline during a Pull Request](/run-the-ci-pipeline-during-pull-request) for more information on how to run your pipeline.
 
@@ -147,6 +147,6 @@ If you add additional services, make sure to not forget to delete them. Especial
 
 Modern DevOps environments should strive to deploy as fast and as often as possible. To achieve this, deploy every feature into a dedicated environment and if it passes the tests, deploy it to your production environment. This allows developers to deliver features faster and also helps to narrow down bugs due to the small scope of each deployment.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

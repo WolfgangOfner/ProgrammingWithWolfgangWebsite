@@ -75,7 +75,7 @@ The last step is to call the SendCustomer method when a customer is updated. Thi
 
 <script src="https://gist.github.com/WolfgangOfner/835ba90f46b4142121a1fd05184aa091.js"></script>
 
-Note: I updated the implementation on November 27 2020. Instead of creating a connection everytime the method is called, I reuse the connection and only create a new channel. This follows the RabbitMQ best practices and helps to improve the performance significantly. I am not reusing the channel since I don't need the highest performance and I want to keep the implementation simple. The new code looks as follows:
+Note: I updated the implementation on November 27 2020. Instead of creating a connection every time the method is called, I reuse the connection and only create a new channel. This follows the RabbitMQ best practices and helps to improve the performance significantly. I am not reusing the channel since I don't need the highest performance and I want to keep the implementation simple. The new code looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/27598498de3abb4f06c14dd8e34ed6e1.js"></script>
 

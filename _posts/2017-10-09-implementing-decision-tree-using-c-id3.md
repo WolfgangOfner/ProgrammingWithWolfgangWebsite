@@ -497,6 +497,6 @@ The last Limitation is the console. Due to its nature, printing a proper tree is
 
 ## Further documentation and the source code
 
-You can find the source code on <a href="https://github.com/WolfgangOfner/DecisionTree" target="_blank" rel="noopener noreferrer">Github</a>. You need at least Visual Studio 2015 to run the solution. Inside the solution folder, you can find a CSV file with test data. For a more comprehensive description of my implementation and related paper to the ID3 see my documentation which you can find <a href="https://github.com/WolfgangOfner/DecisionTree/blob/master/Docu%20and%20related%20paper%20decision%20tree.pdf" target="_blank" rel="noopener noreferrer">here</a>.
+You can find the source code on <a href="https://github.com/WolfgangOfner/DecisionTree" target="_blank" rel="noopener noreferrer">GitHub</a>. You need at least Visual Studio 2015 to run the solution. Inside the solution folder, you can find a CSV file with test data. For a more comprehensive description of my implementation and related paper to the ID3 see my documentation which you can find <a href="https://github.com/WolfgangOfner/DecisionTree/blob/master/Docu%20and%20related%20paper%20decision%20tree.pdf" target="_blank" rel="noopener noreferrer">here</a>.
 
 &nbsp;

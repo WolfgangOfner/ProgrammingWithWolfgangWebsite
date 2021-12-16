@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Add the Microservices to the Prometheus Configuration for Scrapping
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 You have to add the microservices as targets in Prometheus before you can visualize their Prometheus data. I installed Grafana Loki in a previous post which also installs Prometheus. You can find the details in [Collect and Query your Kubernetes Cluster Logs with Grafana Loki](/collect-and-query-kubernetes-logs-with-grafana-loki).
 
@@ -223,6 +223,6 @@ Between 21:55 and 22:01 the request time was around 5 - 7 seconds which does not
 
 Grafana combined with Prometheus is a powerful tool to visualize your metrics from each component of your Kubernetes cluster and even from single deployments or pods. This post showed how to add new targets to the Prometheus scrap configuration and how to import and create your own dashboards to display the request duration.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

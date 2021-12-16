@@ -54,7 +54,7 @@ Therefore, I decided to create this service where I start with the theory of mic
 
 - [Automatically Version Docker Containers in Azure DevOps CI](/automatically-version-docker-container)
 
-- [Create Nuget Packages in Azure DevOps Pipelines](/create-nuget-azure-devops)
+- [Create NuGet Packages in Azure DevOps Pipelines](/create-nuget-azure-devops)
 
 - [Publish to an Internal NuGet Feed in Azure DevOps](/publish-internal-nuget-feed)
 

@@ -16,7 +16,7 @@ To use .NET 6.0 you have to install the .NET 6.0 SDK from the [dotnet download p
 
 ## Uprgrade from .NET 5.0 to .NET 6.0
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Before you begin, check the <a href="https://docs.microsoft.com/en-us/dotnet/core/compatibility/6.0" target="_blank" rel="noopener noreferrer">breaking changes in .NET 6</a> to make sure that your code is compatible with the new version.
 
@@ -106,6 +106,6 @@ As of this writing, Azure Functions v4 supports .NET 6 but there is no Docker im
 
 Upgrading from .NET 5 to .NET 6 is very fast and simple. Most applications should be able to update without any problems by simply changing the .NET version number in the project file and in the Dockerfile. Make sure to update your NuGet packages and test your application after the update to make sure that everything still works.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

@@ -29,7 +29,7 @@ To get started, download the newest version of Istio.
   </p>
 </div>
 
-Alternatively, go to <a href="https://github.com/istio/istio/releases" target="_blank" rel="noopener noreferrer">Github</a> and download the desired version.
+Alternatively, go to <a href="https://github.com/istio/istio/releases" target="_blank" rel="noopener noreferrer">GitHub</a> and download the desired version.
 
 After the download is finished, navigate into the downloaded Istio folder and set the path to the /bin folder as the Path variable.
 
@@ -128,7 +128,7 @@ The gateway acts as a load balancer and only provides an external URL. Use the f
   <a href="/assets/img/posts/2021/08/Get-the-IP-Adresse-of-the-Sample-Application.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Get-the-IP-Adresse-of-the-Sample-Application.jpg" alt="Get the IP Adresse of the Sample Application" /></a>
   
   <p>
-   Get the IP Adresse of the Sample Application
+   Get the IP Adress of the Sample Application
   </p>
 </div>
 

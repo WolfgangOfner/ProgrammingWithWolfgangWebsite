@@ -21,7 +21,7 @@ In the hpa, you can configure the minimum and maximum amount of pods. This preve
 
 ## Create a Horizontal Pod Autoscaler
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 In my demo, I am using Helm to deploy my application to Kubernetes. You don't have to use Helm though and can just apply the yaml file I will create to your Kubernetes cluster.
 
@@ -57,7 +57,7 @@ Deploy the hpa to your Kubernetes cluster. If you want to learn how to deploy th
 
 ## Load testing a Microservice
 
-There are many load testing tools out there. I wrote a super simple one myself and added it to the root of the Github repository inside the AutoscalingDemo folder. The code looks as follows:
+There are many load testing tools out there. I wrote a super simple one myself and added it to the root of the GitHub repository inside the AutoscalingDemo folder. The code looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/9ea245746af4f6ec12ccc249a9f64386.js"></script>
 
@@ -149,6 +149,6 @@ The stabilization window restricts the hpa from scaling out or in too frequently
 
 The Horizontal Pod Autoscaler allows you to configure automatic scaling. This can be scaling out to increase the throughput and performance of your application or scaling in to reduce the used resources and therefore the costs. Scaling can be performed on simple metrics like CPU utilization or on more complicated metrics like response time or hits per second. Additionally, metrics can be combined.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

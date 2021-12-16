@@ -19,7 +19,7 @@ For writing tests I use the following NuGet packages and extensions:
   * <a href="https://resharper-plugins.jetbrains.com/packages/xunitcontrib/" target="_blank" rel="noopener">xUnit Resharper Extension</a> for xUnit shortcuts in Visual Studio
   * <a href="https://www.nuget.org/packages/xunit.runner.visualstudio" target="_blank" rel="noopener">xunit.runner.visualstudio</a> for running the xBehave tests
 
-To start, I use the code of my last demo which can be found on <a href="https://github.com/WolfgangOfner/xUnit-Getting-Started" target="_blank" rel="noopener">Github</a>.
+To start, I use the code of my last demo which can be found on <a href="https://github.com/WolfgangOfner/xUnit-Getting-Started" target="_blank" rel="noopener">GitHub</a>.
 
 ## Execute tests with xBehave
 
@@ -151,4 +151,4 @@ If your code needs some cleanup after execution, xBehave provides you with the T
 
 In this post, I gave a quick overview of xBehave and explained how to set up your scenarios and how to clean up afterward.
 
-You can find the code of my demo on <a href="https://github.com/WolfgangOfner/xBehave-Getting-Started" target="_blank" rel="noopener">Github</a>.
+You can find the code of my demo on <a href="https://github.com/WolfgangOfner/xBehave-Getting-Started" target="_blank" rel="noopener">GitHub</a>.

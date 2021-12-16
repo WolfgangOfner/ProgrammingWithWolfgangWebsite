@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Update the existing Deployment to the Test Environment
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 So far, I have used the CD pipeline to deploy to a stage called test. I plan to change the URL of the test environment and then add a deployment of the Helm package and the database to a production environment. 
 
@@ -123,6 +123,6 @@ Having a CD pipeline in place enables you to easily add new environments to your
 
 [In my next post](/deploy-every-pull-request-into-dedicated-namespace-in-kubernetes), I will show you how to deploy every pull request into a new environment and automatically create a unique URL.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

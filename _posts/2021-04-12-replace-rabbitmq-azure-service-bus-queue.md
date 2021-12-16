@@ -85,7 +85,7 @@ We will use this SAS to allow the microservice to send messages to the queue. Yo
 
 ## Send Messages to the Azure Service Bus Queue from a Microservice
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 The Azure Service Bus Queue is created and configured and now we can configure the microservice to send messages to the new queue. First, we add the following settings to the appsettings.json file:
 
@@ -101,7 +101,7 @@ In the ConfigureServices method of the Startup.cs class, read the AzureServiceBu
 
 <script src="https://gist.github.com/WolfgangOfner/7006891626f0dcc9dbcdc82475be87e5.js"></script>
 
-Additionally, read the UserabbitMq variable and either register the already existing RabbitMQ service or th Azure Service Bus service:
+Additionally, read the UserabbitMq variable and either register the already existing RabbitMQ service or the Azure Service Bus service:
 
 <script src="https://gist.github.com/WolfgangOfner/78a0e1fd77f112a88f4b1c7d949aaed7.js"></script>
 
@@ -173,6 +173,6 @@ In [Automatically set Azure Service Bus Queue Connection Strings during the Depl
 
 In my next post, I will show you how to replace the background service in the OrderApi with Azure Functions to use a serverless solution to process the messages on the queue.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

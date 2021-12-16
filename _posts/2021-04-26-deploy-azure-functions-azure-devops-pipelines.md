@@ -13,7 +13,7 @@ Since I am a big fan of DevOps, I will create an Azure DevOps pipeline today to 
 
 ## Create a basic YAML pipeline in Azure DevOps
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Create a basic YAML pipeline in Azure DevOps where you restore the NuGet packages, build the solution and publish it. For more information about Azure DevOps YAML pipelines, see my post [Build .NET Core in a CI Pipeline in Azure DevOps](/build-net-core-in-ci-pipeline-in-azure-devops).
 
@@ -53,7 +53,7 @@ Lastly, add the Azure App Service Settings task to update the service settings:
 
 <script src="https://gist.github.com/WolfgangOfner/1ac65017380c1d617da80b6eaeda62ac.js"></script>
 
-For more information about the Azure Service Bus Queue, see my post [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue). The pipeline is finsihed. Deploy the Azure Function and test it.
+For more information about the Azure Service Bus Queue, see my post [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue). The pipeline is finished. Deploy the Azure Function and test it.
 
 ## Testing the deployed Azure Function
 
@@ -81,8 +81,8 @@ Next, update a customer name, for example, from Wolfgang Ofner to Name Changed. 
 
 ## Conclusion
 
-Deploying Azure Functions with Azure DevOps only takes a couple of lines of code and should never be done manually. Additionally, it is very easy to update the existing settings wihtout exposing any sensitve data. In my next post, [Deploy a Docker Container to Azure Functions using an Azure DevOps YAML Pipeline](/deploy-docker-container-azure-functions), I will show you how to deploy an Azure Function inside a Docker container.
+Deploying Azure Functions with Azure DevOps only takes a couple of lines of code and should never be done manually. Additionally, it is very easy to update the existing settings without exposing any sensitive data. In my next post, [Deploy a Docker Container to Azure Functions using an Azure DevOps YAML Pipeline](/deploy-docker-container-azure-functions), I will show you how to deploy an Azure Function inside a Docker container.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

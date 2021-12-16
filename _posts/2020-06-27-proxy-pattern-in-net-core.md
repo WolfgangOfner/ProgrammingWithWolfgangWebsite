@@ -39,7 +39,7 @@ There are four patterns similar to the proxy pattern:
 
 ## Implementation of the Proxy Pattern
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-ProxyPatterns" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-ProxyPatterns" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 There are four types of proxies:
 
@@ -106,4 +106,4 @@ The virtual proxy pattern is often used with expensive UI operations, for exampl
 
 This post described the proxy pattern and how to use its different versions. Before writing this post, I haven&#8217;t heard about the proxy and I don&#8217;t think that it is used too often. But I also believe that it is good to have heard about it and so you can use it whenever you need it.The code examples where take and inspired from <a href="https://app.pluralsight.com/library/courses/c-sharp-design-patterns-proxy/table-of-contents" target="_blank" rel="noopener noreferrer">this Pluralsight course</a>.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-ProxyPatterns" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-ProxyPatterns" target="_blank" rel="noopener noreferrer">GitHub</a>.

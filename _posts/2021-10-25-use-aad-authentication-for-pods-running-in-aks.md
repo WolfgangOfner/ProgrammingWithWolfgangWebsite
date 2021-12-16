@@ -39,7 +39,7 @@ A user-assigned managed identity is a standalone resource in Azure. It can be as
 
 ## Enable Managed Identities for Applications running in Azure Kubernetes Service (AKS)
 
-Enabling managed identities for applications in AKS, so-called pod identities, is unfortunately not straightforward. There are different documentation but neither of them works reliably. You can find a demo integration on <a href="https://azure.github.io/aad-pod-identity/docs/demo/standard_walkthrough/" target="_blank" rel="noopener noreferrer">Github</a> but the documentation is missing some steps and the scripts did not work for me (mostly due to wrong file paths).
+Enabling managed identities for applications in AKS, so-called pod identities, is unfortunately not straightforward. There are different documentation but neither of them works reliably. You can find a demo integration on <a href="https://azure.github.io/aad-pod-identity/docs/demo/standard_walkthrough/" target="_blank" rel="noopener noreferrer">GitHub</a> but the documentation is missing some steps and the scripts did not work for me (mostly due to wrong file paths).
 
 Follow this guide to install pod identity on your AKS cluster and then test it with a demo application. Afterwards, I will go into the details of what is happening.
 
@@ -169,7 +169,7 @@ The following screenshot shows the workflow of the token acquisition.
   <a href="/assets/img/posts/2021/10/Token-acquisation-workflow.jpg"><img loading="lazy" src="/assets/img/posts/2021/10/Token-acquisation-workflow.jpg" alt="Token acquisation workflow" /></a>
   
   <p>
-  Token acquisation workflow (<a href="https://azure.github.io/aad-pod-identity/docs/concepts/block-diagram-and-design/" target="_blank" rel="noopener noreferrer">Github</a>)
+  Token acquisation workflow (<a href="https://azure.github.io/aad-pod-identity/docs/concepts/block-diagram-and-design/" target="_blank" rel="noopener noreferrer">GitHub</a>)
   </p>
 </div>
 

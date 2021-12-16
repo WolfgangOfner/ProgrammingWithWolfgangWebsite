@@ -55,7 +55,7 @@ Once the DNS entries are updated, open your URL in your browser and you should s
 
 ## Route Traffic according to the URL
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 The DNS settings are configured and now you want to tell Nginx to route customer.programmingwithwolfgang to the customer microservices and order.programmingwithwolfgang to the order microservice. This can be done easily with a change in the ingress configuration. The ingress controller is defined using Helm. If you don't know Helm, see [Helm - Getting Started](/helm-getting-started) and [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm). 
 
@@ -67,7 +67,7 @@ After adding the host line in the ingress.yaml file, add your URL to the values.
 
 <script src="https://gist.github.com/WolfgangOfner/f0f67999b590a327d3e615505cb53794.js"></script>
 
-The URL is defined as a variable in the CI/CD pipeline and will be added by the tokenizer. For more information about the tokenizer, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
+The URL is defined as a variable in the CI/CD pipeline and will be added by the Tokenizer. For more information about the Tokenizer, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
 
 <script src="https://gist.github.com/WolfgangOfner/5633fdf01392138a86a21e7104c21e5f.js"></script>
 
@@ -103,6 +103,6 @@ The order microservice is working as well with its custom URL.
 
 Using custom URLs or subdomains is surprisingly easy with Nginx and Kubernetes. Setting up the URLs is fast and gives your users or testers a better experience than the IP address I used before. Additionally, the Swagger UI problems were also fixed. Using a custom URL is a better solution than using an IP address but it is still not optimal. [In my next post](/automatically-issue-ssl-certificates-and-use-ssl-termination-in-kubernetes), I will automatically create certificates enabling the use of HTTPS and also will implement SSL termination in the Nginx ingress controller.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

@@ -6,7 +6,7 @@ categories: [Programming, DevOps]
 tags: ['C#', TDD, xUnit]
 description: In this post, I will explain the basics of xUnit and how to write unit tests with it. xUnit is an open source testing framework for the .NET framework.
 ---
-In this post, I will explain the basics of xUnit and how to write unit tests with it. xUnit is an open source testing framework for the .NET framework and was written by the inventor of NUnit v2. More details can be found on <a href="https://github.com/xunit/xunit" target="_blank" rel="noopener">xUnit&#8217;s Github page</a>. xUnit is used by .NET core as the default testing framework and its major advantage over NUnit is that every test runs in isolation, which makes it impossible that test influence each other.
+In this post, I will explain the basics of xUnit and how to write unit tests with it. xUnit is an open source testing framework for the .NET framework and was written by the inventor of NUnit v2. More details can be found on <a href="https://github.com/xunit/xunit" target="_blank" rel="noopener">xUnit&#8217;s GitHub page</a>. xUnit is used by .NET core as the default testing framework and its major advantage over NUnit is that every test runs in isolation, which makes it impossible that test influence each other.
 
 ## My Setup
 
@@ -18,7 +18,7 @@ For writing unit tests I use the following NuGet packages and extensions:
   * <a href="https://fakeiteasy.github.io/" target="_blank" rel="noopener">FakeItEasy</a> to create fake objects
   * <a href="https://resharper-plugins.jetbrains.com/packages/xunitcontrib/" target="_blank" rel="noopener">xUnit Resharper Extension</a> for xUnit shortcuts in Visual Studio
 
-The code for today&#8217;s demo can be found on <a href="https://github.com/WolfgangOfner/xUnit-Getting-Started" target="_blank" rel="noopener">Github</a>. Keep in mind that the tests are only for the demonstration of xUnit. The tests are barely useful.
+The code for today&#8217;s demo can be found on <a href="https://github.com/WolfgangOfner/xUnit-Getting-Started" target="_blank" rel="noopener">GitHub</a>. Keep in mind that the tests are only for the demonstration of xUnit. The tests are barely useful.
 
 ## Execute a test with xUnit
 

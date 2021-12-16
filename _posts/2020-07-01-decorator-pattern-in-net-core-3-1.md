@@ -24,7 +24,7 @@ The decorator pattern should be used to extend classes without changing them. Mo
 
 ## Decorator Pattern Implementation in ASP .NET Core 3.1
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-DecoratorPattern" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-DecoratorPattern" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 I created a DataService class with a GetData method which returns a list of ints. Inside the loop, I added a Thread.Sleep to slow down the data collection a bit to make it more real-world like.
 
@@ -62,4 +62,4 @@ When you load the site again, the data will be displayed immediately due to the 
 
 The decorator pattern can be used to extend classes without changing the code. This helps you to achieve the open-closed principle and separation of concerns. Mostly the decorator pattern is used for cross-cutting concerns like caching and logging.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-DecoratorPattern" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-DecoratorPattern" target="_blank" rel="noopener noreferrer">GitHub</a>.

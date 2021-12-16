@@ -33,7 +33,7 @@ If you want to get external code and have control over it, NuGet packages are pe
 
 ## Create the Source for the NuGet Package
 
-You can find the code of the whole demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the whole demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 For this Demo, I will create a simple NuGet package that offers one method which takes an integer and then calculates a prime number, depending on the input. Prime numbers are, for example, 2, 3, 5, 7, 11, and so on. The input parameter indicates the number you want, for example, if you input 2, the second prime number, 3, is returned. If you input 4, the fourth prime number, 7 is returned. I know this is not going to be the most useful NuGet package but calculating prime numbers is quite CPU intensive and I will use this method in a later example to demonstrate autoscaling if the CPU limit is reached.
 
@@ -73,7 +73,7 @@ The last two tasks create the NuGet package using dotnet pack and then publish t
 
 <script src="https://gist.github.com/WolfgangOfner/27a9d993f2ada81e84863cbc42a0f354.js"></script>
 
-You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Nuget/pipelines/Nuget-CI-CD.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Nuget/pipelines/Nuget-CI-CD.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ## Test the NuGet from the Pipeline
 
@@ -103,6 +103,6 @@ Download it and install it in your microservice. [In my next post](/publish-inte
 
 Sharing code between microservices can be tricky but with NuGet packages, it is very simple and organized. In this post, I showed you how to automatically create a NuGet package using Azure DevOps pipelines. [In my next post](/publish-internal-nuget-feed), I will show how to upload the NuGet package to a NuGet feed with the same Azure DevOps pipeline and how to use it in your microservices.
 
-You can find the code of the whole demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the whole demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

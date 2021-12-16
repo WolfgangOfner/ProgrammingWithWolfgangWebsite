@@ -15,9 +15,9 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Install Cert-Manager
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-Cert-Manager is a Kubernetes add-on that issues automatically TLS certificates for your applications. You can find it on <a href="https://github.com/jetstack/cert-manager" target="_blank" rel="noopener noreferrer">Github</a>. To install the cert-manager using Helm charts, execute the following commands:
+Cert-Manager is a Kubernetes add-on that issues automatically TLS certificates for your applications. You can find it on <a href="https://github.com/jetstack/cert-manager" target="_blank" rel="noopener noreferrer">GitHub</a>. To install the cert-manager using Helm charts, execute the following commands:
 
 <script src="https://gist.github.com/WolfgangOfner/a4c2a59165adf2ffc1cfe2766a9f4009.js"></script>
 
@@ -48,7 +48,7 @@ The OrderApi ingress file looks the same, except that the name is orderapi inste
 Next, add the TLS secret name and the host to the values.release.yaml or values.yaml file.
 
 <script src="https://gist.github.com/WolfgangOfner/f2c08d18403841182fa68a81a1081e73.js"></script>
-The variables, for example, \_\_TlsSecretName\_\_ are defined in the CI/CD pipeline and will be replaced by the tokenizer. For more information about the tokenizer, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
+The variables, for example, \_\_TlsSecretName\_\_ are defined in the CI/CD pipeline and will be replaced by the Tokenizer. For more information about the Tokenizer, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
 
 <script src="https://gist.github.com/WolfgangOfner/c9a4be612c66df20df3f16acd0100a01.js"></script>
 
@@ -103,6 +103,6 @@ A cert-manager creates SSL certificates automatically in your Kubernetes cluster
 
 [In my next post](/split-up-the-ci-cd-pipeline-into-two-pipelines), I will show you how to separate the CI/CD pipeline into two pipelines which will enable you to make changes faster and with less errors.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

@@ -9,7 +9,7 @@ description: Removing passwords and using identities to access resources is the 
 
 Removing passwords and using identities to access resources is the way to go for new applications. In my last posts [Use AAD Authentication for Pods running in AKS](/use-aad-authentication-for-pods-running-in-aks) and [Implement AAD Authentication to access Azure SQL Databases](/implement-aad-authentication-to-access-azure-sql-databases), I showed you how to enable AAD for Azure Kubernetes Service and how to use AAD authentication to access an Azure SQL database. 
 
-In this post, I want to show you how to use your own managed identitiy to configure an application running in AKS to access an Azure SQL database. 
+In this post, I want to show you how to use your own managed identity to configure an application running in AKS to access an Azure SQL database. 
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
 
@@ -67,7 +67,7 @@ Make sure to change the database name and/or the managed identity name if you ar
 
 ## Configure your Application running in AKS to use AAD Authentication
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 There are a few things you have to do before you can use AAD authentication for your SQL Server. 
 
@@ -75,7 +75,7 @@ First, add two files to the Helm chart of your application, aadpodidentity and a
 
 <script src="https://gist.github.com/WolfgangOfner/f44cd86ef67db843987861d1aa2d79e5.js"></script>
 
-The second file, creates a resource of type AzureIdentityBinding and tells your application what managed identity it should use to aquire the authentication token.
+The second file, creates a resource of type AzureIdentityBinding and tells your application what managed identity it should use to acquire the authentication token.
 
 <script src="https://gist.github.com/WolfgangOfner/c911f9e207b252f956558ee79b8b5764.js"></script>
 
@@ -95,7 +95,7 @@ This label is necessary for the AzureIdentityBinding resource to select the righ
 
 ## Configure the CD Pipeline 
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CD.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CD.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 The connection string is different when using AAD authentication. Since you don't need a username or password anymore, make sure to edit your connection string. It should something like this:
 
@@ -129,10 +129,10 @@ Check-in your code and let the Azure DevOps pipeline run. After the deployment i
 
 ## Conclusion
 
-Getting started with AAD authentication is not easy and Microsoft's documentation is incomplete and a bit missleading at the time of this writing. There are several approaches and it took me some time to get it working. Once you figured out how it works, it is quite simple to configure, as you have seen in this post.
+Getting started with AAD authentication is not easy and Microsoft's documentation is incomplete and a bit misleading at the time of this writing. There are several approaches and it took me some time to get it working. Once you figured out how it works, it is quite simple to configure, as you have seen in this post.
 
 In my next post, I will show you how to make the necessary changes in the CI pipeline so that everything gets configured and deployed automatically.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

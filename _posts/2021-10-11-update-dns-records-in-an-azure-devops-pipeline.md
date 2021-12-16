@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Prepare Azure DevOps to update DNS Settings
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 If you are using an Azure DNS Zone, you usually don't have to prepare anything in your Azure DevOps environment. I am using a lock on my DNS Zone though. A lock can be used to prevent changes or deletion. Since the DNS Zone manages my DNS entries for my website, mail server, and demos, it is important to not change and especially delete them.
 
@@ -86,6 +86,6 @@ Go to your Azure DNS Zone and you should see that the URLs of your records are t
 
 Updating DNS records in an Azure DevOps pipeline is a simple and fast way to react to changes in your infrastructure. Unfortunately, it is not possible to update existing records but this post showed how to delete and re-create your DNS records.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

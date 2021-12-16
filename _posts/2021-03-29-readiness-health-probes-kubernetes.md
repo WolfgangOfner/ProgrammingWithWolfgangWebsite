@@ -28,7 +28,7 @@ This is a very simple probe and also checks the /health endpoint. Your applicati
 
 ## Configuring Health Checks in .NET 5 and .NET Core
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Health checks were introduced in .NET Core 2.2 and can be configured in the Configure method of the Startup class. To create a simple health check, you can use the MapHealthCheck extension and provide the name of the endpoint.
 
@@ -94,6 +94,6 @@ Readiness probes are used to check if a pod is ready to receive traffic. Only af
 
 Today's demo was very simple but it should show you enough to get started and to create more complex probes.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

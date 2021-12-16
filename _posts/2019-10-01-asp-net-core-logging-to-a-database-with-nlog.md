@@ -13,7 +13,7 @@ Today, I want to talk about how I implemented NLog with ASP.NET core 2.2 and how
 
 ## Installing Nlog
 
-I created a new web project with .NET Core and the MVC template and added the NLog.Web.AspNetCore NuGet package. Next, I create a new file NLog.config in the root folder of my solution. This file will contain all the configs for NLog. Now it is time to fill the config file with some content. You can find the source code for this demo on <a href="https://github.com/WolfgangOfner/MVC-Nlog" target="_blank" rel="noopener noreferrer">Github</a>.
+I created a new web project with .NET Core and the MVC template and added the NLog.Web.AspNetCore NuGet package. Next, I create a new file NLog.config in the root folder of my solution. This file will contain all the configs for NLog. Now it is time to fill the config file with some content. You can find the source code for this demo on <a href="https://github.com/WolfgangOfner/MVC-Nlog" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ### Implementing the Nlog config
 
@@ -107,4 +107,4 @@ On the following screenshot, you can see that I called the Index and the Privacy
 
 This post showed how simple it is to set up and use NLog with your ASP.NET MVC Core application. All you have to do is installing the NuGet, adding the nlog.config file and use it in your application.
 
-You can find more information about NLog on their <a href="https://nlog-project.org/" target="_blank" rel="noopener noreferrer">website</a> and you can find the source code of today&#8217;s demo on <a href="https://github.com/WolfgangOfner/MVC-Nlog" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find more information about NLog on their <a href="https://nlog-project.org/" target="_blank" rel="noopener noreferrer">website</a> and you can find the source code of today&#8217;s demo on <a href="https://github.com/WolfgangOfner/MVC-Nlog" target="_blank" rel="noopener noreferrer">GitHub</a>.

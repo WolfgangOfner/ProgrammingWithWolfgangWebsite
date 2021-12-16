@@ -14,7 +14,7 @@ I plan to create a skeleton for my solution and when creating a new project with
 
 ### Creating the Structure of the Project for the Visual Studio Template
 
-The first step is to create the structure of your Visual Studio template. Therefore, I created an empty C# solution and add three projects, Template.Api, Template.Service and Template.Data. For the template, you can install any Nuget you want or add code. I added a controller that calls a service that calls a repository to get some data.
+The first step is to create the structure of your Visual Studio template. Therefore, I created an empty C# solution and add three projects, Template.Api, Template.Service and Template.Data. For the template, you can install any NuGet you want or add code. I added a controller that calls a service that calls a repository to get some data.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/07/Visual-Studio-Template-Project-Structure.jpg"><img loading="lazy" src="/assets/img/posts/2020/07/Visual-Studio-Template-Project-Structure.jpg" alt="Visual Studio Template Project Structure" /></a>
@@ -200,6 +200,6 @@ After adding the new template to Visual Studio, create a new project and you wil
 
 ## Conclusion
 
-Use a Visual Studio Template to set up solutions that have the same structure. Microservices often have the same skeleton and are a great candidate for this. Templates allow you to install all Nuget packages and also to add Test projects. Another advantage is that even junior developers or interns can set up new projects.
+Use a Visual Studio Template to set up solutions that have the same structure. Microservices often have the same skeleton and are a great candidate for this. Templates allow you to install all NuGet packages and also to add Test projects. Another advantage is that even junior developers or interns can set up new projects.
 
 You can find the code for the template without variables <a href="https://github.com/WolfgangOfner/VisualStudioTemplate/tree/withoutVariables" target="_blank" rel="noopener noreferrer">here</a> and the template with variables <a href="https://github.com/WolfgangOfner/VisualStudioTemplate" target="_blank" rel="noopener noreferrer">here</a>.

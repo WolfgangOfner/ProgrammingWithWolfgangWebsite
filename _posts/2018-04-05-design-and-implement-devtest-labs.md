@@ -167,7 +167,7 @@ To delete a custom image, follow these steps:
 
 ## Formulas
 
-Formulas provide default property values and therefore offer a fast way to create VMs from a preconfigured state.
+Formulas provide default property values and therefore offer a fast way to create VMs from a pre-configured state.
 
 Pros of using formulas:
 

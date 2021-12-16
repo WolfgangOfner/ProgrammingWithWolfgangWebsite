@@ -14,11 +14,11 @@ Code coverage gives you an indication of how much of your code is covered by at 
 
 ## Setting up xUnit for Code Coverage
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ### Install Coverlet
 
-I use coverlet to collect the coverage. All you have to do is installing the Nuget package. The full Nuget configuration of the test projects looks as following:
+I use coverlet to collect the coverage. All you have to do is installing the NuGet package. The full NuGet configuration of the test projects looks as following:
 
 <script src="https://gist.github.com/WolfgangOfner/b49b62eb04ab3f5fb5900f6ced47107d.js"></script>
 
@@ -58,6 +58,6 @@ Save the changes and run the CI pipeline. After the build is finished, you will 
 
 The code coverage shows how much of your code is covered by at least one test. This post showed how easy it can be to display these results in Azure DevOps, even when the build runs inside a Docker container.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

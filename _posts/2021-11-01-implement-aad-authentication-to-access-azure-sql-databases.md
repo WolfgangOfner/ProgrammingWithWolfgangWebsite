@@ -15,13 +15,13 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Configure AAD Authentication for an Azure SQL Server
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 In one of my previous posts, I have created an SQL Server that runs all my databases. If you also have an SQL server, you have to set an Active Directory admin. This admin can be either an AAD user or a group. Without this admin, the SQL server won't be able to authenticate your users against the AAD.
 
 You can either use the Azure portal or Azure CLI to set the Active Directory admin. If you use the portal, open your SQL server and select the Active Directory admin pane. There, click on Set admin, search for your user or group and save your selection.
 
-If you use the Azure CLI, use the following query to get all aad users:
+If you use the Azure CLI, use the following query to get all AAD users:
 
 <script src="https://gist.github.com/WolfgangOfner/2a369b0bd181aaec0219fc066d7fc215.js"></script>
 
@@ -54,7 +54,7 @@ With the user set to the variable, use the following command to set the Active D
 
 ## Configure the Test Application to use AAD Authentication 
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Open the SQL management tool of your choice, for me, it's Microsoft SQL Server Management Studio (SSMS), and log in with the user you previously set as the Active Directory admin.
 
@@ -168,7 +168,7 @@ To verify that you loaded the data from the right database, log in to your datab
 
 ## Improving the Test Application
 
-The test application can retrieve data using the AAD authentication but the code is not pretty yet. Especially the part where the tenant Id is hardcoded into the authentication provider. Let's improve this code a bit.
+The test application can retrieve data using the AAD authentication but the code is not pretty yet. Especially the part where the tenant Id is hard-coded into the authentication provider. Let's improve this code a bit.
 
 First add a new property, TenantId to the appsettings.json file.
 
@@ -188,7 +188,7 @@ Run your application again to make sure that everything still works.
 
 You want to pass the tenant id during the deployment to keep it secret. If you commit it to your version control, everyone would be able to read it. You have to take the following steps to pass the tenant id during the deployment:
 
-Add a variable for the tenant id to your values.yaml or values.release.yaml file in your Helm chart. This variable has to start and finish with two underscores (\_\_) so the tokenizer task in the Azure DevOps pipeline can replace the value. Next, add your tenant id as a secret variable in your pipeline. Don't forget to update the connection string in your deployment pipeline too.
+Add a variable for the tenant id to your values.yaml or values.release.yaml file in your Helm chart. This variable has to start and finish with two underscores (\_\_) so the Tokenizer task in the Azure DevOps pipeline can replace the value. Next, add your tenant id as a secret variable in your pipeline. Don't forget to update the connection string in your deployment pipeline too.
 
 The Tokenizer task will replace the tenant id in the Helm chart with your actual tenant id and therefore will override the empty TenantId value in your appsettings.json file. For a detailed explanation on how and why this works, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
 
@@ -200,6 +200,6 @@ There may be some roadblocks on the way and Microsoft's documentation only showc
 
 [In my next post](/aad-authentication-for-applications-running-in-aks-to-access-azure-sql-databases), I will show you how to use AAD authentication with your application running in AKS.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

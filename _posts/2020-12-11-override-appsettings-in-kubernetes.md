@@ -14,7 +14,7 @@ Nowadays, especially with microservices, we have many different environments and
 [In my last posts](/deploy-kubernetes-using-helm), I talked about Helm and showed how it can be used to easily deploy applications to Kubernetes. Today, I will show you you can dynamically configure your application using environment variables in Helm.
 
 ## Deploy a Microservice using Helm
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>. If you don't know what Helm is or if you haven't installed it yet, see [Helm - Getting Started](/helm-getting-started) for more information.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>. If you don't know what Helm is or if you haven't installed it yet, see [Helm - Getting Started](/helm-getting-started) for more information.
 
 Open the demo application and navigate to the Helm chart of the OrderApi. You can find it under OrderApi/OrderApi/charts. The chart is a folder called orderapi. Deploy this chart with Helm:
 
@@ -100,6 +100,6 @@ Open your browser and navigate either to the shown localhost URL or to the exter
 
 .NET Core and .NET 5 are great to override setting values with environment variables. This allows you to dynamically change the configuration during the deployment of your application. Today, I showed how to use Helm to add an environment variable to override a value of the appsettings.json file.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

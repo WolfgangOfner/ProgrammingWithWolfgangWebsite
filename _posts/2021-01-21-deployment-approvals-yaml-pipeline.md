@@ -27,7 +27,7 @@ When you start the deployment, all approvers get an email to approve the deploym
 
 ## Add Approvals when using YAML Pipelines
 
-You can find my YAML pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Nuget/pipelines/Nuget-CI-CD.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find my YAML pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Nuget/pipelines/Nuget-CI-CD.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Adding approvals when using YAML pipelines is a bit more work but not complicated. In your Azure DevOps project open Pipelines --> Environments. If you ran my full pipeline, you will already have two environments, nuget-publish-internal and nuget-publish-public. The environments are created (or referenced if they already exist) with the environment property in the pipeline as shown in the following code:
 
@@ -105,6 +105,6 @@ Click on Review and then on Approve. Once you approved, the deployment starts.
 
 Adding approvals was very easy with the classic editor. With the new YAML pipelines, it is still pretty easy but you need a bit more clicks to create the process. Approvals are a great tool to ensure that the deployment gets reviewed before its deployed to a critical environment.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

@@ -11,7 +11,7 @@ A crucial feature of DevOps is to give the developer fast feedback if their code
 
 ## Create a .NET Core CI Pipeline in Azure DevOps
 
-In my <a href="/creating-a-microservice-with-net-core-3-1/" target="_blank" rel="noopener noreferrer">last post, Creating a Microservice with .NET Core 3.1</a>, I created a new ASP .NET Core microservice. I will use the CI pipeline to build all projects and run all unit tests in the repository. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/NetCoreCiPipeline" target="_blank" rel="noopener noreferrer">Github</a>.
+In my <a href="/creating-a-microservice-with-net-core-3-1/" target="_blank" rel="noopener noreferrer">last post, Creating a Microservice with .NET Core 3.1</a>, I created a new ASP .NET Core microservice. I will use the CI pipeline to build all projects and run all unit tests in the repository. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/NetCoreCiPipeline" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 In your Azure DevOps project, go to Pipelines and click Create Pipeline.
 
@@ -33,15 +33,15 @@ In the next window, select where you have your code stored. I select GitHub for 
   </p>
 </div>
 
-### Authorize Github
+### Authorize GitHub
 
 Since the code is on GitHub, I have to authorize Azure Pipelines to access my repositories. If the code was on an Azure Repos, this step wouldn&#8217;t be necessary.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg" alt="Authorize Azure Pipelines to access Github" /></a>
+  <a href="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-GitHub.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-GitHub.jpg" alt="Authorize Azure Pipelines to access GitHub" /></a>
   
   <p>
-    Authorize Azure Pipelines to access Github
+    Authorize Azure Pipelines to access GitHub
   </p>
 </div>
 
@@ -55,7 +55,7 @@ After authorizing Azure Pipelines for GitHub, all your repositories will be disp
   </p>
 </div>
 
-On the next window, I have to approve to install Azure Pipelines in my Github repository. This allows Azure DevOps to access the repository and write to the code. This is necessary because the CI pipeline will be added to the source control. Again, this is not necessary when you have your code in Azure DevOps.
+On the next window, I have to approve to install Azure Pipelines in my GitHub repository. This allows Azure DevOps to access the repository and write to the code. This is necessary because the CI pipeline will be added to the source control. Again, this is not necessary when you have your code in Azure DevOps.
 
 ### Select a Template
 
@@ -102,10 +102,10 @@ I remove the build script and select the .NET Core task on the right side. I sel
 &nbsp;
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/10/Add-a-Nuget-restore-step-to-the-CI-Pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Add-a-Nuget-restore-step-to-the-CI-Pipeline.jpg" alt="Add a Nuget restore step to the CI Pipeline" /></a>
+  <a href="/assets/img/posts/2020/10/Add-a-Nuget-restore-step-to-the-CI-Pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Add-a-Nuget-restore-step-to-the-CI-Pipeline.jpg" alt="Add a NuGet restore step to the CI Pipeline" /></a>
   
   <p>
-    Add a Nuget restore step to the CI Pipeline
+    Add a NuGet restore step to the CI Pipeline
   </p>
 </div>
 
@@ -155,4 +155,4 @@ Save the pipeline and run it with any branch but the master branch. You will see
 
 CI pipelines help developers to get fast feedback about their code changes. These pipelines can build code and run tests every time something changed. In my next post, I will show how to add code coverage to the results to get even more information about the code changes, and then I will show how to run your code with every pull request. Later, I will extend the pipeline to build and create Docker images and also to deploy them to Kubernetes.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/NetCoreCiPipeline" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/NetCoreCiPipeline" target="_blank" rel="noopener noreferrer">GitHub</a>.

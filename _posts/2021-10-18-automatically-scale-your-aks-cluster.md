@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Working without automatic Cluster scaling
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 In [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started), I have created a new Azure Kubernetes Cluster with one node. This cluster works fine if you ignore the fact that one node does not provide high availability, but since the creation of the cluster, I have added more and more applications to it. When I have to scale one of my applications to several pods, the node runs out of resources and Kubernetes can't schedule the new pods.
 
@@ -77,7 +77,7 @@ The cluster autoscaler can be easily enabled and configured using the enable-clu
 
 <script src="https://gist.github.com/WolfgangOfner/85d33d24e9789cec071faff5588f544a.js"></script>
 
-The cluster autoscaler has a wide range of settings that can be configued using the cluster-autoscaler-profile flag. For a full list of all attributes and their default values, see <a href="https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler#using-the-autoscaler-profile" target="_blank" rel="noopener noreferrer">the official documentation</a>.
+The cluster autoscaler has a wide range of settings that can be configured using the cluster-autoscaler-profile flag. For a full list of all attributes and their default values, see <a href="https://docs.microsoft.com/en-us/azure/aks/cluster-autoscaler#using-the-autoscaler-profile" target="_blank" rel="noopener noreferrer">the official documentation</a>.
 The default values are usually good, except that I would like to scale down faster. Therefore, I change two settings of the cluster autoscaler profile:
 
 <script src="https://gist.github.com/WolfgangOfner/b9e129c469cf63c919fc51347f0dce08.js"></script>
@@ -122,6 +122,6 @@ This command displays all your pods in the given namespace and shows on which no
 
 Modern applications must react quickly to traffic spikes and scale out accordingly. This can be easily achieved using the Kubernetes Horizontal Pod Autoscaler or KEDA. These approaches only schedule more pods and your cluster can easily run out of space on its worker nodes. The cluster autoscaler in Azure Kubernetes Services helps you running out of resources and can automatically add new worked nodes to your cluster. Additionally, the cluster autoscaler also removes underutilized nodes and therefore can help you to keep costs to a minimum.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

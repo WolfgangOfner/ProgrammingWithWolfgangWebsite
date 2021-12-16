@@ -102,7 +102,7 @@ The finished pipeline looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/abe98c6a9c3ec77d9b5bccd5a5668258.js"></script>
 
-You can also find the code of the CI pipeline on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/blob/DockerCiPipeline/Docker-CI.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can also find the code of the CI pipeline on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/blob/DockerCiPipeline/Docker-CI.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ## Testing the Azure DevOps CI Pipeline
 
@@ -130,4 +130,4 @@ The pipeline ran successfully and if I go to <a href="https://hub.docker.com/r/w
 
 An automated CI pipeline to build and push new images is an integral point of every DevOps process. This post showed that it is quite simple to automate everything and create a new image every time changes are pushed to the master branch.
 
-You can find the source code of this demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/DockerCiPipeline" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the source code of this demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/DockerCiPipeline" target="_blank" rel="noopener noreferrer">GitHub</a>.

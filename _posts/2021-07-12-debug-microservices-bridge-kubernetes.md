@@ -19,7 +19,7 @@ Bridge to Kubernetes, formerly known as Azure Dev Spaces, is a tool that allows 
 
 ## Configure Bridge to Kubernetes
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 In this demo, I will change one of my microservices and debug it with requests from my AKS cluster. If you don't have a cluster running yet, see ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero) for all the tutorials to create a microservice, AKS cluster, and how to deploy it.
 
@@ -173,6 +173,6 @@ When you stop the application on your machine and execute the request again, you
 
 Modern applications become more and more complex and therefore get harder to debug. Bridge to Kubernetes allows developers to redirect requests inside a running Kubernetes cluster onto their own machine to debug microservices. This allows debugging code without the need to set up a whole environment and also allows using the dependencies and configuration of the running K8s cluster. 
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

@@ -17,7 +17,7 @@ help() {
   echo "   bash /path/to/init.sh [options]"
   echo
   echo "Options:"
-  echo "     --no-gh              Do not deploy to Github."
+  echo "     --no-gh              Do not deploy to GitHub."
   echo "     -h, --help           Print this help information."
 }
 

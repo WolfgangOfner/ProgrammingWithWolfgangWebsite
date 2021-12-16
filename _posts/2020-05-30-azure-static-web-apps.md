@@ -3,10 +3,10 @@ title: Azure Static Web Apps
 date: 2020-05-30
 author: Wolfgang Ofner
 categories: [Cloud, Programming]
-tags: [Azure Function, 'C#', Github Action, React, Static Web Apps]
+tags: [Azure Function, 'C#', GitHub Action, React, Static Web Apps]
 description: Azure Static Web Apps allow you to host your static websites for free. You can use HTML, plain Javascript of front-end frameworks like Angular or React.
 ---
-Azure Static Web Apps were announced at the Build conference this year and they allow you to host your static websites for free. You can use HTML, plain Javascript of front-end frameworks like Angular or React. The website retrieves data, if needed, from Azure Functions. A great feature of Azure Static Web Apps is that you don&#8217;t have to configure your CI/CD pipeline. This is done for you by Azure and Github using Git Actions.
+Azure Static Web Apps were announced at the Build conference this year and they allow you to host your static websites for free. You can use HTML, plain Javascript of front-end frameworks like Angular or React. The website retrieves data, if needed, from Azure Functions. A great feature of Azure Static Web Apps is that you don&#8217;t have to configure your CI/CD pipeline. This is done for you by Azure and GitHub using Git Actions.
 
 Today, I want to show how to create a React front-end and how to retrieve data from an Azure Function. You can find the code of the React demo <a href="https://github.com/WolfgangOfner/React-Azure-Static-Web-App/tree/master" target="_blank" rel="noopener noreferrer">here</a> and the code of the Azure Function demo <a href="https://github.com/WolfgangOfner/Azure-Function-StaticWebApp" target="_blank" rel="noopener noreferrer">here</a>.
 
@@ -196,7 +196,7 @@ This automatically opens your browser and should display your product list.
   </p>
 </div>
 
-Check in the React app into Github and let&#8217;s deploy it with Static Web Apps.
+Check in the React app into GitHub and let&#8217;s deploy it with Static Web Apps.
 
 ## Create Static Web Apps
 
@@ -210,7 +210,7 @@ In the Azure portal, search for Static Web App and click on Create to start the 
   </p>
 </div>
 
-On the Basics tab enter a name, select a region, and select your Github repository and branch. Note the region is only the initial region for the deployment. After the deployment, Static Web Apps deploys your application globally to give your users the best possible user experience.
+On the Basics tab enter a name, select a region, and select your GitHub repository and branch. Note the region is only the initial region for the deployment. After the deployment, Static Web Apps deploys your application globally to give your users the best possible user experience.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/05/Configure-the-Static-Web-App.jpg"><img loading="lazy" src="/assets/img/posts/2020/05/Configure-the-Static-Web-App.jpg" alt="Configure the Static Web Apps" /></a>
@@ -240,7 +240,7 @@ On the following screenshot, you can see all my entered information. Click on Cr
   </p>
 </div>
 
-After the deployment is finished, you can see the URL of the Static Web App and also a link to the created Github Action.
+After the deployment is finished, you can see the URL of the Static Web App and also a link to the created GitHub Action.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/05/Overview-of-the-published-Static-Web-App.jpg"><img loading="lazy" src="/assets/img/posts/2020/05/Overview-of-the-published-Static-Web-App.jpg" alt="Overview of the published Static Web Apps" /></a>
@@ -250,7 +250,7 @@ After the deployment is finished, you can see the URL of the Static Web App and 
   </p>
 </div>
 
-Click on GitHub Action runs and you will be redirected to the Action inside your Github repository.
+Click on GitHub Action runs and you will be redirected to the Action inside your GitHub repository.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/05/The-Git-Action-is-building-your-application.jpg"><img loading="lazy" src="/assets/img/posts/2020/05/The-Git-Action-is-building-your-application.jpg" alt="The Git Action is building your application" /></a>

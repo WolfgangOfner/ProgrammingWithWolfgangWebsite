@@ -9,7 +9,7 @@ description: Microsoft released .NET 5 and C# 9.0. Let's take a look at some coo
 
 Microsoft released with .NET 5 also C# 9.0. This version of C# focuses mainly on productivity improvements and tries to help developers to reduce their time typing.
 
-You can find the code of this demo on [Github](https://github.com/WolfgangOfner/CSharp-9.0).
+You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/CSharp-9.0).
 
 ## Record Types
 
@@ -63,4 +63,4 @@ Since the type of the name is in front of the variable, the compiler knows what 
 
 Today, I gave a quick overview of the new features in C# 9.0. Nothing is too spectacular and the focus was clearly on increasing the developer productivity but I think especially records might be useful in the future.
 
-You can find the code of this demo on [Github](https://github.com/WolfgangOfner/CSharp-9.0).
+You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/CSharp-9.0).

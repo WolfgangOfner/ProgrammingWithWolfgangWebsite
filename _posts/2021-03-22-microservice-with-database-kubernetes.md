@@ -11,7 +11,7 @@ I showed [in my last post](/deploy-dacpac-linux-azure-devops) how to automatical
 
 ## Update the Microservice to use a Database
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 So far, the microservice used an in-memory database. I want to keep the option to use the in-memory database for local debugging. Therefore, I add the following value to the appsettings.Development.json file:
 
@@ -85,6 +85,6 @@ Connect to the database, for example, using the SQL Management Studio and you sh
 
 Using a database with your microservice works the same way as with all .NET 5 applications. Due to the already existing CI/CD pipeline which is using Helm to create the deployment package, there was barely any change necessary to pass the connection string to the microservice during the deployment.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

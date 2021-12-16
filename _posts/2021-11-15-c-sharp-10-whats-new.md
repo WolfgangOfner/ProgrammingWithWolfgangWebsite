@@ -11,7 +11,7 @@ It is November again which means that Microsoft released a new version of .NET. 
 
 In this post, I will look into some of the new features of .NET 6 in combination with C# 10.
 
-You can find the code of this demo on <a href="https://github.com/WolfgangOfner/CSharp-10.0" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of this demo on <a href="https://github.com/WolfgangOfner/CSharp-10.0" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ## Prerequisites for .NET 6 and C# 10
 
@@ -85,4 +85,4 @@ Update 13.12.21: Approximately one month into .NET 6 and I have to say that I us
 
 [In my next post](/net-6-minimal-apis-getting-started), I will take a look at minimal APIs which is probably Microsoft's most talked about feature of .NET 6. 
 
-You can find the code of this demo on <a href="https://github.com/WolfgangOfner/CSharp-10.0" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of this demo on <a href="https://github.com/WolfgangOfner/CSharp-10.0" target="_blank" rel="noopener noreferrer">GitHub</a>.

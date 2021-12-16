@@ -7,11 +7,11 @@ tags: [Azure, Azure Arc, GitOps, SQL, Kubernetes, Postgre SQL]
 description: Azure Arc is a bridge to the cloud to project your on-premise, or in another cloud, resources into Azure and allows you to use Azure features for these resources.
 ---
 
-Today, many companies use cloud services but there is also still a big group of companies that can't use cloud services for various reasons. Modern software becomes more and more complex and therefore managing your applications in your own data center becomes quite daunting. This is where Azure Arc comes into play to help you to administer your on-premise, or multi-cloud applications and also helps you to govern your data.
+Today, many companies use cloud services, but there is also still a sizeable group of companies that can't use cloud services for various reasons. Modern software becomes more and more complex and, therefore, managing your applications in your own data center becomes quite daunting. This is where Azure Arc comes into play to help you administer your on-premise, or multi-cloud applications and also helps you to govern your data.
 
 Over the next couple of posts, I will dive into Azure Arc and show you how it can enable you to modernize and manage your on-premise applications and databases. Today, I would like to give you an overview of the features, pricing, and capabilities of Azure Arc.
 
-## What is Azure Arc
+## What is Azure Arc?
 
 Azure Arc helps you to govern and manage your on-premise and multi-cloud applications. It offers the following features to do so:
 
@@ -20,7 +20,7 @@ Azure Arc helps you to govern and manage your on-premise and multi-cloud applica
 - Manage your application by projecting them into the Azure Resource Manager.
 - Introduce DevOps practices to modernize your existing applications.
 
-The following resources are supported by Azure Arc:
+Azure Arc supports the following resources:
 
 - Any CNCF certified Kubernetes cluster
 - Physical or virtual machines running either Windows or Linux

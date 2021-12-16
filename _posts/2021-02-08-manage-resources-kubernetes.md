@@ -31,7 +31,7 @@ Unlike the CPU limit, when you hit the RAM limit, Kubernetes won't be able to th
 
 ## Configure Resource Requests Limits in Helm for a Container.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 In my previous posts, I created two microservices and used Helm charts to deploy them to Kubernetes. For more information on the implementation see ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
 
@@ -69,6 +69,6 @@ Resource limits should always be set to make sure that a pod can't eat up all th
 
 Resource requests allow you to configure how many resources like CPU and RAM a node has to have available. Always make sure that you don't configure too much RAM or CPU, otherwise, your pod will never be scheduled.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

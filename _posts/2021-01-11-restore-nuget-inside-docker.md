@@ -53,7 +53,7 @@ After you click Create, the new PAT is displayed. Make sure to copy it because y
 
 ## Pass the PAT to build the Dockerfile locally
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ### Add a nuget.config file
 
@@ -75,7 +75,7 @@ To use the nuget.config file during the restore, use the --configfile flag and p
 
 <script src="https://gist.github.com/WolfgangOfner/878b19f724adb6c12843393ce4ac4cdb.js"></script>
 
-You can find the finished Dockerfile on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/CustomerApi/Dockerfile" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the finished Dockerfile on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/CustomerApi/Dockerfile" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Run the docker build again and it will finish successfully this time.
 
@@ -103,6 +103,6 @@ You can create a private access token (PAT) to access NuGet packages of a privat
 
 Note: If you run this demo, it will work without my private feed because I uploaded the NuGet package to nuget.org.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

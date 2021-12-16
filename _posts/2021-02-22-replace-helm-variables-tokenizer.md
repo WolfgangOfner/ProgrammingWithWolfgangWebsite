@@ -47,7 +47,7 @@ This extension looks for variables starting and ending with a double underscore,
 
 ## Add the Tokenizer Task to the Azure DevOps Pipeline
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Add the following task before the Helm install to your pipeline:
 
@@ -93,6 +93,6 @@ If you see the image with the latest tag loaded, you know that something went wr
 
 Automatically replacing configuration values for different environments is crucial. This post showed how to use the Tokenizer extension and how to easily replace values in your CI/CD pipeline.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

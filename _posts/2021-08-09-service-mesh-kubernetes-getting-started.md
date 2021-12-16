@@ -37,7 +37,7 @@ There are three big service mesh competitors in the Kubernetes world at the mome
 
 ### Istio
 
-Istio was originally developed by Lyft and has been adopted by many major technology companies like Google or Microsoft. Istio is the most popular service mesh solution and has an active community. As of this writing, the project has almost 28 thousand stars and more than 5 thousand forks on Github. Istio can be easily installed using Helm charts and also installs many useful tools to operate your Kubernetes cluster, like [Prometheus](/monitor-net-microservices-with-prometheus), Jaeger, [Grafana](/create-grafana-dashboards-with-prometheus-metrics), and Zipkin. 
+Istio was originally developed by Lyft and has been adopted by many major technology companies like Google or Microsoft. Istio is the most popular service mesh solution and has an active community. As of this writing, the project has almost 28 thousand stars and more than 5 thousand forks on GitHub. Istio can be easily installed using Helm charts and also installs many useful tools to operate your Kubernetes cluster, like [Prometheus](/monitor-net-microservices-with-prometheus), Jaeger, [Grafana](/create-grafana-dashboards-with-prometheus-metrics), and Zipkin. 
 
 [In my next post](/istio-getting-started), I will show you how to install Istio using its Helm charts and how to configure the traffic management. For more information see <a href="https://istio.io/" target="_blank" rel="noopener noreferrer">istio.io</a>. 
 
@@ -49,7 +49,7 @@ I have not worked with Consul yet therefore I would recommend that you check out
 
 ### Linkerd
 
-Linkerd is another popular service mesh and has been completely re-written for version 2. Both versions combined have around 12 thousand stars on Github and also have a very active community. Linkerd provides a good-looking dashboard to help operators understand what is happening inside the Kubernetes cluster in real-time. Additionally, it installs useful tools like Prometheus and Grafana.
+Linkerd is another popular service mesh and has been completely re-written for version 2. Both versions combined have around 12 thousand stars on GitHub and also have a very active community. Linkerd provides a good-looking dashboard to help operators understand what is happening inside the Kubernetes cluster in real-time. Additionally, it installs useful tools like Prometheus and Grafana.
 
 Linkerd can be installed via its own CLI. For more information see <a href="https://linkerd.io/" target="_blank" rel="noopener noreferrer">linkerd.io</a>. 
 

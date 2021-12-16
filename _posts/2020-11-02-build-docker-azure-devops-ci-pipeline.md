@@ -101,7 +101,7 @@ The finished pipeline looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/7dec28c76c8a31aa354002da7d358f7c.js"></script>
 
-You can also find the code of the CI pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CI.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can also find the code of the CI pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CI.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ## Testing the Azure DevOps CI Pipeline
 
@@ -125,12 +125,12 @@ The pipeline ran successfully and if I go to <a href="https://hub.docker.com/r/w
   </p>
 </div>
 
-As practice, you could set up the CI pipeline for the OrderApi. The pipeline will look exactly the same, except that CustomerApi will be replaced with OrderApi. You can find the finished pipelines on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a> inside the pipelines folder of each solution.
+As practice, you could set up the CI pipeline for the OrderApi. The pipeline will look exactly the same, except that CustomerApi will be replaced with OrderApi. You can find the finished pipelines on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a> inside the pipelines folder of each solution.
 
 ## Conclusion
 
 An automated CI pipeline to build and push new images is an integral point of every DevOps process. This post showed that it is quite simple to automate everything and create a new image every time changes are pushed to the master branch.
 
-You can find the source code of this demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the source code of this demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

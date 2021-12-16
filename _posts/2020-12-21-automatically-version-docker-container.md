@@ -61,7 +61,7 @@ This extension calculates the version sets it in many different variations in di
 
 ### Add the Build Versioning Task to the Pipeline
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Add the following two tasks as the first tasks of your job in your CI pipeline.
 
@@ -121,7 +121,7 @@ This version number means that it was run for the branch named versionnumber and
 
 DevOps is all about automating tasks and processes. A part of this automation is the versioning of your application. Today, I showed how easy it is to use the Build Versioning extension in Azure DevOps to automatically create semantic version numbers and how to add them to a Docker image.
 
-You can find the code of the whole demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the whole demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero)
 
@@ -155,7 +155,7 @@ This extension automatically installs Git and then calculates the semantic versi
 
 ### Add the Build Versioning Task to the Pipeline
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CI.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CI.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Add the following BuildVersioning task as the first task of your job in your CI pipeline.
 
@@ -215,6 +215,6 @@ This version number means that it was run for the branch named versionnumber and
 
 DevOps is all about automating tasks and processes. A part of this automation is the versioning of your application. Today, I showed how easy it is to use the Build Versioning extension in Azure DevOps to automatically create semantic version numbers and how to add them to a Docker image.
 
-You can find the code of the whole demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the whole demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

@@ -43,7 +43,7 @@ Before you start, make sure that you have selected the right context of your loc
 
 ### Deploy a Microservice with Helm
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>. If you don't know what Helm is or if you haven't installed it yet, see [Helm - Getting Started](/helm-getting-started) for more information.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>. If you don't know what Helm is or if you haven't installed it yet, see [Helm - Getting Started](/helm-getting-started) for more information.
 
  To deploy the microservice, open the demo application and navigate to the Helm chart of the CustomerApi. You can find it under CustomerApi/CustomerApi/charts. The chart is a folder called customerapi. Deploy this chart with Helm:
 
@@ -89,6 +89,6 @@ After the package is installed, open your browser and navigate to localhost:2233
 
 Kubernetes is awesome but it can get complicated to test small changes in a cluster. Docker Desktop allows you to install a Kubernetes cluster locally. Combined with Helm, a developer can deploy a microservice to a local Kubernetes cluster within minutes and test the application.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

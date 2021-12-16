@@ -18,7 +18,7 @@ We do this because our customer has several configurations for each environment.
 
 ## Azure Pipelines Task Library Encoding Problem
 
-The problem we encountered is that the Azure Key Vault Task read the secrets but encoded the % sign. Instead of Secret%Value, we got Secret%25Value and therefore wrote Secret%25Value into our variable inside the Powershell. As a result, the deployment failed since our secret is not correct. After too many hours of searching, we found an issue on Github with the same Azure pipelines task library encoding problem.  You can find a Github issue <a href="https://github.com/microsoft/azure-pipelines-task-lib/issues/627" target="_blank" rel="noopener noreferrer">here</a>. The problem occurs in version 2.9.3. The Azure Key Vault task uses version 2.8.0. You can find the code on [Github](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureKeyVaultV1/package.json).
+The problem we encountered is that the Azure Key Vault Task read the secrets but encoded the % sign. Instead of Secret%Value, we got Secret%25Value and therefore wrote Secret%25Value into our variable inside the Powershell. As a result, the deployment failed since our secret is not correct. After too many hours of searching, we found an issue on GitHub with the same Azure pipelines task library encoding problem.  You can find a GitHub issue <a href="https://github.com/microsoft/azure-pipelines-task-lib/issues/627" target="_blank" rel="noopener noreferrer">here</a>. The problem occurs in version 2.9.3. The Azure Key Vault task uses version 2.8.0. You can find the code on [GitHub](https://github.com/microsoft/azure-pipelines-tasks/blob/master/Tasks/AzureKeyVaultV1/package.json).
 
 ## Fixing the Azure Pipelines Task Library Encoding Problem
 

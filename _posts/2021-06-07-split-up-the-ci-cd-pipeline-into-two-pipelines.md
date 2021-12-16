@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Things to consider before splitting up the CI/CD Pipeline
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Splitting up the pipeline into a separate CI and CD pipeline is quite simple and barely needs any changes. If you are new to this series, check out [Improve Azure DevOps YAML Pipelines with Templates](/improve-azure-devops-pipelines-templates) first and read about the templates used in the CI/CD pipeline.
 
@@ -33,9 +33,9 @@ Splitting up the CI and CD part also helps to make the pipeline smaller. For exa
 
 <script src="https://gist.github.com/WolfgangOfner/e1e5331a44da4171643d3fd87269774e.js"></script>
 
-## Creating the Continous Deployment Pipeline
+## Creating the Continuous Deployment Pipeline
 
-The Continous Deployment (CD) pipeline might look a bit complicated at first, but it is almost the same as it was before. The first step is to create a new file, called CustomerApi-CD in the pipelines folder and then configure a trigger to run the pipeline after the CI pipeline. This can be achieved with the pipelines section at the top of the pipeline.
+The Continuous Deployment (CD) pipeline might look a bit complicated at first, but it is almost the same as it was before. The first step is to create a new file, called CustomerApi-CD in the pipelines folder and then configure a trigger to run the pipeline after the CI pipeline. This can be achieved with the pipelines section at the top of the pipeline.
 
 <script src="https://gist.github.com/WolfgangOfner/371c5f8e07f08093e75cb170849bdf0f.js"></script>
 
@@ -65,7 +65,7 @@ Before you can use the new CD pipeline, add it to your Azure DevOps pipelines. T
   </p>
 </div>
 
-If you used any secret variables, for exmaple, for the database password, do not forget to add them to the new CD pipeline before you start the deployment.
+If you used any secret variables, for example, for the database password, do not forget to add them to the new CD pipeline before you start the deployment.
 
 Run the CI pipeline and after the build is finished, the CD pipeline will kick off and deploy the application. After the deployment is finished, open enter your URL (configured in the URL variable in the CD pipeline) in your browser and you should see the Swagger UI of the microservice.
 
@@ -83,6 +83,6 @@ To access the microservice using the URL, you have to configure the DNS accordin
 
 Using two pipelines, one for CI, one for CD can be achieved quite easily and helps you to keep the complexity inside the pipelines at a minimum. This allows you to add new features, for example, new environments fast and with a smaller chance of making any mistakes. [In my next post](/deploy-microservices-to-multiple-environments-azure-devops), I will use the newly created CD pipeline and add a production stage with its own URL and database deployment.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

@@ -21,7 +21,7 @@ Azure Functions are great when you want to execute for background services like 
 
 ## Explaining the Demo Application
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 The demo application contains of microservices called OrderApi and CustomerApi. Every time a customer is updated, the CustomerApi places a message with the new information on either a RabbitMQ or Azure Service Bus Queue, depending on its Startup configuration. The OrderApi has a background service that checks the RabbitMQ queue for new messages and then takes these messages to update the customer names in its database.
 
@@ -31,7 +31,7 @@ I want to create an Azure Function to process the queue messages independently f
 
 ## Create your first Azure Function
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 To create a new Azure Function, start Visual Studio, search for Azure Functions and click Next.
 
@@ -209,6 +209,6 @@ Azure Functions is a great tool to implement event-driven solutions without worr
 
 This post showed how to deploy an Azure Function from Visual Studio. In my next post, I will show you how to create a CI/CD pipeline in Azure DevOps to automate the deployment.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

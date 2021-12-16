@@ -11,7 +11,7 @@ description: Build and Deploy an Azure Function inside a Docker container and de
 
 ## Add Docker to the Azure Function
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 To add Docker to the Azure Function, right-click the project in Visual Studio and click Add --> Docker Support. Visual Studio automatically creates the Dockerfile for you.
 
@@ -46,10 +46,10 @@ The full pipeline looks as follows:
 Save the pipeline and run it. 
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/The-pipeline-ran-sucessfully.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-pipeline-ran-sucessfully.jpg" alt="The pipeline ran sucessfully" /></a>
+  <a href="/assets/img/posts/2021/05/The-pipeline-ran-successfully.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-pipeline-ran-successfully.jpg" alt="The pipeline ran successfully" /></a>
   
   <p>
-   The pipeline ran sucessfully
+   The pipeline ran successfully
   </p>
 </div>
 
@@ -69,6 +69,6 @@ Testing the Azure Function is exactly the same as in my last post, [Deploy Azure
 
 This short post showed how to create a Docker container of an Azure Function inside an Azure DevOps YAML pipeline. The Docker image was published to DockerHub and then deployed to an existing Azure Function.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

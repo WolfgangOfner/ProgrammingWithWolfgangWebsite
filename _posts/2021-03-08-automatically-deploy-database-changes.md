@@ -11,11 +11,11 @@ description: Use SSDT (SQS Server Data Tools) to generate Dacpac packages and de
 
 ## Prepare your Environment
 
-Before you can get started, you have to download the custom SSDT Tools from [Github](https://github.com/4tecture/SSDTDataMigration/releases). These custom tools are an extension of the [MSBuild.Sdk.SqlProj](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/) project and are necessary to be able to open the SSDT project file (*.sqlproj) with Visual Studio.
+Before you can get started, you have to download the custom SSDT Tools from [GitHub](https://github.com/4tecture/SSDTDataMigration/releases). These custom tools are an extension of the [MSBuild.Sdk.SqlProj](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/) project and are necessary to be able to open the SSDT project file (*.sqlproj) with Visual Studio.
 
 ## Getting to know the SSDT Project Structure
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ssdt-demo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ssdt-demo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Open the .sqlproj file with Visual Studio and you will see the project structure. There are two relevant folders inside the project, Scripts, and Tables.
 
@@ -169,6 +169,6 @@ SSDT offers a simple solution to automating your database deployments. It automa
 
 [In my next post](/deploy-dacpac-linux-azure-devops), I will show how to build the SSDT project in your CI/CD pipeline and how to deploy it to an Azure SQL Database.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ssdt-demo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ssdt-demo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

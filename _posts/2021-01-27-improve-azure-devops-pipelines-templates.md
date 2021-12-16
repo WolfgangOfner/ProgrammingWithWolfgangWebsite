@@ -15,7 +15,7 @@ YAML pipelines can get quite long and unclear over time. In programming, develop
 
 <script src="https://gist.github.com/WolfgangOfner/930afa356112ef2caf15d863c17a3e49.js"></script>
 
-You can find this pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CI.yml" target="_blank" rel="noopener noreferrer">Github</a>. If you go through the history, you will see how it evolved over time.
+You can find this pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CI.yml" target="_blank" rel="noopener noreferrer">GitHub</a>. If you go through the history, you will see how it evolved over time.
 
 ## What Pipeline Templates are 
 
@@ -75,6 +75,6 @@ After you added your templates, run the pipeline and you will see that it works 
 
 Templates are great to simplify Azure DevOps YAML pipelines. Additionally, they are easy to reuse in multiple pipelines and help so to speed up the development time of new pipelines.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

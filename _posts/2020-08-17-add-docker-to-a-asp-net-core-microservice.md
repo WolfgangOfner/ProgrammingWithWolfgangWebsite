@@ -18,7 +18,7 @@ For more information, see my post &#8220;<a href="/dockerize-an-asp-net-core-mic
 
 ## Add Docker Support to the Microservice
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/AddDocker" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/AddDocker" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Open the solution with Visual Studio 2019 and right-click on the CustomerApi project. Then click on Add and select Docker Support&#8230;
 
@@ -74,7 +74,7 @@ The next section uses the .NET Core 3.1 SDK to build the project. This image is 
 
 <script src="https://gist.github.com/WolfgangOfner/c5cec4a97f13b38096338844d92047ec.js"></script>
 
-Next, I restore the Nuget packages of the CustomerApi and then build the CustomerApi project.
+Next, I restore the NuGet packages of the CustomerApi and then build the CustomerApi project.
 
 <script src="https://gist.github.com/WolfgangOfner/ce138e2dc9e39931bb86df918ef609a7.js"></script>
 
@@ -86,4 +86,4 @@ The last part of the Dockerfile publishes the CustomerApi project. The last line
 
 In today's DevOps culture it is necessary to change applications fast and often. Additionally, microservices should run inside a container whereas Docker is the defacto standard container. This post showed how easy it is to add Docker to a microservice in Visual Studio.
 
-You can find the code of this demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/AddDocker" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of this demo on <a href="https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/AddDocker" target="_blank" rel="noopener noreferrer">GitHub</a>.

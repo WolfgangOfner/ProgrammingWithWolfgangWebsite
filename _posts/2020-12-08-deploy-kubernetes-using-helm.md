@@ -10,7 +10,7 @@ In my last post, I explained how Helm works and how to add it to your microservi
 
 ## Deploy the Microservice with Helm
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ### Set up
 To follow along with this demo, you have to have a Kubernetes cluster running. This can be on your local machine or in the cloud. I am using Azure Kubernetes Service. If you haven't set up Kubernetes yet, read my post about AKS ["Azure Kubernetes Service - Getting Started"](/azure-kubernetes-service-getting-started) to set up a cluster on Azure.
@@ -133,6 +133,6 @@ Helm is a package manager for Kubernetes and can be used to easily deploy and up
 
 [In my next post](/override-appsettings-in-kubernetes), I will show how to override values in the appsetting.json file with environment variables to allow for more dynamic configurations.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

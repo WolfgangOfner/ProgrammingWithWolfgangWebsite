@@ -39,7 +39,7 @@ Due to the downsides, try to avoid the Entity Framework migrations.
 
 ## Using Tools like FluentMigrator
 
-If you don't have much experience with migrations and look at tools like FluentMigrator, you might think that it is something great and will help you. The FluentMigrator gives you many helper methods to write SQL code with C# and also executes the migrations during the startup of the applications. You can find the project on <a href="https://github.com/fluentmigrator/fluentmigrator" target="_blank" rel="noopener noreferrer">Github</a>.
+If you don't have much experience with migrations and look at tools like FluentMigrator, you might think that it is something great and will help you. The FluentMigrator gives you many helper methods to write SQL code with C# and also executes the migrations during the startup of the applications. You can find the project on <a href="https://github.com/fluentmigrator/fluentmigrator" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 These helper methods are, for example, .Table("") or .PrimaryKey().
 

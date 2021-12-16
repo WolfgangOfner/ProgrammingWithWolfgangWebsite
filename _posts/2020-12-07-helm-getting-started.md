@@ -14,7 +14,7 @@ In this post, I will talk about the basics of Helm and show how to add it to you
 Deploying microservices to Kubernetes, especially if they have dependencies, can be quite complex. This is where Helm comes in. Helm is a package manager for Kubernetes that allows you to create packages and helm takes care of installing and updating these packages. 
 Helm packages are called charts. These charts describe everything your application needs and helm takes care to create or update your application, depending on the provided chart. Helm also serves as a template engine which makes it very easy to configure your charts either locally or during your CI/CD pipeline. 
 
-Let's add a Helm chart to our microservice and I will explain every component of the chart. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+Let's add a Helm chart to our microservice and I will explain every component of the chart. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ## Add Helm Charts to a Microservice
 Visual Studio comes with great Helm support. Right-click on your API project and select Add --> Container Orchestrator Support.
@@ -87,6 +87,6 @@ The fullnameOverride parameter is used to replace the variable customerapi.fulln
 ## Conclusion
 In this post, I gave a very short introduction to Helm. Helm is a package manager for Kubernetes and helps you to deploy your application including all its dependencies to Kubernetes. Helm also serves as a template engine which makes it very easy to change values.
  
-[In my next post](/deploy-kubernetes-using-helm), I will show who to deploy our microservice to Kubernetes using Helm. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+[In my next post](/deploy-kubernetes-using-helm), I will show who to deploy our microservice to Kubernetes using Helm. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

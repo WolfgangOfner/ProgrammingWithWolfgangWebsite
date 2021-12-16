@@ -21,7 +21,7 @@ There are two forms of Cloud Foundry available on Azure:
 
 to deploy a basic Pivotal Cloud Foundry on Azure, follow these steps:
 
-  1. Before you can create a Cloud Foundry cluster, you must create an Azure Service Principle. Follow the instructions on <a href="https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/get-started/create-service-principal.md" target="_blank" rel="noopener">Github</a>.
+  1. Before you can create a Cloud Foundry cluster, you must create an Azure Service Principle. Follow the instructions on <a href="https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/blob/master/docs/get-started/create-service-principal.md" target="_blank" rel="noopener">GitHub</a>.
   2. In the Azure portal click on +Create a resource, search for Pivotal Cloud Foundry on Microsoft Azure and click Create.
 
 <div class="col-12 col-sm-10 aligncenter">

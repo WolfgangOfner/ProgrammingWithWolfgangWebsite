@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Use Azure CLI to read the Azure Service Bus Queue Connection String
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi/pipelines" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi/pipelines" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Using Azure CLI allows you to read the connection string of an Azure Service Bus Queue with a single command using the Azure CLI task in the Azure DevOps pipeline. After reading the connection string, use Write-Host to set it to the AzureServiceBusConnectionString variable.
 
@@ -43,6 +43,6 @@ Run your application and you should still be able to access your queue.
 
 Using a cloud environment allows your infrastructure and applications to be flexible. Therefore, your configuration also has to be flexible. This post showed how you can easily read the connection string of an Azure Service Bus Queue using Azure CLI. By doing so, your application will always read the correct connection string and will work no matter what happens to the underlying infrastructure (as long as the Azure Service Bus Queue exists obviously).
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi/pipelines" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi/pipelines" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

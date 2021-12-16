@@ -19,7 +19,7 @@ KEDA is a Kubernetes event-driven autoscaler that allows you to scale your appli
 
 Another neat feature is that KEDA can scale deployments or jobs to 0. Scaling to zero allows you to only spin up containers when certain events occur, for example, when messages are placed in a queue. This is the same behavior as serverless solutions like Azure Functions but this feature allows you to run Azure Functions outside of Azure.
 
-KEDA is a CNCF Sandbox project and you can find more information about the project on <a href="https://github.com/kedacore/keda" target="_blank" rel="noopener noreferrer">Github</a> or <a href="https://keda.sh/" target="_blank" rel="noopener noreferrer">Keda.sh</a>.
+KEDA is a CNCF Sandbox project and you can find more information about the project on <a href="https://github.com/kedacore/keda" target="_blank" rel="noopener noreferrer">GitHub</a> or <a href="https://keda.sh/" target="_blank" rel="noopener noreferrer">Keda.sh</a>.
 
 ## Deploy KEDA to your Kubernetes Cluster
 
@@ -37,7 +37,7 @@ That's already it. You have successfully installed KEDA in your Kubernetes clust
 
 ## Configure KEDA to scale base on an Azure Service Bus Queue
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 After KEDA is installed, it is time to create your first scaler. The scaler is a custom resource in Kubernetes and is of the kind ScaledObject. This scaled object references a deployment or job that should be scaled, a trigger, in our example an Azure Service Bus, a reference to a Kubernetes secret that contains the connection string to the queue, and some configuration properties about the scaling itself.
 
@@ -87,7 +87,7 @@ If you are using my KedaDemoApi, you can execute the Post method to write random
   <a href="/assets/img/posts/2021/09/Write-Messages-into-the-Qeueue.jpg"><img loading="lazy" src="/assets/img/posts/2021/09/Write-Messages-into-the-Qeueue.jpg" alt="Write Messages into the Qeueue" /></a>
   
   <p>
-   Write Messages into the Qeueue
+   Write Messages into the Queue
   </p>
 </div>
 
@@ -151,6 +151,6 @@ Since there are no messages left in the Queue, the KEDA scaler should scale the 
 
 KEDA is a great tool to scale your workloads in Kubernetes. It allows you to choose from a wide variety of scalers and even lets you connect to external resources like Azure Monitor or a database like PostgreSQL. Especially the scale to 0 feature allows you to remove the allocated resources to a minimum and helps you to save money operating your Kubernetes cluster.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

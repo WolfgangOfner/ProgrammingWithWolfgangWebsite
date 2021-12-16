@@ -27,11 +27,11 @@ If you are working with Azure, you might be familiar with ARM templates. There a
 
 ## Azure CLI Documentation
 
-I like using Azure CLI because it is easy to use locally and it is also quite intuitive. All commmands follow the same patter of az service command, for example, az aks create or az sql server update. This makes is very easy to google how to create or update services. Additionally, the documentation is very good. You can find all commands <a href="https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest" target="_blank" rel="noopener noreferrer">here</a>. 
+I like using Azure CLI because it is easy to use locally and it is also quite intuitive. All commands follow the same patter of az service command, for example, az aks create or az sql server update. This makes is very easy to google how to create or update services. Additionally, the documentation is very good. You can find all commands <a href="https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest" target="_blank" rel="noopener noreferrer">here</a>. 
 
 ## Create your first Infrastructure as Code Pipeline in Azure DevOps
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Create a new pipeline and define the following variables:
 
@@ -57,7 +57,7 @@ The Cert-Manager adds SSL certificates to your services running inside AKS to al
 
 <script src="https://gist.github.com/WolfgangOfner/7176f6e951717697d165f272f1ae5e00.js"></script>
 
-#### Add the Certifcate Cluster Issuer
+#### Add the Certificate Cluster Issuer
 
 The SSL certificates need to be issued using the Cluster Issuer object. I am using the same YAML file as in [Automatically issue SSL Certificates and use SSL Termination in Kubernetes](/automatically-issue-ssl-certificates-and-use-ssl-termination-in-kubernetes) except that this time it is applied as inline code and with the variable for the email address.
 
@@ -71,7 +71,7 @@ In [Set up Nginx as Ingress Controller in Kubernetes](/setup-nginx-ingress-contr
 
 ### Create a new Azure SQL Server
 
-After the deployment of the AKS cluster is finished, let's add a new Azure SQL Server witht he following command:
+After the deployment of the AKS cluster is finished, let's add a new Azure SQL Server with he following command:
 
 <script src="https://gist.github.com/WolfgangOfner/77eff33e4b0ef026697b3175bd62e0d9.js"></script>
 
@@ -89,7 +89,7 @@ By default, the Azure SQL Server does not allow any connections. Therefore you h
 
 <script src="https://gist.github.com/WolfgangOfner/0561b8ae25e02484d2c53aa1e7ff9581.js"></script>
 
-Feel free to add as many firewall rules as you need. All you have to do is to edit the start and end ip address parameters.
+Feel free to add as many firewall rules as you need. All you have to do is to edit the start and end IP address parameters.
 
 ### Deploy an Azure Service Bus Queue
 
@@ -111,7 +111,7 @@ With the Azure Storage Account and App Service Plan set up, create the Azure Fun
 
 <script src="https://gist.github.com/WolfgangOfner/0a73b0e93a0b5503e98e15056cb8a694.js"></script>
 
-## Create all your Infrastrucute using the IaC Pipeline
+## Create all your Infrastructure using the IaC Pipeline
 
 Run the pipeline in Azure DevOps and all your services will be created in Azure. 
 
@@ -131,6 +131,6 @@ This makes it very safe and fast to set up all the infrastructure you need for y
 
 Infrastructure as Code (IaC) solves many problems with deployments and enables development teams to quickly and reliably deploy the infrastructure. You can choose between many tools like Ansible, Terraform or Chef. Alternatively, you can keep it simple like I did in the demo and use Azure CLI. The advantage of the Azure CLI is that you can easily use it locally for testing. 
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

@@ -53,7 +53,7 @@ The first line logs you into your Azure subscription and the second one takes th
 
 ### Upload a Docker Image using Azure DevOps Pipelines
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 The better approach to uploading is an automated Azure DevOps pipeline. In my previous demos, I already created tasks to build and publish the image to Dockerhub. I will update these tasks to a new version (v2 instead of v1) and add more parameters, so you can easily switch between ACR and Dockerhub.
 
@@ -211,6 +211,6 @@ Azure Container Registry (ACR) is a private container registry and a great alter
 
 Note: By default, my demo code is using Dockerhub because it is more accessible and I want to make it easier for people who want to try the demo. I left the code for ACR as comments in the pipeline.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

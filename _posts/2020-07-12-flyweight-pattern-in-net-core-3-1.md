@@ -16,7 +16,7 @@ The flyweight pattern helps to keep the memory usage of your application low and
 
 ## Flyweight Pattern Implementation
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-FlyweightPattern" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-FlyweightPattern" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 The flyweight pattern is very simple, therefore I will keep this demo short. For this demo, imagine that I have a fast food place selling different meals. To keep it simple, I serve only burger and pizza meals.
 
@@ -54,4 +54,4 @@ When running the application, you will see that there are no items in the cache 
 
 The flyweight pattern is a very simple design pattern that can help you to reduce memory usage when you have many objects that won't change. Another benefit of the pattern is that it can help to speed up your application and as seen, it is very easy to implement.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-FlyweightPattern" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/.NETCore-FlyweightPattern" target="_blank" rel="noopener noreferrer">GitHub</a>.

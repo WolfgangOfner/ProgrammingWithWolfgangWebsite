@@ -33,7 +33,7 @@ Preventing XSS attacks is pretty simple if you follow these best practices:
 
 ## Cross Site Scripting in ASP .NET Core
 
-ASP .NET Core Is already pretty safe out of the box due to automatically encoding HTML, for example < gets encoded into &lt. Let&#8217;s have a look at two examples where XSS attacks can happen and how to prevent them. You can find the code for the demo on <a href="https://github.com/WolfgangOfner/MVC-XssDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+ASP .NET Core Is already pretty safe out of the box due to automatically encoding HTML, for example < gets encoded into &lt. Let&#8217;s have a look at two examples where XSS attacks can happen and how to prevent them. You can find the code for the demo on <a href="https://github.com/WolfgangOfner/MVC-XssDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ### ASP .NET Core 3.1 Demo
 
@@ -107,4 +107,4 @@ In reality, an attacker wouldn't display an alert box but try to access your coo
 
 This post showed what cross site scripting attacks are and how they can be executed. ASP .NET Core makes it very easy to prevent these attacks and to offer a great user experience to your users.
 
-You can find the code for the demo on <a href="https://github.com/WolfgangOfner/MVC-XssDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code for the demo on <a href="https://github.com/WolfgangOfner/MVC-XssDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.

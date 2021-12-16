@@ -4,28 +4,28 @@ date: 2021-09-06
 author: Wolfgang Ofner
 categories: [Programming]
 tags: [C#, .NET 5, Dependency Injection]
-description: Dependency Injection helps to write more testable and overal better applications and can be easily configured for .NET 5 console applications.
+description: Dependency Injection helps to write more testable and overall better applications and can be easily configured for .NET 5 console applications.
 ---
 
 Back in the .NET framework days dependency injection was not the easiest task. Fortunately, Microsoft made it a first class citizen with the introduction of .NET Core. This is especially true for ASP .NET Core application where dependency injection can be used with a single line of code.
 
-Unfortunately, .NET Core (and .NET 5) console applications do not come preconfigured for dependency injection. Therefore, this post will show you how to configure it for you .NET 5 console application.
+Unfortunately, .NET Core (and .NET 5) console applications do not come pre-configured for dependency injection. Therefore, this post will show you how to configure it for you .NET 5 console application.
 
 ## Configure Depndency Injection for a .NET 5 Console Application
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ConsoleDependencyInjection" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ConsoleDependencyInjection" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-Create a new .NET 5 (.NET Core also works) application and install the Microsoft.Extensions.Hosting NuGet package. Next, create the following method which creates a DefaulBuilder and also allows you to register your instances with the dependency injection module.
+Create a new .NET 5 (.NET Core also works) application and install the Microsoft.Extensions.Hosting NuGet package. Next, create the following method which creates a DefaultBuilder and also allows you to register your instances with the dependency injection module.
 
 <script src="https://gist.github.com/WolfgangOfner/9b2677b1e0106ec20f3875020a92e7d2.js"></script>
  
-The AddTransient method configures dependency injection to create a new instance of the object everytime it is needed. Alternatively, you could use AddScoped or AddSingleton. Scoped objects are the same within a request, but different across different requests and Singleton objects are the same for every object and every request.
+The AddTransient method configures dependency injection to create a new instance of the object every time it is needed. Alternatively, you could use AddScoped or AddSingleton. Scoped objects are the same within a request, but different across different requests and Singleton objects are the same for every object and every request.
 
 You can add as many services as your application needs.
 
 ## Use Dependency Injection in a .NET 5 Console Application
 
-The dependency injection module is already configured and now you can use it. Pass the Services of the previously created IHostBuilder to a new method where you can instanciate a new object with it.
+The dependency injection module is already configured and now you can use it. Pass the Services of the previously created IHostBuilder to a new method where you can instantiate a new object with it.
 
 <script src="https://gist.github.com/WolfgangOfner/9f88d28d485ec3b32e1327e10b8558b8.js"></script>
 
@@ -43,7 +43,7 @@ Let's take a look at the ConsoleGreeter class.
 
 <script src="https://gist.github.com/WolfgangOfner/5001e210a6c09d42d78291ddaea8452d.js"></script>
 
-This class takes an IFooService object in the constructor and then uses this object to call the DoCool() stuff method inside the Greet() method. This enebales developers to change the dependency injection configuration and therefore change the bevhavior of the application without touching the classes that use these objects.
+This class takes an IFooService object in the constructor and then uses this object to call the DoCoolStuff() method inside the Greet() method. This enables developers to change the dependency injection configuration and therefore change the behavior of the application without touching the classes that use these objects.
 
 ## Testing the Dependency Injection
 
@@ -75,5 +75,5 @@ Dependency injection helps developers to write more testable and overall better 
 
 [In my next post](/unit-testing-net-5-console-applications), I will add unit tests and how you how to configure the dependency injection in the test project.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ConsoleDependencyInjection" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ConsoleDependencyInjection" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

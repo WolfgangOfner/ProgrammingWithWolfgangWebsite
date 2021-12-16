@@ -126,7 +126,7 @@ Follow these steps to enable continuous deployment from a GitHub repository:
 
   1. Publish your application source code to GitHub.
   2. In the Azure portal, open your web app and select Deployment options under the Deployment menu.
-  3. On the Deployment option blade, select GitHub, authorize Azure to use Github, select a project and a branch.
+  3. On the Deployment option blade, select GitHub, authorize Azure to use GitHub, select a project and a branch.
   4. Click OK.
 
 <div class="col-12 col-sm-10 aligncenter">

@@ -158,7 +158,7 @@ The first set of your build pipeline is used to set up the NuGet.exe which will 
 
 #### NuGet restore
 
-This step restores all the Nuget packages of your solution. By default the NuGet packages in all projects. You can change this by changing the Path to solution from *\*\\*.sln to whatever fits you.
+This step restores all the NuGet packages of your solution. By default the NuGet packages in all projects. You can change this by changing the Path to solution from *\*\\*.sln to whatever fits you.
 
 #### Build solution
 

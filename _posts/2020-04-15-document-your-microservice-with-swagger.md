@@ -10,7 +10,7 @@ Swagger is an open-source toolset that can be easily integrated into your soluti
 
 ## What is Swagger?
 
-Swagger is an open-source toolset from <a href="https://swagger.io/" target="_blank" rel="noopener noreferrer">Smartbear</a> and is based on the OpenAPI specificiation. For .NET Core, you can install Swagger easily as Nuget package and configure it in the Startup class of your solution. In simple words, Swagger wraps the XML comments of your API in a nice looking functional GUI which shows your the available actions and models and also lets you send requests to the actions. You can even attach authentication objects like a JWT.
+Swagger is an open-source toolset from <a href="https://swagger.io/" target="_blank" rel="noopener noreferrer">Smartbear</a> and is based on the OpenAPI specificiation. For .NET Core, you can install Swagger easily as NuGet package and configure it in the Startup class of your solution. In simple words, Swagger wraps the XML comments of your API in a nice looking functional GUI which shows your the available actions and models and also lets you send requests to the actions. You can even attach authentication objects like a JWT.
 
 ## Install Swagger
 

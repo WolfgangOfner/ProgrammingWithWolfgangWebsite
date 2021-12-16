@@ -25,7 +25,7 @@ Unfortunately, you have to keep this folder. If you delete it, the extension won
 
 ### Analyze a .NET Core Software Project
 
-If you are a reader of my blog, you know that I am a big fan of microservices. One big advantage of them is that they are small and simple. "Unfortunately" they are not great to showcase an analysis tool because there is not much to analyze. Instead, I will use the open-source NopCommerce. You can download the project from <a href="https://github.com/nopSolutions/nopCommerce/tree/4.30-bug-fixes" target="_blank" rel="noopener noreferrer">Github</a>. Unpack the zip file and then open the solution which is inside the src folder.
+If you are a reader of my blog, you know that I am a big fan of microservices. One big advantage of them is that they are small and simple. "Unfortunately" they are not great to showcase an analysis tool because there is not much to analyze. Instead, I will use the open-source NopCommerce. You can download the project from <a href="https://github.com/nopSolutions/nopCommerce/tree/4.30-bug-fixes" target="_blank" rel="noopener noreferrer">GitHub</a>. Unpack the zip file and then open the solution which is inside the src folder.
 
 ### Create a new NDepend project
 

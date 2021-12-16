@@ -14,7 +14,7 @@ Entity Framework Core already serves as unit of work. Therefore you don&#8217;t 
 
 ## The Repository Pattern in .NET Core
 
-For the demo, I am creating a simple 3-tier application consisting of controller, services, and repositories. The repositories will be injected into the services using the built-in dependency injection. You can find the code for the demo on <a href="https://github.com/WolfgangOfner/.netCoreRepositoryAndUnitOfWorkPattern" target="_blank" rel="noopener noreferrer">Github</a>.
+For the demo, I am creating a simple 3-tier application consisting of controller, services, and repositories. The repositories will be injected into the services using the built-in dependency injection. You can find the code for the demo on <a href="https://github.com/WolfgangOfner/.netCoreRepositoryAndUnitOfWorkPattern" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 In the data project, I have my models and repositories. I create a generic repository that takes a class and offers methods like get, add, or update.
 
@@ -78,4 +78,4 @@ I also added an SQL script to create the database, tables and test data. You can
 
 In today's post, I gave my updated opinion on the repository pattern and simplified the solution compared to my post a couple of years ago. This solution uses entity framework core as unit of work and implements a generic repository that can be used for most of the operations. I also showed how to implement a specific repository, in case the generic repository can&#8217;t full fill your requirements. Implement your own unit of work object only if you need to control over your objects.
 
-You can find the code for the demo on <a href="https://github.com/WolfgangOfner/.NETCoreRepositoryAndUnitOfWorkPattern" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code for the demo on <a href="https://github.com/WolfgangOfner/.NETCoreRepositoryAndUnitOfWorkPattern" target="_blank" rel="noopener noreferrer">GitHub</a>.

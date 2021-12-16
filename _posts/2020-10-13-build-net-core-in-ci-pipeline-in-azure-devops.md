@@ -3,14 +3,14 @@ title: Build .NET Core in a CI Pipeline in Azure DevOps
 date: 2020-10-13T17:20:53+02:00
 author: Wolfgang Ofner
 categories: [DevOps]
-tags: [.NET Core, Azure DevOps, CI, Continuous Integration, DevOps, Github]
+tags: [.NET Core, Azure DevOps, CI, Continuous Integration, DevOps, GitHub]
 description: A crucial feature of DevOps is to give the developer fast feedback if their code changes work. This can be done automatically with a CI pipeline.
 ---
 A crucial feature of DevOps is to give the developer fast feedback if their code changes work. This can be done by automatically building code and running tests every time changes are checked-in. Today, I will show how to create a CI pipeline (continuous integration) for ASP .NET Core.
 
 ## Create a .NET Core CI Pipeline in Azure DevOps
 
-<a href="/programming-microservices-net-core-3-1" target="_blank" rel="noopener noreferrer">Over the series of my last posts</a>, I created two ASP .NET Core microservices. In this post, I create a CI pipeline to build all projects and run all unit tests in the repository. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+<a href="/programming-microservices-net-core-3-1" target="_blank" rel="noopener noreferrer">Over the series of my last posts</a>, I created two ASP .NET Core microservices. In this post, I create a CI pipeline to build all projects and run all unit tests in the repository. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 In your Azure DevOps project, go to Pipelines and click Create Pipeline.
 
@@ -32,15 +32,15 @@ In the next window, select where you have your code stored. I select GitHub for 
   </p>
 </div>
 
-### Authorize Github
+### Authorize GitHub
 
 Since the code is on GitHub, I have to authorize Azure Pipelines to access my repositories. If the code was on an Azure Repos, this step wouldn&#8217;t be necessary.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-Github.jpg" alt="Authorize Azure Pipelines to access Github" /></a>
+  <a href="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-GitHub.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Authorize-Azure-Pipelines-to-access-GitHub.jpg" alt="Authorize Azure Pipelines to access GitHub" /></a>
   
   <p>
-    Authorize Azure Pipelines to access Github
+    Authorize Azure Pipelines to access GitHub
   </p>
 </div>
 
@@ -54,13 +54,13 @@ After authorizing Azure Pipelines for GitHub, all your repositories will be disp
   </p>
 </div>
 
-On the next window, I have to approve to install Azure Pipelines in my Github repository. This allows Azure DevOps to access the repository and write to the code. This is necessary because the CI pipeline will be added to the source control. Again, this is not necessary when you have your code in Azure DevOps.
+On the next window, I have to approve to install Azure Pipelines in my GitHub repository. This allows Azure DevOps to access the repository and write to the code. This is necessary because the CI pipeline will be added to the source control. Again, this is not necessary when you have your code in Azure DevOps.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/10/Approve-the-access-to-the-Github-repository.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Approve-the-access-to-the-Github-repository.jpg" alt="Approve the access to the Github repository" /></a>
+  <a href="/assets/img/posts/2020/10/Approve-the-access-to-the-GitHub-repository.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Approve-the-access-to-the-GitHub-repository.jpg" alt="Approve the access to the GitHub repository" /></a>
   
   <p>
-    Approve the access to the Github repository
+    Approve the access to the GitHub repository
   </p>
 </div>
 
@@ -92,7 +92,7 @@ Before we add more steps to the CI pipeline, let&#8217;s have a look at what the
 
 ### Analyze the CI Pipeline from the Template
 
-Above the .yml editor, you can see the path to the pipeline yml file in your source control. I recommend having a pipelines folder of the root folder of your solution. In my case, it is WolfgangOfner/MicroserviceDemo/CustomerApi/pipelines/NetCore-CI-azure-pipeline.yml (and also one for the OrderApi but the principle is the same). It is a good practice to name the file to describe what they do. You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/NetCore-CI-azure-pipeline.yml" target="_blank" rel="noopener noreferrer">Github</a> or a bit further down.
+Above the .yml editor, you can see the path to the pipeline yml file in your source control. I recommend having a pipelines folder of the root folder of your solution. In my case, it is WolfgangOfner/MicroserviceDemo/CustomerApi/pipelines/NetCore-CI-azure-pipeline.yml (and also one for the OrderApi but the principle is the same). It is a good practice to name the file to describe what they do. You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/NetCore-CI-azure-pipeline.yml" target="_blank" rel="noopener noreferrer">GitHub</a> or a bit further down.
 
 The lines 1 through 14 configure the pipeline. The trigger section defines that the pipeline is automatically triggered when something changes on the master branch inside the CustomerApi folder. This means that this pipeline does not run when you change something on the OrderApi project. The pool section defines that the pipeline is executed on an ubuntu agent and the variables section lets you define variables for the pipeline. By default, only the buildConfiguration is set to Release.
 
@@ -107,10 +107,10 @@ I plan to add several new steps to restore NuGet packages, build the solution, r
 I remove the build script and select the .NET Core task on the right side. I select restore as command and *\*/CustomerApi\*.csproj as the path to the projects to restore each project starting with CustomerApi. Then click Add, to add the task to your pipeline. Make sure that your cursor is at the beginning of the next line under steps.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/10/Add-Nuget-restore-to-the-CI-pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Add-Nuget-restore-to-the-CI-pipeline.jpg" alt="Add Nuget restore to the CI pipeline" /></a>
+  <a href="/assets/img/posts/2020/10/Add-Nuget-restore-to-the-CI-pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Add-Nuget-restore-to-the-CI-pipeline.jpg" alt="Add NuGet restore to the CI pipeline" /></a>
   
   <p>
-    Add Nuget restore to the CI pipeline
+    Add NuGet restore to the CI pipeline
   </p>
 </div>
 
@@ -152,6 +152,6 @@ Adding a second pipeline for the OrderApi works exactly the same except that ins
 
 CI pipelines help developers to get fast feedback about their code changes. These pipelines can build code and run tests every time something changed. In my next post, I will show how to add code coverage to the results to get even more information about the code changes, and then I will show how to run your code with every pull request. Later, I will extend the pipeline to build and create Docker images and also to deploy them to Kubernetes.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

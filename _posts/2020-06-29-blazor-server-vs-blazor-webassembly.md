@@ -41,7 +41,7 @@ SignalR is an integral part of Blazor and offers these features:
 
 To create both versions of Blazor you should have an up to date version of Visual Studio 2019. Blazor WASM was added in May 2020, whereas Blazor Server was included in the launch of VS 2019.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/Blazor-ServervsClient" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/Blazor-ServervsClient" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ### Blazor Server
 
@@ -137,4 +137,4 @@ Disadvantages
 
 Blazor Server and WebAssembly application both have their advantages and disadvantages. If you want to serve a large number of users and don&#8217;t have secret code running, use WASM. It also offers offline support. Use Blazor Server if you need fast loading of the first page or if you have sensitive code that you don&#8217;t want to send to the browser.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/Blazor-ServervsClient" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/Blazor-ServervsClient" target="_blank" rel="noopener noreferrer">GitHub</a>.

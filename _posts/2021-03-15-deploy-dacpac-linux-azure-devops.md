@@ -11,13 +11,13 @@ I showed [in my last post](/automatically-deploy-database-changes) how to use SS
 
 ## Use .NET Core to create the Dacpac package
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 I have created a new folder in my solution, Database, which contains the SQL project. To build this project in a Linux environment, I add a new .NET Core 3.1 Class Library called CustomerApi.Database.Build. Next, I replace the SDK type with MSBuild.Sdk.SqlProj/1.11.4 and set the SQLServerVersion SqlAzure because I want to deploy it to an Azure SQL database.
 
 <script src="https://gist.github.com/WolfgangOfner/6542cc3ebf7450b5b1a443275d2940ca.js"></script>
 
-This references the MSBuild.Sdk.SqlProj project which can be found on <a href="https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/" target="_blank" rel="noopener noreferrer">Github</a>. Unfortunately, this project doesn't support .NET 5 yet, that's why I use .NET Core 3.1.
+This references the MSBuild.Sdk.SqlProj project which can be found on <a href="https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/" target="_blank" rel="noopener noreferrer">GitHub</a>. Unfortunately, this project doesn't support .NET 5 yet, that's why I use .NET Core 3.1.
 
 ### Add Scripts to the Deployment Project
 
@@ -95,7 +95,7 @@ This code takes a container with the dacpac label and extracts the dacpac file (
 
 ## Create a Linux Container to Deploy the Dacpac package
 
-The Azure DevOps team has an open <a href="https://github.com/microsoft/azure-pipelines-tasks/issues/8408" target="_blank" rel="noopener noreferrer">Github</a> issue from 2018 about deploying dacpac on Linux. Unfortunately, we haven't gotten any news if and when they will implement it. Therefore, I will use a Linux Docker container with sqlpackage installed to deploy the database. The Dockerfile was originally created by a colleague of mine. I have created a new folder, Infrastructure, in the root folder and added the Dockerfile there. 
+The Azure DevOps team has an open <a href="https://github.com/microsoft/azure-pipelines-tasks/issues/8408" target="_blank" rel="noopener noreferrer">GitHub</a> issue from 2018 about deploying dacpac on Linux. Unfortunately, we haven't gotten any news if and when they will implement it. Therefore, I will use a Linux Docker container with sqlpackage installed to deploy the database. The Dockerfile was originally created by a colleague of mine. I have created a new folder, Infrastructure, in the root folder and added the Dockerfile there. 
 
 <script src="https://gist.github.com/WolfgangOfner/17a98cfbff832d96660e6c0e7e077546.js"></script>
 
@@ -115,7 +115,7 @@ The deployment downloads the previously published dacpac artifact and the execut
 
 ## Testing the Database Deployment
 
-I added the database deployment also to the OrderApi. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+I added the database deployment also to the OrderApi. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Before you can run the pipelines, you have to replace the SQLServerName variable with your server URL:
 
@@ -153,6 +153,6 @@ Run both (CustomerAPi and OrderApi) pipelines and you should see both databases 
 
 Dacpac is great to automate the database deployment including schema updates and the execution of scripts. Currently, the deployment is only supported on Windows but with a bit of tweaking, I was able to use .NET Core 3.1 and my own Linux Docker container to build and deploy it using Linux. Setting up everything is a bit of work but after you have done it once, you can easily copy and paste most of it into future projects. 
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

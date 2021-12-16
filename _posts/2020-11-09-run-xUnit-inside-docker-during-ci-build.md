@@ -8,7 +8,7 @@ description: Running xUnit tests inside a container and especially getting the t
 ---
 Running your build inside a Docker container has many advantages like platform independence and better testability for developers. These containers also bring more complexity though. <a href="/build-docker-azure-devops-ci-pipeline/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to set up the build inside a Docker container. Unfortunately, I didn't get any test results or code coverage after the build succeeded. Today, I want to show how to get the test results when you run tests inside Docker and how to display them in Azure DevOps.
 
-You can find the code of this demo on [Github](https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/UnitTestInCiPipeline).
+You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/UnitTestInCiPipeline).
 
 ## Run Tests inside Docker
 
@@ -80,8 +80,8 @@ I did the same for the OrderApi project, except that I replaced CustomerApi with
 
 ## Conclusion
 
-Docker containers are awesome. They can be used to run your application anywhere but also to build your application. This enables you to take your build definition and run it in Azure DevOps, as Github actions, or in Jenkins. You don't have to change anything because the logic is encapsulated inside the Dockerfile. This flexibility comes with some challenges, for example, to display the test results of the unit tests. This post showed that it is pretty simple to get these results out of the container and display in Azure DevOps.
+Docker containers are awesome. They can be used to run your application anywhere but also to build your application. This enables you to take your build definition and run it in Azure DevOps, as GitHub actions, or in Jenkins. You don't have to change anything because the logic is encapsulated inside the Dockerfile. This flexibility comes with some challenges, for example, to display the test results of the unit tests. This post showed that it is pretty simple to get these results out of the container and display in Azure DevOps.
 
-In my next post, I will show how you can also display the code coverage of your tests. You can find the code of this demo on [Github](https://github.com/WolfgangOfner/MicroserviceDemo).
+In my next post, I will show how you can also display the code coverage of your tests. You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/MicroserviceDemo).
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

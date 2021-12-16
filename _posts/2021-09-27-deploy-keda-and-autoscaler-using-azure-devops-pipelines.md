@@ -7,7 +7,7 @@ tags: [DevOps, Azure, YAML, Docker, Helm, AKS, Kubernetes, Monitoring, Prometheu
 description: CI/CD YAML pipelines in Azure DevOps can be used to easily install KEDA using Helm charts and Azure CLI tasks.
 ---
 
-In my last post,[KEDA - Kubernetes Event-driven Autoscaling](/keda-kubernetes-event-driven-autoscalling), I showed how to deploy a KEDA scaler to scale a microservice-based on the queue length of an Azure Service Bus Queue. The deployment of KEDA used Helm and the autoscaler was deployed using a simple YAML file. This is fine to learn new tools and technologies but in a modern DevOps environment, we want to have an automated deployment of KEDA itself and also of the scaler.
+In my last post, [KEDA - Kubernetes Event-driven Autoscaling](/keda-kubernetes-event-driven-autoscalling), I showed how to deploy a KEDA scaler to scale a microservice-based on the queue length of an Azure Service Bus Queue. The deployment of KEDA used Helm and the autoscaler was deployed using a simple YAML file. This is fine to learn new tools and technologies but in a modern DevOps environment, we want to have an automated deployment of KEDA itself and also of the scaler.
 
 In today's post, I will show you how to deploy KEDA to Kubernetes using an Azure DevOps pipeline and how to add the KEDA scaler to the Helm charts of an existing microservice.
 
@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Deploy KEDA with an Azure DevOps Infrastructure as Code (IoC) Pipeline
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 In one of my previous post, [Use Infrastructure as Code to deploy your Infrastructure with Azure DevOps](/use-infrastructure-as-code-to-deploy-infrastructure), I created a YAML pipeline in Azure DevOps to deploy my whole infrastructure to Azure. This included the Azure Kubernetes Service cluster, an SQL database server, several components for Kubernetes like a cert-manager and ingress controller, and many more. The pipeline uses YAML and Azure CLI to define the services. The big advantage of having such a pipeline is that I can easily create my whole infrastructure from scratch with a single button click. This makes it fast, and easily repeatable without worrying about forgetting anything.
 
@@ -39,7 +39,7 @@ The last step is to install the previously added Helm chart. Use the --create-na
 
 ## Add the Azure Service Bus Queue Scaler to an existing Microservice Helm chart
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/KedaDemoApi" target="_blank" rel="noopener noreferrer">Github</a>. If you want to learn more about Helm see [Helm - Getting Started](/helm-getting-started) and [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm).
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/KedaDemoApi" target="_blank" rel="noopener noreferrer">GitHub</a>. If you want to learn more about Helm see [Helm - Getting Started](/helm-getting-started) and [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm).
 
 Inside the demo application, you can find the KedaDemoApi, and inside there are the charts and kedademoapi folder. Helm reads the YAML files inside this folder and creates Kubernetes objects. To add the KEDA scaler to the Helm chart, create a new file and name it kedascaler.yaml. This file will contain the ScaledObject which configures the trigger. The file has the following content:
 
@@ -83,6 +83,6 @@ Run the Infrastructure pipeline and afterwards the CI pipeline of the KedaDemoAp
 
 CI/CD YAML pipelines in Azure DevOps can be used to easily install KEDA using Helm charts. This allows for fast, reproducible deployments which results in a low error rate. Helm can also be used to deploy the KEDA scaler with an existing microservice. This allows developers to quickly add the KEDA scaler to the Helm chart and also does not require any changes in the deployment pipeline to deploy the new scaler.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

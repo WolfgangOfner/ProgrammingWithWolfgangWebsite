@@ -3,7 +3,7 @@ title: We moved to Jekyll
 date: 2020-10-26
 author: Wolfgang Ofner
 categories: [Miscellaneous ]
-tags: [Jekyll, Azure Static Web App, Docker, Github Action, WordPress]
+tags: [Jekyll, Azure Static Web App, Docker, GitHub Action, WordPress]
 description: Jekyll is a fast open-source platform which in combination with Azure Static Web Apps makes your website blazing fast and gives the users a great experience. 
 ---
 When I started my blog, I was looking for something simple so I can write my posts and don't have to manage much behind the scenes. WordPress was the most known blogging platform back then and I also got a cheap hosting package with WordPress included. Taking WordPress back then was a no-brainer but in the last three years since then, I was never really happy with it. Today, I want to talk about the reasons for the migration to Jekyll, what other options I considered, and what disadvantages the migration has.
@@ -31,7 +31,7 @@ I am fortunate that I have readers from all over the world. So far, they all had
 Migrating from WordPress to Jekyll is easy, in theory. I used the Jekyll Exporter plugin to export my posts and pictures. The problem is, that the plugin only works when there are no other plugins active. I am using around 10 plugins and deactivating them took around 30 min and gave me many 404 and 500 error pages. It was a bit annoying but also made me happy to leave WordPress behind. Once I had my posts and pictures, I was surprised how well the export was. All posts got converted to markdown and could already be used. I edited mainly the images so they don't use the WordPress CSS classes anymore and look nice on mobile and desktop and removed some boiler-plate text. It took me a couple of hours and some regex to get everything cleaned up.
 
 ### Docker is awesome
-This migration reminded me of how awesome Docker is and how it can improve the efficiency of developers. The theme I am using needs besides Ruby some other Linux programs I have never heard about and also which I didn't want to install on my Windows 10 WSL. Instead of going through the kinda complicated build and run process, I use Docker to run and build the whole website. The only downside of this approach is that I have to build the website before checking in. In the near future, I want to extend the Github Action so it uses Docker to build my website before the deployment.
+This migration reminded me of how awesome Docker is and how it can improve the efficiency of developers. The theme I am using needs besides Ruby some other Linux programs I have never heard about and also which I didn't want to install on my Windows 10 WSL. Instead of going through the kinda complicated build and run process, I use Docker to run and build the whole website. The only downside of this approach is that I have to build the website before checking in. In the near future, I want to extend the GitHub Action so it uses Docker to build my website before the deployment.
 
 ### New Features
 I tried to change as little as possible but the theme I am using has some nice eye candy features. The biggest improvement is the built-in dark mode which enables users to switch between a light and dark theme. Another nice feature is the listing of posts inside a category including their publish dates.

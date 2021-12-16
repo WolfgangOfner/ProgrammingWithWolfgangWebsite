@@ -37,7 +37,7 @@ That's it. Now let's edit the pipeline to upload the previously created NuGet pa
 
 ## Upload NuGet Packages to a private Feed in an Azure DevOps Pipeline
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 I already created a pipeline that creates a NuGet package, [in my last posts](/create-nuget-azure-devops). I will extend this pipeline to upload the created NuGet package to the previously created NuGet feed. Publishing the NuGet package is pretty simple. I will create a new stage that will only run when the build stage was successful and also will only run if the build is not triggered by a pull request. This ensures that only builds from the master branch (or any feature branch) will be uploaded to the feed. 
 
@@ -54,9 +54,9 @@ Lastly, I use a DotNet Core task to push the NuGet package. Use push as the comm
 That's already everything you need to publish the NuGet package to the private feed. The whole stage looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/6e55096210e6da22c2be2ecce22ecf1d.js"></script>
-You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Nuget/pipelines/Nuget-CI-CD.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Nuget/pipelines/Nuget-CI-CD.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-## Publish the Nuget Package
+## Publish the NuGet Package
 
 Run the pipeline and after the build is finished, open your NuGet feed in the Artifacts tab. You will see your NuGet published there.
 
@@ -110,6 +110,6 @@ In my next post, I will show how to pass an access token to the Dockerfile to ac
 
 Creating and using a private NuGet feed in Azure DevOps is easy. In this post, I showed how to create one and how to extend an Azure DevOps pipeline to automatically publish NuGet packages to the private feed. Then, I added the new feed to my project and used Visual Studio to install the NuGet package. In my next post, I will show how to pass an access token to the Dockerfile to access the private NuGet feed.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

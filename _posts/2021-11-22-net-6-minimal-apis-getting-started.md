@@ -11,7 +11,7 @@ Microsoft released .NET 6 and the most talked topic of this new version is minim
 
 Now that it is released, let's try minimal APIs and see if it is any good.
 
-You can find the code of this demo on <a href="https://github.com/WolfgangOfner/MinimalApi" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of this demo on <a href="https://github.com/WolfgangOfner/MinimalApi" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ## Prerequisites for .NET 6
 
@@ -53,7 +53,7 @@ The only file of interest in this project is the Program.cs file. This file conf
 Program.cs
 <script src="https://gist.github.com/WolfgangOfner/23382500bffe39718e7855714ae8b583.js"></script>
 
-If you are familiar with the Startup.cs file, you will see many similarities like app.UseHttpsRedirect or services.AddSwaggerGen(). The method app.MapGet configures an endpoint for HTTP requests and returns five random weather forcasts. You can test this using the Swagger UI. 
+If you are familiar with the Startup.cs file, you will see many similarities like app.UseHttpsRedirect or services.AddSwaggerGen(). The method app.MapGet configures an endpoint for HTTP requests and returns five random weather forecasts. You can test this using the Swagger UI. 
 
 Start your application and you will see the Swagger UI. Execute the Get method and you will see five random weather forecasts.
 
@@ -67,7 +67,7 @@ Start your application and you will see the Swagger UI. Execute the Get method a
 
 ### Edit the Minimal API project
 
-The default minimal API project is already very small but you can make it even smaller. In the launchSettings.json file, replace "swagger" with "" for the launchUrl. Then redit the Program.cs file with the following code:
+The default minimal API project is already very small but you can make it even smaller. In the launchSettings.json file, replace "swagger" with "" for the launchUrl. Then edit the Program.cs file with the following code:
 
 <script src="https://gist.github.com/WolfgangOfner/fe3919080342235801716b8ec8cd87da.js"></script>
 
@@ -115,14 +115,14 @@ Could be a more complex method like loading something from the database
 
 Minimal APIs are very simple but currently I don't see myself ever using them. Especially for beginners, this might be too confusing since the template is using top-level statements and is hiding a lot of important aspects of programming. If you take a look at the Program.cs file again, you will see that there are no usings, namepsace, class or methods. These are important concepts and I think it will be more confusing for new programmers to see them only sometimes.
 
-Additionally, the whole configuration is in the same file and method now. Previously, the Startup.cs had two different methods to configure the application and the Program.cs file configured the web server. This is now all crammed into one file. This means that the whole configration is in one place, but this also means that the file can get quite big and unclear if there is a lot of configuration. Actually, it is not only configuration but it is also the logic of the endpoints.
+Additionally, the whole configuration is in the same file and method now. Previously, the Startup.cs had two different methods to configure the application and the Program.cs file configured the web server. This is now all crammed into one file. This means that the whole configuration is in one place, but this also means that the file can get quite big and unclear if there is a lot of configuration. Actually, it is not only configuration but it is also the logic of the endpoints.
 
-Maybe I am just bad with adapting to change and in a while I will love this new approach. Curently, I don't see that happening and will continue using controllers even for small APIs.
+Maybe I am just bad with adapting to change and in a while I will love this new approach. Currently, I don't see that happening and will continue using controllers even for small APIs.
 
 ## Conclusion
 
-Microosft's big focus of .NET 6 is to remove boiler plate code and make applications as simple as possible. Minimal APIs allow developers to create APIs with basically a single file where they can configure the application but also write the code of the endpoints.
+Microsft's big focus of .NET 6 is to remove boiler plate code and make applications as simple as possible. Minimal APIs allow developers to create APIs with basically a single file where they can configure the application but also write the code of the endpoints.
 
 So far, I am not a big fan but time will tell how good this feature is.
 
-You can find the code of this demo on <a href="https://github.com/WolfgangOfner/MinimalApi" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of this demo on <a href="https://github.com/WolfgangOfner/MinimalApi" target="_blank" rel="noopener noreferrer">GitHub</a>.

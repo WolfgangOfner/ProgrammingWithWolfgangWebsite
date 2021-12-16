@@ -13,7 +13,7 @@ Today, I will show you how to create unit tests when using dependency injection 
 
 ## Create Unit Tests using xUnit
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ConsoleDependencyInjection" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ConsoleDependencyInjection" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Create a new .NET 5 test project using xUnit and create a reference to the main project. You can use any unit testing and faking framework you like. For this demo, I am using xUnit and Moq. Additionally, I am using FluentAssertions to make the assertions more readable.
 
@@ -53,4 +53,4 @@ Run all the unit tests and you should see both running successfully.
 
 Creating unit tests for a .NET 5 console application that uses dependency injection only takes a couple of lines of code to configure the service provider. This code can be copied to any new project, making it even easier to set up.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ConsoleDependencyInjection" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/ConsoleDependencyInjection" target="_blank" rel="noopener noreferrer">GitHub</a>.

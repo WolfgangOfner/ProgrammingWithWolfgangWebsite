@@ -8,7 +8,7 @@ description: Last week at the Ignite Conference Microsoft announced that the pre
 ---
 Last week at Ignite Microsoft announced that the preview of Azure Static Web App now also supports Blazor WebAssembly. In this post, I will show how to create a Blazor client-side (WebAssembly) application and an Azure Function to retrieve some data. Then Azure Static Web App will automatically deploy the Blazor app and the Function.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/BlazorAzureStaticWebsite" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/BlazorAzureStaticWebsite" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ## Create a Blazor WebAssembly Application
 
@@ -94,7 +94,7 @@ Go to the Azure Portal, click on New, search for Static Webb App, and click on C
   </p>
 </div>
 
-Enter a name, location, and your Github repository. Then select Blazor as Build Presets and enter the location of your Blazor project and of your Azure Function project. Click Review + create and your application will be deployed.
+Enter a name, location, and your GitHub repository. Then select Blazor as Build Presets and enter the location of your Blazor project and of your Azure Function project. Click Review + create and your application will be deployed.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/10/Configure-the-Static-Web-App.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Configure-the-Static-Web-App.jpg" alt="Configure the Static Web App" /></a>
@@ -124,13 +124,13 @@ This opens your application in a new window and when you click on Fetch data, yo
   </p>
 </div>
 
-Below the URL, you see a link to the Github Actions which are responsible for the deployment. Alternatively, you could also open your Github repository and click on Actions there. When you open the Github Actions, you will see the deployment from the Azure Static Web App.
+Below the URL, you see a link to the GitHub Actions which are responsible for the deployment. Alternatively, you could also open your GitHub repository and click on Actions there. When you open the GitHub Actions, you will see the deployment from the Azure Static Web App.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/10/Github-Actions-deployed-the-Blazor-application.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Github-Actions-deployed-the-Blazor-application.jpg" alt="Github Actions deployed the Blazor application" /></a>
+  <a href="/assets/img/posts/2020/10/GitHub-Actions-deployed-the-Blazor-application.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/GitHub-Actions-deployed-the-Blazor-application.jpg" alt="GitHub Actions deployed the Blazor application" /></a>
   
   <p>
-    Github Actions deployed the Blazor application
+    GitHub Actions deployed the Blazor application
   </p>
 </div>
 
@@ -138,4 +138,4 @@ Below the URL, you see a link to the Github Actions which are responsible for th
 
 <a href="/azure-static-web-apps/" target="_blank" rel="noopener noreferrer">I already wrote an article about Azure Static Web Apps</a> when they got announced in May. Back then I had some problems and the functionality was very limited. With these improvements, especially with the support of Blazor, Microsoft is going definitively in the right direction. To have a realistic application, the Azure Function could get some data from a database. Another great benefit is that it is still free and you only pay for the Azure Functions (the first 400,000 seconds are free).
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/BlazorAzureStaticWebsite" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/BlazorAzureStaticWebsite" target="_blank" rel="noopener noreferrer">GitHub</a>.

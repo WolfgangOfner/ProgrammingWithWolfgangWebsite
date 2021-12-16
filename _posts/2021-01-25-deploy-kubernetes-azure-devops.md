@@ -61,7 +61,7 @@ Click on Save and the service connection gets created. Note that the service con
 
 ## Configure the Azure DevOps YAML Pipeline to Deploy to Azure Kubernetes Service
 
-I created already a YAML pipeline in my previous posts which I will extend now. You can find this pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CI.yml" target="_blank" rel="noopener noreferrer">Github</a>.
+I created already a YAML pipeline in my previous posts which I will extend now. You can find this pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CI.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Since I already have a Docker image on Docker hub, I only have to add Helm charts and a couple of variables to the pipeline.
 
@@ -136,6 +136,6 @@ I will implement all these best practices and even more over the next couple of 
 
 Using an Azure DevOps pipeline to deploy to Kubernetes is quite simple. In this example, I showed how to use Helm to create a Helm package and then deploy it to an Azure Kubernetes Service cluster. Over the next couple of posts, I will improve the pipeline and extend its functionality to follow all best practices.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

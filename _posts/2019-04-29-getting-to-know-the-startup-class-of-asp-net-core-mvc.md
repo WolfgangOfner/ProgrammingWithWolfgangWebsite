@@ -244,7 +244,7 @@ integration won’t work. Browser Link is useful only during development and sho
   </p>
 </div>
 
-You also have to install the Microsoft.VisualStudio.Web.BrowserLink Nuget package.
+You also have to install the Microsoft.VisualStudio.Web.BrowserLink NuGet package.
 
 ## Enabling Static Content
 

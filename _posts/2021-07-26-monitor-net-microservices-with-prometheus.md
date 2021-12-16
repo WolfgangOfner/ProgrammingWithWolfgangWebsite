@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## What is Prometheus?
 
-Prometheus is an open-source monitoring and alerting system and was the second project to join the CNCF (Cloud Native Computing Foundation) in 2016. It has more than 6000 forks and almost 40K stars on Github with a very active community. Prometheus collects data using a pull model over HTTP and does not rely on distributed storage solutions. This allows you to create several independent Prometheus servers to make it highly available.
+Prometheus is an open-source monitoring and alerting system and was the second project to join the CNCF (Cloud Native Computing Foundation) in 2016. It has more than 6000 forks and almost 40K stars on GitHub with a very active community. Prometheus collects data using a pull model over HTTP and does not rely on distributed storage solutions. This allows you to create several independent Prometheus servers to make it highly available.
 
 The components of Prometheus are the server itself, client libraries, an alert manager, and several other supporting tools.
 
@@ -34,15 +34,15 @@ Prometheus knows the following four metric types:
 
 ## Installing the Prometheus Client Library in .NET 5
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Installing the C# Prometheus client libraries is very simple. All you have to do is to install the prometheus-net and prometheus-net.AspNetCore NuGet packages
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/07/Install-the-Prometheus-Nuget-Packages.jpg"><img loading="lazy" src="/assets/img/posts/2021/07/Install-the-Prometheus-Nuget-Packages.jpg" alt="Install the Prometheus Nuget Packages" /></a>
+  <a href="/assets/img/posts/2021/07/Install-the-Prometheus-Nuget-Packages.jpg"><img loading="lazy" src="/assets/img/posts/2021/07/Install-the-Prometheus-Nuget-Packages.jpg" alt="Install the Prometheus NuGet Packages" /></a>
   
   <p>
-   Install the Prometheus Nuget Packages
+   Install the Prometheus NuGet Packages
   </p>
 </div>
 
@@ -90,7 +90,7 @@ When you start your microservice and navigate to /metrics, you will see the numb
   </p>
 </div>
 
-The code for the <a href="https://gist.githubusercontent.com/aevitas/3405c495632333c76624fcd517876eb7/raw/5cbadfeb45ccd32a5e5d3d1280b82604eea70a06/MetricReporter.cs" target="_blank" rel="noopener noreferrer">MetricCollector</a> and the <a href="https://gist.githubusercontent.com/aevitas/0df15474cbf2437e278739986a6b599c/raw/ce990d63e991df308a40362c63369f22b0400308/ResponseMetricMiddleware.cs" target="_blank" rel="noopener noreferrer">middleware</a> were taken from Github.
+The code for the <a href="https://gist.githubusercontent.com/aevitas/3405c495632333c76624fcd517876eb7/raw/5cbadfeb45ccd32a5e5d3d1280b82604eea70a06/MetricReporter.cs" target="_blank" rel="noopener noreferrer">MetricCollector</a> and the <a href="https://gist.githubusercontent.com/aevitas/0df15474cbf2437e278739986a6b599c/raw/ce990d63e991df308a40362c63369f22b0400308/ResponseMetricMiddleware.cs" target="_blank" rel="noopener noreferrer">middleware</a> were taken from GitHub.
 
 ## Conclusion
 
@@ -98,6 +98,6 @@ Prometheus is the go-to solution for collecting metrics in dockerized environmen
 
 [In my next post](/create-grafana-dashboards-with-prometheus-metrics), I will show you how to use these metrics to create dashboards with Grafana.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

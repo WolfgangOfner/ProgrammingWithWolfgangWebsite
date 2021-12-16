@@ -51,7 +51,7 @@ Open the public IP and your browser and you should get the Nginx 404 page.
 
 ## Configure the Microservices to use a ClusterIP Service
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 I have two existing microservices in my demo repo which both use a Service of the type LoadBalancer. Before you can use the Nginx Ingress controller, you have to change the Service type to ClusterIP. Since the microservices use Helm, you can easily override values using the values.yaml file. I prefer to have my overrides in the values.release.yaml file and therefore, I added the following code there:
 
@@ -139,6 +139,6 @@ It is inconvenient that this is not working but I will leave it as it is for now
 
 Nginx can be used as an Ingress controller for your Kubernetes cluster. The setup can be done within minutes using the Helm chart and allows you to have a single entry point into your cluster. This demo used two microservices and provides basic routing to access them. In my next post, I will map a DNS name to the IP and access the microservices using different DNS names.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

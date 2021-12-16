@@ -43,7 +43,7 @@ Loki is a highly available logging solution. It gets described by its developers
 
 ## Installing Grafana Loki using Helm
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 The Grafana Loki stack can be easily installed with Helm charts. If you are new to Helm, check out my previous posts [Helm - Getting Started](/helm-getting-started) and [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm) for more details.
 
@@ -161,6 +161,6 @@ Analyzing logs is essential for every project running in a production environmen
 
 [In my next post](/monitor-net-microservices-with-prometheus), I will show you how to use Prometheus, which was also installed by Loki, to scrap metrics from the microservices.
 
-You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">Github</a>.
+You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
