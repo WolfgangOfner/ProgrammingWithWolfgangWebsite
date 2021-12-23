@@ -4,7 +4,7 @@ date: 2021-04-05
 author: Wolfgang Ofner
 categories: [Kubernetes, DevOps]
 tags: [DevOps, CI-CD, Azure DevOps, Azure, Kubernetes, AKS, Helm, ACR, Azure Container Registry]
-description: Azure Container Registry has some advantqages over DockerHub and I will show you how to configure your microservice and Kubernetes cluster to run images from ACR and run them in your cluster.
+description: Azure Container Registry has some advantages over Dockerhub and I will show you how to configure your microservice and Kubernetes cluster to run images from ACR and run them in your cluster.
 ---
 
 <a href="https://hub.docker.com/" target="_blank" rel="noopener noreferrer">Dockerhub</a> is like GitHub for Docker containers. You can sign up for free and get unlimited public repos and one private repo. This is great for developers like me who want to make their containers easily accessible for everyone. Enterprises probably don't want to have their containers on a public share. They can either buy an enterprise plan or they can use a private registry like Azure Container Registry (ACR).
@@ -173,7 +173,7 @@ Next, create an image pull secret with the following command:
 
 <script src="https://gist.github.com/WolfgangOfner/7c0b1cc0071aa050dfdfe7a79b4fc543.js"></script>
 
-Note that you have to use the username and password from the previously created service principal. The namespace is the Kubernetes namespace in which your microservice is running. If you also want to deploy the OrderApi microservice from the demo reposiotry, you have to repeat the command for the orderapi-test namespace.
+Note that you have to use the username and password from the previously created service principal. The namespace is the Kubernetes namespace in which your microservice is running. If you also want to deploy the OrderApi microservice from the demo repository, you have to repeat the command for the orderapi-test namespace.
 
 ### Use the Image Pull Secret in your Microservice
 
