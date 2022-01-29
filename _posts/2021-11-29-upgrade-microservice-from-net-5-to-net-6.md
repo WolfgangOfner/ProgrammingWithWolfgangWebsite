@@ -80,6 +80,8 @@ Lastly, add UseSwagger and UseSwaggerUI to the Configure method.
 
 <script src="https://gist.github.com/WolfgangOfner/222a8efdf198b0af9271d1eeb5f4761a.js"></script>
 
+The RoutePrefix property allows you to configure the route to the Swagger UI. Setting it to string.Empty configures the application to display the Swagger UI when no URL is entered.
+
 If you don't want to update the configuration and use Swagger as always, all you have to do is update the XML comment section in the .csproj from .net5.0 to .net6.0.
 
 ## Run the updated CI Pipeline
@@ -94,7 +96,7 @@ Check-in your changes and the build pipeline in Azure DevOps should run successf
   </p>
 </div>
 
-## Considering new .NET 6 features
+## Considering new .NET 6 Features
 
 .NET 6 put an emphasis on simplifying the structure of the project and files. You can change your files to use these features like global usings or top-level statements. You can also choose to keep the structure the way it already is. Both works just fine.
 
