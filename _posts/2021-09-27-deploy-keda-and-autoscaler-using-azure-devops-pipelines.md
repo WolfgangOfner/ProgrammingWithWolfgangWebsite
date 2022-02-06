@@ -7,7 +7,7 @@ tags: [DevOps, Azure, YAML, Docker, Helm, AKS, Kubernetes, Monitoring, Prometheu
 description: CI/CD YAML pipelines in Azure DevOps can be used to easily install KEDA using Helm charts and Azure CLI tasks.
 ---
 
-In my last post, [KEDA - Kubernetes Event-driven Autoscaling](/keda-kubernetes-event-driven-autoscalling), I showed how to deploy a KEDA scaler to scale a microservice-based on the queue length of an Azure Service Bus Queue. The deployment of KEDA used Helm and the autoscaler was deployed using a simple YAML file. This is fine to learn new tools and technologies but in a modern DevOps environment, we want to have an automated deployment of KEDA itself and also of the scaler.
+In my last post, [KEDA - Kubernetes Event-driven Autoscaling](/keda-kubernetes-event-driven-autoscaling), I showed how to deploy a KEDA scaler to scale a microservice-based on the queue length of an Azure Service Bus Queue. The deployment of KEDA used Helm and the autoscaler was deployed using a simple YAML file. This is fine to learn new tools and technologies but in a modern DevOps environment, we want to have an automated deployment of KEDA itself and also of the scaler.
 
 In today's post, I will show you how to deploy KEDA to Kubernetes using an Azure DevOps pipeline and how to add the KEDA scaler to the Helm charts of an existing microservice.
 
