@@ -2,7 +2,7 @@
 title: Introducing Kubernetes Services
 date: 2022-01-31
 author: Wolfgang Ofner
-categories: [Kubernetes ]
+categories: [Kubernetes]
 tags: [Kubernetes]
 description: Kubernetes Services provide a permanent endpoint for applications by routing requests to the associated pods of the application.
 ---
