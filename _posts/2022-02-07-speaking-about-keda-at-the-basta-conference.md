@@ -7,7 +7,7 @@ tags: [KEDA, Speaking, Public Speaking, Conference]
 description: I am excited to travel to Germany and speak at the BASTA! conference in Frankfurt about KEDA.
 ---
 
-There is light at the end of the tunnel with the pandemic and therefore in-person conferences and international travel is coming back. I am excited to travel to Germany and speak at the BASTA! conference in Frankfurt about KEDA.
+There is light at the end of the tunnel with the pandemic and therefore in person conferences and international travel is coming back. I am excited to travel to Germany and speak at the BASTA! conference in Frankfurt about KEDA.
 
 You can join the session in-person, or remote to learn more about KEDA. If you can't make it to the conference but still want to learn more about KEDA, see [KEDA - Kubernetes Event-driven Autoscaling](/keda-kubernetes-event-driven-autoscaling)
 
