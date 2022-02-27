@@ -53,13 +53,13 @@ Save the pipeline and run it.
   </p>
 </div>
 
-You can see the Docker container with its two tags on Dockerhub after the build is finished.
+You can see the Docker container with its two tags on DockerHub after the build is finished.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/The-Azure-Function-Container-got-pushed-to-Dockerhub.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-Azure-Function-Container-got-pushed-to-Dockerhub.jpg" alt="The Azure Function Container got pushed to Dockerhub" /></a>
+  <a href="/assets/img/posts/2021/05/The-Azure-Function-Container-got-pushed-to-DockerHub.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-Azure-Function-Container-got-pushed-to-DockerHub.jpg" alt="The Azure Function Container got pushed to DockerHub" /></a>
   
   <p>
-   The Azure Function Container got pushed to Dockerhub
+   The Azure Function Container got pushed to DockerHub
   </p>
 </div>
 
@@ -67,7 +67,7 @@ Testing the Azure Function is exactly the same as in my last post, [Deploy Azure
 
 ## Conclusion
 
-This short post showed how to create a Docker container of an Azure Function inside an Azure DevOps YAML pipeline. The Docker image was published to Dockerhub and then deployed to an existing Azure Function.
+This short post showed how to create a Docker container of an Azure Function inside an Azure DevOps YAML pipeline. The Docker image was published to DockerHub and then deployed to an existing Azure Function.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
