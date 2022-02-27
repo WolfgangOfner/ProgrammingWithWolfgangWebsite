@@ -1,6 +1,6 @@
 ---
 title: Automatically deploy Database Changes with SSDT
-date: 2021-03-08
+date: 2021-02-15
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [DevOps, SSDT, SQL]

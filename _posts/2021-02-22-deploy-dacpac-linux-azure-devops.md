@@ -1,6 +1,6 @@
 ---
 title: Automatically Deploy your Database with Dacpac Packages using Linux and Azure DevOps
-date: 2021-03-15
+date: 2021-02-22
 author: Wolfgang Ofner
 categories: [DevOps, Cloud]
 tags: [DevOps, SSDT, SQL, Dacpac, CI-CD, Azure DevOps, Azure, Docker]

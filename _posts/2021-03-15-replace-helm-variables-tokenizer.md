@@ -1,6 +1,6 @@
 ---
 title: Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer
-date: 2021-02-22
+date: 2021-03-15
 author: Wolfgang Ofner
 categories: [DevOps, Kubernetes]
 tags: [AKS, Helm, Kubernetes, YAML, Azure]

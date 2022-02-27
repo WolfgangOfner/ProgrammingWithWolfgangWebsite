@@ -1,6 +1,6 @@
 ---
 title: Automate Database Deployments
-date: 2021-03-01
+date: 2021-02-08
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [DevOps, SSDT, CI-CD]

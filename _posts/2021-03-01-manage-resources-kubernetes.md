@@ -1,6 +1,6 @@
 ---
 title: Manage Resources in Kubernetes
-date: 2021-02-08
+date: 2021-03-01
 author: Wolfgang Ofner
 categories: [Kubernetes, DevOps]
 tags: [AKS, Helm, Kubernetes, YAML, Azure]

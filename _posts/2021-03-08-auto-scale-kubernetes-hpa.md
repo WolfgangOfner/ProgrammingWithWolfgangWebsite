@@ -1,6 +1,6 @@
 ---
 title: Auto-scale in Kubernetes using the Horizontal Pod Autoscaler
-date: 2021-02-15
+date: 2021-03-08
 author: Wolfgang Ofner
 categories: [Kubernetes, DevOps]
 tags: [AKS, Helm, Kubernetes, YAML, Azure]
