@@ -125,7 +125,7 @@ When you try to access the Swagger UI, you will get an error message though:
   </p>
 </div>
 
-It is inconvenient that this is not working but I will leave it as it is for now. In my next post, I will replace the IP address with a DNS entry which should fix the problem. Lastly, check if the second microservice is also working with the following URL: <Public-IP>/orderapi-test/swagger/v1/swagger.json
+It is inconvenient that this is not working but I will leave it as it is for now. [In my next post](/onfigure-custom-urls-to-access-microservices-running-in-kubernetes), I will replace the IP address with a DNS entry which should fix the problem. Lastly, check if the second microservice is also working with the following URL: <Public-IP>/orderapi-test/swagger/v1/swagger.json
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/05/The-OrderApi-works-too.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-OrderApi-works-too.jpg" alt="The OrderApi works too" /></a>
