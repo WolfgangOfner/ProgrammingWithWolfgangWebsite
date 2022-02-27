@@ -14,7 +14,6 @@ Therefore, I decided to start this series with the intent of explaining what mic
 
 Since these blog posts cover such a variety of topics, I will try to categorize them in such a way that they are easily found. I tried to add to add the posts to the relevant category and sometimes they may appear in several categories. Additionally, I will add the full list in chronological order at the end of this page.
 
-
 ## Getting Started with Microservices
 
 The following posts explain the theory behind microservices and how to set up your first two .NET 6 (originally .NET Core 3.1) microservices. Both microservices use the mediator pattern and communicate via RabbitMQ.
