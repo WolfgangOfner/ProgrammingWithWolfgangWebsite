@@ -1,5 +1,5 @@
 ---
-title: Fixing NuGet.targets(131,5) error The local source doesn't exist.
+title: Fixing NuGet.targets(131,5) error The local source doesn't exist
 date: 2021-07-05
 author: Wolfgang Ofner
 categories: [Miscellaneous ]
