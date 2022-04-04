@@ -6,7 +6,7 @@ categories: [ASP.NET]
 tags: [.NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, Swagger]
 description: In my last post, I talked about the theory of a Microservice. Today it is going to be more practical. I will create two microservices using ASP .NET Core 3.1
 ---
-In [my last post](https://www.programmingwithwolfgang.com/microservices-getting-started/), I talked about the theory of a microservice. Today it is going to be more practical. I will create two microservices using ASP .NET Core 3.1. Over the next posts., I will extend the microservices using CQRS, docker and docker-compose, RabbitMQ and automatic builds and deployments.
+In [my last post](https://www.programmingwithwolfgang.com/microservices-getting-started/), I talked about the theory of a microservice. Today it is going to be more practical. I will create two microservices using ASP .NET Core 3.1. Over the next posts., I will extend the microservices using CQRS, Docker and docker-compose, RabbitMQ, and automatic builds and deployments.
 
 ## Create a Microservice using ASP .NET Core 3.1
 
@@ -24,7 +24,9 @@ Our two microservice should satisfy the following requirements:
   * Communication between microservices should be implemented through some kind of queue
   * Use DDD and CQRS approaches with the Mediator and Repository Pattern
 
-To keep it simple, I will use an in-memory database. During the implementation, I will point out what you have to change if you want to use a normal database. I will split up the full implementation. In this post, I will create the microservices with the needed features. In the following posts, I will implement <a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">Swagger</a>, create a <a href="/dockerize-an-asp-net-core-microservice-and-rabbitmq/" target="_blank" rel="noopener noreferrer">Docker container</a>, set up <a href="/rabbitmq-in-an-asp-net-core-3-1-microservice" target="_blank" rel="noopener noreferrer">RabbitMQ</a> and explain [CQRS](https://www.programmingwithwolfgang.com/cqrs-in-asp-net-core-3-1/) and <a href="/mediator-pattern-in-asp-net-core-3-1/" target="_blank" rel="noopener noreferrer">Mediator</a>.
+To keep it simple, I will use an in-memory database. During the implementation, I will point out what you have to change if you want to use a normal database. I will split up the full implementation of these microservices over multiple posts. 
+
+In this post, I will create the microservices with the needed features. In the following posts, I will implement <a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">Swagger</a>, create a <a href="/dockerize-an-asp-net-core-microservice-and-rabbitmq/" target="_blank" rel="noopener noreferrer">Docker container</a>, set up <a href="/rabbitmq-in-an-asp-net-core-3-1-microservice" target="_blank" rel="noopener noreferrer">RabbitMQ</a> and explain [CQRS](https://www.programmingwithwolfgang.com/cqrs-in-asp-net-core-3-1/) and the <a href="/mediator-pattern-in-asp-net-core-3-1/" target="_blank" rel="noopener noreferrer">Mediator</a> pattern.
 
 ## Structure of the Microservice
 
@@ -38,7 +40,7 @@ I created a solution for each microservice. You can see the structure of the mic
   </p>
 </div>
 
-Both microservice have exactly the same structure, except that the order solution has a Messaging.Receive project and the customer solution has a Messaging.Send project. I will use these projects later to send and receive data using RabbitMQ.
+Both microservices have the same structure, except that the order solution has a Messaging.Receive project whereas the customer solution has a Messaging.Send project. I will use these projects later to send and receive data using RabbitMQ.
 
 An important aspect of an API is that you don't know who your consumers are and you should never break existing features. To implement versioning, I place everything like controllers or models in a v1 folder. If I want to extend my feature and it is not breaking the current behavior, I will extend it in the already existing classes. If my changes were to break the functionality, I will create a v2 folder and place the changes there. With this approach, no consumer is affected and they can implement the new features whenever they want or need them.
 
@@ -48,11 +50,11 @@ The API project is the heart of the application and contains the controllers, va
 
 ### Controllers in the API Project
 
-I try to keep the controller methods as simple as possible. They only call different services and return a model or status to the client. They don't do any business logic.
+I try to keep the controller methods as simple as possible. They only call different services and return a model or status to the client. They don't contain any business logic.
 
 <script src="https://gist.github.com/WolfgangOfner/f619fa8437fba754134df3961ddd0f11.js"></script>
 
-The _mediator.Send is used to call a service using CQRS and the Mediator pattern. I will explain that in a later post. For now, it is important to understand that a service is called and that a Customer is returned. In case of an exception, a bad request and an error message are returned.
+The _mediator.Send method is used to call a service using CQRS and the Mediator pattern. I will explain that in a later post. For now, it is important to understand that a service is called and that a Customer is returned. In case of an exception, a bad request and an error message are returned.
 
 My naming convention is that I use the name of the object, in that case, Customer. The HTTP verb will tell you what this action does. In this case, the post will create an object, whereas put would update an existing customer.
 
@@ -76,7 +78,7 @@ In the Startup.cs, I register my services, validators and configure other parts 
 
 ## Data
 
-The Data project contains everything needed to access the database. I use Entity Framework Core, an in-memory database and the repository pattern.
+The Data project contains everything needed to access the database. I use Entity Framework Core, an in-memory database, and the repository pattern.
 
 ### Database Context
 
@@ -84,7 +86,7 @@ In the database context, I add a list of customers that I will use to update an 
 
 <script src="https://gist.github.com/WolfgangOfner/df4825b5890006fa4f673960c922bc20.js"></script>
 
-If you want to use a normal database, all you have to do is delete the adding of customers in the constructor and change the following line in the Startup class to take your connection string instead of using an in-memory database.
+If you want to use a normal database, all you have to do is delete the adding of customers in the constructor and change the following line in the Startup class to use your connection string instead of using an in-memory database.
 
 <script src="https://gist.github.com/WolfgangOfner/38fd404e812d8f61c0eb92a304cdf521.js"></script>
 
@@ -94,19 +96,19 @@ You can either hard-code your connection string in the Startup class or better, 
 
 ### Repository
 
-I have a generic repository for CRUD operations which can be used for every entity. This repository has methods like AddAsync and UpdateAsync.
+I have a generic repository for CRUD operations that can be used for every entity. This repository has methods like AddAsync and UpdateAsync.
 
 <script src="https://gist.github.com/WolfgangOfner/c990f4c8c695b072a7c2ec543b81233b.js"></script>
 
-Additionally to the generic repository, I have a CustomerRepository that implements a Customer specific method, GetCustomerByIdAsync.
+Additionally to the generic repository, I have a CustomerRepository that implements a Customer-specific method, GetCustomerByIdAsync.
 
 <script src="https://gist.github.com/WolfgangOfner/218df7028cfa63fdeb75538f9ff4cd72.js"></script>
 
-The OrderRepository has more Order specific methods. The CustomerRepository inherits from the generic repository and its interface inherits from the repository interface. Since the CustomerContext has the protected access modified in the generic repository, I can reuse it in my CustomerRepository.
+The OrderRepository has more Order specific methods. The CustomerRepository inherits from the generic repository and its interface inherits from the repository interface. Since the CustomerContext has the protected access modifier in the generic repository, I can reuse it in my CustomerRepository.
 
 ## Domain
 
-The Domain project contains all entities and no business logic. In my microservice, this is only the Customer or Order entity.
+The Domain project contains all entities and no business logic. In my microservices, this is only the Customer or Order entity.
 
 ## Messaging.Send
 
@@ -116,7 +118,7 @@ The Messaging.Send project contains everything I need to send Customer objects t
 
 ## Service
 
-The Service project is split into Command and Query. This is how CQRS separates the concerns of reading and writing data. I will go into the details in a later post. For now, all you have to know is that commands write data and queries read data. A query consists of a query and a handler. The query indicates what action should be executed and the handler implements this action. The command works with the same principle.
+The Service project is split into Commands and Queries. This is how CQRS separates the concerns of reading and writing data. I will go into the details in a later post. For now, all you have to know is that commands write data and queries read data. A query consists of a query and a handler. The query indicates what action should be executed and the handler implements this action. The commands follow the same principle.
 
 <script src="https://gist.github.com/WolfgangOfner/c93dd0c9d66a6de06a5a06b1e6c79635.js"></script>
 
@@ -124,25 +126,25 @@ The handler often calls the repository to retrieve or change data.
 
 ## Tests
 
-For my tests, I like to create a test project for each normal project wheres the name is the same except that I add .Test at the end. I use xUnit, FakeItEasy, and FluentAssertions. Currently, there are no tests for the RabbitMQ logic.
+For my tests, I like to create a test project for each normal project whereas the name is the same except that I add .Test at the end. I use xUnit, FakeItEasy, and FluentAssertions. Currently, there are no tests for the RabbitMQ logic.
 
 ## Run the Microservice
 
 In the previous section I only talked about the Customer service but the Order service has the same structure and should be easy to understand.
 
-Now that the base functionality is set up, it is time to test both microservice. Before you can start them, you have to make sure that RabbitMQ is disabled in the OrderApi project. Go to the OrderApi and open the appsettings. There you have to make sure that Enabled is set to false:
+Now that the base functionality is set up, it is time to test both microservices. Before you can start them, you have to make sure that RabbitMQ is disabled in the OrderApi project. Go to the OrderApi and open the appsettings. There you have to make sure that Enabled is set to false:
 
 <script src="https://gist.github.com/WolfgangOfner/69ea9d62a13e979bc8b2cf944bad888a.js"></script>
 
 ## Test the Microservice
 
-After you made the changes to both APIs, you can start them. This should display the Swagger GUI which gives you information about all actions and models and also lets you send requests. The GUI should be self-explanatory but <a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">I will talk more about it in my next post</a>.
+After you made the changes to both APIs, you can start them. This should display the Swagger UI which gives you information about all actions and models and also lets you send requests. The UI should be self-explanatory but <a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">I will talk more about it in my next post</a>.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg" alt="The Swagger GUI with the available actions and models" /></a>
+  <a href="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/The-Swagger-GUI-with-the-available-actions-and-models.jpg" alt="The Swagger UI with the available actions and models" /></a>
   
   <p>
-    The Swagger GUI with the available actions and models
+    The Swagger UI with the available actions and models
   </p>
 </div>
 
@@ -152,7 +154,7 @@ Today, I talked about the structure and the features of my microservices. This i
 
 <a href="/document-your-microservice-with-swagger" target="_blank" rel="noopener noreferrer">In my next post, I will talk about Swagger</a> and how you can use it to easily and quickly document your microservice while providing the opportunity to test requests.
 
-Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
+Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months, I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
