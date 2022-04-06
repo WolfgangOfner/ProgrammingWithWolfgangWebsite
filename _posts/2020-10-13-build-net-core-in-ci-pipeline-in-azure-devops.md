@@ -44,7 +44,7 @@ Since the code is on GitHub, I have to authorize Azure Pipelines to access my re
   </p>
 </div>
 
-After authorizing Azure Pipelines for GitHub, all your repositories will be displayed. Search and select for the repository, you want to make the CI pipeline for. In my case, I select the MicroserviceDemo repository.
+After authorizing Azure Pipelines for GitHub, all your repositories will be displayed. Search and select the repository, you want to make the CI pipeline for. In my case, I select the MicroserviceDemo repository.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/10/Find-your-repository.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/Find-your-repository.jpg" alt="Find your repository" /></a>
@@ -92,11 +92,11 @@ Before we add more steps to the CI pipeline, let&#8217;s have a look at what the
 
 ### Analyze the CI Pipeline from the Template
 
-Above the .yml editor, you can see the path to the pipeline yml file in your source control. I recommend having a pipelines folder of the root folder of your solution. In my case, it is WolfgangOfner/MicroserviceDemo/CustomerApi/pipelines/NetCore-CI-azure-pipeline.yml (and also one for the OrderApi but the principle is the same). It is a good practice to name the file to describe what they do. You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/NetCore-CI-azure-pipeline.yml" target="_blank" rel="noopener noreferrer">GitHub</a> or a bit further down.
+Above the .yml editor, you can see the path to the pipeline yml file in your source control. I recommend having a pipelines folder in the root folder of your solution. In my case, it is WolfgangOfner/MicroserviceDemo/CustomerApi/pipelines/NetCore-CI-azure-pipeline.yml (and also one for the OrderApi but the principle is the same). It is a good practice to name the file to describe what they do. You can find the finished pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/NetCore-CI-azure-pipeline.yml" target="_blank" rel="noopener noreferrer">GitHub</a> or a bit further down.
 
-The lines 1 through 14 configure the pipeline. The trigger section defines that the pipeline is automatically triggered when something changes on the master branch inside the CustomerApi folder. This means that this pipeline does not run when you change something on the OrderApi project. The pool section defines that the pipeline is executed on an ubuntu agent and the variables section lets you define variables for the pipeline. By default, only the buildConfiguration is set to Release.
+Lines 1 through 14 configure the pipeline. The trigger section defines that the pipeline is automatically triggered when something changes on the master branch inside the CustomerApi folder. This means that this pipeline does not run when you change something on the OrderApi project. The pool section defines that the pipeline is executed on an ubuntu agent and the variables section lets you define variables for the pipeline. By default, only the buildConfiguration is set to Release.
 
-On line 16 starts the first build step that executes a dotnet build in sets the configuration to Release by using the previously defined buildConfiguration variable. Additionally, a display name is set to identify the step easier in the logs.
+Line 16 starts the first build step that executes a dotnet build in sets the configuration to Release by using the previously defined buildConfiguration variable. Additionally, a display name is set to identify the step easier in the logs.
 
 The .yml editor can be a pain and overwhelming, especially when you are starting with pipelines. Once you are used to it, it is way better than the old one though.
 
@@ -118,7 +118,7 @@ I repeat the process of adding new .NET Core tasks but I use build to build all 
 
 <script src="https://gist.github.com/WolfgangOfner/377d889add4e372dd6788a05b42ce43b.js"></script>
 
-Click Save and Run the pipeline will be added to your source control and then executed.
+Click "Save and Run" and the pipeline will be added to your source control and then executed.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/10/The-CI-Pipeline-is-running.jpg"><img loading="lazy" src="/assets/img/posts/2020/10/The-CI-Pipeline-is-running.jpg" alt="The CI Pipeline is running" /></a>
@@ -138,7 +138,7 @@ After the build is finished, you see a summary and that all 38 tests passed.
   </p>
 </div>
 
-You don't see anything under Code Coverage. I will cover this in a later post.
+You don't see anything under Code Coverage. I will cover this in a [later post](/get-xunit-code-coverage-from-docker).
 
 ### Run Tasks only when the Master Branch triggered the build
 
@@ -150,7 +150,7 @@ Adding a second pipeline for the OrderApi works exactly the same except that ins
 
 ## Conclusion
 
-CI pipelines help developers to get fast feedback about their code changes. These pipelines can build code and run tests every time something changed. In my next post, I will show how to add code coverage to the results to get even more information about the code changes, and then I will show how to run your code with every pull request. Later, I will extend the pipeline to build and create Docker images and also to deploy them to Kubernetes.
+CI pipelines help developers to get fast feedback about their code changes. These pipelines can build code and run tests every time something changed. In my next post, I will show how to add code coverage to the results to get even more information about the code changes, and then I will show how to run your code with every pull request. Later, I will extend the pipeline to build and create Docker images and also deploy them to Kubernetes.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
