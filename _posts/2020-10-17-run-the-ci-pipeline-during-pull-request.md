@@ -4,9 +4,9 @@ date: 2020-10-17T16:34:44+02:00
 author: Wolfgang Ofner
 categories: [DevOps]
 tags: [Azure DevOps, CI, Continuous Integration, DevOps Pull request policy]
-description: I will show in this post how to protect the master branch with a policy that enforces a pull request, reviews and run a CI pipeline.
+description: I will show in this post how to protect the master branch with a policy that enforces a pull request, reviews, and run a CI pipeline.
 ---
-In the modern DevOps culture, the goal is to get features as fast as possible into production. Additionally, we have to guarantee that these new features don&#8217;t break anything. To do that, I will show in this post how to protect the master branch with a policy that enforces a pull request (PR) and reviews. To further enhance the quality, I will show <a href="/run-the-ci-pipeline-during-pull-request" target="_blank" rel="noopener noreferrer">how to run the CI pipeline from my last post</a>, which builds the solutions and runs all unit tests.
+In modern DevOps culture, the goal is to get features as fast as possible into production. Additionally, we have to guarantee that these new features don&#8217;t break anything. To do that, I will show in this post how to protect the master branch with a policy that enforces a pull request (PR) and reviews. To further enhance the quality, I will show <a href="/run-the-ci-pipeline-during-pull-request" target="_blank" rel="noopener noreferrer">how to run the CI pipeline from my last post</a>, which builds the solutions and runs all unit tests.
 
 ## Protect the Master Branch with a Pull Request Policy
 
@@ -76,7 +76,7 @@ Companies have different merge strategies. Some use squash merges, some do rebas
 
 ### Configure automatic Builds
 
-Now we come to the most interesting part of the policy. I add a build policy and select the previously created CustomerApi CI pipeline.  You can find the post <a href="/build-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">here</a>. I set /CustomerApi/* as path filter. The automatic trigger starts the build every time changes are committed inside the CustomerApi folder and the build expires after 12 hours. This means if the pull request is not completed within 12 hours, the build has to be triggered again.
+Now we come to the most interesting part of the policy. I add a build policy and select the previously created CustomerApi CI pipeline.  You can find the post <a href="/build-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">here</a>. I set /CustomerApi/* as the path filter. The automatic trigger starts the build every time changes are committed inside the CustomerApi folder and the build expires after 12 hours. This means if the pull request is not completed within 12 hours, the build has to be triggered again.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/08/Add-a-build-policy-for-the-CustomerApi-to-the-Pull-Request.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Add-a-build-policy-for-the-CustomerApi-to-the-Pull-Request.jpg" alt="Add a build policy for the CustomerApi to the Pull Request" /></a>
@@ -86,7 +86,7 @@ Now we come to the most interesting part of the policy. I add a build policy and
   </p>
 </div>
 
-Add another build policy for the OrderApi and enter /OrderApi/* as path filter. Click on Save and the policy is configured and created.
+Add another build policy for the OrderApi and enter /OrderApi/* as the path filter. Click on Save and the policy is configured and created.
 
 ## Make changes to the Code
 
@@ -122,7 +122,7 @@ In Azure DevOps under Repos &#8211;> Files, you can see that Azure DevOps regist
 
 ## Create a new Pull Request
 
-Add a title, and optionally a description, reviewers, and work items. I like to have 1-3 sentences in the description to explain what you did. As the title, I usually use the PBI number and the PBI title (not in this example though).
+Add a title, and optionally a description, reviewers, and work items. I like to have 1-3 sentences in the description to explain what you did. As for the title, I usually use the PBI number and the PBI title (not in this example though).
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/08/New-Pull-Request.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/New-Pull-Request.jpg" alt="New Pull Request" /></a>
@@ -142,7 +142,7 @@ After the pull request is created, the build will kick off immediately, and also
   </p>
 </div>
 
-I fixed my unit test, added a link to the PB,I and fixed the suggested changes from the comment. The comment creator resolved the comment and this enabled me to complete the pull request. On the following screenshot, you can see that I also changed the title of the PR to have to PBI number and title in it.
+I fixed my unit test, added a link to the PB, and fixed the suggested changes from the comment. The comment creator resolved the comment and this enabled me to complete the pull request. On the following screenshot, you can see that I also changed the title of the PR to have to PBI number and title in it.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/08/All-checks-passed.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/All-checks-passed.jpg" alt="All checks passed" /></a>
@@ -164,7 +164,7 @@ When you click on Complete, you can select a merge type. Since I restricted the 
   </p>
 </div>
 
-The definition of done in my projects is that the PBI is set to done when the pull request is finished (because we deploy the feature automatically to prod when thePR is completed). Additionally, I select to delete my branch after merging.
+The definition of done in my projects is that the PBI is set to done when the pull request is finished (because we deploy the feature automatically to prod when the PR is completed). Additionally, I select to delete my branch after merging.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/08/Complete-the-Pull-Request.jpg"><img loading="lazy" src="/assets/img/posts/2020/08/Complete-the-Pull-Request.jpg" alt="Complete the Pull Request" /></a>
