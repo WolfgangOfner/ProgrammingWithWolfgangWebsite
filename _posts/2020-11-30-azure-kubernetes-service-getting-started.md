@@ -23,11 +23,11 @@ Kubernetes can be configured with yaml files, which means that you can store all
 
 ### Service Discovery and Load Balancing
 
-Load balancing and especially service discovery has always been complicated and required some skills to set up. Both can be achieved in Kubernetes with a Service. This service takes all requests for an application (often a microservice) and load balances this request to an available pods. Further down, I will show how to deploy an application with three pods and use the Service to load balance between those pods.
+Load balancing and especially service discovery has always been complicated and required some skills to set up. Both can be achieved in Kubernetes with a Service. This Service object takes all requests for an application (often a microservice) and load balances the request to an available pods. Further down, I will show how to deploy an application with three pods and use the Service to load balance between those pods.
 
 ### Self-healing
 
-Another complex problem for, especially, on-premise applications is self-healing. This means if an application crashes, it gets automatically restarted. Kubernetes does this with health checks. You can provide an URL, often /health and K8s will check if this URL returns a request with the status code 200. If the code is not 200, Kubernetes restarts the pod and marks it as unavailable during the restart. Therefore, no user will be routed to the restarting pods which means that from a user's perspective everything looks fine.
+Another complex problem for, especially, on-premise applications is self-healing. This means if an application crashes, it gets automatically restarted. Kubernetes does this with health checks. You can provide an URL, often /health and K8s will check if this URL returns a request with the status code >= 200 and < 400. If the code is not within this range, Kubernetes restarts the pod and marks it as unavailable during the restart. Therefore, no user will be routed to the restarting pods which means that from a user's perspective everything looks fine.
 
 ### Automated Deployments
 
@@ -46,7 +46,7 @@ Certificate management has been a problem for a long time. When a new applicatio
 Every configuration is done in yaml in a declarative way. This means that you can check-in your files in source control. A declarative configuration means that you tell Kubernetes what you want and it takes care of achieving this. For example, run 10 copies of my application and load balance all incoming traffic. K8s then creates a service and starts 10 pods of your application.
 
 ## Why use Azure Kubernetes Service (AKS)
-Azure Kubernetes Service is a managed service for Kubernetes. In a simplified way, Kubernetes consists of two parts, the control plane, and the worker node. The control plane does all the tasks necessary to manage the Kubernetes cluster. The worker nodes are running your applications and everything needed for that, like load balancing. AKS manages the control plane for you, this means that you don't have to care what's going on in the background. You can create an AKS cluster and just use it for your applications.
+Azure Kubernetes Service is a managed service for Kubernetes. In a simplified way, Kubernetes consists of two parts, the control plane (master node), and the worker node. The control plane does all the tasks necessary to manage the Kubernetes cluster. The worker nodes are running your applications and everything needed for that, like load balancing. AKS manages the control plane for you, this means that you don't have to care what's going on in the background. You can create an AKS cluster and just use it for your applications.
 
 ## Setup AKS
 
@@ -191,7 +191,7 @@ If you refresh the page a couple of times, you will see different names in the h
 
 ## Cleanup
 
-When you are finished, don't forget the delete all created resources. AKS creates three additional resource groups. Make sure to delete them too.
+When you are finished, don't forget the delete all created resources. AKS creates two additional resource groups. Make sure to delete them too.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/11/Delete-all-resource-groups.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/Delete-all-resource-groups.jpg" alt="Delete all resource groups" /></a>

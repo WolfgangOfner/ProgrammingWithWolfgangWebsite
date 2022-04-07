@@ -47,7 +47,7 @@ To upload an image to the new ACR, you have two options: importing the image fro
 
 Importing an image is a good way to get started fast but I would recommend using the CI/CD pipeline approach in the next section. To import the image, use the following Azure CLI command:
 
-<script src="https://gist.github.com/WolfgangOfner/5a374d23f330f9a382c01168d8d1bd85.js"></script>
+<script src="https://gist.github.com/WolfgangOfner/9f78fbe4917a26a0761d8b9395833cf3.js"></script>
 
 The first line logs you into your Azure subscription and the second one takes the name of your ACR, the source image from Dockerhub, and the image name which will be created in ACR.
 
