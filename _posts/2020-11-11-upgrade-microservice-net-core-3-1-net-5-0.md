@@ -7,7 +7,7 @@ tags: [Azure DevOps, CI, Docker, xUnit, .NET 5]
 description: Upgrading from .NET Core 3.1 to .NET 5.0 is very fast and when using microservices can be easily done within a single day.
 ---
 
-Microsoft released the next major release, called .NET 5.0 which succeeds .NET Core 3.1. .NET 5.0 comes with a lot of improvements and also with C# 9. It also is the first step of a unified .NET platform and is the first version of Microsofts new release cycle. From now on, Microsoft will release a new version of .NET every November. .NET 6.0 will be released in November 2021, .NET 7.0 in November 2022, and so on.
+Microsoft released the next major release, called .NET 5.0 which succeeds .NET Core 3.1. .NET 5.0 comes with a lot of improvements and also with C# 9. It is also the first step to a unified .NET platform and is the first version of Microsoft's new release cycle. From now on, Microsoft will release a new version of .NET every November. .NET 6.0 will be released in November 2021, .NET 7.0 in November 2022, and so on.
 
 Today, I want to show how to upgrade a microservice and its build pipeline from .NET Core 3.1 to .NET 5.0. You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/MicroserviceDemo).
 
@@ -71,7 +71,7 @@ Lastly, I update the path to the XML comments in the CustomerApi.csproj file wit
 
 ## Update CI pipeline
 
-There are no changes required in the CI pipeline because the solution is built-in Docker. Therefore, I have to update the Dockerfile. Replace the following two lines:
+There are no changes required in the CI pipeline because the solution is built in Docker. Therefore, you have to update the Dockerfile. Replace the following two lines:
 
 <script src="https://gist.github.com/WolfgangOfner/3d8fe7ec7dd8b6c1c82c4e99418c200b.js"></script>
 
@@ -79,11 +79,11 @@ with
 
 <script src="https://gist.github.com/WolfgangOfner/ddc336ebc6a693235ab2510e1b7fa726.js"></script>
 
-This tells Docker to use the new .NET 5.0 images to build and run the application. Additionally, I have to copy the .props files into my Docker image with the following code inside the Dockerfile:
+This tells Docker to use the new .NET 5.0 images to build and run the application. Additionally, you have to copy the previously created .props files into my Docker image with the following code inside the Dockerfile:
 
 <script src="https://gist.github.com/WolfgangOfner/87de6c2717ea4c1c1d6c24a9fb1551fe.js"></script>
 
-Check in your changes and the build pipeline in Azure DevOps will run successfully.
+Check in your changes and the build pipeline in Azure DevOps should run successfully.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/11/The-Net-5-build-was-successful.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/The-Net-5-build-was-successful.jpg" alt="The .NET 5.0 build was successful" /></a>
@@ -94,7 +94,8 @@ Check in your changes and the build pipeline in Azure DevOps will run successful
 </div>
 
 ## Conclusion
-Today, I showed how easy it can be to upgrade .NET Core 3.1 to .NET 5.0. To upgrade was so easy because I kept my solution up to date and because microservices are small solutions that are way easier to upgrade than big monolithic applications. The whole upgrade for both my microservices took around 10 minutes. I know that a real-world microservice will have more code than mine but nevertheless, it is quite easy to update it. If you are coming from .NET Core 2.x or even .NET 4.x, the upgrade might be harder.
+
+Today, I showed how easy it can be to upgrade .NET Core 3.1 to .NET 5.0. The upgrade was so easy because I kept my solution up to date and because microservices are small solutions that are way easier to upgrade than big monolithic applications. The whole upgrade for both my microservices took around 10 minutes. I know that a real-world microservice will have more code than mine but nevertheless, it is quite easy to update it. If you are coming from .NET Core 2.x or even .NET 4.x, the upgrade might be harder.
 
 You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/MicroserviceDemo).
 
