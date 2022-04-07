@@ -4,10 +4,11 @@ date: 2020-12-07
 author: Wolfgang Ofner
 categories: [Kubernetes]
 tags: [Helm, AKS, Microservice, Kubernetes]
-description: Helm is a package manager for Kubernetes which helps developers to quickly deploy their application to bare metal Kubernetes or a cloud managed version like AKS.
+description: Helm is a package manager for Kubernetes which helps developers quickly deploy their application to bare metal Kubernetes or a cloud-managed version like AKS.
 ---
 
-Helm is a package manager for Kubernetes which helps developers to quickly deploy their application. In my last post, [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started), I showed how to deploy an application to AKS using the dashboard.
+Helm is a package manager for Kubernetes which helps developers quickly deploy their applications. In my last post, [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started), I showed how to deploy an application to AKS using the dashboard.
+
 In this post, I will talk about the basics of Helm and show how to add it to your application.
 
 ## What is Helm?
@@ -17,7 +18,7 @@ Helm packages are called charts. These charts describe everything your applicati
 Let's add a Helm chart to our microservice and I will explain every component of the chart. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 ## Add Helm Charts to a Microservice
-Visual Studio comes with great Helm support. Right-click on your API project and select Add --> Container Orchestrator Support.
+Visual Studio 2019 comes with great Helm support. Right-click on your API project and select Add --> Container Orchestrator Support.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/Add-Container-Orchestration-Support.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Add-Container-Orchestration-Support.jpg" alt="Add Container Orchestration Support" /></a>
@@ -74,7 +75,7 @@ In the previous section, I showed the service.yaml file. This file reads two val
 
 Take a look at the values.yaml file and you will see that the type of the service is ClusterIP and its port is 80. This approach enables you to configure your application with changes in only one file. The same principle applies to all files inside the templates folder. 
 
-The fullnameOverride parameter is used to replace the variable customerapi.fullname which serves, for example, as name of the deployment and service.
+The fullnameOverride parameter is used to replace the variable customerapi.fullname which serves, for example, as the name of the deployment and service.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/Usage-of-the-fullnameOverride-variable.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Usage-of-the-fullnameOverride-variable.jpg" alt="Usage of the fullnameOverride variable" /></a>
