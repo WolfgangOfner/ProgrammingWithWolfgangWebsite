@@ -21,7 +21,7 @@ Not sharing code between microservices helps to keep them independent but this m
 
 ### Referencing Dlls
 
-I prefer having all microservices in a big repository. This allows you to reference code from a different project. You could create a Shared folder and create in there projects which are shared between several microservices. The problem with this approach is that when one team changes the code, it changes the code for all microservices that reference the code. This will certainly lead to unintended and unexpected behavior. Since we want bug-free code, this option is not good to share code.
+I prefer having all microservices in a big repository. This allows you to reference code from a different project. You could create a "Shared" folder and create in there projects which are shared between several microservices. The problem with this approach is that when one team changes the code, it changes the code for all microservices that reference the code. This will certainly lead to unintended and unexpected behavior. Since we want bug-free code, this option is not good to share code.
 
 ### Create Code and then copy it to Microservices
 
@@ -69,7 +69,7 @@ The next step is to run the unit tests and publish the code coverage results. If
 
 <script src="https://gist.github.com/WolfgangOfner/968d8bbadc48e72f7cfa2e080c3223fa.js"></script>
 
-The last two tasks create the NuGet package using dotnet pack and then publish the generate artifacts. Dotnet pack is executed on all project files inside the NuGet folder which don't end with Test.csproj. This means that the test project doesn't get packed into a NuGet package. The publish of the artifacts will be used in the next stage to publish the artifact to a private NuGet feed and in another stage to publish it to nuget.org. You can read about publishing in my next post. 
+The last two tasks create the NuGet package using dotnet pack and then publish the generated artifacts. Dotnet pack is executed on all project files inside the NuGet folder which don't end with Test.csproj. This means that the test project doesn't get packed into a NuGet package. The publish of the artifacts will be used in the next stage to publish the artifact to a private NuGet feed and in another stage to publish it to nuget.org. You can read about publishing in my next post. 
 
 <script src="https://gist.github.com/WolfgangOfner/27a9d993f2ada81e84863cbc42a0f354.js"></script>
 
