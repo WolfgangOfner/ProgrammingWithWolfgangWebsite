@@ -9,7 +9,7 @@ description: Microservices are becoming more and more popular these days. I will
 
 Microservices are becoming more and more popular these days. These microservices run most of the time in Kubernetes. A goal we want to achieve with microservices is a quick and reliable deployment. 
 
-In this post, I will show how to deploy to Kubernetes (more precisely Azure Kubernetes Service (AKS)) using Helm and Azure DevOps pipelines.
+In this post, I will show how to deploy your application to Kubernetes (more precisely Azure Kubernetes Service (AKS)) using Helm and Azure DevOps pipelines.
 
 ## Create a Kubernetes Cluster in Azure 
 
@@ -63,7 +63,7 @@ Click on Save and the service connection gets created. Note that the service con
 
 I created already a YAML pipeline in my previous posts which I will extend now. You can find this pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CI.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-Since I already have a Docker image on Docker hub, I only have to add Helm charts and a couple of variables to the pipeline.
+Since I already have a Docker image on Docker hub, I only have to add the creation of the Helm chart and a couple of variables to the pipeline.
 
 ## Define Variables for the Deployment
 
@@ -71,7 +71,7 @@ First, I add the following variables at the beginning of the pipeline:
 
 <script src="https://gist.github.com/WolfgangOfner/7cd8706661dd83f9e369fbcdb8d65a2b.js"></script>
 
-The variables should be self-explaining. They configure the previously created service connection, set some information about the AKS cluster like its name, resource group, and what namespace I want to use, and some information for Helm. For more information about Helm see my post ["Helm - Getting Started"](/helm-getting-started).
+The variables should be self-explaining. They configure the previously created service connection, set some information about the AKS cluster like its name, resource group, what namespace I want to use, and some information for Helm. For more information about Helm see my post ["Helm - Getting Started"](/helm-getting-started).
 
 ## Deploy to Azure Kubernetes Service
 
@@ -82,7 +82,7 @@ Since I am using Helm for the deployment, I only need three tasks for the whole 
 Next, I have to create a Helm package from my Helm chart. To do that, I use the HelmDeploy task and the package command. For this task, I have to provide the service connection, the information about my Kubernetes cluster, the path to the Helm chart, and a version. I calculate the version at the beginning of the pipeline and set it in the Build.BuildNumber variable. Therefore, I provide this variable as the version.
 
 <script src="https://gist.github.com/WolfgangOfner/7fc806a55819d5aa518163645595a7de.js"></script>
-The last step is to install the Helm package.  Therefore, I use HelmDeploy again but this time I use the upgrade command. Upgrade installs the package if no corresponding deployment exists and updates it if a deployment already exists. Additionally, I prove the --create-namespace argument to create the Kubernetes namespace if it doesn't exist. 
+The last step is to install the Helm package.  Therefore, I use HelmDeploy again but this time I use the upgrade command. Upgrade installs the package if no corresponding deployment exists and updates it if a deployment already exists. Additionally, I provide the --create-namespace argument to create the Kubernetes namespace if it doesn't exist. 
 
 <script src="https://gist.github.com/WolfgangOfner/6ddc1ad2a9a885aa04ac034c0a4745ba.js"></script>
 
@@ -126,7 +126,7 @@ The full YAML pipeline looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/0e0aface6080032999c0e74dbdf96a8c.js"></script>
 
-## Shortcommings of my Implementation
+## Shortcomings of my Implementation
 
 This implementation is more a proof of concept than a best practice. In a real-world project, you should use different stages, for example, build, deploy-test, and deploy-prod. Right now, every build (if it's not a pull request) deploys to test and prod. Usually, you want some tests or checks after the test deployment. The pipeline is also getting quite long and it would be nice to move different parts to different files using templates. 
 
