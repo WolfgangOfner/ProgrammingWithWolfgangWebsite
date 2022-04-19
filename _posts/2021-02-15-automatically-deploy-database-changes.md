@@ -141,7 +141,7 @@ If you already have an existing database and want to apply changes, for example,
 
 <script src="https://gist.github.com/WolfgangOfner/22bfb9217f632e31d567ad931fee5cfe.js"></script>
 
-That's already all you have to do. Publish the project again and update your SQL server to see the new column in the Product table.
+That's already all you have to do. Publish the project again to update your SQL server to see the new column in the Product table.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/03/The-Product-table-got-a-new-column.jpg"><img loading="lazy" src="/assets/img/posts/2021/03/The-Product-table-got-a-new-column.jpg" alt="The Product table got a new column" /></a>
