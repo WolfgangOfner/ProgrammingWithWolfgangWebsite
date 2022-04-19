@@ -119,7 +119,7 @@ Additionally, I renamed the ImageName variable to Repository. If you want to dep
 
 The microservice uses Helm for the configuration. For more information about Helm, see my post [Helm - Getting Started](/helm-getting-started).
 
-The values.release.yaml file contains the configuration for the image and tag Kubernetes should use. Currently, this is:
+The values.yaml file contains the configuration for the image and tag Kubernetes should use. Currently, this is:
 
 <script src="https://gist.github.com/WolfgangOfner/11e48d64374ccc942ef64780caf19621.js"></script>
 
@@ -177,7 +177,7 @@ Note that you have to use the username and password from the previously created 
 
 ### Use the Image Pull Secret in your Microservice
 
-After the image pull secret was created, you have to tell your microservice to use it. The image pull secret is part of the deployment but it is empty. In my last posts, I used the values.release.yaml file for values that are not provided by me and are not default. Therefore, I add the name of the secret there:
+After the image pull secret was created, you have to tell your microservice to use it. The image pull secret is part of the deployment but it is empty. In my last posts, I used the values.yaml file for values that I want to set during the deployment. Therefore, I add the name of the secret there:
 
 <script src="https://gist.github.com/WolfgangOfner/25026b07f81d371a74abf64efb11db8b.js"></script>
 
