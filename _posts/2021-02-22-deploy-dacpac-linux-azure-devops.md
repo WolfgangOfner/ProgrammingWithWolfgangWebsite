@@ -9,7 +9,7 @@ description: Use a custom Docker container to deploy Dacpac packages to an SQL S
 
 I showed [in my last post](/automatically-deploy-database-changes) how to use SSDT to create a dacpac package and how to deploy it locally. The SSDT project uses .NET Framework 4.8 which means that it runs only on Windows. Azure DevOps has a task to deploy dacpac packages, but it also only supports Windows. To be able to use a Linux environment, I will create a .NET Core project to build the dacpac package and build my own Docker container with the sqlpackage installed to deploy the dacpac to an SQL Server.
 
-## Use .NET Core to create the Dacpac package
+## Use .NET Core to create the Dacpac Package
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
@@ -63,7 +63,7 @@ This adds the Tables folder with the Customer table to the solution.
 
 ### Finished Project and Build Problems
 
-The finished .csproj file looks as following:
+The finished .csproj file looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/1f4e2d3c1311e4e8205097ea622247aa.js"></script>
 
@@ -75,7 +75,7 @@ You can find the file under C:\Program Files (x86)\Microsoft Visual Studio\2019\
 
 ## Build the Database Project in the Dockerfile to create a Dacpac Package
 
-After finished the database build project, it is time to include it in Dockerfile so it gets built in the CI/CD pipeline. The Dockerfile is located in the CustomerApi folder and contains already all statements to build the projects and run the tests. First, add a copy statement to copy the project inside the container: 
+After the database build project is finished, it is time to include it in Dockerfile so it gets built in the CI/CD pipeline. The Dockerfile is located in the CustomerApi folder and contains already all statements to build the projects and run the tests. First, add a copy statement to copy the project inside the container: 
 
 <script src="https://gist.github.com/WolfgangOfner/48f13256ded11bffe6bc55f6e6f4b031.js"></script>
 
@@ -87,7 +87,7 @@ This code creates an intermediate container and labels it so you can access it l
 
 ### Upload the Dacpac Package
 
-After building the Dacpac package, you have to extract it from the Docker container and upload it as build artifact. This is done in the DockerBuildAndPush template which is located under pipelines/templates. Add the following code after the PublishCodeCoverage task:
+After building the Dacpac package, you have to extract it from the Docker container and upload it as the build artifact. This is done in the DockerBuildAndPush template which is located under pipelines/templates. Add the following code after the PublishCodeCoverage task:
 
 <script src="https://gist.github.com/WolfgangOfner/a80c880850593315d7717750d3ff0e38.js"></script>
 
@@ -103,21 +103,21 @@ I also have uploaded the container to <a href="https://hub.docker.com/repository
 
 ## Deploy your Database using the Dacpac Package
 
-To deploy the dacpac package to the database, you should use a deployment task in your CI/CD pipeline. This task runs as a container job using the previously mentioned linux container with the sqlpackage installed. This deployment also runs only after the build succeeded and only if the build reason is not a pull request The code for that looks as follows:
+To deploy the dacpac package to the database, you should use a deployment task in your CI/CD pipeline. This task runs as a container job using the previously mentioned Linux container with the sqlpackage installed. This deployment also runs only after the build succeeded and only if the build reason is not a pull request The code for that looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/976ffd84e1f47ef8c5f1d78b1001a779.js"></script>
 
-This deployment executes the DatabaseDeploy template which takes two parameters, connectionString and dacpacPath. The template looks as follows:
+This deployment executes the DatabaseDeploy template which takes two parameters, connectionString, and dacpacPath. The template looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/0c1a084c4f2f984b5c4c50c1c945f5f0.js"></script>
 
-The deployment downloads the previously published dacpac artifact and the executes a sqlpackage publish with the connection string to the database and the path of the dacpac package.
+The deployment downloads the previously published dacpac artifact and then executes a sqlpackage publish with the connection string to the database and the path of the dacpac package.
 
 ## Testing the Database Deployment
 
 I added the database deployment also to the OrderApi. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-Before you can run the pipelines, you have to replace the SQLServerName variable with your server URL:
+Before you can run the pipelines, you have to replace the content of the SQLServerName variable with your server URL:
 
 <script src="https://gist.github.com/WolfgangOfner/cd9de86a4a381dc4971e2b7e3f1d3f13.js"></script>
 
