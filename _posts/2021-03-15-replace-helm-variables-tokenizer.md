@@ -4,7 +4,7 @@ date: 2021-03-15
 author: Wolfgang Ofner
 categories: [DevOps, Kubernetes]
 tags: [AKS, Helm, Kubernetes, YAML, Azure]
-description: Tokenizer which is a simple Azure DevOps extension with which you can replace variables in Helm charts inside an Azure DevOps CI/CD pipeline.
+description: Tokenizer is a simple Azure DevOps extension with which you can replace variables in Helm charts inside an Azure DevOps CI/CD pipeline.
 ---
 
 Helm is a great tool to deploy your application into Kubernetes. In my post, [Helm - Getting Started](/helm-getting-started), I also mentioned the values.yaml file which can be used to replace variables in the Helm chart. The problem with this approach is that the values.yaml file is hard-coded.
@@ -13,7 +13,7 @@ In this post, I want to introduce Tokenizer which is a simple Azure DevOps exten
 
 ## Why would I replace variables in my Helm Charts?
 
-Currently the values.yaml file looks as following:
+Currently the values.yaml file looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/f75c7798c44d6a381019223031720350.js"></script>
 
@@ -43,13 +43,13 @@ This opens a new page where you can either select your Azure DevOps Services org
   </p>
 </div>
 
-This extension looks for variables starting and ending with a double underscore, for example, \_\_MyVariable\_\_ and replace it with the value of the variable MyVariable.
+This extension looks for variables starting and ending with a double underscore, for example, \_\_MyVariable\_\_ and replaces it with the value of the variable MyVariable.
 
 ## Add the Tokenizer Task to the Azure DevOps Pipeline
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-Add the following task before the Helm install to your pipeline:
+Add the following task before the HelmInstall task to your pipeline:
 
 <script src="https://gist.github.com/WolfgangOfner/f2b5fafd6444c4b0d77d3325e1a60270.js"></script>
 
@@ -59,17 +59,11 @@ Note that I am using templates in my pipeline and added the task to the HelmInst
 
 It is the same code as above except that the source file pattern is passed as a parameter.
 
-All files matching the sourceFilesPattern will be searched for tokens to be replaced. In my post [Helm - Getting Started](/helm-getting-started), I talked about overriding Helm chart values using the values.yaml file. For the tokenizer, I am using the values.release.yaml file. This is a new file in the root folder of my project. I use this file instead of the values.yaml file because if I added tokens to the values.yaml file, it wouldn't be possible to deploy locally. The developer would have to replace all the tokens manually before deploying the Helm chart.
-
-Additionally, the values.release.yaml file contains only tokens I want to replace and therefore is very simple and small. My file looks as follows:
+All files matching the sourceFilesPattern will be searched for tokens to be replaced. In my post [Helm - Getting Started](/helm-getting-started), I talked about overriding Helm chart values using the values.yaml file. For now, all I want to update is the repository and tag variable of the values.yaml file:
 
 <script src="https://gist.github.com/WolfgangOfner/7fe51f6151ab5d6c8f1bb91ed9be697d.js"></script>
 
 Here I want to replace the repository with the ImageName variable and the tag with the BuildNumber variable. 
-
-The values.yaml file stays untouched:
-
-<script src="https://gist.github.com/WolfgangOfner/e1176581d1c4c0216fe7aeb80129cf8c.js"></script>
 
 ## Testing the Tokenizer
 
@@ -86,8 +80,6 @@ The GitVersion variable sets the version number. You can read more in my post [A
    The correct image got loaded
   </p>
 </div>
-
-If you see the image with the latest tag loaded, you know that something went wrong. When I don't use Helm to deploy locally, I replace the values in the values.yaml file with VALUE_TO_OVERRIDE. If I see this after the deployment, I immediately know that something went wrong the with tokenizer.
 
 ## Conclusion
 
