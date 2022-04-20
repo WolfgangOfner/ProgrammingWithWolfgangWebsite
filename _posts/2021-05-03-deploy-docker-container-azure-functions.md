@@ -9,6 +9,8 @@ description: Build and Deploy an Azure Function inside a Docker container and de
 
 [In my last post](/deploy-azure-functions-azure-devops-pipelines), I created a YAML pipeline to build and deploy an Azure Function to Azure. Today, I will build the same Azure Function inside a Docker container and deploy the container to Azure.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Add Docker to the Azure Function
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
@@ -21,7 +23,7 @@ If you want to learn more about adding Docker to a .NET 5 project, see my post [
 
 ## Build a Docker Container inside a YAML Pipeline in Azure DevOps
 
-In Azure DevOps, create a new pipeline (or edit the one form last post) and add the following variables:
+In Azure DevOps, create a new pipeline (or edit the one from my last post) and add the following variables:
 
 <script src="https://gist.github.com/WolfgangOfner/a642e59452edfb93940d105deb70289f.js"></script>
 
