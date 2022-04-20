@@ -11,6 +11,8 @@ Azure Functions is a serverless compute offering and lets developers execute cod
 
 This post will show how to use Azure Functions to read messages from an Azure Service Bus Queue and how to write data to an Azure SQL Database.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What are Azure Functions?
 
 Azure Functions is a serverless compute platform that allows for quick development without the need to manage the underlying infrastructure. Serverless means that Microsoft abstracts the infrastructure away and fully manages its operation and scaling.
@@ -23,11 +25,11 @@ Azure Functions are great when you want to execute for background services like 
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-The demo application contains of microservices called OrderApi and CustomerApi. Every time a customer is updated, the CustomerApi places a message with the new information on either a RabbitMQ or Azure Service Bus Queue, depending on its Startup configuration. The OrderApi has a background service that checks the RabbitMQ queue for new messages and then takes these messages to update the customer names in its database.
+The demo application contains two microservices called OrderApi and CustomerApi. Every time a customer is updated, the CustomerApi places a message with the new information on either a RabbitMQ or Azure Service Bus Queue, depending on its Startup configuration. The OrderApi has a background service that checks the RabbitMQ queue for new messages and then takes these messages to update the customer names in its database.
 
-The problem with this solution is that every container running in Kubernetes has this background service running. The background service always scales with the OrderAPI, even though it might not be necessary and therefore wastes resources and therefore increases the costs. Additionally, there is no insight into the background service and it would be nice to have some information about the queue processing logic, like how many messages were processed or how many errors happened.
+The problem with this solution is that every container running in Kubernetes has this background service running. The background service always scales with the OrderAPI, even though it might not be necessary and therefore wastes resources and as a result, increases the costs. Additionally, there is no insight into the background service and it would be nice to have some information about the queue processing logic, like how many messages were processed or how many errors occurred.
 
-I want to create an Azure Function to process the queue messages independently from the container running in Kubernetes and then will deactivate the background service entirely (I will leave it in the code in case you want to use it). The Azure Function will receive the queue message, load the orders of this customer, update the customer name and then save the orders in the database.
+I want to create an Azure Function to process the queue messages independently from the containers running in Kubernetes and then will deactivate the background service entirely (I will leave it in the code in case you want to use it). The Azure Function will read the queue message, load the orders of this customer, update the customer name and then save the orders in the database.
 
 ## Create your first Azure Function
 
@@ -43,7 +45,7 @@ To create a new Azure Function, start Visual Studio, search for Azure Functions 
   </p>
 </div>
 
-Enter a name and then select a trigger. As you can see, The template offers a wide variety of triggers such as HTTP, RabbitMQ, or SignalR. Select Service Bus Queue trigger and on the right side enter a name for the connection string and the queue name. 
+Enter a name and then select a trigger. As you can see, the template offers a wide variety of triggers such as HTTP, RabbitMQ, or SignalR. Select Service Bus Queue trigger and on the right side enter a name for the connection string and the queue name. 
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/04/Configure-the-Function-Trigger.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Configure-the-Function-Trigger.jpg" alt="Configure the Function Trigger" /></a>
@@ -57,7 +59,7 @@ Click on Create and your first Azure Function gets created.
 
 <script src="https://gist.github.com/WolfgangOfner/a541911370cf494542822806b00f553b.js"></script>
 
-In the Azure Portal, go to your Service Bus Namespace and select your CustomerQueue. There select the Shared access policies pane and create a new policy with Listen. After you saved the policy, click on it and you can see the Primary Connection String. If you want to learn how to create an Azure Service Bus Queues and more details about Shared access policies, see my post [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue).
+In the Azure Portal, go to your Service Bus Namespace and select your CustomerQueue. There select the Shared access policies pane and create a new policy with Listen. After you saved the policy, click on it and you can see the Primary Connection String. If you want to learn how to create an Azure Service Bus Queue and more details about Shared access policies, see my post [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue).
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/04/Copy-the-Connection-String-to-your-Azure-Service-Bus-Queue.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Copy-the-Connection-String-to-your-Azure-Service-Bus-Queue.jpg" alt="Copy the Connection String to your Azure Service Bus Queue" /></a>
@@ -71,7 +73,7 @@ Copy the Primary Connection String and add the following line inside the Values 
 
 <script src="https://gist.github.com/WolfgangOfner/01ab63523afd6d3702c75691543fa6cf.js"></script>
 
-Note that there is a problem with the Service Bus SDK and therefore you have to remove the Entity Path at the end of the connection string. In my case the is "EntityPath=customerqueue". After you removed the EntityPath, set a breakpoint in the function, start the solution and then add something to your queue. As soon as you added a message to the queue, you will hit the breakpoint because the Azure Function was triggered. This confirms that your connection string and trigger are working.
+Note that some versions of the Azure Service Bus SDK have a problem with the connection string. If you run into a problem, remove the Entity Path at the end of the connection string. In my case the is "EntityPath=customerqueue". Set a breakpoint in the function, start the solution, and then add something to your queue. As soon as you added a message to the queue, you will hit the breakpoint because the Azure Function was triggered. This confirms that your connection string and trigger are working.
 
 ### Add Entity Framework Core to an Azure Function
 
@@ -79,7 +81,9 @@ Install Entity Framework Core 3.1.14 via NuGet or add the following line to your
 
 <script src="https://gist.github.com/WolfgangOfner/d3722b8027dfbc61786973e380d1e19c.js"></script>
 
-Note that Entity Framework Core 5 currently has a dependency that is incompatible with Azure Functions. Azure Functions should be updated to .NET 5 soon. Next, create a new file and add the database context:
+Note that Entity Framework Core 5 currently has a dependency that is incompatible with Azure Functions. Azure Functions should be updated to .NET 5 soon. 
+
+Next, create a new file and add the database context:
 
 <script src="https://gist.github.com/WolfgangOfner/d5554ea9b2fccacae3dc90d5f9774f85.js"></script>
 
@@ -93,7 +97,7 @@ Lastly, add the following line inside the Values section of the local.settings.j
 
 <script src="https://gist.github.com/WolfgangOfner/e855da7e97f77746513d5e7918f89f3f.js"></script>
 
-Replace <YourDatabaseConnectionString> with your connection string and you are good to go. Now let's set up dependency injection and inject the database context into the function.
+Replace \<YourDatabaseConnectionString\> with your connection string and you are good to go. Now let's set up dependency injection and inject the database context into the function.
 
 ### Add Dependency Injection to an Azure Function
 
@@ -139,7 +143,7 @@ Next, provide a name, subscription, resource group, plan, and location for the n
   </p>
 </div>
 
-After providing the settings, click on Finish and the publish profile will be created. Before you publish the function, you have to provide the connection string to the database and Service Bus Queue. On the right side, click on the three dots and then select Manage Azure App Service settings. This opens a new window with all Application settings. You can either copy the local values for the connection strings or paste the desired values in the text boxes. 
+After providing the settings, click on Finish and the publish profile will be created. Before you publish the function, you have to provide the connection string to the database and Service Bus Queue. On the right side, click on the three dots and then select Manage Azure App Service settings. This opens a new window with all Application settings. You can either copy the local values for the connection strings or paste the desired values into the text boxes. 
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/04/Configure-the-remote-Connection-Strings.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Configure-the-remote-Connection-Strings.jpg" alt="Configure the remote Connection Strings" /></a>
@@ -205,9 +209,9 @@ To make sure everything worked you can either check the Service Bus Queue to see
 
 ## Conclusion
 
-Azure Functions is a great tool to implement event-driven solutions without worrying about the underlying infrastructure. You only pay when your function runs if you select the Consumption plan and can connect a wide variety of different services like RabbitMQ, Azure Event Hub, or Azure Service Bus Queues. 
+Azure Functions is a great tool to implement event-driven solutions without worrying about the underlying infrastructure. You only pay when your function runs if you select the Consumption plan and can connect a wide variety of different services like RabbitMQ, Azure Event Hub, or Azure Service Bus Queues.  This post showed how to deploy an Azure Function from Visual Studio. 
 
-This post showed how to deploy an Azure Function from Visual Studio. In my next post, I will show you how to create a CI/CD pipeline in Azure DevOps to automate the deployment.
+[In my next post](/deploy-azure-functions-azure-devops-pipelines), I will show you how to create a CI/CD pipeline in Azure DevOps to automate the deployment.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
