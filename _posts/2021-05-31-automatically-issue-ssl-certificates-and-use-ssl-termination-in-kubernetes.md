@@ -7,7 +7,7 @@ tags: [DevOps, Azure DevOps, Azure, Nginx, YAML, CI-CD, Docker, Helm, AKS, Kuber
 description: Users expect HTTPS connection. Cert-manager can be used to automatically issue SSL certificates to your applications running in Kubernetes.
 ---
 
-[In my last post](/configure-custom-urls-to-access-microservices-running-in-kubernetes), I created an Nginx ingress controller and assigned different URLs to its public URL. The Nginx controller analyses the URL and routes the traffic automatically to the right application. The solution presented worked but only used HTTP. Nowadays, browsers show a warning when not using HTTPS and users also expect to have secure connections.
+[In my last post](/configure-custom-urls-to-access-microservices-running-in-kubernetes), I created an Nginx ingress controller and assigned different URLs to its public URL. The Nginx controller analyses the URL and routes the traffic automatically to the right application. The solution presented worked but only used HTTP. Nowadays, browsers show a warning when the connection is not using HTTPS and users also expect to have secure connections.
 
 This post will show you how to configure a cert-manager and automatically issue certificates for your applications.
 
@@ -29,11 +29,11 @@ After installing the cert-manager, install a certificate issuer to generate the 
 
 <script src="https://gist.github.com/WolfgangOfner/c552cc5d37f16daaa24be03541553259.js"></script>
 
-Save the code in a file and then apply the file to your Kubernetes cluster, 
+Save the code in a file and then apply the file to your Kubernetes cluster
 
 <script src="https://gist.github.com/WolfgangOfner/f9d9011582570bca27f1329d79d71852.js"></script>
 
-This example uses Let's Encrypt as issuer but you can use any CA issuer you want. Before you deploy the code, add your email so you can get emails about the certificates. At the beginning of the code, you can see the kind of object is ClusterIssuer. A ClusterIssuer can create certificates for all applications, no matter in what namespace they are. The second option is Issuer which works only in a single namespace. An issuer might be useful if you want to use a different CA issuer.
+This example uses Let's Encrypt as the issuer but you can use any CA issuer you want. Before you deploy the code, add your email so you can get emails about the certificates. At the beginning of the code, you can see that the kind of object is ClusterIssuer. A ClusterIssuer can create certificates for all applications, no matter in what namespace they are. The second option is Issuer which works only in a single namespace. An issuer might be useful if you want to use a different CA issuer.
 
 ## Update the Microservices to use the TLS Certificate
 
@@ -45,7 +45,7 @@ The ingress.yaml file looks as follows:
 
 The OrderApi ingress file looks the same, except that the name is orderapi instead of customerapi.
 
-Next, add the TLS secret name and the host to the values.release.yaml or values.yaml file.
+Next, add the TLS secret name and the host to the values.yaml file.
 
 <script src="https://gist.github.com/WolfgangOfner/f2c08d18403841182fa68a81a1081e73.js"></script>
 The variables, for example, \_\_TlsSecretName\_\_ are defined in the CI/CD pipeline and will be replaced by the Tokenizer. For more information about the Tokenizer, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
@@ -54,7 +54,7 @@ The variables, for example, \_\_TlsSecretName\_\_ are defined in the CI/CD pipel
 
 You can use whatever name you want for the TLS secret.
 
-The last step is to add an additional annotation to the ingress of the microservice. Add the following line to the annotations section of the values.yaml or values.release.yaml file:
+The last step is to add an additional annotation to the ingress of the microservice. Add the following line to the annotations section of the values.yaml file:
 
 <script src="https://gist.github.com/WolfgangOfner/929525c2a9b9829f1dba508f80cf935a.js"></script>
 This is all you have to configure to automatically use HTTPS and also use SSL termination in the Nginx ingress controller. This means that the traffic inside the cluster uses only HTTP and therefore doesn't use any compute power to decrypt the connection.
@@ -101,7 +101,7 @@ This should display your certificate.
 
 A cert-manager creates SSL certificates automatically in your Kubernetes cluster and helps you to reduce the time to fully configure your application. This is especially useful when you use multiple test environments.
 
-[In my next post](/split-up-the-ci-cd-pipeline-into-two-pipelines), I will show you how to separate the CI/CD pipeline into two pipelines which will enable you to make changes faster and with less errors.
+[In my next post](/split-up-the-ci-cd-pipeline-into-two-pipelines), I will show you how to separate the CI/CD pipeline into two pipelines which will enable you to make changes faster and with fewer errors.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
