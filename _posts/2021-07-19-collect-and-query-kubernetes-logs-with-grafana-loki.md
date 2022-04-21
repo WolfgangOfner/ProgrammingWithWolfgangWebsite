@@ -21,7 +21,7 @@ Grafana Loki installs various components which are used for different tasks. Let
 
 Grafana is a tool to query, visualize and alert metrics. These metrics can be stored in a wide variety of data sources and can be brought into Grafana via plugins. Grafana is mostly known for its beautiful graphs to display everything you want to know about your infrastructure and applications. 
 
-You can find more details on the <a href="https://grafana.com" target="_blank" rel="noopener noreferrer">Grafana website</a>. In a future post, I will show you how to create your own dashboards.
+You can find more details on the <a href="https://grafana.com" target="_blank" rel="noopener noreferrer">Grafana website</a>. [In a future post](/create-grafana-dashboards-with-prometheus-metrics), I will show you how to create your own dashboards.
 
 ### Prometheus
 
@@ -31,7 +31,7 @@ Prometheus is an open-source project for monitoring and alerting and is also one
 - a multi-dimensional data model for time series data
 - collecting logs via a pull model
 
-You can find more details on the <a href="https://prometheus.io" target="_blank" rel="noopener noreferrer">Prometheus website</a>. In a future post, I will show you how to use Prometheus to collect and display metrics from your microservices and Kubernetes cluster. 
+You can find more details on the <a href="https://prometheus.io" target="_blank" rel="noopener noreferrer">Prometheus website</a>. [In my next post](/monitor-net-microservices-with-prometheus), I will show you how to use Prometheus to collect and display metrics from your microservices and Kubernetes cluster. 
 
 ### Promtail
 
@@ -47,17 +47,17 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 The Grafana Loki stack can be easily installed with Helm charts. If you are new to Helm, check out my previous posts [Helm - Getting Started](/helm-getting-started) and [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm) for more details.
 
-Use the following code to add the Grafana Helm charts, update it and then install Loki:
+Use the following code to add the Grafana Helm chart, update it and then install Loki:
 
 <script src="https://gist.github.com/WolfgangOfner/07bfab1dd2005f8974bbfb6c3229036e.js"></script>
 
 ### Installing Grafana Loki using an Infrastructure as Code Pipeline
 
-In one of my past posts, I have created an Infrastructure as Code (IaC) Pipeline using Azure CLI. If you want to automatically deploy Loki, add the following code after the Kubernetes deployment in your pipeline:
+[In one of my past posts](/use-infrastructure-as-code-to-deploy-infrastructure), I have created an Infrastructure as Code (IaC) Pipeline using Azure CLI. If you want to automatically deploy Loki, add the following code after the Kubernetes deployment in your pipeline:
 
 <script src="https://gist.github.com/WolfgangOfner/2ef1d3a14d28857ace28aaee7e327215.js"></script>
 
-The above code adds two variables, for the version of Loki and the namespace where it gets deployed and the does basically the same as the Helm deployment in the section above.
+The above code adds two variables, for the version of Loki and the namespace where it gets deployed and then does basically the same as the Helm deployment in the section above.
 
 ## Get the Credentials for Grafana
 
@@ -141,7 +141,7 @@ This query is more useful than displaying all logs but often you also want to se
 
 <script src="https://gist.github.com/WolfgangOfner/eaa4a122729322fdccebac6a78b3825f.js"></script>
 
-This query displays all error logs with Invalid Username or Password in the log message.
+This query displays all error logs with an Invalid Username or Password in the log message.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/07/Query-only-error-logs.jpg"><img loading="lazy" src="/assets/img/posts/2021/07/Query-only-error-logs.jpg" alt="Query only error logs" /></a>
@@ -159,7 +159,7 @@ All the queries above use LogQL. The examples above are just scratching the surf
 
 Analyzing logs is essential for every project running in a production environment. Grafana Loki offers a lot of functionality out of the box like automatically collecting logs from each object in Kubernetes and sending it to Loki where you can query and filter these logs. The examples in this post are very simple but should be enough to get you started. 
 
-[In my next post](/monitor-net-microservices-with-prometheus), I will show you how to use Prometheus, which was also installed by Loki, to scrap metrics from the microservices.
+[In my next post](/monitor-net-microservices-with-prometheus), I will show you how to use Prometheus, which was also installed by Loki, to scrape metrics from the microservices.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
