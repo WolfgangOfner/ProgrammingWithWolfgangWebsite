@@ -7,7 +7,7 @@ tags: [DevOps, Azure DevOps, Azure, Nginx, YAML, CI-CD, Docker, Helm, AKS, Kuber
 description: Bridge to Kubernetes allows developers to easily debug microservices running in an existing Kubernetes cluster.
 ---
 
-Kubernetes and new tools and technologies, in general, are great to build new products and applications. An important aspect of using them is how easy it is to find and fix problems. Tracing and debugging a microservice architecture can be quite hard and is perhaps the biggest downside of it. 
+Kubernetes is a great tool to run and manage our applications. An important aspect of using a tool like Kubernetes is how easy it is to find and fix problems. Tracing and debugging a microservice architecture can be quite hard and is perhaps the biggest downside of it. 
 
 Microsoft allows developers to route traffic from a Kubernetes cluster to their local environment to debug microservices without the need to deploy a full cluster on your developer machine.
 
@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## What is Bridge to Kubernetes
 
-Bridge to Kubernetes, formerly known as Azure Dev Spaces, is a tool that allows to test and debug microservices on a developer's machine while using dependencies and configurations of an existing Kubernetes cluster. This is especially useful when you have a bug in a production environment which you can not replicate in your development environment. This bug might only occur in high-load scenarios. See the <a href="https://devblogs.microsoft.com/visualstudio/bridge-to-kubernetes-ga" target="_blank" rel="noopener noreferrer">Bridge to Kubernetes GA announcement</a>.
+Bridge to Kubernetes, formerly known as Azure Dev Spaces, is a tool that allows to test and debug microservices on a developer's machine while using dependencies and configurations of an existing Kubernetes cluster. This is especially useful when you have a bug in a production environment which you can not replicate in your development environment. This bug might only occur in high-load scenarios. For more information, see the <a href="https://devblogs.microsoft.com/visualstudio/bridge-to-kubernetes-ga" target="_blank" rel="noopener noreferrer">Bridge to Kubernetes GA announcement</a>.
 
 ## Configure Bridge to Kubernetes
 
@@ -25,7 +25,7 @@ In this demo, I will change one of my microservices and debug it with requests f
 
 ### Install the Visual Studio Code Extensions
 
-Open the microservice you want to debug in Visual Studio code and open the Extensions tab. Search for Kubernetes and install the Kubernetes and Bridge to Kubernetes extensions.
+Open the microservice you want to debug in Visual Studio Code and open the Extensions tab. Search for Kubernetes and install the Kubernetes and Bridge to Kubernetes extensions.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/07/Install-the-Bridge-to-Kubernetes-Extension.jpg"><img loading="lazy" src="/assets/img/posts/2021/07/Install-the-Bridge-to-Kubernetes-Extension.jpg" alt="Install the Bridge to Kubernetes Extension" /></a>
@@ -47,7 +47,7 @@ After installing the Extensions, press CRTL + Shift + P, type in Bridge, and sel
   </p>
 </div>
 
-This opens the Kubernetes menu where you can see your clusters. Open the Namespace tab of the cluster you want to debug and make sure the right namespace is select. The selected namespace has an asterisk (*) at the beginning. If the wrong namespace is selected, right-click the namespace you want to use and select "Use Namespace"
+This opens the Kubernetes menu where you can see your clusters. Open the Namespace tab of the cluster you want to debug and make sure the right namespace is selected. The selected namespace has an asterisk (*) at the beginning. If the wrong namespace is selected, right-click the namespace you want to use and select "Use Namespace"
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/07/Configure-the-Namespace.jpg"><img loading="lazy" src="/assets/img/posts/2021/07/Configure-the-Namespace.jpg" alt="Configure the Namespace" /></a>
