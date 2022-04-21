@@ -79,7 +79,7 @@ Select who is allowed to approve and optionally configure the timeout and if the
   </p>
 </div>
 
-When you create a new Pull Request, you will see that after the deployment succeeded, an approval is necessary to execute the deletion step. Often the approver is someone from QA or marketing. This person often checks if the feature looks as requested and if the basic functionality is as expected. More in-depth tests should be automated.
+When you create a new pull request, you will see that after the deployment succeeded, an approval is necessary to execute the deletion step. Often the approver is someone from QA or marketing. This person can check if the feature looks as requested and if the basic functionality is as expected. More in-depth tests should be automated.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/06/The-Deployment-needs-to-be-approved.jpg"><img loading="lazy" src="/assets/img/posts/2021/06/The-Deployment-needs-to-be-approved.jpg" alt="The Deployment needs to be approved" /></a>
@@ -105,7 +105,7 @@ Create a new pull request to trigger the CI pipeline.
 
 As you can see on the screenshot above, the pull request id is 61. 
 
-After the Help deployment is finished, the task also prints the URL of the new service. As you can see the URL pr-61.customer.programmingwithwolfgang.com matches the pull request id.
+After the Helm deployment is finished, the task also prints the URL of the new service. As you can see the URL pr-61.customer.programmingwithwolfgang.com matches the pull request id.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/06/The-Pull-Request-got-deployed-to-an-unique-URL.jpg"><img loading="lazy" src="/assets/img/posts/2021/06/The-Pull-Request-got-deployed-to-an-unique-URL.jpg" alt="The Pull Request got deployed to an unique URL" /></a>
@@ -137,11 +137,11 @@ When you open your Kubernetes dashboard or check your namespaces in the Azure po
 
 ## Further Improvements
 
-As you can see, this demo uses a very simple pull request deployment and only uses the Helm package for the microservice. This microservice has no connection to a queue service or a database. You have to consider how much the PR deployment in your project needs.
+As you can see, this demo uses a very simple pull request deployment and only uses the Helm package for the microservice. This microservice has no connection to a queue or a database. You have to consider how many connections or dependencies the PR deployment in your project needs.
 
-In case you want a full application with queue and database, then add them in the PR deployment. The steps are basically the same as in the other deployments and you can use the PR id again to distinguish the PR database from the test or production database.
+In case you want a full application with queue and database, then add them to the PR deployment. The steps are basically the same as in the other deployments and you can use the PR id again to distinguish the PR database from the test or production database.
 
-If you add additional services, make sure to not forget to delete them. Especially database can be expensive in Azure if you never delete them.
+If you add additional services, make sure to not forget to delete them. Especially databases can be expensive in Azure if you never delete them.
 
 ## Conclusion
 
