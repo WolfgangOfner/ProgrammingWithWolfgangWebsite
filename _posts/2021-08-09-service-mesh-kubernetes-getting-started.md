@@ -45,7 +45,7 @@ Istio was originally developed by Lyft and has been adopted by many major techno
 
 Consul is the probably second most popular open-source service mesh out there and has been developed by HashiCorp. Consul promises better performance compared to Istio because it uses an agent-based model in comparison to Istio's multiple services. The agents run on the Kubernetes nodes and therefore can locally cache settings to improve the performance. 
 
-I have not worked with Consul yet therefore I would recommend that you check out <a href="https://consul.io/" target="_blank" rel="noopener noreferrer">consul.io</a> for more information about Consul's features and how it works.
+I have not worked with Consul yet therefore I would recommend that you check out <a href="https://consul.io/" target="_blank" rel="noopener noreferrer">consul.io</a> for more information about Consul's features and how they work.
 
 ### Linkerd
 
