@@ -7,7 +7,7 @@ tags: [DevOps, Azure DevOps, Azure, Nginx, YAML, CI-CD, Docker, Helm, AKS, Kuber
 description: Grafana combined with Prometheus is a powerful tool to visualize your metrics from each component of your Kubernetes cluster and even from single deployments or pods.
 ---
 
-[In my last post](/monitor-net-microservices-with-prometheus), I added the Prometheus client library to my .NET microservices. This was the first step to implement monitoring of the microservices which are running in a Kubernetes cluster.
+[In my last post](/monitor-net-microservices-with-prometheus), I added the Prometheus client library to my .NET microservices. This was the first step to implementing monitoring of the microservices which are running in a Kubernetes cluster.
 
 In this post, I will show you how to create your first dashboard with Grafana using the Prometheus data.
 
@@ -19,7 +19,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 You have to add the microservices as targets in Prometheus before you can visualize their Prometheus data. I installed Grafana Loki in a previous post which also installs Prometheus. You can find the details in [Collect and Query your Kubernetes Cluster Logs with Grafana Loki](/collect-and-query-kubernetes-logs-with-grafana-loki).
 
-After you have installed Prometheus, open the configuration of the Prometheus server. You can use a dashboard and edit the yaml file in your browser. In [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started/#access-the-aks-cluster) I explain how to use Octant as a dashboard to access your Kubernetes cluster.
+After you have installed Prometheus, open the configuration of the Prometheus server. You can use a Kubernetes dashboard and edit the yaml file in your browser. In [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started/#access-the-aks-cluster) I explain how to use Octant as a dashboard to access your Kubernetes cluster.
 
 Open the dashboard and then select the namespace where you have installed Prometheus. If you followed this series, the namespace is loki-grafana. Navigate to the Config Maps and there you can find the configuration for the Prometheus server named loki-prometheus-server.
 
@@ -83,7 +83,7 @@ In Grafana, click on the round (compass?) symbol on the left and select Explore 
   </p>
 </div>
 
-Make sure that you select Prometheus as the data source on top of the page and then you can create your first queries. Click on metrics to get an overview of a lot of the built-in commands and get familiar with the functionality of the queries. A useful metric is the histogram where you can display a certain quantile, for example, the 95% quantile. You can see a query of the 95% quantile of the request duration. You can see that the requests were fast but at around 18:30 the request duration spiked to up to 100 seconds. This clearly indicates that there was a problem.
+Make sure that you select Prometheus as the data source on top of the page and then you can create your first queries. Click on metrics to get an overview of a lot of the built-in commands and get familiar with the functionality of the queries. A useful metric is a histogram where you can display a certain quantile, for example, the 95% quantile. You can see a query of the 95% quantile of the request duration. You can see that the requests were fast but at around 18:30 the request duration spiked to up to 100 seconds. This clearly indicates that there was a problem.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/08/Create-a-Histogram.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/Create-a-Histogram.jpg" alt="Create a Histogram" /></a>
