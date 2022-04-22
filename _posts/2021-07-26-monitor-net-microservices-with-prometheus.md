@@ -19,9 +19,9 @@ Prometheus is an open-source monitoring and alerting system and was the second p
 
 The components of Prometheus are the server itself, client libraries, an alert manager, and several other supporting tools.
 
-The client libraries allow you to publish log messages which can be scrapped by Prometheus. Further down, I will show you how to do that in .NET 5. The Alertmanager can send alerts to a wide range of systems like email, webhooks, Slack, or WeChat.
+The client libraries allow you to publish log messages which can be scraped by Prometheus. Further down, I will show you how to do that in .NET 5. The Alertmanager can send alerts to a wide range of systems like email, webhooks, Slack, or WeChat.
 
-Prometheus can be used as a data source in Grafana where you can easily create beautiful dashboards. I will show you this in my next post.
+Prometheus can be used as a data source in Grafana where you can easily create beautiful dashboards. I will show you this [in my next post](/create-grafana-dashboards-with-prometheus-metrics).
 
 ## Available Metric Types
 
@@ -46,7 +46,7 @@ Installing the C# Prometheus client libraries is very simple. All you have to do
   </p>
 </div>
 
-Next, add the metric server to expose the metrics which can be scrapped by Prometheus. Use the following code and make sure you add it before app.UseEndpoints... in the Startup.cs class:
+Next, add the metric server to expose the metrics which can be scraped by Prometheus. Use the following code and make sure you add it before app.UseEndpoints... in the Startup.cs class:
 
 <script src="https://gist.github.com/WolfgangOfner/b51793ea1e3a2eb9df7fb3bbbd7fef58.js"></script>
 
