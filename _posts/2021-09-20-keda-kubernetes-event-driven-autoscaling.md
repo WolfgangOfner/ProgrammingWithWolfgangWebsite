@@ -7,7 +7,7 @@ tags: [DevOps, Azure, YAML, Docker, Helm, AKS, Kubernetes, Monitoring, Prometheu
 description: Creating unit tests for a .NET 5 console application that uses dependency injection only takes a couple of lines of code to configure the service provider.
 ---
 
-Autoscaling is one of my favorite features of Kubernetes. So far we have discussed the Horizontal Pod Autoscaler (HPA) which can scale pods based on CPU or RAM usage. This is a nice start but especially in distributed applications, you often have several components outside of your pods. This can be an Azure Blob Storage, Azure Service Bus, Mongo Db, or Redis Stream. The HPA can not scale your pods based on metrics from these components. That's where KEDA comes into play.
+Autoscaling is one of my favorite features of Kubernetes. So far we have discussed the Horizontal Pod Autoscaler (HPA) which can scale pods based on CPU or RAM usage. This is a nice start but especially in distributed applications, you often have several components outside of your pods. This can be an Azure Blob Storage, Azure Service Bus, MongoDB, or Redis Stream. The HPA can not scale your pods based on metrics from these components. That's where KEDA comes into play.
 
 KEDA, Kubernetes event-driven autoscaling allows you to easily integrate a scaler into your Kubernetes cluster to monitor an external source and scale your pods accordingly. 
 
@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## What is KEDA
 
-KEDA is a Kubernetes event-driven autoscaler that allows you to scale your applications according to events that occur inside or outside of your Kubernetes cluster. It is very easy to install KEDA using a Helm chart and it also runs on any platform no matter what vendor or cloud provider you use. The community and the KEDA maintainers have created more than 30 built-in scalers that allow scaling on events from sources like Azure Service Bus, Azure Storage Account, Redis Streams, Apache Kafka, or PostgreSQL. Additionally, it provides out-of-the-box integration with environment variables, K8s secrets, and pod identity.
+KEDA is a Kubernetes event-driven autoscaler that allows you to scale your applications according to events that occur inside or outside of your Kubernetes cluster. It is very easy to install KEDA using a Helm chart and it also runs on any platform no matter what vendor or cloud provider you use. The community and the KEDA maintainers have created more than 45 built-in scalers that allow scaling on events from sources like Azure Service Bus, Azure Storage Account, Redis Streams, Apache Kafka, or PostgreSQL. Additionally, it provides out-of-the-box integration with environment variables, K8s secrets, and pod identity.
 
 Another neat feature is that KEDA can scale deployments or jobs to 0. Scaling to zero allows you to only spin up containers when certain events occur, for example, when messages are placed in a queue. This is the same behavior as serverless solutions like Azure Functions but this feature allows you to run Azure Functions outside of Azure.
 
@@ -35,7 +35,7 @@ Next, create a new namespace called keda and install Keda there. You must instal
 
 That's already it. You have successfully installed KEDA in your Kubernetes cluster.
 
-## Configure KEDA to scale base on an Azure Service Bus Queue
+## Configure KEDA to scale based on an Azure Service Bus Queue
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
@@ -43,7 +43,7 @@ After KEDA is installed, it is time to create your first scaler. The scaler is a
 
 <script src="https://gist.github.com/WolfgangOfner/58156b7f48abe1de02bb2cd0100955c8.js"></script>
 
-This scaled object defines that it should run a minimum of 0 replicas and a maximum of 10 of the kedademoapi. The cooldown period between scale events is 30 seconds and the queue it monitors has the name KedaDemo. When the queue has 5 messages, the scale-up event is triggered.
+This scaled object defines that it should run a minimum of 0 replicas and a maximum of 10 of the kedademoapi. The cooldown period between scale events is 30 seconds and the queue it monitors has the name KedaDemo. When the queue has more than 5 messages, the scale-up event is triggered. I find this parameter a bit unintuitive but it is what it is.
 
 The second custom resource you have to define is a TriggerAuthentication. This object contains a reference to a Kubernetes secret that contains the connection string to the Azure Service Bus Queue. The SAS (Shared Access Signature) of the connection string has to be of type Manage. You can learn more about Azure Service Bus and SAS in [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue).
 
