@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Installing Istio in Kubernetes
 
-This demo assumes that you already have a Kubernetes cluster set up. If you don't see [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started) to set up a new cluster and also configure the connection to Kubernetes. Usually, I work with Windows but for this demo, I will use the Windows Subsystem for Linux. You can use all commands on Linux or Max as well.
+This demo assumes that you already have a Kubernetes cluster set up. If not see [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started) to set up a new cluster and also configure the connection to Kubernetes. Usually, I work with Windows but for this demo, I will use the Windows Subsystem for Linux. You can use all commands on Linux or Max as well.
 
 To get started, download the newest version of Istio.
 
@@ -166,7 +166,7 @@ This installs every available addon. If you only want to install certain product
 
 <script src="https://gist.github.com/WolfgangOfner/1991090b17843e7c4ce3cacff4f57685.js"></script>
 
-The above code installed many useful tools like Grafana, Jaeger, or Zipkin. I will talk more about these tools in my next post. For now, let's take a look at Kiali which is a pretty cool tool to visualize the flow and useful information of requests in distributed applications. Kiali is already installed. All you have to do is to activate the port forwarding with the following command.
+The above code installed many useful tools like Grafana, Jaeger, and Zipkin. [I will talk more about these tools in my next post](/use-istio-to-manage-your-microservices/). For now, let's take a look at Kiali which is a pretty cool tool to visualize the flow and useful information of requests in distributed applications. Kiali is already installed. All you have to do is to activate the port forwarding with the following command.
 
 <script src="https://gist.github.com/WolfgangOfner/82425747b15f00b92565466b2c572a23.js"></script>
 
@@ -204,6 +204,6 @@ If you followed this demo and don't add a namespace (-n istio-demo), the analysi
 
 Istio is an easy to install service mesh that comes with many useful applications like Grafana, Prometheus, and Jaeger. This demo used the Istio demo application and showed how to visualize your microservice dependencies and the request flow using Kiali.
 
-[In my next post](/use-istio-to-manage-your-microservices), I will show you more features of Istio like fault injection, request routing and traffic shifting between microservices. 
+[In my next post](/use-istio-to-manage-your-microservices), I will show you more features of Istio like fault injection, request routing, and traffic shifting between microservices. 
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
