@@ -17,7 +17,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-In [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started), I have created a new Azure Kubernetes Cluster with one node. This cluster works fine if you ignore the fact that one node does not provide high availability, but since the creation of the cluster, I have added more and more applications to it. When I have to scale one of my applications to several pods, the node runs out of resources and Kubernetes can't schedule the new pods.
+In [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started), I have created a new Azure Kubernetes Cluster with one node. This cluster works fine if you ignore the fact that one node does not provide high availability, but since the creation of the cluster, I have added more and more applications. When I have to scale one of my applications to several pods, the node runs out of resources and Kubernetes can't schedule the new pods.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/10/New-Pods-can-not-be-scheduled.jpg"><img loading="lazy" src="/assets/img/posts/2021/10/New-Pods-can-not-be-scheduled.jpg" alt="New Pods can not be scheduled" /></a>
@@ -120,7 +120,7 @@ This command displays all your pods in the given namespace and shows on which no
 
 ## Conclusion
 
-Modern applications must react quickly to traffic spikes and scale out accordingly. This can be easily achieved using the Kubernetes Horizontal Pod Autoscaler or KEDA. These approaches only schedule more pods and your cluster can easily run out of space on its worker nodes. The cluster autoscaler in Azure Kubernetes Services helps you running out of resources and can automatically add new worked nodes to your cluster. Additionally, the cluster autoscaler also removes underutilized nodes and therefore can help you to keep costs to a minimum.
+Modern applications must react quickly to traffic spikes and scale out accordingly. This can be easily achieved using the Kubernetes Horizontal Pod Autoscaler or KEDA. These approaches only schedule more pods and your cluster can easily run out of space on its worker nodes. The cluster autoscaler in Azure Kubernetes Services helps you when the cluster runs out of resources and can automatically add new worked nodes to your cluster. Additionally, the cluster autoscaler also removes underutilized nodes and therefore can help you to keep costs to a minimum.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
