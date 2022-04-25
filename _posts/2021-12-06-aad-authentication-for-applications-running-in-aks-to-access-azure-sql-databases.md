@@ -29,7 +29,7 @@ Next, add and install the aad-pod-identity Helm chart. See [Helm - Getting Start
 
 <script src="https://gist.github.com/WolfgangOfner/49ece58a8d86c5d3192eee38140435fa.js"></script>
 
-Lastly, create a new managed identity. This managed identity will be used to authentication the application in your Azure SQL database.
+Lastly, create a new managed identity. This managed identity will be used to authenticate the application in your Azure SQL database.
 
 <script src="https://gist.github.com/WolfgangOfner/1485648644bc1b14dc16c5d1334fdca0.js"></script>
 
@@ -71,15 +71,15 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 There are a few things you have to do before you can use AAD authentication for your SQL Server. 
 
-First, add two files to the Helm chart of your application, aadpodidentity and aadpodidentitybinding. Aadpodidentity creates a resource of type AzureIdentity and configures the name of the managed identity, its resource id and client id.
+First, add two files to the Helm chart of your application, aadpodidentity, and aadpodidentitybinding. Aadpodidentity creates a resource of type AzureIdentity and configures the name of the managed identity, its resource id, and client id.
 
 <script src="https://gist.github.com/WolfgangOfner/f44cd86ef67db843987861d1aa2d79e5.js"></script>
 
-The second file, creates a resource of type AzureIdentityBinding and tells your application what managed identity it should use to acquire the authentication token.
+The second file creates a resource of the type AzureIdentityBinding and tells your application what managed identity it should use to acquire the authentication token.
 
 <script src="https://gist.github.com/WolfgangOfner/c911f9e207b252f956558ee79b8b5764.js"></script>
 
-If you do not want to use Helm or the values.yaml file, you can use normal strings in both files. You can find the resource id and client id in the previously created variables when creating the managed identity.
+If you do not want to use Helm or the values.yaml file, you can use normal strings in both files. You can find the resource id, and client id in the previously created variables when creating the managed identity. 
 
 Add the previously created new values to the values.yaml file:
 
@@ -93,6 +93,8 @@ Next, add the following label in the deployment.yaml file in your Helm chart in 
 
 This label is necessary for the AzureIdentityBinding resource to select the right deployment. Make sure that the value of the label matches the value of the selector in the aadpodidentitybinding.yaml file.
 
+Note that the files aadpodidentitybinding.yaml and aadpodidentity.yaml are not committed to my demo on GitHub. This is necessary to ensure users can deploy the application when they are not using pod identity. Without pod identity enabled, the Helm deployment would fail with these two files there.
+
 ## Configure the CD Pipeline 
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/CustomerApi/pipelines/CustomerApi-CD.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
@@ -105,7 +107,7 @@ Lastly, make sure to add the new variable to your pipeline.
 
 <script src="https://gist.github.com/WolfgangOfner/1e0d738ee344ede7a34723a9bcec1605.js"></script>
 
-Also add the client and resource id and the tenent id as secret to your pipeline.
+Also, add the client and resource id and the tenant id as the secret to your pipeline.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/12/Add-secrets-to-the-pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2021/12/Add-secrets-to-the-pipeline.jpg" alt="Add secrets to the pipeline" /></a>
@@ -117,7 +119,7 @@ Also add the client and resource id and the tenent id as secret to your pipeline
 
 ## Test the Implementation
 
-Check-in your code and let the Azure DevOps pipeline run. After the deployment is finished, go to your application and you should be able to load your data from the database.
+Check in your code and let the Azure DevOps pipeline run. After the deployment is finished, go to your application and you should be able to load your data from the database.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/12/Retrieving-data-from-the-database-works.jpg"><img loading="lazy" src="/assets/img/posts/2021/12/Retrieving-data-from-the-database-works.jpg" alt="Retrieving data from the database works" /></a>
@@ -126,6 +128,8 @@ Check-in your code and let the Azure DevOps pipeline run. After the deployment i
    Retrieving data from the database works
   </p>
 </div>
+
+## 
 
 ## Conclusion
 
