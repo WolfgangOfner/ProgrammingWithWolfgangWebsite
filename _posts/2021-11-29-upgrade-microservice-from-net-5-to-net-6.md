@@ -20,7 +20,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 Before you begin, check the <a href="https://docs.microsoft.com/en-us/dotnet/core/compatibility/6.0" target="_blank" rel="noopener noreferrer">breaking changes in .NET 6</a> to make sure that your code is compatible with the new version.
 
-Upgrading a microservice from .NET 5 to .NET 6 is as simple as it could be. All you have to do is to change the TargetFramework from net5.0 to net6.0 every *.csproj file If you use my demo, you can change all .NET versions by changing the DefaultTargetFramework in the common.props file in the root folder of each microservice.
+Upgrading a microservice from .NET 5 to .NET 6 is as simple as it could be. All you have to do is to change the TargetFramework from net5.0 to net6.0 for every *.csproj file If you use my demo, you can change all .NET versions by changing the DefaultTargetFramework in the common.props file in the root folder of each microservice.
 
 <script src="https://gist.github.com/WolfgangOfner/dddce2ac5355a2ec40adb3fe46ad280c.js"></script>
 
@@ -86,7 +86,7 @@ If you don't want to update the configuration and use Swagger as always, all you
 
 ## Run the updated CI Pipeline
 
-Check-in your changes and the build pipeline in Azure DevOps should run successfully.
+Check in your changes and the build pipeline in Azure DevOps should run successfully.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/11/The-Net-6-build-was-successful.jpg"><img loading="lazy" src="/assets/img/posts/2021/11/The-Net-6-build-was-successful.jpg" alt="The .NET 6 build was successful" /></a>
@@ -98,7 +98,7 @@ Check-in your changes and the build pipeline in Azure DevOps should run successf
 
 ## Considering new .NET 6 Features
 
-.NET 6 put an emphasis on simplifying the structure of the project and files. You can change your files to use these features like global usings or top-level statements. You can also choose to keep the structure the way it already is. Both works just fine.
+.NET 6 put an emphasis on simplifying the structure of the project and files. You can change your files to use these features like global usings or top-level statements. You can also choose to keep the structure the way it already is. Both work just fine.
 
 ## Limitations in November 2021
 
@@ -106,7 +106,7 @@ As of this writing, Azure Functions v4 supports .NET 6 but there is no Docker im
 
 ## Conclusion
 
-Upgrading from .NET 5 to .NET 6 is very fast and simple. Most applications should be able to update without any problems by simply changing the .NET version number in the project file and in the Dockerfile. Make sure to update your NuGet packages and test your application after the update to make sure that everything still works.
+Upgrading from .NET 5 to .NET 6 is very fast and simple. Most applications should be able to update without any problems by simply changing the .NET version number in the project file and the Dockerfile. Make sure to update your NuGet packages and test your application after the update to make sure that everything still works.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
