@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Create a new Azure Custom Role
 
-In my next post, I want my Azure DevOps pipeline to be able to update my DNS records. Since the DNS zone is a very sensitive resource, I have added a lock so it can not be deleted. This lock also prevents the Azure DevOps pipeline from deleting DNS records. Additionally, the Contributor role of the pipeline service principal is not allowed to create new locks either. Since there is no built-in role for creating and deleting locks, I have to create my own.
+[In my next post](/update-dns-records-in-an-azure-devops-pipeline/), I want my Azure DevOps pipeline to be able to update my DNS records. Since the DNS zone is a very sensitive resource, I have added a lock so it can not be deleted. This lock also prevents the Azure DevOps pipeline from deleting DNS records. Additionally, the Contributor role of the pipeline service principal is not allowed to create new locks either. Since there is no built-in role for creating and deleting locks, I have to create my own.
 
 To create a new role go to your subscription in the Azure portal, select the Access control (IAM) pane and then click Add under Create a custom role.
 
@@ -84,6 +84,6 @@ After the role was assigned, go to the Role assignments tab of the Access contro
 
 ## Conclusion
 
-Azure comes with a grave variety of pre-defined roles for your services and users. Though sometimes, you need special permissions that are not built-in. This is where custom roles come into play. You can create a role with all the permissions you need and assign this role to a user, group, or service principal. This post showed how to assign the new role to a service principal that is used by Azure DevOps and in my next post, I will show you how to use this service principal to update DNS records in a CI/CD pipeline.
+Azure comes with a grave variety of pre-defined roles for your services and users. Though sometimes, you need special permissions that are not built-in. This is where custom roles come into play. You can create a role with all the permissions you need and assign this role to a user, group, or service principal. This post showed how to assign the new role to a service principal that is used by Azure DevOps and [in my next post](/update-dns-records-in-an-azure-devops-pipeline/), I will show you how to use this service principal to update DNS records in a CI/CD pipeline.
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
