@@ -7,7 +7,7 @@ tags: [DevOps, Azure, YAML, Docker, Helm, AKS, Kubernetes, Monitoring, Prometheu
 description: CI/CD YAML pipelines in Azure DevOps can be used to easily install KEDA using Helm charts and Azure CLI tasks.
 ---
 
-In my last post, [KEDA - Kubernetes Event-driven Autoscaling](/keda-kubernetes-event-driven-autoscaling), I showed how to deploy a KEDA scaler to scale a microservice-based on the queue length of an Azure Service Bus Queue. The deployment of KEDA used Helm and the autoscaler was deployed using a simple YAML file. This is fine to learn new tools and technologies but in a modern DevOps environment, we want to have an automated deployment of KEDA itself and also of the scaler.
+In my last post, [KEDA - Kubernetes Event-driven Autoscaling](/keda-kubernetes-event-driven-autoscaling), I showed how to deploy a KEDA scaler to scale a microservice depending on the queue length of an Azure Service Bus Queue. The deployment of KEDA used Helm and the autoscaler was deployed using a simple YAML file. This is fine to learn new tools and technologies but in a modern DevOps environment, we want to have an automated deployment of KEDA itself and also of the scaler.
 
 In today's post, I will show you how to deploy KEDA to Kubernetes using an Azure DevOps pipeline and how to add the KEDA scaler to the Helm charts of an existing microservice.
 
@@ -17,7 +17,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Infrastructure/AzureResources/Azure-resource-install-pipeline.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-In one of my previous post, [Use Infrastructure as Code to deploy your Infrastructure with Azure DevOps](/use-infrastructure-as-code-to-deploy-infrastructure), I created a YAML pipeline in Azure DevOps to deploy my whole infrastructure to Azure. This included the Azure Kubernetes Service cluster, an SQL database server, several components for Kubernetes like a cert-manager and ingress controller, and many more. The pipeline uses YAML and Azure CLI to define the services. The big advantage of having such a pipeline is that I can easily create my whole infrastructure from scratch with a single button click. This makes it fast, and easily repeatable without worrying about forgetting anything.
+In one of my previous posts, [Use Infrastructure as Code to deploy your Infrastructure with Azure DevOps](/use-infrastructure-as-code-to-deploy-infrastructure), I created a YAML pipeline in Azure DevOps to deploy my whole infrastructure to Azure. This included the Azure Kubernetes Service cluster, an SQL database server, several components for Kubernetes like a cert-manager and ingress controller, and many more. The pipeline uses YAML and Azure CLI to define the services. The big advantage of having such a pipeline is that I can easily create my whole infrastructure from scratch with a single button click. This makes it fast, and easily repeatable without worrying about forgetting anything.
 
 This pipeline is perfect to create a new namespace in the Kubernetes cluster, add the Helm chart for KEDA and install it.
 
