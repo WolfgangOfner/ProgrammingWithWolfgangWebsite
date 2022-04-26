@@ -188,7 +188,7 @@ Run your application again to make sure that everything still works.
 
 You want to pass the tenant id during the deployment to keep it secret. If you commit it to your version control, everyone would be able to read it. You have to take the following steps to pass the tenant id during the deployment:
 
-Add a variable for the tenant id to your values.yaml or values.release.yaml file in your Helm chart. This variable has to start and finish with two underscores (\_\_) so the Tokenizer task in the Azure DevOps pipeline can replace the value. Next, add your tenant id as a secret variable in your pipeline. Don't forget to update the connection string in your deployment pipeline too.
+Add a variable for the tenant id to your values.yaml file in your Helm chart. This variable has to start and finish with two underscores (\_\_) so the Tokenizer task in the Azure DevOps pipeline can replace the value. Next, add your tenant id as a secret variable in your pipeline. Don't forget to update the connection string in your deployment pipeline too.
 
 The Tokenizer task will replace the tenant id in the Helm chart with your actual tenant id and therefore will override the empty TenantId value in your appsettings.json file. For a detailed explanation of how and why this works, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
 
