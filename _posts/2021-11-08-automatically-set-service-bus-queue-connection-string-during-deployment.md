@@ -21,13 +21,15 @@ Using Azure CLI allows you to read the connection string of an Azure Service Bus
 
 <script src="https://gist.github.com/WolfgangOfner/8a85c6f0a696cae935cd07f6b79c3bc0.js"></script>
 
+The continueOnError parameter is not really necessary but it makes testing without an Azure Service Bus queue easier. With this parameter set to true, the pipeline will continue, even if no service bus connection string was found.
+
 ## Use a Template inside the Azure DevOps Pipeline
 
 In [Improve Azure DevOps YAML Pipelines with Templates](/improve-azure-devops-pipelines-templates/), I explained how to use templates to make your pipeline clearer. To continue using templates, I placed the code from above in a separate template named GetServiceBusConnectionString. Then I call this template during the deployment and pass the needed variables as parameters.
 
 <script src="https://gist.github.com/WolfgangOfner/9c185722604d1d86e2a05796cbc145d7.js"></script>
 
-Note that I use this template during the deployment of the test and production environment. The finished template looks as follows:
+I use this template during the deployment of a pull request and for deploying to the test and production environment. The finished template looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/d4d46d7ac0f33ffb0c1e3206e691ed30.js"></script>
 
@@ -41,7 +43,7 @@ Run your application and you should still be able to access your queue.
 
 ## Conclusion
 
-Using a cloud environment allows your infrastructure and applications to be flexible. Therefore, your configuration also has to be flexible. This post showed how you can easily read the connection string of an Azure Service Bus Queue using Azure CLI. By doing so, your application will always read the correct connection string and will work no matter what happens to the underlying infrastructure (as long as the Azure Service Bus Queue exists obviously).
+Using a cloud environment allows your infrastructure and applications to be flexible. Therefore, your configuration also has to be flexible. This post showed how you can easily read the connection string of an Azure Service Bus Queue using Azure CLI. By doing so, your application will always read the correct connection string and will work no matter what happens to the underlying infrastructure.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi/pipelines" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
