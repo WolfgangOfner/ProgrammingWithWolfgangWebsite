@@ -97,7 +97,7 @@ That's nice to see but impractical since our customers won't connect to our Kube
   </p>
 </div>
 
-The Service has no external IP. This is because the type of the service is ClusterIP. ClusterIP only publishes an internal IP but no external one. This means we have to update the Service to enable the external endpoint and then publish the application again.
+The Service has no external IP. This is because the type of the service is ClusterIP. ClusterIP only publishes an internal IP but no external one. This means we have to update the Service to enable the external endpoint and then publish the application again. This works because Azure creates an Azure Loadbalancer and assignes it a public IP Address. If you run your K8s cluster on-premises, you have to point the public IP to the endpoint yourself.
 
 ## Expose the Application to the Outside
 To update the Service type, open the values.yaml file again and find the service section. Update the type from ClusterIP to LoadBalancer and save the file.
