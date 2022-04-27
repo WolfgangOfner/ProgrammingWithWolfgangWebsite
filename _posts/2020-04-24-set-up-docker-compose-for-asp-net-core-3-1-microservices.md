@@ -8,6 +8,8 @@ description: Today, I will explain how docker-compose works and how it can be us
 ---
 <a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my last post</a>, I described how to dockerize my microservices. To start the whole application, you have to start both microservices and RabbitMQ. Today, I will add a docker-compose file which is a tool to easily run multi-container applications.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is the Docker-Compose File?
 
 Docker-compose is a yml file in which you can set up all the containers your application needs to run. Simplified, it executes several docker run commands after each other. If you are used to docker run commands, the content of the compose file will look familiar. Let's have a look at the content of the file:

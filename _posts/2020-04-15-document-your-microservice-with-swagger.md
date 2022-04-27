@@ -10,6 +10,8 @@ Swagger is an open-source toolset that can be easily integrated into your soluti
 
 <a href="/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">In my last post</a>, I created two microservices and today I will explain how to integrate Swagger.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is Swagger?
 
 Swagger is an open-source toolset from <a href="https://swagger.io/" target="_blank" rel="noopener noreferrer">Smartbear</a> and is based on the OpenAPI specificiation. For .NET Core, you can install Swagger easily as a NuGet package and configure it in the Startup class of your solution. In simple words, Swagger wraps the XML comments of your API in a nice-looking functional GUI which shows you the available actions and models and also lets you send requests to the actions. You can even attach authentication objects like JWT.

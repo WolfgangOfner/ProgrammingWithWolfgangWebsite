@@ -10,6 +10,8 @@ description: Helm is a package manager that helps you to deploy your application
 
 In this post, I will show you how to deploy an application to Kubernetes using Helm and how to avoid some pitfalls.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Deploy the Microservice with Helm
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.

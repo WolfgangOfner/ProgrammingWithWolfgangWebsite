@@ -11,6 +11,8 @@ description: In this post, I will show how to create a private NuGet feed in Azu
 
 In this post, I will show how to create a private NuGet feed in Azure DevOps and how to automatically publish your NuGet packages there using an Azure DevOps pipeline.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Create a private NuGet Feed
 
 To create a private NuGet Feed, open the Artifacts tab in your project in Azure DevOps and then click on + Create Feed.

@@ -12,6 +12,8 @@ Running your build inside a Docker container has many advantages such as platfor
 
 You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/UnitTestInCiPipeline).
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Run Tests inside a Docker Container
 
 Running unit tests inside a Docker container is more or less the same as building a project. First, I copy all my test projects inside the container using the COPY command:

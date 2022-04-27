@@ -11,6 +11,8 @@ Running a performant, resilient application in the pre-cloud era was hard. Espec
 
 Today, I will show how to use the Horizontal Pod Autoscaler (hpa) to automatically scale your application out and in which helps you to offer a performant application and minimize your costs at the same time.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## How the Horizontal Pod Autoscaler (HPA) works
 
 The Horizontal Pod Autoscaler automatically scales the number of your pods, depending on resource utilization like CPU. For example, if you target a 50% CPU utilization for your pods but your pods have an 80% CPU utilization, the hpa will automatically create new pods. If the CPU utilization falls below 50%, for example, 30%, the hpa terminates pods. This ensures that you always run enough pods to keep your users happy but also helps you not waste money by running too many pods.

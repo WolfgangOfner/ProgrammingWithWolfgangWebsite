@@ -8,6 +8,8 @@ description: Today I will dockerize my microservices and create a Docker contain
 ---
 <a href="/rabbitmq-in-an-asp-net-core-3-1-microservice/" target="_blank" rel="noopener noreferrer">In my last post</a>, I added RabbitMQ to my two microservices which finished all the functional requirements. Microservices became so popular because they can be easily deployed using Docker. Today I will dockerize my microservices and create a Docker container that can be run anywhere as long as Docker is installed. I will explain most of the Docker commands but basic knowledge about starting and stopping containers is recommended.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is Docker?
 
 Docker is the most popular container technology. It is written in Go and open-source. A container can contain a Windows or Linux application and will always be identical bit by bit, no matter where you start it. This means it runs the same way during development, on the testing environment, and on the production environment. This eliminates the famous &#8220;It works on my machine&#8221;.

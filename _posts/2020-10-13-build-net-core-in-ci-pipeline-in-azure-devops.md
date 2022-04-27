@@ -8,6 +8,8 @@ description: A crucial feature of DevOps is to give the developer fast feedback 
 ---
 A crucial feature of DevOps is to give the developer fast feedback if their code changes work. This can be done by automatically building code and running tests every time changes are checked-in. Today, I will show how to create a CI pipeline (continuous integration) for ASP .NET Core.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Create a .NET Core CI Pipeline in Azure DevOps
 
 <a href="/programming-microservices-net-core-3-1" target="_blank" rel="noopener noreferrer">Over the series of my last posts</a>, I created two ASP .NET Core microservices. In this post, I create a CI pipeline to build all projects and run all unit tests in the repository. You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.

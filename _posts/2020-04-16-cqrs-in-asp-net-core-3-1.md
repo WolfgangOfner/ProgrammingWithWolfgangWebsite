@@ -10,6 +10,8 @@ CQRS stands for Command Query Responsibility Segregation and is used to use diff
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is CQRS?
 
 CQRS or Command Query Responsibility Segregation is a design pattern to separate the read and write processes of your application. Read operations are called Queries and write operations are called Commands. Open one of the two microservices and you will see in the service project two folders, Command and Query. Inside the folder, you can see a handler and a command or query. They are used for the mediator, <a href="/mediator-pattern-in-asp-net-core-3-1" target="_blank" rel="noopener noreferrer">which I will describe in my next post</a>.

@@ -11,6 +11,8 @@ Most examples of building Docker containers just use the latest tag to deploy or
 
 Today, I will show how to add semantic versioning to your CI/CD pipeline in Azure DevOps to automatically create a meaningful version for your Docker images.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Why you shouldn't use the latest Tag
 
 The latest tag is simple and there is nothing wrong with using it if you want to try out something. In a production environment, you shouldn't use it because you want to have full control and knowledge of what version you are running at any given time. 

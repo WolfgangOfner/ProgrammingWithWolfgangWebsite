@@ -8,6 +8,8 @@ description: In my last post, I talked about the theory of a Microservice. Today
 ---
 In [my last post](https://www.programmingwithwolfgang.com/microservices-getting-started/), I talked about the theory of a microservice. Today it is going to be more practical. I will create two microservices using ASP .NET Core 3.1. Over the next posts., I will extend the microservices using CQRS, Docker and docker-compose, RabbitMQ, and automatic builds and deployments.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Create a Microservice using ASP .NET Core 3.1
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>. I will talk about the key aspects of the microservice but not about every detail. You will need at least a basic understanding of C# and ASP.NET Core.

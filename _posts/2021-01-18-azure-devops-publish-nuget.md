@@ -11,6 +11,8 @@ description: If you want to share your NuGet packages, you should automatically 
 
 In this post, I will extend my previously created Azure DevOps pipeline and deploy the NuGet package to nuget.org so everyone can download and use it.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Create a Nuget.org API Key
 
 To be able to push NuGet packages to nuget.org, you have to obtain an API key first. Go to nuget.org and signup or log in and then click on your profile and select API Keys.

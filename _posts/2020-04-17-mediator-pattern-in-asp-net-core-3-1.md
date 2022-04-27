@@ -8,6 +8,8 @@ description: The mediator pattern is a behavioral design pattern that helps to r
 ---
 The mediator pattern is a behavioral design pattern that helps to reduce chaotic dependencies between objects. The main goal is to disallow direct communication between the objects and instead force them to communicate only via the mediator.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Problem
 
 Services or classes often have several dependencies on other classes and you quickly end up with a big chaos of dependencies. The mediator pattern serves as an organizer and calls all needed services. No service has a dependency on another one, only on the mediator.

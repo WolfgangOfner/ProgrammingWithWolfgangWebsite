@@ -9,6 +9,8 @@ description: Kubernetes is a great tool but it also has a steep learning curve. 
 
 Kubernetes is a great tool but it also has a steep learning curve. Today, I want to talk about how to limit the resources a container can use and how containers can request a minimum of resources on a node in the Kubernetes cluster.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Resource Requests vs. Resource Limits
 
 Resource requests describe how many resources, for example, CPU or RAM a node has to have. If a node doesn't satisfy the requests of the container, the container (more precisely the pod) won't be scheduled on it. If no node satisfies the request in your cluster, the pod won't be scheduled at all.

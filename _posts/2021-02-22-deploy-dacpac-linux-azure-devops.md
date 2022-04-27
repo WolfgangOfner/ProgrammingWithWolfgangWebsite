@@ -9,6 +9,8 @@ description: Use a custom Docker container to deploy Dacpac packages to an SQL S
 
 I showed [in my last post](/automatically-deploy-database-changes) how to use SSDT to create a dacpac package and how to deploy it locally. The SSDT project uses .NET Framework 4.8 which means that it runs only on Windows. Azure DevOps has a task to deploy dacpac packages, but it also only supports Windows. To be able to use a Linux environment, I will create a .NET Core project to build the dacpac package and build my own Docker container with the sqlpackage installed to deploy the dacpac to an SQL Server.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Use .NET Core to create the Dacpac Package
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.

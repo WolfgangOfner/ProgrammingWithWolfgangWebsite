@@ -11,6 +11,8 @@ Running microservices in Kubernetes usually requires a cluster running in the cl
 
 The solution to this problem is to run Kubernetes locally on your development machine using Docker Desktop.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Installing Kubernetes locally
 
 To run your microservice in Kubernetes on your Windows developer computer, you have to install <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener noreferrer">Docker Desktop</a> first. After you installed it, open the settings and go to the Kubernetes tab. There you click on Enable Kubernetes.

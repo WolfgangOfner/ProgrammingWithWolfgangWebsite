@@ -9,6 +9,8 @@ description: Building Docker images in an Azure DevOps CI Pipeline enables you t
 ---
 <a href="/run-the-ci-pipeline-during-pull-request/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to build a .NET Core Microservice with an Azure DevOps CI pipeline. Today, I want to build these microservices in another Azure DevOps CI pipeline and push the images to Docker Hub.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Set up a Service Connection to Docker Hub
 
 Before I create the new CI Pipeline for building the Docker image, I set up a connection to Docker Hub to push my image to its repository. To do that in Azure DevOps, click on Project Settings --> Service connections --> New service connection.

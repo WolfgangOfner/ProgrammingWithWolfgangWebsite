@@ -11,6 +11,8 @@ DevOps has been around for some years now and most developers know what it means
 
 In this post, I will show you three ways how to automatically apply your changes and why one method is better than the other ones.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Why you should automate Database Changes
 
 In a modern DevOps culture, you want to deploy fast and often, with high quality. Achieving fast and qualitative high deployments can only be done with automation. Usually, when developers get started with DevOps, they start automating the build and release process of their application. Deploying an application, for example, in .NET or a Docker container is fairly simple but it gets complicated when database changes come into play. Since it is not as straightforward as deploying an application, database changes are often done by hand or at the start of the application. Both approaches are bad and in the following sections, I will give examples and explain why these approaches are bad in my eyes.

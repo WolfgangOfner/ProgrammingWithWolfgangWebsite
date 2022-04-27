@@ -8,6 +8,8 @@ description: Today, I will implement RabbitMQ, so the microservices can exchange
 ---
 [In my last posts](https://www.programmingwithwolfgang.com/document-your-microservice-with-swagger), I created two microservices using ASP .NET Core 3.1. Today, I will implement RabbitMQ, so the microservices can exchange data while staying independent. RabbitMQ can also be used to publish data even without knowing the subscribers. This means that you can publish an update and whoever is interested can get the new information.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is RabbitMQ and why use it?
 
 RabbitMQ describes itself as the most widely deployed open-source message broker. It is easy to implement and supports a wide variety of technologies like Docker, .NET, or Go. It also offers plugins for monitoring, managing, or authentication. I chose RabbitMQ because it is well known, quickly implemented, and especially can be easily run using Docker.

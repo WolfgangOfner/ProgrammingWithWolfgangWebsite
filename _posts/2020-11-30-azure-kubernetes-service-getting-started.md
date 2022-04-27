@@ -9,6 +9,8 @@ description: Azure Kubernetes Services (AKS) is a managed service which helps yo
 
 In my eyes, the two biggest inventions in the last years are the cloud and Kubernetes (K8s). Today, I want to combine both and give you a high-level overview of Kubernetes using Microsoft's Azure Kubernetes Service (AKS). At the end of this post, you will know why Kubernetes is awesome and how to deploy your first application and even load balance it.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Introduction to Kubernetes
 
 Kubernetes is a container orchestrator. This means that it runs your containers, usually Docker containers, and also comes with the following nice features:

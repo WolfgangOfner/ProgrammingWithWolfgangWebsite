@@ -11,6 +11,8 @@ Microservices are becoming more and more popular these days. These microservices
 
 In this post, I will show how to deploy your application to Kubernetes (more precisely Azure Kubernetes Service (AKS)) using Helm and Azure DevOps pipelines.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Create a Kubernetes Cluster in Azure 
 
 If you are new to Kubernetes or want instructions on how to install an Azure Kubernetes Service (AKS) cluster, see my post ["Azure Kubernetes Service - Getting Started"](/azure-kubernetes-service-getting-started).

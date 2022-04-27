@@ -9,6 +9,8 @@ description: Many developers have heard about microservices and that it's the ne
 
 Many developers have heard about microservices and how it is the next big thing. However, for many developers I have talked to, microservices is just another buzzword like DevOps. I have been working on different projects using microservices for a little more than a year now and in this post, I would like to talk about the theory and the ideas behind the concept. <a href="/programming-microservices-net-core-3-1/" target="_blank" rel="noopener noreferrer">In my next posts</a>, I will show you how to implement a microservice using ASP .NET Core 3.1.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is a Microservice?
 
 As the name already suggests, a microservice is very small. The opinions on how small vary. Some say that it should not be more than a hundred lines, while others say that it should only do one thing. My opinion is that a microservice should offer one or more methods in the same context. For instance, a customer service microservice could offer methods to carry out the registration, login, and changing the user's password.

@@ -19,6 +19,8 @@ description: This post will show you how to create an access token for your priv
 
 Today, I will show you how to create an access token for your private Azure DevOps NuGet feed and how to pass it to your Dockerfile to build Docker images.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Create a Personal Access Token (PAT) in Azure DevOps
 
 To create a personal access token in Azure DevOps, click on user settings, and select Personal access tokens.

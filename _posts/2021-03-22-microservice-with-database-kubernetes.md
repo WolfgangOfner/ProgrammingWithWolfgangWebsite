@@ -9,6 +9,8 @@ description: Configure microservices in Azure DevOps to use securely share conne
 
 I showed [in my last post](/deploy-dacpac-linux-azure-devops) how to automatically deploy database changes to your database. In this post, I will extend my microservice to use this database and also extend the deployment to provide a valid connection string.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Update the Microservice to use a Database
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.

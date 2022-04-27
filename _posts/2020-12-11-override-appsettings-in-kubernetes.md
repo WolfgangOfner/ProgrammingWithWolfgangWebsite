@@ -13,6 +13,8 @@ Nowadays, especially with microservices, we have many different environments and
 
 [In my last posts](/deploy-kubernetes-using-helm), I talked about Helm and showed how it can be used to easily deploy applications to Kubernetes. Today, I will show you you can dynamically configure your application using environment variables in Helm.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Deploy a Microservice using Helm
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>. If you don't know what Helm is or if you haven't installed it yet, see [Helm - Getting Started](/helm-getting-started) for more information.
 

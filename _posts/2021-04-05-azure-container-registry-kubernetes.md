@@ -11,6 +11,8 @@ description: Azure Container Registry has some advantages over Dockerhub and I w
 
 In this post, I will talk about the advantages of Azure Container Registry and show you how to configure your microservice and Kubernetes cluster to run images from ACR and run them in your cluster.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is Azure Container Registry (ACR)
 
 Azure Container Registry is a private container registry that allows you to build and store your images, replicate them around the globe and also scan for vulnerabilities. ACR comes in three pricing tiers: Basic, Standard, and Premium. The main difference between them is the amount of included storage and the number of webhooks you can use. Additionally, the premium tier supports geo-replication. This means that your images are still available when a data center goes down. Furthermore, it allows for faster startup times because the needed image is closer to the destination. This is only the case if you operate globally.

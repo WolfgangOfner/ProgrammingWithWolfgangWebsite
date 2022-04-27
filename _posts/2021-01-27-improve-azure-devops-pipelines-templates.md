@@ -9,6 +9,8 @@ description: YAML pipelines can get quite long and unclear over time. Templates 
 
 YAML pipelines can get quite long and unclear over time. In programming, developers use several files to separate logic to make the code easier to understand. The same is possible using templates in YAML pipelines. Additionally, these templates can be used in several pipelines reducing duplicate code.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## YAML Pipelines without Templates
 
 [In my last post](/deploy-kubernetes-azure-devops), I worked on a pipeline that built a .NET 5 application, ran tests, pushed a docker image, and deployed it to Kubernetes using Helm. The pipeline had 143 lines of code in the end. It looked like a wall of text and might be overwhelming at first glance.

@@ -11,6 +11,8 @@ Helm is a great tool to deploy your application into Kubernetes. In my post, [He
 
 In this post, I want to introduce Tokenizer which is a simple Azure DevOps extension with which you can replace variables in the values.yaml file. 
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Why would I replace variables in my Helm Charts?
 
 Currently the values.yaml file looks as follows:

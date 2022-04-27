@@ -11,6 +11,8 @@ I think the most important rule of a microservice is that it has to be deployed 
 
 In this post, I will show how to share code using NuGet packages and how to automatically create them in an Azure DevOps pipeline.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## How to share Code between Microservices
 
 There are several methods of sharing code between microservices but I think most of them are bad. Let's have a look at the available options.

@@ -11,6 +11,8 @@ Microsoft released the next major release, called .NET 5.0 which succeeds .NET C
 
 Today, I want to show how to upgrade a microservice and its build pipeline from .NET Core 3.1 to .NET 5.0. You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/MicroserviceDemo).
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## System Requirements for .NET 5.0
 To use .NET 5.0 you have to install the .NET 5.0 SDK from the [dotnet download page](https://dotnet.microsoft.com/download/dotnet/5.0) and [Visual Studio 16.8 or later](https://visualstudio.microsoft.com/downloads).
 

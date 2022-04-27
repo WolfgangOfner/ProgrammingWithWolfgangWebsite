@@ -11,6 +11,8 @@ DevOps is all about automation and making the process faster and more reliable. 
 
 In this post, I will show how you can add approvals to your deployments when you use the modern YAML pipelines.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Add Approvals in the Classic Editor Pipeline
 
 If you still use an old classic editor pipeline, it is very easy to add an approval before the deployment. All you have to do is to click on the icon on the left side of your task. Note that this icon only appears when you hover over the task. After you clicked on the icon, select Pre-deployment approvals and add the users who are allowed to approve the deployment. 
