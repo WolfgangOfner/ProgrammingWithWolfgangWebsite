@@ -891,6 +891,7 @@ $sidebar-display: "sidebar-display";
   top: 0;
   left: $sidebar-width; /* same as sidebar width */
   right: 0;
+  margin-top: 1em;
   transition: top 0.2s ease-in-out;
   z-index: 50;
   border-bottom: 1px solid rgba(0, 0, 0, 0.07);
@@ -1323,7 +1324,7 @@ $sidebar-display: "sidebar-display";
 } /* max-width: 849px */
 
 @media all and (max-width: 849px) and (orientation: portrait) {
-  [data-topbar-visible=false] #topbar-wrapper {
+  [data-topbar-visible=true] #topbar-wrapper {
     top: 0;
   }
 }
