@@ -60,7 +60,7 @@ This section is all about automated builds using YAML pipelines in Azure DevOps.
 
 ## Continuous Deployment with Azure DevOps
 
-After building the Docker images, let's focus on deploying these images to Kubernetes. Each pull request gets deployed into a new namespace, SSL certificates, and a unique URL is generated and Helm is used to manage the deployment. Using Helm allows overriding configuration values. Furthermore, this section explains how to deploy Azure Functions, SQL Databases and push NuGet packages to an internal or public feed.
+After building the Docker images, let's focus on deploying these images to Kubernetes. Each pull request gets deployed into a new namespace, SSL certificates, and a unique URL is generated and Helm is used to manage the deployment. Using Helm allows overriding configuration values. Furthermore, this section explains how to deploy Azure Functions, and SQL Databases and push NuGet packages to an internal or public feed.
 
 - [Approvals for YAML Pipelines in Azure DevOps](/deployment-approvals-yaml-pipeline)
 
@@ -128,7 +128,7 @@ The following posts explain Microsoft's Azure Kubernetes Service and why Helm is
 
 ## SSL Configuration in Kubernetes
 
-Kubernetes helps to automatically create Let's Encrypt SSL certificate and Nginx as Ingress controller allows the creation of unique URLs for each microservice. 
+Kubernetes helps to automatically create Let's Encrypt SSL certificates and Nginx as Ingress controller allows the creation of unique URLs for each microservice. 
 
 - [Set up Nginx as Ingress Controller in Kubernetes](/setup-nginx-ingress-controller-kubernetes)
 
@@ -192,7 +192,7 @@ Infrastructure as Code (IaC) allows developers to define the infrastructure and 
 
 ## Service Mesh
 
-Big Kubernetes clusters can be hard to manage. Service Mesh like Istio helps administrators to manage Kubernetes clusters with topics such as SSL connections, monitoring, or tracing. All that can be achieved without any changes to the existing applications. Isitio also comes with a bunch of add ons such as Grafana, Kiali, and Jaeger to help administrate the cluster.
+Big Kubernetes clusters can be hard to manage. Service Mesh like Istio helps administrators to manage Kubernetes clusters with topics such as SSL connections, monitoring, or tracing. All that can be achieved without any changes to the existing applications. Isitio also comes with a bunch of add-ons such as Grafana, Kiali, and Jaeger to help administrate the cluster.
 
 - [Service Mesh in Kubernetes - Getting Started](/service-mesh-kubernetes-getting-started)
 

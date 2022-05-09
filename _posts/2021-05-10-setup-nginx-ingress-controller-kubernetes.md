@@ -7,7 +7,7 @@ tags: [DevOps, Azure DevOps, Azure, Nginx, YAML, CI-CD, Docker, AKS, Kubernetes]
 description: Nginx can be used as an Ingress controller for Kubernetes clusters and offers a wide range of features like routing, SSL termination, and preventing direct access to the microservices.
 ---
 
-So far I have used a Service with the type LoadBalancer for my microservices. The service can be set up quickly and also gets a public IP address assign to access the microservice. Besides the load balancing, it has no features though. Therefore, I will replace the Service object with an Nginx ingress controller. 
+So far I have used a Service with the type LoadBalancer for my microservices. The service can be set up quickly and also gets a public IP address assign from Azure to access the microservice. Besides the load balancing, it has no features though. Therefore, I will replace the Service object with an Nginx ingress controller. 
 
 Today, I will implement the ingress controller and set up some basic rules to route the traffic to my microservices. In the next post, I will add SSL termination and the automatic creation of SSL certificates. 
 
@@ -17,7 +17,9 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 The idea is to have an Nginx controller as the only entry point to my Kubernetes cluster. This controller will have a public IP address and route the traffic to the right microservices. Additionally, I will change the existing Service of the microservices to the type ClusterIP which removes the public IP address and makes them accessible only through the Nginx Ingress controller.
 
-To install Nginx, I will use a Helm chart. If you don't know Helm, see my posts [Helm - Getting Started](/helm-getting-started) and [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm). First, create a new namespace that will contain the Nginx controller. This will help with future maintenance.
+To install Nginx, I will use a Helm chart. If you don't know Helm, see my posts [Helm - Getting Started](/helm-getting-started) and [Deploy to Kubernetes using Helm Charts](/deploy-kubernetes-using-helm). 
+
+First, create a new namespace that will contain the Nginx controller. This will help with future maintenance.
 
 <script src="https://gist.github.com/WolfgangOfner/85f57ff7a317cdd55b202b39a12bf01d.js"></script>
 
@@ -53,7 +55,7 @@ Open the public IP and your browser and you should get the Nginx 404 page.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-I have two existing microservices in my demo repo which both use a Service of the type LoadBalancer. Before you can use the Nginx Ingress controller, you have to change the Service type to ClusterIP. Since the microservices use Helm, you can easily override values using the values.yaml file. I prefer to have my overrides in the values.release.yaml file and therefore, I added the following code there:
+I have two existing microservices in my demo repo which both use a Service of the type LoadBalancer. Before you can use the Nginx Ingress controller, you have to change the Service type to ClusterIP. Since the microservices use Helm, you can easily override values using the values.yaml file and therefore, I added the following code there:
 
 <script src="https://gist.github.com/WolfgangOfner/9d246277f534181e3d08bee41076a224.js"></script>
 
@@ -61,9 +63,9 @@ That is all that is needed for the Service. Next, you have to create an Ingress 
 
 <script src="https://gist.github.com/WolfgangOfner/51af9647020af28339067ee0d9a1c9a5.js"></script>
 
-This might look complicated at first glance but it is a simple Nginx rule. It starts with an if condition which lets you control whether the Ingress object should be created. Then it sets some metadata like name and namespace and inside the rules, it defines the path and the port of the application. If you use Kubernetes 1.14 to 1.18, you have to use apiVersion: networking.k8s.io/v1beta1. I am using Kubernetes 1.19.9 and therefore can use the GA version of the API.
+This might look complicated at first glance but it is a simple Nginx rule. It starts with an if condition which lets you control whether the Ingress object should be created. Then it sets some metadata like name and namespace and inside the rules, it defines the path and the port of the application. If you use Kubernetes 1.14 to 1.18, you have to use apiVersion: networking.k8s.io/v1beta1. I am using Kubernetes 1.22.6 and therefore can use the GA version of the API.
 
-Lastly, add the values for the Ingress object to the values.release.yaml file:
+Lastly, add the values for the Ingress object to the values.yaml file:
 
 <script src="https://gist.github.com/WolfgangOfner/8c3a22c61dcbee7250a38e20f2feceb5.js"></script>
  
@@ -83,19 +85,17 @@ This works fine but when you try to deploy the second microservice, you will get
 
 ## Add individual Paths to the Microservices
 
-The solution for this problem is to add different paths for each microservice. For example, for the CustomerApi, I use /customerapi-test/?(.*) and for the OrderApi /orderapi-test/?(.*). Additionally, you have to configure this path in the Startup class of each microservice with the following code inside the Configure method:
+The solution to this problem is to add different paths for each microservice. For example, for the CustomerApi, I use /customerapi-test/?(.*) and for the OrderApi /orderapi-test/?(.*). Additionally, you have to configure this path in the Startup class of each microservice with the following code inside the Configure method:
 
 <script src="https://gist.github.com/WolfgangOfner/68f71a6bd286cdff9c4ac1e2cb9e82c1.js"></script>
 
-The values.release.yaml file will contain the following code at the end:
+The values.yaml file will contain the following code at the end:
 
 <script src="https://gist.github.com/WolfgangOfner/2da2eca839fc2824125511dc934a8dea.js"></script>
 
-Note: by default, ingress is disabled to make it easier for readers to use the microservices. If you want to use the Ingress object, update the enabled value of the ingress section in the values.release.yaml file to true.
-
 ## Testing the Microservice with the Nginx Ingress Controller
 
-After you deployed both microservices, check if you can access the swagger json with the following URL: <Public-IP>/customerapi-test/swagger/v1/swagger.json. This should display the json file:
+After you deployed both microservices, check if you can access the swagger JSON with the following URL: <Public-IP>/customerapi-test/swagger/v1/swagger.json. This should display the JSON file:
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/05/Accessing-the-Swagger-json-file.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/Accessing-the-Swagger-json-file.jpg" alt="Accessing the Swagger json file" /></a>
@@ -125,7 +125,7 @@ When you try to access the Swagger UI, you will get an error message though:
   </p>
 </div>
 
-It is inconvenient that this is not working but I will leave it as it is for now. [In my next post](/onfigure-custom-urls-to-access-microservices-running-in-kubernetes), I will replace the IP address with a DNS entry which should fix the problem. Lastly, check if the second microservice is also working with the following URL: <Public-IP>/orderapi-test/swagger/v1/swagger.json
+It is inconvenient that this is not working but I will leave it as it is for now. [In my next post](/configure-custom-urls-to-access-microservices-running-in-kubernetes), I will replace the IP address with a DNS entry which should fix the problem. Lastly, check if the second microservice is also working with the following URL: <Public-IP>/orderapi-test/swagger/v1/swagger.json
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/05/The-OrderApi-works-too.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-OrderApi-works-too.jpg" alt="The OrderApi works too" /></a>
@@ -137,7 +137,9 @@ It is inconvenient that this is not working but I will leave it as it is for now
 
 ## Conclusion
 
-Nginx can be used as an Ingress controller for your Kubernetes cluster. The setup can be done within minutes using the Helm chart and allows you to have a single entry point into your cluster. This demo used two microservices and provides basic routing to access them. In my next post, I will map a DNS name to the IP and access the microservices using different DNS names.
+Nginx can be used as an Ingress controller for your Kubernetes cluster. The setup can be done within minutes using the Helm chart and allows you to have a single entry point into your cluster. This demo used two microservices and provides basic routing to access them. 
+
+[In my next post](/configure-custom-urls-to-access-microservices-running-in-kubernetes), I will map a DNS name to the IP and access the microservices using different DNS names.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

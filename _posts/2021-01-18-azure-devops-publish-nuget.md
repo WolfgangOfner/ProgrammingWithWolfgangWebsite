@@ -11,9 +11,11 @@ description: If you want to share your NuGet packages, you should automatically 
 
 In this post, I will extend my previously created Azure DevOps pipeline and deploy the NuGet package to nuget.org so everyone can download and use it.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Create a Nuget.org API Key
 
-To be able to push NuGet packages to nuget.org, you have to obtain an API key first. Go to nuget.org and signup or login and then click on your profile and select API Keys.
+To be able to push NuGet packages to nuget.org, you have to obtain an API key first. Go to nuget.org and signup or log in and then click on your profile and select API Keys.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/01/Create-a-nuget-api-key.jpg"><img loading="lazy" src="/assets/img/posts/2021/01/Create-a-nuget-api-key.jpg" alt="Create a NuGet api key" /></a>
@@ -45,7 +47,7 @@ Make sure that you click Copy after the API key is generated. This is the only t
 
 ## Create a NuGet Connection in Azure DevOps
 
-The next step is to use the previously created API key to connect Azure DevOps with nuget.org. In your Azure DevOps project, click on Project settings and then Service connections. There click on New service connection and select NuGet. Select ApiKey as the authentication method, enter https://api.nuget.org/v3/index.json as the feed URL, and paste the previously create NuGet API key in the ApiKey textbox. Provide a name and then click Save.
+The next step is to use the previously created API key to connect Azure DevOps with nuget.org. In your Azure DevOps project, click on Project settings and then Service connections. There click on New service connection and select NuGet. Select ApiKey as the authentication method, enter https://api.nuget.org/v3/index.json as the feed URL and paste the previously create NuGet API key in the ApiKey textbox. Provide a name and then click Save.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/01/Create-a-nuget-service-connection.jpg"><img loading="lazy" src="/assets/img/posts/2021/01/Create-a-nuget-service-connection.jpg" alt="Create a NuGet service connection" /></a>
@@ -61,7 +63,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 The last step is to use the previously created service connection to extend the Azure DevOps pipeline and push the NuGet package to nuget.org. Publishing to nuget.org is almost the same as publishing to a private NuGet feed.
 
-First, I create a name stage in which I download the previously created NuGet package.
+First, I create a new stage in which I download the previously created NuGet package.
 
 <script src="https://gist.github.com/WolfgangOfner/dba1efbc1a4995115fe0ed981941dc75.js"></script>
 
@@ -93,7 +95,7 @@ Luckily there is a workaround until (if ever) Microsoft fixes the problem. You c
 
 <script src="https://gist.github.com/WolfgangOfner/d19c40fc568a6f638c26acb5b2b3694c.js"></script>
 
-You tell the command which packages it should push, -s declares the destination, and -k provides the nuget.org API key. The best practice for secret variables is to create a new variable inside the pipeline by clicking on Variables on the top right corner and then click + on the pop-out. Provide a name and previously copied API key. Additionally, check "Keep this value secret" so no user can read the value. Click on OK and run the pipeline again.
+You tell the command which packages it should push, -s declares the destination, and -k provides the nuget.org API key. The best practice for secret variables is to create a new variable inside the pipeline by clicking on Variables in the top right corner and then click + on the pop-out. Provide a name and previously copied API key. Additionally, check "Keep this value secret" so no user can read the value. Click on OK and run the pipeline again.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/01/Publishing-the-nuget-package-worked.jpg"><img loading="lazy" src="/assets/img/posts/2021/01/Publishing-the-nuget-package-worked.jpg" alt="Publishing the NuGet package worked" /></a>

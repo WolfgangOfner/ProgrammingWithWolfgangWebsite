@@ -10,6 +10,8 @@ CQRS stands for Command Query Responsibility Segregation and is used to use diff
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is CQRS?
 
 CQRS or Command Query Responsibility Segregation is a design pattern to separate the read and write processes of your application. Read operations are called Queries and write operations are called Commands. Open one of the two microservices and you will see in the service project two folders, Command and Query. Inside the folder, you can see a handler and a command or query. They are used for the mediator, <a href="/mediator-pattern-in-asp-net-core-3-1" target="_blank" rel="noopener noreferrer">which I will describe in my next post</a>.
@@ -26,7 +28,7 @@ In the following examples, you will see that CQRS is simpler than it sounds. Sim
 
 ### Taking a look at a Query
 
-In the CustomerApi solution, you can find the GetCustomerByIdQueryHandler inside the service project. Since this class is a query, it is used to read data. Inside the class is a Handle method, which calls the repository to get the the first customer where the id matches the passed id.
+In the CustomerApi solution, you can find the GetCustomerByIdQueryHandler inside the service project. Since this class is a query, it is used to read data. Inside the class is a Handle method, which calls the repository to get the first customer where the id matches the passed id.
 
 <script src="https://gist.github.com/WolfgangOfner/b6b961f3774cfdb4711ee43a247f2e32.js"></script>
 
@@ -43,21 +45,21 @@ CQRS offers the following advantages:
   * Separation of Concern, therefore simpler classes and models
   * Better scalability since you can have a microservice only for queries and one only for commands. Reads occur often way more often than writes.
   * Better performance as you can use a database for reading and a database for writing. You could also use a fast cache like Redis for the reading.
-  * Event sourcing: it is not part of CQRS but often used together. Event sourcing is a collection of events that enables you to have the exact state of an object at any time.
+  * Event sourcing: it is not part of CQRS but they are often used together. Event sourcing is a collection of events that enables you to have the exact state of an object at any time.
 
 ### Disadvantages of CQRS
 
-As everything, CQRS also comes with some downside:
+As always, CQRS also comes with some downside:
 
-  * More complexity especially in bigger systems because often you have reads which also update some data, for example, a user logs in (read) and you want to store its IP and time of login (write)
-  * Eventual consistency  when using a database for writing and one for reading. The read database needs to be synchronized to hold the new data. This could take a while.
+  * More complexity especially in bigger systems because often you have reads which also update some data, for example, a user logs in (read) and you want to store its IP and time of login (write).
+  * Eventual consistency when using a database for writing and one for reading. The read database needs to be synchronized to hold the new data. This could take a while.
   * Not applicable in all projects: CQRS brings some complexity to your system and especially simple applications that do only basic CRUD operations shouldn&#8217;t use CQRS.
 
 ## Conclusion
 
-This post gave a short overview of CQRS and how it can be used to separate the read and write operations in your application. In my demo code, I only use it to separate these operations but you could put the queries and commands in different solutions that allow you to independently scale them. <a href="/mediator-pattern-in-asp-net-core-3-1" target="_blank" rel="noopener noreferrer">In my next post</a>, I will describe the mediator pattern and how I use it to remove dependencies between commands and queries.
+This post gave a short overview of CQRS and how it can be used to separate the read and write operations in your application. In my demo code, I only use it to separate these operations but you could put the queries and commands in different solutions that allow you to independently scale them. 
 
-Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
+<a href="/mediator-pattern-in-asp-net-core-3-1" target="_blank" rel="noopener noreferrer">In my next post</a>, I will describe the mediator pattern and how I use it to remove dependencies between commands and queries.
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

@@ -11,11 +11,13 @@ Most examples of building Docker containers just use the latest tag to deploy or
 
 Today, I will show how to add semantic versioning to your CI/CD pipeline in Azure DevOps to automatically create a meaningful version for your Docker images.
 
-## Why you shouldn't use the latest tag
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
+## Why you shouldn't use the latest Tag
 
 The latest tag is simple and there is nothing wrong with using it if you want to try out something. In a production environment, you shouldn't use it because you want to have full control and knowledge of what version you are running at any given time. 
 
-Let's say you have a test and production Kubernetes cluster and both run images using the latest tag. If a developer finishes a new feature the CI/CD pipeline creates a new image with the latest tag and deploys it to the test environment. That's fine but what if a pod in your production cluster gets restarted? Kubernetes starts the image with the latest tag and suddenly you have the new feature running on one pod in your production cluster. If this new feature also needs changes on the database schema, the pod won't start because the changes aren't deployed yet. This will lead to more and more failing pods until your application is offline.
+Let's say you have a test and production Kubernetes cluster and both run images using the latest tag. If a developer finishes a new feature the CI/CD pipeline creates a new image with the latest tag and deploys it to the test environment. That's fine but what if a pod in your production cluster gets restarted? Kubernetes starts the image with the latest tag and suddenly you have the new feature running on one pod in your production cluster. If this new feature also needs changes to the database schema, the pod won't start because the changes aren't deployed yet. This will lead to more and more failing pods until your application is offline.
 
 Another problem you might run into when using the latest tag is the caching mechanism of Docker. Docker is caching quite aggressively. By default, Docker checks if the image exists locally, and if it does, Docker starts it. This means that once you have the image with the latest tag, Docker will not update it and always start the outdated version. 
 
@@ -49,7 +51,7 @@ This opens a new page where you can either select your Azure DevOps Services org
   </p>
 </div>
 
-This extension calculates the version sets it in many different variations in different variables. On the following screenshot, you can see all available variables and how their values look like:
+This extension calculates the version and sets it in many different variations in different variables. On the following screenshot, you can see all available variables and what their values look like:
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/Available-variables-with-GitTools.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Available-variables-with-GitTools.jpg" alt="Available variables with GitTools" /></a>
@@ -105,7 +107,7 @@ Having a semantic version like 0.1.128 is way more meaningful than 358 and helps
 
 ### Create a Version Number for Feature Branches
 
-Usually, only the master branch is used to create new versions of an application. Sometimes a developer wants to create an image to test new changes before merging the feature to the master branch. When you run the pipeline with a feature branch (every branch != master), the Build Versioning task will create a preview version. This means that you still get a semantic version but the task adds the branch name and a counter to the end of the version, for example, 0.1.131-myFeature0000.
+Usually, only the master branch is used to create new versions of an application. Sometimes a developer wants to create an image to test new changes before merging the feature into the master branch. When you run the pipeline with a feature branch (every branch != master), the Build Versioning task will create a preview version. This means that you still get a semantic version but the task adds the branch name and a counter to the end of the version, for example, 0.1.131-myFeature0000.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/Feature-branch-versioning.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Feature-branch-versioning.jpg" alt="Feature branch versioning" /></a>
@@ -199,7 +201,7 @@ The new version 0.1.43 is way more meaningful than 358 and helps users of the im
 
 ### Create a Version Number for Feature Branches
 
-Usually, only the master branch is used to create new versions of an application. Sometimes a developer wants to create an image to test new changes before merging the feature to the master branch. When you run the pipeline with a feature branch (every branch != master), the Build Versioning task will create a preview version. This means that you still get a semantic version but the task adds the branch name and a counter to the end of the version, for example, 0.1.44-versionnumber0000.
+Usually, only the master branch is used to create new versions of an application. Sometimes a developer wants to create an image to test new changes before merging the feature into the master branch. When you run the pipeline with a feature branch (every branch != master), the Build Versioning task will create a preview version. This means that you still get a semantic version but the task adds the branch name and a counter to the end of the version, for example, 0.1.44-versionnumber0000.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/Version-of-feature-branch.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Version-of-feature-branch.jpg" alt="Version of feature branch" /></a>

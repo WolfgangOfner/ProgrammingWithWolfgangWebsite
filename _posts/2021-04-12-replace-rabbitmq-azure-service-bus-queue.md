@@ -11,6 +11,8 @@ RabbitMQ is a great tool to connect microservices asynchronously but it also com
 
 In this post, I will add a new class to my microservice so I can switch between RabbitMQ and Azure Service Bus.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is Azure Service Bus
 
 Azure Service Bus is an enterprise messaging PaaS solution with many useful features. Some of these features are:
@@ -21,9 +23,9 @@ Azure Service Bus is an enterprise messaging PaaS solution with many useful feat
 - Dead message queues
 - Geo-disaster recovery
 
-Since it is a PaaS offering, Azure is managing the infrastructure which means that you as a developer can focus on implementing it and don't have to think about maintenance, upgrading, or monitoring of it. For this demo, I am using the Basic tier which has very limited features but only costs 0.043€ per million operations. In your production environment, you most likely will use the Standard tier.
+Since it is a PaaS offering, Azure is managing the infrastructure which means that you as a developer can focus on implementing it and don't have to think about maintaining, upgrading, or monitoring it. For this demo, I am using the Basic tier which has very limited features but only costs 0.043€ per million operations. In your production environment, you most likely will use the Standard tier.
 
-### Difference between Azure Service Bus and Azure Queue
+### Difference between Azure Service Bus Queue and Azure Queue
 
 Both queue solutions are very similar but Azure Service Bus comes with a First-In-First-Out guarantee. Additionally, it has more enterprise features in the Standard and Premium tier. For a more detailed comparison between Azure Service Bus and Azure Queue, see the <a href="https://docs.microsoft.com/en-us/azure/service-bus-messaging/service-bus-azure-and-service-bus-queues-compared-contrasted" target="_blank" rel="noopener noreferrer">documentation</a>.
 
@@ -49,7 +51,7 @@ Select your subscription, resource group, location, and pricing tier, and then p
   </p>
 </div>
 
-After the deployment, click on Queue and then add a new Queue. 
+After the deployment, click on Queues and then add a new queue. 
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/04/Create-a-new-Queue.jpg"><img loading="lazy" src="/assets/img/posts/2021/04/Create-a-new-Queue.jpg" alt="Create a new Queue" /></a>
@@ -81,7 +83,7 @@ After the queue is created, click on it and then select the Shared access polici
   </p>
 </div>
 
-We will use this SAS to allow the microservice to send messages to the queue. You can also give the manage permission if you want your microservice to be allowed to create queues but I prefer as few permissions as possible. Additionally, I will show in a future post how to create the infrastructure using an Azure DevOps CI/CD pipeline.
+We will use this SAS to allow the microservice to send messages to the queue. You can also give the manage permission if you want to allow your microservice to create queues but I prefer as few permissions as possible. Additionally, I will show in a future post [how to create the infrastructure using an Azure DevOps CI/CD pipeline](/use-infrastructure-as-code-to-deploy-infrastructure).
 
 ## Send Messages to the Azure Service Bus Queue from a Microservice
 
@@ -91,13 +93,13 @@ The Azure Service Bus Queue is created and configured and now we can configure t
 
 <script src="https://gist.github.com/WolfgangOfner/92945838d4751c6c601c0fd15b2954cf.js"></script>
 
-These settings container the Azure Service Bus queue name, the connection string, and also a switch to use RabbitMQ or Azure Service Bus Queue. I used the in-memory switch already in a previous post, [Use a Database with a Microservice running in Kubernetes](/microservice-with-database-kubernetes). The queue switch will work the same way and either register the RabbitMQ service or the Azure Service Bus Queue service. In the appsettings.Development.json file, add the UserabbitMq attribute and set it to true.
+These settings contain the Azure Service Bus queue name, the connection string, and also a switch to use RabbitMQ or Azure Service Bus Queue. I used the in-memory switch already in a previous post, [Use a Database with a Microservice running in Kubernetes](/microservice-with-database-kubernetes). The queue switch will work the same way and either register the RabbitMQ service or the Azure Service Bus Queue service. In the appsettings.Development.json file, add the UserabbitMq attribute and set it to true.
 
 Next, create a new class that will contain the Azure Service Bus options:
 
 <script src="https://gist.github.com/WolfgangOfner/f34227e6753663e041590fcdb8ec497c.js"></script>
 
-In the ConfigureServices method of the Startup.cs class, read the AzureServiceBus section into the previously created AzureServiceBusConfiguration classs:
+In the ConfigureServices method of the Startup.cs class, read the AzureServiceBus section into the previously created AzureServiceBusConfiguration class:
 
 <script src="https://gist.github.com/WolfgangOfner/7006891626f0dcc9dbcdc82475be87e5.js"></script>
 
@@ -157,7 +159,7 @@ First, click on Variables and add a new variable inside your Azure DevOps pipeli
   </p>
 </div>
 
-After adding the variable, add the following code to the values.release.yaml file.
+After adding the variable, add the following code to the values.yaml file.
 
 <script src="https://gist.github.com/WolfgangOfner/e3e9c3c43c06a2480d9a6cd8897cebb5.js"></script>
 
@@ -171,7 +173,7 @@ Cloud providers, especially Azure, offer a wide range of services. This allows d
 
 In [Automatically set Azure Service Bus Queue Connection Strings during the Deployment](/automatically-set-service-bus-queue-connection-string-during-deployment), I have replaced the variable with some automation to automatically read the connection string. This allows for a more flexible and robust deployment process.
 
-In my next post, I will show you how to replace the background service in the OrderApi with Azure Functions to use a serverless solution to process the messages on the queue.
+[In my next post](/azure-functions-process-queue-messages), I will show you how to replace the background service in the OrderApi with Azure Functions to use a serverless solution to process the messages on the queue.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

@@ -58,10 +58,10 @@ Once the routes are created, you can check that everything was applied correctly
 Create a couple of requests using your browser or the following loop "for i in $(seq 1 100); do curl -s -o /dev/null "http://$GATEWAY_URL/productpage"; done" and then go back to the Kiali graph dashboard. There you can see that the requests are only routed to v1 of the reviews service.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/08/The-Traffic-is-routed-evenly.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/The-Traffic-is-routed-evenly.jpg" alt="The Traffic is routed evenly" /></a>
+  <a href="/assets/img/posts/2021/08/The-Traffic-is-only-routed-to-V1.jpg"><img loading="lazy" src="/assets/img/posts/2021/08/The-Traffic-is-only-routed-to-V1.jpg" alt="The Traffic is only routed to V1" /></a>
   
   <p>
-   The Traffic is routed evenly
+   The Traffic is only routed to V1
   </p>
 </div>
 

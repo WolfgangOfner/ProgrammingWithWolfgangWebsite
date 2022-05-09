@@ -7,9 +7,11 @@ tags: [Azure DevOps, CI]
 description: DevOps is all about automation and making the process faster and more reliable. Adding approvals in the classic (old) editor in Azure DevOps is pretty simple but it's not as straightforward with the new YAML pipelines.
 ---
 
-DevOps is all about automation and making the process faster and more reliable. Sometimes a human must check a change or feature before it is deployed. This could be someone from QA or even marketing checking if the new design is as they wanted. Adding approvals in the classic (old) editor in Azure DevOps is pretty simple but it's not as straightforward with the new YAML pipelines.
+DevOps is all about automation and making the process faster and more reliable. Sometimes a human must check a change or feature before it is deployed. This could be someone from QA or even marketing checking if the new design is as they wanted it. Adding approvals in the classic (old) editor in Azure DevOps is pretty simple but it's not as straightforward with the new YAML pipelines.
 
-In this post, I will show how you can add approvals to your deployments when you use modern YAML pipelines.
+In this post, I will show how you can add approvals to your deployments when you use the modern YAML pipelines.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
 
 ## Add Approvals in the Classic Editor Pipeline
 
@@ -29,7 +31,7 @@ When you start the deployment, all approvers get an email to approve the deploym
 
 You can find my YAML pipeline on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/blob/master/Nuget/pipelines/Nuget-CI-CD.yml" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-Adding approvals when using YAML pipelines is a bit more work but not complicated. In your Azure DevOps project open Pipelines --> Environments. If you ran my full pipeline, you will already have two environments, nuget-publish-internal and nuget-publish-public. The environments are created (or referenced if they already exist) with the environment property in the pipeline as shown in the following code:
+Adding approvals when using YAML pipelines is a bit more work but not complicated. In your Azure DevOps project open Pipelines --> Environments. If you ran my NuGet pipeline, you will already have two environments, nuget-publish-internal and nuget-publish-public. The environments are created (or referenced if they already exist) with the environment property in the pipeline as shown in the following code:
 
 <script src="https://gist.github.com/WolfgangOfner/1d25db75360db6d916939f213340677e.js"></script>
 
@@ -37,7 +39,7 @@ If you don't have an environment yet, create one by clicking on New environment.
 
 ### Configure an Environment
 
-I want to add an approval to the publish task to nuget.org because I want only certain versions published. To do that, click on nuget-publish-public. If you ran the deployment already, you will see a list of all runs. If you haven't ran the deployment, you will see a get started page:
+I want to add an approval to the publish task to nuget.org because I want only certain versions published. To do that, click on nuget-publish-public. If you ran the deployment already, you will see a list of all runs. If you haven't run the deployment yet, you will see a get started page:
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/01/Configure-an-environment.jpg"><img loading="lazy" src="/assets/img/posts/2021/01/Configure-an-environment.jpg" alt="Configure an environment" /></a>
@@ -69,7 +71,7 @@ Click on the three dots on the right side and select Approvals and checks.
   </p>
 </div>
 
-Click on Approvals and the config flyout appears. I add myself as an approver, to keep it simple and allow to approve my own runs. I leave the timeout at 30 days. If you add instructions to the approvers, they will get them in the notification email. Click on Create and the approval gets created.
+Click on Approvals and the config flyout appears. I add myself as an approver, to keep it simple and allow me to approve my own runs. I leave the timeout at 30 days. If you add instructions to the approvers, they will get them in the notification email. Click on Create and the approval gets created.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/01/Configure-the-approval.jpg"><img loading="lazy" src="/assets/img/posts/2021/01/Configure-the-approval.jpg" alt="Configure the approval" /></a>

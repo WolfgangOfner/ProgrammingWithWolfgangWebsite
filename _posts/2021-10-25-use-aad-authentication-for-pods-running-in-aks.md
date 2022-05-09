@@ -35,7 +35,7 @@ Some resources in Azure like App Service or Azure Container Registry allow you t
 
 ### User-Assigned Managed Identity
 
-A user-assigned managed identity is a standalone resource in Azure. It can be assigned the resource and can be used in the same way as the system-assigned managed identity to authenticate that resource. The user-assigned managed identity has an independent lifecycle. This means that you can delete the Azure resource where the identity is assigned to and the identity does not get deleted.
+A user-assigned managed identity is a standalone resource in Azure. It can be assigned the resource and can be used in the same way as the system-assigned managed identity to authenticate that resource. The user-assigned managed identity has an independent lifecycle. This means that you can delete the Azure resource to which the identity is assigned and the identity does not get deleted.
 
 ## Enable Managed Identities for Applications running in Azure Kubernetes Service (AKS)
 
@@ -61,7 +61,7 @@ Next, create an AKS cluster with a managed identity and the azure network plugin
 
 <script src="https://gist.github.com/WolfgangOfner/343c7136a87781e143047553c51f096d.js"></script>
 
-After the AKS cluster is created, retrieve the client Id of the managed identity of the cluster. Then use this client Id to assign the Managed Identity Operator and Virtual Machine Contributor role to the managed identity.
+After the AKS cluster is created, retrieve the client Id of the managed identity of the cluster. Then use this client Id to assign the Managed Identity Operator and Virtual Machine Contributor roles to the managed identity.
 
 <script src="https://gist.github.com/WolfgangOfner/23bff74abc3a525743af89dbade2a6cf.js"></script>
 
@@ -143,11 +143,11 @@ I prefer Octant as my dashboard. You can find more information about the usage a
 
 There was a lot going on during the demo which might be hard to understand at first. Let's go through it step by step.
 
-### Azure Kubernetes Service Cluster installation
+### Azure Kubernetes Service Cluster Installation
 
 The AKS cluster is created with the flags --network-plugin azure and --enable-managed-identity. AKS supports two network modes, kubenet and azure, whereas kubenet is the default mode. 
 
-AAD Pod Identity is disabled by default on clusters using the Kubnet network mode. This is due to security concerns because Kubenet is susceptible to APR spoofing. This makes it possible for pods to impersonate other pods and gain access to resources which they are not allowed to access. The Azure network plugin prevents ARP Spoofing.
+AAD Pod Identity is disabled by default on clusters using the Kubnet network mode. This is due to security concerns because Kubenet is susceptible to APR spoofing. This makes it possible for pods to impersonate other pods and gain access to resources that they are not allowed to access. The Azure network plugin prevents ARP Spoofing.
 
 The second flag --enable-managed-identity creates a service principal. This service principal is used to authenticate against the AAD and retrieve tokens for the pods. Adding the Managed Identity Operator and Virtual Machine Contributor roles to the service principal is necessary so it can assign and un-assign identities from the worker nodes that run on the VM scale set.
 

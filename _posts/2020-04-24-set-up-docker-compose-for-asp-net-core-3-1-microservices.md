@@ -8,6 +8,8 @@ description: Today, I will explain how docker-compose works and how it can be us
 ---
 <a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my last post</a>, I described how to dockerize my microservices. To start the whole application, you have to start both microservices and RabbitMQ. Today, I will add a docker-compose file which is a tool to easily run multi-container applications.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is the Docker-Compose File?
 
 Docker-compose is a yml file in which you can set up all the containers your application needs to run. Simplified, it executes several docker run commands after each other. If you are used to docker run commands, the content of the compose file will look familiar. Let's have a look at the content of the file:
@@ -28,7 +30,11 @@ To get started with docker-compose, I highly recommend the website <a href="http
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-To execute your compose file, open Powershel, and navigate to the location of your file. In my demo code, I am providing the compose file in the root folder. Once you navigated to your file, use the following command: docker-compose up -d. The -d parameter executes the command detached. This means that the containers run in the background and don&#8217;t block your Powershell window.
+To execute your compose file, open Powershell, and navigate to the location of your file. In my demo code, I am providing the compose file in the root folder. Once you navigated to your file, use the following command: 
+
+<script src="https://gist.github.com/WolfgangOfner/303e0080c49f7e710e7f1662dfb38a67.js"></script>
+
+The -d parameter executes the command detached. This means that the containers run in the background and don&#8217;t block your Powershell window.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Start-multiple-container-with-docker-compose.jpg" alt="Start multiple container with docker-compose" /></a>
@@ -48,15 +54,19 @@ To prove that all three containers are running, use docker ps.
   </p>
 </div>
 
-Another great feature of docker-compose is, that you can stop all your application with a single command: docker-compose down.
+Another great feature of docker-compose is, that you can stop all your applications with a single command:
+
+<script src="https://gist.github.com/WolfgangOfner/4766e9e96ec226d720c084258ea89afe.js"></script>
 
 ## Build and run Containers
 
-You dont have to use images from Docker hub in your compose file, you can also build images and then run them. To build an image, use the build section and set the context to the location of the Dockerfile. I have created a new Dockerfile, called Dockerfile.Build which looks as the original one except that it doesn't contain any tests or anything that might slowdown the build.
+You don't have to use images from Dockerhub in your compose file, you can also build images and then run them. To build an image, use the build section and set the context to the location of the Dockerfile. I have created a new Dockerfile, called Dockerfile.Build which looks like the original one except that it doesn't contain any tests or anything that might slow down the build.
 
 <script src="https://gist.github.com/WolfgangOfner/a253392bf146f6d437c322e492057924.js"></script>
 
-I named this file docker-compose.Build. You can use the -f parameter to specify the file in your docker-compose command: docker-compose -f docker-compose.Build.yml up -d.
+I named this file docker-compose.Build. You can use the -f parameter to specify the file in your docker-compose command: 
+
+<script src="https://gist.github.com/WolfgangOfner/273b8f1d5ae53d33e95f17445ed42d59.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/Build-images-with-docker-compose.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Build-images-with-docker-compose.jpg" alt="Build images with docker-compose" /></a>
@@ -68,13 +78,11 @@ I named this file docker-compose.Build. You can use the -f parameter to specify 
 
 ## How can Containers talk to each other?
 
-When starting multiple containers with a compose file, a default network is created in which all containers are placed. Containers can reach each other with the container name. For example, the customerapi can send data to the queue using the name rabbitmq.
+When starting multiple containers with a compose file, a default network is created in which all containers are placed. Containers can reach each other with the container name. For example, the CustomerApi can send data to the queue using the name Rabbitmq.
 
 ## Conclusion
 
-In today's post, I talked about docker-compose and how it can be used to easily set up applications with multiple containers.With this post, most of the features of the two microservices are implemented. <a href="/build-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">With my next post</a>, I will start to focus more on the DevOps process. This means that I will create CI pipelines, run tests automatically during pull requests and later on will automatically deploy the microservices.
-
-Note: On October 11, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
+In today's post, I talked about docker-compose and how it can be used to easily set up applications with multiple containers.With this post, most of the features of the two microservices are implemented. <a href="/build-net-core-in-ci-pipeline-in-azure-devops" target="_blank" rel="noopener noreferrer">With my next post</a>, I will start to focus more on the DevOps process. This means that I will create CI pipelines, run tests automatically during pull requests, and later on will automatically deploy the microservices.
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

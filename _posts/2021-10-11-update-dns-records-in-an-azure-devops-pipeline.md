@@ -38,7 +38,7 @@ Write-Host can be used to make the variable accessible outside of the task.
 
 <script src="https://gist.github.com/WolfgangOfner/d27336b68ac4cf2cf5b5e5968575f0e0.js"></script>
 
-Unfortunately, at this time it is not possible to update DNS records in Azure using Azure CLI. Therefore, you have first have to delete the existing records and then add new ones. To delete all outdated DNS records, iterate over the previously created list of DNS records. Additionally, you have to first get the IP address of each DNS record to be able to delete it. If the IP address is empty or null, nothing will happen.
+Unfortunately, at this time it is not possible to update DNS records in Azure using Azure CLI. Therefore, you have to delete the existing records first and then add new ones. To delete all outdated DNS records, iterate over the previously created list of DNS records. Additionally, you have to get the IP address of each DNS record to be able to delete it. If the IP address is empty or null, nothing will happen.
 
 <script src="https://gist.github.com/WolfgangOfner/6e2cbb4776ea9a0fef934b9adc73abb1.js"></script>
 

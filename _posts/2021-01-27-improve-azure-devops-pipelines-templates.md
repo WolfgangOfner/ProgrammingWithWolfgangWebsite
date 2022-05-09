@@ -4,14 +4,16 @@ date: 2021-01-27
 author: Wolfgang Ofner
 categories: [DevOps, Kubernetes]
 tags: [Azure DevOps, CI, YAML, AKS, Azure, Helm, Docker]
-description: YAML pipelines can get quite long and unclear over time. Templates can be used in several pipelines reducing duplicate code.
+description: YAML pipelines can get quite long and unclear over time. Templates can be used in several pipelines to reduce duplicate code.
 ---
 
-YAML pipelines can get quite long and unclear over time. In programming, developers use several files to separate logic apart to make the code easier to understand. The same is possible using templates in YAML pipelines. Additionally, these templates can be used in several pipelines reducing duplicate code.
+YAML pipelines can get quite long and unclear over time. In programming, developers use several files to separate logic to make the code easier to understand. The same is possible using templates in YAML pipelines. Additionally, these templates can be used in several pipelines reducing duplicate code.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
 
 ## YAML Pipelines without Templates
 
-[In my last post](/deploy-kubernetes-azure-devops), I worked on a pipeline that built a .NET 5 application, ran tests, pushed a docker image, and deployed it to Kubernetes using Helm. The pipeline hat 143 lines of code in the end. It looked like a wall of text and might be overwhelming at first glance.
+[In my last post](/deploy-kubernetes-azure-devops), I worked on a pipeline that built a .NET 5 application, ran tests, pushed a docker image, and deployed it to Kubernetes using Helm. The pipeline had 143 lines of code in the end. It looked like a wall of text and might be overwhelming at first glance.
 
 <script src="https://gist.github.com/WolfgangOfner/930afa356112ef2caf15d863c17a3e49.js"></script>
 
@@ -19,9 +21,9 @@ You can find this pipeline on <a href="https://github.com/WolfgangOfner/Microser
 
 ## What Pipeline Templates are 
 
-Templates let you split up your pipeline into several files (templates) and also allow you to reuse these templates either in the same or in multiple pipelines. As a developer, you may know the Separation of Concerns principle. Templates are basically the same for pipelines. 
+Templates let you split up your pipeline into several files (templates) and also allow you to reuse these templates either in the same pipeline or in multiple ones. As a developer, you may know the Separation of Concerns principle. Templates are basically the same for pipelines. 
 
-You can pass parameters into the template and also set default values for these parameters. Passing parameters is not mandatory because a previously defined variable would still work inside the template. It is best practice to pass parameters to make the usage more clear and make the re-usage easier.
+You can pass parameters into the template and also set default values for these parameters. Passing parameters is not mandatory because a previously defined variable would still work inside the template. It is best practice to pass parameters to make the usage clearer and make the re-usage easier though.
 
 Another use case for templates is to have them as a base for pipelines and enforce them to extend the template. This approach is often used to ensure a certain level of security in the pipeline.
 
@@ -31,13 +33,13 @@ I like to place my templates in a templates folder inside the pipelines folder. 
 
 ### Create Templates without Parameters
 
-The first template I create is for the build versioning task. To do that, I create a new file, called BuildVersioning.yml inside the templates folder and copy the BuildVersioning task from the pipeline into the template. The only additionaly step I have to take is use step: at the beginning of the template and intend the whole task. The finished template looks as follows:
+The first template I create is for the build versioning task. To do that, I create a new file, called BuildVersioning.yml inside the templates folder and copy the BuildVersioning task from the pipeline into the template. The only additional step I have to take is to use "step:" at the beginning of the template and intend the whole task. The finished template looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/72708ad4760695e7da8138451bf3936c.js"></script>
 
 ### Create Templates with Parameters
 
-Creating a template with parameters is the same as without parameters except that parameters get places at the beginning of the file. This section starts with the parameters keyword and then lists the parameter name, type, and a default value. If you don't have a default value, leave it empty.
+Creating a template with parameters is the same as without parameters except that parameters get placed at the beginning of the file. This section starts with the parameters keyword and then lists the parameter name, type, and a default value. If you don't have a default value, leave it empty.
 
 <script src="https://gist.github.com/WolfgangOfner/a3aa8e09ac88333f0d3ddd44bf75a4fe.js"></script>
 
@@ -49,15 +51,15 @@ I placed all tasks in a couple of templates. To reference these templates use th
 
 <script src="https://gist.github.com/WolfgangOfner/754474f9c3bce6355281e5b9064a98e6.js"></script>
 
-If a template needs parameters, use the parameters key word and add all needed parameters:
+If a template needs parameters, use the parameters keyword and add all needed parameters:
 
 <script src="https://gist.github.com/WolfgangOfner/7e6d7f9ddec6dd1817ddca215b4e23e8.js"></script>
 
-I put all tasks into templates and tried to group what belongs together. The pipeline looks as follows now:
+I put all tasks into templates and tried to group what belonged together. The pipeline looks as follows now:
 
 <script src="https://gist.github.com/WolfgangOfner/1722a650a642897cf0699b86733e7640.js"></script>
 
-The pipeline has now 51 instead of 143 lines of code and I find it way easier to find certain parts of the code. 
+The pipeline has now 51 instead of 143 lines of code and I think that it is way easier to find certain parts of the code now. 
 
 ## Running the Pipeline
 

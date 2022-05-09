@@ -7,7 +7,9 @@ categories: [DevOps, Docker]
 tags: [Azure DevOps, CI, DevOps, Docker, Docker Hub]
 description: Building Docker images in an Azure DevOps CI Pipeline enables you to easily take your build pipeline into any other system and run it there.
 ---
-<a href="/run-the-ci-pipeline-during-pull-request/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to build a .NET Core Microservice with an Azure DevOps CI pipeline. Today, I want to build these microservices in an other Azure DevOps CI pipeline and push the images to Docker Hub.
+<a href="/run-the-ci-pipeline-during-pull-request/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to build a .NET Core Microservice with an Azure DevOps CI pipeline. Today, I want to build these microservices in another Azure DevOps CI pipeline and push the images to Docker Hub.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
 
 ## Set up a Service Connection to Docker Hub
 
@@ -31,7 +33,7 @@ This opens a pop-up where you select Docker Registry.
   </p>
 </div>
 
-On the next page, select Docker Hub as your Registry type, enter your Docker ID, password and set a name for your connection. Then click Verify and save.
+On the next page, select Docker Hub as your Registry type, enter your Docker ID, and password, and set a name for your connection. Then click Verify and save.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/09/Configure-the-service-connection.jpg"><img loading="lazy" src="/assets/img/posts/2020/09/Configure-the-service-connection.jpg" alt="Configure the service connection for the DevOps CI pipeline" /></a>
@@ -43,7 +45,7 @@ On the next page, select Docker Hub as your Registry type, enter your Docker ID,
 
 ## Create a new Azure DevOps CI Pipeline
 
-After setting up the service connection, create a new CI Pipeline. Select the source code location and then any template. After the yml file is created, delete its content. For more details on creating a Pipeline, see my post "<a href="/run-the-ci-pipeline-during-pull-request/" target="_blank" rel="noopener noreferrer">Run the CI Pipeline during a Pull Request</a>".
+After setting up the service connection, create a new CI Pipeline. Select the source code location and then any template. After the yml file is created, delete its content. For more details on creating a Pipeline, see my post <a href="/run-the-ci-pipeline-during-pull-request/" target="_blank" rel="noopener noreferrer">Run the CI Pipeline during a Pull Request</a>.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/11/Create-an-empty-DevOps-CI-pipeline.jpg"><img loading="lazy" src="/assets/img/posts/2020/11/Create-an-empty-DevOps-CI-pipeline.jpg" alt="Create an empty DevOps CI pipeline" /></a>
@@ -55,7 +57,7 @@ After setting up the service connection, create a new CI Pipeline. Select the so
 
 ### Configure the Pipeline
 
-First, you have to set up some basic configuration for the pipeline. I will give it a name, set a trigger to run the pipeline every time a commit is made to master and use an Ubuntu agent. Additionally, the build should only be triggered if changes to the CustomerApi folder are made. You can do this with the following code:
+First, you have to set up some basic configuration for the pipeline. I will give it a name, and set a trigger to run the pipeline every time a commit is made to master and use an Ubuntu agent. Additionally, the build should only be triggered if changes to the CustomerApi folder are made. You can do this with the following code:
 
 <script src="https://gist.github.com/WolfgangOfner/62596172d6912cd5e5029c05a50e5301.js"></script>
 
@@ -63,13 +65,13 @@ In the next section, I set up the variables for my pipeline. Since this is a ver
 
 <script src="https://gist.github.com/WolfgangOfner/43caf7aa8921fa30fa9e97b0792a09da.js"></script>
 
-If you want better versioning of the Docker images, use one of the many extensions from the marketplace. In my projects, we use one of our own plugins which you can find <a href="https://marketplace.visualstudio.com/items?itemName=4tecture.BuildVersioning" target="_blank" rel="noopener noreferrer">here</a>.
+If you want better versioning of the Docker images, use one of the many extensions from the marketplace. In my projects, I use GitTools which you can find <a href="https://marketplace.visualstudio.com/items?itemName=gittools.gittools" target="_blank" rel="noopener noreferrer">here</a>.
 
 ### Build the Docker Image
 
 Now that everything is set up, let's add a task to build the image. Before you can do that, you have to add a stage and a job. You can use whatever name you want for your stage and job. For now, you only need one. It is good practice to use a meaningful name though.
 
-Inside the job, add a task for Docker. Inside this task add your previously created service connection, the location to the dockerfile, an image name, and the build context. As the command use Build an Image. Note that I use version 1 because version 2 was not working and resulted in an error I could not resolve.
+Inside the job, add a task for Docker. Inside this task add your previously created service connection, the location to the dockerfile, an image name, and the build context. As the command use "Build an Image". Note that I use version 1 because version 2 was not working and resulted in an error I could not resolve.
 
 <script src="https://gist.github.com/WolfgangOfner/1b4732e389d12d961c9db14d69b44c01.js"></script>
 
@@ -125,7 +127,7 @@ The pipeline ran successfully and if I go to <a href="https://hub.docker.com/r/w
   </p>
 </div>
 
-As practice, you could set up the CI pipeline for the OrderApi. The pipeline will look exactly the same, except that CustomerApi will be replaced with OrderApi. You can find the finished pipelines on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a> inside the pipelines folder of each solution.
+As a practice, you could set up the CI pipeline for the OrderApi. The pipeline will look exactly the same, except that CustomerApi will be replaced with OrderApi. You can find the finished pipelines on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a> inside the pipelines folder of each solution.
 
 ## Conclusion
 

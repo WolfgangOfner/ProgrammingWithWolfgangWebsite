@@ -21,9 +21,9 @@ Splitting up the pipeline into a separate CI and CD pipeline is quite simple and
 
 The only thing you have to consider before splitting up the CI/CD pipeline is how the CD pipeline knows that it should run and how it can access files from the CI pipeline.
 
-## Edit the pipeline for Continuous Integration
+## Edit the Pipeline for Continuous Integration
 
-Continuous Integration or CI means that you want to integrate new features always into the master branch and have the branch in a deployable state. This means that I have to calculate the build version number, build the Docker image, push it to Dockerhub and create the Helm package which will be used in the CD pipeline for the deployment. All this exists already and the only step I have to add is publishing the values.release.yaml file and the Helm package to the ArtifactStagingDirectory. This is a built-in variable of Azure DevOps and allows the CD pipeline to access the Helm package and the config file during the deployment.
+Continuous Integration or CI means that you want to integrate new features always into the master branch and have the branch in a deployable state. This means that I have to calculate the build version number, build the Docker image, push it to Dockerhub and create the Helm package which will be used in the CD pipeline for the deployment. All this exists already and the only step I have to add is publishing the values.yaml file and the Helm package to the ArtifactStagingDirectory. This is a built-in variable of Azure DevOps and allows the CD pipeline to access the Helm package and the config file during the deployment.
 
 The changes are made in the CreateHelmPackage template. The whole template looks as follows:
 
@@ -39,7 +39,7 @@ The Continuous Deployment (CD) pipeline might look a bit complicated at first, b
 
 <script src="https://gist.github.com/WolfgangOfner/371c5f8e07f08093e75cb170849bdf0f.js"></script>
 
-This code references the CustomerApi-CI which is the name of the CI pipeline and runs when there are changes on the master branch or if a pull request triggered the CI pipeline. Next, change the path to the Helm chart package and the values.release.yaml file. These files were uploaded by the CI pipeline and can be found in the Pipeline.Workspace now. This is a built-in variable of Azure DevOps and allows you to access files uploaded by the CI pipeline. The path to the files looks as follows:
+This code references the CustomerApi-CI which is the name of the CI pipeline and runs when there are changes on the master branch or if a pull request triggered the CI pipeline. Next, change the path to the Helm chart package and the values.yaml file. These files were uploaded by the CI pipeline and can be found in the Pipeline.Workspace now. This is a built-in variable of Azure DevOps and allows you to access files uploaded by the CI pipeline. The path to the files looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/104a3260dd09248fd4aee23d7728fa46.js"></script>
 
@@ -67,7 +67,7 @@ Before you can use the new CD pipeline, add it to your Azure DevOps pipelines. T
 
 If you used any secret variables, for example, for the database password, do not forget to add them to the new CD pipeline before you start the deployment.
 
-Run the CI pipeline and after the build is finished, the CD pipeline will kick off and deploy the application. After the deployment is finished, open enter your URL (configured in the URL variable in the CD pipeline) in your browser and you should see the Swagger UI of the microservice.
+Run the CI pipeline and after the build is finished, the CD pipeline will kick off and deploy the application. After the deployment is finished, open your browser and enter your URL (configured in the URL variable in the CD pipeline) and you should see the Swagger UI of the microservice.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/06/The-Microservice-is-running.jpg"><img loading="lazy" src="/assets/img/posts/2021/06/The-Microservice-is-running.jpg" alt="The Microservice is running" /></a>
@@ -81,7 +81,9 @@ To access the microservice using the URL, you have to configure the DNS accordin
 
 ## Conclusion
 
-Using two pipelines, one for CI, one for CD can be achieved quite easily and helps you to keep the complexity inside the pipelines at a minimum. This allows you to add new features, for example, new environments fast and with a smaller chance of making any mistakes. [In my next post](/deploy-microservices-to-multiple-environments-azure-devops), I will use the newly created CD pipeline and add a production stage with its own URL and database deployment.
+Using two pipelines, one for CI, and one for CD can be achieved quite easily and helps you to keep the complexity inside the pipelines at a minimum. This allows you to add new features, for example, new environments fast and with a smaller chance of making any mistakes. 
+
+[In my next post](/deploy-microservices-to-multiple-environments-azure-devops), I will use the newly created CD pipeline and add a production stage with its own URL and database deployment.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

@@ -11,13 +11,15 @@ Running a performant, resilient application in the pre-cloud era was hard. Espec
 
 Today, I will show how to use the Horizontal Pod Autoscaler (hpa) to automatically scale your application out and in which helps you to offer a performant application and minimize your costs at the same time.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## How the Horizontal Pod Autoscaler (HPA) works
 
-The Horizontal Pod Autoscaler automatically scales the number of your pods, depending on resource utilization like CPU. For example, if you target a 50% CPU utilization for your pods but your pods have an 80% CPU utilization, the hpa will automatically create new pods. If the CPU utilization falls below 50%, for example, 30%, the hpa terminates pods. This ensures that you always run enough pods to keep your users happy but also helps you to not waste money by running too many pods.
+The Horizontal Pod Autoscaler automatically scales the number of your pods, depending on resource utilization like CPU. For example, if you target a 50% CPU utilization for your pods but your pods have an 80% CPU utilization, the hpa will automatically create new pods. If the CPU utilization falls below 50%, for example, 30%, the hpa terminates pods. This ensures that you always run enough pods to keep your users happy but also helps you not waste money by running too many pods.
 
 Besides CPU utilization, you can also use custom metrics to scale. These custom metrics can be, for example, response time, queue length, or hits-per-second. In my last post, [Manage Resources in Kubernetes](/manage-resources-kubernetes), I set resource requests for pods. If you don't set them, the hpa won't be able to scale based on CPU utilization.
 
-In the hpa, you can configure the minimum and maximum amount of pods. This prevents the hpa from creating new pods (until you run out of resources) when your application goes haywire but also ensures a bottom line to guarantee high-availability. The Horizontal Pod Autoscaler checks by default the metrics every 15 seconds. You can configure the interval with the -horizontal-pod-autoscaler-sync-period flag.
+In the hpa, you can configure the minimum and maximum amount of pods. This prevents the hpa from creating new pods (until you run out of resources) when your application goes haywire but also ensures a bottom line to guarantee high availability. The Horizontal Pod Autoscaler checks by default the metrics every 15 seconds. You can configure the interval with the -horizontal-pod-autoscaler-sync-period flag.
 
 ## Create a Horizontal Pod Autoscaler
 
@@ -25,7 +27,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 In my demo, I am using Helm to deploy my application to Kubernetes. You don't have to use Helm though and can just apply the yaml file I will create to your Kubernetes cluster.
 
-To create the Horizontal Pod Autoscaler, create a new yaml file named hpa inside the tempolates folder inside the Helm charts folder and past the following code into the file:
+To create the Horizontal Pod Autoscaler, create a new yaml file named hpa inside the templates folder inside the Helm charts folder and paste the following code into the file:
 
 <script src="https://gist.github.com/WolfgangOfner/eb31ccfd72efe22793996cd04f3c81b0.js"></script>
 
@@ -39,9 +41,9 @@ If you don't use the values file, you can replace the placeholders in the hpa wi
 
 <script src="https://gist.github.com/WolfgangOfner/23c42cc3898ccc4039c5941290130b4e.js"></script>
 
-This value can be configured using the --horizontal-pod-autoscaler-downscale-stabilization flag, which defaults to 5 minutes. This means that scaledowns will occur gradually, smoothing out the impact of rapidly fluctuating metric values.
+This value can be configured using the --horizontal-pod-autoscaler-downscale-stabilization flag, which defaults to 5 minutes. This means that scaling down will occur gradually, smoothing out the impact of rapidly fluctuating metric values.
 
-Note that you should never run only one pod for production applications. I would recommend running at least 3 pods to ensure high-availability.
+Note that you should never run only one pod for production applications. I would recommend running at least 3 pods to ensure high availability.
 
 ## Deploy the Horizontal Pod Autoscaler
 
@@ -113,7 +115,7 @@ When you check the pods of the microservice, you will see that seven pods are ru
   </p>
 </div>
 
-After all, requests are processed (and a cooldown phase), the hpa scales in the pods. Since there is no load at all, it scales into only one pod. If you configured the minimum replicas to three, the hpa would scale into three pods.
+After all, requests are processed (and a cooldown phase), the hpa scales in the pods. Since there is no load at all, it removes all pods but one. If you configured the minimum replicas to three, the hpa would scale to three pods.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/02/The-hpa-scaled-in-to-one-pod.jpg"><img loading="lazy" src="/assets/img/posts/2021/02/The-hpa-scaled-in-to-one-pod.jpg" alt="The hpa scaled in to one pod" /></a>
@@ -133,11 +135,11 @@ Some workloads are highly variable which would lead to a constant scaling (in or
 
 ### Scaling Policies
 
-Scaling policies allow you to configure for how long a certain value has to be reached until scaling happens. This could be for example, only scale-out if the CPU utilization is higher than 70% for more than 30 seconds and only scale in if the CPU utilization is below 30% for 30 seconds. The code for this looks as follows:
+Scaling policies allow you to configure for how long a certain value has to be reached until scaling happens. This could be for example, only scale out if the CPU utilization is higher than 70% for more than 30 seconds and only scale in if the CPU utilization is below 30% for 30 seconds. The code for this looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/0d643a16a7d9e81ea8d15ca134315a7c.js"></script>
 
-Policies can also be used to limit the rate of downscale, for example, only remove 3 pods per minute when scaling down.
+Policies can also be used to limit the rate of downscale, for example, only removing 3 pods per minute when scaling down.
 
 ### Stabilization Window
 

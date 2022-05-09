@@ -7,13 +7,15 @@ tags: [DevOps, SSDT, CI-CD]
 description: Automate database deployments to deploy reliable applications fast and repeatable into different environments without any manual configuration.
 ---
 
-DevOps has been around for some years now and most developers know what it means. In simple terms, it stands for a culture where you automate all your steps from code merges to tests and deployment. Doing this for an application is often quite simple. It gets way harder when database changes are involved though. 
+DevOps has been around for some years now and most developers know what it means. In simple terms, it stands for a culture where you automate all your steps from code merges to tests and deployments. Doing this for an application is often quite simple. It gets way harder when database changes are involved though. 
 
 In this post, I will show you three ways how to automatically apply your changes and why one method is better than the other ones.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Why you should automate Database Changes
 
-In a modern DevOps culture, you want to deploy fast and often, with high quality. Achieving fast and qualitative deployments can only be done with automation. Usually, when developers get started with DevOps, they start automating the build and release process of their application. Deploying an application, for example, in .NET or a Docker container is fairly simple but it gets complicated when database changes come into play. Since it is not as straight-forward as deploying an application, database changes are often done by hand or at the start of the application. Both approaches are bad and in the following sections, I will give examples and explain why these approaches are bad in my eyes.
+In a modern DevOps culture, you want to deploy fast and often, with high quality. Achieving fast and qualitative high deployments can only be done with automation. Usually, when developers get started with DevOps, they start automating the build and release process of their application. Deploying an application, for example, in .NET or a Docker container is fairly simple but it gets complicated when database changes come into play. Since it is not as straightforward as deploying an application, database changes are often done by hand or at the start of the application. Both approaches are bad and in the following sections, I will give examples and explain why these approaches are bad in my eyes.
 
 ## Difficulties of Database Changes
 
@@ -31,9 +33,9 @@ Breaking changes need to be deployed over two deployments. In the first deployme
 
 ## Execute Entity Framework Core Migrations on Startup
 
-Entity Framework allows developers to write migrations. These can be to make changes (Up) or to roll previous changes back (Down). This could be, for example, creating a new table in the Up method and deleting the method in the Down method. These migrations can be triggered in the Startup method of the application. EF then checks the history of the migrations and executes each migration that wasn't executed previously.
+Entity Framework allows developers to write migrations. These can be to make changes (Up) or to roll previous changes back (Down). This could be, for example, creating a new table in the Up method and deleting the table in the Down method. These migrations can be triggered in the Startup method of the application. EF then checks the history of the migrations and executes each migration that wasn't executed previously.
 
-The migrations are executed automatically during the startup of the application but it comes with a couple of downsides. If you run your application in a modern environment, like a cloud environment or Kubernetes, you don't know when your application is evicted and restarted. This could mean that your application restarts every minute, which means that it checks every minute to execute the migration. Especially with containers, we want as fast as possible startup times. Another downside is that you have no control of the time when the migrations are applied. Maybe you want to deploy a feature but hide it behind a feature flag and then activate the feature and make the database changes later. This would require a second deployment and would make the whole process way more complex. 
+The migrations are executed automatically during the startup of the application but it comes with a couple of downsides. If you run your application in a modern environment, like a cloud environment or Kubernetes, you don't know when your application is evicted and restarted. This could mean that your application restarts every minute, which means that it checks every minute to execute the migration. Especially with containers, we want as fast as possible startup times. Another downside is that you have no control over the time when the migrations are applied. Maybe you want to deploy a feature but hide it behind a feature flag and then activate the feature and make the database changes later. This would require a second deployment and would make the whole process way more complex. 
 
 Due to the downsides, try to avoid the Entity Framework migrations.
 
@@ -53,9 +55,9 @@ SSDT is a project type for relational databases and is well integrated into Visu
 
 Another big advantage is that SSDT allows new developers to set up new environments or a local test system very fast. The SSDT project automatically handles the versioning of the migration. This means no developer has to manually provide a version number and it guarantees that no more conflicts between multiple migrations with the same version number will occur.
 
-Additionally, SSDT can execute SQL scripts before or after the deployment. This means that DBA's can write complex SQL scripts and then only have to add the script to the right folder in the project. 
+Additionally, SSDT can execute SQL scripts before or after the deployment. This means that DBAs can write complex SQL scripts and then only have to add the script to the right folder in the project. 
 
-Since the database changes are deployed, it is very easy to integrate this deployment into your CI/CD pipeline. In my next two posts, I will show you how to create an SSDT project and how to deploy locally, and then how to deploy it using a CI/CD pipeline in Azure DevOps.
+Since the database changes are deployed, it is very easy to integrate this deployment into your CI/CD pipeline. In my next two posts, I will show you how to create an SSDT project and how to deploy it locally, and then how to deploy it using a CI/CD pipeline in Azure DevOps.
 
 ## Conclusion
 

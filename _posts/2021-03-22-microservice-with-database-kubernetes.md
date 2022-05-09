@@ -9,15 +9,17 @@ description: Configure microservices in Azure DevOps to use securely share conne
 
 I showed [in my last post](/deploy-dacpac-linux-azure-devops) how to automatically deploy database changes to your database. In this post, I will extend my microservice to use this database and also extend the deployment to provide a valid connection string.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Update the Microservice to use a Database
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-So far, the microservice used an in-memory database. I want to keep the option to use the in-memory database for local debugging. Therefore, I add the following value to the appsettings.Development.json file:
+So far, the microservice uses an in-memory database. I want to keep the option to use the in-memory database for local debugging. Therefore, I add the following value to the appsettings.Development.json file:
 
 <script src="https://gist.github.com/WolfgangOfner/671b5cded4aa419a5a1fb22f9dc17ef4.js"></script>
 
-If you want to run the microservice locally with a normal database, set this value to false. Next, I add the connection string to the database to the appsettings.json file:
+If you want to run the microservice locally with a normal database, set this value to false. Next, I add the database connection string to the appsettings.json file:
 
 <script src="https://gist.github.com/WolfgangOfner/c873b6db10bfa3c578f123e07596ae0e.js"></script>
 
@@ -53,11 +55,11 @@ If you want, run the application locally and test the database connection.
 
 ## Pass the Connection String in the CI/CD Pipeline
 
-Providing the connection string in the CI/CD pipeline is simpler than you might think. All you have to do is add the following code to the values.release.yaml file inside the API solution. 
+Providing the connection string in the CI/CD pipeline is simpler than you might think. All you have to do is add the following code to the values.yaml file inside the Helm chart folder of the API solution. 
 
 <script src="https://gist.github.com/WolfgangOfner/c7da35ecd3be2d89c38ccc7facb43fff.js"></script>
 
-This code sets the connection string as secret in Kubernetes. Since the hierarchy is the same as in the appsettings.json file, Kubernetes can pass it to the microservice. The only difference is that the json file uses braces for hierarchy whereas secrets use double underscores (\_\_). The value for \_\_ConnectionString\_\_ will be provided by the ConnectionString variable during the tokenizer step in the pipeline.
+This code sets the connection string as a secret in Kubernetes. Since the hierarchy is the same as in the appsettings.json file, Kubernetes can pass it to the microservice. The only difference is that the json file uses braces for hierarchy whereas secrets use double underscores (\_\_). The value for \_\_ConnectionString\_\_ will be provided by the ConnectionString variable during the [tokenizer step](/replace-helm-variables-tokenizer) in the pipeline.
 
 ## Test the Microservice with the database
 
@@ -83,7 +85,7 @@ Connect to the database, for example, using the SQL Management Studio and you sh
 
 ## Conclusion
 
-Using a database with your microservice works the same way as with all .NET 5 applications. Due to the already existing CI/CD pipeline which is using Helm to create the deployment package, there was barely any change necessary to pass the connection string to the microservice during the deployment.
+Using a database with your microservice works the same way as with all .NET 5 applications. Due to the already existing CI/CD pipeline which is using Helm to create the deployment package, there were barely any changes necessary to pass the connection string to the microservice during the deployment.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Add Istio to an existing Application running Kubernetes
 
-If you already have an application or microservices running in your Kubernetes and want to add Istio support, all you have to do is to add the following label to the namespace.
+If you already have an application or microservices running in your Kubernetes cluster and want to add Istio support, all you have to do is to add the following label to the namespace.
 
 <script src="https://gist.github.com/WolfgangOfner/508ae5af388bf26a772f6347e7b8a002.js"></script>
 

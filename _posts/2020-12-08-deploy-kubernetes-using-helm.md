@@ -6,7 +6,11 @@ categories: [Kubernetes]
 tags: [Helm, AKS, Microservice, Kubernetes]
 description: Helm is a package manager that helps you to deploy your application easily to Kubernetes. In this post, I will show you how to deploy an application to Kubernetes using Helm and how to avoid some pitfalls.
 ---
-In my last post, I explained how Helm works and how to add it to your microservice. This post is going to be more practical. Helm is a package manager that helps you to deploy your application easily to Kubernetes. In this post, I will show you how to deploy an application to Kubernetes using Helm and how to avoid some pitfalls.
+[In my last post](/helm-getting-started), I explained how Helm works and how to add it to your microservice. This post is going to be more practical. Helm is a package manager that helps you to deploy your application easily to Kubernetes. 
+
+In this post, I will show you how to deploy an application to Kubernetes using Helm and how to avoid some pitfalls.
+
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
 
 ## Deploy the Microservice with Helm
 
@@ -41,7 +45,7 @@ In the dashboard, open the customerapi pod and you will see that there is an err
 The error message reads: "Failed to pull image customerapi:stable". The image can't be pulled because it doesn't exist with the stable tag. Another reason why the image can't be pulled is that the repository can't be found. My repository is wolfgangofner/customerapi, not customerapi. Let's update the repository and tag and update the application with Helm.  
 
 ### Change the Configuration of the Helm Chart
-You can find the values.yaml file inside the customerapi Helm chart. This file provides a way to override values of the configuration. Under the image section, edit the repository and the tag to use the correct ones:
+You can find the values.yaml file inside the customerapi Helm chart. This file provides a way to override the values of the configuration. Under the image section, edit the repository and the tag to use the correct ones:
 
 <script src="https://gist.github.com/WolfgangOfner/8c6c8eed8110392085bccdab137777e2.js"></script>
 
@@ -63,7 +67,7 @@ After the Helm upgrade is completed, connect to the dashboard and open the pod a
   </p>
 </div>
 
-The application is running but how can you access it? The dashboard allows you to enable port forwarding for the pod by clicking the button "Start Port Forward". Click it and you will get an URL which will forward to your application.
+The application is running but how can you access it? The dashboard allows you to enable port forwarding for the pod by clicking the button "Start Port Forward". Click it and you will get an URL that will forward to your application.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/Enable-port-forwarding.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Enable-port-forwarding.jpg" alt="Enable port forwarding" /></a>
@@ -93,7 +97,7 @@ That's nice to see but impractical since our customers won't connect to our Kube
   </p>
 </div>
 
-The Service has no external IP. This is because the type of the service is ClusterIP. ClusterIP only publishes an internal IP but no external one. This means we have to update the Service to enable the external endpoint and then publish the application again.
+The Service has no external IP. This is because the type of the service is ClusterIP. ClusterIP only publishes an internal IP but no external one. This means we have to update the Service to enable the external endpoint and then publish the application again. This works because Azure creates an Azure Loadbalancer and assignes it a public IP Address. If you run your K8s cluster on-premises, you have to point the public IP to the endpoint yourself.
 
 ## Expose the Application to the Outside
 To update the Service type, open the values.yaml file again and find the service section. Update the type from ClusterIP to LoadBalancer and save the file.

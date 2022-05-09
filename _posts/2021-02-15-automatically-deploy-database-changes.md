@@ -9,6 +9,8 @@ description: Use SSDT (SQS Server Data Tools) to generate Dacpac packages and de
 
 [In my last post](/automate-database-deployments), I talked about deploying database changes automatically. Today, I will show how to use SSDT (SQS Server Data Tools) to generate a Dacpac package and how to deploy it to your SQL server.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Prepare your Environment
 
 Before you can get started, you have to download the custom SSDT Tools from [GitHub](https://github.com/4tecture/SSDTDataMigration/releases). These custom tools are an extension of the [MSBuild.Sdk.SqlProj](https://github.com/rr-wfm/MSBuild.Sdk.SqlProj/) project and are necessary to be able to open the SSDT project file (*.sqlproj) with Visual Studio.
@@ -141,7 +143,7 @@ If you already have an existing database and want to apply changes, for example,
 
 <script src="https://gist.github.com/WolfgangOfner/22bfb9217f632e31d567ad931fee5cfe.js"></script>
 
-That's already all you have to do. Publish the project again and update your SQL server to see the new column in the Product table.
+That's already all you have to do. Publish the project again to update your SQL server to see the new column in the Product table.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/03/The-Product-table-got-a-new-column.jpg"><img loading="lazy" src="/assets/img/posts/2021/03/The-Product-table-got-a-new-column.jpg" alt="The Product table got a new column" /></a>

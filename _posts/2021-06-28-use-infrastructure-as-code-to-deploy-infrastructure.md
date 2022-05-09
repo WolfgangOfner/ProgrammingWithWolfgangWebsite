@@ -15,19 +15,19 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## What is Infrastructure as Code (IaC)?
 
-As the name already suggests, Infrastructure as Code means that your infrastructure and its dependencies are defined in a file. Nowadays the configuration is often saved in a JSON or YAML file. IaC has many advantages over the old-school approach of an operation person creating the infrastructure:
+As the name already suggests, Infrastructure as Code means that your infrastructure and its dependencies are defined in a file as code. Nowadays the configuration is often saved in a JSON or YAML file. IaC has many advantages over the old-school approach of an operation person creating the infrastructure:
 
 - The definition can be reviewed and saved in version control
 - Infrastructure can be deployed fast and reliable
 - Deployments can be repeated as often as needed
 - No (less) communication problems due to developers writing the configuration themselves
-- Many tools available
+- Many tools are available
 
-If you are working with Azure, you might be familiar with ARM templates. There are also many popular tools out there like Puppet, Terraform, Ansible or Chef. My preferred way is Azure CLI. In the following sections, I will show you how to create an Azure DevOps YAML pipeline using Azure CLI and Helm to create an Azure Kubernetes Cluster with all its configurations like Nginx as Ingress Controller, Azure SQL Database, Azure Function, and Azure Service Bus.
+If you are working with Azure, you might be familiar with ARM templates. There are also many popular tools out there like Puppet, Terraform, Ansible and Chef. My preferred way is Azure CLI. In the following sections, I will show you how to create an Azure DevOps YAML pipeline using Azure CLI and Helm to create an Azure Kubernetes Cluster with all its configurations like Nginx as Ingress Controller, Azure SQL Database, Azure Function, and Azure Service Bus.
 
 ## Azure CLI Documentation
 
-I like using Azure CLI because it is easy to use locally and it is also quite intuitive. All commands follow the same patter of az service command, for example, az aks create or az sql server update. This makes is very easy to google how to create or update services. Additionally, the documentation is very good. You can find all commands <a href="https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest" target="_blank" rel="noopener noreferrer">here</a>. 
+I like using Azure CLI because it is easy to use locally and it is also quite intuitive. All commands follow the same pattern of "az service command", for example, az aks create or az sql server update. This makes it very easy to google how to create or update services. Additionally, the documentation is very good. You can find all commands <a href="https://docs.microsoft.com/en-us/cli/azure/reference-index?view=azure-cli-latest" target="_blank" rel="noopener noreferrer">here</a>. 
 
 ## Create your first Infrastructure as Code Pipeline in Azure DevOps
 
@@ -47,7 +47,7 @@ If you are unfamiliar with Helm, see [Helm - Getting Started](/helm-getting-star
 
 ### Create an Azure Kubernetes Cluster
 
-Creating an AKS cluster is quite simple due to the names of the parameters. For example, you can configure the VM size, what Kubernetes version you want to install or the node count of your cluster. The full command looks as follows:
+Creating an AKS cluster is quite simple due to the names of the parameters. For example, you can configure the VM size, what Kubernetes version you want to install, or the node count of your cluster. The full command looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/404ffb1a00477da4dea5c062d57e3586.js"></script>
 
@@ -71,11 +71,11 @@ In [Set up Nginx as Ingress Controller in Kubernetes](/setup-nginx-ingress-contr
 
 ### Create a new Azure SQL Server
 
-After the deployment of the AKS cluster is finished, let's add a new Azure SQL Server with he following command:
+After the deployment of the AKS cluster is finished, let's add a new Azure SQL Server with the following command:
 
 <script src="https://gist.github.com/WolfgangOfner/77eff33e4b0ef026697b3175bd62e0d9.js"></script>
 
-You might miss the variables SqlServerAdminUser and SqlServerAdminPassword. Since these values are confidential, add them as secret variables to your Azure DevOps pipeline by clicking on Variables on the top-right corner of your pipeline window. 
+You might miss the variables SqlServerAdminUser and SqlServerAdminPassword. Since these values are confidential, add them as secret variables to your Azure DevOps pipeline by clicking on Variables in the top-right corner of your pipeline window. 
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/06/Add-the-database-variables-as-secret-variables.jpg"><img loading="lazy" src="/assets/img/posts/2021/06/Add-the-database-variables-as-secret-variables.jpg" alt="Add the database variables as secret variables" /></a>
@@ -85,7 +85,7 @@ You might miss the variables SqlServerAdminUser and SqlServerAdminPassword. Sinc
   </p>
 </div>
 
-By default, the Azure SQL Server does not allow any connections. Therefore you have to add firewall rules to allow the access to the SQL Service. The following code enables Azure resources like Azure DevOps to access the SQL Server. 
+By default, the Azure SQL Server does not allow any connections. Therefore you have to add firewall rules to allow access to the SQL Service. The following code enables Azure resources like Azure DevOps to access the SQL Server. 
 
 <script src="https://gist.github.com/WolfgangOfner/0561b8ae25e02484d2c53aa1e7ff9581.js"></script>
 
@@ -129,7 +129,7 @@ This makes it very safe and fast to set up all the infrastructure you need for y
 
 ## Conclusion
 
-Infrastructure as Code (IaC) solves many problems with deployments and enables development teams to quickly and reliably deploy the infrastructure. You can choose between many tools like Ansible, Terraform or Chef. Alternatively, you can keep it simple like I did in the demo and use Azure CLI. The advantage of the Azure CLI is that you can easily use it locally for testing. 
+Infrastructure as Code (IaC) solves many problems with deployments and enables development teams to quickly and reliably deploy the infrastructure. You can choose between many tools like Ansible, Terraform, or Chef. Alternatively, you can keep it simple like I did in the demo and use Azure CLI. The advantage of the Azure CLI is that you can easily use it locally for testing. 
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

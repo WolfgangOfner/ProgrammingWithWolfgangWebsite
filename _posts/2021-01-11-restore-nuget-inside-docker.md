@@ -19,6 +19,8 @@ description: This post will show you how to create an access token for your priv
 
 Today, I will show you how to create an access token for your private Azure DevOps NuGet feed and how to pass it to your Dockerfile to build Docker images.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Create a Personal Access Token (PAT) in Azure DevOps
 
 To create a personal access token in Azure DevOps, click on user settings, and select Personal access tokens.
@@ -31,7 +33,7 @@ To create a personal access token in Azure DevOps, click on user settings, and s
   </p>
 </div>
 
-This opens a new flyout window. There you can enter a name, your organization, and the expiration date. If you select Custom defined as expiration date, you can create a PAT which is valid for one year. Select custom defined scope and then select Read in the Packaging section. This allows the PAT to read the NuGet packages from the feed.
+This opens a new flyout window. There you can enter a name, your organization, and the expiration date. If you select Custom defined as the expiration date, you can create a PAT which is valid for one year. Select custom defined scope and then select Read in the Packaging section. This allows the PAT to read the NuGet packages from the feed.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/01/Configure-the-PAT.jpg"><img loading="lazy" src="/assets/img/posts/2021/01/Configure-the-PAT.jpg" alt="Configure the PAT" /></a>
@@ -57,7 +59,7 @@ You can find the code of the demo on <a href="https://github.com/WolfgangOfner/M
 
 ### Add a nuget.config file
 
-The first step to restore the NuGet package from the private feed is to add a nuget.config file to the root folder of the CustomerApi project. This file contains the URLs for the nuget.org and the private feed. Since this file gets committed to source control, I don't add the PAT there because I want to keep it private. The file looks as follows:
+The first step to restoring the NuGet package from the private feed is to add a nuget.config file to the root folder of the CustomerApi project. This file contains the URLs for the nuget.org and private feed. Since this file gets committed to source control, I don't add the PAT there because I want to keep it private. The file looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/28375d0e75ca00efe8032e4da0a6a334.js"></script>
 
@@ -91,7 +93,7 @@ In the Azure DevOps pipeline, create a new secret variable for the PAT. To do th
   </p>
 </div>
 
-Next, add build-arg as argument to the docker build task and provide the previously created variable as PAT. The whole task looks as follows:
+Next, add the build-arg parameter to the docker build task and provide the previously created variable as PAT. The whole task looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/dc83eb924ad195c33e4d8283b6f18b87.js"></script>
 

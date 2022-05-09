@@ -11,6 +11,8 @@ description: In this post, I will show how to create a private NuGet feed in Azu
 
 In this post, I will show how to create a private NuGet feed in Azure DevOps and how to automatically publish your NuGet packages there using an Azure DevOps pipeline.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Create a private NuGet Feed
 
 To create a private NuGet Feed, open the Artifacts tab in your project in Azure DevOps and then click on + Create Feed.
@@ -82,7 +84,7 @@ Save the changes and run the pipeline again. Your NuGet package should get publi
 
 ## Install NuGet Packages from your Private NuGet Feed
 
-To install a NuGet package from your private feed, right-click your project or solution in Visual Studio, and select Manage NuGet Packages... On the right top of the window, you should see Package source and the settings button on the right of it. Click the settings button and a new window opens. Click on the + symbol and then add a name and the URL to your feed. 
+To install a NuGet package from your private feed, right-click your project or solution in Visual Studio, and select Manage NuGet Packages... On the right top of the window, you should see "Package source" and the settings button on the right of it. Click the settings button and a new window opens. Click on the + symbol and then add a name and the URL to your feed. 
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/01/Add-the-NuGet-feed-as-package-source.jpg"><img loading="lazy" src="/assets/img/posts/2021/01/Add-the-NuGet-feed-as-package-source.jpg" alt="Add the NuGet feed as package source" /></a>
@@ -104,7 +106,7 @@ Click OK and you can select your feed as your package source. Search for the pre
 
 Note: If you try to add my feed URL, you will get a 401 error because your user is not allowed to access my feed. Nevertheless, the demo will work because I also uploaded the NuGet package on nuget.org which is a public feed. I can access the feed because I am logged into Visual Studio and therefore my credentials are passed. If I tried to use Docker to restore the NuGet package from my private feed, I would also get the 401 error.
 
-In my next post, I will show how to pass an access token to the Dockerfile to access the private NuGet feed.
+[In my next post](/restore-nuget-inside-docker), I will show how to pass an access token to the Dockerfile to access the private NuGet feed.
 
 ## Conclusion
 

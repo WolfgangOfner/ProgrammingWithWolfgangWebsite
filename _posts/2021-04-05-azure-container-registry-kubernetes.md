@@ -11,6 +11,8 @@ description: Azure Container Registry has some advantages over Dockerhub and I w
 
 In this post, I will talk about the advantages of Azure Container Registry and show you how to configure your microservice and Kubernetes cluster to run images from ACR and run them in your cluster.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is Azure Container Registry (ACR)
 
 Azure Container Registry is a private container registry that allows you to build and store your images, replicate them around the globe and also scan for vulnerabilities. ACR comes in three pricing tiers: Basic, Standard, and Premium. The main difference between them is the amount of included storage and the number of webhooks you can use. Additionally, the premium tier supports geo-replication. This means that your images are still available when a data center goes down. Furthermore, it allows for faster startup times because the needed image is closer to the destination. This is only the case if you operate globally.
@@ -47,7 +49,7 @@ To upload an image to the new ACR, you have two options: importing the image fro
 
 Importing an image is a good way to get started fast but I would recommend using the CI/CD pipeline approach in the next section. To import the image, use the following Azure CLI command:
 
-<script src="https://gist.github.com/WolfgangOfner/5a374d23f330f9a382c01168d8d1bd85.js"></script>
+<script src="https://gist.github.com/WolfgangOfner/9f78fbe4917a26a0761d8b9395833cf3.js"></script>
 
 The first line logs you into your Azure subscription and the second one takes the name of your ACR, the source image from Dockerhub, and the image name which will be created in ACR.
 
@@ -119,7 +121,7 @@ Additionally, I renamed the ImageName variable to Repository. If you want to dep
 
 The microservice uses Helm for the configuration. For more information about Helm, see my post [Helm - Getting Started](/helm-getting-started).
 
-The values.release.yaml file contains the configuration for the image and tag Kubernetes should use. Currently, this is:
+The values.yaml file contains the configuration for the image and tag Kubernetes should use. Currently, this is:
 
 <script src="https://gist.github.com/WolfgangOfner/11e48d64374ccc942ef64780caf19621.js"></script>
 
@@ -177,7 +179,7 @@ Note that you have to use the username and password from the previously created 
 
 ### Use the Image Pull Secret in your Microservice
 
-After the image pull secret was created, you have to tell your microservice to use it. The image pull secret is part of the deployment but it is empty. In my last posts, I used the values.release.yaml file for values that are not provided by me and are not default. Therefore, I add the name of the secret there:
+After the image pull secret was created, you have to tell your microservice to use it. The image pull secret is part of the deployment but it is empty. In my last posts, I used the values.yaml file for values that I want to set during the deployment. Therefore, I add the name of the secret there:
 
 <script src="https://gist.github.com/WolfgangOfner/25026b07f81d371a74abf64efb11db8b.js"></script>
 

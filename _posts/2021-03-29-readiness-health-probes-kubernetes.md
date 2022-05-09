@@ -9,6 +9,8 @@ description: Kubernetes automatically checks if a pod is healthy and also when i
 
 Kubernetes automatically checks if a pod is healthy and also when it is ready to accept traffic. These checks are done using a readiness probe and liveness probe respectively. This post shows how to configure these probes in a .NET 5 microservice and how to configure them in Kubernetes using Helm charts.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Liveness Probe
 
 Kubernetes regularly checks whether a pod is still alive or not. To check that, Kubernetes sends a request to the URL and port configured in the liveness section of the deployment. If the request returns an HTTP code greater or equal to 200 but less than 400, the pod is considered healthy. In every other case, the pod is considered dead and will be restarted. A liveness probe looks as follows:
@@ -44,7 +46,7 @@ Open the deployment in the Helm charts folder. There you can see the liveness an
 
 <script src="https://gist.github.com/WolfgangOfner/8234b61ef59f66f80d8ae81080de4991.js"></script>
 
-As you can see, the liveness probe checks the /health endpoint and the readiness probe the /ready endpoint. Since the /ready endpoint doesn't exist, the pod won't be able to start. The probes are only added when the probes.enabled value is set to true. by default, this value is false. To set it to true, you can either go to the values.yaml file and change it to true or you go to the values.release.yaml file and add it there. I prefer the second option since this allows me to see all my changes in one single file.
+As you can see, the liveness probe checks the /health endpoint and the readiness probe the /ready endpoint. Since the /ready endpoint doesn't exist, the pod won't be able to start. The probes are only added when the probes.enabled value is set to true. by default, this value is already set to true. To change the value, go to the values.yaml file.
 
 <script src="https://gist.github.com/WolfgangOfner/8ea4529047326e1bd98bc6dfa25ca5fb.js"></script>
 
@@ -74,7 +76,7 @@ You also might see a warning that the liveness probe failed. This might be cause
 
 ### Fixing the broken Readiness Probe
 
-Change the path in the readiness probe from /ready to /health. Additionally, I added the initialDelaySeconds parameter and set it to 15 seconds. This tells Kubernetes to wait 15 seconds before it executes its first check. The finished liveness and rediness probe looks as follows:
+Change the path in the readiness probe from /ready to /health. Additionally, I added the initialDelaySeconds parameter and set it to 15 seconds. This tells Kubernetes to wait 15 seconds before it executes its first check. The finished liveness and readiness probe looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/295c91d741a49c686d144b8412df3b39.js"></script>
 
@@ -92,7 +94,7 @@ Run the CI/CD again and this time the deployment will succeed and the pod will s
 
 Readiness probes are used to check if a pod is ready to receive traffic. Only after a successful probe, traffic is routed to the pod. Liveness probes work the same way as readiness probes and check periodically if a pod is still alive. If a pod is not alive anymore, Kubernetes restarts it. .NET 5 and .NET Core 2.2+ allow to easily create health checks with only a handful of lines of code.
 
-Today's demo was very simple but it should show you enough to get started and to create more complex probes.
+Today's demo was very simple but it should show you enough to get started and create more complex probes.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

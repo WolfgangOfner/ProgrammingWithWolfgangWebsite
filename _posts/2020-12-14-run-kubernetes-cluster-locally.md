@@ -7,13 +7,15 @@ tags: [Helm, Microservice, Kubernetes, Docker]
 description: During the development or when debugging, developers often need to run their application quickly in Kubernetes. The solution to this problem is to run Kubernetes locally on your development machine using Docker Desktop.
 ---
 
-Running microservices in Kubernetes usually requires a cluster running in the cloud or on-premise. During the development or when debugging, developers often need to run their application quickly in Kubernetes. Spinning up a new cluster or configuring the deployment to an existing one might take longer than what they try to achieve.
+Running microservices in Kubernetes usually requires a cluster running in the cloud or on-premise. During the development or when debugging, developers often need to run their application quickly in Kubernetes. Spinning up a new cluster or configuring the deployment to an existing one might take longer than the time they actually need the cluster.
 
 The solution to this problem is to run Kubernetes locally on your development machine using Docker Desktop.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Installing Kubernetes locally
 
-To run your microservice in Kubernetes on your developer computer, you have to install <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener noreferrer">Docker Desktop</a> first. After you installed it, open the settings and go to the Kubernetes tab. There you click on Enable Kubernetes.
+To run your microservice in Kubernetes on your Windows developer computer, you have to install <a href="https://www.docker.com/products/docker-desktop" target="_blank" rel="noopener noreferrer">Docker Desktop</a> first. After you installed it, open the settings and go to the Kubernetes tab. There you click on Enable Kubernetes.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/Enable-Kubernetes.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Enable-Kubernetes.jpg" alt="Enable Kubernetes" /></a>
@@ -31,7 +33,7 @@ Deploying an application to a local Kubernetes works exactly the same way as if 
 
 ### Configure the Kubernetes Context
 
-Before you start, make sure that you have selected the right context of your local Kubernetes. To check the context, right-click on the Docker tray and hover over the Kubernetes tab. By default, the local Kubernetes context is called docker-desktop. If it is not selected, select it. Otherwise, you wouldn't deploy to your local Kubernetes cluster.
+Before you start, make sure that you have selected the right context of your local Kubernetes. To check the context, right-click on the Docker tray and hover over the Kubernetes tab. By default, the local Kubernetes context is called docker-desktop. If it is not selected, select it. Otherwise, you won't deploy to your local Kubernetes cluster.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/Set-the-Kubernetes-context.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Set-the-Kubernetes-context.jpg" alt="Set the Kubernetes context" /></a>

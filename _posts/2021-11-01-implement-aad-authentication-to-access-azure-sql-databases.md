@@ -17,7 +17,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo/tree/master/CustomerApi" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-In one of my previous posts, I have created an SQL Server that runs all my databases. If you also have an SQL server, you have to set an Active Directory admin. This admin can be either an AAD user or a group. Without this admin, the SQL server won't be able to authenticate your users against the AAD.
+In one of my previous posts, I created an SQL Server that runs all my databases. If you also have an SQL server, you have to set an Active Directory admin. This admin can be either an AAD user or a group. Without this admin, the SQL server won't be able to authenticate your users against the AAD.
 
 You can either use the Azure portal or Azure CLI to set the Active Directory admin. If you use the portal, open your SQL server and select the Active Directory admin pane. There, click on Set admin, search for your user or group and save your selection.
 
@@ -25,7 +25,7 @@ If you use the Azure CLI, use the following query to get all AAD users:
 
 <script src="https://gist.github.com/WolfgangOfner/2a369b0bd181aaec0219fc066d7fc215.js"></script>
 
-The --query parameter only filters the response to only display the principal name of the AAD user.
+The --query parameter filters the response to only display the principal name of the AAD user.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2021/11/Get-the-principal-name-of-all-AAD-users.jpg"><img loading="lazy" src="/assets/img/posts/2021/11/Get-the-principal-name-of-all-AAD-users.jpg" alt="Get the principal name of all AAD users" /></a>
@@ -188,9 +188,9 @@ Run your application again to make sure that everything still works.
 
 You want to pass the tenant id during the deployment to keep it secret. If you commit it to your version control, everyone would be able to read it. You have to take the following steps to pass the tenant id during the deployment:
 
-Add a variable for the tenant id to your values.yaml or values.release.yaml file in your Helm chart. This variable has to start and finish with two underscores (\_\_) so the Tokenizer task in the Azure DevOps pipeline can replace the value. Next, add your tenant id as a secret variable in your pipeline. Don't forget to update the connection string in your deployment pipeline too.
+Add a variable for the tenant id to your values.yaml file in your Helm chart. This variable has to start and finish with two underscores (\_\_) so the Tokenizer task in the Azure DevOps pipeline can replace the value. Next, add your tenant id as a secret variable in your pipeline. Don't forget to update the connection string in your deployment pipeline too.
 
-The Tokenizer task will replace the tenant id in the Helm chart with your actual tenant id and therefore will override the empty TenantId value in your appsettings.json file. For a detailed explanation on how and why this works, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
+The Tokenizer task will replace the tenant id in the Helm chart with your actual tenant id and therefore will override the empty TenantId value in your appsettings.json file. For a detailed explanation of how and why this works, see [Replace Helm Chart Variables in your CI/CD Pipeline with Tokenizer](/replace-helm-variables-tokenizer).
 
 ## Conclusion
 

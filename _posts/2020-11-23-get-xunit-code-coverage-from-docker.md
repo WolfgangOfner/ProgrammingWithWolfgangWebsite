@@ -12,6 +12,8 @@ Getting code coverage in Azure DevOps is not well documented and the first time 
 
 Code coverage gives you an indication of how much of your code is covered by at least one test. Usually, the higher the better but you shouldn't aim for 100%. As always, it depends on the project but I would recommend having around 80%.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## Setting up xUnit for Code Coverage
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.

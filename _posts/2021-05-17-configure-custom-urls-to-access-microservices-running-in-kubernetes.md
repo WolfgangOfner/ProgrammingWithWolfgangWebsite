@@ -63,7 +63,7 @@ All you have to do is to add the - host: parameter above the http section and pr
 
 <script src="https://gist.github.com/WolfgangOfner/aa6ea19ec86b0aa738329c3373cfff35.js"></script>
 
-After adding the host line in the ingress.yaml file, add your URL to the values.yaml or values.release.yaml file. Additionally, change the path from /customerapi-test/?(.*) to /. Since the microservices are using different URLs, you don't need different paths anymore. The values.release.yaml file should now look as follows:
+After adding the host line in the ingress.yaml file, add your URL to the values.yaml file. Additionally, change the path from /customerapi-test/?(.*) to /. Since the microservices are using different URLs, you don't need different paths anymore. The values.yaml file should now look as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/f0f67999b590a327d3e615505cb53794.js"></script>
 
@@ -101,7 +101,9 @@ The order microservice is working as well with its custom URL.
 
 ## Conclusion
 
-Using custom URLs or subdomains is surprisingly easy with Nginx and Kubernetes. Setting up the URLs is fast and gives your users or testers a better experience than the IP address I used before. Additionally, the Swagger UI problems were also fixed. Using a custom URL is a better solution than using an IP address but it is still not optimal. [In my next post](/automatically-issue-ssl-certificates-and-use-ssl-termination-in-kubernetes), I will automatically create certificates enabling the use of HTTPS and also will implement SSL termination in the Nginx ingress controller.
+Using custom URLs or subdomains is surprisingly easy with Nginx and Kubernetes. Setting up the URLs is fast and gives your users or testers a better experience than the IP address I used before. Additionally, the Swagger UI problems were also fixed. Using a custom URL is a better solution than using an IP address but it is still not optimal. 
+
+[In my next post](/automatically-issue-ssl-certificates-and-use-ssl-termination-in-kubernetes), I will automatically create certificates enabling the use of HTTPS and also will implement SSL termination in the Nginx ingress controller.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

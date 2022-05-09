@@ -6,11 +6,15 @@ categories: [DevOps, Docker]
 tags: [Azure DevOps, CI, Docker, Unit Test, xUnit]
 description: Running xUnit tests inside a container and especially getting the test results and code coverage can be tricky. This post shows you how to do it.
 ---
-Running your build inside a Docker container has many advantages like platform independence and better testability for developers. These containers also bring more complexity though. <a href="/build-docker-azure-devops-ci-pipeline/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to set up the build inside a Docker container. Unfortunately, I didn't get any test results or code coverage after the build succeeded. Today, I want to show how to get the test results when you run tests inside Docker and how to display them in Azure DevOps.
+Running your build inside a Docker container has many advantages such as platform independence and better testability for developers. These containers also bring more complexity though. 
+
+<a href="/build-docker-azure-devops-ci-pipeline/" target="_blank" rel="noopener noreferrer">In my last post</a>, I showed how to set up the build inside a Docker container. Unfortunately, I didn't get any test results or code coverage after the build succeeded. Today, I want to show how to get the test results when you run tests inside Docker and how to display them in Azure DevOps.
 
 You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/.NETCoreMicroserviceCiCdAks/tree/UnitTestInCiPipeline).
 
-## Run Tests inside Docker
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
+## Run Tests inside a Docker Container
 
 Running unit tests inside a Docker container is more or less the same as building a project. First, I copy all my test projects inside the container using the COPY command:
 
@@ -46,15 +50,15 @@ If you try to look at the Tests tab of the built-in Azure DevOps to see the test
   </p>
 </div>
 
-The Tests tab is not displayed because Azure DevOps has no test results to display. Since I ran the tests inside the container, the results are also inside the container. To display them, I have to copy them out of the docker container and publish them.
+The Tests tab is not displayed because Azure DevOps has no test results to display. Since I ran the tests inside the container, the results are also inside the container. To display them, I have to copy them out of the Docker container and publish them.
 
-## Copy Test Results after you run Tests inside Docker
+## Copy Test Results after you run Tests inside a Docker Container
 
 To copy the test results out of the container, first I have to pass the build id to the dockerfile. To do that, add the following line to the Docker build task:
 
 <script src="https://gist.github.com/WolfgangOfner/cf23b89c4cbc5f1ae9d93dd9eb0f5725.js"></script>
 
-Next, I use the following PowerShell task in the CI pipeline to create an intermediate container which contains the test results.
+Next, I use the following PowerShell task in the CI pipeline to create an intermediate container that contains the test results.
 
 <script src="https://gist.github.com/WolfgangOfner/dfdf93b4fe6540c59ed4a1c037fdf5fb.js"></script>
 
@@ -62,7 +66,7 @@ Docker creates a new layer for every command in the Dockerfile. I can access the
 
 ## Publish the Test Results
 
-To publish the test results, I use the PublishTestResult task of Azure DevOps. I only have to provide the format of the results, what files contain results and, the path to the files. The YAML code looks as follows:
+To publish the test results, I use the PublishTestResult task of Azure DevOps. I only have to provide the format of the results, what files contain results, and the path to the files. The YAML code looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/fd4cd2c2b3a962b1341385de37bdc157.js"></script>
 
@@ -80,8 +84,8 @@ I did the same for the OrderApi project, except that I replaced CustomerApi with
 
 ## Conclusion
 
-Docker containers are awesome. They can be used to run your application anywhere but also to build your application. This enables you to take your build definition and run it in Azure DevOps, as GitHub actions, or in Jenkins. You don't have to change anything because the logic is encapsulated inside the Dockerfile. This flexibility comes with some challenges, for example, to display the test results of the unit tests. This post showed that it is pretty simple to get these results out of the container and display in Azure DevOps.
+Docker containers are awesome. They can be used to run your application anywhere but also to build your application. This enables you to take your build definition and run it in Azure DevOps, as GitHub actions, or in Jenkins. You don't have to change anything because the logic is encapsulated inside the Dockerfile. This flexibility comes with some challenges, for example, displaying the test results of the unit tests. This post showed that it is pretty simple to get these results out of the container and display them in Azure DevOps.
 
-In my next post, I will show how you can also display the code coverage of your tests. You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/MicroserviceDemo).
+[In my next post](/get-xunit-code-coverage-from-docker), I will show how you can also display the code coverage of your tests. You can find the code of this demo on [GitHub](https://github.com/WolfgangOfner/MicroserviceDemo).
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

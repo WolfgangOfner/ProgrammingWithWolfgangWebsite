@@ -4,15 +4,17 @@ date: 2020-04-18
 author: Wolfgang Ofner
 categories: [Docker, ASP.NET]
 tags: [.NET Core 3.1, 'C#', CQRS, Docker, Docker-Compose, MediatR, Microservice, RabbitMQ, Swagger]
-description: Today, I will implement RabbitMQ, so the microservices can exchange data while staying independent, highly available and high-performant.
+description: Today, I will implement RabbitMQ, so the microservices can exchange data while staying independent, highly available, and high-performant.
 ---
 [In my last posts](https://www.programmingwithwolfgang.com/document-your-microservice-with-swagger), I created two microservices using ASP .NET Core 3.1. Today, I will implement RabbitMQ, so the microservices can exchange data while staying independent. RabbitMQ can also be used to publish data even without knowing the subscribers. This means that you can publish an update and whoever is interested can get the new information.
 
+This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
+
 ## What is RabbitMQ and why use it?
 
-RabbitMQ describes itself as the most widely deployed open-source message broker. It is easy to implement and supports a wide variety of technologies like Docker, .NET or Go. It also offers plugins for monitoring, managing or authentication. I chose RabbitMQ because it is well known, quickly implemented and especially can be easily run using Docker.
+RabbitMQ describes itself as the most widely deployed open-source message broker. It is easy to implement and supports a wide variety of technologies like Docker, .NET, or Go. It also offers plugins for monitoring, managing, or authentication. I chose RabbitMQ because it is well known, quickly implemented, and especially can be easily run using Docker.
 
-## Why use a Queue to send data?
+## Why use a Queue to send Data?
 
 Now that you know what RabbitMQ is, the next question is: why should you use a queue instead of directly sending data from one microservice to the other one. There are a couple of reasons why using a queue instead of directly sending data is better:
 
@@ -21,25 +23,25 @@ Now that you know what RabbitMQ is, the next question is: why should you use a q
   * Share data with whoever wants/needs it
   * Better user experience due to asynchronous processing
 
-### Higher availability and better error handling
+### Higher Availability and better Error Handling
 
 Errors happen all the time. In the past, we designed our systems to avoid errors. Nowadays we design our systems to catch errors and handle them in a user-friendly way.
 
-Let's say we have an online shop and the order services send data to the process order service after the customer placed his order. If these services are connected directly and the process order service is offline, the customer will get an error message, for example, &#8220;An error occurred. Please try it again later&#8221;. This user probably won't return and you lost the revenue of the order and a customer for the future.
+Let's say we have an online shop and the order service sends data to the process order service after the customer placed his order. If these services are connected directly and the process order service is offline, the customer will get an error message, for example, &#8220;An error occurred. Please try it again later&#8221;. This user probably won't return and you lost the revenue of the order and a potential future customer.
 
-If the order service places the order in a queue and the order processing service is offline, the customer will get a message that the order got placed and he or she might come back in the future. When the order processing service is back online, it will process all entries and the queue. You might know this behavior when booking a flight. After booking the flight it takes a couple of minutes until you get your confirmation per email.
+If the order service places the order in a queue and the order processing service is offline, the customer will get a message that the order got placed and he or she might come back in the future. When the order processing service is back online, it will process all entries in the queue. You might know this behavior when booking a flight. After booking the flight it takes a couple of minutes until you get your confirmation per email.
 
-### Better scalability
+### Better Scalability
 
-When you place messages in a queue, you can start new instances of your processor depending on the queue size. For example, you have one processor running, when there are ten items in the queue, you start another one and so on. Nowadays with cloud technologies and serverless features, you can easily scale up to thousands of instances of your processor.
+When you place messages in a queue, you can start new instances of your processor depending on the queue size. For example, you have one processor running, when there are ten items in the queue, you start another one, and so on. Nowadays with cloud technologies and serverless features, you can easily scale up to thousands of instances of your processor.
 
-### Share data with whoever wants/needs it
+### Share Data with whoever wants/needs it
 
 Most of the time, you don't know who wants to process the information you have.
 
 Let's say our order service publishes the order to the queue. Then the order processing service, reporting services, and logistics services can process the data. Your service as a publisher doesn't care who takes the information. This is especially useful when you have a new service in the future which wants your order data too. This service only has to read the data from the queue. If your publisher service sends the data directly to the other services, you would have to implement each call and change your service every time a new service wants the data.
 
-### Better user experience due to asynchronous processing
+### Better User Experience due to asynchronous processing
 
 Better user experience is the result of the three other advantages. The user is way less likely to see an error message and even when there is a lot of traffic like on Black Friday, your system can perform well due to the scalability and the asynchronous processing.
 
@@ -53,9 +55,9 @@ RabbitMQ has a lot of features. I will only implement a simple version of it to 
 
 I am a big fan of Separation of Concerns (SoC) and therefore I am creating a new project in the CustomerApi solution called CustomerApi.Message.Send. Next, I install the RabbitMQ.Client NuGet package and create the class CustomerUpdateSender in the project. I want to publish my Customer object to the queue every time the customer is updated. Therefore, I create the SendCustomer method which takes a Customer object as a parameter.
 
-#### Publish data to RabbitMQ
+#### Publish Data to RabbitMQ
 
-Publishing data to the queue is pretty simple. First, you have to create a connection to RabbitMQ using its hostname, a username and a password using the ConnectionFactory. With this connection, you can use QueueDeclare to create a new queue if it doesn't exist yet. The QueueDeclare method takes a couple of parameters like a name and whether the queue is durable.
+Publishing data to the queue is pretty simple. First, you have to create a connection to RabbitMQ using its hostname, a username, and a password using the ConnectionFactory. With this connection, you can use QueueDeclare to create a new queue if it doesn't exist yet. The QueueDeclare method takes a couple of parameters like a name and whether the queue is durable.
 
 <script src="https://gist.github.com/WolfgangOfner/7180c5edd20d0b0b9d1e00270348d425.js"></script>
 
@@ -67,7 +69,7 @@ The last step is to publish the previously generated byte array using BasicPubli
 
 <script src="https://gist.github.com/WolfgangOfner/01b010d0a264667ee46122f0a7293f4e.js"></script>
 
-That's all the logic you need to publish data to your queue. Before I can use it, I have to do two more things though. First, I have to register my CustomerUpdateSender class in the Startup class. I am also providing the settings for the queue like the name or user from the appsettings. Therefore, I have to read this section in the Startup class.
+That's all the logic you need to publish data to your queue. Before I can use it, I have to do two more things though. First, I have to register my CustomerUpdateSender class in the Startup class. I am also providing the settings for the queue such as the name or user from the appsettings. Therefore, I have to read this section in the Startup class.
 
 <script src="https://gist.github.com/WolfgangOfner/f26366219f4d74d8887be1bc88e25107.js"></script>
 
@@ -75,13 +77,13 @@ The last step is to call the SendCustomer method when a customer is updated. Thi
 
 <script src="https://gist.github.com/WolfgangOfner/835ba90f46b4142121a1fd05184aa091.js"></script>
 
-Note: I updated the implementation on November 27 2020. Instead of creating a connection every time the method is called, I reuse the connection and only create a new channel. This follows the RabbitMQ best practices and helps to improve the performance significantly. I am not reusing the channel since I don't need the highest performance and I want to keep the implementation simple. The new code looks as follows:
+Note: I updated the implementation on November 27, 2020. Instead of creating a connection every time the method is called, I reuse the connection and only create a new channel. This follows the RabbitMQ best practices and helps to improve the performance significantly. I am not reusing the channel since I don't need the highest performance and I want to keep the implementation simple. The new code looks as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/27598498de3abb4f06c14dd8e34ed6e1.js"></script>
 
-### Implementation of reading data from RabbitMQ
+### Implementation of reading Data from RabbitMQ
 
-Implementing the read functionality is a bit more complex because we have to constantly check the queue if there are new messages and if so, process them. I love .NET Core and it comes really handy here. .NET Core provides the abstract class BackgroundService which provides the method ExecuteAsync. This method can be overriden and is executed regularly in the background.
+Implementing the read functionality is a bit more complex because we have to constantly check the queue if there are new messages and if so, process them. I love .NET Core and it comes really handy here. .NET Core provides the abstract class BackgroundService which provides the method ExecuteAsync. This method can be overridden and is executed regularly in the background.
 
 In the OrderApi solution, I create a new project called OrderApi.Messaging.Receive, install the RabbitMQ.Client NuGet and create a class called CustomerFullNameUpdateReceiver. This class inherits from the BackgroundService class and overrides the ExecuteAsync method.
 
@@ -89,7 +91,7 @@ In the constructor of the class, I initialize my queue the same way as in the Cu
 
 <script src="https://gist.github.com/WolfgangOfner/977a31648dab713bf65e70ae2ce22aa0.js"></script>
 
-#### Reading data from the queue
+#### Reading Data from the Queue
 
 In the ExecuteAsync method, I am subscribing to the receive event and whenever this event is fired, I am reading the message and encode its body which is my Customer object. Then I am using this Customer object to call another service that will do the update in the database.
 
@@ -139,7 +141,7 @@ Navigate to the Queues tab and you will see that there is no queue yet.
   </p>
 </div>
 
-Now you can start the OrderApi and the CustomerApi project. The order how you start them doesn't matter. After you started the OrderApi project, the CustomerQueue will be created and you can see it in the management portal.
+Now you can start the OrderApi and the CustomerApi project. The order of how you start them doesn't matter. After you started the OrderApi project, the CustomerQueue will be created and you can see it in the management portal.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/The-CustomerQueue-was-created-from-the-CustomerApi-solution.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/The-CustomerQueue-was-created-from-the-CustomerApi-solution.jpg" alt="No queues are created yet" /></a>
@@ -181,7 +183,7 @@ After you sent the update request, go back to the RabbitMQ management portal and
 
 ## Shortcomings of my Implementation
 
-In the CustomerApi, there is no real exception handling right now. This means that if there is an error while processing a message, the message will be deleted from the queue and therefore be lost. Also if there is no connection to RabbitMQ, the message will be discareded and therefore lost. In a production environment, you should save this message somewhere and process it once all systems are back up and running.
+In the CustomerApi, there is no real exception handling right now. This means that if there is an error while processing a message, the message will be deleted from the queue and therefore be lost. Also if there is no connection to RabbitMQ, the message will be discarded and therefore lost. In a production environment, you should save this message somewhere and process it once all systems are back up and running.
 
 Another problem is that after the message is read, it is removed from the queue. This means only one receiver is possible at the moment. There are also no unit tests for the implementation of the RabbitMQ client.
 
@@ -195,6 +197,4 @@ You can find the code of  the finished demo on <a href="https://github.com/Wol
 
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).
 
-Update 1: On October 11 2020, I removed the Solution folder and moved the projects to the root level. Over the last months I made the experience that this makes it quite simpler to work with Dockerfiles and have automated builds and deployments.
-
-Update 2: On November 27 2020, I refactored the registration of the service to make it more resilient and also change the implementation of the sender to reuse the connection instead of creating a new one for every message.
+Update: On November 27 2020, I refactored the registration of the service to make it more resilient and also change the implementation of the sender to reuse the connection instead of creating a new one for every message.
