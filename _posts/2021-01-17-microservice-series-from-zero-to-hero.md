@@ -178,6 +178,10 @@ Azure Functions can be used to process messages from queues and can be deployed 
 
 - [Deploy a Docker Container to Azure Functions using an Azure DevOps YAML Pipeline](/deploy-docker-container-azure-functions)
 
+- [Replace RabbitMQ with Azure Service Bus Queues](/replace-rabbitmq-azure-service-bus-queue)
+
+- [Use Azure Functions to Process Queue Messages](/azure-functions-process-queue-messages)
+
 ## Infrastructure as Code, Monitoring, and Logging
 
 Infrastructure as Code (IaC) allows developers to define the infrastructure and all its dependencies as code. These configurations are often stored in YAML files and have the advantage that they can be checked into version control and also can be deployed quickly using Azure DevOps. Another aspect of operating a Kubernetes infrastructure is logging and monitoring with tools such as Loki or Prometheus.
