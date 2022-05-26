@@ -30,12 +30,16 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Install an on-premises k3s Cluster](/install-on-premises-k3s-cluster)
 
+- [Install Azure Arc on an On-premises k3s Cluster](/install-azure-arc-on-premises-k3s-cluster)
+
 Coming soon:
 
-- Install Azure Arc on k3s on-premises cluster
 - Access k3s through Azure Arc
 - GitOps with Flux
 - CD with Helm Charts using Flux
+- Deploying from a private Git repository
 - Collecting Metrics from the k3s cluster
 - Azure Monitoring
+- Azure Key Vault integration
+- Azure App Services running on on-premises infrastructure
 - tbd

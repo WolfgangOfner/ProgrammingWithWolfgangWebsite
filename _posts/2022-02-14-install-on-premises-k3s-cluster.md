@@ -11,6 +11,8 @@ Using cloud technologies is amazing and makes a developer's life so much easier.
 
 Today, I would like to get more practical and show you how to install an on-premises k3s cluster and in the next post, I will install Azure Arc to manage the cluster.
 
+This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).
+
 ## Project Requirements and Restrictions
 
 My project has the following requirements and restrictions:
@@ -110,4 +112,6 @@ You can repeat this process for every node you want to add to the cluster.
 
 K3s is a fully certified, lightweight Kubernetes distribution developed by Rancher. It can be easily installed and is a great tool to get started with Kubernetes when you have to use on-premises infrastructure.
 
-In my next post, I will install Azure Arc and project the cluster to Azure. This will allow managing the cluster in the Azure portal.
+[In my next post](/install-azure-arc-on-premises-k3s-cluster), I will install Azure Arc and project the cluster to Azure. This will allow managing the cluster in the Azure portal.
+
+This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).

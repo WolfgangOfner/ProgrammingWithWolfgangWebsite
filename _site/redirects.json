@@ -1,1 +1,1 @@
-{"/norobots/":"/404.html","/assets/":"/404.html","/posts/":"/404.html"}
+{"/norobots/":"http://0.0.0.0:4000/404.html","/assets/":"http://0.0.0.0:4000/404.html","/posts/":"http://0.0.0.0:4000/404.html"}
