@@ -58,7 +58,7 @@
 <meta name="twitter:creator" content="@Wolfgang Ofner" />
 <meta name="google-site-verification" content="xxsPm-h6A0B6a0QMgqXO80PU4DbMt4Dq06p-SGzB3TU" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Wolfgang Ofner"},"dateModified":"2022-02-21T00:00:00+01:00","datePublished":"2022-02-21T00:00:00+01:00","description":"Azure Arc is a great tool to manage your on-premises hardware, such as an k3s cluster, with Azure.","headline":"Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/manage-on-premises-kubernetes-with-azure-arc/"},"url":"http://0.0.0.0:4000/manage-on-premises-kubernetes-with-azure-arc/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Wolfgang Ofner"},"dateModified":"2022-05-26T16:27:22+02:00","datePublished":"2022-02-21T00:00:00+01:00","description":"Azure Arc is a great tool to manage your on-premises hardware, such as an k3s cluster, with Azure.","headline":"Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/manage-on-premises-kubernetes-with-azure-arc/"},"url":"http://0.0.0.0:4000/manage-on-premises-kubernetes-with-azure-arc/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
@@ -631,6 +631,26 @@
   
       <!-- lastmod date -->
       
+      <span>
+        Updated
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+
+<em class=""
+    data-ts="1653575242"
+    data-df="ll"
+    data-toggle="tooltip" data-placement="bottom">
+  May 26, 2022
+</em>
+
+      </span>
+      
       by
       <span class="author">
         
@@ -666,7 +686,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="227 words">
+  title="236 words">
   <em>2 min</em></span>
  read
 
@@ -703,14 +723,16 @@
     <p><a href="/install-on-premises-k3s-cluster">Install an on-premises k3s Cluster</a></p>
   </li>
   <li>
-    <p><a href="/install-azure-arc-on-premises-k3s-cluster">In my next post</a></p>
+    <p><a href="/install-azure-arc-on-premises-k3s-cluster">Install Azure Arc on an On-premises k3s Cluster</a></p>
+  </li>
+  <li>
+    <p><a href="/securely-connect-to-on-premises-kubernetes-with-azure-arc">Securely connect to an on-premises Kubernetes Cluster with Azure Arc</a></p>
   </li>
 </ul>
 
 <p>Coming soon:</p>
 
 <ul>
-  <li>Access k3s through Azure Arc</li>
   <li>GitOps with Flux</li>
   <li>CD with Helm Charts using Flux</li>
   <li>Deploying from a private Git repository</li>
@@ -872,6 +894,16 @@
         
         
         
+      <li><a href="/install-on-premises-k3s-cluster/">Install an on-premises k3s Cluster</a></li>
+      
+        
+        
+        
+      <li><a href="/manage-on-premises-kubernetes-with-azure-arc/">Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc</a></li>
+      
+        
+        
+        
       <li><a href="/microservice-series-from-zero-to-hero/">Microservice Series - From Zero to Hero</a></li>
       
         
@@ -883,16 +915,6 @@
         
         
       <li><a href="/rabbitmq-in-an-asp-net-core-3-1-microservice/">RabbitMQ in an ASP .NET Core 3.1 Microservice</a></li>
-      
-        
-        
-        
-      <li><a href="/dockerize-an-asp-net-core-microservice-and-rabbitmq/">Dockerize an ASP .NET Core Microservice and RabbitMQ</a></li>
-      
-        
-        
-        
-      <li><a href="/set-up-docker-compose-for-asp-net-core-3-1-microservices/">Set up Docker-Compose for ASP .NET Core 3.1 Microservices</a></li>
       
     </ul>
   </div> <!-- #access-lastmod -->
@@ -4395,6 +4417,11 @@
     
     
     
+  
+    
+    
+    
+    
       
         
         
@@ -6932,7 +6959,7 @@
       
       
       <div class="card">
-        <a href="/install-azure-arc-on-premises-k3s-cluster/">
+        <a href="/securely-connect-to-on-premises-kubernetes-with-azure-arc/">
           <div class="card-body">
             <!--
   Date format snippet
@@ -6944,13 +6971,13 @@
 
 
 <em class="small"
-    data-ts="1653516000"
+    data-ts="1651788000"
     data-df="ll"
     >
-  May 26, 2022
+  May  6, 2022
 </em>
 
-            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Install Azure Arc on an On-premises k3s Cluster</h3>
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Securely connect to an on-premises Kubernetes Cluster with Azure Arc</h3>
             <div class="text-muted small">
               <p>
                 
@@ -6959,7 +6986,7 @@
 
 
 
-                In my last post, I have created an on-premises k3s cluster and introduced the requirements of this project. One of the requirements/restraints of this project is that the k3s cluster sits behind a ...
+                In my last post, I installed Azure Arc which allowed me to project my k3s cluster into Azure. The installation was done directly on the Master node of the cluster and developers would also need to ...
               </p>
             </div>
           </div>
@@ -7059,9 +7086,9 @@
   
 
   
-  <a href="/i-am-back/" class="btn btn-outline-primary"
+  <a href="/securely-connect-to-on-premises-kubernetes-with-azure-arc/" class="btn btn-outline-primary"
     prompt="Newer">
-    <p>I am back</p>
+    <p>Securely connect to an on-premises Kubernetes Cluster with Azure Arc</p>
   </a>
   
 
@@ -9866,6 +9893,11 @@
         
         
 
+  
+    
+    
+    
+    
   
     
     

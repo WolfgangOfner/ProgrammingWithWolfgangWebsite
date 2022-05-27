@@ -105,12 +105,12 @@ Back in the Azure Portal, click on any of the Kubernetes resources panes on the 
   </p>
 </div>
 
-In my next post, I will show you how to authenticate a user to sign in to the Kubernetes cluster using Azure Arc.
+[In my next post](/securely-connect-to-on-premises-kubernetes-with-azure-arc), I will show you how to authenticate a user to sign in to the Kubernetes cluster using Azure Arc.
 
 ## Conclusion
 
 Azure Arc can be easily installed using the Azure CLI and allows you to project your cluster into Azure. This means that you can see information such as the K8s version and the distribution in the Azure Portal. To do that, Azure Arc installs a couple of applications in the azure-arc namespace.
 
-In my next post, I will show you how to authenticate a user to sign in to the Kubernetes cluster using Azure Arc.
+[In my next post](/securely-connect-to-on-premises-kubernetes-with-azure-arc), I will show you how to authenticate a user to sign in to the Kubernetes cluster using Azure Arc.
 
 This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).

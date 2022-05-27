@@ -32,9 +32,10 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Install Azure Arc on an On-premises k3s Cluster](/install-azure-arc-on-premises-k3s-cluster)
 
+- [Securely connect to an on-premises Kubernetes Cluster with Azure Arc](/securely-connect-to-on-premises-kubernetes-with-azure-arc)
+
 Coming soon:
 
-- Access k3s through Azure Arc
 - GitOps with Flux
 - CD with Helm Charts using Flux
 - Deploying from a private Git repository
