@@ -42,28 +42,28 @@
   
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="Securely connect to an on-premises Kubernetes Cluster with Azure Arc" />
+<meta property="og:title" content="Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc" />
 <meta name="author" content="Wolfgang Ofner" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="In my last post, I installed Azure Arc which allowed me to project my k3s cluster into Azure. The installation was done directly on the Master node of the cluster and developers would also need to connect to the master node to execute any commands on the Kubernetes cluster. Today, I want to show you how to give developers access using RBAC (Role-based access control) and let them connect to the Kubernetes cluster through Azure Arc. This post is part of “Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc”. Create a User on the Kubernetes Cluster To authorize a user to access the Kubernetes cluster, you first have to create a user account and then give this user permissions using the kubectl cluterrolebinding command. Use the following command on the Master node to create a new admin user and give this user the cluster-admin role: This command additionally creates a secret for the user that contains a JWT token. You can read the token with the following command and then print it to the console: The following screenshot shows all the commands and also the printed token: Create an user and print the token to the console Copy the token as you will need it to access the Kubernetes cluster through Azure Arc. Access the k3s Cluster in the Azure Portal with Azure Arc When you open the Azure Arc resource in the Azure Portal and go to any Kubernetes resources pane, you will see a message that you have to sign in to view the Kubernetes resources. Sign in to view your Kubernetes resources Paste the previously created token into the text box and click Sign in. Now you should see the resources of the Kubernetes cluster. Display Kubernetes resources in Azure Arc Access the k3s Cluster from a Developer Computer with Azure Arc Using the Azure Portal to access the Kubernetes cluster is nice but as a developer, I am used to using kubectl or any custom dashboards. To access the Kubernetes cluster from my Windows computer, I will use the following Azure CLI command. Replace &lt;TOKEN&gt; with the previously created token. You can use this command on any computer as long as the Azure CLI is installed. The command downloads the Kubernetes config file, sets the context, and creates a proxy connection through Azure Arc to the Kubernetes cluster. Create a connect to the Kubernetes Cluster After the connection is established, open a new terminal window and use kubectl as you are used to. It is also possible to use any dashboard to display the resources from the Kubernetes cluster. I like to use Octant from VMWare but you can use whatever dashboard you feel comfortable. For more information about Octant and how to install it, see “Azure Kubernetes Service - Getting Started” Access the Kubernetes Cluster with a dashboard Conclusion Using Azure Arc enables you to access an on-premises cluster securely from your machine or the Azure Portal. All you have to do is to create a user on the Kubernetes cluster and give this user the desired permissions. Then retrieve its access token and use this token to connect to the cluster. This post is part of “Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc”." />
-<meta property="og:description" content="In my last post, I installed Azure Arc which allowed me to project my k3s cluster into Azure. The installation was done directly on the Master node of the cluster and developers would also need to connect to the master node to execute any commands on the Kubernetes cluster. Today, I want to show you how to give developers access using RBAC (Role-based access control) and let them connect to the Kubernetes cluster through Azure Arc. This post is part of “Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc”. Create a User on the Kubernetes Cluster To authorize a user to access the Kubernetes cluster, you first have to create a user account and then give this user permissions using the kubectl cluterrolebinding command. Use the following command on the Master node to create a new admin user and give this user the cluster-admin role: This command additionally creates a secret for the user that contains a JWT token. You can read the token with the following command and then print it to the console: The following screenshot shows all the commands and also the printed token: Create an user and print the token to the console Copy the token as you will need it to access the Kubernetes cluster through Azure Arc. Access the k3s Cluster in the Azure Portal with Azure Arc When you open the Azure Arc resource in the Azure Portal and go to any Kubernetes resources pane, you will see a message that you have to sign in to view the Kubernetes resources. Sign in to view your Kubernetes resources Paste the previously created token into the text box and click Sign in. Now you should see the resources of the Kubernetes cluster. Display Kubernetes resources in Azure Arc Access the k3s Cluster from a Developer Computer with Azure Arc Using the Azure Portal to access the Kubernetes cluster is nice but as a developer, I am used to using kubectl or any custom dashboards. To access the Kubernetes cluster from my Windows computer, I will use the following Azure CLI command. Replace &lt;TOKEN&gt; with the previously created token. You can use this command on any computer as long as the Azure CLI is installed. The command downloads the Kubernetes config file, sets the context, and creates a proxy connection through Azure Arc to the Kubernetes cluster. Create a connect to the Kubernetes Cluster After the connection is established, open a new terminal window and use kubectl as you are used to. It is also possible to use any dashboard to display the resources from the Kubernetes cluster. I like to use Octant from VMWare but you can use whatever dashboard you feel comfortable. For more information about Octant and how to install it, see “Azure Kubernetes Service - Getting Started” Access the Kubernetes Cluster with a dashboard Conclusion Using Azure Arc enables you to access an on-premises cluster securely from your machine or the Azure Portal. All you have to do is to create a user on the Kubernetes cluster and give this user the desired permissions. Then retrieve its access token and use this token to connect to the cluster. This post is part of “Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc”." />
-<link rel="canonical" href="http://0.0.0.0:4000/securely-connect-to-on-premises-kubernetes-with-azure-arc/" />
-<meta property="og:url" content="http://0.0.0.0:4000/securely-connect-to-on-premises-kubernetes-with-azure-arc/" />
+<meta name="description" content="The Azure Monitor extension collects various metrics and sends them to Azure. There, you can create dashboards or alerts with Azure Arc." />
+<meta property="og:description" content="The Azure Monitor extension collects various metrics and sends them to Azure. There, you can create dashboards or alerts with Azure Arc." />
+<link rel="canonical" href="http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/" />
+<meta property="og:url" content="http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/" />
 <meta property="og:site_name" content="Programming With Wolfgang" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-05-06T00:00:00+02:00" />
+<meta property="article:published_time" content="2022-05-13T00:00:00+02:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Securely connect to an on-premises Kubernetes Cluster with Azure Arc" />
+<meta property="twitter:title" content="Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc" />
 <meta name="twitter:site" content="@wolfgang_ofner" />
 <meta name="twitter:creator" content="@Wolfgang Ofner" />
 <meta name="google-site-verification" content="xxsPm-h6A0B6a0QMgqXO80PU4DbMt4Dq06p-SGzB3TU" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Wolfgang Ofner"},"dateModified":"2022-05-06T00:00:00+02:00","datePublished":"2022-05-06T00:00:00+02:00","description":"In my last post, I installed Azure Arc which allowed me to project my k3s cluster into Azure. The installation was done directly on the Master node of the cluster and developers would also need to connect to the master node to execute any commands on the Kubernetes cluster. Today, I want to show you how to give developers access using RBAC (Role-based access control) and let them connect to the Kubernetes cluster through Azure Arc. This post is part of “Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc”. Create a User on the Kubernetes Cluster To authorize a user to access the Kubernetes cluster, you first have to create a user account and then give this user permissions using the kubectl cluterrolebinding command. Use the following command on the Master node to create a new admin user and give this user the cluster-admin role: This command additionally creates a secret for the user that contains a JWT token. You can read the token with the following command and then print it to the console: The following screenshot shows all the commands and also the printed token: Create an user and print the token to the console Copy the token as you will need it to access the Kubernetes cluster through Azure Arc. Access the k3s Cluster in the Azure Portal with Azure Arc When you open the Azure Arc resource in the Azure Portal and go to any Kubernetes resources pane, you will see a message that you have to sign in to view the Kubernetes resources. Sign in to view your Kubernetes resources Paste the previously created token into the text box and click Sign in. Now you should see the resources of the Kubernetes cluster. Display Kubernetes resources in Azure Arc Access the k3s Cluster from a Developer Computer with Azure Arc Using the Azure Portal to access the Kubernetes cluster is nice but as a developer, I am used to using kubectl or any custom dashboards. To access the Kubernetes cluster from my Windows computer, I will use the following Azure CLI command. Replace &lt;TOKEN&gt; with the previously created token. You can use this command on any computer as long as the Azure CLI is installed. The command downloads the Kubernetes config file, sets the context, and creates a proxy connection through Azure Arc to the Kubernetes cluster. Create a connect to the Kubernetes Cluster After the connection is established, open a new terminal window and use kubectl as you are used to. It is also possible to use any dashboard to display the resources from the Kubernetes cluster. I like to use Octant from VMWare but you can use whatever dashboard you feel comfortable. For more information about Octant and how to install it, see “Azure Kubernetes Service - Getting Started” Access the Kubernetes Cluster with a dashboard Conclusion Using Azure Arc enables you to access an on-premises cluster securely from your machine or the Azure Portal. All you have to do is to create a user on the Kubernetes cluster and give this user the desired permissions. Then retrieve its access token and use this token to connect to the cluster. This post is part of “Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc”.","headline":"Securely connect to an on-premises Kubernetes Cluster with Azure Arc","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/securely-connect-to-on-premises-kubernetes-with-azure-arc/"},"url":"http://0.0.0.0:4000/securely-connect-to-on-premises-kubernetes-with-azure-arc/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Wolfgang Ofner"},"dateModified":"2022-05-13T00:00:00+02:00","datePublished":"2022-05-13T00:00:00+02:00","description":"The Azure Monitor extension collects various metrics and sends them to Azure. There, you can create dashboards or alerts with Azure Arc.","headline":"Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/"},"url":"http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
 
-  <title>Securely connect to an on-premises Kubernetes Cluster with Azure Arc | Programming With Wolfgang
+  <title>Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc | Programming With Wolfgang
   </title>
 
   <!--
@@ -450,7 +450,7 @@
           
   
             
-              <span>Securely connect to an on-premises Kubernetes Cluster with Azure Arc</span>
+              <span>Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc</span>
             
   
           
@@ -605,12 +605,6 @@
       
       
         
-      
-      
-        
-      
-      
-        
 
     
       
@@ -779,192 +773,6 @@
 
       
     
-      
-      
-        
-      
-      
-        
-      
-      
-        
-      
-      
-        
-      
-      
-        
-
-    
-      
-
-        <!-- Add CDN URL -->
-        
-
-        <!-- Add image path -->
-        
-
-        
-        
-
-      
-
-      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-
-      
-
-    
-
-    <!-- Add SVG placehoder to prevent layout reflow -->
-
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-
-  
-    
-
-    
-    
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-      
-
-      
-      
-
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-
-      
-    
-      
-      
-        
-      
-      
-        
-      
-      
-        
-      
-      
-        
-      
-      
-        
-      
-      
-        
-
-    
-      
-
-        <!-- Add CDN URL -->
-        
-
-        <!-- Add image path -->
-        
-
-        
-        
-
-      
-
-      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
-
-      
-
-    
-
-    <!-- Add SVG placehoder to prevent layout reflow -->
-
-    
-
-    <!-- Bypass the HTML-proofer test -->
-    
-
-    
-
-  
-    
-
-    
-    
-    
-
-    
-    
-
-    
-    
-    
-
-    
-      
-      
-
-      
-      
-
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-
-      
-    
-      
-      
-
-      
-      
-
-      
-
-      
-    
-      
-      
-        
       
       
         
@@ -1073,18 +881,6 @@
       
 
     
-      
-
-      
-      
-
-      
-      
-      
-
-      
-
-    
 
     
 
@@ -1122,7 +918,7 @@
 
 
 
-<h1 data-toc-skip>Securely connect to an on-premises Kubernetes Cluster with Azure Arc</h1>
+<h1 data-toc-skip>Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc</h1>
 
   <div class="post-meta text-muted d-flex flex-column">
     <!-- Published date and author -->
@@ -1139,10 +935,10 @@
 
 
 <em class=""
-    data-ts="1651788000"
+    data-ts="1652392800"
     data-df="ll"
     data-toggle="tooltip" data-placement="bottom">
-  May  6, 2022
+  May 13, 2022
 </em>
 
       </span>
@@ -1184,7 +980,7 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="548 words">
+  title="531 words">
   <em>6 min</em></span>
  read
 
@@ -1192,85 +988,67 @@
   </div>
 
 <div class="post-content">
-  <p><a href="/install-azure-arc-on-premises-k3s-cluster">In my last post</a>, I installed Azure Arc which allowed me to project my k3s cluster into Azure. The installation was done directly on the Master node of the cluster and developers would also need to connect to the master node to execute any commands on the Kubernetes cluster.</p>
+  <p>Azure Arc allows you to project your on-premises Kubernetes cluster into Azure. Doing so enables you to manage the cluster from Azure with tools such as Azure Monitor or Cloud Defender.</p>
 
-<p>Today, I want to show you how to give developers access using RBAC (Role-based access control) and let them connect to the Kubernetes cluster through Azure Arc.</p>
+<p>Today, I want to show you how to install the Container Insights Extension which enables you to monitor your pods and nodes from the on-premise cluster in Azure.</p>
 
 <p>This post is part of <a href="/manage-on-premises-kubernetes-with-azure-arc">“Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc”</a>.</p>
 
-<h2 id="create-a-user-on-the-kubernetes-cluster"><span class="mr-2">Create a User on the Kubernetes Cluster</span><a href="#create-a-user-on-the-kubernetes-cluster" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<h2 id="install-the-azure-monitor-extension"><span class="mr-2">Install the Azure Monitor Extension</span><a href="#install-the-azure-monitor-extension" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>To authorize a user to access the Kubernetes cluster, you first have to create a user account and then give this user permissions using the kubectl cluterrolebinding command. Use the following command on the Master node to create a new admin user and give this user the cluster-admin role:</p>
+<p>Using Azure Monitor with your on-premises Kubernetes cluster is surprisingly easy. All you have to do is to execute the following Azure CLI command on the Master node of your cluster:</p>
 
-<script src="https://gist.github.com/WolfgangOfner/3351fe1c4967a5833b8e74e86c9b9f03.js"></script>
+<script src="https://gist.github.com/WolfgangOfner/df783364ca52544364f1636531a59efe.js"></script>
 
-<p>This command additionally creates a secret for the user that contains a JWT token. You can read the token with the following command and then print it to the console:</p>
+<p>The parameter of the command should be self-explanatory. The most interesting one is probably the –name parameter. This Azure CLI command installs the Azure Monitor extension in the cluster in the namespace you defined with the –name parameter.</p>
 
-<script src="https://gist.github.com/WolfgangOfner/a5285efb1f3c9a263443ea074df8c96d.js"></script>
+<p>XXX INSERT SCREENSHOT OF K8s MONITOR EXTENSIONS NAMESPACE XXX</p>
 
-<p>The following screenshot shows all the commands and also the printed token:</p>
+<p>Additionally, the –name parameter defines the name of the extension which you can find in the Azure Portal in the Extensions pane.</p>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/06/Create-an-user-and-print-the-token-to-the-console.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/06/Create-an-user-and-print-the-token-to-the-console.jpg" alt="Create an user and print the token to the console" data-proofer-ignore></a>
+  <a href="/assets/img/posts/2022/06/The-Azure-Monitor-Extension-in-the-Azure-Portal.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/06/The-Azure-Monitor-Extension-in-the-Azure-Portal.jpg" alt="The Azure Monitor Extension in the Azure Portal" data-proofer-ignore></a>
   
   <p>
-   Create an user and print the token to the console
+   The Azure Monitor Extension in the Azure Portal
   </p>
 </div>
 
-<p>Copy the token as you will need it to access the Kubernetes cluster through Azure Arc.</p>
+<p>The Azure CLI command automatically creates a new Log Analytics Workspace for the metrics and logs of the extensions. You can also use an existing Work Analytics Workspace. Use the following command to assign the Log Analytics Workspace Id to a variable and then use this variable for the Azure Monitor extension:</p>
 
-<h2 id="access-the-k3s-cluster-in-the-azure-portal-with-azure-arc"><span class="mr-2">Access the k3s Cluster in the Azure Portal with Azure Arc</span><a href="#access-the-k3s-cluster-in-the-azure-portal-with-azure-arc" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<script src="https://gist.github.com/WolfgangOfner/b7840583d94cde23630bab8c2c550e63.js"></script>
 
-<p>When you open the Azure Arc resource in the Azure Portal and go to any Kubernetes resources pane, you will see a message that you have to sign in to view the Kubernetes resources.</p>
+<p>You can also display the installed extensions using the Azure CLI with the following command:</p>
+
+<script src="https://gist.github.com/WolfgangOfner/30c06c9670b898fcd518672d97a18ebf.js"></script>
+
+<h2 id="create-dashboards-in-the-azure-portal"><span class="mr-2">Create Dashboards in the Azure Portal</span><a href="#create-dashboards-in-the-azure-portal" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>After you have installed the extension, it collects metric information and sends them to Azure. This allows you to use Azure Monitor the same way as you would use it with Azure VMs. Open Azure Arc in the Azure Portal and navigate to the Insights pane. There you can see various dashboards already. You can change what you want to display and also switch the scope, for example, from the Cluster scope to the Container scope. Additionally, you can set various filters such as a time range.</p>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/06/Sign-in-to-view-your-Kubernetes-resources.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/06/Sign-in-to-view-your-Kubernetes-resources.jpg" alt="Sign in to view your Kubernetes resources" data-proofer-ignore></a>
+  <a href="/assets/img/posts/2022/06/Display-various-dashboards-in-the-Azure-Portal.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/06/Display-various-dashboards-in-the-Azure-Portal.jpg" alt="Display various dashboards in the Azure Portal" data-proofer-ignore></a>
   
   <p>
-   Sign in to view your Kubernetes resources
+   Display various dashboards in the Azure Portal
   </p>
 </div>
 
-<p>Paste the previously created token into the text box and click Sign in. Now you should see the resources of the Kubernetes cluster.</p>
+<p>For even more insight into your cluster or pods, open the Metrics pane in Azure Arc. There you can create charts and display useful information. The following screenshot shows a chart that displays the pod count and the used CPU percentage of all nodes.</p>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/06/Display-Kubernetes-resources-in-Azure-Arc.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/06/Display-Kubernetes-resources-in-Azure-Arc.jpg" alt="Display Kubernetes resources in Azure Arc" data-proofer-ignore></a>
+  <a href="/assets/img/posts/2022/06/Create-custom-charts-to-display-information.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/06/Create-custom-charts-to-display-information.jpg" alt="Create custom charts to display information" data-proofer-ignore></a>
   
   <p>
-   Display Kubernetes resources in Azure Arc
+   Create custom charts to display information
   </p>
 </div>
 
-<h2 id="access-the-k3s-cluster-from-a-developer-computer-with-azure-arc"><span class="mr-2">Access the k3s Cluster from a Developer Computer with Azure Arc</span><a href="#access-the-k3s-cluster-from-a-developer-computer-with-azure-arc" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-
-<p>Using the Azure Portal to access the Kubernetes cluster is nice but as a developer, I am used to using kubectl or any custom dashboards. To access the Kubernetes cluster from my Windows computer, I will use the following Azure CLI command.</p>
-
-<script src="https://gist.github.com/WolfgangOfner/1d73e10ab3c34847ae72e6d57400aec0.js"></script>
-
-<p>Replace &lt;TOKEN&gt; with the previously created token. You can use this command on any computer as long as the Azure CLI is installed. The command downloads the Kubernetes config file, sets the context, and creates a proxy connection through Azure Arc to the Kubernetes cluster.</p>
-
-<div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/06/Create-a-connect-to-the-Kubernetes-Cluster.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/06/Create-a-connect-to-the-Kubernetes-Cluster.jpg" alt="Create a connect to the Kubernetes Cluster" data-proofer-ignore></a>
-  
-  <p>
-   Create a connect to the Kubernetes Cluster
-  </p>
-</div>
-
-<p>After the connection is established, open a new terminal window and use kubectl as you are used to. It is also possible to use any dashboard to display the resources from the Kubernetes cluster. I like to use Octant from VMWare but you can use whatever dashboard you feel comfortable. For more information about Octant and how to install it, see <a href="/azure-kubernetes-service-getting-started/#access-the-aks-cluster">“Azure Kubernetes Service - Getting Started”</a></p>
-
-<div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/06/Access-the-Kubernetes-Cluster-with-a-dashboard.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/06/Access-the-Kubernetes-Cluster-with-a-dashboard.jpg" alt="Access the Kubernetes Cluster with a dashboard" data-proofer-ignore></a>
-  
-  <p>
-   Access the Kubernetes Cluster with a dashboard
-  </p>
-</div>
+<p>Another neat feature of Azure Monitor is Alerting. Go to the Alerting pane and there you can create alerts based on custom rules. For example, you could send an email to an administrator if the CPU usage of the cluster is greater than 80% over 5 minutes.</p>
 
 <h2 id="conclusion"><span class="mr-2">Conclusion</span><a href="#conclusion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>Using Azure Arc enables you to access an on-premises cluster securely from your machine or the Azure Portal. All you have to do is to create a user on the Kubernetes cluster and give this user the desired permissions. Then retrieve its access token and use this token to connect to the cluster.</p>
+<p>Monitoring your on-premise Cluster is as easy as it could be with Azure Arc. All you need is a single Azure CLI command to install the Azure Monitor extension. This extension collects various metrics and sends them to Azure. There, you can create dashboards or alerts. All this works the same way as when using Azure Monitor with Azure VMs.</p>
 
 <p>This post is part of <a href="/manage-on-premises-kubernetes-with-azure-arc">“Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc”</a>.</p>
 
@@ -1308,8 +1086,11 @@
       <a href="/tags/azure-arc/"
           class="post-tag no-text-decoration" >Azure Arc</a>
       
-      <a href="/tags/rbac/"
-          class="post-tag no-text-decoration" >RBAC</a>
+      <a href="/tags/monitoring/"
+          class="post-tag no-text-decoration" >Monitoring</a>
+      
+      <a href="/tags/azure-monitor/"
+          class="post-tag no-text-decoration" >Azure Monitor</a>
       
   </div>
   
@@ -1344,25 +1125,25 @@
 
     
       
-        <a href="https://twitter.com/intent/tweet?text=Securely+connect+to+an+on-premises+Kubernetes+Cluster+with+Azure+Arc+-+Programming+With+Wolfgang&url=http%3A%2F%2F0.0.0.0%3A4000%2Fsecurely-connect-to-on-premises-kubernetes-with-azure-arc%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://twitter.com/intent/tweet?text=Monitor+an+on-premises+k3s+Cluster+with+Azure+Monitor+and+Azure+Arc+-+Programming+With+Wolfgang&url=http%3A%2F%2F0.0.0.0%3A4000%2Fmonitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc%2F" data-toggle="tooltip" data-placement="top"
           title="Twitter" target="_blank" rel="noopener" aria-label="Twitter">
           <i class="fa-fw fab fa-twitter"></i>
         </a>
     
       
-        <a href="https://www.facebook.com/sharer/sharer.php?title=Securely+connect+to+an+on-premises+Kubernetes+Cluster+with+Azure+Arc+-+Programming+With+Wolfgang&u=http%3A%2F%2F0.0.0.0%3A4000%2Fsecurely-connect-to-on-premises-kubernetes-with-azure-arc%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://www.facebook.com/sharer/sharer.php?title=Monitor+an+on-premises+k3s+Cluster+with+Azure+Monitor+and+Azure+Arc+-+Programming+With+Wolfgang&u=http%3A%2F%2F0.0.0.0%3A4000%2Fmonitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc%2F" data-toggle="tooltip" data-placement="top"
           title="Facebook" target="_blank" rel="noopener" aria-label="Facebook">
           <i class="fa-fw fab fa-facebook-square"></i>
         </a>
     
       
-        <a href="https://telegram.me/share?text=Securely+connect+to+an+on-premises+Kubernetes+Cluster+with+Azure+Arc+-+Programming+With+Wolfgang&url=http%3A%2F%2F0.0.0.0%3A4000%2Fsecurely-connect-to-on-premises-kubernetes-with-azure-arc%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://telegram.me/share?text=Monitor+an+on-premises+k3s+Cluster+with+Azure+Monitor+and+Azure+Arc+-+Programming+With+Wolfgang&url=http%3A%2F%2F0.0.0.0%3A4000%2Fmonitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc%2F" data-toggle="tooltip" data-placement="top"
           title="Telegram" target="_blank" rel="noopener" aria-label="Telegram">
           <i class="fa-fw fab fa-telegram"></i>
         </a>
     
       
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2F0.0.0.0%3A4000%2Fsecurely-connect-to-on-premises-kubernetes-with-azure-arc%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2F0.0.0.0%3A4000%2Fmonitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc%2F" data-toggle="tooltip" data-placement="top"
           title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin">
           <i class="fa-fw fab fa-linkedin"></i>
         </a>
@@ -1417,12 +1198,12 @@
         
         
         
-      <li><a href="/install-on-premises-k3s-cluster/">Install an on-premises k3s Cluster</a></li>
+      <li><a href="/manage-on-premises-kubernetes-with-azure-arc/">Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc</a></li>
       
         
         
         
-      <li><a href="/manage-on-premises-kubernetes-with-azure-arc/">Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc</a></li>
+      <li><a href="/install-on-premises-k3s-cluster/">Install an on-premises k3s Cluster</a></li>
       
         
         
@@ -4940,11 +4721,6 @@
     
     
     
-  
-    
-    
-    
-    
       
         
         
@@ -7556,7 +7332,7 @@
       
       
       <div class="card">
-        <a href="/azure-arc-getting-started/">
+        <a href="/microservice-series-from-zero-to-hero/">
           <div class="card-body">
             <!--
   Date format snippet
@@ -7568,13 +7344,13 @@
 
 
 <em class="small"
-    data-ts="1639350000"
+    data-ts="1610838000"
     data-df="ll"
     >
-  Dec 13, 2021
+  Jan 17, 2021
 </em>
 
-            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Azure Arc - Getting Started</h3>
+            <h3 class="pt-0 mt-1 mb-3" data-toc-skip>Microservice Series - From Zero to Hero</h3>
             <div class="text-muted small">
               <p>
                 
@@ -7583,7 +7359,7 @@
 
 
 
-                Today, many companies use cloud services, but there is also still a sizeable group of companies that can’t use cloud services for various reasons. Modern software becomes more and more complex and,...
+                I am working as a consultant and software architect on different projects that focus on microservices, DevOps, and Kubernetes. Many of my consulting jobs consist of explaining microservices, why th...
               </p>
             </div>
           </div>
@@ -7634,8 +7410,8 @@
 <script type="text/javascript">
 
   var disqus_config = function () {
-    this.page.url = 'http://0.0.0.0:4000/securely-connect-to-on-premises-kubernetes-with-azure-arc/';
-    this.page.identifier = '/securely-connect-to-on-premises-kubernetes-with-azure-arc/';
+    this.page.url = 'http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/';
+    this.page.identifier = '/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/';
   };
 
   /* Lazy loading */
@@ -10416,11 +10192,6 @@
         
         
 
-  
-    
-    
-    
-    
   
     
     

@@ -34,6 +34,8 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Securely connect to an on-premises Kubernetes Cluster with Azure Arc](/securely-connect-to-on-premises-kubernetes-with-azure-arc)
 
+- [Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc](/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc)
+
 Coming soon:
 
 - GitOps with Flux

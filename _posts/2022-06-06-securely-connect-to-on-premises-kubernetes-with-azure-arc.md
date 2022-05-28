@@ -4,7 +4,7 @@ date: 2022-06-06
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
 tags: [Kubernetes, k3s, Rancher, On-premises, Azure Arc, RBAC]
-description: 
+description: Using Azure Arc enables you to access an on-premises cluster securely from your machine or the Azure Portal using RBAC.
 ---
 
 [In my last post](/install-azure-arc-on-premises-k3s-cluster), I installed Azure Arc which allowed me to project my k3s cluster into Azure. The installation was done directly on the Master node of the cluster and developers would also need to connect to the master node to execute any commands on the Kubernetes cluster.
