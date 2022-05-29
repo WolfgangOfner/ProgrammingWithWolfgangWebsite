@@ -36,13 +36,12 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc](/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc)
 
+- [Deploy Applications from private Repositories using Flux GitOps and Azure Arc](/deploy-application-from-private-repositories-flux-gitops-azure-arc)
+
 Coming soon:
 
 - GitOps with Flux
 - CD with Helm Charts using Flux
-- Deploying from a private Git repository
-- Collecting Metrics from the k3s cluster
-- Azure Monitoring
 - Azure Key Vault integration
 - Azure App Services running on on-premises infrastructure
 - tbd

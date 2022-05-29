@@ -4,7 +4,7 @@
   <id>http://0.0.0.0:4000/</id>
   <title>Programming With Wolfgang</title>
   <subtitle>A tech blog focusing on DevOps, Cloud, Azure, Kubernetes and Software Architecture.</subtitle>
-  <updated>2022-05-28T17:53:03+02:00</updated>
+  <updated>2022-05-29T16:17:46+02:00</updated>
   <author>
     <name>Wolfgang Ofner</name>
     <uri>http://0.0.0.0:4000/</uri>
@@ -56,14 +56,14 @@ I also started to write r...
 
   
   <entry>
-    <title>Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc</title>
-    <link href="http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/" rel="alternate" type="text/html" title="Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc" />
-    <published>2022-05-13T00:00:00+02:00</published>
+    <title>Deploy Applications from private Repositories using Flux GitOps and Azure Arc</title>
+    <link href="http://0.0.0.0:4000/deploy-application-from-private-repositories-flux-gitops-azure-arc/" rel="alternate" type="text/html" title="Deploy Applications from private Repositories using Flux GitOps and Azure Arc" />
+    <published>2022-05-04T00:00:00+02:00</published>
   
-    <updated>2022-05-13T00:00:00+02:00</updated>
+    <updated>2022-05-04T00:00:00+02:00</updated>
   
-    <id>http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/</id>
-    <content src="http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/" />
+    <id>http://0.0.0.0:4000/deploy-application-from-private-repositories-flux-gitops-azure-arc/</id>
+    <content src="http://0.0.0.0:4000/deploy-application-from-private-repositories-flux-gitops-azure-arc/" />
     <author>
       <name>Wolfgang Ofner</name>
     </author>
@@ -84,11 +84,11 @@ I also started to write r...
 
 
 
-      Azure Arc allows you to project your on-premises Kubernetes cluster into Azure. Doing so enables you to manage the cluster from Azure with tools such as Azure Monitor or Cloud Defender.
+      In my last post, I showed you how to install a GitOps operator and deploy an application using Helm charts. For this demo, I used an application from a public repository. Almost all companies host their applications in private repositories though.
 
-Today, I want to show you how to install the Container Insights Extension which enables you to monitor your pods and nodes from the on-premise cluster in Azure.
+Today, I want to show how you can configure the Flux GitOps operator to gain access to a private Git repository on GitHub.
 
-This post is part of “Azure Arc Series - Manage ...
+This post is part of “Az...
     </summary>
   
 
@@ -100,7 +100,7 @@ This post is part of “Azure Arc Series - Manage ...
     <link href="http://0.0.0.0:4000/manage-on-premises-kubernetes-with-azure-arc/" rel="alternate" type="text/html" title="Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc" />
     <published>2022-02-21T00:00:00+01:00</published>
   
-    <updated>2022-05-27T19:02:35+02:00</updated>
+    <updated>2022-05-28T18:05:54+02:00</updated>
   
     <id>http://0.0.0.0:4000/manage-on-premises-kubernetes-with-azure-arc/</id>
     <content src="http://0.0.0.0:4000/manage-on-premises-kubernetes-with-azure-arc/" />

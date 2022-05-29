@@ -42,28 +42,28 @@
   
     <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.2.2" />
-<meta property="og:title" content="Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc" />
+<meta property="og:title" content="Deploy Applications from private Repositories using Flux GitOps and Azure Arc" />
 <meta name="author" content="Wolfgang Ofner" />
 <meta property="og:locale" content="en" />
-<meta name="description" content="The Azure Monitor extension collects various metrics and sends them to Azure. There, you can create dashboards or alerts with Azure Arc." />
-<meta property="og:description" content="The Azure Monitor extension collects various metrics and sends them to Azure. There, you can create dashboards or alerts with Azure Arc." />
-<link rel="canonical" href="http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/" />
-<meta property="og:url" content="http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/" />
+<meta name="description" content="Using the Flux GitOps operator with private Git repositories works the same way as it does with public ones. The only difference is that you have to give the operator access to the private repo." />
+<meta property="og:description" content="Using the Flux GitOps operator with private Git repositories works the same way as it does with public ones. The only difference is that you have to give the operator access to the private repo." />
+<link rel="canonical" href="http://0.0.0.0:4000/deploy-application-from-private-repositories-flux-gitops-azure-arc/" />
+<meta property="og:url" content="http://0.0.0.0:4000/deploy-application-from-private-repositories-flux-gitops-azure-arc/" />
 <meta property="og:site_name" content="Programming With Wolfgang" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2022-05-13T00:00:00+02:00" />
+<meta property="article:published_time" content="2022-05-04T00:00:00+02:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc" />
+<meta property="twitter:title" content="Deploy Applications from private Repositories using Flux GitOps and Azure Arc" />
 <meta name="twitter:site" content="@wolfgang_ofner" />
 <meta name="twitter:creator" content="@Wolfgang Ofner" />
 <meta name="google-site-verification" content="xxsPm-h6A0B6a0QMgqXO80PU4DbMt4Dq06p-SGzB3TU" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Wolfgang Ofner"},"dateModified":"2022-05-13T00:00:00+02:00","datePublished":"2022-05-13T00:00:00+02:00","description":"The Azure Monitor extension collects various metrics and sends them to Azure. There, you can create dashboards or alerts with Azure Arc.","headline":"Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/"},"url":"http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Wolfgang Ofner"},"dateModified":"2022-05-04T00:00:00+02:00","datePublished":"2022-05-04T00:00:00+02:00","description":"Using the Flux GitOps operator with private Git repositories works the same way as it does with public ones. The only difference is that you have to give the operator access to the private repo.","headline":"Deploy Applications from private Repositories using Flux GitOps and Azure Arc","mainEntityOfPage":{"@type":"WebPage","@id":"http://0.0.0.0:4000/deploy-application-from-private-repositories-flux-gitops-azure-arc/"},"url":"http://0.0.0.0:4000/deploy-application-from-private-repositories-flux-gitops-azure-arc/"}</script>
 <!-- End Jekyll SEO tag -->
 
   
 
-  <title>Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc | Programming With Wolfgang
+  <title>Deploy Applications from private Repositories using Flux GitOps and Azure Arc | Programming With Wolfgang
   </title>
 
   <!--
@@ -450,7 +450,7 @@
           
   
             
-              <span>Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc</span>
+              <span>Deploy Applications from private Repositories using Flux GitOps and Azure Arc</span>
             
   
           
@@ -599,6 +599,624 @@
       
       
         
+
+    
+      
+
+        <!-- Add CDN URL -->
+        
+
+        <!-- Add image path -->
+        
+
+        
+        
+
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+        <!-- Add CDN URL -->
+        
+
+        <!-- Add image path -->
+        
+
+        
+        
+
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+        <!-- Add CDN URL -->
+        
+
+        <!-- Add image path -->
+        
+
+        
+        
+
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+        <!-- Add CDN URL -->
+        
+
+        <!-- Add image path -->
+        
+
+        
+        
+
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+        <!-- Add CDN URL -->
+        
+
+        <!-- Add image path -->
+        
+
+        
+        
+
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+        <!-- Add CDN URL -->
+        
+
+        <!-- Add image path -->
+        
+
+        
+        
+
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+        <!-- Add CDN URL -->
+        
+
+        <!-- Add image path -->
+        
+
+        
+        
+
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
       
       
         
@@ -779,6 +1397,354 @@
       
       
         
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+        <!-- Add CDN URL -->
+        
+
+        <!-- Add image path -->
+        
+
+        
+        
+
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+        <!-- Add CDN URL -->
+        
+
+        <!-- Add image path -->
+        
+
+        
+        
+
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+        <!-- Add CDN URL -->
+        
+
+        <!-- Add image path -->
+        
+
+        
+        
+
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        
+      
+      
+        
+
+    
+      
+
+        <!-- Add CDN URL -->
+        
+
+        <!-- Add image path -->
+        
+
+        
+        
+
+      
+
+      <!-- lazy-load images <https://github.com/ApoorvSaxena/lozad.js#usage> -->
+
+      
+
+    
+
+    <!-- Add SVG placehoder to prevent layout reflow -->
+
+    
+
+    <!-- Bypass the HTML-proofer test -->
+    
+
+    
+
+  
+    
+
+    
+    
+    
+
+    
+    
+
+    
+    
+    
+
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+
+      
+
+      
+    
       
       
         
@@ -881,6 +1847,30 @@
       
 
     
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+
+    
 
     
 
@@ -918,7 +1908,7 @@
 
 
 
-<h1 data-toc-skip>Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc</h1>
+<h1 data-toc-skip>Deploy Applications from private Repositories using Flux GitOps and Azure Arc</h1>
 
   <div class="post-meta text-muted d-flex flex-column">
     <!-- Published date and author -->
@@ -935,10 +1925,10 @@
 
 
 <em class=""
-    data-ts="1652392800"
+    data-ts="1651615200"
     data-df="ll"
     data-toggle="tooltip" data-placement="bottom">
-  May 13, 2022
+  May  4, 2022
 </em>
 
       </span>
@@ -980,75 +1970,179 @@
 
 <!-- return element -->
 <span class="readtime" data-toggle="tooltip" data-placement="bottom"
-  title="531 words">
-  <em>6 min</em></span>
+  title="892 words">
+  <em>10 min</em></span>
  read
 
     </div>
   </div>
 
 <div class="post-content">
-  <p>Azure Arc allows you to project your on-premises Kubernetes cluster into Azure. Doing so enables you to manage the cluster from Azure with tools such as Azure Monitor or Cloud Defender.</p>
+  <p><a href="/XXX">In my last post</a>, I showed you how to install a GitOps operator and deploy an application using Helm charts. For this demo, I used an application from a public repository. Almost all companies host their applications in private repositories though.</p>
 
-<p>Today, I want to show you how to install the Container Insights Extension which enables you to monitor your pods and nodes from the on-premise cluster in Azure.</p>
+<p>Today, I want to show how you can configure the Flux GitOps operator to gain access to a private Git repository on GitHub.</p>
 
 <p>This post is part of <a href="/manage-on-premises-kubernetes-with-azure-arc">“Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc”</a>.</p>
 
-<h2 id="install-the-azure-monitor-extension"><span class="mr-2">Install the Azure Monitor Extension</span><a href="#install-the-azure-monitor-extension" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+<h2 id="deploy-an-application-from-a-private-github-repository"><span class="mr-2">Deploy an Application from a private GitHub Repository</span><a href="#deploy-an-application-from-a-private-github-repository" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>Using Azure Monitor with your on-premises Kubernetes cluster is surprisingly easy. All you have to do is to execute the following Azure CLI command on the Master node of your cluster:</p>
+<p>To deploy an application from a private GitHub (or any Git) repository, use the same command as in the last post:</p>
 
-<script src="https://gist.github.com/WolfgangOfner/df783364ca52544364f1636531a59efe.js"></script>
+<script src="https://gist.github.com/WolfgangOfner/85b6ba3a64d54a1b77c418e0c453cee8.js"></script>
 
-<p>The parameter of the command should be self-explanatory. The most interesting one is probably the –name parameter. This Azure CLI command installs the Azure Monitor extension in the cluster in the namespace you defined with the –name parameter.</p>
+<p>The only difference is that I am using a private repository with the –url parameter. The application in this repository is the same as I used in my last post, except that I copied the demo from Microsoft into this private repo.</p>
 
-<p>XXX INSERT SCREENSHOT OF K8s MONITOR EXTENSIONS NAMESPACE XXX</p>
-
-<p>Additionally, the –name parameter defines the name of the extension which you can find in the Azure Portal in the Extensions pane.</p>
+<p>Wait a minute and then open your Azure Arc in the Azure Portal. Navigate to the GitOps pane and there you should see the previously created GitOps operator. The deployment succeeded but you will see that the operator is “Non-compliant” and shows a warning.</p>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/06/The-Azure-Monitor-Extension-in-the-Azure-Portal.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/06/The-Azure-Monitor-Extension-in-the-Azure-Portal.jpg" alt="The Azure Monitor Extension in the Azure Portal" data-proofer-ignore></a>
+  <a href="/assets/img/posts/2022/07/The-GitOps-operator-is-not-compliant.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/The-GitOps-operator-is-not-compliant.jpg" alt="The GitOps operator is not compliant" data-proofer-ignore></a>
   
   <p>
-   The Azure Monitor Extension in the Azure Portal
+   The GitOps operator is not compliant
   </p>
 </div>
 
-<p>The Azure CLI command automatically creates a new Log Analytics Workspace for the metrics and logs of the extensions. You can also use an existing Work Analytics Workspace. Use the following command to assign the Log Analytics Workspace Id to a variable and then use this variable for the Azure Monitor extension:</p>
-
-<script src="https://gist.github.com/WolfgangOfner/b7840583d94cde23630bab8c2c550e63.js"></script>
-
-<p>You can also display the installed extensions using the Azure CLI with the following command:</p>
-
-<script src="https://gist.github.com/WolfgangOfner/30c06c9670b898fcd518672d97a18ebf.js"></script>
-
-<h2 id="create-dashboards-in-the-azure-portal"><span class="mr-2">Create Dashboards in the Azure Portal</span><a href="#create-dashboards-in-the-azure-portal" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
-
-<p>After you have installed the extension, it collects metric information and sends them to Azure. This allows you to use Azure Monitor the same way as you would use it with Azure VMs. Open Azure Arc in the Azure Portal and navigate to the Insights pane. There you can see various dashboards already. You can change what you want to display and also switch the scope, for example, from the Cluster scope to the Container scope. Additionally, you can set various filters such as a time range.</p>
+<p>For more information, click on the GitOps operator and then select the Configuration objects pane. There you can see 3 configuration objects that are all non-compliant and displaying an error message. These configuration objects are the GitOps operator itself and the 2 configuration files you provided with the –kustomization parameter during the installation process.</p>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/06/Display-various-dashboards-in-the-Azure-Portal.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/06/Display-various-dashboards-in-the-Azure-Portal.jpg" alt="Display various dashboards in the Azure Portal" data-proofer-ignore></a>
+  <a href="/assets/img/posts/2022/07/The-configuraiton-objects-display-an-error.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/The-configuraiton-objects-display-an-error.jpg" alt="The configuraiton objects display an error" data-proofer-ignore></a>
   
   <p>
-   Display various dashboards in the Azure Portal
+   The configuraiton objects display an error
   </p>
 </div>
 
-<p>For even more insight into your cluster or pods, open the Metrics pane in Azure Arc. There you can create charts and display useful information. The following screenshot shows a chart that displays the pod count and the used CPU percentage of all nodes.</p>
+<p>The message of the gitopsoperator object displays the error message that tells you what went wrong: “failed to checkout and determine revision; unable to clone repository”. The GitOps operator couldn’t clone the repository because it is private and the operator has no permission to access it.</p>
+
+<h2 id="create-an-access-token-to-access-private-git-repositories-on-github"><span class="mr-2">Create an Access Token to access private Git Repositories on GitHub</span><a href="#create-an-access-token-to-access-private-git-repositories-on-github" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>You can grant the GitOps operator access to a private Git repository using SSH keys or a Personal Access Token (PAT). For this demo, I will show you how to create and use a PAT. Open GitHub, click on your profile in the top-right corner, and select Settings.</p>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/06/Create-custom-charts-to-display-information.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/06/Create-custom-charts-to-display-information.jpg" alt="Create custom charts to display information" data-proofer-ignore></a>
+  <a href="/assets/img/posts/2022/07/Open-the-settings-on-GitHub.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/Open-the-settings-on-GitHub.jpg" alt="Open the settings on GitHub" data-proofer-ignore></a>
   
   <p>
-   Create custom charts to display information
+   Open the settings on GitHub
   </p>
 </div>
 
-<p>Another neat feature of Azure Monitor is Alerting. Go to the Alerting pane and there you can create alerts based on custom rules. For example, you could send an email to an administrator if the CPU usage of the cluster is greater than 80% over 5 minutes.</p>
+<p>On the settings page, select Developer settings.</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2022/07/Open-the-developer-settings.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/Open-the-developer-settings.jpg" alt="Open the developer settings" data-proofer-ignore></a>
+  
+  <p>
+   Open the developer settings
+  </p>
+</div>
+
+<p>In the Developer settings, select Personal access tokens and then click on Generate new token.</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2022/07/Open-the-personal-access-token-page.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/Open-the-personal-access-token-page.jpg" alt="Open the personal access token page" data-proofer-ignore></a>
+  
+  <p>
+   Open the personal access token page
+  </p>
+</div>
+
+<p>This page allows you to configure the access token. Give it a name, set the expiration time, and select the desired scopes. For this demo, I give the access token full control of my private repositories. There is a long list of permissions though. This enables you to configure exactly what you need. It is best practice to give the token as few permissions as possible.</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2022/07/Configure-the-personal-access-token.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/Configure-the-personal-access-token.jpg" alt="Configure the personal access token" data-proofer-ignore></a>
+  
+  <p>
+   Configure the personal access token
+  </p>
+</div>
+
+<p>Scroll all the way down and click on Generate token to create the access token.</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2022/07/Open-the-personal-access-token-page.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/Open-the-personal-access-token-page.jpg" alt="Open the personal access token page" data-proofer-ignore></a>
+  
+  <p>
+   Open the personal access token page
+  </p>
+</div>
+
+<p>The token will be displayed after it is created. It is important to save the token in a save location because this is the only time that you can see the token. If you close the window, you have no access to it anymore. In case you lose the token, you have to regenerate it or create a new one.</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2022/07/The-PAT-is-displayed-after-it-is-created.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/The-PAT-is-displayed-after-it-is-created.jpg" alt="The PAT is displayed after it is created" data-proofer-ignore></a>
+  
+  <p>
+   The PAT is displayed after it is created
+  </p>
+</div>
+
+<h2 id="create-an-access-token-to-access-private-git-repositories-on-azure-devops"><span class="mr-2">Create an Access Token to access private Git Repositories on Azure DevOps</span><a href="#create-an-access-token-to-access-private-git-repositories-on-azure-devops" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Azure DevOps works very similarly when it comes to creating a personal access token. Click on the Settings icon on the top-right corner and then select Personal access tokens</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2022/07/Select-Personal-access-tokens-in-Azure-DevOps.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/Select-Personal-access-tokens-in-Azure-DevOps.jpg" alt="Select Personal access tokens in Azure DevOps" data-proofer-ignore></a>
+  
+  <p>
+   Select Personal access tokens in Azure DevOps
+  </p>
+</div>
+
+<p>On the user settings page, click on + New Token and then configure your PAT with a name, expiration time, and the scope.</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2022/07/Select-Personal-access-tokens-in-Azure-DevOps.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/Select-Personal-access-tokens-in-Azure-DevOps.jpg" alt="Select Personal access tokens in Azure DevOps" data-proofer-ignore></a>
+  
+  <p>
+   Select Personal access tokens in Azure DevOps
+  </p>
+</div>
+
+<p>Click on create and the PAT gets created. As in GitHub, you also only have here the only chance to copy the token. After you copied it, close the window.</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2022/07/Copy-the-created-access-token.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/Copy-the-created-access-token.jpg" alt="Copy the created access token" data-proofer-ignore></a>
+  
+  <p>
+   Copy the created access token
+  </p>
+</div>
+
+<h2 id="configure-the-flux-gitops-operator-with-the-personal-access-token"><span class="mr-2">Configure the Flux GitOps Operator with the Personal Access Token</span><a href="#configure-the-flux-gitops-operator-with-the-personal-access-token" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>With the access token in hand, go back to the GitOps operator in the Azure Portal. Inside the GitOps operator, open the Source pane and there you can see the configuration of the operator such as the URL or the branch.</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2022/07/Configure-the-Source-of-the-GitOps-operator.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/Configure-the-Source-of-the-GitOps-operator.jpg" alt="Configure the Source of the GitOps operator" data-proofer-ignore></a>
+  
+  <p>
+   Configure the Source of the GitOps operator
+  </p>
+</div>
+
+<p>In the Authentication section, select Provide authentication information here, enter the user name under which you create the personal access token, and then past the token. Click on Apply and in a couple of minutes, you should see that several objects have been created and all are running.</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2022/07/The-deployment-succeeded.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/The-deployment-succeeded.jpg" alt="The deployment succeeded" data-proofer-ignore></a>
+  
+  <p>
+   The deployment succeeded
+  </p>
+</div>
+
+<p>Additionally, you could use the CLI kubectl to check the new resources, such as the newly created namespaces.</p>
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2022/07/Several-namespaces-got-created.jpg"><img loading="lazy" data-src="/assets/img/posts/2022/07/Several-namespaces-got-created.jpg" alt="Several namespaces got created" data-proofer-ignore></a>
+  
+  <p>
+   Several namespaces got created
+  </p>
+</div>
 
 <h2 id="conclusion"><span class="mr-2">Conclusion</span><a href="#conclusion" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
 
-<p>Monitoring your on-premise Cluster is as easy as it could be with Azure Arc. All you need is a single Azure CLI command to install the Azure Monitor extension. This extension collects various metrics and sends them to Azure. There, you can create dashboards or alerts. All this works the same way as when using Azure Monitor with Azure VMs.</p>
+<p>Using the Flux GitOps operator with private Git repositories works the same way as it does with public ones. The only difference is that you have to give the operator access to the private repo. This can be done with SSH keys, or as shown in this post, with a personal access token. Creating this token has almost the same steps in GitHub and Azure DevOps.</p>
 
 <p>This post is part of <a href="/manage-on-premises-kubernetes-with-azure-arc">“Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc”</a>.</p>
 
@@ -1086,11 +2180,14 @@
       <a href="/tags/azure-arc/"
           class="post-tag no-text-decoration" >Azure Arc</a>
       
-      <a href="/tags/monitoring/"
-          class="post-tag no-text-decoration" >Monitoring</a>
+      <a href="/tags/git/"
+          class="post-tag no-text-decoration" >Git</a>
       
-      <a href="/tags/azure-monitor/"
-          class="post-tag no-text-decoration" >Azure Monitor</a>
+      <a href="/tags/azure-devops/"
+          class="post-tag no-text-decoration" >Azure DevOps</a>
+      
+      <a href="/tags/github/"
+          class="post-tag no-text-decoration" >GitHub</a>
       
   </div>
   
@@ -1125,25 +2222,25 @@
 
     
       
-        <a href="https://twitter.com/intent/tweet?text=Monitor+an+on-premises+k3s+Cluster+with+Azure+Monitor+and+Azure+Arc+-+Programming+With+Wolfgang&url=http%3A%2F%2F0.0.0.0%3A4000%2Fmonitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://twitter.com/intent/tweet?text=Deploy+Applications+from+private+Repositories+using+Flux+GitOps+and+Azure+Arc+-+Programming+With+Wolfgang&url=http%3A%2F%2F0.0.0.0%3A4000%2Fdeploy-application-from-private-repositories-flux-gitops-azure-arc%2F" data-toggle="tooltip" data-placement="top"
           title="Twitter" target="_blank" rel="noopener" aria-label="Twitter">
           <i class="fa-fw fab fa-twitter"></i>
         </a>
     
       
-        <a href="https://www.facebook.com/sharer/sharer.php?title=Monitor+an+on-premises+k3s+Cluster+with+Azure+Monitor+and+Azure+Arc+-+Programming+With+Wolfgang&u=http%3A%2F%2F0.0.0.0%3A4000%2Fmonitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://www.facebook.com/sharer/sharer.php?title=Deploy+Applications+from+private+Repositories+using+Flux+GitOps+and+Azure+Arc+-+Programming+With+Wolfgang&u=http%3A%2F%2F0.0.0.0%3A4000%2Fdeploy-application-from-private-repositories-flux-gitops-azure-arc%2F" data-toggle="tooltip" data-placement="top"
           title="Facebook" target="_blank" rel="noopener" aria-label="Facebook">
           <i class="fa-fw fab fa-facebook-square"></i>
         </a>
     
       
-        <a href="https://telegram.me/share?text=Monitor+an+on-premises+k3s+Cluster+with+Azure+Monitor+and+Azure+Arc+-+Programming+With+Wolfgang&url=http%3A%2F%2F0.0.0.0%3A4000%2Fmonitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://telegram.me/share?text=Deploy+Applications+from+private+Repositories+using+Flux+GitOps+and+Azure+Arc+-+Programming+With+Wolfgang&url=http%3A%2F%2F0.0.0.0%3A4000%2Fdeploy-application-from-private-repositories-flux-gitops-azure-arc%2F" data-toggle="tooltip" data-placement="top"
           title="Telegram" target="_blank" rel="noopener" aria-label="Telegram">
           <i class="fa-fw fab fa-telegram"></i>
         </a>
     
       
-        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2F0.0.0.0%3A4000%2Fmonitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc%2F" data-toggle="tooltip" data-placement="top"
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http%3A%2F%2F0.0.0.0%3A4000%2Fdeploy-application-from-private-repositories-flux-gitops-azure-arc%2F" data-toggle="tooltip" data-placement="top"
           title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin">
           <i class="fa-fw fab fa-linkedin"></i>
         </a>
@@ -7410,8 +8507,8 @@
 <script type="text/javascript">
 
   var disqus_config = function () {
-    this.page.url = 'http://0.0.0.0:4000/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/';
-    this.page.identifier = '/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc/';
+    this.page.url = 'http://0.0.0.0:4000/deploy-application-from-private-repositories-flux-gitops-azure-arc/';
+    this.page.identifier = '/deploy-application-from-private-repositories-flux-gitops-azure-arc/';
   };
 
   /* Lazy loading */
