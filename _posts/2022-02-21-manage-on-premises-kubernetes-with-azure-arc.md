@@ -34,7 +34,9 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Securely connect to an on-premises Kubernetes Cluster with Azure Arc](/securely-connect-to-on-premises-kubernetes-with-azure-arc)
 
- - [Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc](/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc)
+- [Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc](/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc)
+
+- [Use the TokenRequest API to create Token in Kubernetes 1.24+](/use-the-tokenrequest-api-to-create-token-in-kubernetes)
 
 <!-- - [Deploy Applications from private Repositories using Flux GitOps and Azure Arc](/deploy-application-from-private-repositories-flux-gitops-azure-arc) -->
 
@@ -44,4 +46,6 @@ Coming soon:
 - CD with Helm Charts using Flux
 - Azure Key Vault integration
 - Azure App Services running on on-premises infrastructure
+- Azure Managed SQL instance running on on-premises infrastructure
+- Azure RBAC to access the cluster
 - tbd
