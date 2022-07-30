@@ -4,7 +4,7 @@
   <id>http://0.0.0.0:4000/</id>
   <title>Programming With Wolfgang</title>
   <subtitle>A tech blog focusing on DevOps, Cloud, Azure, Kubernetes and Software Architecture.</subtitle>
-  <updated>2022-07-28T13:09:02+02:00</updated>
+  <updated>2022-07-30T19:51:51+02:00</updated>
   <author>
     <name>Wolfgang Ofner</name>
     <uri>http://0.0.0.0:4000/</uri>
@@ -20,14 +20,52 @@
 
   
   <entry>
-    <title>Use the TokenRequest API to create Token in Kubernetes 1.24+</title>
-    <link href="http://0.0.0.0:4000/use-the-tokenrequest-api-to-create-token-in-kubernetes/" rel="alternate" type="text/html" title="Use the TokenRequest API to create Token in Kubernetes 1.24+" />
-    <published>2022-07-01T00:00:00+02:00</published>
+    <title>Programming With Wolfgang is now on Youtube</title>
+    <link href="http://0.0.0.0:4000/programming-with-wolfgang-youtube-channel/" rel="alternate" type="text/html" title="Programming With Wolfgang is now on Youtube" />
+    <published>2022-07-25T00:00:00+02:00</published>
   
-    <updated>2022-07-01T00:00:00+02:00</updated>
+    <updated>2022-07-25T00:00:00+02:00</updated>
   
-    <id>http://0.0.0.0:4000/use-the-tokenrequest-api-to-create-token-in-kubernetes/</id>
-    <content src="http://0.0.0.0:4000/use-the-tokenrequest-api-to-create-token-in-kubernetes/" />
+    <id>http://0.0.0.0:4000/programming-with-wolfgang-youtube-channel/</id>
+    <content src="http://0.0.0.0:4000/programming-with-wolfgang-youtube-channel/" />
+    <author>
+      <name>Wolfgang Ofner</name>
+    </author>
+
+  
+    
+    <category term="Video" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      AS the title already mentions, I have created a Youtube channel and uploaded my first video explaining how to install Azure Arc to manage an on-premise Kubernetes cluster.
+
+I am not sure yet where this channel will go but for now, I will try to bring you the same educational content as I do on my blog.
+
+If you want to share or introduce a topic, feel free to text me. I am happy to host guests a...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>Speaking KCD</title>
+    <link href="http://0.0.0.0:4000/XXX/" rel="alternate" type="text/html" title="Speaking KCD" />
+    <published>2022-06-20T00:00:00+02:00</published>
+  
+    <updated>2022-06-20T00:00:00+02:00</updated>
+  
+    <id>http://0.0.0.0:4000/XXX/</id>
+    <content src="http://0.0.0.0:4000/XXX/" />
     <author>
       <name>Wolfgang Ofner</name>
     </author>
@@ -48,9 +86,8 @@
 
 
 
-      In one of my former posts, Securely connect to an on-premises Kubernetes Cluster with Azure Arc, I showed you how to securely connect to an on-premise Kubernetes cluster using Azure Arc. To achieve that, I have create a user and then retrieved the token of the user.
+      Kubernetes changelog on GitHub.
 
-This method has changed a bit from Kubernetes version 1.24 on and in this post, I will show you how to get this token if you are ...
     </summary>
   
 
@@ -169,42 +206,6 @@ Today, I want to show you how to give developers access using RBAC (Role-based a
 Today, I will show you how to install Azure Arc which will help to manage the cluster with Azure, even though it is not accessible over the internet.
 
 This ...
-    </summary>
-  
-
-  </entry>
-
-  
-  <entry>
-    <title>I am back</title>
-    <link href="http://0.0.0.0:4000/i-am-back/" rel="alternate" type="text/html" title="I am back" />
-    <published>2022-05-23T00:00:00+02:00</published>
-  
-    <updated>2022-05-23T00:00:00+02:00</updated>
-  
-    <id>http://0.0.0.0:4000/i-am-back/</id>
-    <content src="http://0.0.0.0:4000/i-am-back/" />
-    <author>
-      <name>Wolfgang Ofner</name>
-    </author>
-
-  
-    
-    <category term="Miscellaneous" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      For the first time in two years, I have taken some time away from my blog. This doesn’t mean that I have been lazy though. First, it was nice to take a step back and take care of my (mental) health. and then I talked at a conference in Germany about KEDA. It was nice to travel and especially be at an in-person conference. It’s been quite some time since the last time.
-
-I also started to write r...
     </summary>
   
 
