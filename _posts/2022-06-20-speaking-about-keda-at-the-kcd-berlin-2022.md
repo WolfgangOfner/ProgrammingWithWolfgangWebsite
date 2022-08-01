@@ -1,15 +1,13 @@
 ---
-title: Speaking about KEDA at the BASTA! Conference in Frankfurt
-date: 2022-02-07
+title: Speaking about KEDA at the Kubernetes Community Days 2022 in Berlin
+date: 2022-06-20
 author: Wolfgang Ofner
 categories: [Miscellaneous]
 tags: [KEDA, Speaking, Public Speaking, Conference]
-description: I am excited to travel to Germany and speak at the BASTA! conference in Frankfurt about KEDA.
+description: I am excited to travel to Berlin and talk about KEDA at the Kubernetes Community Days 2022.
 ---
 
-There is light at the end of the tunnel with the pandemic and therefore in person conferences and international travel is coming back. I am excited to travel to Germany and speak at the BASTA! conference in Frankfurt about KEDA.
-
-You can join the session in-person, or remote to learn more about KEDA. If you can't make it to the conference but still want to learn more about KEDA, see [KEDA - Kubernetes Event-driven Autoscaling](/keda-kubernetes-event-driven-autoscaling)
+I am excited to announce that I will be speaking at the Kubernetes Community Days 2022 in Berlin. My session will be on Wednesday, July 29 live on stage. If you are in Berlin, check out my talk and say hi.
 
 The abstract for my session is as follows:
 
@@ -23,4 +21,4 @@ As an application developer or operation manager, what do I need to consider to 
 
 Using Azure Kubernetes Service and KEDA (Kubernetes Event-driven Autoscaling), this session will show with practical examples how to create and configure autoscalers to respond to external events and scale applications in Kubernetes accordingly.
 
-You can find the session on the conference website: <a href="https://basta.net/session/level-up-your-kubernetes-scaling-with-keda" target="_blank" rel="noopener noreferrer">Level Up your Kubernetes Scaling with KEDA</a>.
+You can find the session on the conference website: <a href="https://community.cncf.io/events/details/cncf-kcd-berlin-presents-kubernetes-community-days-berlin-2022-1" target="_blank" rel="noopener noreferrer">Level Up your Kubernetes Scaling with KEDA</a>.
