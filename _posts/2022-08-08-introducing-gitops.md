@@ -2,8 +2,8 @@
 title: Introducing GitOps
 date: 2022-08-08
 author: Wolfgang Ofner
-categories: [Kubernetes, Cloud]
-tags: [GitOps, Iac, Flux, ArgoCD, ]
+categories: [Kubernetes, DevOps]
+tags: [GitOps, IaC, Flux, ArgoCD, Git, DevOps]
 description: GitOps is a way to manage infrastructure as code (IaC) which gains more and more traction lately. 
 ---
 

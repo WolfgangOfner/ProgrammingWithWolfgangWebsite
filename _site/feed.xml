@@ -4,7 +4,7 @@
   <id>http://0.0.0.0:4000/</id>
   <title>Programming With Wolfgang</title>
   <subtitle>A tech blog focusing on DevOps, Cloud, Azure, Kubernetes and Software Architecture.</subtitle>
-  <updated>2022-08-04T19:46:12+02:00</updated>
+  <updated>2022-08-04T19:56:09+02:00</updated>
   <author>
     <name>Wolfgang Ofner</name>
     <uri>http://0.0.0.0:4000/</uri>
@@ -17,50 +17,6 @@
   <icon>/assets/img/favicons/favicon.ico</icon>
   <logo>/assets/img/favicons/favicon-96x96.png</logo>
 
-
-  
-  <entry>
-    <title>Introducing GitOps</title>
-    <link href="http://0.0.0.0:4000/introducing-gitops/" rel="alternate" type="text/html" title="Introducing GitOps" />
-    <published>2022-08-01T00:00:00+02:00</published>
-  
-    <updated>2022-08-01T00:00:00+02:00</updated>
-  
-    <id>http://0.0.0.0:4000/introducing-gitops/</id>
-    <content src="http://0.0.0.0:4000/introducing-gitops/" />
-    <author>
-      <name>Wolfgang Ofner</name>
-    </author>
-
-  
-    
-    <category term="Kubernetes" />
-    
-    <category term="Cloud" />
-    
-  
-
-  
-    <summary>
-      
-
-
-
-
-
-      GitOps is a way to manage infrastructure as code (IaC) which gains more and more traction lately.
-
-Today, I want to give you an introduction to GitOps, talk about the good and bad, and also introduce some GitOps tools you can use to get started.
-
-This post is part of “Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc”.
-
-What is GitOps?
-
-Infrastructure as code is nothing...
-    </summary>
-  
-
-  </entry>
 
   
   <entry>
@@ -213,6 +169,44 @@ Whether it is a normal workday or Black Friday, service-oriented applications mu
 Today, I want to show you how to install the Container Insights Extension which enables you to monitor your pods and nodes from the on-premise cluster in Azure.
 
 This post is part of “Azure Arc Series - Manage ...
+    </summary>
+  
+
+  </entry>
+
+  
+  <entry>
+    <title>Securely connect to an on-premises Kubernetes Cluster with Azure Arc</title>
+    <link href="http://0.0.0.0:4000/securely-connect-to-on-premises-kubernetes-with-azure-arc/" rel="alternate" type="text/html" title="Securely connect to an on-premises Kubernetes Cluster with Azure Arc" />
+    <published>2022-06-06T00:00:00+02:00</published>
+  
+    <updated>2022-06-06T00:00:00+02:00</updated>
+  
+    <id>http://0.0.0.0:4000/securely-connect-to-on-premises-kubernetes-with-azure-arc/</id>
+    <content src="http://0.0.0.0:4000/securely-connect-to-on-premises-kubernetes-with-azure-arc/" />
+    <author>
+      <name>Wolfgang Ofner</name>
+    </author>
+
+  
+    
+    <category term="Kubernetes" />
+    
+    <category term="Cloud" />
+    
+  
+
+  
+    <summary>
+      
+
+
+
+
+
+      In my last post, I installed Azure Arc which allowed me to project my k3s cluster into Azure. The installation was done directly on the Master node of the cluster and developers would also need to connect to the master node to execute any commands on the Kubernetes cluster.
+
+Today, I want to show you how to give developers access using RBAC (Role-based access control) and let them connect to th...
     </summary>
   
 
