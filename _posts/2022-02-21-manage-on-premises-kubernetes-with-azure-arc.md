@@ -38,6 +38,8 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Use the TokenRequest API to create Token in Kubernetes 1.24+](/use-the-tokenrequest-api-to-create-token-in-kubernetes)
 
+- [Introducing GitOps](/introducing-gitops)
+
 <!-- - [Deploy Applications from private Repositories using Flux GitOps and Azure Arc](/deploy-application-from-private-repositories-flux-gitops-azure-arc) -->
 
 Coming soon:

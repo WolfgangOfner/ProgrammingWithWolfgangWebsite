@@ -3,7 +3,7 @@ title: Free Website Hosting with Azure
 date: 2020-06-07
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [Azure, Azure Functions, Azure Static Web Apps, 'C#', Cosmos DB, React]
+tags: [Azure, Azure Functions, Azure Static Web App, 'C#', Cosmos DB, React]
 description: Azure Static Web Apps is a great tool to host your application for free around the globe. It integrates with GitHub actions and builds your website automatically for you.
 ---
 <a href="/azure-static-web-apps/" target="_blank" rel="noopener noreferrer">Last week, I talked about hosting your static website with Azure Static Web Apps.</a> Today, I will extend this example using a free Cosmos DB for the website data and Azure Functions to retrieve them. This approach will give you free website hosting and global distribution of your website.  

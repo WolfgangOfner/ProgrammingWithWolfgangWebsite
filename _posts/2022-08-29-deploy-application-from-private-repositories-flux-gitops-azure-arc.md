@@ -1,6 +1,6 @@
 ---
 title: Deploy Applications from private Repositories using Flux GitOps and Azure Arc
-date: 2022-08-15
+date: 2022-08-29
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
 tags: [Kubernetes, k3s, Rancher, On-premises, Azure Arc, Git, Azure DevOps, GitHub, Helm, Kustomize]
