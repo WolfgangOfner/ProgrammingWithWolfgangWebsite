@@ -129,8 +129,6 @@ Check in your code and let the Azure DevOps pipeline run. After the deployment i
   </p>
 </div>
 
-## 
-
 ## Conclusion
 
 Getting started with AAD authentication is not easy and Microsoft's documentation is incomplete and a bit misleading at the time of this writing. There are several approaches and it took me some time to get it working. Once you figured out how it works, it is quite simple to configure, as you have seen in this post.
