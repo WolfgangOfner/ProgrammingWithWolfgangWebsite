@@ -76,17 +76,3 @@ Another neat feature of Azure Monitor is Alerting. Go to the Alerting pane and t
 Monitoring your on-premise Cluster is as easy as it could be with Azure Arc. All you need is a single Azure CLI command to install the Azure Monitor extension. This extension collects various metrics and sends them to Azure. There, you can create dashboards or alerts. All this works the same way as when using Azure Monitor with Azure VMs.
 
 This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).
-
-az k8s-extension create \
-  --name azuremonitor-containers \
-  --cluster-name k3sArc \
-  --resource-group ArcDemo \
-  --cluster-type connectedClusters \
-  --extension-type Microsoft.AzureMonitor.Containers
-
-az k8s-extension show \
-  --name azuremonitor-containers \
-  --cluster-name k3sArc \
-  --resource-group ArcDemo \
-  --cluster-type connectedClusters \
-  -n azuremonitor-containers

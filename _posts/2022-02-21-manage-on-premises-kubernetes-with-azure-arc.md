@@ -36,7 +36,7 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc](/monitor-on-premises-k3s-cluster-with-azure-monitor-and-azure-arc)
 
-- [Use the TokenRequest API to create Token in Kubernetes 1.24+](/use-the-tokenrequest-api-to-create-token-in-kubernetes)
+- [Use the TokenRequest API to create Tokens in Kubernetes 1.24](/use-the-tokenrequest-api-to-create-tokens-in-kubernetes)
 
 - [Introducing GitOps](/introducing-gitops)
 

@@ -1,5 +1,5 @@
 ---
-title: Use the TokenRequest API to create Token in Kubernetes 1.24+
+title: Use the TokenRequest API to create Tokens in Kubernetes 1.24
 date: 2022-08-01
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
