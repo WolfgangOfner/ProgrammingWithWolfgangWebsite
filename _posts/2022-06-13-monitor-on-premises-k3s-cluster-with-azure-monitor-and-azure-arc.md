@@ -19,7 +19,7 @@ Using Azure Monitor with your on-premises Kubernetes cluster is surprisingly eas
 
 <script src="https://gist.github.com/WolfgangOfner/df783364ca52544364f1636531a59efe.js"></script>
 
-The parameter of the command should be self-explanatory. The most interesting one is probably the --name parameter. This Azure CLI command creates the namespace you defined with the --name parameter but it is empty. It creates an Azure Monitor Agent Deployment and ReplicaSet in the kube-system namespace though. The newly created namespace is empty. I don't know if this is a bug or intended but I would guess it's the first one. This behavior also doesn't change when you use the -release-namespace parameter to specify a namespace.
+The parameter of the command should be self-explanatory. The most interesting one is probably the --name parameter. This Azure CLI command creates the namespace you defined with the --name parameter but it is empty at first glance. It creates an Azure Monitor Agent Deployment and ReplicaSet in the kube-system namespace though. The newly created namespace contains a config map and some secrets to ensure a safe communication with Azure.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2022/06/Display-the-Azure-Monitor-Agent-pods.jpg"><img loading="lazy" src="/assets/img/posts/2022/06/Display-the-Azure-Monitor-Agent-pods.jpg" alt="Display the Azure Monitor Agent pods" /></a>
