@@ -40,11 +40,12 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Introducing GitOps](/introducing-gitops)
 
+<!-- - [Securely deploy Applications in Azure Arc with the Flux GitOps Extension](/securely-deploy-application-azure-arc-with-flux-gitops) -->
+
 <!-- - [Deploy Applications from private Repositories using Flux GitOps and Azure Arc](/deploy-application-from-private-repositories-flux-gitops-azure-arc) -->
 
 Coming soon:
 
-- GitOps with Flux
 - CD with Helm Charts using Flux
 - Azure Key Vault integration
 - Azure App Services running on on-premises infrastructure

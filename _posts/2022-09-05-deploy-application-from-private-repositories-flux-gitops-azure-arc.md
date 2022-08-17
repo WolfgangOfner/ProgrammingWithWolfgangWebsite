@@ -1,6 +1,6 @@
 ---
 title: Deploy Applications from private Repositories using Flux GitOps and Azure Arc
-date: 2022-08-29
+date: 2022-09-05
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
 tags: [Kubernetes, k3s, Rancher, On-premises, Azure Arc, Git, Azure DevOps, GitHub, Helm, Kustomize]
@@ -162,10 +162,10 @@ In the Authentication section, select Provide authentication information here, e
 Additionally, you could use the CLI kubectl to check the new resources, such as the newly created namespaces.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/Several-namespaces-got-created.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Several-namespaces-got-created.jpg" alt="Several namespaces got created" /></a>
+  <a href="/assets/img/posts/2022/08/Several-namespaces-were-created.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Several-namespaces-were-created.jpg" alt="Several namespaces were created" /></a>
   
   <p>
-   Several namespaces got created
+   Several namespaces were created
   </p>
 </div>
 
