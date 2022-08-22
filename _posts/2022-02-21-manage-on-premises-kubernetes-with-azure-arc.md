@@ -40,6 +40,8 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Introducing GitOps](/introducing-gitops)
 
+- [Manage your Kubernetes Resources with Kustomize](/manage-kubernetes-resources-with-kustomize)
+
 <!-- - [Securely deploy Applications in Azure Arc with the Flux GitOps Extension](/securely-deploy-application-azure-arc-with-flux-gitops) -->
 
 <!-- - [Deploy Applications from private Repositories using Flux GitOps and Azure Arc](/deploy-application-from-private-repositories-flux-gitops-azure-arc) -->

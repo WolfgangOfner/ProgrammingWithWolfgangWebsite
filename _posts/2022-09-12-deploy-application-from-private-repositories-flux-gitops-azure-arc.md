@@ -1,6 +1,6 @@
 ---
 title: Deploy Applications from private Repositories using Flux GitOps and Azure Arc
-date: 2022-09-05
+date: 2022-09-12
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
 tags: [Kubernetes, k3s, Rancher, On-premises, Azure Arc, Git, Azure DevOps, GitHub, Helm, Kustomize]
@@ -24,7 +24,7 @@ The only difference is that I am using a private repository with the --url param
 Wait a minute and then open your Azure Arc in the Azure Portal. Navigate to the GitOps pane and there you should see the previously created GitOps operator. The deployment succeeded but you will see that the operator is "Non-compliant" and shows a warning.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/The-GitOps-operator-is-not-compliant.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/The-GitOps-operator-is-not-compliant.jpg" alt="The GitOps operator is not compliant" /></a>
+  <a href="/assets/img/posts/2022/09/The-GitOps-operator-is-not-compliant.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/The-GitOps-operator-is-not-compliant.jpg" alt="The GitOps operator is not compliant" /></a>
   
   <p>
    The GitOps operator is not compliant
@@ -34,7 +34,7 @@ Wait a minute and then open your Azure Arc in the Azure Portal. Navigate to the 
 For more information, click on the GitOps operator and then select the Configuration objects pane. There you can see 3 configuration objects that are all non-compliant and displaying an error message. These configuration objects are the GitOps operator itself and the 2 configuration files you provided with the --kustomization parameter during the installation process.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/The-configuraiton-objects-display-an-error.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/The-configuraiton-objects-display-an-error.jpg" alt="The configuraiton objects display an error" /></a>
+  <a href="/assets/img/posts/2022/09/The-configuraiton-objects-display-an-error.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/The-configuraiton-objects-display-an-error.jpg" alt="The configuraiton objects display an error" /></a>
   
   <p>
    The configuraiton objects display an error
@@ -48,7 +48,7 @@ The message of the gitopsoperator object displays the error message that tells y
 You can grant the GitOps operator access to a private Git repository using SSH keys or a Personal Access Token (PAT). For this demo, I will show you how to create and use a PAT. Open GitHub, click on your profile in the top-right corner, and select Settings.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/Open-the-settings-on-GitHub.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Open-the-settings-on-GitHub.jpg" alt="Open the settings on GitHub" /></a>
+  <a href="/assets/img/posts/2022/09/Open-the-settings-on-GitHub.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/Open-the-settings-on-GitHub.jpg" alt="Open the settings on GitHub" /></a>
   
   <p>
    Open the settings on GitHub
@@ -58,7 +58,7 @@ You can grant the GitOps operator access to a private Git repository using SSH k
 On the settings page, select Developer settings.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/Open-the-developer-settings.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Open-the-developer-settings.jpg" alt="Open the developer settings" /></a>
+  <a href="/assets/img/posts/2022/09/Open-the-developer-settings.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/Open-the-developer-settings.jpg" alt="Open the developer settings" /></a>
   
   <p>
    Open the developer settings
@@ -68,7 +68,7 @@ On the settings page, select Developer settings.
 In the Developer settings, select Personal access tokens and then click on Generate new token.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/Open-the-personal-access-token-page.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Open-the-personal-access-token-page.jpg" alt="Open the personal access token page" /></a>
+  <a href="/assets/img/posts/2022/09/Open-the-personal-access-token-page.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/Open-the-personal-access-token-page.jpg" alt="Open the personal access token page" /></a>
   
   <p>
    Open the personal access token page
@@ -78,7 +78,7 @@ In the Developer settings, select Personal access tokens and then click on Gener
 This page allows you to configure the access token. Give it a name, set the expiration time, and select the desired scopes. For this demo, I give the access token full control of my private repositories. There is a long list of permissions though. This enables you to configure exactly what you need. It is best practice to give the token as few permissions as possible.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/Configure-the-personal-access-token.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Configure-the-personal-access-token.jpg" alt="Configure the personal access token" /></a>
+  <a href="/assets/img/posts/2022/09/Configure-the-personal-access-token.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/Configure-the-personal-access-token.jpg" alt="Configure the personal access token" /></a>
   
   <p>
    Configure the personal access token
@@ -88,7 +88,7 @@ This page allows you to configure the access token. Give it a name, set the expi
 Scroll all the way down and click on Generate token to create the access token. 
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/Open-the-personal-access-token-page.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Open-the-personal-access-token-page.jpg" alt="Open the personal access token page" /></a>
+  <a href="/assets/img/posts/2022/09/Open-the-personal-access-token-page.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/Open-the-personal-access-token-page.jpg" alt="Open the personal access token page" /></a>
   
   <p>
    Open the personal access token page
@@ -98,7 +98,7 @@ Scroll all the way down and click on Generate token to create the access token.
 The token will be displayed after it is created. It is important to save the token in a save location because this is the only time that you can see the token. If you close the window, you have no access to it anymore. In case you lose the token, you have to regenerate it or create a new one.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/The-PAT-is-displayed-after-it-is-created.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/The-PAT-is-displayed-after-it-is-created.jpg" alt="The PAT is displayed after it is created" /></a>
+  <a href="/assets/img/posts/2022/09/The-PAT-is-displayed-after-it-is-created.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/The-PAT-is-displayed-after-it-is-created.jpg" alt="The PAT is displayed after it is created" /></a>
   
   <p>
    The PAT is displayed after it is created
@@ -110,7 +110,7 @@ The token will be displayed after it is created. It is important to save the tok
 Azure DevOps works very similarly when it comes to creating a personal access token. Click on the Settings icon on the top-right corner and then select Personal access tokens
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/Select-Personal-access-tokens-in-Azure-DevOps.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Select-Personal-access-tokens-in-Azure-DevOps.jpg" alt="Select Personal access tokens in Azure DevOps" /></a>
+  <a href="/assets/img/posts/2022/09/Select-Personal-access-tokens-in-Azure-DevOps.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/Select-Personal-access-tokens-in-Azure-DevOps.jpg" alt="Select Personal access tokens in Azure DevOps" /></a>
   
   <p>
    Select Personal access tokens in Azure DevOps
@@ -120,7 +120,7 @@ Azure DevOps works very similarly when it comes to creating a personal access to
 On the user settings page, click on + New Token and then configure your PAT with a name, expiration time, and the scope. 
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/Select-Personal-access-tokens-in-Azure-DevOps.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Select-Personal-access-tokens-in-Azure-DevOps.jpg" alt="Select Personal access tokens in Azure DevOps" /></a>
+  <a href="/assets/img/posts/2022/09/Select-Personal-access-tokens-in-Azure-DevOps.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/Select-Personal-access-tokens-in-Azure-DevOps.jpg" alt="Select Personal access tokens in Azure DevOps" /></a>
   
   <p>
    Select Personal access tokens in Azure DevOps
@@ -130,7 +130,7 @@ On the user settings page, click on + New Token and then configure your PAT with
 Click on create and the PAT gets created. As in GitHub, you also only have here the only chance to copy the token. After you copied it, close the window.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/Copy-the-created-access-token.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Copy-the-created-access-token.jpg" alt="Copy the created access token" /></a>
+  <a href="/assets/img/posts/2022/09/Copy-the-created-access-token.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/Copy-the-created-access-token.jpg" alt="Copy the created access token" /></a>
   
   <p>
    Copy the created access token
@@ -142,7 +142,7 @@ Click on create and the PAT gets created. As in GitHub, you also only have here 
 With the access token in hand, go back to the GitOps operator in the Azure Portal. Inside the GitOps operator, open the Source pane and there you can see the configuration of the operator such as the URL or the branch.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/Configure-the-Source-of-the-GitOps-operator.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Configure-the-Source-of-the-GitOps-operator.jpg" alt="Configure the Source of the GitOps operator" /></a>
+  <a href="/assets/img/posts/2022/09/Configure-the-Source-of-the-GitOps-operator.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/Configure-the-Source-of-the-GitOps-operator.jpg" alt="Configure the Source of the GitOps operator" /></a>
   
   <p>
    Configure the Source of the GitOps operator
@@ -152,7 +152,7 @@ With the access token in hand, go back to the GitOps operator in the Azure Porta
 In the Authentication section, select Provide authentication information here, enter the user name under which you create the personal access token, and then past the token. Click on Apply and in a couple of minutes, you should see that several objects have been created and all are running.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/The-deployment-succeeded.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/The-deployment-succeeded.jpg" alt="The deployment succeeded" /></a>
+  <a href="/assets/img/posts/2022/09/The-deployment-succeeded.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/The-deployment-succeeded.jpg" alt="The deployment succeeded" /></a>
   
   <p>
    The deployment succeeded
@@ -162,7 +162,7 @@ In the Authentication section, select Provide authentication information here, e
 Additionally, you could use the CLI kubectl to check the new resources, such as the newly created namespaces.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2022/08/Several-namespaces-were-created.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Several-namespaces-were-created.jpg" alt="Several namespaces were created" /></a>
+  <a href="/assets/img/posts/2022/09/Several-namespaces-were-created.jpg"><img loading="lazy" src="/assets/img/posts/2022/09/Several-namespaces-were-created.jpg" alt="Several namespaces were created" /></a>
   
   <p>
    Several namespaces were created

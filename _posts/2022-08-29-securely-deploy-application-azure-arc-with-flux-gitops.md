@@ -3,13 +3,13 @@ title: Securely deploy Applications in Azure Arc with the Flux GitOps Extension
 date: 2022-08-29
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
-tags: [GitOps, Azure Arc, Flux, Kubernetes]
+tags: [GitOps, Azure Arc, Flux, Kubernetes, Kustomize]
 description: Azure Arc allows developers and administrators to implement a simple but secure GitOps process with the Flux extension.
 ---
 
 Azure Arc allows developers and administrators to implement a simple but secure GitOps process with the Flux extension.
 
-[My last post](/XXX) explained how you can use Kustomize to create configuration files for your Kubernetes cluster and applications and today I will use Flux to deploy these configurations to an on-premises k3s cluster. 
+[My last post](/manage-kubernetes-resources-with-kustomize) explained how you can use Kustomize to create configuration files for your Kubernetes cluster and applications and today I will use Flux to deploy these configurations to an on-premises k3s cluster. 
 
 This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).
 
@@ -17,17 +17,17 @@ This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Clust
 
 <a href="https://fluxcd.io/" target="_blank" rel="noopener noreferrer">Flux</a> is a popular open-source GitOps provider and is used by Azure as the GitOps operator for Azure Arc enabled Kubernetes cluster. The Flux GitOps operator will be installed as an extension and will run inside your cluster. Once the Flux agent runs, it can send information to Azure and also connect to a Git repository. All this is done with an outbound connection, no inbound connection is needed. Therefore, your cluster will be safe, and additionally, you can use a modern approach to manage your deployments.
 
-The Flux extension uses <a href="https://kustomize.io/" target="_blank" rel="noopener noreferrer">Kustomize</a> for the configuration of your deployments. For more information on Kustomize, see [my last post](/XXX).
+The Flux extension uses <a href="https://kustomize.io/" target="_blank" rel="noopener noreferrer">Kustomize</a> for the configuration of your deployments. For more information on Kustomize, see [my last post](/manage-kubernetes-resources-with-kustomize).
 
 ## Introducing the Demo Application
 
-You can find the code of the finished demo application on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
+You can find the code of the finished demo application on <a href="https://github.com/WolfgangOfner/AzureArc" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 The application is very simple and consists only of a YAML file in the root folder of the repository that contains a Deployment and a Service.
 
 <script src="https://gist.github.com/WolfgangOfner/416aa054b1e93e0ff6a1042dfb6af628.js"></script>
 
-Additionally, I have added a kustomization file in [my last post](/XXX). This kustomization file will tell the Flux agent files it should apply.
+Additionally, I have added a kustomization file in [my last post](/manage-kubernetes-resources-with-kustomize). This kustomization file will tell the Flux agent files it should apply.
 
 <script src="https://gist.github.com/WolfgangOfner/8b0004b02535f8386b8b4df8238e5cfc.js"></script>
 
@@ -39,7 +39,8 @@ The Flux operator can be installed as an extension with Azure Arc. Connect to th
 
 This command configures the Flux extension to be installed in the namespace cluster-config, allows access to the whole cluster with the scope parameter, and configures a Git repository and branch. The last line configures the kustomization configuration. This line sets a name, the path, and enables prune. If prune is enabled, Kustomize will delete all associated resources of the kustomization file when the file gets deleted. This should help to keep your cluster clean.
 
-The configured namespace "cluster-config" will contain a config map and several secrets which will be used for the communication to Azure. Additionally, these secrets allow you to connect to a private Git repository. I will show you [in my next post](/XXX), how to configure a private Git repository as your source.
+<!-- The configured namespace "cluster-config" will contain a config map and several secrets which will be used for the communication to Azure. Additionally, these secrets allow you to connect to a private Git repository. I will show you [in my next post](/XXX), how to configure a private Git repository as your source. -->
+The configured namespace "cluster-config" will contain a config map and several secrets which will be used for the communication to Azure. Additionally, these secrets allow you to connect to a private Git repository. I will show you in my next post, how to configure a private Git repository as your source.
 
 The installation should take a couple of minutes. After it is finished, go to your Azure Arc resource, open the Extensions pane and you should see your Flux extension there.
 
@@ -75,21 +76,25 @@ Let's delete this GitOps configuration and fix it. Use the following command to 
 
 ## Fix the failed Deployment
 
-To fix the problem above, you have to create the namespace before the application is deployed. The first approach that comes to mind is to add the namespace to the already existing YAML file. Adding more and more resources to one file might work for this demo application but is impractical in the real world. The file would explode and you wouldn't be able to find anything.
+To fix the problem above, you have to create the namespace before the application is deployed. The first approach that comes to mind is to add the namespace to the already existing YAML file. Adding more and more resources to one file might work for this demo application but is impractical in the real world. The file size would explode and you wouldn't be able to find anything.
 
-Another approach would be to create another YAML file for the namespace and then add this new file to the kustomization file. The problem with this approach is that you can not guarantee that the namespace will be created before the application is deployed. The solution to the problem is to have the namespace created first and only then start the deployment of the application.
+Another approach would be to create another YAML file for the namespace and then add this new file to the kustomization file. The problem with this approach is that you can not guarantee that the namespace will be created before the application is deployed. 
 
-XXX
-CREATE THE KUSTOMIZATION FILES
+The solution to the problem is to have the namespace created first and only then start the deployment of the application. Additionally, it is a good practice to have different folders for the type of deployment you want to do. For the demo application, create two folders, App and Infrastructure. Each folder should contain its own kustomization file which also helps to keep the file small and also allows you to apply individual configurations for each folder.
+
+Add the following YAML file in the Infrastructure folder to create a new namespace:
+
+<script src="https://gist.github.com/WolfgangOfner/ba40dd8f5d7b838dcfd8f3a670dd1508.js"></script>
+
+Open a terminal and use the following code to create a new kustomization file in each of the folders
+
+<script src="https://gist.github.com/WolfgangOfner/f1956fa7dcdad3ed47772a019edb63f3.js"></script>
 
 Make sure that you have the <a href="https://kustomize.io" target="_blank" rel="noopener noreferrer">Kustomize CLI</a> installed.
-XXX
 
 To tell Kustomize about this dependency, use the "dependsOn" attribute of the kustomization flag. The following code shows how to add two kustomization files to the deployment and have a dependency of the application deployment to the namespace one. 
 
 <script src="https://gist.github.com/WolfgangOfner/a5d56b4eedd47ece4a873f0392613c45.js"></script>
-
-Additionally, it is a good practice to have different folders for the type of deployment you want to do. The example above uses an App and Infrastructure folder to separate these two concerns. Each folder contains its own kustomization file which also helps to keep the file small and also allows you to apply individual configurations for each folder.
 
 Wait a bit and the deployment should succeed this time. You can open the GitOps pane in the Azure Arc resource in the Azure portal and should see the state as succeeded.
 
