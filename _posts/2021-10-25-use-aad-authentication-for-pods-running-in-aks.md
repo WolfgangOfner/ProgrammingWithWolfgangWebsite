@@ -145,11 +145,11 @@ There was a lot going on during the demo which might be hard to understand at fi
 
 ### Azure Kubernetes Service Cluster Installation
 
-The AKS cluster is created with the flags --network-plugin azure and --enable-managed-identity. AKS supports two network modes, kubenet and azure, whereas kubenet is the default mode. 
+The AKS cluster is created with the flag --network-plugin azure. AKS supports two network modes, kubenet and azure, whereas kubenet is the default mode. 
 
 AAD Pod Identity is disabled by default on clusters using the Kubnet network mode. This is due to security concerns because Kubenet is susceptible to APR spoofing. This makes it possible for pods to impersonate other pods and gain access to resources that they are not allowed to access. The Azure network plugin prevents ARP Spoofing.
 
-The second flag --enable-managed-identity creates a service principal. This service principal is used to authenticate against the AAD and retrieve tokens for the pods. Adding the Managed Identity Operator and Virtual Machine Contributor roles to the service principal is necessary so it can assign and un-assign identities from the worker nodes that run on the VM scale set.
+After the cluster is installed, the code creates a service principal. This service principal is used to authenticate against the AAD and retrieve tokens for the pods. Adding the Managed Identity Operator and Virtual Machine Contributor roles to the service principal is necessary so it can assign and un-assign identities from the worker nodes that run on the VM scale set.
 
 ### Managed Identity Controller (MIC) and Node Managed Identity (NMI)
 
