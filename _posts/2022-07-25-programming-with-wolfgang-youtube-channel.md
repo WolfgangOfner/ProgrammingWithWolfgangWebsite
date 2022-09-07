@@ -2,7 +2,7 @@
 title: Programming With Wolfgang is now on Youtube
 date: 2022-07-25
 author: Wolfgang Ofner
-categories: [Youtube]
+categories: [Video]
 tags: [Youtube, Video]
 description: Programming With Wolfgang is now on Youtube. Check out the channel and learn all about Azure, DevOps, and Kubernetes
 ---
