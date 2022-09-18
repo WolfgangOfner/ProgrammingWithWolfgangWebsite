@@ -107,7 +107,7 @@ Also, check that all pods are started and running correctly.
   </p>
 </div>
 
-The demo application is only accessible through the internal network. To make it accessible from the outside, install the Istio in the same namespace.
+The demo application is only accessible through the internal network. To make it accessible from the outside, install the Istio ingress gateway in the same namespace.
 
 <script src="https://gist.github.com/WolfgangOfner/187ae759bb4cf86c09406b8f4001140f.js"></script>
 
