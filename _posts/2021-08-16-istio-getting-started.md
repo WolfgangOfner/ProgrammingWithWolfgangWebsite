@@ -15,7 +15,7 @@ This post is part of ["Microservice Series - From Zero to Hero"](/microservice-s
 
 ## Installing Istio in Kubernetes
 
-This demo assumes that you already have a Kubernetes cluster set up. If not see [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started) to set up a new cluster and also configure the connection to Kubernetes. Usually, I work with Windows but for this demo, I will use the Windows Subsystem for Linux. You can use all commands on Linux or Max as well.
+This demo assumes that you already have a Kubernetes cluster set up. If not see [Azure Kubernetes Service - Getting Started](/azure-kubernetes-service-getting-started) to set up a new cluster and also configure the connection to Kubernetes. Usually, I work with Windows but for this demo, I will use the Windows Subsystem for Linux. You can use all commands on Linux or Mac as well.
 
 To get started, download the newest version of Istio.
 
