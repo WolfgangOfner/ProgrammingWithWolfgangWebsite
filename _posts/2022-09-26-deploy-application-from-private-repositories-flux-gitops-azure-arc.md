@@ -7,7 +7,7 @@ tags: [Kubernetes, k3s, Rancher, On-premises, Azure Arc, Git, Azure DevOps, GitH
 description: Using the Flux GitOps operator with private Git repositories works the same way as it does with public ones. The only difference is that you have to give the operator access to the private repo. 
 ---
 
-[In my last post](/XXX), I showed you how to install a GitOps operator and deploy an application using Helm charts. For this demo, I used an application from a public repository. Almost all companies host their applications in private repositories though.
+[In my last post](/helm-deploy-with-Azure-Flux-GitOps), I showed you how to install a GitOps operator and deploy an application using Helm charts. For this demo, I used an application from a public repository. Almost all companies host their applications in private repositories though.
 
 Today, I want to show how you can configure the Flux GitOps operator to gain access to a private Git repository on GitHub.
 
