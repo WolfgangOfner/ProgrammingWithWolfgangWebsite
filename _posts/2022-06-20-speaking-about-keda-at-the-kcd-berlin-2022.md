@@ -2,7 +2,7 @@
 title: Speaking about KEDA at the Kubernetes Community Days 2022 in Berlin
 date: 2022-06-20
 author: Wolfgang Ofner
-categories: [Miscellaneous]
+categories: [Speaking]
 tags: [KEDA, Speaking, Public Speaking, Conference]
 description: I am excited to travel to Berlin and talk about KEDA at the Kubernetes Community Days 2022.
 ---

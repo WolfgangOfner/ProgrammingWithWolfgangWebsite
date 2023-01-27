@@ -2,7 +2,7 @@
 title: Speaking about KEDA at the BASTA! Conference in Frankfurt
 date: 2022-02-07
 author: Wolfgang Ofner
-categories: [Miscellaneous]
+categories: [Speaking]
 tags: [KEDA, Speaking, Public Speaking, Conference]
 description: I am excited to travel to Germany and speak at the BASTA! conference in Frankfurt about KEDA.
 ---

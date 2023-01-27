@@ -1,6 +1,6 @@
 ---
 title: Deploy Helm charts with the Azure Arc Flux GitOps Extension
-date: 2022-09-12
+date: 2023-09-12
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
 tags: [Flux, GitOps, Helm, Azure Arc, Azure]
