@@ -7,7 +7,7 @@ Hey there! I'm Wolfgang Ofner, a seasoned software architect with a passion for 
 
 Currently, I am based in Perth, Australia and available for freelance projects. I'm excited to take on new challenges and help companies and organizations achieve their goals. If you're looking for someone who can bring a wealth of experience and a passion for excellence to your project, let's connect on <a href="https://www.linkedin.com/in/wolfgangofner/" target="_blank" rel="noopener">LinkedIn</a>, <a href="https://twitter.com/wolfgang_ofner" target="_blank" rel="noopener">Twitter</a>, or via <a href="mailto:wolfgang@programmingwithwolfgang.com">Email</a> .
 
-## Why I Created this Blog
+## Why I created this Blog
 
 Being a software architect, my passion has always been to share my knowledge and help others understand the exciting world of technology. That's why I created this blog, to share my experiences, insights, and personal journey on topics such as .NET, Azure, DevOps and Kubernetes. My goal is to inspire and motivate others to dive into these technologies and discover their potential.
 
