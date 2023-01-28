@@ -15,6 +15,10 @@ const resource = [
   
     '/tags/',
   
+    '/speaking/',
+  
+    '/videos/',
+  
     '/archives/',
   
     '/about/',

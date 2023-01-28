@@ -4,7 +4,7 @@
   <id>http://0.0.0.0:4000/</id>
   <title>Programming With Wolfgang</title>
   <subtitle>A tech blog focusing on DevOps, Cloud, Azure, Kubernetes and Software Architecture.</subtitle>
-  <updated>2023-01-27T15:54:48+01:00</updated>
+  <updated>2023-01-28T18:17:06+01:00</updated>
   <author>
     <name>Wolfgang Ofner</name>
     <uri>http://0.0.0.0:4000/</uri>
@@ -20,8 +20,8 @@
 
   
   <entry>
-    <title>Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc</title>
-    <link href="http://0.0.0.0:4000/video-monitor-an-on-prem-k3s-cluster-with-azure-monitor-and-azure-arc/" rel="alternate" type="text/html" title="Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc" />
+    <title>Video - Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc</title>
+    <link href="http://0.0.0.0:4000/video-monitor-an-on-prem-k3s-cluster-with-azure-monitor-and-azure-arc/" rel="alternate" type="text/html" title="Video - Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc" />
     <published>2022-11-21T00:00:00+01:00</published>
   
     <updated>2022-11-21T00:00:00+01:00</updated>
@@ -89,8 +89,8 @@
 
   
   <entry>
-    <title>Use the TokenRequest API to create Tokens in Kubernetes 1.24</title>
-    <link href="http://0.0.0.0:4000/video-use-the-tokenrequest-api-to-create-tokens-in-kubernetes/" rel="alternate" type="text/html" title="Use the TokenRequest API to create Tokens in Kubernetes 1.24" />
+    <title>Video - Use the TokenRequest API to create Tokens in Kubernetes 1.24</title>
+    <link href="http://0.0.0.0:4000/video-use-the-tokenrequest-api-to-create-tokens-in-kubernetes/" rel="alternate" type="text/html" title="Video - Use the TokenRequest API to create Tokens in Kubernetes 1.24" />
     <published>2022-10-24T00:00:00+02:00</published>
   
     <updated>2022-10-24T00:00:00+02:00</updated>
@@ -124,8 +124,8 @@
 
   
   <entry>
-    <title>Securely connect to an on-premises Kubernetes Cluster with Azure Arc</title>
-    <link href="http://0.0.0.0:4000/video-securely-connect-to-an-on-prem-kubernetes-cluster-with-azure-arc/" rel="alternate" type="text/html" title="Securely connect to an on-premises Kubernetes Cluster with Azure Arc" />
+    <title>Video - Securely connect to an on-premises Kubernetes Cluster with Azure Arc</title>
+    <link href="http://0.0.0.0:4000/video-securely-connect-to-an-on-prem-kubernetes-cluster-with-azure-arc/" rel="alternate" type="text/html" title="Video - Securely connect to an on-premises Kubernetes Cluster with Azure Arc" />
     <published>2022-10-10T00:00:00+02:00</published>
   
     <updated>2022-10-10T00:00:00+02:00</updated>

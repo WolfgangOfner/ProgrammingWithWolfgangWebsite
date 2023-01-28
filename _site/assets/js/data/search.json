@@ -1,7 +1,7 @@
 [
   
   {
-    "title": "Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc",
+    "title": "Video - Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc",
     "url": "/video-monitor-an-on-prem-k3s-cluster-with-azure-monitor-and-azure-arc/",
     "categories": "Video",
     "tags": "Azure Arc, Kubernetes, Youtube, Video",
@@ -31,7 +31,7 @@
   },
   
   {
-    "title": "Use the TokenRequest API to create Tokens in Kubernetes 1.24",
+    "title": "Video - Use the TokenRequest API to create Tokens in Kubernetes 1.24",
     "url": "/video-use-the-tokenrequest-api-to-create-tokens-in-kubernetes/",
     "categories": "Video",
     "tags": "Azure Arc, Kubernetes, Youtube, Video",
@@ -46,7 +46,7 @@
   },
   
   {
-    "title": "Securely connect to an on-premises Kubernetes Cluster with Azure Arc",
+    "title": "Video - Securely connect to an on-premises Kubernetes Cluster with Azure Arc",
     "url": "/video-securely-connect-to-an-on-prem-kubernetes-cluster-with-azure-arc/",
     "categories": "Video",
     "tags": "Azure Arc, Kubernetes, Youtube, Video",
