@@ -23,4 +23,4 @@ This session shows how a Swiss company uses Azure Arc to manage an on-premises K
 
 You can find the recording of the meetup on Youtube.
 
-<iframe style="margin: 0 auto; display: block;" width="560" height="315" src="https://www.youtube.com/watch?v=YcQt1svdu7I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/YcQt1svdu7I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
