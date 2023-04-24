@@ -1,9 +1,9 @@
 ---
-title: Video - Bring DevOps to the Swiss Alps
+title: Video - Bring DevOps to the Swiss Alps - Boston Azure User Group
 date: 2022-12-05
 author: Wolfgang Ofner
 categories: [Video]
-tags: [Azure Arc, Kubernetes, Youtube, Video]
+tags: [Azure Arc, Kubernetes, Youtube, Video, Public Speaking, Speaking]
 description: This session shows how a Swiss company uses Azure Arc to manage an on-premises Kubernetes cluster. Using Azure Arc enables the development team to leverage the power of the cloud and provide a streamlined DevOps process. All this can be achieved without the cluster being accessible from the internet.
 ---
 

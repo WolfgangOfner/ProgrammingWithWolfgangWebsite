@@ -7,7 +7,9 @@ tags: [Azure Arc, Speaking, Public Speaking, Conference, Kubernetes, DevOps, k3s
 description: I am excited to speak online at the Boston Azure user group about Azure Arc and Kubernetes.
 ---
 
-I am thrilled to announce that I will be speaking for the first time at the Boston Azure User Group. My session, titled 'Bring DevOps to the Swiss Alps' will explore the challenges and solutions for implementing DevOps practices in a remote and mountainous environment. This exciting event will be held online, so you can join from anywhere. Don't miss this opportunity to learn from my experience and gain valuable insights into the field. Register now on <a href="https://www.meetup.com/bostonazure/events/290125013" target="_blank" rel="noopener noreferrer">Meetup</a>. and see you at the event!
+I am thrilled to announce that I will be speaking for the first time at the Boston Azure User Group. My session, titled 'Bring DevOps to the Swiss Alps' will explore the challenges and solutions for implementing DevOps practices in a remote and mountainous environment. 
+
+This exciting event will be held online, so you can join from anywhere. Don't miss this opportunity to learn from my experience and gain valuable insights into the field. Register now on <a href="https://www.meetup.com/bostonazure/events/290125013" target="_blank" rel="noopener noreferrer">Meetup</a> and see you at the event!
 
 The abstract for my session is as follows:
 

@@ -30,7 +30,7 @@ This article assumes that you already have a TimescaleDB with VPC running in Azu
   </p>
 </div>
 
-All of the following guide will be done in the command line using <a href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.2" target="_blank" rel="noopener noreferrer">PowerShell</a>, the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli" target="_blank" rel="noopener noreferrer">Azure CLI</a> and <a href="https://github.com/aiven/aiven-client" target="_blank" rel="noopener noreferrer">Aiven CLI</a> on Ubuntu. It is possible to create a VPC peering in the Timescale portal, but this won't work. 
+All of the following guide will be done in the command line using <a href="https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-linux?view=powershell-7.2" target="_blank" rel="noopener noreferrer">PowerShell</a>, the <a href="https://docs.microsoft.com/en-us/cli/azure/install-azure-cli-windows?tabs=azure-cli" target="_blank" rel="noopener noreferrer">Azure CLI</a> and <a href="https://github.com/aiven/aiven-client" target="_blank" rel="noopener noreferrer">Aiven CLI</a> on Ubuntu. In theory, it is possible to create a VPC peering in the Timescale portal, but this does by far not include all the necessary steps and therefore won’t work.
 
 ## Create an Application in your AAD
 
@@ -104,6 +104,8 @@ Next, execute a role definition create and pass the JSON file as a parameter:
 
 Lastly, assign this new custom role to the previously created Timescale service principal:
 
+<script src="https://gist.github.com/WolfgangOfner/6405396499646e9df4a81f6416f590d1.js"></script>
+
 ## Create an Access Token for the Aiven CLI
 
 Log into your account in the Timescale portal and select your account icon on the top right, switch to the Authentication tab, and then click on "Generate token"
@@ -158,7 +160,7 @@ After you execute the login, pass your previously created access token.
 
 ### Retrieve the VPC Project ID
 
-works because only 1 VPC per region --> replace timescale-azure-switzerland-north with your location if you are not using Switzerland North. The project ID is always 36 characters long, as far as I know
+The following code works because there is only 1 VPC per region. Note to replace timescale-azure-switzerland-north with your location if you are not using Switzerland North. The project ID is always 36 characters long, as far as I know.
 
 <script src="https://gist.github.com/WolfgangOfner/d3efc30bc211516b1786feb2b3a0a43d.js"></script>
 
