@@ -17,7 +17,7 @@ You can find my session <a href="https://events.pinetool.ai/2928/#sessions/99181
 
 The abstract for my session is as follows:
 
-## Bring DevOps to the Swiss Alps
+## Level Up your Kubernetes Scaling with KEDA
 
 Whether it is a normal workday or Black Friday, service-oriented applications must be able to handle varying loads. This is the only way to ensure that users are provided with a good experience and that costs are kept to a minimum. 
 
