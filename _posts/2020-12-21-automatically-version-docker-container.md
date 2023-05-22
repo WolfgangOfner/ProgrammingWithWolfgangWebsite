@@ -75,6 +75,16 @@ Additionally, you have to add a new file called GitVersion.yml to the root folde
 
 <script src="https://gist.github.com/WolfgangOfner/4fb82a38079eb973556c9e24aefa7f97.js"></script>
 
+The last step you have to take before using semantic versioning is to ensure that the pipeline does not perform a shallow fetch when checking out the code. You can check this by clicking on the three dots in the top right corner and then select "Triggers". This opens a new page where you select the "YAML" tab and then "Get sources". Uncheck shallow fetch on the bottom of the window.
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2020/12/Disable-shallow-fetch.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/Disable-shallow-fetch.jpg" alt="Disable shallow fetch" /></a>
+  
+  <p>
+   Disable shallow fetch
+  </p>
+</div>
+
 ### Use the Semantic Version
 
 All you have to do to use the semantic version is to add the desired variable as the tag to your image name. I already have a variable for the image name and add $(GitVersion.FullSemVer) as the tag:
@@ -104,6 +114,7 @@ If you commit changes to the master branch and run the pipeline again, it will c
 </div>
 
 Having a semantic version like 0.1.128 is way more meaningful than 358 and helps users of the image identify changes easily.
+
 
 ### Create a Version Number for Feature Branches
 
