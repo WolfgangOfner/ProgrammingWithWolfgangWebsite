@@ -25,6 +25,6 @@ Kubernetes offers a way to vary the number of application instances running base
 
 Using Azure Kubernetes Service and KEDA (Kubernetes Event-driven Autoscaling), this session will show practical examples of how to create and configure autoscalers to respond to external events and scale applications in Kubernetes accordingly. 
 
-<!-- ## Slides of the Talk
+## Slides of the Talk
 
-You can find the slides of the talk on <a href="XXX" target="_blank" rel="noopener noreferrer">GitHub</a>. -->
+You can find the slides of the talk on <a href="https://github.com/WolfgangOfner/Presentation/blob/main/2023%20-%20DevOps%20Pro%20Europe/Level%20Up%20your%20Kubernetes%20Scaling%20with%20KEDA.pdf" target="_blank" rel="noopener noreferrer">GitHub</a>.
