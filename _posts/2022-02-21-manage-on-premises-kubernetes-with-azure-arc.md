@@ -44,9 +44,9 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Secure Application Deployments in Azure Arc with Flux GitOps](/secure-application-deployments-azure-arc-flux-gitops)
 
-- [Deploy Helm Charts from Git Repositories with Azure Arc Flux](/deploy-helm-charts-git-repositories-azure-arc-flux)
-
 - [Deploy Applications from private Repositories using Flux GitOps and Azure Arc](/deploy-application-from-private-repositories-flux-gitops-azure-arc)
+
+<!-- - [Deploy Helm Charts from Git Repositories with Azure Arc Flux](/deploy-helm-charts-git-repositories-azure-arc-flux) -->
 
 Coming soon:
 

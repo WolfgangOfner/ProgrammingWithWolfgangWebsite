@@ -43,7 +43,7 @@ To integrate the Flux operator as an extension with Azure Arc, you need to conne
 
 This command configures the installation of the Flux extension within the cluster-config namespace, granting access to the entire cluster through the scope parameter. It also sets up a Git repository and branch for Flux to interact with. The last line configures the kustomization configuration, specifying a name, path, and enabling the prune feature. When enabled, Kustomize will remove associated resources if their corresponding kustomization file is deleted, ensuring cluster cleanliness.
 
-The cluster-config namespace will contain a configuration map and several secrets used for communication with Azure. These secrets also enable connectivity to private Git repositories. In a future post, I will guide you on configuring a private Git repository as the source.
+The cluster-config namespace will contain a configuration map and several secrets used for communication with Azure. These secrets also enable connectivity to private Git repositories. In [my next post](/deploy-application-from-private-repositories-flux-gitops-azure-arc), I will guide you on configuring a private Git repository as the source.
 
 The installation process may take a few minutes. Once completed, navigate to your Azure Arc resource, open the Extensions pane, and you should find the Flux extension listed there.
 
@@ -76,8 +76,6 @@ Alternatively, in the Azure portal, navigate to the GitOps pane within your Azur
 Let's resolve this issue by deleting the current GitOps configuration and rectifying it. Execute the following command to delete the GitOps operator:
 
 <script src="https://gist.github.com/WolfgangOfner/33e3a691e751b0e1f03d0e1c6416751a.js"></script>
-
-By following these steps, we can address the namespace error and proceed with the correct installation and configuration of the Flux extension for Azure Arc.
 
 ## Fixing the Failed Deployment
 
@@ -119,7 +117,7 @@ Check the pods in the gitops namespace to ensure that one pod of the application
   </p>
 </div>
 
-By implementing these steps, you have resolved the deployment issue by creating the necessary namespace before deploying the application. The Flux operator ensures seamless updates whenever changes are made to the Git repository, providing a robust and automated deployment process.
+The Flux operator ensures seamless updates whenever changes are made to the Git repository, providing a robust and automated deployment process.
 
 ## Deleting the GitOps Configuration
 
@@ -135,15 +133,13 @@ When you delete the GitOps operator, the Azure CLI will prompt you to confirm th
 
 Please note that although the prune flag is enabled, there might be instances where the prune operation doesn't function as expected. At present, the cause of this behavior remains unknown, and there are no available logs or error messages for further analysis.
 
-By following these steps, you can remove the GitOps configuration and associated resources, providing a clean state for future deployments or modifications.
-
 ## Using Private Repositories for GitOps
 
 In the demo, a public Git repository was used to host the deployment files. However, in enterprise scenarios, applications are typically hosted on private Git repositories. In the upcoming post, I will guide you on securely connecting to a private repository in Azure DevOps or GitHub using SSH keys and the Flux GitOps operator.
 
-By leveraging SSH keys, you can establish a secure and authenticated connection between the GitOps operator and your private repository. This ensures the confidentiality and integrity of your source code and deployment configurations. I will provide step-by-step instructions in my next post to guide you through the process of configuring SSH keys and integrating them with the Flux GitOps operator.
+By leveraging SSH keys, you can establish a secure and authenticated connection between the GitOps operator and your private repository. This ensures the confidentiality and integrity of your source code and deployment configurations. I will provide step-by-step instructions in [my next post](/deploy-application-from-private-repositories-flux-gitops-azure-arc) to guide you through the process of configuring SSH keys and integrating them with the Flux GitOps operator.
 
-Stay tuned for the next post, where I will delve into the details of securely connecting to private repositories and enabling seamless GitOps workflows for enterprise applications.
+Stay tuned for [my next post](/deploy-application-from-private-repositories-flux-gitops-azure-arc), where I will delve into the details of securely connecting to private repositories and enabling seamless GitOps workflows for enterprise applications.
 
 ## Conclusion
 
