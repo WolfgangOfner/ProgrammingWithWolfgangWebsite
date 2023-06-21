@@ -29,19 +29,17 @@ You can find the code of the finished demo application on <a href="https://githu
 
 Before you get started, install <a href="https://kubectl.docs.kubernetes.io/installation/kustomize/" target="_blank" rel="noopener noreferrer">Kustomize</a>.
 
-Next, open your command line and navigate to the folder containing the namespace YAML file. Use Kustomize to scan the folder and generate a kustomization file based on the detected YAML files.
+First, create a YAML file that contains a namespace definition:
 
 <script src="https://gist.github.com/WolfgangOfner/ba40dd8f5d7b838dcfd8f3a670dd1508.js"></script>
+
+Next, open your command line and navigate to the folder containing the namespace YAML file. Use Kustomize to scan the folder and generate a kustomization file based on the detected YAML files.
+
+<script src="https://gist.github.com/WolfgangOfner/f3ad4fa81b46704160dad9f741100b51.js"></script>
 
 The --autodetect flag tells Kustomize to search for Kubernetes resources, while the --recursive flag ensures that sub-folders are also included in the search.
 
 The generated kustomization file will look like this:
-
-<script src="https://gist.github.com/WolfgangOfner/f3ad4fa81b46704160dad9f741100b51.js"></script>
-
-The --autodetect flag tells Kustomize to search for Kubernetes resources and the --recursive flag also searches all sub-folders.
-
-The created kustomization file should look as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/431226a4308db7006e64da51aaf2c057.js"></script>
 
