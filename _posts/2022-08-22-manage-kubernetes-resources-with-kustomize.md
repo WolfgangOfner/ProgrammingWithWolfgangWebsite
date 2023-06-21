@@ -3,23 +3,25 @@ title: Manage your Kubernetes Resources with Kustomize
 date: 2022-08-22
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
-tags: [Kubernetes, Kustomize, Flux, Azure Arc, Helm]
-description: Kustomize allows you to easily create configuration files of your Kubernetes resources and is also used by Azure Arc to deploy your resources to Kubernetes.
+tags: [Kubernetes, Kustomize, Flux, Azure Arc, GitOps, Deployment, Configuration Management]
+description: Discover the power of Kubernetes deployment with Flux, Kustomize, and Azure Arc. Streamline your GitOps workflow for efficient configuration management in this comprehensive guide.
 ---
 
-Azure Arc offers the Flux extensions to enable a GitOps workflow. You should know about Kustomize before you can use the Flux extension though.
+Azure Arc presents the Flux extensions as a powerful facilitator of the GitOps workflow. However, prior knowledge of Kustomize becomes indispensable for leveraging the full potential of the Flux extension.
 
-Today, I want to show you what Kustomize is and how it helps you to create a configuration file for your application and how to deploy your application using the Kustomize CLI.
+Today, our objective is to shed light on the essence of Kustomize and its profound impact on creating meticulous configuration files for your applications. 
+
+Furthermore, I will guide you through the process of deploying your application using the Kustomize CLI, equipping you with the necessary expertise in application deployment. Let's dive right in and explore the wonders of Kustomize!
 
 This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).
 
 ## Kustomize - Kubernetes Native Configuration Management
 
-<a href="https://kustomize.io/" target="_blank" rel="noopener noreferrer">Kustomize</a> is an open-source tool to customize your Kubernetes configuration. In contrast to Helm, Kustomize does not rely on templates to manage your configuration files. Additionally, Kustomize ist part of kubectl since version 1.14. This means that you don't have to install anything and can use it in combination with kubectl.
+<a href="https://kustomize.io/" target="_blank" rel="noopener noreferrer">Kustomize</a> is powerful open-source tool designed to customize your Kubernetes configuration seamlessly. Unlike Helm, Kustomize takes a different approach by eliminating the need for templates to manage your configuration files. Notably, Kustomize has become an integral part of kubectl since version 1.14, allowing you to leverage its capabilities without any additional installations.
 
-Kustomize scans your folders and creates a kustomization file that contains information and references about all YAML files it found. This kustomization file can be applied to your Kubernetes cluster. 
+When you unleash Kustomize on your folders, it diligently scans and compiles a comprehensive kustomization file. This file acts as a centralized hub, capturing vital information and references to all the YAML files discovered during the scanning process. Once you have your kustomization file in hand, you can effortlessly apply it to your Kubernetes cluster, bringing your configuration to life.
 
-Let's create a demo application and see Kustomize in action.
+To witness the power of Kustomize firsthand, let's create a demo application and observe Kustomize in action.
 
 ## Deploy an Application to Kubernetes with Kustomize
 
@@ -27,11 +29,13 @@ You can find the code of the finished demo application on <a href="https://githu
 
 Before you get started, install <a href="https://kubectl.docs.kubernetes.io/installation/kustomize/" target="_blank" rel="noopener noreferrer">Kustomize</a>.
 
-First, create a YAML file that contains a namespace definition:
+Next, open your command line and navigate to the folder containing the namespace YAML file. Use Kustomize to scan the folder and generate a kustomization file based on the detected YAML files.
 
 <script src="https://gist.github.com/WolfgangOfner/ba40dd8f5d7b838dcfd8f3a670dd1508.js"></script>
 
-Next, open your command line and navigate to the folder containing the previously created namespace YAML file. Use Kustomize to scan your folder for YAML files and create a kustomization file according to its findings.
+The --autodetect flag tells Kustomize to search for Kubernetes resources, while the --recursive flag ensures that sub-folders are also included in the search.
+
+The generated kustomization file will look like this:
 
 <script src="https://gist.github.com/WolfgangOfner/f3ad4fa81b46704160dad9f741100b51.js"></script>
 
@@ -41,11 +45,11 @@ The created kustomization file should look as follows:
 
 <script src="https://gist.github.com/WolfgangOfner/431226a4308db7006e64da51aaf2c057.js"></script>
 
-This is the simplest kustomization file possible and it only has one reference to the previously created namespace file. That's enough for a first deployment though. You can combine the build of the kustomization file and its deployment with the following command:
+This is a simple kustomization file that references the previously created namespace file. It's sufficient for an initial deployment. You can combine the build of the kustomization file and its deployment using the following command:
 
 <script src="https://gist.github.com/WolfgangOfner/7c04fe4e4b1363c2df01b11c8e79ceb3.js"></script>
 
-You should see your new namespace after the kustomization file is applied.
+After applying the kustomization file, you should see the newly created namespace.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2022/08/The-namespace-was-created.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/The-namespace-was-created.jpg" alt="The namespace was created" /></a>
@@ -57,30 +61,25 @@ You should see your new namespace after the kustomization file is applied.
 
 ## Flux with Kustomize
 
-Azure Arc uses Flux as its GitOps operator and Flux uses Kustomize for the configuration of your deployment. Since I want to focus on Azure Arc, let's take a look at Flux in combination with Kustomize.
+In the world of Azure Arc, Flux serves as the GitOps operator, seamlessly integrating with Kustomize for efficient deployment configuration. As we delve into the realm of Azure Arc, let's explore the powerful combination of Flux and Kustomize.
 
-Kustomize offers a wide range of configuration parameters. Flux allows to adding these parameters during the creation of the Flux operator or as part of the kustomization file. Let's take a look at an example kustomization file.
+Kustomize offers a wide range of configuration parameters that enable fine-grained control over your deployments. Flux allows you to leverage these parameters during the creation of the Flux operator or incorporate them directly into the kustomization file. To better understand this integration, let's examine an example kustomization file:
 
 <script src="https://gist.github.com/WolfgangOfner/441e0ab69f97cf6767e7e4fd245d329e.js"></script>
 
-Most of the config flags should be self-explanatory  but to prevent any confusion, here is what they do:
+In this example, the kustomization file showcases various configuration parameters. The interval specifies the frequency at which Flux checks for configuration drifts and removes changes made outside of Kustomize. The wait parameter ensures that Flux waits until all resources are ready before proceeding. The timeout defines the duration after which Kustomize aborts the operation if it exceeds the specified time. The retryInterval determines the interval between retry attempts. The prune flag enables the removal of stale resources, while the force flag allows for the recreation of resources if necessary. The targetNamespace specifies the namespace where the resources are deployed.
 
-- interval: checks for configuration drifts and deletes changes made outside of Kustomize, e.g. changes made with kubectl
-- wait: wait until all resources are ready
-- timeout: the time when Kustomize gives up
-- retryInterval: time between retry tries
-- prune: remove stale resources from your cluster
-- force: recreate resources
-- targetNamespace: the namespace where your resources are deployed into
-- url: configures a git repository
-- secretRef: reference to a user PAT (personal access token) to access this git repository
-- branch: the branch Kustomize will check for resources
+Additionally, the sourceRef section defines the Git repository URL, the secretRef references a user PAT (personal access token) for accessing the repository, and the branch indicates the branch from which Kustomize fetches the resources.
 
-You could also configure the use of a local file instead of an URL. To do this, use the path parameter and set the folder of your kustomize file as its value.
+It's worth noting that you can also configure Kustomize to use a local file instead of a URL by using the path parameter and specifying the folder path where your kustomization file resides.
+
+With Flux and Kustomize working in harmony, you have the flexibility to tailor your deployments and fine-tune the configuration to meet your specific needs. The combination of GitOps principles with the versatility of Kustomize empowers you to achieve a robust and streamlined deployment workflow within the Azure Arc ecosystem.
 
 ## Conclusion
 
-Kustomize allows you to easily create configuration files of your Kubernetes resources. This post gave a short introduction to Kustomize because Azure Arc uses Flux as its GitOps operator which uses Kustomize to configure your deployments.
+In summary, Flux and Kustomize form a powerful duo within the Azure Arc ecosystem, enabling a streamlined and automated GitOps workflow for managing Kubernetes deployments. With Flux serving as the GitOps operator and Kustomize providing flexible configuration management, you can achieve consistency, reproducibility, and efficiency in deploying and managing your applications. 
+
+By leveraging their integration, you empower your team to automate deployments, detect configuration drifts, and maintain the desired state of your Kubernetes resources. Embrace the combined capabilities of Flux and Kustomize to enhance the reliability and scalability of your Azure Arc deployments, unlocking the full potential of GitOps within your Kubernetes environment.
 
 [In my next post](/secure-application-deployments-azure-arc-flux-gitops), I will show you how to use Flux on Azure Arc to deploy your resources to Kubernetes with the help of Kustomize.
 
