@@ -45,6 +45,10 @@ Make sure that the RegistrationState is Registered for all 3 resource providers.
 
 <script src="https://gist.github.com/WolfgangOfner/ed8953d6a02c97bca8fd632ecbbd3e16.js"></script>
 
+In case you get the error message "mv: cannot move '/etc/rancher/k3s/k3s.yaml' to '/root/.kube/config': No such file or directory", create the /.kube folder using the following command:
+
+<script src="https://gist.github.com/WolfgangOfner/0787a265afb35cbe2f01299a830dca7f.js"></script>
+
 After moving the config file, install Azure Arc with the following command:
 
 <script src="https://gist.github.com/WolfgangOfner/bd8cba66f2ac1efdeb7b5c64ba48a6b8.js"></script>

@@ -13,7 +13,7 @@ This method has changed a bit from Kubernetes version 1.24 on and in this post, 
 
 This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).
 
-## Breaking change with Tokens in Kubernetes 1.24
+## Breaking Change with Tokens in Kubernetes 1.24
 
 When I described how you can connect to your Kubernetes cluster, I showed you how to create a new service account and bind a role to this account. See the following code as a reminder.
 
