@@ -42,7 +42,7 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Manage your Kubernetes Resources with Kustomize](/manage-kubernetes-resources-with-kustomize)
 
-- [Securely deploy Applications in Azure Arc with the Flux GitOps Extension](/securely-deploy-application-azure-arc-with-flux-gitops)
+- [Secure Application Deployments in Azure Arc with Flux GitOps](/secure-application-deployments-azure-arc-flux-gitops)
 
 - [Deploy Helm Charts from Git Repositories with Azure Arc Flux](/deploy-helm-charts-git-repositories-azure-arc-flux)
 

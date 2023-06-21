@@ -41,10 +41,8 @@ It's worth noting that Helm charts can be deployed from both Git repositories an
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/AzureArc" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 Deploying a Helm chart directly from your Git repository offers a straightforward approach. To begin, create a new YAML file where you'll define essential details such as the path to your Helm chart within the Git repository, the branch to track, polling interval, and a name for the deployment.
-<div class="code-container">
-  <pre><code class="copyable-code"><script src="https://gist.github.com/WolfgangOfner/c38f5fb56e201126b56ceae94ce9e069.js"></script></code></pre>
-  <button class="copy-button" data-clipboard-target=".copyable-code">Copy Code</button>
-</div>
+
+<script src="https://gist.github.com/WolfgangOfner/c38f5fb56e201126b56ceae94ce9e069.js"></script>
 
 
 Take note of the line "clusterconfig.azure.com/use-managed-source: "true", which informs Flux that the Helm chart is stored within a Git repository.

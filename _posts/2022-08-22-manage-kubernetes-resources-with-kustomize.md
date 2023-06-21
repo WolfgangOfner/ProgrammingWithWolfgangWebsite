@@ -82,6 +82,6 @@ You could also configure the use of a local file instead of an URL. To do this, 
 
 Kustomize allows you to easily create configuration files of your Kubernetes resources. This post gave a short introduction to Kustomize because Azure Arc uses Flux as its GitOps operator which uses Kustomize to configure your deployments.
 
-[In my next](/securely-deploy-application-azure-arc-with-flux-gitops), I will show you how to use Flux on Azure Arc to deploy your resources to Kubernetes with the help of Kustomize.
+[In my next post](/secure-application-deployments-azure-arc-flux-gitops), I will show you how to use Flux on Azure Arc to deploy your resources to Kubernetes with the help of Kustomize.
 
 This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).
