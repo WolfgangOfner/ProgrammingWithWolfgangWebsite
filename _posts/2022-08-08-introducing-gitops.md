@@ -7,19 +7,26 @@ tags: [GitOps, IaC, Flux, ArgoCD, Git, DevOps]
 description: GitOps is a way to manage infrastructure as code (IaC) which gains more and more traction lately. 
 ---
 
-GitOps is a way to manage infrastructure as code (IaC) which gains more and more traction lately. 
+GitOps, a trending approach for managing infrastructure as code (IaC), has gained significant popularity in recent times. In this article, we will provide you with a comprehensive introduction to GitOps, highlighting its advantages and disadvantages. Additionally, we will explore a selection of GitOps tools that can assist you in initiating your GitOps journey. 
 
-Today, I want to give you an introduction to GitOps, talk about the good and bad, and also introduce some GitOps tools you can use to get started.
+Let's dive into this topic and discover how GitOps can revolutionize your infrastructure management practices.
 
 This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).
 
 ## What is GitOps?
 
-Infrastructure as code is nothing new and there are many popular tools such as Terraform, Pulumi, Ansible, and many more. IaC means that you have the configuration of your infrastructure in a file, mostly a YAML file. The advantage is that you can take this file and deploy it as often as you want. This enables you to have fast and repeatable deployments. 
 
-With the rise of Kubernetes and cloud environments, we see more and more topics as code, such as network as code, configuration as code, or security as code. This allows developers to have everything as code. All these configuration files also come with more complexity. This is where GitOps comes into play.
+GitOps is an approach that leverages the concept of infrastructure as code (IaC) to streamline the management of complex configurations. While traditional IaC tools like Terraform and Ansible focus on deploying infrastructure, GitOps takes it a step further by utilizing a separate Git repository to store all configuration files.
 
-GitOps usually uses a separate Git repository that contains all your configuration files. This already allows developers to have a single source of truth and also allows them to create pipelines that deploy these configuration files. Therefore, you should always know what version of your configuration is running in a given environment. Additionally, since the changes are deployed via a pipeline, the developers don't need access to the infrastructure anymore which will lead to increased security.
+By centralizing configurations in a Git repository, developers can establish a single source of truth for their infrastructure. This enables version control and facilitates the implementation of robust deployment pipelines. With GitOps, you can ensure that you always have visibility into which version of the configuration is running in a specific environment.
+
+One of the key advantages of GitOps is its ability to promote repeatable and scalable deployments. By treating infrastructure changes as code, you can achieve fast and reliable deployments through automation. This not only enhances efficiency but also fosters collaboration among teams by providing a standardized and easily understandable representation of the infrastructure.
+
+Another benefit of GitOps is improved security. With GitOps, developers no longer require direct access to the underlying infrastructure. Instead, changes are implemented through controlled pipelines, reducing the risk of unauthorized modifications and enhancing overall security posture.
+
+As Kubernetes and cloud environments continue to gain prominence, GitOps becomes even more relevant. It extends the concept of IaC to cover additional aspects such as network configurations, security policies, and application configurations. This comprehensive approach allows developers to manage all aspects of their infrastructure and configurations as code, simplifying complex deployments and ensuring consistency across environments.
+
+In the following sections, we will explore both the advantages and potential challenges of adopting GitOps. We will also introduce you to some popular GitOps tools that can help you kickstart your GitOps journey.
 
 ## Deployment Modes
 

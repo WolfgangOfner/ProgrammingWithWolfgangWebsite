@@ -135,16 +135,12 @@ Please note that although the prune flag is enabled, there might be instances wh
 
 ## Using Private Repositories for GitOps
 
-In the demo, a public Git repository was used to host the deployment files. However, in enterprise scenarios, applications are typically hosted on private Git repositories. In the upcoming post, I will guide you on securely connecting to a private repository in Azure DevOps or GitHub using SSH keys and the Flux GitOps operator.
-
-By leveraging SSH keys, you can establish a secure and authenticated connection between the GitOps operator and your private repository. This ensures the confidentiality and integrity of your source code and deployment configurations. I will provide step-by-step instructions in [my next post](/deploy-application-from-private-repositories-flux-gitops-azure-arc) to guide you through the process of configuring SSH keys and integrating them with the Flux GitOps operator.
-
-Stay tuned for [my next post](/deploy-application-from-private-repositories-flux-gitops-azure-arc), where I will delve into the details of securely connecting to private repositories and enabling seamless GitOps workflows for enterprise applications.
+In the demo, a public Git repository was used to host the deployment files. However, in enterprise scenarios, applications are typically hosted on private Git repositories. In [my next post](/deploy-application-from-private-repositories-flux-gitops-azure-arc), I will guide you on securely connecting to a private repository in Azure DevOps or GitHub using Personal Access Tokens and the Flux GitOps operator.
 
 ## Conclusion
 
-In summary, this article introduced GitOps with Flux in Azure Arc, simplifying and securing Kubernetes deployments. We explored Kustomize for flexible configuration management. 
+In summary, this article highlights the importance of secure application deployments in Azure Arc with Flux GitOps. By integrating Flux, Azure Arc, and Kustomize, developers and administrators can streamline Kubernetes deployments and enhance configuration management. 
 
-By following a practical demonstration, we successfully deployed a demo application. Securely connecting to private Git repositories using SSH keys was also discussed. Embracing GitOps and Flux streamlines deployments, enhancing efficiency and security.
+The article introduces a demo application and provides installation steps for the Flux extension. It emphasizes the scalability of organizing deployments and mentions future topics such as deleting the GitOps configuration and using private repositories. Overall, Azure Arc, Flux GitOps, and Kustomize offer a robust solution for secure and efficient application deployments in Kubernetes clusters.
 
 This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).
