@@ -26,7 +26,7 @@ gem install jekyll bundler
 ```
 
 ```terminal
-docker run -it --rm --volume="$($PWD):/srv/jekyll" -p 4000:4000 jekyll/jekyll jekyll serve
+docker run -it --rm --volume="$($PWD):/srv/jekyll" -p 4000:4000 jekyll/jekyll:4.2.2 jekyll serve
 ```
 If you only want to run the website, you can use the following code, which should start faster than the above one:
 
@@ -37,7 +37,7 @@ Optionally use the --force_polling flag which enables a watcher that re-creates 
 Currently, the website needs to be built and the _site folder needs to be checked in. Build the site with the following command:
 
 ```terminal
-docker run -it --rm --env JEKYLL_ENV=production --volume="$($PWD):/srv/jekyll" jekyll/jekyll jekyll build
+docker run -it --rm --env JEKYLL_ENV=production --volume="$($PWD):/srv/jekyll" jekyll/jekyll:4.2.2 jekyll build
 ```
 
 It is planned to move this task to the GitHub action in the future.
