@@ -4,42 +4,55 @@ date: 2022-08-01
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
 tags: [Kubernetes, k3s, Rancher, On-premises, Azure Arc]
-description: Kubernetes 1.24 removed the automated creation of secrets when creating new service accounts. Use the TokenRequest API instead.
+description: Discover the changes in Kubernetes 1.24, with automated secret removal. Embrace the secure TokenRequest API for easier and safer token creation.
 ---
 
 In one of my former posts, [Securely connect to an on-premises Kubernetes Cluster with Azure Arc](/securely-connect-to-on-premises-kubernetes-with-azure-arc), I showed you how to securely connect to an on-premise Kubernetes cluster using Azure Arc. To achieve that, I have create a user and then retrieved the token of the user. 
 
 This method has changed a bit from Kubernetes version 1.24 on and in this post, I will show you how to get this token if you are using the new K8s version.
 
+
+In a previous post, titled "[Securely connect to an on-premises Kubernetes Cluster with Azure Arc](/securely-connect-to-on-premises-kubernetes-with-azure-arc)", I demonstrated the step-by-step process of establishing a secure connection to an on-premise Kubernetes cluster using Azure Arc. The key highlight was creating a user and obtaining the user's token for authentication.
+
+However, with the release of Kubernetes version 1.24 and onwards, there have been some changes to this method. In this new post, I'll guide you through the updated approach to obtain the token if you are using the latest K8s version.
+
 This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).
 
 ## Breaking Change with Tokens in Kubernetes 1.24
 
-When I described how you can connect to your Kubernetes cluster, I showed you how to create a new service account and bind a role to this account. See the following code as a reminder.
+Ah, the ever-evolving world of Kubernetes! As we delve into the fascinating realm of secure cluster connections, let's address a breaking change that occurred with the release of Kubernetes version 1.24.
+
+In my previous explanation on how to connect to your Kubernetes cluster, we journeyed through creating a new service account and binding a role to grant necessary permissions. The following code served as a friendly reminder:
 
 <script src="https://gist.github.com/WolfgangOfner/3351fe1c4967a5833b8e74e86c9b9f03.js"></script>
 
-Back then I said that this cluster binding also creates the secret which we will retrieve and then use to connect to the cluster. The code to do that was as following:
+At that time, I mentioned that this cluster binding also automatically generated the secret we required to establish the connection. Here's the code snippet we used to retrieve and leverage that essential token:
 
 <script src="https://gist.github.com/WolfgangOfner/a5285efb1f3c9a263443ea074df8c96d.js"></script>
 
-From Kubernetes 1.24 on, this token is not automatically created anymore. Therefore if you execute the code above, the $SECRET_NAME variable will be empty and as a result you won't be able to retrieve the token (obviously since it was not created in the first place).
+However, with the introduction of Kubernetes 1.24, there has been a significant shift – the token is no longer automatically generated. As a result, executing the code above will leave the $SECRET_NAME variable empty, preventing you from obtaining the token as it was previously done.
+
+In the following section, I will guide you through the new method of obtaining access token token.
 
 ## What is new in Kubernetes 1.24
 
-As with every new Kubernetes version, there are many changes and new features associated with the release. You can find all the changes and also upgrade notes in the <a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.24.md#urgent-upgrade-notes" target="_blank" rel="noopener noreferrer">Kubernetes changelog on GitHub</a>.
+As with every new version of Kubernetes, the latest release, Kubernetes 1.24, comes packed with a plethora of changes and exciting features. To explore the complete list of modifications and upgrade notes, you can refer to the detailed <a href="https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.24.md#urgent-upgrade-notes" target="_blank" rel="noopener noreferrer">Kubernetes changelog on GitHub</a>.
 
-> The LegacyServiceAccountTokenNoAutoGeneration feature gate is beta, and enabled by default. When enabled, Secret API objects containing service account tokens are no longer auto-generated for every ServiceAccount. Use the TokenRequest API to acquire service account tokens, or if a non-expiring token is required, create a Secret API object for the token controller to populate with a service account token by following this guide.
+One noteworthy change in this release is the introduction of the LegacyServiceAccountTokenNoAutoGeneration feature gate, which is now in beta and enabled by default. With this feature gate activated, the automatic generation of Secret API objects containing service account tokens for every ServiceAccount has been disabled.
 
-This means that you have to create the token yourself which I will show you in the next section.
+There's a new and improved method to acquire those essential service account tokens. You can now leverage the TokenRequest API to obtain service account tokens. Additionally, if you require a non-expiring token, you have the option to create a Secret API object following a straightforward guide, allowing the token controller to populate it with a service account token.
 
-## Use the TokenRequest API to create the Token
+In the next section, I'll guide you through the process of creating these tokens yourself, ensuring you are up to speed with the latest practices and ready to embrace the changes in Kubernetes 1.24.
 
-Kubernetes 1.22 introduced the TokenRequest API which is now the recommended way to create tokens because they are more secure than the previously used Secret object. To use the API, first create a new service account and bind a role to it. Then use "kubectl create token \<Service Account Name\> to create the token.
+## Utilizing the TokenRequest API for Enhanced Security
+
+With the introduction of Kubernetes 1.22, we now have the TokenRequest API at our disposal, offering a more secure approach to create tokens compared to the previously used Secret object. Let's dive into how we can leverage this API to enhance security in token creation.
+
+To use the API, first create a new service account and bind a role to it. Then use “kubectl create token \<Service Account Name\> to create the token.
 
 <script src="https://gist.github.com/WolfgangOfner/ca5efc785f453876bb8cc6e4c5bd0dda.js"></script>
 
-The create token command automatically creates the token and prints it to the console.
+The create token command will automatically generate the token and display it on the console for you.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2022/08/Use-the-TokenRequest-API.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/Use-the-TokenRequest-API.jpg" alt="Use the TokenRequest API" /></a>
@@ -49,7 +62,9 @@ The create token command automatically creates the token and prints it to the co
   </p>
 </div>
 
-## Use a Service Account Secret Objects to access the K8s Cluster
+With the TokenRequest API in action, you can now confidently create tokens with enhanced security measures. Embrace the power of Kubernetes 1.22 and take advantage of this improved approach for all your token creation needs.
+
+## Manual Creation of a Service Account Secret for the Cluster Access
 
 If you can't use the TokenRequest API, then you can create the secret yourself. To create the access token in Kubernetes 1.24 manually, you have to create a service account and bind a role to this account first. This is the same code as in my last post:
 
@@ -75,10 +90,10 @@ The following screenshot shows the whole process and the printed token.
   </p>
 </div>
 
-When you delete the service account, the associated secret will be automatically deleted too. 
+Note, when you delete the service account, the associated secret will be automatically deleted as well, ensuring a tidy and secure process.
 
 ## Conclusion
 
-Kubernetes 1.24 removed the automated creation of secrets when creating new service accounts. Use the TokenRequest API instead to create tokens which is easier and also more secure than creating tokens manually.
+In conclusion, Kubernetes 1.24 removed the automatic creation of secrets for new service accounts. Instead, the recommended and more secure method is to use the TokenRequest API to create tokens. This API simplifies the process and enhances cluster security. Embrace these changes to enjoy a smoother Kubernetes experience with improved access control. 
 
 This post is part of ["Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Arc"](/manage-on-premises-kubernetes-with-azure-arc).
