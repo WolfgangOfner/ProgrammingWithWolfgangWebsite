@@ -7,11 +7,6 @@ tags: [Kubernetes, k3s, Rancher, On-premises, Azure Arc]
 description: Discover the changes in Kubernetes 1.24, with automated secret removal. Embrace the secure TokenRequest API for easier and safer token creation.
 ---
 
-In one of my former posts, [Securely connect to an on-premises Kubernetes Cluster with Azure Arc](/securely-connect-to-on-premises-kubernetes-with-azure-arc), I showed you how to securely connect to an on-premise Kubernetes cluster using Azure Arc. To achieve that, I have create a user and then retrieved the token of the user. 
-
-This method has changed a bit from Kubernetes version 1.24 on and in this post, I will show you how to get this token if you are using the new K8s version.
-
-
 In a previous post, titled "[Securely connect to an on-premises Kubernetes Cluster with Azure Arc](/securely-connect-to-on-premises-kubernetes-with-azure-arc)", I demonstrated the step-by-step process of establishing a secure connection to an on-premise Kubernetes cluster using Azure Arc. The key highlight was creating a user and obtaining the user's token for authentication.
 
 However, with the release of Kubernetes version 1.24 and onwards, there have been some changes to this method. In this new post, I'll guide you through the updated approach to obtain the token if you are using the latest K8s version.
