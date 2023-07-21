@@ -19,6 +19,14 @@ Resolving a stuck Kubernetes namespace is a straightforward process. Execute the
 
 Ensure that you replace <NAMESPACE_NAME> with the actual name of the namespace you wish to delete. After a few moments, the namespace should be successfully deleted.
 
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2023/07/Delete-the-stuck-Namespace.jpg"><img loading="lazy" src="/assets/img/posts/2023/07/Delete-the-stuck-Namespace.jpg" alt="Delete the stuck Namespace" /></a>
+  
+  <p>
+   Delete the stuck Namespace
+  </p>
+</div>
+
 ## Conclusion
 
 In conclusion, encountering a stuck Kubernetes namespace can be a common challenge. However, there are solutions available that do not require deleting the entire cluster. By updating the namespace's manifest using the provided command, Kubernetes can successfully delete the problematic namespace. This straightforward process allows for a more targeted and efficient resolution, ensuring smoother operations within your Kubernetes environment.
