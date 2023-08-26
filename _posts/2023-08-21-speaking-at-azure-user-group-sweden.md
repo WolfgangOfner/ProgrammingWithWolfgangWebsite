@@ -28,3 +28,9 @@ Using Azure Kubernetes Service and KEDA (Kubernetes Event-driven Autoscaling), t
 ## Slides of the Talk
 
 You can find the slides of the talk on <a href="https://github.com/WolfgangOfner/Presentation/blob/main/2023%20-%20Azure%20User%20Group%20Sweden/Level%20Up%20your%20Kubernetes%20Scaling%20with%20KEDA%20Clean.pdf" target="_blank" rel="noopener noreferrer">GitHub</a>.
+
+## Watch on Youtube
+
+You can find the recording of the talk on Youtube.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FAtWULN8QgI?si=sCVDohvb_NTVZjIf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
