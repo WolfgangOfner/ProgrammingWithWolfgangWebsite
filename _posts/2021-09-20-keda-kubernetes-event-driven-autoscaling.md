@@ -153,4 +153,6 @@ KEDA is a great tool to scale your workloads in Kubernetes. It allows you to cho
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
+Check out [Mastering Azure DevOps Agents in Kubernetes - A Comprehensive Guide](/mastering-azure-devops-agents-in-kubernetes-guide) and learn how to scale your Azure DevOps Agents running inside Kubernetes with KEDA.
+
 This post is part of ["Microservice Series - From Zero to Hero"](/microservice-series-from-zero-to-hero).

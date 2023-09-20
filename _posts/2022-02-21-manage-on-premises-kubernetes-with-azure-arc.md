@@ -3,7 +3,7 @@ title: Azure Arc Series - Manage an on-premises Kubernetes Cluster with Azure Ar
 date: 2022-02-21
 author: Wolfgang Ofner
 categories: [Kubernetes]
-tags: [Kubernetes, k3s, Rancher, On-premises, Azure Arc, Azure Monitor, CI/CD, Flux, GitOps]
+tags: [Kubernetes, k3s, Rancher, On-premises, Azure Arc, Azure Monitor, CI-CD, Flux, GitOps]
 description: Azure Arc is a great tool to manage your on-premises hardware, such as an k3s cluster, with Azure.
 ---
 
