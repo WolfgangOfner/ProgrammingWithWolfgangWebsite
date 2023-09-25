@@ -14,7 +14,7 @@ Before I start, I want to show you what happens when you try to start a .NET Cor
 
 <script src="https://gist.github.com/WolfgangOfner/91c669b9f187b26c10f80ed2fb41eb63.js"></script>
 
-This command sets a port mapping, adds an environment variable and starts the image customerapi from my Dockerhub repository. Executing this command will result in the following exception:
+This command sets a port mapping, adds an environment variable and starts the image customerapi from my Docker Hub repository. Executing this command will result in the following exception:
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/04/Start-a-.net-core-application-without-a-certificate.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Start-a-.net-core-application-without-a-certificate.jpg" alt="Start a .NET Core application without a certificate" /></a>

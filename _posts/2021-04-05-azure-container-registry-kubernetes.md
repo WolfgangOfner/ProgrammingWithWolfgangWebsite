@@ -4,10 +4,10 @@ date: 2021-04-05
 author: Wolfgang Ofner
 categories: [Kubernetes, DevOps]
 tags: [DevOps, CI-CD, Azure DevOps, Azure, Kubernetes, AKS, Helm, ACR, Azure Container Registry]
-description: Azure Container Registry has some advantages over Dockerhub and I will show you how to configure your microservice and Kubernetes cluster to run images from ACR and run them in your cluster.
+description: Azure Container Registry has some advantages over Docker Hub and I will show you how to configure your microservice and Kubernetes cluster to run images from ACR and run them in your cluster.
 ---
 
-<a href="https://hub.docker.com/" target="_blank" rel="noopener noreferrer">Dockerhub</a> is like GitHub for Docker containers. You can sign up for free and get unlimited public repos and one private repo. This is great for developers like me who want to make their containers easily accessible for everyone. Enterprises probably don't want to have their containers on a public share. They can either buy an enterprise plan or they can use a private registry like Azure Container Registry (ACR).
+<a href="https://hub.docker.com/" target="_blank" rel="noopener noreferrer">Docker Hub</a> is like GitHub for Docker containers. You can sign up for free and get unlimited public repos and one private repo. This is great for developers like me who want to make their containers easily accessible for everyone. Enterprises probably don't want to have their containers on a public share. They can either buy an enterprise plan or they can use a private registry like Azure Container Registry (ACR).
 
 In this post, I will talk about the advantages of Azure Container Registry and show you how to configure your microservice and Kubernetes cluster to run images from ACR and run them in your cluster.
 
@@ -43,21 +43,21 @@ Select a subscription, resource group, location, and SKU. For the demo, I am usi
 
 ## Upload an Image to the Azure Container Registry
 
-To upload an image to the new ACR, you have two options: importing the image from Dockerhub or uploading it from a CI/CD pipeline (or manually).
+To upload an image to the new ACR, you have two options: importing the image from Docker Hub or uploading it from a CI/CD pipeline (or manually).
 
-### Import an Image from Dockerhub into ACR
+### Import an Image from Docker Hub into ACR
 
 Importing an image is a good way to get started fast but I would recommend using the CI/CD pipeline approach in the next section. To import the image, use the following Azure CLI command:
 
 <script src="https://gist.github.com/WolfgangOfner/9f78fbe4917a26a0761d8b9395833cf3.js"></script>
 
-The first line logs you into your Azure subscription and the second one takes the name of your ACR, the source image from Dockerhub, and the image name which will be created in ACR.
+The first line logs you into your Azure subscription and the second one takes the name of your ACR, the source image from Docker Hub, and the image name which will be created in ACR.
 
 ### Upload a Docker Image using Azure DevOps Pipelines
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-The better approach to uploading is an automated Azure DevOps pipeline. In my previous demos, I already created tasks to build and publish the image to Dockerhub. I will update these tasks to a new version (v2 instead of v1) and add more parameters, so you can easily switch between ACR and Dockerhub.
+The better approach to uploading is an automated Azure DevOps pipeline. In my previous demos, I already created tasks to build and publish the image to Docker Hub. I will update these tasks to a new version (v2 instead of v1) and add more parameters, so you can easily switch between ACR and Docker Hub.
 
 ### Create a Service Connection to your ACR
 
@@ -115,7 +115,7 @@ Lastly, I have to update my pipeline to pass values for the new parameters:
 
 <script src="https://gist.github.com/WolfgangOfner/fb513f4c0839006a3b14676f9b958874.js"></script>
 
-Additionally, I renamed the ImageName variable to Repository. If you want to deploy to Dockerhub instead, use 'Docker Hub' for the containerRegistry and wolfgangofner/customerapi for the repository (you have to replace wolfgangofner with your Dockerhub repository name). For more information about pushing images to Dockerhub, see my post [Build Docker in an Azure DevOps CI Pipeline](/build-docker-azure-devops-ci-pipeline).
+Additionally, I renamed the ImageName variable to Repository. If you want to deploy to Docker Hub instead, use 'Docker Hub' for the containerRegistry and wolfgangofner/customerapi for the repository (you have to replace wolfgangofner with your Docker Hub repository name). For more information about pushing images to Docker Hub, see my post [Build Docker in an Azure DevOps CI Pipeline](/build-docker-azure-devops-ci-pipeline).
 
 #### Update the Image Source in the Helm package
 
@@ -209,9 +209,9 @@ Connect to the dashboard and check the events to make sure that the image was pu
 
 ## Conclusion
 
-Azure Container Registry (ACR) is a private container registry and a great alternative to Dockerhub, especially for companies. ACR allows you to build your images but also to distribute them globally. Due to the private nature of ACR, Kubernetes needs an image pull secret to allow deployments to access ACR and pull images from there.
+Azure Container Registry (ACR) is a private container registry and a great alternative to Docker Hub, especially for companies. ACR allows you to build your images but also to distribute them globally. Due to the private nature of ACR, Kubernetes needs an image pull secret to allow deployments to access ACR and pull images from there.
 
-Note: By default, my demo code is using Dockerhub because it is more accessible and I want to make it easier for people who want to try the demo. I left the code for ACR as comments in the pipeline.
+Note: By default, my demo code is using Docker Hub because it is more accessible and I want to make it easier for people who want to try the demo. I left the code for ACR as comments in the pipeline.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

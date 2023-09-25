@@ -101,7 +101,7 @@ The Azure DevOps team has an open <a href="https://github.com/microsoft/azure-pi
 
 <script src="https://gist.github.com/WolfgangOfner/17a98cfbff832d96660e6c0e7e077546.js"></script>
 
-I also have uploaded the container to <a href="https://hub.docker.com/repository/docker/wolfgangofner/linuxsqlpackage" target="_blank" rel="noopener noreferrer">Dockerhub</a> and will use it in the CI/CD pipeline.
+I also have uploaded the container to <a href="https://hub.docker.com/repository/docker/wolfgangofner/linuxsqlpackage" target="_blank" rel="noopener noreferrer">Docker Hub</a> and will use it in the CI/CD pipeline.
 
 ## Deploy your Database using the Dacpac Package
 

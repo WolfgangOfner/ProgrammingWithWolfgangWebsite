@@ -33,7 +33,7 @@ Next, add a job inside a stage and create a build version using GitVersion. If y
 
 <script src="https://gist.github.com/WolfgangOfner/525bb10ae789b5ef82a432109e6c169d.js"></script>
 
-With the version number in place, add two more tasks to build the Docker container and then push it to a registry. In this demo, I am pushing it to Dockerhub. 
+With the version number in place, add two more tasks to build the Docker container and then push it to a registry. In this demo, I am pushing it to Docker Hub. 
 
 <script src="https://gist.github.com/WolfgangOfner/7831e4199e4e12db38b240d039e098d3.js"></script>
 
@@ -55,13 +55,13 @@ Save the pipeline and run it.
   </p>
 </div>
 
-You can see the Docker container with its two tags on DockerHub after the build is finished.
+You can see the Docker container with its two tags on Docker Hub after the build is finished.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2021/05/The-Azure-Function-Container-got-pushed-to-DockerHub.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-Azure-Function-Container-got-pushed-to-DockerHub.jpg" alt="The Azure Function Container got pushed to DockerHub" /></a>
+  <a href="/assets/img/posts/2021/05/The-Azure-Function-Container-got-pushed-to-Docker-Hub.jpg"><img loading="lazy" src="/assets/img/posts/2021/05/The-Azure-Function-Container-got-pushed-to-Docker-Hub.jpg" alt="The Azure Function Container got pushed to Docker Hub" /></a>
   
   <p>
-   The Azure Function Container got pushed to DockerHub
+   The Azure Function Container got pushed to Docker Hub
   </p>
 </div>
 
@@ -69,7 +69,7 @@ Testing the Azure Function is exactly the same as in my last post, [Deploy Azure
 
 ## Conclusion
 
-This short post showed how to create a Docker container of an Azure Function inside an Azure DevOps YAML pipeline. The Docker image was published to DockerHub and then deployed to an existing Azure Function.
+This short post showed how to create a Docker container of an Azure Function inside an Azure DevOps YAML pipeline. The Docker image was published to Docker Hub and then deployed to an existing Azure Function.
 
 You can find the code of the demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 

@@ -23,7 +23,7 @@ The only thing you have to consider before splitting up the CI/CD pipeline is ho
 
 ## Edit the Pipeline for Continuous Integration
 
-Continuous Integration or CI means that you want to integrate new features always into the master branch and have the branch in a deployable state. This means that I have to calculate the build version number, build the Docker image, push it to Dockerhub and create the Helm package which will be used in the CD pipeline for the deployment. All this exists already and the only step I have to add is publishing the values.yaml file and the Helm package to the ArtifactStagingDirectory. This is a built-in variable of Azure DevOps and allows the CD pipeline to access the Helm package and the config file during the deployment.
+Continuous Integration or CI means that you want to integrate new features always into the master branch and have the branch in a deployable state. This means that I have to calculate the build version number, build the Docker image, push it to Docker Hub and create the Helm package which will be used in the CD pipeline for the deployment. All this exists already and the only step I have to add is publishing the values.yaml file and the Helm package to the ArtifactStagingDirectory. This is a built-in variable of Azure DevOps and allows the CD pipeline to access the Helm package and the config file during the deployment.
 
 The changes are made in the CreateHelmPackage template. The whole template looks as follows:
 

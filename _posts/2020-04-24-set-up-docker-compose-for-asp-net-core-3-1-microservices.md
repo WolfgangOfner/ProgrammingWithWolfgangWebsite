@@ -20,7 +20,7 @@ This file describes two images, rabbitmq, and customerapi. Let&#8217;s have a cl
 
   * Ports: The container is listening to the ports 8000 and 8001 and redirects the request to the ports 80 and 443 inside the container.
   * Environment: This section provides environment variables and their value to enable Kestrel to process SSL requests.
-  * Image: This specifies which image should be used. If it is not available locally, it will be downloaded from Dockerhub.
+  * Image: This specifies which image should be used. If it is not available locally, it will be downloaded from Docker Hub.
   * Restart: Here you can configure the restart policy. This container is always restarting on failure. Other options are always and until-stopped.
   * Depends on: This section specifies dependencies. It only specifies that the rabbitmq container has to be started before the customerapi container. It doesn&#8217;t guarantee that the container is already finished starting up
 
@@ -60,7 +60,7 @@ Another great feature of docker-compose is, that you can stop all your applicati
 
 ## Build and run Containers
 
-You don't have to use images from Dockerhub in your compose file, you can also build images and then run them. To build an image, use the build section and set the context to the location of the Dockerfile. I have created a new Dockerfile, called Dockerfile.Build which looks like the original one except that it doesn't contain any tests or anything that might slow down the build.
+You don't have to use images from Docker Hub in your compose file, you can also build images and then run them. To build an image, use the build section and set the context to the location of the Dockerfile. I have created a new Dockerfile, called Dockerfile.Build which looks like the original one except that it doesn't contain any tests or anything that might slow down the build.
 
 <script src="https://gist.github.com/WolfgangOfner/a253392bf146f6d437c322e492057924.js"></script>
 

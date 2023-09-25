@@ -16,13 +16,13 @@ Docker is the most popular container technology. It is written in Go and open-so
 
 Another big advantage is that Docker containers share the host system kernel. This makes them way smaller than a virtual machine and enables them to start within seconds or even less. For more information about Docker, check out <a href="https://www.docker.com/resources/what-container" target="_blank" rel="noopener noreferrer">Docker.com</a>. There you can also download Docker Desktop which you will need to run a Docker container on your machine.
 
-## What is Dockerhub?
+## What is Docker Hub?
 
-<a href="https://hub.docker.com/" target="_blank" rel="noopener noreferrer">Dockerhub</a> is like GitHub for Docker containers. You can sign up for free and get unlimited public repos and one private repo. There are also enterprise plans which give you more private repos, build pipelines for your containers, and security scanning.
+<a href="https://hub.docker.com/" target="_blank" rel="noopener noreferrer">Docker Hub</a> is like GitHub for Docker containers. You can sign up for free and get unlimited public repos and one private repo. There are also enterprise plans which give you more private repos, build pipelines for your containers, and security scanning.
 
-To dockerize an application means that you create a Docker container or at least a Dockerfile which describes how to create the container. You can upload the so-called container image to container registries like Dockerhub so other developers can easily download and run them.
+To dockerize an application means that you create a Docker container or at least a Dockerfile which describes how to create the container. You can upload the so-called container image to container registries like Docker Hub so other developers can easily download and run them.
 
-Dockerhub is the go-to place if you want to download official container images. The RabbitMQ from the last post was downloaded from there or you can download Redis, SQL Server from Microsoft, or thousands of other popular applications.
+Docker Hub is the go-to place if you want to download official container images. The RabbitMQ from the last post was downloaded from there or you can download Redis, SQL Server from Microsoft, or thousands of other popular applications.
 
 ## Dockerize the Microservices
 
@@ -58,11 +58,11 @@ The Dockerfile is a set of instructions to build and run an image. Visual Studio
 
 <script src="https://gist.github.com/WolfgangOfner/9496cc3a7c647119d048374545deb839.js"></script>
 
-The first part downloads the .NET Core 3.1 runtime image from Dockerhub and gives it the name base which will be used later on. Then it sets the working directory to /app which will also be later used. Lastly, the ports 80 and 443 are exposed which tells Docker to listen to these two ports when the container is running.
+The first part downloads the .NET Core 3.1 runtime image from Docker Hub and gives it the name base which will be used later on. Then it sets the working directory to /app which will also be later used. Lastly, the ports 80 and 443 are exposed which tells Docker to listen to these two ports when the container is running.
 
 <script src="https://gist.github.com/WolfgangOfner/218e844a913736dd20c7941b5dcf70e6.js"></script>
 
-The next section downloads the .NET Core 3.1 SDK from Dockerhub and names it build. Then the working directory is set to /src and all project files (except the test projects) of the solution are copied inside the container. Then dotnet restore is executed to restore all NuGet packages and the working directory is changed to the directory of the API project. Note that the path starts with /src, the working directory path I set before I copied the files inside the container. Lastly, dotnet build is executed which builds the project with the Release configuration into the path /app/build.
+The next section downloads the .NET Core 3.1 SDK from Docker Hub and names it build. Then the working directory is set to /src and all project files (except the test projects) of the solution are copied inside the container. Then dotnet restore is executed to restore all NuGet packages and the working directory is changed to the directory of the API project. Note that the path starts with /src, the working directory path I set before I copied the files inside the container. Lastly, dotnet build is executed which builds the project with the Release configuration into the path /app/build.
 
 <script src="https://gist.github.com/WolfgangOfner/f486f3b405c7eac47a285da499ebac01.js"></script>
 
@@ -100,7 +100,7 @@ The screenshot above shows that the customerapi image was started two minutes ag
 
 ## Build the Dockerfile without Visual Studio
 
-You don't need Visual Studio to create a Docker image. This is useful when you want to create the image and then push it to a container registry like Dockerhub. You should always do this in a build pipeline but it's useful to know how to do it by hand and sometimes you need it to quickly test something.
+You don't need Visual Studio to create a Docker image. This is useful when you want to create the image and then push it to a container registry like Docker Hub. You should always do this in a build pipeline but it's useful to know how to do it by hand and sometimes you need it to quickly test something.
 
 Open Powershell or bash and navigate to the folder containing the CustomerApi.sln file. To build an image, you can use docker build \[build context\] \[location of Dockerfile\]. Optionally, you can add a tag by using -t tagname. Use
 
@@ -142,41 +142,41 @@ To start an image use docker run [-p &#8220;port outside of the container&#8221;
 
 After the container is started, open localhost:32789 and you should see the Swagger UI of the API. If you use the HTTP port, you will get a connection closed error. HTTPS is currently not working because we have to provide a certificate so kestrel can process HTTPS requests. I will explain <a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">in my next post</a> how to add a certificate to the container. For now, I will only use the HTTP port.
 
-### Push the Image to Dockerhub
+### Push the Image to Docker Hub
 
-We confirmed that the image is running, and now it is time to share it and therefore upload it to Dockerhub. Dockerhub is the default registry in Docker Desktop. Use "docker login" to login into your Dockerhub account.
+We confirmed that the image is running, and now it is time to share it and therefore upload it to Docker Hub. Docker Hub is the default registry in Docker Desktop. Use "docker login" to login into your Docker Hub account.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Log-in-into-Dockerhub.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Log-in-into-Dockerhub.jpg" alt="Log in into Dockerhub" /></a>
+  <a href="/assets/img/posts/2020/04/Log-in-into-Docker-Hub.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Log-in-into-Docker-Hub.jpg" alt="Log in into Docker Hub" /></a>
   
   <p>
-    Log in into Dockerhub
+    Log in into Docker Hub
   </p>
 </div>
 
-Next, I have to tag the image I want to upload with the name of my Dockerhub account and the name of the repository I want to use. I do this with docker tag Image DockerhubAccount/repository.
+Next, I have to tag the image I want to upload with the name of my Docker Hub account and the name of the repository I want to use. I do this with docker tag Image DockerhubAccount/repository.
 
 <script src="https://gist.github.com/WolfgangOfner/ea53cca0239ef5c42b779fdde388adc2.js"></script>
 
-The last step is to push the image to Dockerhub using "docker push tagname".
+The last step is to push the image to Docker Hub using "docker push tagname".
 
 <script src="https://gist.github.com/WolfgangOfner/a6e08633d5a9869d6a739b88aebc8c4d.js"></script>
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Push-the-image-to-Dockerhub.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Push-the-image-to-Dockerhub.jpg" alt="Push the image to Dockerhub dockerize" /></a>
+  <a href="/assets/img/posts/2020/04/Push-the-image-to-Docker-Hub.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Push-the-image-to-Docker-Hub.jpg" alt="Push the image to Docker Hub dockerize" /></a>
   
   <p>
-    Push the image to Dockerhub
+    Push the image to Docker Hub
   </p>
 </div>
 
-To confirm that the image was pushed to Dockerhub, I open my repositories and see the newly create customerapi there.
+To confirm that the image was pushed to Docker Hub, I open my repositories and see the newly create customerapi there.
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2020/04/Confirm-that-the-image-was-pushed-to-Dockerhub.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Confirm-that-the-image-was-pushed-to-Dockerhub.jpg" alt="Confirm that the image was pushed to Dockerhub dockerize" /></a>
+  <a href="/assets/img/posts/2020/04/Confirm-that-the-image-was-pushed-to-Docker-Hub.jpg"><img loading="lazy" src="/assets/img/posts/2020/04/Confirm-that-the-image-was-pushed-to-Docker-Hub.jpg" alt="Confirm that the image was pushed to Docker Hub dockerize" /></a>
   
   <p>
-    Confirm that the image was pushed to Dockerhub
+    Confirm that the image was pushed to Docker Hub
   </p>
 </div>
 
@@ -200,7 +200,7 @@ For practice purposes, dockerize the OrderApi. The steps are identical to the st
 
 ## Conclusion
 
-Today, I showed how to dockerize the microservices to create immutable Docker images which I can easily share using Dockerhub and run everywhere the same way. Currently, only the HTTP port of the application works because we haven't provided an SSL certificate to process HTTPS requests. <a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my next post</a>, I will create a development certificate and start the image with it.
+Today, I showed how to dockerize the microservices to create immutable Docker images which I can easily share using Docker Hub and run everywhere the same way. Currently, only the HTTP port of the application works because we haven't provided an SSL certificate to process HTTPS requests. <a href="/asp-net-core-with-https-in-docker" target="_blank" rel="noopener noreferrer">In my next post</a>, I will create a development certificate and start the image with it.
 
 You can find the code of  the finished demo on <a href="https://github.com/WolfgangOfner/MicroserviceDemo" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
