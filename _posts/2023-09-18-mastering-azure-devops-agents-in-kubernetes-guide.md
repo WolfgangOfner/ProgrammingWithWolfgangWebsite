@@ -218,7 +218,7 @@ Indeed, while running your Azure DevOps agent inside a Kubernetes cluster and sc
 - KEDA creates as many pods as needed to run all jobs in your pipeline, regardless of the available licenses in Azure DevOps.
 - If you cancel the pipeline, pods scaled by KEDA are not cleaned up.
 - All used agents remain in the agent pool and appear as offline.
-- Building Docker images is not possible since dockershim was removed in Kubernetes 1.24. (However, you can use podman to build Docker images in Kubernetes, which I’ll show in my next post)
+- Building Docker images is not possible since dockershim was removed in Kubernetes 1.24. (However, you can use podman to build Docker images in Kubernetes, which I’ll show in my [next post](/how-to-build-docker-images-with-podman-using-azure-devops-agent-running-in-kubernetes))
 
 While these are not major limitations, they are important to consider. You could have a cleanup job that runs once a night to clean up finished pods and remove offline agents from your agent pool. Nevertheless, these factors should be taken into account when planning to run your agents inside a Kubernetes cluster.
 
@@ -238,4 +238,4 @@ However, it is important to be aware of the limitations that come with this appr
 
 As always, the best solution will depend on your specific needs and circumstances.
 
-In my next post, I will show you how to build Docker images with your Azure DevOps agent that is running in a Kubernetes cluster using Podman.
+In my [next post](/how-to-build-docker-images-with-podman-using-azure-devops-agent-running-in-kubernetes), I will show you how to build Docker images with your Azure DevOps agent that is running in a Kubernetes cluster using Podman.
