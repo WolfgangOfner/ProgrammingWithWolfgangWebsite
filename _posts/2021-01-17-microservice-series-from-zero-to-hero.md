@@ -52,6 +52,8 @@ This section is all about automated builds using YAML pipelines in Azure DevOps.
 
 - [Get xUnit Code Coverage from Docker](/get-xunit-code-coverage-from-docker)
 
+- [Fixing Broken Unit Test Execution in Dockerfile](/fixing-broken-unit-test-execution-in-dockerfile)
+
 - [Automatically Version Docker Containers in Azure DevOps CI](/automatically-version-docker-container)
 
 - [Improve Azure DevOps YAML Pipelines with Templates](/improve-azure-devops-pipelines-templates)
@@ -357,3 +359,5 @@ The following list consists of all blog posts in chronological order:
 - [Upgrade a Microservice from .NET 5.0 to .NET 6.0](/upgrade-microservice-from-net-5-to-net-6)
 
 - [Use AAD Authentication for Applications running in AKS to access Azure SQL Databases](/aad-authentication-for-applications-running-in-aks-to-access-azure-sql-databases)
+
+- [Fixing Broken Unit Test Execution in Dockerfile](/fixing-broken-unit-test-execution-in-dockerfile)
