@@ -3,7 +3,7 @@ title: Microservice Series - From Zero to Hero
 date: 2021-01-17
 author: Wolfgang Ofner
 categories: [Cloud, Kubernetes]
-tags: [AKS, Kubernetes, Docker, YAML, Azure, .NET 5, Helm, CI-CD, Azure DevOps, C#, Azure, .NET 6, Istio, Prometheus, ACR, Azure CLI, Azure Container Registry, Azure Functions, Azure Service Bus, Cloud, Continuous Integration, CQRS, DevOps, Dacpac, Docker-Compose, Grafana, IaC, KEDA, Kiali, MediatoR, Microservice, Linkerd, Managed Identity, AAD, Prometheus, Monitoring, Pull Request, RabbitMQ, SSDT, SSL, Swagger, TLS, xUnit, YAML]
+tags: [AKS, Kubernetes, Docker, YAML, Azure, .NET 5, Helm, CI-CD, Azure DevOps, C#, Azure, .NET 6, Istio, Prometheus, ACR, Azure CLI, Azure Container Registry, Azure Functions, Azure Service Bus, Cloud, Continuous Integration, CQRS, DevOps, Dacpac, Docker-Compose, Grafana, IaC, KEDA, Kiali, Mediator, Microservice, Linkerd, Managed Identity, AAD, Prometheus, Monitoring, Pull Request, RabbitMQ, SSDT, SSL, Swagger, TLS, xUnit, YAML]
 description: This series teaches you everything you need to know about microservices, Kubernetes, DevOps, Docker, Helm, and much more.
 pin: true
 ---
