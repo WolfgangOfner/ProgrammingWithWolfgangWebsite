@@ -1,5 +1,5 @@
 ---
-title: Article - Azure Arc - The Bridge to the Cloud
+title: Article - Azure Arc - The Bridge to the Cloud Part 1
 date: 2023-10-30
 author: Wolfgang Ofner
 categories: [Article]
