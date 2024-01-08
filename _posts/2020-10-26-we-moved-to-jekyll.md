@@ -3,7 +3,7 @@ title: We moved to Jekyll
 date: 2020-10-26
 author: Wolfgang Ofner
 categories: [Miscellaneous ]
-tags: [Jekyll, Azure Static Web App, Docker, GitHub Action, WordPress]
+tags: [Jekyll, Azure Static Web Apps, Docker, GitHub Action, WordPress]
 description: Jekyll is a fast open-source platform which in combination with Azure Static Web Apps makes your website blazing fast and gives the users a great experience. 
 ---
 When I started my blog, I was looking for something simple so I can write my posts and don't have to manage much behind the scenes. WordPress was the most known blogging platform back then and I also got a cheap hosting package with WordPress included. Taking WordPress back then was a no-brainer but in the last three years since then, I was never really happy with it. Today, I want to talk about the reasons for the migration to Jekyll, what other options I considered, and what disadvantages the migration has.

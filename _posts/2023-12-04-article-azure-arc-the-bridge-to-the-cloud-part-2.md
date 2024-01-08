@@ -7,7 +7,9 @@ tags: [Kubernetes, Azure Arc, On-premises, .NET, C#, Azure DevOps, CI-CD]
 description: This article explains how to deploy a .NET application to an on-premises Kubernetes cluster using Azure Arc and how to configure Azure DevOps or the deployment pipeline for it. It also provides a theoretical introduction to hybrid cloud architectures.
 ---
 
-This fall, I'm delving into a comprehensive four-part series exploring hybrid cloud solutions through Kubernetes and Azure Arc. The seccond article, titled "Azure Arc - The Gateway to the Cloud" (Azure Arc - Die Brücke zur Cloud), has been recently featured in the renowned German Windows .developer magazine, even making its front page. You can access the full article on the <a href="https://entwickler.de/cloud/deployment-hybrid-cloud-azure-arc" target="_blank" rel="noopener noreferrer">magazine's website here</a> (in German).
+This fall, I'm delving into a comprehensive four-part series exploring hybrid cloud solutions through Kubernetes and Azure Arc. The seccond article, titled "Azure Arc - The Gateway to the Cloud" (Azure Arc - Die Brücke zur Cloud), has been recently featured in the renowned German Windows .developer magazine, even making its front page. 
+
+The article is available <a href="https://entwickler.de/cloud/deployment-hybrid-cloud-azure-arc" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2023/12/windows-developer-01-24.jpg"><img loading="lazy" src="/assets/img/posts/2023/12/windows-developer-01-24.jpg" alt="windows developer 01/24" /></a>

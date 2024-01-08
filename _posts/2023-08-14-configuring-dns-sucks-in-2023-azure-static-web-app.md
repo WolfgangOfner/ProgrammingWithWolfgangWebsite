@@ -3,7 +3,7 @@ title: Configuring DNS still sucks in 2023 (featuring Azure Static Web App)
 date: 2023-08-15
 author: Wolfgang Ofner
 categories: []
-tags: [Azure, Azure Static Web App, Azure DNS Zone]
+tags: [Azure, Azure Static Web Apps, Azure DNS Zone]
 description: Learn how to navigate DNS configurations when moving between countries and setting up Office 365, Azure Static Web Apps, and custom domains
 ---
 

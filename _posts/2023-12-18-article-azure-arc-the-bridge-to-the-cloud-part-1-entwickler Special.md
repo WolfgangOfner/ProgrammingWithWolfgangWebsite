@@ -7,7 +7,9 @@ tags: [Kubernetes, Azure Arc, On-premises, .NET, C#, Azure DevOps, CI-CD]
 description: Discover Azure Arc's role as a gateway to the cloud in this comprehensive hybrid cloud series featured in Enwtickler Magazine Spezial Vol. 38 magazine
 ---
 
-This fall, I'm delving into a comprehensive four-part series exploring hybrid cloud solutions through Kubernetes and Azure Arc. The inaugural article, titled "Azure Arc - The Gateway to the Cloud" (Azure Arc - Die Brücke zur Cloud), has been recently featured in the renowned German "Enwtickler Magazine Spezial Vol. 38" magazine. You can access the full article on the <a href="https://entwickler.de/reader/reading/entwickler-magazin/spezial-vol.-38/619fae358bb81704e583e5c5" target="_blank" rel="noopener noreferrer">magazine's website here</a> (in German).
+This fall, I'm delving into a comprehensive four-part series exploring hybrid cloud solutions through Kubernetes and Azure Arc. The inaugural article, titled "Azure Arc - The Gateway to the Cloud" (Azure Arc - Die Brücke zur Cloud), has been recently featured in the renowned German "Enwtickler Magazine Spezial Vol. 38" magazine. 
+
+The article is available <a href="https://entwickler.de/reader/reading/entwickler-magazin/spezial-vol.-38/619fae358bb81704e583e5c5" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2023/12/entwickler-spezial-vol-38.jpg"><img loading="lazy" src="/assets/img/posts/2023/12/entwickler-spezial-vol-38.jpg" alt="entwickler spezial vol 38" /></a>
