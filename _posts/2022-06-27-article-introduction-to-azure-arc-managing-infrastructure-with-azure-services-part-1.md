@@ -9,7 +9,7 @@ description: Dive into Azure Arc with our windows .developer cover article, co-a
 
 I am delighted to announce the publication of my latest article titled "Introduction to Azure Arc - Managing Infrastructure with Azure Services - Part 1" in the German "windows .developer" magazine’s July 2022 issue. This article, which I had the pleasure of co-authoring with my colleague Shpend Kelmendi, has made it to the cover page!
 
-The article is available <a href="https://entwickler.de/reader/reading/windows-developer/7.2022/c09a1476e7111b477eb5bda1" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
+The article is available <a href="https://entwickler.de/azure/azure-arc-microsoft" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2022/06/windows-developer-07-22.jpg"><img loading="lazy" src="/assets/img/posts/2022/06/windows-developer-07-22.jpg" alt="windows developer 07 22" /></a>

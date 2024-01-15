@@ -9,7 +9,7 @@ description: Discover how Azure Arc simplifies Kubernetes cluster management in 
 
 I am excited to announce the publication of the second article in my Azure Arc series in the German "windows .developer" magazine’s August 2022 issue. The article, titled "Managing On-Premises Kubernetes Clusters with Azure Arc", continues our exploration of Azure Arc’s capabilities.
 
-The article is available <a href="https://entwickler.de/reader/reading/windows-developer/8.2022/68bdef960d64b7374855c27a" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
+The article is available <a href="https://entwickler.de/azure/devops-azure-arc" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2022/07/windows-developer-08-22.jpg"><img loading="lazy" src="/assets/img/posts/2022/07/windows-developer-08-22.jpg" alt="windows developer 08 22" /></a>

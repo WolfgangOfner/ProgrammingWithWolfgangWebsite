@@ -9,7 +9,7 @@ description: Explore scalability in Kubernetes with my windows .developer articl
 
 I am excited to announce that my first solo article has been published in the German "windows .developer" magazine’s April 2022 issue. The article, titled "Leveling Up Scalability in Kubernetes", delves into the intricacies of scalability in Kubernetes using the open-source tool KEDA (Kubernetes event-driven Architecture). The article even made it on the cover page of the magazine.
 
-The article is available <a href="https://entwickler.de/reader/reading/windows-developer/4.2022/161391038f3a1bd00059a8cb" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
+The article is available <a href="https://entwickler.de/kubernetes/ein-level-up-fur-die-skalierung-in-k8s" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2022/03/windows-developer-04-22.jpg"><img loading="lazy" src="/assets/img/posts/2022/03/windows-developer-04-22.jpg" alt="windows developer 04 22" /></a>

@@ -9,7 +9,7 @@ description: Explore Azure Arc’s potential with our windows .developer series 
 
 I am thrilled to announce the publication of the third and final article in my Azure Arc series in the German "windows .developer" magazine’s September 2022 issue. The article, titled "Azure Services outside of Azure", concludes our exploration of Azure Arc’s capabilities.
 
-The article is available <a href="https://entwickler.de/reader/reading/windows-developer/9.2022/02b497fee7f19a8be076a35d" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
+The article is available <a href="https://entwickler.de/azure/azure-arc-on-premises" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2022/08/windows-developer-09-22.jpg"><img loading="lazy" src="/assets/img/posts/2022/08/windows-developer-09-22.jpg" alt="windows developer 09 22" /></a>

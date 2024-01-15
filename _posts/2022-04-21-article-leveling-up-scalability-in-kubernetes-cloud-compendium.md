@@ -13,7 +13,7 @@ What makes this even more special is that the article has been given its own uni
 
 This is a significant milestone for me, and I am incredibly grateful for the opportunity to share my insights on Kubernetes scalability with a broader audience. I hope you find the article informative and engaging.
 
-The article is available <a href="https://entwickler.de/reader/reading/cloud-compendium/Volume%2035/6fbb7f4a549ab304e041a799" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
+The article is available <a href="https://entwickler.de/kubernetes/ein-level-up-fur-die-skalierung-in-k8s-001" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2022/04/cloud-compendium-volume-35.jpg"><img loading="lazy" src="/assets/img/posts/2022/04/cloud-compendium-volume-35.jpg" alt="cloud compendium volume 35" /></a>

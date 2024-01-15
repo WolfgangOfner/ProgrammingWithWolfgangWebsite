@@ -9,7 +9,7 @@ description: Dive into Docker and Kubernetes with our ‘Windows .Developer’ a
 
 I am thrilled to announce that I am writing my first article for the German magazine, "windows .developer". The article, titled "Captain in the Service Orchestra", was published in the December 2020 issue of the magazine. I had the pleasure of co-authoring this piece with Microsoft MVP Marc Müller. The article even made it on the cover page of the magazine.
 
-The article is available <a href="https://entwickler.de/reader/reading/entwickler-magazin/spezial-vol.-38/619fae358bb81704e583e5c5" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
+The article is available <a href="https://entwickler.de/aspnet/kapitan-im-service-orchester" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
 
 <div class="col-12 col-sm-10 aligncenter">
   <a href="/assets/img/posts/2020/12/windows-developer-12-20.jpg"><img loading="lazy" src="/assets/img/posts/2020/12/windows-developer-12-20.jpg" alt="windows developer 12 20" /></a>
