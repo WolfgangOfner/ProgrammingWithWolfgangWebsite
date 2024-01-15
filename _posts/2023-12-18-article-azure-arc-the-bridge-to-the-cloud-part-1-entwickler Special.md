@@ -1,5 +1,5 @@
 ---
-title: Article - Azure Arc - The Bridge to the Cloud Part 1 - Entwickler Magazine Spezial Vol 38
+title: Article - Azure Arc - The Gateway to the Cloud Part 1 - Entwickler Magazine Spezial Vol 38
 date: 2023-12-18
 author: Wolfgang Ofner
 categories: [Article]

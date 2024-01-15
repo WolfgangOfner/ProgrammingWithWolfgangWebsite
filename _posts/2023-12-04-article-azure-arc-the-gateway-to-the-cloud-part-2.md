@@ -1,5 +1,5 @@
 ---
-title: Article - Azure Arc - The Bridge to the Cloud Part 2
+title: Article - Azure Arc - The Gateway to the Cloud Part 2 - Automated Deployments
 date: 2023-12-04
 author: Wolfgang Ofner
 categories: [Article]
@@ -7,7 +7,7 @@ tags: [Kubernetes, Azure Arc, On-premises, .NET, C#, Azure DevOps, CI-CD]
 description: This article explains how to deploy a .NET application to an on-premises Kubernetes cluster using Azure Arc and how to configure Azure DevOps or the deployment pipeline for it. It also provides a theoretical introduction to hybrid cloud architectures.
 ---
 
-This fall, I'm delving into a comprehensive four-part series exploring hybrid cloud solutions through Kubernetes and Azure Arc. The seccond article, titled "Azure Arc - The Gateway to the Cloud" (Azure Arc - Die Brücke zur Cloud), has been recently featured in the renowned German Windows .developer magazine, even making its front page. 
+This fall, I'm delving into a comprehensive four-part series exploring hybrid cloud solutions through Kubernetes and Azure Arc. The second article, titled "Azure Arc - The Gateway to the Cloud" (Azure Arc - Die Brücke zur Cloud), has been recently featured in the renowned German windows .developer magazine, even making its front page. 
 
 The article is available <a href="https://entwickler.de/cloud/deployment-hybrid-cloud-azure-arc" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
 
