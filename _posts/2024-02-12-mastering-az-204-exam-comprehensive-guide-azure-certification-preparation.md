@@ -85,6 +85,16 @@ The exam contains between 40 and 60 questions, I had 54. To pass, you need to sc
 
 Upon completion of the exam, your score should be displayed on the screen immediately. If not, expect to receive an email with your test score within the next hour.
 
+After passing the exam, you get the Azure Developer Associate badge.
+
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2024/02/microsoft-certified-azure-developer-associate.jpg"><img loading="lazy" src="/assets/img/posts/2024/02/microsoft-certified-azure-developer-associate.jpg" alt="Azure Developer Associate Badge" /></a>
+  
+  <p>
+   Azure Developer Associate Badge
+  </p>
+</div>
+
 ### Taking the Exam at a Test Center
 
 A few years ago, I took a test at a test center, and it wasn't the most enjoyable experience. Firstly, you have to commute to their location, ensure punctuality, and carry an official ID. Then, you are required to store all your personal items, such as your wallet, phone, and watch, in a locker before being escorted into a computer-filled room to take your exam. My test center had a mouse from the 90s, which was quite challenging to work with. The room was crowded with other test takers, making it somewhat noisy. 
