@@ -27,6 +27,10 @@ The <a href="https://learn.microsoft.com/en-us/credentials/certifications/exams/
 
 For convenience and easy access, especially during commutes or gym sessions, I've compiled all the Learning Paths into a Word document. However, be aware that this document spans nearly 300 pages. Therefore, navigating through all the Learning Paths will require a considerable amount of time.
 
+### Azure Documentation
+
+Microsoft provides an extensive <a href="https://learn.microsoft.com/en-us/azure" target="_blank" rel="noopener noreferrer">Azure Documentation</a> that encompasses a thorough examination of each Azure service. This resource not only offers valuable recommendations for service implementation and best practices, but it also includes instructive tutorials and quick-start samples to help you get started with the services you are interested in.
+
 ### Community-Provided Resources
 
 In addition to the resources provided by Microsoft, the community also offers a wealth of valuable materials. If you’re a fan of video content, <a href="https://www.youtube.com/@NTFAQGuy" target="_blank" rel="noopener noreferrer">John Savill's Youtube Channel</a> comes highly recommended. He provides a variety of videos to help you prepare for several exams, as well as in-depth explorations of various Azure-related topics.
