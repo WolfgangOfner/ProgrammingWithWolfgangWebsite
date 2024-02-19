@@ -23,7 +23,7 @@ Before you even start preparing for the exam, it's crucial to familiarize yourse
 
 ### Microsoft Learning Paths
 
-The <a href="https://learn.microsoft.com/en-us/credentials/certifications/exams/az-204/" target="_blank" rel="noopener noreferrer">Certification Exam Page</a> provides links to all the articles that make up Microsoft’s Learning Path for the AZ-204 certification. This Learning Path is divided into twelve distinct areas, each containing one to four modules. Each area focuses on a specific technology, such as Azure Functions or CosmosDB.
+The <a href="https://learn.microsoft.com/en-us/credentials/certifications/exams/az-204/" target="_blank" rel="noopener noreferrer">Certification Exam Page</a> provides links to all the articles that make up Microsoft's Learning Path for the AZ-204 certification. This Learning Path is divided into twelve distinct areas, each containing one to four modules. Each area focuses on a specific technology, such as Azure Functions or CosmosDB.
 
 For convenience and easy access, especially during commutes or gym sessions, I've compiled all the Learning Paths into a Word document. However, be aware that this document spans nearly 300 pages. Therefore, navigating through all the Learning Paths will require a considerable amount of time.
 
@@ -33,7 +33,7 @@ Microsoft provides an extensive <a href="https://learn.microsoft.com/en-us/azure
 
 ### Community-Provided Resources
 
-In addition to the resources provided by Microsoft, the community also offers a wealth of valuable materials. If you’re a fan of video content, <a href="https://www.youtube.com/@NTFAQGuy" target="_blank" rel="noopener noreferrer">John Savill's Youtube Channel</a> comes highly recommended. He provides a variety of videos to help you prepare for several exams, as well as in-depth explorations of various Azure-related topics.
+In addition to the resources provided by Microsoft, the community also offers a wealth of valuable materials. If you are a fan of video content, <a href="https://www.youtube.com/@NTFAQGuy" target="_blank" rel="noopener noreferrer">John Savill's Youtube Channel</a> comes highly recommended. He provides a variety of videos to help you prepare for several exams, as well as in-depth explorations of various Azure-related topics.
 
 Google is always a reliable source of information, but Reddit can also be incredibly helpful. For general Azure and certification topics, check out the <a href="https://www.reddit.com/r/AZURE/" target="_blank" rel="noopener noreferrer">Azure Subreddit</a> or the <a href="https://www.reddit.com/r/AzureCertification/" target="_blank" rel="noopener noreferrer">Azure Certification Subreddit</a>. If you are interested in delving into a specific topic, such as CosmosDB, there's likely a dedicated Subreddit for that as well.
 
@@ -99,7 +99,7 @@ After passing the exam, you get the Azure Developer Associate badge.
 
 A few years ago, I took a test at a test center, and it wasn't the most enjoyable experience. Firstly, you have to commute to their location, ensure punctuality, and carry an official ID. Then, you are required to store all your personal items, such as your wallet, phone, and watch, in a locker before being escorted into a computer-filled room to take your exam. My test center had a mouse from the 90s, which was quite challenging to work with. The room was crowded with other test takers, making it somewhat noisy. 
 
-However, there’s nothing inherently wrong with taking the exam at a test center, it iss just a matter of personal preference.
+However, there's nothing inherently wrong with taking the exam at a test center, it iss just a matter of personal preference.
 
 ### Taking the Exam Online
 
@@ -113,7 +113,7 @@ Upon completion of the exam, your score and performance in each exam area will b
 
 In my experience, the AZ-204 exam was more challenging than the Azure Solutions Architect Expert (AZ-303 and AZ-304) and the Azure DevOps Engineer Expert (AZ-400) exams. I was particularly surprised by some questions that delved into the tiniest details of an Azure service. Also some questions asked for the exact syntax of a PowerShell or Phyton script. Some questions were also poorly worded to the point where I couldn't understand them. I had a bad feeling that I would fail the exam before I finished it. However, I ended up passing with a score of 787. Although it is my lowest score to date, a pass is still a pass.
 
-During the exam, it is crucial to read the questions carefully. A single word can sometimes alter the answer to a question. If you come across a question that leaves you stumped, take a moment to breathe and try to eliminate incorrect answers. Often, one or two answers are blatantly wrong, leaving you with only two potential answers. If you are still unsure, make an educated guess. There’s no penalty for incorrect answers, so never leave a question unanswered!
+During the exam, it is crucial to read the questions carefully. A single word can sometimes alter the answer to a question. If you come across a question that leaves you stumped, take a moment to breathe and try to eliminate incorrect answers. Often, one or two answers are blatantly wrong, leaving you with only two potential answers. If you are still unsure, make an educated guess. There's no penalty for incorrect answers, so never leave a question unanswered!
 
 ## Conclusion
 

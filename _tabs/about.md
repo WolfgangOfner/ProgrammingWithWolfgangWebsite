@@ -23,19 +23,23 @@ Whether you're a developer, architect, or IT professional, I hope that you'll fi
    <tbody>
       <tr>
          <td><a href="https://learn.microsoft.com/en-us/certifications/mct-certification" target="_blank" rel="noopener"><img src="/assets/img/author/mct-microsoft-certified-trainer-2024.png" alt="MCT Microsoft Certified Trainer" width="200px" height="200px"></a></td>
-         <td><a href="https://learn.microsoft.com/en-us/certifications/azure-solutions-architect/" target="_blank" rel="noopener"><img src="/assets/img/author/azure-solutions-architect-expert.png" alt="Azure Solutions Architect Expert" width="200px" height="200px"></a> </td>
-         <td><a href="https://learn.microsoft.com/en-us/certifications/exams/az-204" target="_blank" rel="noopener"><img src="/assets/img/author/microsoft-certified-azure-developer-associate.png" alt="Developing Solutions for Microsoft Azure" width="200px" height="200px"></a> </td>
+         <td><a href="https://learn.microsoft.com/en-us/certifications/azure-solutions-architect/" target="_blank" rel="noopener"><img src="/assets/img/author/azure-solutions-architect-expert.png" alt="Azure Solutions Architect Expert" width="200px" height="200px"></a> </td>         
+         <td><a href="https://learn.microsoft.com/en-us/credentials/certifications/devops-engineer/" target="_blank" rel="noopener"><img src="/assets/img/author/microsoft-certified-devops-engineer-expert.png" alt="DevOps Engineer Expert" width="200px" height="200px"></a> </td>
       </tr>
-      <tr>         
-         <td><a href="https://learn.microsoft.com/en-us/certifications/exams/az-304" target="_blank" rel="noopener"><img src="/assets/img/author/exam-az-304.png" alt="Microsoft Azure Architect Design" width="200px" height="200px"></a>  </td>
-         <td><a href="https://learn.microsoft.com/en-us/certifications/exams/az-303" target="_blank" rel="noopener"><img src="/assets/img/author/exam-az-303.png" alt="Microsoft Azure Architect Technologies" width="200px" height="200px"></a> </td>
-         <td><a href="https://learn.microsoft.com/en-us/certifications/mct-certification" target="_blank" rel="noopener"><img src="/assets/img/author/mct-microsoft-certified-trainer-2023.png" alt="MCT Microsoft Certified Trainer" width="200px" height="200px"></a> </td>         
+      <tr>
+         <td><a href="https://learn.microsoft.com/en-us/certifications/exams/az-204" target="_blank" rel="noopener"><img src="/assets/img/author/microsoft-certified-azure-developer-associate.png" alt="Developing Solutions for Microsoft Azure" width="200px" height="200px"></a> </td>
+         <td><a href="https://learn.microsoft.com/en-us/credentials/certifications/exams/az-400" target="_blank" rel="noopener"><img src="/assets/img/author/exam-az-400.png" alt="Designing and Implementing Microsoft DevOps Solutions" width="200px" height="200px"></a> </td>         
+         <td><a href="https://learn.microsoft.com/en-us/certifications/exams/az-304" target="_blank" rel="noopener"><img src="/assets/img/author/exam-az-304.png" alt="Microsoft Azure Architect Design" width="200px" height="200px"></a>  </td>    
       </tr>
        <tr>
+         <td><a href="https://learn.microsoft.com/en-us/certifications/exams/az-303" target="_blank" rel="noopener"><img src="/assets/img/author/exam-az-303.png" alt="Microsoft Azure Architect Technologies" width="200px" height="200px"></a> </td>
+         <td><a href="https://learn.microsoft.com/en-us/certifications/mct-certification" target="_blank" rel="noopener"><img src="/assets/img/author/mct-microsoft-certified-trainer-2023.png" alt="MCT Microsoft Certified Trainer" width="200px" height="200px"></a> </td> 
          <td><a href="https://learn.microsoft.com/en-us/certifications/mct-certification" target="_blank" rel="noopener"><img src="/assets/img/author/mct-microsoft-certified-trainer-2022.png" alt="MCT Microsoft Certified Trainer" width="200px" height="200px"></a></td>
-         <td><a href="https://learn.microsoft.com/en-us/certifications/exams/70-480" target="_blank" rel="noopener"><img src="/assets/img/author/exam-480.png" alt="Azure Solutions Architect Expert" width="200px" height="200px"></a></td>
-         <td></td>
-         <td></td>
+      </tr>
+      <tr>
+         <td><a href="https://learn.microsoft.com/en-us/certifications/exams/70-480" target="_blank" rel="noopener"><img src="/assets/img/author/exam-480.png" alt="Azure Solutions Architect Expert" width="200px" height="200px"></a></td>      
+      <td></td>
+      <td></td>
       </tr>
    </tbody>
 </table>
