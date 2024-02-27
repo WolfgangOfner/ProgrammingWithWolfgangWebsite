@@ -13,7 +13,7 @@ In my session, I will showcase how a Swiss company used Azure Arc to manage an o
 
 Don’t miss this opportunity to gain insights into how you can harness the power of the cloud while maintaining your on-premises infrastructure. 
 
-You can find more information about this free online conference on their <a href="https://www.hiphops.io/automation-week" target="_blank" rel="noopener noreferrer">website</a>.  I hope to see you there!
+You can find more information about this free online conference on their <a href="https://www.hiphops.io/automation-week" target="_blank" rel="noopener noreferrer">website</a>. I hope to see you there!
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/N7p7sOrwpmY?si=OdZXJC2HSDs0v8zC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

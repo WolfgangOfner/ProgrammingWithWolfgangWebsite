@@ -1,6 +1,6 @@
 ---
 title: Mastering the AZ-400 Exam - A Comprehensive Guide to Azure DevOps Certification
-date: 2024-02-19
+date: 2024-02-26
 author: Wolfgang Ofner
 categories: [Cloud, Miscellaneous]
 tags: [Azure, Learning, Certification, Exam]
