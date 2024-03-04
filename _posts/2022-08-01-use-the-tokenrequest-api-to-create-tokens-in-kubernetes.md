@@ -43,7 +43,7 @@ In the next section, I'll guide you through the process of creating these tokens
 
 With the introduction of Kubernetes 1.22, we now have the TokenRequest API at our disposal, offering a more secure approach to create tokens compared to the previously used Secret object. Let's dive into how we can leverage this API to enhance security in token creation.
 
-To use the API, first create a new service account and bind a role to it. Then use “kubectl create token \<Service Account Name\> to create the token.
+To use the API, first create a new service account and bind a role to it. Then use "kubectl create token \<Service Account Name\>" to create the token.
 
 <script src="https://gist.github.com/WolfgangOfner/ca5efc785f453876bb8cc6e4c5bd0dda.js"></script>
 

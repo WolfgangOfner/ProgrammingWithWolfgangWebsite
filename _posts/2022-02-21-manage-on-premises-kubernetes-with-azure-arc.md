@@ -50,6 +50,8 @@ All these problems can be solved with Azure Arc though. Let's see how to impleme
 
 - [Troubleshooting Stuck Kubernetes Namespaces](/troubleshooting-stuck-kubernetes-namespaces) 
 
+- [Bring DevOps to the Swiss Alps using Azure Arc](/bring-devops-to-the-swiss-alps-using-azure-arc) 
+
 Coming soon:
 
 - CD with Helm Charts using Flux
