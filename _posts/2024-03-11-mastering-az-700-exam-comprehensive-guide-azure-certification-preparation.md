@@ -1,10 +1,10 @@
 ---
-title: Mastering the AZ-700 Exam - A Comprehensive Guide to Azure DevOps Certification
+title: Mastering the AZ-700 Exam - A Comprehensive Guide to the Azure Networking Certification
 date: 2024-03-11
 author: Wolfgang Ofner
 categories: [Cloud, Miscellaneous]
 tags: [Azure, Learning, Certification, Exam]
-description: 
+description: Master the AZ-700 exam with this comprehensive guide. Learn about Azure Networking solutions, study strategies, and exam insights
 ---
 
 Azure offers a wide variety of networking solutions such as ExpressRoute, various VPN connections, NAT Gateway or Azure Firewall. This blog post will provide you with a comprehensive guide to preparing for the AZ-400: Designing and Implementing Microsoft DevOps Solutions exam. 
