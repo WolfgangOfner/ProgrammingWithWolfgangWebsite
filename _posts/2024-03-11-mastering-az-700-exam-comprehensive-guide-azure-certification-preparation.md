@@ -21,7 +21,7 @@ Before you even start preparing for the exam, it's crucial to familiarize yourse
 
 ### Microsoft Learning Paths
 
-The <a href="https://learn.microsoft.com/en-us/credentials/certifications/exams/az-700" target="_blank" rel="noopener noreferrer">Certification Exam Page</a> offers links to all the articles that constitute Microsoft's Learning Path for the AZ-700 certification. This Learning Path contains 8 modules
+The <a href="https://learn.microsoft.com/en-us/credentials/certifications/exams/az-700" target="_blank" rel="noopener noreferrer">Certification Exam Page</a> offers links to all the articles that constitute Microsoft's Learning Path for the AZ-700 certification. This Learning Path contains 8 modules and can also be found on the <a href="https://learn.microsoft.com/en-us/training/browse/?terms=az-700&products=azure&resource_type=learning%20path" target="_blank" rel="noopener noreferrer">Learning Path Dashboard</a>.
 
 To facilitate easy access and convenience, particularly during commutes or cardio session at the gym, I have consolidated all the Learning Paths into a single Word document. This document, available as a Word or PDF file with or without my highlighting, can be found on <a href="https://github.com/WolfgangOfner/AZ-700-Designing-and-Implementing-Microsoft-Azure-Networking-Solutions" target="_blank" rel="noopener noreferrer">GitHub</a>. Please note, however, that this document spans 354 pages. Consequently, going through all the Learning Paths will demand a significant investment of time. Additionally, I have uploaded a document with notes I took while taking the practice exam and reading the documentation.
 
