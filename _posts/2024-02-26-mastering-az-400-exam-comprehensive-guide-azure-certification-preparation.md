@@ -7,7 +7,7 @@ tags: [Azure, Learning, Certification, Exam]
 description: Master the AZ-400 exam with our comprehensive guide. Learn about Azure DevOps certification, study strategies, and exam insights
 ---
 
-Preparing to become a Microsoft Certified: Azure DevOps Engineer Expert is a significant commitment, but one that can open up a world of professional opportunities. This blog post is will provide you with a comprehensive guide to preparing for the AZ-400: Designing and Implementing Microsoft DevOps Solutions exam. 
+Preparing to become a Microsoft Certified: Azure DevOps Engineer Expert is a significant commitment, but one that can open up a world of professional opportunities. This blog post will provide you with a comprehensive guide to preparing for the AZ-400: Designing and Implementing Microsoft DevOps Solutions exam. 
 
 ## Preparing for the Exam
 
