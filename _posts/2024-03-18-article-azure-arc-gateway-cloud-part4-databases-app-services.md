@@ -1,6 +1,6 @@
 ---
 title: Article - Azure Arc - The Gateway to the Cloud Part 4 - Databases, App Services and more
-date: 2024-03-12
+date: 2024-03-18
 author: Wolfgang Ofner
 categories: [Article]
 tags: [Kubernetes, Azure Arc, On-premises, .NET, C#, Azure DevOps, CI-CD]
