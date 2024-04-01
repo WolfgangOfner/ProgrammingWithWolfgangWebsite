@@ -1,5 +1,5 @@
 ---
-title: Bring DevOps to the Swiss Alps using Azure Arc
+title: Bring DevOps to the Swiss Alps using Azure Arc - Azure Spring Clean 2024
 date: 2024-03-04
 author: Wolfgang Ofner
 categories: [Cloud, DevOps, Kubernetes, Speaking]
