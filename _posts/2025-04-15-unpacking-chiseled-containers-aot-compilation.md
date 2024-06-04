@@ -60,10 +60,10 @@ If you decide to use AOT for your application, it's crucial to thoroughly test y
 Microsoft provides several sample applications on <a href="https://github.com/dotnet/dotnet-docker/tree/main/samples" target="_blank" rel="noopener noreferrer">GitHub</a> for testing AOT and chiseled container images. These sample apps include various Dockerfiles targeting Ubuntu or Alpine, and using chiseled and/or AOT compiled images. The image size comparison between the conventional .NET runtime, the chiseled runtime, and the chiseled runtime with AOT compilation is as follows:
 
 <div class="col-12 col-sm-10 aligncenter">
-  <a href="/assets/img/posts/2024/04/Performance-comparison-of-applications-using-aot-and-conventional-applications.jpg"><img loading="lazy" src="/assets/img/posts/2024/04/Performance-comparison-of-applications-using-aot-and-conventional-applications.jpg" alt="Performance comparison of applications using AOT and conventional applications" /></a>
+  <a href="/assets/img/posts/2024/04/Comparision-of-conventional-chiseled-and-chiseled-with-aot-images.jpg"><img loading="lazy" src="/assets/img/posts/2024/04/Comparision-of-conventional-chiseled-and-chiseled-with-aot-images.jpg" alt="Comparision of conventional chiseled and chiseled with aot images" /></a>
   
   <p>
-   Performance comparison of applications using AOT and conventional applications
+   Comparision of conventional chiseled and chiseled with aot images
   </p>
 </div>
 

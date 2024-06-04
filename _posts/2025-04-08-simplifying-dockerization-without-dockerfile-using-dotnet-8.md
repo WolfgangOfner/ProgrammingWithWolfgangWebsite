@@ -38,7 +38,7 @@ You will see the console output that shows the API is running and the port it’
   </p>
 </div>
 
-o create a Docker image using the .NET SDK, you first need to enable `IsPublishable` and `EnableSdkContainerSupport` in the `.csproj` file:
+To create a Docker image using the .NET SDK, you first need to enable `IsPublishable` and `EnableSdkContainerSupport` in the `.csproj` file:
 
 <script src="https://gist.github.com/WolfgangOfner/244200a44c20ed614f8041fb9e45a415.js"></script>
 

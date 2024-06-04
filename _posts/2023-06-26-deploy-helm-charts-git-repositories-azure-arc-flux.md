@@ -45,7 +45,7 @@ Deploying a Helm chart directly from your Git repository offers a straightforwar
 <script src="https://gist.github.com/WolfgangOfner/c38f5fb56e201126b56ceae94ce9e069.js"></script>
 
 
-Take note of the line "clusterconfig.azure.com/use-managed-source: "true", which informs Flux that the Helm chart is stored within a Git repository.
+Take note of the line `clusterconfig.azure.com/use-managed-source: "true"`, which informs Flux that the Helm chart is stored within a Git repository.
 
 The next file to create is the kustomize file, which instructs the GitOps operator regarding the files it should execute. In the kustomize file, include the name of the previously generated YAML file.
 
