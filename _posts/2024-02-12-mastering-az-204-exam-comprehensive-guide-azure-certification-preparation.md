@@ -84,6 +84,7 @@ The exam duration is 120 minutes, but you should allocate approximately 150 minu
 The exam contains between 40 and 60 questions, I had 54. To pass, you need to score at least 700 out of 1000. It is important to note that Microsoft employs a dynamic scoring system, meaning that a score of 700 out of 1000 does not equate to 70%.
 
 Upon completion of the exam, your score should be displayed on the screen immediately. If not, expect to receive an email with your test score within the next hour.
+I received an email almost immediately after finishing the exam with my score of 787.
 
 After passing the exam, you get the Azure Developer Associate badge.
 
