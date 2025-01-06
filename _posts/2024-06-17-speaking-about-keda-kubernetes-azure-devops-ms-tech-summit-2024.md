@@ -1,10 +1,10 @@
 ---
-title: Speaking about multiple Azure topics throughout 3 sessions at MS Tech Summit 2024
-date: 2024-06-03
+title: Speaking about Leveraging KEDA and Kubernetes for Optimal Azure DevOps Pipeline Performance at the MS Tech Summit 2024
+date: 2024-06-17
 author: Wolfgang Ofner
-categories: [Kubernetes, Cloud]
-tags: [Speaking, Public Speaking, Conference, Kubernetes, DevOps, KEDA, Azure DevOps, Azure Arc, Azure Monitor, GitOps]
-description: Scale your Azure DevOps pipeline agents using KEDA and Kubernetes for optimal performance. Join me at MS Tech Summit' on June 6, 2024, and enhance your DevOps operations!
+categories: [Speaking]
+tags: [Speaking, Public Speaking, Conference, Kubernetes, DevOps, KEDA, Azure DevOps, Azure Arc, GitOps]
+description: Scale your Azure DevOps pipeline agents using KEDA and Kubernetes for optimal performance. Join me at MS Tech Summit on June 6, 2024, and enhance your DevOps operations!
 ---
 
 I'm excited to announce that I will be speaking at MS Tech Summit 2024 in Warsaw, Poland on June 6, 2024. Join me online as I present a session titled: "Scaling to Success: Leveraging KEDA and Kubernetes for Optimal Performance."

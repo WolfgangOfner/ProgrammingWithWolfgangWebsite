@@ -17,6 +17,8 @@ You can find more information about this free online conference on their <a href
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/N7p7sOrwpmY?si=OdZXJC2HSDs0v8zC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+<br/>
+
 The abstract for my session is as follows:
 
 ## Bring DevOps to the Swiss Alps
@@ -31,8 +33,8 @@ This session shows how a Swiss company used Azure Arc to manage an on-premises K
 
 You can find the slides of the talk on <a href="https://github.com/WolfgangOfner/Presentation/blob/main/2024%20-%20Automation%20Week/Bring%20DevOps%20to%20the%20Swiss%20Clouds.pdf" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-<!-- ## Watch on Youtube
+## Watch on Youtube
 
 You can find the recording of the talk on Youtube.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FAtWULN8QgI?si=sCVDohvb_NTVZjIf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/jSj2Oy5-0jc?si=wvEdNhtPtHc9GEuO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

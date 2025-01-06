@@ -15,6 +15,12 @@ You'll learn about the key features and capabilities of these technologies, and 
 
 Don't miss out on this opportunity to streamline your multi-cloud management and on-premises integration. Register now for the <a href="https://events.pinetool.ai/3152/#sessions/105089?referrer%5Bpathname%5D=%2Fsessions&referrer%5Bsearch%5D=&referrer%5Btitle%5D=Sessions" target="_blank" rel="noopener noreferrer">DevOps Pro Europe 2024</a>, and join me for this exciting online session on May 24, 2024!
 
+<div class="col-12 col-sm-10 aligncenter">
+  <a href="/assets/img/posts/2024/05/Hybrid-and-Multi-Cloud-with-Azure-Arc-DevOps-Pro-Europe-2024.jpg"><img loading="lazy" src="/assets/img/posts/2024/05/Hybrid-and-Multi-Cloud-with-Azure-Arc-DevOps-Pro-Europe-2024.jpg" alt="Hybrid and Multi-Cloud with Azure Arc DevOps Pro Europe 2024" /></a>
+</div>
+<p>
+</p>
+
 The abstract for my session is as follows:
 
 ## Unleashing the Potential of Hybrid Cloud: Streamlining Multi-Cloud Management and On-Premises Integration  
