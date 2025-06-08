@@ -2,7 +2,7 @@
 title: Video - Optimize Your DevOps Pipeline with Cost Effective Stateful Agents
 date: 2025-05-12
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, DevOps]
 tags: [Youtube, Video, Azure DevOps, Managed DevOps Pools]
 description: Optimize the performance of your Azure DevOps pipelines with stateful Managed DevOps Pool agents. 
 hidden: true

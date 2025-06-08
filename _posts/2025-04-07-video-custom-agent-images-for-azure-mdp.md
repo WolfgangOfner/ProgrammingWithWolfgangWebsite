@@ -2,7 +2,7 @@
 title: Video - Custom Agent Images for Azure Managed DevOps Pools
 date: 2025-04-07
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, DevOps]
 tags: [Youtube, Video, Azure DevOps, Managed DevOps Pools]
 description: Create and use custom Linux and Windows agents with your Managed Devops Pool.
 hidden: true

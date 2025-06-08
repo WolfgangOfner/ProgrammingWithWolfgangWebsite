@@ -2,7 +2,7 @@
 title: Programming With Wolfgang on Youtube
 date: 2025-01-27
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube]
 tags: [Youtube, Video]
 description: Learn Azure, AKS, and Azure DevOps! New videos every Tuesday at 9:15 AM ET. Plus, read transcripts on my blog.
 pin: true

@@ -2,7 +2,7 @@
 title: Video - From VMs to Managed Pools - Navigating Azure DevOps Agent Hosting - MS Tech Summit 2025
 date: 2025-09-02
 author: Wolfgang Ofner
-categories: [Video, Speaking]
+categories: [Youtube, Speaking, DevOps]
 tags: [Youtube, Video, Azure, Speaking, Public Speaking, Conference]
 description: Recording of my session at the MS Tech Summit 2025 where I talk about the different options in Azure DevOps to host agents.
 hidden: true

@@ -2,7 +2,7 @@
 title: Video - AKS Governance Made Easy with Azure Policy
 date: 2025-06-02
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, Kubernetes]
 tags: [Youtube, Video, Azure, AKS, Azure Policy]
 description: Azure Policy allows you to configure rules that can be applied to all your Azure resources to ensure the compliance with regulations, laws and security guidelines.
 hidden: true

@@ -2,7 +2,7 @@
 title: Video - Bring DevOps to the Swiss Alps - Automation Week 2024
 date: 2024-03-25
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, DevOps, Cloud, Speaking]
 tags: [Kubernetes, Youtube, Video, Azure Arc, DevOps, Speaking, Public Speaking, Conference]
 description: Azure Arc enables Swiss companies to manage their on-premises Kubernetes cluster with Azure and additionally helps them to run Azure services outside of Azure. 
 ---

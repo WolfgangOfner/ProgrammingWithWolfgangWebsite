@@ -2,7 +2,7 @@
 title: Video - Secure your AKS Deployments with a private Azure Container Registry
 date: 2025-03-17
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, Kubernetes, Cloud]
 tags: [Youtube, Video, AKS, Kubernetes, Security, Azure Container Registry, ACR, Private Endpoint]
 description: Learn to secure AKS deployments by configuring Azure Container Registry for private connections, ensuring protection from external threats.
 hidden: true

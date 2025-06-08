@@ -2,7 +2,7 @@
 title: Video - Inject your Managed DevOps Pool into a VNet
 date: 2025-04-28
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, DevOps]
 tags: [Youtube, Video, Azure DevOps, VNet, Private Endpoint, Pirvate DNS-Zone]
 description: Inject your Managed DevOps Pool agent to access private Azure resources, such as an Azure Key Vault with Private Endpoint
 hidden: true

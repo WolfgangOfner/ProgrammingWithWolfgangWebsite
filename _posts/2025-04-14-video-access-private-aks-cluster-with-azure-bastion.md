@@ -2,7 +2,7 @@
 title: Video - Access Private AKS Clusters with Azure Bastion
 date: 2025-04-14
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, Kubernetes, Cloud]
 tags: [Youtube, Video, AKS, Kubernetes, Azure Bastion, VNet peering, private DNS-Zone]
 description: Learn how to securely access a private Azure Kubernetes Service (AKS) cluster using Azure Bastion. 
 hidden: true

@@ -2,7 +2,7 @@
 title: Video - Install Azure Arc on an on-premises k3s Cluster
 date: 2022-09-05
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, Kubernetes]
 tags: [Azure Arc, Kubernetes, k3s, Youtube, Video]
 description: Learn how to install Azure Arc to manage an on-premises k3s Kubernetes cluster. Azure Arc projects your cluster to Azure and allows you to use all the powerful tools and services on your cluster.
 ---

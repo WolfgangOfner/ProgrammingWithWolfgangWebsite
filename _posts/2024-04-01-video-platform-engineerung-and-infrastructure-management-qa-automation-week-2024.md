@@ -2,7 +2,7 @@
 title: Video - Platform Engineering and Infrastructure Management Q&A - Automation Week 2024
 date: 2024-04-01
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, Cloud, Speaking]
 tags: [Youtube, Video, DevOps, Speaking, Public Speaking, Conference, IaC, Terraform, Bicep]
 description: Amazing guests at the Q&A Panel about Platform Engineering and Infrastructure Management at the Automation Week 2024.   
 ---

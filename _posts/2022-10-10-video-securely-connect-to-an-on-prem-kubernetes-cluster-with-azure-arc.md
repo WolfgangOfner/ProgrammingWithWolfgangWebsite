@@ -2,7 +2,7 @@
 title: Video - Securely connect to an on-premises Kubernetes Cluster with Azure Arc
 date: 2022-10-10
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, Kubernetes]
 tags: [Azure Arc, Kubernetes, Youtube, Video]
 description: Learn how to give developers access to your on-premises Kubernetes cluster using RBAC (Role-based access control) and let them connect to the cluster through Azure Arc.
 ---

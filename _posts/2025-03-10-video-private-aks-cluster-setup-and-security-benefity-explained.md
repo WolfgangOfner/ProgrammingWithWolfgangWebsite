@@ -2,7 +2,7 @@
 title: Video - Private AKS Cluster - Setup and Security Benefits Explained
 date: 2025-03-10
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, Kubernetes]
 tags: [Youtube, Video, AKS, Kubernetes, Security]
 description: A private AKS cluster is a secure, managed Kubernetes service that runs in an isolated network. It ensures that your workloads are protected from external threats by restricting access to the cluster's API server.
 hidden: true

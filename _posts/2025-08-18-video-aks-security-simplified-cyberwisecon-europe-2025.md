@@ -2,7 +2,7 @@
 title: Video - AKS Security Simplified - Protecting Your Kubernetes Environment - CyberWiseCon Europe 2025
 date: 2025-08-18
 author: Wolfgang Ofner
-categories: [Video, Speaking]
+categories: [Youtube, Speaking, Kubernetes]
 tags: [Youtube, Video, Azure, AKS, Speaking, Public Speaking, Conference, Security, Azure Contaienr Registry]
 description: Recording of my session at the CyberWiseCon Europe 2025 where I talk about securing your Azure Kubernetes Service environment.
 hidden: true

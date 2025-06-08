@@ -2,7 +2,7 @@
 title: Video - Run your Azure DevOps Agent in Kubernetes with KEDA
 date: 2025-02-03
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, DevOps, Kubernetes]
 tags: [Youtube, Video, DevOps, AKS, KEDA, Azure DevOps]
 description: Learn the different possibilities to host your Azure DevOps agents and take a deep dive into running your agent inside a Docker container and then deploy it to a Kubernetes cluster where it can be automatically scaled with KEDA. 
 hidden: true

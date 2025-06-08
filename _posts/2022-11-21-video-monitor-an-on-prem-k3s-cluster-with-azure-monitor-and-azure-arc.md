@@ -2,7 +2,7 @@
 title: Video - Monitor an on-premises k3s Cluster with Azure Monitor and Azure Arc
 date: 2022-11-21
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, Kubernetes, Cloud]
 tags: [Azure Arc, Kubernetes, Youtube, Video]
 description: Learn how to install the Container Insights Extension which enables you to monitor your pods and nodes from your on-premise Kubernetes cluster in Azure with Azure Monitor.
 ---

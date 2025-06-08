@@ -2,7 +2,7 @@
 title: Video - Level Up your Kubernetes Scaling with KEDA - Azure User Group Sweden
 date: 2023-08-28
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, Kubernetes, Speaking]
 tags: [Kubernetes, Youtube, Video, KEDA, DevOps, Speaking, Public Speaking, Conference]
 description: Learn how to scale your applications with Azure Kubernetes Service and KEDA. Also use KEDA to scale your Azure DevOps Agents running inside a Kubernetes cluster.
 ---

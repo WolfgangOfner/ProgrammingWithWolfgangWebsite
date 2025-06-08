@@ -2,7 +2,7 @@
 title: Video - AKS Internal Load Balancers - Setup and Access Walkthrough
 date: 2025-05-19
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, Kubernetes]
 tags: [Youtube, Video, AKS, Private Endpoint, Load Balancer]
 description: Use an internal Load Balancer in AKS to expose your Kubernetes Service only to resources in your VNet.
 hidden: true

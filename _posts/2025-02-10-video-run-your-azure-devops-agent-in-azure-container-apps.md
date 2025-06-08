@@ -2,7 +2,7 @@
 title: Video - Run your Azure DevOps Agent in Azure Container Apps
 date: 2025-02-10
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, DevOps]
 tags: [Youtube, Video, DevOps, Azure Container Apps, KEDA, Azure DevOps]
 description: Learn the different possibilities to host your Azure DevOps agents and take a deep dive into running your agent inside an Azure Container App where it can be automatically scaled as needed with KEDA. 
 hidden: true

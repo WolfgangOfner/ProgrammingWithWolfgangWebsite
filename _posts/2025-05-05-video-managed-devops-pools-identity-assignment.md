@@ -2,7 +2,7 @@
 title: Video - Managed DevOps Pools - Identity Assignment Made Easy
 date: 2025-05-05
 author: Wolfgang Ofner
-categories: [Video]
+categories: [Youtube, DevOps]
 tags: [Youtube, Video, Azure DevOps, Managed DevOps Pools, Managed Identity]
 description: Assign an identity to your MDP agent to easily access other Azure resources and simplify your Azure DevOps pipelines.
 hidden: true
