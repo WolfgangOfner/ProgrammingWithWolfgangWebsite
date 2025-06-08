@@ -5,7 +5,6 @@ author: Wolfgang Ofner
 categories: [Cloud, Kubernetes]
 tags: [AKS, Kubernetes, Docker, YAML, Azure, .NET 5, Helm, CI-CD, Azure DevOps, C#, Azure, .NET 6, Istio, Prometheus, ACR, Azure CLI, Azure Container Registry, Azure Functions, Azure Service Bus, Cloud, Continuous Integration, CQRS, DevOps, Dacpac, Docker-Compose, Grafana, IaC, KEDA, Kiali, Mediator, Microservice, Linkerd, Managed Identity, AAD, Prometheus, Monitoring, Pull Request, RabbitMQ, SSDT, SSL, Swagger, TLS, xUnit, YAML]
 description: This series teaches you everything you need to know about microservices, Kubernetes, DevOps, Docker, Helm, and much more.
-pin: true
 ---
 
 I am working as a consultant and software architect on different projects that focus on microservices, DevOps, and Kubernetes. Many of my consulting jobs consist of explaining microservices, why they are great, and how to use them efficiently. Microservices is a buzzword that's been around for a couple of years and almost every developer knows it. However, not many of them know how to implement those.
