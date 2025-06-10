@@ -1,6 +1,6 @@
 ---
 title: Speaking about Azure DevOps Agent Hosting at the Welsh Azure User Group
-date: 2025-06-09
+date: 2025-06-10
 author: Wolfgang Ofner
 categories: [Speaking]
 tags: [Azure Kubernetes Service, AKS, Speaking, Public Speaking, Kubernetes, Azure, DevOps]
