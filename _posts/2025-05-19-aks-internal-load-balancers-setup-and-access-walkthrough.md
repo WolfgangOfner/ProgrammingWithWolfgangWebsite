@@ -34,22 +34,19 @@ There are two main scenarios for accessing services exposed through an internal 
 
 Setting up internal load balancers involves a few key steps using the Azure CLI and YAML files:
 
-- **AKS Cluster Setup**: You will need an AKS cluster.
-- **Service Deployment**: Deploy your application (e.g., Nginx) as a service. To make it an internal load balancer, use the annotation azure-load-balancer-internal: "true" in your service's YAML file.
-- **Static IP Configuration (Optional)**: You can assign a specific private IP address to your internal load balancer using the annotation service.beta.kubernetes.io/azure-load-balancer-ipv4.
-
+1. **AKS Cluster Setup**: You will need an AKS cluster.
+2. **Service Deployment**: Deploy your application (e.g., Nginx) as a service. To make it an internal load balancer, use the annotation azure-load-balancer-internal: "true" in your service's YAML file.
+3. **Static IP Configuration (Optional)**: You can assign a specific private IP address to your internal load balancer using the annotation service.beta.kubernetes.io/azure-load-balancer-ipv4.
 
 ## Testing the Access
 
 - **Same VNET**: Create a VM within the same VNET as your AKS cluster. You should be able to access the service using curl or similar tools, confirming the private connection.
-
-Different VNET with Private Endpoint:
-
-- Create a new VNET and subnet.
-- Deploy a VM into this new VNET.
-- Apply a service file with the annotation service.beta.kubernetes.io/azure-pls-create: "true" to enable the private link service.
-- Create a private endpoint, attaching it to the newly created VNET and linking it to the AKS private link service.
-- Use the private endpoint's IP address (which will be in the new VNET's IP range) to access the AKS service from the second VM.
+- Different VNET with Private Endpoint:
+1. Create a new VNET and subnet.
+2. Deploy a VM into this new VNET.
+3. Apply a service file with the annotation service.beta.kubernetes.io/azure-pls-create: "true" to enable the private link service.
+4. Create a private endpoint, attaching it to the newly created VNET and linking it to the AKS private link service.
+5. Use the private endpoint's IP address (which will be in the new VNET's IP range) to access the AKS service from the second VM.
 
 ## Conclusion
 
