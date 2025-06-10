@@ -49,6 +49,8 @@ Gradually transition to "deny" or "allow" modes once confident. Progressively ad
 
 While Azure Policy can seem complicated at first, it's a powerful tool for governance and applying rules across your entire Azure tenant.
 
+You can find all the code sample on <a href="https://github.com/WolfgangOfner/Youtube/tree/main/Understand%20Your%20AKS%20Spending%20with%20the%20Cost%20Analysis%20Add-on" target="_blank" rel="noopener noreferrer">GitHub</a>.
+
 This post was AI-generated based on the transcript of the video "AKS Governance Made Easy with Azure Policy" and reviewed by me.
 
 ## Video - AKS Governance Made Easy with Azure Policy

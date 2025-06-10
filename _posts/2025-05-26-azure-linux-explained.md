@@ -48,6 +48,8 @@ For new AKS clusters, integrating Azure Linux is straightforward; it can be sele
 
 Azure Linux provides a more secure and efficient cluster experience. Its purpose-built design, direct management by Microsoft, inherent security advantages from a reduced attack surface, and improved performance collectively contribute to a robust solution. For those running AKS, Azure Linux offers a compelling path to optimize your environment.
 
+You can find all the code sample on <a href="https://github.com/WolfgangOfner/Youtube/tree/main/Azure%20Linux%20Explained" target="_blank" rel="noopener noreferrer">GitHub</a>.
+
 This post was AI-generated based on the transcript of the video "Azure Linux Explained" and reviewed by me.
 
 ## Video - Azure Linux Explained
