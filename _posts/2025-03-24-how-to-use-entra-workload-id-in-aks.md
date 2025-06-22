@@ -21,16 +21,16 @@ With Entra Workload Identity, pods can securely access Azure resources without t
 
 The following steps demonstrate how to configure and use Entra Workload Identity:
 
-1. Define Variables: Set up variables for resource names, locations, and IDs.
-2. Create Resources: Create a Resource Group and an Azure Key Vault with RBAC authorization enabled.
-3. Assign Key Vault Permissions: Assign the Key Vault administrator role and create a secret within the Key Vault.
-4. Create AKS Cluster: Create an AKS cluster with OIDC issuer and workload identity enabled.
-5. Configure Entra Workload ID: Query the OIDC issuer URL and create a managed identity.
-6. Assign Managed Identity Permissions: Assign the Key Vault Secrets User role to the managed identity.
-7. Configure Kubernetes Access: Create a new namespace and define a service account linked to the Azure identity.
-8. Establish Federated Identity Credentials: Link Kubernetes with Microsoft Entra ID, eliminating the need for secret management.
-9. Deploy Test Application: Deploy a test application pod with the necessary workload identity label and service account.
-10. Verify Access: Confirm successful access to the Key Vault secret from the pod logs.
+1. **Define Variables:** Set up variables for resource names, locations, and IDs.
+2. **Create Resources:** Create a Resource Group and an Azure Key Vault with RBAC authorization enabled.
+3. **Assign Key Vault Permissions:** Assign the Key Vault administrator role and create a secret within the Key Vault.
+4. **Create AKS Cluster:** Create an AKS cluster with OIDC issuer and workload identity enabled.
+5. **Configure Entra Workload ID:** Query the OIDC issuer URL and create a managed identity.
+6. **Assign Managed Identity Permissions:** Assign the Key Vault Secrets User role to the managed identity.
+7. **Configure Kubernetes Access:** Create a new namespace and define a service account linked to the Azure identity.
+8. **Establish Federated Identity Credentials:** Link Kubernetes with Microsoft Entra ID, eliminating the need for secret management.
+9. **Deploy Test Application:** Deploy a test application pod with the necessary workload identity label and service account.
+10. **Verify Access:** Confirm successful access to the Key Vault secret from the pod logs.
 
 ## Simplified Workflow Explanation
 
