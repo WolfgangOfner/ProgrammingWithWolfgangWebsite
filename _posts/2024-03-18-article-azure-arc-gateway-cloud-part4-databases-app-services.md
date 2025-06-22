@@ -7,7 +7,7 @@ tags: [Kubernetes, Azure Arc, On-premises, .NET, C#, Azure DevOps, CI-CD]
 description: Uncover Azure Arc’s capabilities in managing hardware and installing Azure services outside of Azure in our latest series.
 ---
 
-I am excited to announce that the third installment of this series, titled "Azure Arc - The Gateway to the Cloud Part 4 - Databases, App Services and more", has just been published in the March 2024 issue of the German "windows .developer" magazine. Stay tuned for the final part of this exciting series!
+I am excited to announce that the fourth installment of this series, titled "Azure Arc - The Gateway to the Cloud Part 4 - Databases, App Services and more", has just been published in the March 2024 issue of the German "windows .developer" magazine.
 
 The article is available <a href="https://entwickler.de/azure/azure-arc-hybrid-cloud-datenbanken" target="_blank" rel="noopener noreferrer">online</a>, but please note that it is in German and requires a subscription to access.
 
