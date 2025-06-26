@@ -28,9 +28,9 @@ Event Details:
 
 I look forward to discussing Azure DevOps agent hosting with you there.
 
-<!-- ## Slides of the Talk
+## Slides of the Talk
 
-You can find the slides of the talk on <a href="https://github.com/WolfgangOfner/Presentation/blob/main/2025%20-%20MS%20Tech%20Summit/From%20VMs%20to%20Managed%20Pools%20-%20Navigating%20Azure%20DevOps%20Agent%20Hosting.pdf" target="_blank" rel="noopener noreferrer">GitHub</a>. -->
+You can find the slides of the talk on <a href="https://github.com/WolfgangOfner/Presentation/blob/main/2025%20-%20Welsh%20Azure%20User%20Group/From%20VMs%20to%20Managed%20Pools%20-%20Navigating%20Azure%20DevOps%20Agent%20Hosting.pdf" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
 <!-- ## Watch on Youtube
 
