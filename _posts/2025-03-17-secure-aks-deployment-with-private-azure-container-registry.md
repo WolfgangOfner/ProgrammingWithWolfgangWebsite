@@ -45,9 +45,3 @@ This post was AI-generated based on the transcript of the video "Secure your AKS
 ## Video - Secure your AKS Deployments with a private Azure Container Registry
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6ECPV2Imtac" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-Managed by Microsoft
-Ubuntu, Windows and MacOS agents
-Ease of use
-Pre-installed software
-Cost-effective
