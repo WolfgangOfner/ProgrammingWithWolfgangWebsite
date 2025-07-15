@@ -1,5 +1,5 @@
 ---
-title: Video - From VMs to Managed Pools - Navigating Azure DevOps Agent Hosting - Warsaw IT Days 2025
+title: Video - Warsaw IT Days 2025 - From VMs to Managed Pools - Navigating Azure DevOps Agent Hosting
 date: 2025-06-30
 author: Wolfgang Ofner
 categories: [Youtube, Speaking, DevOps]

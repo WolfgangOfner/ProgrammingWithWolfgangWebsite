@@ -52,10 +52,10 @@ Azure Pipeline agents are the workhorses of your CI/CD pipelines. They are neede
 
 The video concludes with a strong recommendation for Managed DevOps Pools as the best option for hosting Azure DevOps agents. They offer a compelling balance of ease of setup, powerful capabilities, and cost-effectiveness by allowing you to pay only for runtime. While Microsoft-hosted agents are great for basic needs and self-hosted VMs or containers offer full control, Managed DevOps Pools present a modern, efficient, and secure solution for most Azure DevOps pipeline requirements.
 
-You can find all the code sample on <a href="https://github.com/WolfgangOfner/Youtube/tree/main/Warsaw%20IT%20Days%202025" target="_blank" rel="noopener noreferrer">GitHub</a>.
+You can find all the code sample on <a href="https://github.com/WolfgangOfner/Youtube/tree/main/Warsaw%20IT%20Days%202025%20-%20From%20VMs%20to%20Managed%20Pools%20-%20Navigating%20Azure%20DevOps%20Agent%20Hosting" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-This post was AI-generated based on the transcript of the video "From VMs to Managed Pools - Navigating Azure DevOps Agent Hosting - Warsaw IT Days 2025" and reviewed by me.
+This post was AI-generated based on the transcript of the video "Warsaw IT Days 2025 - From VMs to Managed Pools - Navigating Azure DevOps Agent Hosting" and reviewed by me.
 
-## Video - From VMs to Managed Pools - Navigating Azure DevOps Agent Hosting - Warsaw IT Days 2025
+## Video - Warsaw IT Days 2025 - From VMs to Managed Pools - Navigating Azure DevOps Agent Hosting
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/OEBvWVlAuw0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

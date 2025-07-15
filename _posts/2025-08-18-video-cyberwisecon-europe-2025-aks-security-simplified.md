@@ -1,5 +1,5 @@
 ---
-title: Video - AKS Security Simplified - Protecting Your Kubernetes Environment - CyberWiseCon Europe 2025
+title: Video - CyberWiseCon Europe 2025 - AKS Security Simplified - Protecting Your Kubernetes Environment
 date: 2025-08-18
 author: Wolfgang Ofner
 categories: [Youtube, Speaking, Kubernetes]

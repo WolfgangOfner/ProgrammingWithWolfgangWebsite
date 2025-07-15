@@ -1,5 +1,5 @@
 ---
-title: Video - From VMs to Managed Pools - Navigating Azure DevOps Agent Hosting - Welsh Azure User Group
+title: Video - Welsh Azure User Group - From Vms to Managed DevOps Pools
 date: 2025-07-14
 author: Wolfgang Ofner
 categories: [Youtube, Speaking, DevOps]
