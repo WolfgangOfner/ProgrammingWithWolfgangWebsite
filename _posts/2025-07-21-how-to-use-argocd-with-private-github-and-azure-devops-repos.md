@@ -89,6 +89,6 @@ You can find all the code sample on <a href="https://github.com/WolfgangOfner/Yo
 
 This post was AI-generated based on the transcript of the video "How to Use ArgoCD with Private GitHub and Azure DevOps Repos" and reviewed by me.
 
-## How to Use ArgoCD with Private GitHub and Azure DevOps Repos
+## Video - How to Use ArgoCD with Private GitHub and Azure DevOps Repos
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/HUQXdpfpz2k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
