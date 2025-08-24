@@ -34,11 +34,11 @@ Looking forward to seeing you there!
 
 You can find the slides of the talk on <a href="https://github.com/WolfgangOfner/Presentation/blob/main/2025%20-%20Azure%20Cloud%20Native/AKS%20Security%20Simplified%20for%20Developers%20.pdf" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-<!-- ## Watch on Youtube
+## Watch on Youtube
 
 You can find the recording of the talk on Youtube.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/v762t686X9E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://youtu.be/GsazJl_HeFY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 The abstract for my session is as follows:
 
