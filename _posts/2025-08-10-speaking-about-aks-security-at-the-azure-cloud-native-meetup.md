@@ -3,7 +3,7 @@ title: Speaking about AKS Security at the Azure Cloud Native Meetup
 date: 2025-08-10
 author: Wolfgang Ofner
 categories: [Speaking]
-tags: [Azure Kubernetes Service, AKS, Speaking, Public Speaking, Kubernetes, Azure, Security]
+tags: [Azure Kubernetes Service, AKS, Speaking, Public Speaking, Conference,Kubernetes, Azure, Security]
 description: Join me at the Azure Cloud Native Meetup and learn everything developers need to know to keep their AKS cluster secure.
 ---
 

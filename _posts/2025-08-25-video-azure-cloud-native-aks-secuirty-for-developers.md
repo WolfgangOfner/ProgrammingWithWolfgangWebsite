@@ -3,7 +3,7 @@ title: Video - Azure Cloud Native - AKS Security for Developers
 date: 2025-08-25
 author: Wolfgang Ofner
 categories: [Youtube, Kubernetes]
-tags: [Youtube, Video, Azure, AKS, Security, Azure Bastion]
+tags: [Youtube, Video, Speaking, Public Speaking, Conference, Azure, AKS, Security, Azure Bastion]
 description: Recording of my talk at the Azure Cloud Native Meetup about AKS Security for Developers.
 hidden: true
 ---
