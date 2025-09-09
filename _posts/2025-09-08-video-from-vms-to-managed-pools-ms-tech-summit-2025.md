@@ -3,7 +3,7 @@ title: Video - MS Tech Summit 2025 - From VMs to Managed Pools - Navigating Azur
 date: 2025-09-08
 author: Wolfgang Ofner
 categories: [Youtube, Speaking, DevOps]
-tags: [Youtube, Video, Azure, Speaking, Public Speaking, Conference]
+tags: [Youtube, Video, Speaking, Public Speaking, Conference, Azure, Azure DevOps, Managed DevOps Pools]
 description: Recording of my session at the MS Tech Summit 2025 where I talk about the different options in Azure DevOps to host agents.
 hidden: true
 ---
