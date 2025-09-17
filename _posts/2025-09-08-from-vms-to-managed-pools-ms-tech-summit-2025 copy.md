@@ -7,7 +7,6 @@ tags: [Azure, Azure DevOps, Managed DevOps Pools]
 description: Recording of my session at the MS Tech Summit 2025 where I talk about the different options in Azure DevOps to host agents.
 ---
 
-
 The World of Azure DevOps Agents: A Technical Breakdown
 In the world of automated software delivery, Azure DevOps agents are the engines that build, test, and deploy your code. Choosing the right type of agent is a critical decision that impacts cost, performance, and security. This post provides a technical breakdown of the different agent options, highlighting the pros and cons of each to help you make an informed choice for your projects.
 
