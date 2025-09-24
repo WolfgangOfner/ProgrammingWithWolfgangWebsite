@@ -4,7 +4,7 @@ date: 2025-09-15
 author: Wolfgang Ofner
 categories: [Cloud]
 tags: [Azure, Security, Azure Container Registry, Azure Sevice Bus, Azure SQL Server, Azure Event Hub, Azure Storage, Managed Identity, Private Endpoint, Azure VM]
-description: 
+description: Discover a critical Azure security flaw. Unmanaged static credentials can grant former employees admin access. Learn to fix it with Managed Identities.
 ---
 
 In the fast-paced world of cloud development, security often feels like a moving target. While we focus on securing our applications and networks, a critical and often overlooked vulnerability can leave our Azure environments exposed: unmanaged static credentials combined with seemingly benign network configurations. This post dives deep into a common scenario where former employees (or even attackers) could maintain administrative access to your Azure services, long after their official departure.

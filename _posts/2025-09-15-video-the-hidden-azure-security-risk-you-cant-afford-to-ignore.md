@@ -4,7 +4,7 @@ date: 2025-09-15
 author: Wolfgang Ofner
 categories: [Youtube, Cloud]
 tags: [Youtube, Video, Azure, Security, Azure Container Registry, Azure Sevice Bus, Azure SQL Server, Azure Event Hub, Azure Storage, Managed Identity, Private Endpoint, Azure VM]
-description: 
+description: Discover a critical Azure security flaw. Unmanaged static credentials can grant former employees admin access. Learn to fix it with Managed Identities.
 hidden: true
 ---
 
