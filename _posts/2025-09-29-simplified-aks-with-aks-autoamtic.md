@@ -1,6 +1,6 @@
 ---
 title: Simplified AKS with AKS Automatic
-date: 2025-09-22
+date: 2025-09-29
 author: Wolfgang Ofner
 categories: [Kubernetes]
 tags: [Azure, Security, AKS]
