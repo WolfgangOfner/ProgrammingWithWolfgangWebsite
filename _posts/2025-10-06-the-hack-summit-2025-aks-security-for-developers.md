@@ -17,7 +17,7 @@ The single most significant security improvement you can make is changing the de
 
 AKS offers a few different authentication modes, and you should always choose the one that integrates seamlessly with your organizational identity management system:
 
-- **Avoid Local Accounts with Kubernetes RBAC:** This default configuration creates a critical security risk because it has no link to Microsoft Entra ID (formerly Azure AD). Credentials often remain valid even after an employee leaves the company, and user management requires complex, native Kubernetes RBAC knowledge.
+- **Avoid Local Accounts with Kubernetes RBAC:** This default configuration creates a critical security risk because it has no link to Microsoft Entra ID. Credentials often remain valid even after an employee leaves the company, and user management requires complex, native Kubernetes RBAC knowledge.
 - **The Best Practice: Entra ID Authentication with Azure RBAC (Recommended):** This is the easiest and most secure option. It manages both authentication and authorization using familiar Azure tools and roles. Permissions for the entire cluster or specific namespaces can be assigned to Entra ID users and groups directly via Azure RBAC, leveraging existing corporate governance.
 
 ## Workload Identity: Eliminate Passwords from Your Code
