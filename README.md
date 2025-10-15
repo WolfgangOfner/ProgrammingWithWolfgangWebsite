@@ -13,6 +13,7 @@ The whole environment is built and run inside a Docker container. Make sure to i
 To run the solution, execute the following command:
 
 ```bash
+sudo apt-get update
 sudo apt-get install ruby-full build-essential zlib1g-dev
 
 echo '# Install Ruby Gems to ~/gems' >> ~/.bashrc
