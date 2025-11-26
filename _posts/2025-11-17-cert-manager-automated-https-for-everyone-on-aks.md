@@ -3,7 +3,7 @@ title: Cert-Manager Automated HTTPS for everyone on AKS - Part 5
 date: 2025-11-17
 author: Wolfgang Ofner
 categories: [Kubernetes]
-tags: [Azure, AKS, Kubernetes, Gateway API, Application Gateway for Containers, Azure DNS Zone]
+tags: [Azure, AKS, Kubernetes, Gateway API, Application Gateway for Containers, Azure DNS Zone, TLS Certifcate, Cert-Manager, HTTPS]
 description: Automate HTTPS and TLS for your AKS apps using Cert-Manager and Let's Encrypt. Learn to set up the ClusterIssuer with AGFC and Gateway API.
 ---
 
