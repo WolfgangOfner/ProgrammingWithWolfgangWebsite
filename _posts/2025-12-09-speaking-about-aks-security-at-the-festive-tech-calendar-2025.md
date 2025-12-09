@@ -11,11 +11,11 @@ It’s the most wonderful time of the year—not just for the holidays, but for 
 
 This event is truly special: every single day this month, a new, free tech session is released, offering tons of learning opportunities for developers and engineers.
 
-### My Session: Best Practices for AKS Security
+### My Session: AKS Security Simplified for Developers
 
 I will be contributing my session later this month, sharing some of my best practices on a critical topic: **AKS Security.**
 
-My talk, **"Best Practices for AKS Security,"** will cover essential strategies and configurations you need to implement to ensure your Azure Kubernetes Service workloads are resilient, secure, and compliant.
+My talk, **"AKS Security Simplified for Developers,"** will cover essential strategies and configurations you need to implement to ensure your Azure Kubernetes Service workloads are resilient, secure, and compliant.
 
 ### An Incredible Cause: Beatson Cancer Charity
 
