@@ -37,11 +37,11 @@ A huge thank you to the organizers for making the Festive Tech Calendar a tradit
 
 You can find the slides of the talk on <a href="https://github.com/WolfgangOfner/Presentation/blob/main/2025%20-%20Festive%20Tech%20Calendar%202025/AKS%20Security%20Simplified%20for%20Developers.pdf" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-<!-- ## Watch on Youtube
+## Watch on Youtube
 
 You can find the recording of the talk on Youtube.
 
-<iframe width="560" height="315" src="https://youtu.be/kymejuB0CZI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://youtu.be/_EEDK5Xqf4Y?si=1JK3tJNKtdjVPhls" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 The abstract for my session is as follows:
 

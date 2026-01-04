@@ -29,11 +29,11 @@ Register now for <a href="https://warszawskiedniinformatyki.pl/conference/en" ta
 
 You can find the slides of the talk on <a href="https://github.com/WolfgangOfner/Presentation/blob/main/2025%20-%20Warsaw%20IT%20Days/From%20VMs%20to%20Managed%20Pools%20-%20Navigating%20Azure%20DevOps%20Agent%20Hosting.pdf" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-<!-- ## Watch on Youtube
+## Watch on Youtube
 
 You can find the recording of the talk on Youtube.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/OEBvWVlAuw0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OEBvWVlAuw0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 The abstract for my session is as follows:
 
