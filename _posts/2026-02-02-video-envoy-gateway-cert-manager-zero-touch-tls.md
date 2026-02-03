@@ -1,6 +1,6 @@
 ---
 title: Video - Envoy Gateway + Cert Manager - Zero Touch TLS Without Certificate Objects - Part 16
-date: 2026-01-26
+date: 2026-02-02
 author: Wolfgang Ofner
 categories: [Youtube, Kubernetes]
 tags: [Azure, AKS, Kubernetes, Gateway API, Envoy, Envoy Gateway API, Cert-Manager]
