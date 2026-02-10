@@ -22,7 +22,7 @@ If you have ever worried that securing your AKS environment is too complicated, 
 
 I look forward to you watching the session! Be sure to check out the rest of the fantastic content available at The Hack Summit 2025.
 
-Join me online on Monday, Octobner 13, 2025.
+Join me online on Monday, October 13, 2025.
 
 You can register for the event and get more details on the <a href="https://thehacksummit.com/en" target="_blank" rel="noopener noreferrer">conference website</a>.
 
