@@ -11,13 +11,13 @@ It’s the most wonderful time of the year—not just for the holidays, but for 
 
 This event is truly special: every single day this month, a new, free tech session is released, offering tons of learning opportunities for developers and engineers.
 
-### My Session: AKS Security Simplified for Developers
+## My Session: AKS Security Simplified for Developers
 
 I will be contributing my session later this month, sharing some of my best practices on a critical topic: **AKS Security.**
 
 My talk, **"AKS Security Simplified for Developers,"** will cover essential strategies and configurations you need to implement to ensure your Azure Kubernetes Service workloads are resilient, secure, and compliant.
 
-### An Incredible Cause: Beatson Cancer Charity
+## An Incredible Cause: Beatson Cancer Charity
 
 What makes the Festive Tech Calendar so great is its mission to give back. This entire event is dedicated to raising money for an incredible organization: the **Beatson Cancer Charity**.
 
@@ -25,7 +25,7 @@ I believe in supporting their vital work, and by checking out the event, you are
 
 [Support Beatson Cancer Charity](https://lnkd.in/gw5XbswS)
 
-### Watch Now and View the Full Schedule
+## Watch Now and View the Full Schedule
 
 The calendar is already live with amazing content being released daily. You can check out the full schedule and catch up on all the current sessions here:
 
@@ -41,7 +41,7 @@ You can find the slides of the talk on <a href="https://github.com/WolfgangOfner
 
 You can find the recording of the talk on Youtube.
 
-<iframe width="560" height="315" src="https://youtu.be/_EEDK5Xqf4Y?si=1JK3tJNKtdjVPhls" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_EEDK5Xqf4Y?si=S1K0EbLXWV09Qcg5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 The abstract for my session is as follows:
 
