@@ -5,7 +5,6 @@ author: Wolfgang Ofner
 categories: [Kubernetes]
 tags: [Azure, AKS, Kubernetes, Gateway API, Envoy, Envoy Gateway API]
 description: Learn how to install Envoy Gateway as your Kubernetes Gateway API implementation on AKS. Ditch cloud lock-in and save on costs with this quick installation guide.
-hidden: true
 ---
 
 The Kubernetes Gateway API has rapidly become the standard for modern traffic management. While managed services like the Azure Application Gateway for Containers (AGFC) are powerful, they often introduce vendor lock-in and fixed monthly costs. In this guide, we explore why **Envoy Gateway** is a top-tier choice for those who want a portable, cloud-agnostic implementation that runs directly inside their cluster.

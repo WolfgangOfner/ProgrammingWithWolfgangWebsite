@@ -5,7 +5,6 @@ author: Wolfgang Ofner
 categories: [Kubernetes]
 tags: [Azure, AKS, Kubernetes, Gateway API, Envoy, Envoy Gateway API, Cert-Manager]
 description: Discover how to automate HTTPS for Kubernetes with Envoy Gateway and Cert-Manager. Learn to provision TLS certificates without manual certificate objects.
-hidden: true
 ---
 
 As the Kubernetes ecosystem shifts toward the **Gateway API**, many engineers are looking for ways to streamline security and traffic management. In Part 16 of our series, we address a common question: can we automate TLS certificates even further? 
@@ -41,7 +40,6 @@ In a production-ready environment, this setup allows for immediate access via HT
 
 Automating TLS with Envoy Gateway and Cert-Manager represents the next step in reducing Kubernetes operational overhead. By removing the need for manual certificate objects, teams can deploy secure applications faster and with fewer configuration errors. This approach provides a robust, portable, and free security model that is fully production-ready.
 
-**Would you like me to create the LinkedIn post for this part as well?**
 You can find all the code sample on <a href="https://github.com/WolfgangOfner/Youtube/tree/main/Envoy%20Gateway%20%2B%20Cert-Manager%20-%20Zero-Touch%20TLS%20Without%20Certificate%20Objects%20-%20Part%2016">GitHub</a>.
 
 This post was AI-generated based on the transcript of the video "Envoy Gateway + Cert Manager - Zero Touch TLS Without Certificate Objects - Part 16" and reviewed by me.
