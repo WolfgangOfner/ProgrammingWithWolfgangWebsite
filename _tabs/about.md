@@ -7,7 +7,7 @@ Hey there! I'm Wolfgang Ofner, a seasoned cloud and software architect with a pa
 
 After a journey that took me from Austria to Switzerland and then Australia, I have chosen Toronto, Canada as my new home. As an experienced cloud and software architect, I bring a diverse range of international expertise and an unwavering dedication to delivering excellence. Now settled in Toronto, I am excited to offer my services for freelance projects. I am eager to collaborate with organizations seeking innovative software solutions, leveraging my skills to bring your projects to life in this vibrant city that I now proudly call home.
 
- If you're looking for someone who can bring a wealth of experience and a passion for excellence to your project, let's connect on <a href="https://www.linkedin.com/in/wolfgangofner/" target="_blank" rel="noopener">LinkedIn</a>, <a href="https://twitter.com/wolfgang_ofner" target="_blank" rel="noopener">Twitter</a>, or via <a href="mailto:wolfgang@programmingwithwolfgang.com">Email</a> .
+ If you're looking for someone who can bring a wealth of experience and a passion for excellence to your project, let's connect on <a href="https://www.linkedin.com/in/wolfgangofner/" target="_blank" rel="noopener">LinkedIn</a>.
 
 ## Why I created this Blog
 
