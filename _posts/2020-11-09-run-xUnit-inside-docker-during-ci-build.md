@@ -3,7 +3,7 @@ title: Run xUnit Tests inside Docker during an Azure DevOps CI Build
 date: 2020-11-09
 author: Wolfgang Ofner
 categories: [DevOps, Docker]
-tags: [Azure DevOps, CI, Docker, Unit Test, xUnit]
+tags: [Azure DevOps, CI, Docker, Unit Testing, xUnit]
 description: Running xUnit tests inside a container and especially getting the test results and code coverage can be tricky. This post shows you how to do it.
 ---
 Running your build inside a Docker container has many advantages such as platform independence and better testability for developers. These containers also bring more complexity though. 

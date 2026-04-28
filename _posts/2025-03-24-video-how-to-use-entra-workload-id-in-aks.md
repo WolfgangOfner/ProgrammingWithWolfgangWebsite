@@ -3,7 +3,7 @@ title: Video - How to use Entra Workload ID in Azure Kubernetes Service
 date: 2025-03-24
 author: Wolfgang Ofner
 categories: [Youtube, Kubernetes]
-tags: [Youtube, Video, AKS, Kubernetes, Security, Entra Workload Identity, Entra]
+tags: [Youtube, Video, AKS, Kubernetes, Security, Entra Workload ID, Entra]
 description: Improve AKS security by using Entra Workload Identity for identity-based access to Azure services, eliminating the need for usernames and passwords.
 hidden: true
 ---

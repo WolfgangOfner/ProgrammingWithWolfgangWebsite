@@ -3,7 +3,7 @@ title: Speaking about Security in AKS at CyberWiseCon Europe 2025
 date: 2025-03-01
 author: Wolfgang Ofner
 categories: [Speaking]
-tags: [Azure Kubernetes Service, AKS, Speaking, Public Speaking, Conference, Kubernetes, Azure, Security, Entra Workload Identity, Entra]
+tags: [Azure Kubernetes Service, AKS, Speaking, Public Speaking, Conference, Kubernetes, Azure, Security, Entra Workload ID, Entra]
 description: Join me at CyberWiseCon Europe 2025 to learn how to configure your AKS cluster to keep your workload secure.
 ---
 

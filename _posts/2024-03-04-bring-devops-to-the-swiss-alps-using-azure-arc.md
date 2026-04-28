@@ -3,7 +3,7 @@ title: Bring DevOps to the Swiss Alps using Azure Arc - Azure Spring Clean 2024
 date: 2024-03-04
 author: Wolfgang Ofner
 categories: [Cloud, DevOps, Kubernetes, Speaking]
-tags: [Azure, Azure Arc, CD-CD, Conference, DevOps, Docker, Flux, Helm, k3s, On-premises, Speaking]
+tags: [Azure, Azure Arc, CI-CD, Conference, DevOps, Docker, Flux, Helm, k3s, On-premises, Speaking]
 description: Explore the integration of on-premises Kubernetes clusters with Azure Arc for efficient management, automated deployments, and monitoring. 
 ---
 

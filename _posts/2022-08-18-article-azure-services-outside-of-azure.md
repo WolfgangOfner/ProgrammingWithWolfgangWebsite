@@ -3,7 +3,7 @@ title: Article - Azure Services outside of Azure
 date: 2022-08-18
 author: Wolfgang Ofner
 categories: [Article]
-tags: [Kubernetes, Azure Kubernetes Service, Helm, Azure, Docker, Azure App Service, KEDA, Azure SQL Managed Instance, Grafana]
+tags: [Kubernetes, Azure Kubernetes Service, Helm, Azure, Docker, Azure App Services, KEDA, Azure SQL Managed Instance, Grafana]
 description: Explore Azure Arc’s potential with our windows .developer series finale. Learn how to operate Azure services outside of Azure effectively.
 ---
 

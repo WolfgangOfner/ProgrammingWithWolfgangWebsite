@@ -3,7 +3,7 @@ title: Cert Manager & Azure DNS for Wildcard Certificates on AKS - Part 6
 date: 2025-11-24
 author: Wolfgang Ofner
 categories: [Kubernetes]
-tags: [Azure, AKS, Kubernetes, Gateway API, Application Gateway for Containers, Azure DNS Zone, TLS Certifcate, Cert-Manager, HTTPS]
+tags: [Azure, AKS, Kubernetes, Gateway API, Application Gateway for Containers, Azure DNS Zone, TLS Certificate, Cert-Manager, HTTPS]
 description: Automate Wildcard TLS for your AKS apps with Cert-Manager. Integrate the DNS-01 challenge securely with Azure DNS using Entra Workload Identity.
 ---
 

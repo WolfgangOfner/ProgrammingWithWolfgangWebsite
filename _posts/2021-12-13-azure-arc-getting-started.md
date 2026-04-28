@@ -3,7 +3,7 @@ title: Azure Arc - Getting Started
 date: 2021-12-13
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [Azure, Azure Arc, GitOps, SQL, Kubernetes, Postgre SQL]
+tags: [Azure, Azure Arc, GitOps, SQL, Kubernetes, PostgreSQL]
 description: Azure Arc is a bridge to the cloud to project your on-premise, or in another cloud, resources into Azure and allows you to use Azure features for these resources.
 ---
 

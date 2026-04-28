@@ -3,7 +3,7 @@ title: The Hidden Azure Security Risk You Can't Afford to Ignore
 date: 2025-09-15
 author: Wolfgang Ofner
 categories: [Cloud]
-tags: [Azure, Security, Azure Container Registry, Azure Sevice Bus, Azure SQL Server, Azure Event Hub, Azure Storage, Managed Identity, Private Endpoint, Azure VM]
+tags: [Azure, Security, Azure Container Registry, Azure Service Bus, Azure SQL Server, Azure Event Hub, Azure Storage, Managed Identity, Private Endpoint, Azure VM]
 description: Discover a critical Azure security flaw. Unmanaged static credentials can grant former employees admin access. Learn to fix it with Managed Identities.
 ---
 

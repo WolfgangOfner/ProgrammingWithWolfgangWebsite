@@ -3,7 +3,7 @@ title: Video - CI/CD for AKS Dynamic PR Environments with TLS - Part 7
 date: 2025-12-01
 author: Wolfgang Ofner
 categories: [Youtube, Kubernetes]
-tags: [Azure, AKS, Kubernetes, Gateway API, Application Gateway for Containers, Azure DNS Zone, TLS Certifcate, Cert-Manager, HTTPS, Pull Request, DevOps]
+tags: [Azure, AKS, Kubernetes, Gateway API, Application Gateway for Containers, Azure DNS Zone, TLS Certificate, Cert-Manager, HTTPS, Pull Request, DevOps]
 description: Build ephemeral environments for AKS pull requests. Automate Kubernetes Gateway API deployments, Azure DNS CNAMEs, and Cert-Manager TLS certificates.
 hidden: true
 ---

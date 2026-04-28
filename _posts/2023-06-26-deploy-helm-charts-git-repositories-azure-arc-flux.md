@@ -3,7 +3,7 @@ title: Deploy Helm Charts from Git Repositories with Azure Arc Flux
 date: 2023-06-26
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
-tags: [Azure Arc, Flux GitOps, Helm charts, Kubernetes deployments, Git repositories, k3s]
+tags: [Azure Arc, Flux, Helm charts, Kubernetes deployments, Git repositories, k3s]
 description: Learn streamlined Kubernetes deployments with Azure Arc and Flux GitOps. Deploy Helm charts from Git repositories, simplifying app management and collaboration. Optimize efficiency with this comprehensive guide.
 ---
 Integrating Azure Arc with the Flux GitOps extension presents a highly effective approach for deploying infrastructure and applications to Kubernetes. In a previous article, I provided a comprehensive guide on installing the Flux extension and configuring deployments using Kustomize and YAML files, which can be found [here](/securely-deploy-application-azure-arc-with-flux-gitops).

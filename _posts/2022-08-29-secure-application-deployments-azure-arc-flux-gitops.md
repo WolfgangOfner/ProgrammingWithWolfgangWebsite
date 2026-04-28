@@ -3,7 +3,7 @@ title: Secure Application Deployments in Azure Arc with Flux GitOps
 date: 2022-08-29
 author: Wolfgang Ofner
 categories: [Kubernetes, Cloud]
-tags: [Azure Arc, Flux GitOps, Application Deployment, Secure Deployments, Kubernetes, Configuration Management, k3s]
+tags: [Azure Arc, Flux, Application Deployment, Secure Deployments, Kubernetes, Configuration Management, k3s]
 description: Securely deploy applications in Azure Arc with Flux GitOps. Simplify Kubernetes deployments and enhance configuration management for efficient operations.
 ---
 

@@ -3,7 +3,7 @@ title: CyberWiseCon Europe 2025 - AKS Security Simplified - Protecting Your Kube
 date: 2025-08-11
 author: Wolfgang Ofner
 categories: [Kubernetes]
-tags: [Azure, AKS, Speaking, Public Speaking, Conference, Security, Azure Contaienr Registry]
+tags: [Azure, AKS, Speaking, Public Speaking, Conference, Security, Azure Container Registry]
 description: Transcript of my session at the CyberWiseCon Europe 2025 where I talk about securing your Azure Kubernetes Service environment.
 ---
 
