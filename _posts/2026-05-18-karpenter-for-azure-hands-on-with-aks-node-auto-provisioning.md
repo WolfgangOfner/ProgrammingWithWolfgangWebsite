@@ -51,7 +51,7 @@ The combination of granular SKU management, automated zonal awareness, and intel
 
 You can find all the code sample on <a href="https://github.com/WolfgangOfner/Youtube/tree/main/Karpenter%20for%20Azure%20-%20Hands-on%20with%20AKS%20Node%20Auto%20Provisioning">GitHub</a>.
 
-This post was AI-generated based on the transcript of the video Karpenter for Azure - Hands on with AKS Node Auto Provisioning".
+This post was AI-generated based on the transcript of the video "Karpenter for Azure - Hands on with AKS Node Auto Provisioning".
 
 ## Video - Karpenter for Azure - Hands on with AKS Node Auto Provisioning
 
