@@ -2,8 +2,8 @@
 title: Video - ListenerSet - The Best New Feature in Gateway API
 date: 2026-07-13
 author: Wolfgang Ofner
-categories: [Youtube, Cloud, Kubernetes]
-tags: [Azure, AKS, Kubernetes, Gateway API, Envoy, Envoy Gateway API, ListenerSet, Platform Engineering]
+categories: [Youtube, Speaking, DevOps]
+tags: [Youtube, Video, Azure DevOps, Managed DevOps Pools, Speaking, Public Speaking, Conference, Private Endpoint, Private DNS-Zone]
 description: Discover how ListenerSet in Kubernetes Gateway API v1.5 eliminates multi-tenancy bottlenecks, enabling safe, self-service routing using Envoy Gateway.
 hidden: true
 ---
