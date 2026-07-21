@@ -1,6 +1,6 @@
 ---
 title: Video - Warsaw IT Days 2026 - Private, Secure, and Cost Effective - The Trifecta of Managed DevOps Pools
-date: 2026-07-13
+date: 2026-07-20
 author: Wolfgang Ofner
 categories: [Youtube, Speaking, DevOps]
 tags: [Youtube, Video, Azure DevOps, Managed DevOps Pools, Speaking, Public Speaking, Conference, Private Endpoint, Private DNS-Zone]
