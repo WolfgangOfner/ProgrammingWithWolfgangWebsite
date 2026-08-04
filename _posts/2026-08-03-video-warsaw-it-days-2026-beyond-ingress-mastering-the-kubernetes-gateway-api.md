@@ -3,7 +3,7 @@ title: Video - Warsaw IT Days 2026 - Beyond Ingress - Mastering the Kubernetes G
 date: 2026-08-03
 author: Wolfgang Ofner
 categories: [Youtube, Speaking, Kubernetes]
-tags: [Youtube, Video, AKS, Gateway API, Ingress, Envoy Gateway API]
+tags: [Youtube, Video, Conference, AKS, Gateway API, Ingress, Envoy Gateway API]
 description: Learn how GatewayClass, Gateway, and HTTPRoute replace standard Ingress for modular routing and canary deployments.
 hidden: true
 ---

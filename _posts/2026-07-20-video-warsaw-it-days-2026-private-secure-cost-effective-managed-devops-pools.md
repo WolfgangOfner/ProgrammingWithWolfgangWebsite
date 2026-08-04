@@ -3,7 +3,7 @@ title: Video - Warsaw IT Days 2026 - Private, Secure, and Cost Effective - The T
 date: 2026-07-20
 author: Wolfgang Ofner
 categories: [Youtube, Speaking, DevOps]
-tags: [Youtube, Video, Azure DevOps, Managed DevOps Pools, Speaking, Public Speaking, Conference, Private Endpoint, Private DNS-Zone]
+tags: [Youtube, Video, Conference, Azure DevOps, Managed DevOps Pools, Speaking, Public Speaking, Conference, Private Endpoint, Private DNS-Zone]
 description: Recording of my session at the Warsaw IT Days 2026 where I talk about Managed DevOps Pools delivering secure, cost-effective self-hosted Azure DevOps agents with private VNET access and zero OS overhead.
 hidden: true
 ---
