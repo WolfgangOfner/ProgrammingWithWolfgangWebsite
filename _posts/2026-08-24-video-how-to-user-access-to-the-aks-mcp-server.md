@@ -3,7 +3,7 @@ title: Video - How to Restrict User Access to the AKS MCP Server
 date: 2026-08-24
 author: Wolfgang Ofner
 categories: [Youtube, Kubernetes]
-tags: [AKS, Gateway API, Envoy Gateway API, Cert-Manager, TLS Certificate]
+tags: [AKS, AKS-MCP]
 description: Secure your AKS Model Context Protocol server by implementing Microsoft Entra ID authentication, user impersonation API scopes, and strict user assignment controls.
 hidden: true
 ---
