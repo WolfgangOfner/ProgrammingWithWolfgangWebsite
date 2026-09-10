@@ -42,11 +42,11 @@ Keep an eye on the summit portal, and get ready to leave legacy Ingress configs 
 
 You can find the slides of the talk on <a href="https://github.com/WolfgangOfner/Presentation/tree/main/2026%20-%20MS%20Tech%20Summit" target="_blank" rel="noopener noreferrer">GitHub</a>.
 
-<!-- ## Watch on Youtube
+## Watch on Youtube
 
 You can find the recording of the talk on Youtube.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/kymejuB0CZI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Bw3BM0D7XXw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 The abstract for my session is as follows:
 
