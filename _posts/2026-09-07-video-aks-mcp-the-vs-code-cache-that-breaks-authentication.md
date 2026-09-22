@@ -1,6 +1,6 @@
 ---
 title: Video - AKS MCP - The VS Code Cache That Breaks Authentication
-date: 2026-09-06
+date: 2026-09-07
 author: Wolfgang Ofner
 categories: [Youtube, Kubernetes]
 tags: [AKS, AKS-MCP, Visual Studio Code]
