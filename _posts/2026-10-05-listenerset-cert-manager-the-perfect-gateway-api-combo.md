@@ -55,7 +55,7 @@ Once applied, cert-manager automatically creates the DNS TXT record, completes t
 
 Combining Gateway API ListenerSets with cert-manager establishes a clean boundary between central platform control and developer autonomy. Application teams gain self-service HTTPS provisioning without managing credentials, while platform architects maintain cluster-wide governance and security standards.
 
-You can find all the code sample on <a href="https://github.com/WolfgangOfner/Youtube/tree/main/Production%20TLS%20for%20AKS%20MCP-%20cert-manager%20%26%20Envoy%20Gateway%20API">GitHub</a>.
+You can find all the code sample on <a href="https://github.com/WolfgangOfner/Youtube/tree/main/ListenerSet%20%2B%20cert-manager%20-%20The%20Perfect%20Gateway%20API%20Combo">GitHub</a>.
 
 This post was AI-generated based on the transcript of the video "ListenerSet + cert manager - The Perfect Gateway API Combo".
 
