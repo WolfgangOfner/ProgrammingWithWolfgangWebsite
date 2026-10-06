@@ -2,7 +2,7 @@
 title: Video - How to Restrict User Access to the AKS MCP Server
 date: 2026-08-24
 author: Wolfgang Ofner
-categories: [Youtube, Kubernetes]
+categories: [Youtube, Cloud, Kubernetes]
 tags: [AKS, AKS-MCP]
 description: Secure your AKS Model Context Protocol server by implementing Microsoft Entra ID authentication, user impersonation API scopes, and strict user assignment controls.
 hidden: true

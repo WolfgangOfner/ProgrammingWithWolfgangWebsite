@@ -2,7 +2,7 @@
 title: AKS MCP - The VS Code Cache That Breaks Authentication
 date: 2026-09-07
 author: Wolfgang Ofner
-categories: [Youtube, Kubernetes]
+categories: [Youtube, Cloud, Kubernetes]
 tags: [AKS, AKS-MCP, Visual Studio Code]
 description: Resolve Visual Studio Code Entra ID authentication failures caused by SQLite state caching when switching AKS MCP servers using an automated PowerShell cleanup script.
 ---
