@@ -1,6 +1,6 @@
 ---
 title: Video - ListenerSet + cert manager - The Perfect Gateway API Combo
-date: 2026-09-21
+date: 2026-10-05
 author: Wolfgang Ofner
 categories: [Youtube, Cloud, Kubernetes]
 tags: [Azure, AKS, Kubernetes, Gateway API, Envoy, Envoy Gateway API, ListenerSet, Platform Engineering, Cert-Manager, TLS Certificate]
