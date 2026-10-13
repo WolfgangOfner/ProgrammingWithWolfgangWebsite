@@ -3,7 +3,7 @@ title: How to pass the AZ-303 and AZ-304 Certification Exams
 date: 2021-05-24
 author: Wolfgang Ofner
 categories: [Cloud, Miscellaneous]
-tags: [DevOps, Azure DevOps, Azure, Azure Functions, YAML, Azure App Services, Cosmos DB, Azure CLI, Azure SQL, Azure VM, Learning, Certification, Exam]
+tags: [DevOps, Azure DevOps, Azure, Azure Functions, YAML, Azure App Service, Cosmos DB, Azure CLI, Azure SQL, Azure VM, Learning, Certification, Exam]
 description: Tips to prepare for the AZ-303 and AZ-304 exam and earn your Azure Solutions Architect Expert Certification.
 ---
 
