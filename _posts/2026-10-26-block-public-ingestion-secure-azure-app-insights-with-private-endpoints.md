@@ -7,8 +7,6 @@ tags: [Azure, Private Endpoint, Azure App Service, Azure Container Apps, Private
 description: Secure Azure App Insights telemetry using private endpoints, VNet integration, and managed identities to block public internet ingestion.
 ---
 
-# Block Public Ingestion: Secure Azure App Insights with Private Endpoints
-
 When building secure cloud applications, ensuring that telemetry and logging data remain protected from public exposure is just as critical as securing your application runtime. By default, Azure Application Insights and Log Analytics workspaces accept ingestion and query traffic over the public internet. 
 
 By integrating virtual networks, private endpoints, and Azure Monitor Private Link Scopes (AMPLS), you can completely block public internet ingestion and route all monitoring traffic through secure private connections.
